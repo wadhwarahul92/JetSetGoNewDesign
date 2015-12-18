@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - jetsetgo_development@localhost" uuid="fb8af86d-e1ff-45e2-9d76-0553081f5c70">
+    <database-info product="MySQL" version="5.6.26" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.2">
+      <schema id="1" name="JetSetGo_development"/>
+      <table id="2" parent="1" name="cities"/>
+      <table id="3" parent="1" name="schema_migrations"/>
+      <table id="4" parent="1" name="users"/>
+      <column id="5" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="6" parent="2" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="state">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="8" parent="2" name="created_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="9" parent="2" name="updated_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <key id="10" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="11" parent="3" name="version">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="12" parent="3" name="unique_schema_migrations">
+        <columns>version</columns>
+        <unique>1</unique>
+      </index>
+      <key id="13" parent="3" name="unique_schema_migrations">
+        <columns>version</columns>
+        <underlying-index>unique_schema_migrations</underlying-index>
+      </key>
+      <column id="14" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="15" parent="4" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="16" parent="4" name="encrypted_password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="17" parent="4" name="reset_password_token">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="18" parent="4" name="reset_password_sent_at">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="19" parent="4" name="remember_created_at">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="20" parent="4" name="sign_in_count">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="21" parent="4" name="current_sign_in_at">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="22" parent="4" name="last_sign_in_at">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="23" parent="4" name="current_sign_in_ip">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="24" parent="4" name="last_sign_in_ip">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="25" parent="4" name="first_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="26" parent="4" name="last_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="27" parent="4" name="created_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="28" parent="4" name="updated_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="29" parent="4" name="type">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="30" parent="4" name="index_users_on_email">
+        <columns>email</columns>
+        <unique>1</unique>
+      </index>
+      <index id="31" parent="4" name="index_users_on_reset_password_token">
+        <columns>reset_password_token</columns>
+        <unique>1</unique>
+      </index>
+      <key id="32" parent="4" name="index_users_on_email">
+        <columns>email</columns>
+        <underlying-index>index_users_on_email</underlying-index>
+      </key>
+      <key id="33" parent="4" name="index_users_on_reset_password_token">
+        <columns>reset_password_token</columns>
+        <underlying-index>index_users_on_reset_password_token</underlying-index>
+      </key>
+      <key id="34" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

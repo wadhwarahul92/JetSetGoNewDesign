@@ -1,0 +1,5 @@
+<%= simple_form_for @city, url: admin_cities_path do |f| %>
+    <%= f.input :name %>
+    <%= f.input :state %>
+    <%= f.submit 'Create', class: 'btn btn-success' %>
+<%- end %>
