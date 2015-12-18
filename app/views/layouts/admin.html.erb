@@ -15,7 +15,18 @@
 <!--<p class="alert"><%= alert %></p>-->
 <%= render partial: 'admin/shared/header' %>
 <div class="container-fluid">
-  <%= yield %>
+  <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-sm-2">
+          <%= render partial: 'admin/shared/sidebar' %>
+        </div>
+        <div class="col-sm-10">
+          <%= yield %>
+        </div>
+      </div>
+  <%- else %>
+      <%= yield %>
+  <%- end %>
 </div>
 </body>
 </html>
