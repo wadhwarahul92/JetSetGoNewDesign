@@ -3,5 +3,13 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="<%= admin_path %>">JetSetGo Admin</a>
     </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><a href="Javascript:void(0)"><%= current_user.full_name %></a></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <%- end %>
+      </ul>
+    </div>
   </div>
 </nav>

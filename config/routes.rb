@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'welcome#index'
     get 'dashboard' => 'welcome#dashboard', as: :dashboard
+    post 'sign_in' => 'welcome#log_in', as: 'sign_in'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
