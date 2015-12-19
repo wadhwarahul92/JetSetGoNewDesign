@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <ul class="list-inline">
-      <li><%= link_to 'New City', new_admin_city_path, class: 'btn btn-primary' %></li>
+      <li><%= link_to 'New Airport', new_admin_airport_path, class: 'btn btn-primary' %></li>
     </ul>
   </div>
 </div>
@@ -11,14 +11,14 @@
       <thead>
       <tr class="info">
         <th>Name</th>
-        <th>State</th>
+        <th>City</th>
       </tr>
       </thead>
       <tbody>
-      <% @cities.each do |city| %>
+      <% @airports.each do |airport| %>
           <tr>
-            <td><%= city.name %></td>
-            <td><%= city.state %></td>
+            <td><%= airport.name %></td>
+            <td><%= airport.city.name %></td>
           </tr>
       <%- end %>
       </tbody>

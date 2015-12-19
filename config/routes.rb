@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     resources :cities
 
+    resources :airports
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
