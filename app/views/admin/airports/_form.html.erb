@@ -1,4 +1,5 @@
 <%= simple_form_for @airport, url: admin_airports_path do |f| %>
+    <%= f.error_notification %>
     <%= f.input :name %>
     <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
     <%= f.submit 'Save', class: 'btn btn-success' %>

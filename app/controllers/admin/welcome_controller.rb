@@ -30,6 +30,7 @@ class Admin::WelcomeController < Admin::BaseController
     admin = Admin.where(email: email).first
     return false unless admin.present?
     if admin.valid_password?(password)
+      flash[:success] = "Signed in as #{admin.full_name}. All admin operations are logged."
       sign_in(admin)
     end
   end

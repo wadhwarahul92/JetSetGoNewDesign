@@ -21,10 +21,12 @@
           <%= render partial: 'admin/shared/sidebar' %>
         </div>
         <div class="col-sm-10">
+          <%= render partial: 'admin/shared/alerts' %>
           <%= yield %>
         </div>
       </div>
   <%- else %>
+      <%= render partial: 'admin/shared/alerts' %>
       <%= yield %>
   <%- end %>
 </div>

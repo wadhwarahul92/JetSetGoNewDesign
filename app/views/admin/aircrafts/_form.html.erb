@@ -1,0 +1,6 @@
+<%= simple_form_for @aircraft, url: admin_aircrafts_path do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :tail_number %>
+    <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>

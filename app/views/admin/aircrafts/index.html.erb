@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'Add Aircraft', new_admin_aircraft_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Tail Number</th>
+        <th>Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @aircrafts.each do |aircraft| %>
+      <tr>
+        <td><%= aircraft.tail_number %></td>
+        <td><%= aircraft.aircraft_type.name %></td>
+      </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
