@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <td>Name</td>
+      </tr>
+      </thead>
+      <tbody>
+      <% @aircraft_types.each do |aircraft_type| %>
+      <tr>
+        <td><%= aircraft_type.name %></td>
+      </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>

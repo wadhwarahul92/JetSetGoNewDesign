@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     resources :airports
 
+    resources :aircraft_types
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
