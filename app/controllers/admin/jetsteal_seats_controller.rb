@@ -5,7 +5,7 @@ class Admin::JetstealSeatsController < Admin::BaseController
   before_filter :set_jetsteal
 
   def index
-
+    JetstealSeatsBuilder.new(@jetsteal).build_seats unless @jetsteal.jetsteal_seats.any?
   end
 
   private

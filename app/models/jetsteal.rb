@@ -8,6 +8,8 @@ class Jetsteal < ActiveRecord::Base
 
   has_many :jetsteal_seats
 
+  accepts_nested_attributes_for :jetsteal_seats
+
   #validations
   validates :departure_airport, presence: true
   validates :arrival_airport, presence: true

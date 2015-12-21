@@ -1,8 +1,15 @@
-<div class="row">
-  <div class="col-sm-8">
+<div class="row" ng-app="jetsteal_seats">
+  <div class="col-sm-6">
     <%= @jetsteal.aircraft.aircraft_type.svg.html_safe %>
   </div>
-  <div class="col-sm-4">
-
+  <div class="col-sm-6" ng-controller="JetstealSeatsController as ctrl">
+    <fieldset>
+      <legend><small>Configure cost for each seat</small></legend>
+      <%= simple_form_for [:admin, @jetsteal] do |f| %>
+        <%= f.simple_fields_for :jetsteal_seats do |builder| %>
+          <%= render partial: 'fields', locals: { f: builder } %>
+        <%- end %>
+      <%- end %>
+    </fieldset>
   </div>
 </div>
