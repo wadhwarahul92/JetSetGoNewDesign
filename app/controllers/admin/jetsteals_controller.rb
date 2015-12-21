@@ -3,7 +3,7 @@ class Admin::JetstealsController < Admin::BaseController
   before_filter :authenticate_admin
 
   def index
-    @jetsteals = Jetsteal.all
+    @jetsteals = Jetsteal.order('created_at DESC')
   end
 
   def new
