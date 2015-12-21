@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221052712) do
+ActiveRecord::Schema.define(version: 20151221061914) do
 
   create_table "aircraft_types", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.text     "svg",        limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.text     "svg",        limit: 16777215
   end
 
   create_table "aircrafts", force: :cascade do |t|

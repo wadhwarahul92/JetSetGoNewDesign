@@ -164,7 +164,7 @@
         <data-type>datetime</data-type>
       </column>
       <column id="49" parent="6" name="svg">
-        <data-type>text</data-type>
+        <data-type>mediumtext</data-type>
       </column>
       <key id="50" parent="6" name="PRIMARY">
         <columns>id</columns>
