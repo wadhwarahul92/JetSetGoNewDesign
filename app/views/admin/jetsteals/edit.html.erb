@@ -6,10 +6,10 @@
     <fieldset>
       <legend><small>Configure cost for each seat</small></legend>
       <%= simple_form_for [:admin, @jetsteal] do |f| %>
-        <%= f.simple_fields_for :jetsteal_seats do |builder| %>
-          <%= render partial: 'fields', locals: { f: builder } %>
-        <%- end %>
-        <%= f.submit 'Save', class: 'btn btn-success' %>
+          <%= f.simple_fields_for :jetsteal_seats do |builder| %>
+              <%= render partial: 'admin/jetsteal_seats/fields', locals: { f: builder } %>
+          <%- end %>
+          <%= f.submit 'Save', class: 'btn btn-success' %>
       <%- end %>
     </fieldset>
   </div>

@@ -235,7 +235,7 @@
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="70" parent="9" name="jeatsteal_id">
+      <column id="70" parent="9" name="jetsteal_id">
         <data-type>int(11)</data-type>
       </column>
       <column id="71" parent="9" name="ui_seat_id">
@@ -243,6 +243,7 @@
       </column>
       <column id="72" parent="9" name="disabled">
         <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
       </column>
       <column id="73" parent="9" name="cost">
         <data-type>int(11)</data-type>
