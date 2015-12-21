@@ -2,7 +2,9 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_filter :set_jetsteal, only: [:update, :edit]
+  before_filter :set_jetsteal, only: [:update, :edit, :launch]
+
+  before_filter :check_if_launched, only: [:edit, :update]
 
   def index
     @jetsteals = Jetsteal.includes(:departure_airport).includes(:arrival_airport).includes(:aircraft).order('created_at DESC')
@@ -35,6 +37,16 @@ class Admin::JetstealsController < Admin::BaseController
     end
   end
 
+  def launch
+    if JetstealLauncher.new(@jetsteal).launch!
+      flash[:success] = "Jetsteal ##{@jetsteal.id} launched"
+      redirect_to action: :index
+    else
+      flash[:error] = 'This Jetsteal cannot be launched at this time. Make sure every seat has a price or is disabled. If the jetsteal is not be sold per seat, it must have a net cost.'
+      redirect_to action: :index
+    end
+  end
+
   private
 
   def jetsteal_params
@@ -62,6 +74,13 @@ class Admin::JetstealsController < Admin::BaseController
 
   def set_jetsteal
     @jetsteal = Jetsteal.find params[:id]
+  end
+
+  def check_if_launched
+    if @jetsteal.launched?
+      flash[:error] = 'This jetsteal is launched, it cannot be updated now.'
+      redirect_to action: :index
+    end
   end
 
 end

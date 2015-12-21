@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :aircrafts
 
     resources :jetsteals do
+      member do
+        get 'launch'
+      end
       resources :jetsteal_seats
     end
 

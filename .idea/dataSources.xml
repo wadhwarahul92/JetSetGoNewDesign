@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="356494814">
+  <component name="DataSourceManagerImpl" format="xml" hash="1803433873">
     <data-source source="LOCAL" name="MySQL - jetsetgo_development@localhost" uuid="fb8af86d-e1ff-45e2-9d76-0553081f5c70">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

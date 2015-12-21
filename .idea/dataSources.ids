@@ -227,36 +227,40 @@
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <key id="68" parent="8" name="PRIMARY">
-        <columns>id</columns>
-        <primary>1</primary>
-      </key>
-      <column id="69" parent="9" name="id">
-        <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="70" parent="9" name="jetsteal_id">
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="71" parent="9" name="ui_seat_id">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="72" parent="9" name="disabled">
+      <column id="68" parent="8" name="launched">
         <data-type>tinyint(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="73" parent="9" name="cost">
+      <key id="69" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="70" parent="9" name="id">
+        <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="74" parent="9" name="created_at">
+      <column id="71" parent="9" name="jetsteal_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="72" parent="9" name="ui_seat_id">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="73" parent="9" name="disabled">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="74" parent="9" name="cost">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="75" parent="9" name="created_at">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <column id="75" parent="9" name="updated_at">
+      <column id="76" parent="9" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <key id="76" parent="9" name="PRIMARY">
+      <key id="77" parent="9" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

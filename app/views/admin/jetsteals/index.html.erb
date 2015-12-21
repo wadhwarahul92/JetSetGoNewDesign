@@ -18,6 +18,7 @@
         <th>Start At</th>
         <th>End At</th>
         <th>Cost</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -38,9 +39,16 @@
             <td><%= jetsteal.end_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td>
               <% if jetsteal.sell_by_seats? %>
-                <%= link_to 'Configure seat prices', edit_admin_jetsteal_path(jetsteal) %>
+                  <%= link_to 'Configure seat prices', edit_admin_jetsteal_path(jetsteal) %>
               <%- else %>
                   <%= rupees jetsteal.cost %>
+              <%- end %>
+            </td>
+            <td>
+              <% if jetsteal.launched? %>
+                  <span class="label label-success">Launched</span>
+              <%- else %>
+                  <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal) %>
               <%- end %>
             </td>
           </tr>
