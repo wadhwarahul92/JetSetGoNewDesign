@@ -1,0 +1,6 @@
+<%= simple_form_for [:admin, @aircraft_type] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :svg %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>

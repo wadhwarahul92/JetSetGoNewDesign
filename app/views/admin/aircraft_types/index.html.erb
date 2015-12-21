@@ -1,15 +1,26 @@
 <div class="row">
   <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'Add Aircraft type', new_admin_aircraft_type_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
     <table class="table table-striped">
       <thead>
       <tr class="info">
-        <td>Name</td>
+        <th>Name</th>
+        <th>Image</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
       <% @aircraft_types.each do |aircraft_type| %>
       <tr>
         <td><%= aircraft_type.name %></td>
+        <td><%= aircraft_type.svg.try(:html_safe) %></td>
+        <td><%= link_to 'edit', edit_admin_aircraft_type_path(aircraft_type) %></td>
       </tr>
       <%- end %>
       </tbody>
