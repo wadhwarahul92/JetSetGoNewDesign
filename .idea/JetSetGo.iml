@@ -273,6 +273,7 @@
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.7.2, RVM: ruby-2.2.3 [jetsetgo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.4, RVM: ruby-2.2.3 [jetsetgo]) [gem]" level="application" />
     <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
