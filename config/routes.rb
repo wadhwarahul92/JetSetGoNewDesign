@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
     resources :aircrafts
 
-    resources :jetsteals
+    resources :jetsteals do
+      resources :jetsteal_seats
+    end
 
   end
 

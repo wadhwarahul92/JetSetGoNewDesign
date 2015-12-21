@@ -36,7 +36,13 @@
             </td>
             <td><%= jetsteal.start_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td><%= jetsteal.end_at.strftime('%d-%b-%Y %H:%M') %></td>
-            <td><%= rupees jetsteal.cost %></td>
+            <td>
+              <% if jetsteal.sell_by_seats? %>
+                <%= link_to 'Configure seat prices', admin_jetsteal_jetsteal_seats_path(jetsteal) %>
+              <%- else %>
+                  <%= rupees jetsteal.cost %>
+              <%- end %>
+            </td>
           </tr>
       <%- end %>
       </tbody>
