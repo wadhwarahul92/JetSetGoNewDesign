@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
     resources :aircrafts
 
+    resources :jetsteals
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

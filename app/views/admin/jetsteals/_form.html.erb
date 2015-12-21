@@ -1,0 +1,18 @@
+<%= simple_form_for [:admin, @jetsteal] do |f| %>
+    <%= f.error_notification %>
+    <% if @jetsteal.errors.any? %>
+        <ul class="list-unstyled error">
+          <% @jetsteal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <%- end %>
+        </ul>
+    <%- end %>
+    <%= f.input :departure_airport_id, collection: airports_for_collection, prompt: 'Select Departure airport' %>
+    <%= f.input :arrival_airport_id, collection: airports_for_collection, prompt: 'Select Arrival airport' %>
+    <%= f.input :aircraft_id, collection: aircrafts_for_collection, prompt: 'Select Aircraft' %>
+    <%= f.input :sell_by_seats, label: 'Select if selling by seats, or leave if selling trip as a whole' %>
+    <%= f.input :start_at %>
+    <%= f.input :end_at %>
+    <%= f.input :cost, placeholder: "Don't put cost if selling by seats" %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>
