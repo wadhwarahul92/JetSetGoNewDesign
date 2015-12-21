@@ -6,6 +6,8 @@ class Jetsteal < ActiveRecord::Base
 
   belongs_to :aircraft
 
+  has_many :jetsteal_seats
+
   #validations
   validates :departure_airport, presence: true
   validates :arrival_airport, presence: true
