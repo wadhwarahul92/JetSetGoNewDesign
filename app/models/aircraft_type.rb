@@ -4,6 +4,7 @@ class AircraftType < ActiveRecord::Base
 
   #####VALIDATIONS###
   validates :name, presence: true
+  validates :svg, presence: true
   ###################
 
 end
