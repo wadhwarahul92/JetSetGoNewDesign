@@ -13,6 +13,15 @@ $(document).on('ready page:load', ->
     return this.id.match(/^seat\d/)
   )
   seats.css('fill', initial_seat_color)
+
+  $.each( $('.jetsteal_jetsteal_seats_cost input'), (i, e)->
+    cost = parseInt( $(e).val() )
+    if cost and cost > 0
+      ui_seat_id = $(e).parents('.seat_field').first().attr('data-ui-seat-id')
+      if ui_seat_id
+        $("path##{ui_seat_id}").css('fill', seat_cost_filled_color)
+  )
+
   seats.on('mouseenter', ->
     id = $(this).attr('id')
     $(this).css(
