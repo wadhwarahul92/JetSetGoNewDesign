@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'New Distance', new_admin_distance_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>From Airport Id</th>
+        <th>To Airport Id</th>
+        <th>Distance</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @distances.each do |distance| %>
+          <tr>
+            <td><%= distance.from_airport_id %></td>
+            <td><%= distance.to_airport_id  %></td>
+            <td><%= distance.distance %></td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
