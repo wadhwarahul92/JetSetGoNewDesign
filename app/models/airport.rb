@@ -11,4 +11,13 @@ class Airport < ActiveRecord::Base
   validates :city, presence: true
   ################
 
+  def distance_to(airport)
+    d = Distance.where(from_airport_id: self.id, to_airport_id: airport.id).first
+    if d.present?
+      d.distance
+    else
+      nil
+    end
+  end
+
 end

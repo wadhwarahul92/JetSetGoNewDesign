@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
     get '/' => 'welcome#index'
-    get 'dashboard' => 'welcome#dashboard', as: :dashboard
+    get 'dashboard' => 'welcome#dashboard', as: 'dashboard'
     post 'sign_in' => 'welcome#log_in', as: 'sign_in'
 
     resources :cities
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :aircraft_types
 
     resources :aircrafts
+
+    resources :distances
 
     resources :jetsteals do
       member do

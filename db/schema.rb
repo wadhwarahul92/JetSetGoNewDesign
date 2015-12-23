@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20151223114658) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "distances", force: :cascade do |t|
+    t.integer  "from_airport_id", limit: 4
+    t.integer  "to_airport_id",   limit: 4
+    t.float    "distance",        limit: 24
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "jetsteal_seats", force: :cascade do |t|
     t.integer  "jetsteal_id", limit: 4
     t.string   "ui_seat_id",  limit: 255
