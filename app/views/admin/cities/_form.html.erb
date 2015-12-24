@@ -1,4 +1,4 @@
-<%= simple_form_for @city, url: admin_cities_path do |f| %>
+<%= simple_form_for [:admin, @city] do |f| %>
     <%= f.error_notification %>
     <%= f.input :name %>
     <%= f.input :state %>

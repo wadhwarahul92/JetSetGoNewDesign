@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
     resources :aircraft_types
 
-    resources :aircrafts
+    resources :aircrafts do
+      resources :aircraft_images
+    end
 
     resources :distances
 

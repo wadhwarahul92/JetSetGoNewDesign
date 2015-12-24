@@ -2,12 +2,18 @@ class Admin::AircraftsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
+  before_filter :set_aircraft, only: [:show]
+
   def index
     @aircrafts = Aircraft.includes(:aircraft_type).all
   end
 
   def new
     @aircraft = Aircraft.new
+  end
+
+  def show
+
   end
 
   def create
@@ -27,6 +33,10 @@ class Admin::AircraftsController < Admin::BaseController
                                  :tail_number,
                                  :aircraft_type_id
     )
+  end
+
+  def set_aircraft
+    @aircraft = Aircraft.find params[:id]
   end
 
 end

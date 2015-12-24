@@ -12,6 +12,7 @@
       <tr class="info">
         <th>Tail Number</th>
         <th>Type</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= aircraft.tail_number %></td>
         <td><%= aircraft.aircraft_type.name %></td>
+        <td><%= link_to 'show', admin_aircraft_path(aircraft) %></td>
       </tr>
       <%- end %>
       </tbody>

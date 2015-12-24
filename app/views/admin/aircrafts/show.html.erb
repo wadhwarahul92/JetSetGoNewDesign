@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-6"></div>
+  <div class="col-sm-6">
+    <div class="row">
+      <% @aircraft.aircraft_images.each do |aircraft_image| %>
+      <div class="col-sm-4">
+        <%= image_tag aircraft_image.image.url(:medium) %>
+      </div>
+      <%- end %>
+    </div>
+    <%= render partial: 'admin/aircraft_images/form', locals: { aircraft: @aircraft, aircraft_image: @aircraft.aircraft_images.new } %>
+  </div>
+</div>

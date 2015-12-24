@@ -1,4 +1,4 @@
-<%= simple_form_for @distance, url: admin_distances_path do |f| %>
+<%= simple_form_for [:admin, @distance] do |f| %>
     <%= f.error_notification %>
     <%= f.input :from_airport_id, collection: airports_for_collection, prompt: 'Select City'  %>
     <%= f.input :to_airport_id, collection: airports_for_collection, prompt: 'Select City' %>
