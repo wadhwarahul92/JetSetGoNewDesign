@@ -10,6 +10,11 @@ class Jetsteal < ActiveRecord::Base
 
   accepts_nested_attributes_for :jetsteal_seats
 
+  # Gives the jetsteals that are ready for sale and can be presented to customer
+  # launched = true
+  # DateTime.now IS in BETWEEN start_at and end_at
+  scope :ready_for_sale, ->{ where(launched: true).where('? BETWEEN start_at AND end_at', DateTime.now) }
+
   #validations
   validates :departure_airport, presence: true
   validates :arrival_airport, presence: true
