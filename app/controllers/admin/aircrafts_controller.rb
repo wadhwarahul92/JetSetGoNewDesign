@@ -31,7 +31,15 @@ class Admin::AircraftsController < Admin::BaseController
   def aircraft_params
     params.require(:aircraft).permit(
                                  :tail_number,
-                                 :aircraft_type_id
+                                 :aircraft_type_id,
+                                 :seating_capacity,
+                                 :baggage_capacity_in_kg,
+                                 :landing_field_length_in_feet,
+                                 :runway_field_length_in_feet,
+                                 :number_of_toilets,
+                                 :cabin_width_in_meters,
+                                 :cabin_height_in_meters,
+                                 :cabin_length_in_meters
     )
   end
 

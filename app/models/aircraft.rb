@@ -9,6 +9,14 @@ class Aircraft < ActiveRecord::Base
   ####VALIDATIONS###
   validates :tail_number, uniqueness: true, presence: true
   validates :aircraft_type, presence: true
+  validates_presence_of :seating_capacity,
+      :baggage_capacity_in_kg,
+      :landing_field_length_in_feet,
+      :runway_field_length_in_feet,
+      :number_of_toilets,
+      :cabin_height_in_meters,
+      :cabin_length_in_meters,
+      :cabin_width_in_meters
   ##################
 
 end

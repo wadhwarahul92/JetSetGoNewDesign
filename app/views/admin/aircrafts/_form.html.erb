@@ -2,5 +2,15 @@
     <%= f.error_notification %>
     <%= f.input :tail_number %>
     <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
+    <% [:seating_capacity,
+        :baggage_capacity_in_kg,
+        :landing_field_length_in_feet,
+        :runway_field_length_in_feet,
+        :number_of_toilets,
+        :cabin_width_in_meters,
+        :cabin_height_in_meters,
+        :cabin_length_in_meters].each do |attr| %>
+        <%= f.input(attr) %>
+    <%- end %>
     <%= f.submit 'Save', class: 'btn btn-success' %>
 <%- end %>
