@@ -25,7 +25,7 @@ class Admin::DistancesController < Admin::BaseController
     params.require(:distance).permit(
         :from_airport_id,
         :to_airport_id,
-        :distance
+        :distance_in_nm
     )
   end
 end

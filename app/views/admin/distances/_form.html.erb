@@ -2,6 +2,6 @@
     <%= f.error_notification %>
     <%= f.input :from_airport_id, collection: airports_for_collection, prompt: 'Select City'  %>
     <%= f.input :to_airport_id, collection: airports_for_collection, prompt: 'Select City' %>
-    <%= f.input :distance %>
+    <%= f.input :distance_in_nm %>
     <%= f.submit 'Save', class: 'btn btn-success' %>
 <%- end %>
