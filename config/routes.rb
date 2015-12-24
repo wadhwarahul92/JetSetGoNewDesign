@@ -28,19 +28,17 @@ Rails.application.routes.draw do
 
   end
 
-  namespace :jetsteals do
-
-
-
-  end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
+  #THESE ARE TEMPORARY ROUTES, which will later go in jetsteals namespace
   #WE are temporarily setting the root page to jetsteals homepage
   root 'jetsteals/welcome#index'
+  get 'list' => 'jetsteals/lists#index'
+  ################################
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

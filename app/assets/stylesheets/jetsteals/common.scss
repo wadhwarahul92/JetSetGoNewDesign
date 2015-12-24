@@ -1,0 +1,47 @@
+$highlight-color: rgb(6, 35, 68);
+$highlight-light-color: rgb(12, 62, 120);
+$main-blue-color: rgb(31, 143, 207);
+$main-green-color: rgb(62, 210, 178);
+$main-yellow-color: rgb(238, 200, 47);
+
+.navbar{
+  border-radius: 0!important;
+  background-color: $highlight-color;
+  border-color: $highlight-color;
+  .navbar-brand{
+    color: white!important;
+  }
+}
+
+.main-blue-color{
+  color: $main-blue-color!important;
+}
+
+.highlight-color{
+  color: $highlight-color!important;
+}
+
+.highlight-light_color{
+  color: $highlight-light-color!important;
+}
+
+.main-green-color{
+  color: $main-green-color!important;
+}
+
+.main-yellow-color{
+  color: $main-yellow-color!important;
+}
+
+.btn{
+  border-radius: 0;
+}
+
+.btn-blue{
+  background-color: $main-blue-color;
+  color: white!important;
+  &:hover{
+    background-color: $highlight-light-color;
+  }
+  border: none;
+}
