@@ -60,4 +60,4 @@ gem 'delayed_job_active_record'
 
 gem 'paperclip', '~> 4.3'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'

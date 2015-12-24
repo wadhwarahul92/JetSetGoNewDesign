@@ -6,7 +6,7 @@ class AircraftImage < ActiveRecord::Base
   validates :aircraft, presence: true
   ############
 
-  has_attached_file :image, styles: {small: '50x50#', medium: '100x100#', large: '200x200#'}
+  has_attached_file :image, styles: {small: '50x50!', medium: '200x200>', large: '400x400>', large_square: '400x400!'}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 end
