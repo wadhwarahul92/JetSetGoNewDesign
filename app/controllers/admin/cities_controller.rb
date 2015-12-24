@@ -20,12 +20,26 @@ class Admin::CitiesController < Admin::BaseController
     end
   end
 
+  def edit
+    @city = City.find params[:id]
+  end
+
+  def update
+    @city = City.find params[:id]
+    if @city.update_attributes(city_params)
+      redirect_to action: :index
+    else
+      render action: :edit
+    end
+  end
+
   private
 
   def city_params
     params.require(:city).permit(
         :name,
-        :state
+        :state,
+        :image
     )
   end
 

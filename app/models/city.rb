@@ -2,8 +2,12 @@ class City < ActiveRecord::Base
 
   has_many :airports
 
+  has_attached_file :image, styles: {small: '50x50!'}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   #####VALIDATIONS###
   validates :name, presence: true, uniqueness: { scope: :state }
   validates :state, presence: true
+  validates :image, presence: true
   ###################
 end
