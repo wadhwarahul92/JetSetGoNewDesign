@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224133202) do
+ActiveRecord::Schema.define(version: 20151225121517) do
 
   create_table "aircraft_images", force: :cascade do |t|
     t.integer  "aircraft_id",        limit: 4
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20151224133202) do
     t.float    "cabin_width_in_meters",        limit: 24
     t.float    "cabin_height_in_meters",       limit: 24
     t.float    "cabin_length_in_meters",       limit: 24
+    t.string   "memorable_name",               limit: 255
   end
 
   create_table "airports", force: :cascade do |t|

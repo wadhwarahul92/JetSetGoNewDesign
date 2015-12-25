@@ -7,7 +7,7 @@ class Aircraft < ActiveRecord::Base
   accepts_nested_attributes_for :aircraft_images
 
   ####VALIDATIONS###
-  validates :tail_number, uniqueness: true, presence: true
+  validates :tail_number, uniqueness: true, presence: true, length: { minimum: 5, maximum: 6 }
   validates :aircraft_type, presence: true
   validates_presence_of :seating_capacity,
       :baggage_capacity_in_kg,
@@ -16,7 +16,8 @@ class Aircraft < ActiveRecord::Base
       :number_of_toilets,
       :cabin_height_in_meters,
       :cabin_length_in_meters,
-      :cabin_width_in_meters
+      :cabin_width_in_meters,
+      :memorable_name
   ##################
 
 end

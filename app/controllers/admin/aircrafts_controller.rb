@@ -39,7 +39,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :number_of_toilets,
                                  :cabin_width_in_meters,
                                  :cabin_height_in_meters,
-                                 :cabin_length_in_meters
+                                 :cabin_length_in_meters,
+                                 :memorable_name
     )
   end
 

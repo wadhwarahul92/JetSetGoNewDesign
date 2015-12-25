@@ -1,16 +1,23 @@
 <%= simple_form_for [:admin, @aircraft] do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :tail_number %>
-    <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
-    <% [:seating_capacity,
-        :baggage_capacity_in_kg,
-        :landing_field_length_in_feet,
-        :runway_field_length_in_feet,
-        :number_of_toilets,
-        :cabin_width_in_meters,
-        :cabin_height_in_meters,
-        :cabin_length_in_meters].each do |attr| %>
-        <%= f.input(attr) %>
-    <%- end %>
-    <%= f.submit 'Save', class: 'btn btn-success' %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.error_notification %>
+        <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
+        <%= f.input :tail_number %>
+        <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
+        <%= f.submit 'Save', class: 'btn btn-success pull-right' %>
+      </div>
+      <div class="col-sm-6">
+        <% [:seating_capacity,
+            :baggage_capacity_in_kg,
+            :landing_field_length_in_feet,
+            :runway_field_length_in_feet,
+            :number_of_toilets,
+            :cabin_width_in_meters,
+            :cabin_height_in_meters,
+            :cabin_length_in_meters].each do |attr| %>
+            <%= f.input(attr) %>
+        <%- end %>
+      </div>
+    </div>
 <%- end %>

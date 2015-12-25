@@ -1,5 +1,12 @@
 <div class="row">
-  <div class="col-sm-6"></div>
+  <div class="col-sm-6">
+    <dl>
+      <% @aircraft.attributes.each_pair do |attr, value| %>
+          <dt><%= attr.to_s %></dt>
+          <dd><%= value %></dd>
+      <%- end %>
+    </dl>
+  </div>
   <div class="col-sm-6">
     <div class="row">
       <% @aircraft.aircraft_images.each do |aircraft_image| %>
