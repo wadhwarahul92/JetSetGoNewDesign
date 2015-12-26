@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
@@ -61,3 +60,5 @@ gem 'delayed_job_active_record'
 gem 'paperclip', '~> 4.3'
 
 gem 'aws-sdk'
+
+gem 'rails_12factor'
