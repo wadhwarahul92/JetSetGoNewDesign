@@ -4,4 +4,8 @@
 //= require_tree ./common
 //= require_tree ./admin
 
-Turbolinks.enableProgressBar();
+try {
+    Turbolinks.enableProgressBar();
+}catch(e) {
+    console.log('ERROR: Turbolinks is not defined.')
+}
