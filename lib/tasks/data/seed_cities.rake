@@ -8,10 +8,13 @@ namespace :data do
       f.readlines.each do |line|
         name = line.split(',')[0].chomp
         state = line.split(',')[1].chomp
-        City.create(
+        city = City.create(
                 name: name,
                 state: state
         )
+        if city.errors.any?
+          puts city.errors.full_messages.first
+        end
       end
     end
 
