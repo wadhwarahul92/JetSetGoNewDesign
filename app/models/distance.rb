@@ -1,4 +1,7 @@
 class Distance < ActiveRecord::Base
+
+  has_paper_trail
+
   ####VALIDATIONS###
   validates :from_airport_id, uniqueness: {scope: :to_airport_id}
   validates :to_airport_id, presence: true, uniqueness: {scope: :from_airport_id}

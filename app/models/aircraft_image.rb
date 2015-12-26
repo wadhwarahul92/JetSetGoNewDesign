@@ -1,5 +1,7 @@
 class AircraftImage < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :aircraft
 
   #validations

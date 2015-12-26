@@ -1,5 +1,7 @@
 class Aircraft < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :aircraft_type
 
   has_many :aircraft_images

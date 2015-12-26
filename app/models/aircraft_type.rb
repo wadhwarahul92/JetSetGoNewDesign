@@ -1,5 +1,7 @@
 class AircraftType < ActiveRecord::Base
 
+  has_paper_trail
+
   has_many :aircrafts
 
   #####VALIDATIONS###

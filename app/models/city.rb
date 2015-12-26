@@ -1,5 +1,7 @@
 class City < ActiveRecord::Base
 
+  has_paper_trail
+
   has_many :airports
 
   has_attached_file :image, styles: {small: '50x50!'}

@@ -1,5 +1,7 @@
 class Airport < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :city
 
   has_many :departing_jetsteals, class_name: 'Jetsteal', foreign_key: :departure_airport_id
