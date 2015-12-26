@@ -12,6 +12,8 @@
       <tr class="info">
         <th>Name</th>
         <th>City</th>
+        <th>Created By</th>
+        <th>Updated By</th>
       </tr>
       </thead>
       <tbody>
@@ -19,6 +21,8 @@
           <tr>
             <td><%= airport.name %></td>
             <td><%= airport.city.name %></td>
+            <td><%= airport.creator.full_name if airport.creator %></td>
+            <td><%= airport.last_updater.full_name if airport.last_updater %></td>
           </tr>
       <%- end %>
       </tbody>

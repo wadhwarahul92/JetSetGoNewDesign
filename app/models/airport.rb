@@ -1,5 +1,7 @@
 class Airport < ActiveRecord::Base
 
+  include VersionTracker
+
   has_paper_trail
 
   belongs_to :city

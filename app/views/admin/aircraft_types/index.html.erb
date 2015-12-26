@@ -12,6 +12,8 @@
       <tr class="info">
         <th>Name</th>
         <th>Image</th>
+        <th>Created By</th>
+        <th>Updated By</th>
         <th></th>
       </tr>
       </thead>
@@ -20,7 +22,13 @@
       <tr>
         <td><%= aircraft_type.name %></td>
         <td><%= aircraft_type.svg.try(:html_safe) %></td>
-        <td><%= link_to 'edit', edit_admin_aircraft_type_path(aircraft_type) %></td>
+        <td><%= aircraft_type.creator.full_name if aircraft_type.creator %></td>
+        <td><%= aircraft_type.last_updater.full_name if aircraft_type.last_updater %></td>
+        <td>
+          <%= link_to edit_admin_aircraft_type_path(aircraft_type) do %>
+          <i class="fa fa-edit"></i>
+          <%- end %>
+        </td>
       </tr>
       <%- end %>
       </tbody>

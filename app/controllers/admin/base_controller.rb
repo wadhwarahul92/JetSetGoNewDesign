@@ -2,6 +2,7 @@ class Admin::BaseController < ApplicationController
 
   layout 'admin'
 
+  #todo add role based pass on authenticate_admin
   def authenticate_admin
     if current_user and current_user.admin?
       #proceed

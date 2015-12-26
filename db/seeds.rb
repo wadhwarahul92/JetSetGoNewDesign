@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+[
+    :super_admin,
+    :admin,
+    :operator,
+    :tech
+].each do |admin_role|
+  AdminRole.create(
+               name: admin_role.to_s
+  )
+end

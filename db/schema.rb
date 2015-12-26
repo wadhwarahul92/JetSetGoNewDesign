@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226062323) do
+ActiveRecord::Schema.define(version: 20151226095003) do
+
+  create_table "admin_roles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "admin_roleships", force: :cascade do |t|
+    t.integer  "admin_id",      limit: 4
+    t.integer  "admin_role_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "aircraft_images", force: :cascade do |t|
     t.integer  "aircraft_id",        limit: 4
