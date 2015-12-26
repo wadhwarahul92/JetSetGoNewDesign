@@ -1,23 +1,39 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-unstyled">
-      <% @jetsteals.each do |jetsteal| %>
+<div class="row" ng-app="jetsteals_list" ng-controller="JetstealsListController as ctrl">
+  <div class="col-sm-4">
+
+  </div>
+  <div class="col-sm-8">
+    <div class="row" ng-repeat="jetsteal in ctrl.jetsteals">
+      <div class="col-sm-3">
+
+      </div>
+      <div class="col-sm-9">
+        <ul class="list-inline">
           <li>
-            <div class="row">
-              <div class="col-sm-3">
-                <%= jetsteal.aircraft.aircraft_type.svg.try(:html_safe) %>
-              </div>
-              <div class="col-sm-6">
-                <h3 class="highlight-light_color"><%= jetsteal.departure_airport.name %> to <%= jetsteal.arrival_airport.name %> </h3>
-                <div class="pull-right">
-                  <ul class="list-inline">
-                    <li><%= link_to 'Book a seat', jetsteals_jetsteal_path(jetsteal), class: 'btn btn-default btn-blue' %></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <img src="" class="city_image" ng-src="{{jetsteal.departure_airport.city.image}}">
+            <h5 class="text-center highlight-light_color">{{jetsteal.departure_airport.city.name}}</h5>
           </li>
-      <%- end %>
-    </ul>
+          <li><h6>to</h6></li>
+          <li>
+            <img src="" class="city_image" ng-src="{{jetsteal.arrival_airport.city.image}}">
+            <h5 class="text-center highlight-light_color">{{jetsteal.arrival_airport.city.name}}</h5>
+          </li>
+          <li>
+            <h3 class="highlight-light_color">
+              {{jetsteal.aircraft.memorable_name}}
+            </h3>
+            <ul class="list-inline">
+              <li><i class="fa fa-plane"></i> {{jetsteal.aircraft.aircraft_type.name}} ({{jetsteal.aircraft.tail_number}})</li>
+            </ul>
+            <ul class="list-inline">
+              <li><i class="fa fa-user"></i> {{jetsteal.aircraft.seating_capacity}}</li>
+            </ul>
+            <ul class="list-inline">
+              <li><i class="fa fa-clock-o"></i> {{jetsteal.end_at | date: "d MMM yyyy, h:mm:a"}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

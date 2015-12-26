@@ -61,6 +61,6 @@ gem 'paperclip', '~> 4.3'
 
 gem 'aws-sdk'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'paper_trail', '~> 4.0.0'
