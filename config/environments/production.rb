@@ -84,6 +84,7 @@ Rails.application.configure do
           :access_key_id => ENV['S3_BUCKET_ACCESS_KEY'],
           :secret_access_key => ENV['S3_BUCKET_SECRET']
       },
-      :s3_host_alias =>'jetsetgonewproduction.s3.amazonaws.com'
+      :url =>':s3_domain_url',
+      :path => '/:class/:attachment/:id_partition/:style/:filename'
   }
 end
