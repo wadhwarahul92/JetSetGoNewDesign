@@ -1,5 +1,7 @@
 class Distance < ActiveRecord::Base
 
+  include VersionTracker
+
   has_paper_trail
 
   ####VALIDATIONS###

@@ -13,6 +13,8 @@
         <th>From Airport Id</th>
         <th>To Airport Id</th>
         <th>Distance In NM</th>
+        <th>Created By</th>
+        <th>Updated By</th>
       </tr>
       </thead>
       <tbody>
@@ -21,6 +23,8 @@
             <td><%= distance.from_airport_id %></td>
             <td><%= distance.to_airport_id  %></td>
             <td><%= distance.distance_in_nm %></td>
+            <td><%= distance.creator.full_name if distance.creator %></td>
+            <td><%= distance.last_updater.full_name if distance.last_updater %></td>
           </tr>
       <%- end %>
       </tbody>
