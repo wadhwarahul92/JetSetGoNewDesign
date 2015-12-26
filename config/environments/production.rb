@@ -86,6 +86,5 @@ Rails.application.configure do
       },
       :url =>':s3_domain_url',
       :s3_protocol => 'https',
-      :s3_host_name => 's3-ap-southeast-1.amazonaws.com'
   }
 end
