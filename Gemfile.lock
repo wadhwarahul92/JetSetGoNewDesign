@@ -176,7 +176,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (< 2.0)
+  aws-sdk
   coffee-rails (~> 4.1.0)
   delayed_job_active_record
   devise
