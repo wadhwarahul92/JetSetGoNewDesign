@@ -85,6 +85,7 @@ Rails.application.configure do
           :secret_access_key => ENV['S3_BUCKET_SECRET']
       },
       :url =>':s3_domain_url',
-      :path => '/:class/:attachment/:id_partition/:style/:filename'
+      :path => '/:class/:attachment/:id_partition/:style/:filename',
+      :s3_protocol => :https
   }
 end
