@@ -83,6 +83,7 @@ Rails.application.configure do
           :bucket => ENV['S3_BUCKET'],
           :access_key_id => ENV['S3_BUCKET_ACCESS_KEY'],
           :secret_access_key => ENV['S3_BUCKET_SECRET']
-      }
+      },
+      :url =>'jetsetgonewproduction.s3.amazonaws.com'
   }
 end
