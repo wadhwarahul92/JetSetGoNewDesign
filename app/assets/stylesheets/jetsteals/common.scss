@@ -1,6 +1,6 @@
-$highlight-color: rgb(6, 35, 68);
-$highlight-light-color: rgb(12, 62, 120);
-$main-blue-color: rgb(31, 143, 207);
+$highlight-color: rgb(31, 143, 207);
+$highlight-dark-color: rgb(12, 62, 120);
+$main-blue-color: rgb(6, 35, 68);
 $main-green-color: rgb(62, 210, 178);
 $main-yellow-color: rgb(238, 200, 47);
 
@@ -13,16 +13,16 @@ $main-yellow-color: rgb(238, 200, 47);
   }
 }
 
-.main-blue-color{
-  color: $main-blue-color!important;
-}
-
 .highlight-color{
   color: $highlight-color!important;
 }
 
-.highlight-light_color{
-  color: $highlight-light-color!important;
+.highlight-dark-color {
+  color: $highlight-dark-color !important;
+}
+
+.main-blue-color{
+  color: $main-blue-color!important;
 }
 
 .main-green-color{
@@ -41,7 +41,11 @@ $main-yellow-color: rgb(238, 200, 47);
   background-color: $main-blue-color;
   color: white!important;
   &:hover{
-    background-color: $highlight-light-color;
+    background-color: $highlight-dark-color;
   }
   border: none;
+}
+
+.margin-top{
+  margin-top: 10px!important;
 }
