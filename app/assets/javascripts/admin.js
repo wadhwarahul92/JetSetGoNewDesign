@@ -9,3 +9,10 @@ try {
 }catch(e) {
     console.log('ERROR: Turbolinks is not defined.')
 }
+
+
+//ENABLE TOOLTIPS
+$(document).on('ready page:load', function(){
+    $('[data-toggle=tooltip]').tooltip();
+});
+/////////////////

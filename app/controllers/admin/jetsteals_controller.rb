@@ -38,11 +38,12 @@ class Admin::JetstealsController < Admin::BaseController
   end
 
   def launch
-    if JetstealLauncher.new(@jetsteal).launch!
+    jetsteal_launcher = JetstealLauncher.new(@jetsteal)
+    if jetsteal_launcher.launch!
       flash[:success] = "Jetsteal ##{@jetsteal.id} launched"
       redirect_to action: :index
     else
-      flash[:error] = 'This Jetsteal cannot be launched at this time. Make sure every seat has a price or is disabled. If the jetsteal is not be sold per seat, it must have a net cost.'
+      flash[:error] = jetsteal_launcher.error_message
       redirect_to action: :index
     end
   end

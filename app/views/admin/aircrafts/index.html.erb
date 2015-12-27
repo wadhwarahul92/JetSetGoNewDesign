@@ -15,6 +15,7 @@
         <th>Created By</th>
         <th>Updated By</th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -24,7 +25,18 @@
         <td><%= aircraft.aircraft_type.name %></td>
         <td><%= aircraft.creator.full_name if aircraft.creator %></td>
         <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
-        <td><%= link_to 'show', admin_aircraft_path(aircraft) %></td>
+        <td>
+          <%= link_to admin_aircraft_path(aircraft) do %>
+              <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
+          <%- end %>
+        </td>
+        <th>
+          <% unless aircraft.aircraft_images.any? %>
+              <p class="text-danger">
+                <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
+              </p>
+          <%- end %>
+        </th>
       </tr>
       <%- end %>
       </tbody>
