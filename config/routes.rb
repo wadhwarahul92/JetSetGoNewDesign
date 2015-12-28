@@ -41,10 +41,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  ####CC AVENUE
-  post 'transaction/ccavRequestHandler' => 'cc_avenue#initiate_request'
-  #############
-
   root 'jetsteals/welcome#index'
 
 
