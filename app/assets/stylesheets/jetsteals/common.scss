@@ -70,3 +70,14 @@ $main-yellow-color: rgb(238, 200, 47);
 path[id^='seat']{
   cursor: pointer;
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+.seat_breakup{
+  &:hover{
+    background-color: $main-yellow-color;
+    color: white;
+  }
+}

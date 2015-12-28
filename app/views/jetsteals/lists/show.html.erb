@@ -7,6 +7,13 @@
       <li class="">
         <%= image_tag @jetsteal.aircraft.aircraft_images.first.image.url(:medium) %>
       </li>
+      <li class="margin-top">
+        <dl>
+          <dt><strong> <i class="fa fa-plane"></i> Aircraft</strong></dt>
+          <dd><%= @jetsteal.aircraft.aircraft_type.name %></dd>
+          <dt><strong><i class="fa fa-check-square"></i> Facilities</strong></dt>
+        </dl>
+      </li>
     </ul>
   </div>
   <div class="col-sm-6">
@@ -26,12 +33,14 @@
         <tr style="background-color: #3ed2b2">
           <th>Seat ID</th>
           <th>Cost</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="chosen_seat in ctrl.chosen_seats">
-          <td>{{chosen_seat.ui_seat_id}}</td>
+        <tr class="pointer seat_breakup" ng-repeat="chosen_seat in ctrl.chosen_seats">
+          <td class="seat_id">{{chosen_seat.ui_seat_id}}</td>
           <td>₹ {{chosen_seat.cost}}</td>
+          <td><i class="fa fa-times-circle pointer" ng-click="ctrl.removeFromChosen(chosen_seat)"></i></td>
         </tr>
         </tbody>
       </table>
@@ -45,12 +54,97 @@
         </thead>
         <tbody>
         <tr>
-          <td>{{ctrl.chosen_seats.length}}</td>
+          <td><strong>{{ctrl.chosen_seats.length}}</strong></td>
           <td><strong>₹ {{ctrl.grandTotal()}}</strong></td>
         </tr>
         </tbody>
       </table>
-      <a href="Javascript:void(0)" class="btn btn-blue btn-lg pull-right">Proceed to checkout</a>
+      <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-blue btn-lg pull-right"><i class="fa fa-credit-card"></i> Proceed to checkout</a>
     </div>
   </div>
+
+  <!--checkout modal-->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title highlight-color text-center" id="myModalLabel">Checkout</h4>
+        </div>
+        <%= form_tag '#' do %>
+          <div class="modal-body">
+            <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat.id}}" ng-repeat="chosen_seat in ctrl.chosen_seats">
+            <div class="row">
+              <div class="col-sm-12">
+                <h4 class="highlight-dark-color">Contact Info</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name' %>
+              </div>
+              <div class="col-sm-6">
+                <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name' %>
+              </div>
+              <div class="col-sm-6 margin-top">
+                <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number' %>
+              </div>
+              <div class="col-sm-6 margin-top">
+                <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email' %>
+              </div>
+            </div>
+            <div class="row margin-top">
+              <div class="col-sm-12">
+                <h4 class="highlight-dark-color">Credit Card Details</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= text_field_tag :cc_number, nil, class: 'form-control', placeholder: 'Credit card number' %>
+              </div>
+              <div class="col-sm-4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <%= text_field_tag :exp_mm, nil, placeholder: 'MM', class: 'form-control' %>
+                  </div>
+                  <div class="col-sm-6">
+                    <%= text_field_tag :exp_yy, nil, placeholder: 'YY', class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <%= text_field_tag :cvv, nil, class: 'form-control', placeholder: 'CVV' %>
+              </div>
+            </div>
+            <div class="row margin-top">
+              <div class="col-sm-12">
+                <h4 class="highlight-dark-color">Payment Details</h4>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <strong>No of seats:</strong> {{ctrl.chosen_seats.length}}
+                    <strong>Total Cost: </strong> ₹ {{ctrl.grandTotal()}}
+                  </div>
+                  <div class="col-sm-12 margin-top">
+                    <small class="highlight-color"><i class="fa fa-info"></i> We use cc avenue for payment transactions.</small>
+                    <br>
+                    <small class="highlight-color"><i class="fa fa-info"></i> Network connection is secured using advanced TLS 1.2 Encryption.</small>
+                    <br>
+                    <small class="highlight-color"><i class="fa fa-info"></i> You will get full details and confirmation on email after successful payment.</small>
+                    <br>
+                    <small class="highlight-color"><i class="fa fa-info"></i> Our operations team and customer support is available 24/7 for you.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-blue">Proceed</button>
+          </div>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+  <!--checkout modal-->
+
 </div>

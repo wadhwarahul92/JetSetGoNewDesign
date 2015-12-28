@@ -1,10 +1,10 @@
+disabled_seat_color = 'red'
+
+available_seat_color = 'rgb(232, 159, 43)'
+
+selected_seat_color = 'green'
+
 class Jetsteal
-
-  disabled_seat_color = 'red'
-
-  available_seat_color = 'rgb(232, 159, 43)'
-
-  selected_seat_color = 'green'
 
   constructor: (@jetsteal_aircraft, @jetsteal_seats)->
 
@@ -36,11 +36,19 @@ app.controller 'JetstealController', [->
 
   @addToChosen = (seat)->
     @chosen_seats.push(seat)
-    console.log('Adding to chosen')
+#    console.log('Adding to chosen')
+    $("path##{seat.ui_seat_id}").css('fill', selected_seat_color)
+    null
 
   @removeFromChosen = (seat)->
     @chosen_seats.splice(@chosen_seats.indexOf(seat), 1)
-    console.log('Removing from chosen')
+#    console.log('Removing from chosen')
+    $("path##{seat.ui_seat_id}").css({
+      'fill': available_seat_color
+      'stroke': 'none',
+      'stroke-width': '1px'
+    })
+    null
 
   @grandTotal = ->
     total = 0
@@ -70,4 +78,21 @@ $(document).on('ready page:load', ->
         console.error 'Error fetching jetsteal data from server'
     )
 )
+
+$(document).on('mouseenter', '.seat_breakup', ->
+  ui_seat_id = $(this).find('.seat_id').html()
+  $("path##{ui_seat_id}").css({
+    'stroke': available_seat_color
+    'stroke-width': '2px'
+  })
+)
+
+$(document).on('mouseleave', '.seat_breakup', ->
+  ui_seat_id = $(this).find('.seat_id').html()
+  $("path##{ui_seat_id}").css({
+    'stroke': 'none'
+    'stroke-width': '1px'
+  })
+)
+
 ####
