@@ -20,7 +20,7 @@
       <% @airports.each do |airport| %>
           <tr>
             <td><%= airport.name %></td>
-            <td><%= airport.city.name %></td>
+            <td> <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %> <%= airport.city.name %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
           </tr>
