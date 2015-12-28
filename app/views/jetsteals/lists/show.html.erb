@@ -34,10 +34,20 @@
       <li><span class="label label-warning">&nbsp;</span> <small><strong>Available seat</strong></small></li>
       <li><span class="label label-danger">&nbsp;</span> <small><strong>Seat not for sale</strong></small></li>
       <li><span class="label label-success">&nbsp;</span> <small><strong>Chosen seat</strong></small></li>
+      <li><span class="label label-primary">&nbsp;</span> <small><strong>Already booked</strong></small></li>
     </ul>
     <div id="plane-svg"><%= @jetsteal.aircraft.aircraft_type.svg.html_safe %></div>
   </div>
   <div class="col-sm-3">
+    <div id="seat_selection_info" ng-show="ctrl.chosen_seats.length <= 0">
+      <h4 class="highlight-color text-center">How to choose seats?</h4>
+      <ol>
+        <li class="margin-top">Click on <span class="label label-warning">&nbsp;</span> colored seat to add it to cart</li>
+        <li class="margin-top"><span class="label label-danger">&nbsp;</span> colored seats are not available for sale. Some operators customize their plane and remove some seats.</li>
+        <li class="margin-top">When you add a seat to cart its colored <span class="label label-success">&nbsp;</span>, click on it again to remove it from cart.</li>
+        <li class="margin-top"><span class="label label-primary">&nbsp;</span> colored seats are already booked by others. Once you book a seat you can contact operations and customer support to know who shares your plane.</li>
+      </ol>
+    </div>
     <div id="cost_breakup" ng-show="ctrl.chosen_seats.length > 0">
       <h4 class="highlight-color">Chosen Seats</h4>
       <table class="table">
