@@ -3,7 +3,7 @@ class Admin::CitiesController < Admin::BaseController
   before_filter :authenticate_admin
 
   def index
-    @cities = City.paginate(page: params[:page], per_page: 20)
+    @cities = City.order('name DESC').paginate(page: params[:page], per_page: 20)
   end
 
   def new
