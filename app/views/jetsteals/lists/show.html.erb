@@ -1,5 +1,14 @@
-<div class="row" ng-app="jetsteal" ng-controller="JetstealController as ctrl">
-  <div class="col-sm-3"></div>
+<div class="row" ng-controller="JetstealController as ctrl">
+  <div class="col-sm-3">
+    <ul class="list-unstyled">
+      <li class="">
+        <h4 class="highlight-color"><%= @jetsteal.aircraft.memorable_name %></h4>
+      </li>
+      <li class="">
+        <%= image_tag @jetsteal.aircraft.aircraft_images.first.image.url(:medium) %>
+      </li>
+    </ul>
+  </div>
   <div class="col-sm-6">
     <h5 class="text-center highlight-color">Click on a seat to buy</h5>
     <ul class="list-inline text-center">
@@ -9,5 +18,39 @@
     </ul>
     <div id="plane-svg"><%= @jetsteal.aircraft.aircraft_type.svg.html_safe %></div>
   </div>
-  <div class="col-sm-3"></div>
+  <div class="col-sm-3">
+    <div id="cost_breakup" ng-show="ctrl.chosen_seats.length > 0">
+      <h4 class="highlight-color">Chosen Seats</h4>
+      <table class="table">
+        <thead>
+        <tr style="background-color: #3ed2b2">
+          <th>Seat ID</th>
+          <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="chosen_seat in ctrl.chosen_seats">
+          <td>{{chosen_seat.ui_seat_id}}</td>
+          <td>₹ {{chosen_seat.cost}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <h4 class="highlight-color">Cost Summary</h4>
+      <table class="table">
+        <thead>
+        <tr style="background-color: #3ed2b2">
+          <th>No. of Seats</th>
+          <th>Total Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ctrl.chosen_seats.length}}</td>
+          <td><strong>₹ {{ctrl.grandTotal()}}</strong></td>
+        </tr>
+        </tbody>
+      </table>
+      <a href="Javascript:void(0)" class="btn btn-blue btn-lg pull-right">Proceed to checkout</a>
+    </div>
+  </div>
 </div>
