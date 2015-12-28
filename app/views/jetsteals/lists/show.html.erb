@@ -1,11 +1,13 @@
 <div class="row" ng-app="jetsteal" ng-controller="JetstealController as ctrl">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <ul class="list-inline">
-      <li><span class="label label-warning">&nbsp;</span></li>
-      <li><span class="label label-danger">&nbsp;</span></li>
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <h5 class="text-center highlight-color">Click on a seat to buy</h5>
+    <ul class="list-inline text-center">
+      <li><span class="label label-warning">&nbsp;</span> <small><strong>Available seat</strong></small></li>
+      <li><span class="label label-danger">&nbsp;</span> <small><strong>Seat not for sale</strong></small></li>
+      <li><span class="label label-success">&nbsp;</span> <small><strong>Chosen seat</strong></small></li>
     </ul>
-    <div id="plane-svg"></div>
+    <div id="plane-svg"><%= @jetsteal.aircraft.aircraft_type.svg.html_safe %></div>
   </div>
-  <div class="col-sm-4"></div>
+  <div class="col-sm-3"></div>
 </div>

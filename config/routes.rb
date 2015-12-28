@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     get '/' => 'welcome#index'
     get 'list' => 'lists#index', as: 'jetsteals'
     get ':id' => 'lists#show', as: 'jetsteal'
+
+    get ':jetsteal_id/jetsteal_seats' => 'jetsteal_seats#index'
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
