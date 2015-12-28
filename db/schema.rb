@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228164120) do
+ActiveRecord::Schema.define(version: 20151228165102) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -111,13 +111,13 @@ ActiveRecord::Schema.define(version: 20151228164120) do
   end
 
   create_table "jetsteal_seats", force: :cascade do |t|
-    t.integer  "jetsteal_id",    limit: 4
-    t.string   "ui_seat_id",     limit: 255
-    t.boolean  "disabled",                   default: false
-    t.integer  "cost",           limit: 4
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "transaction_id", limit: 4
+    t.integer  "jetsteal_id",            limit: 4
+    t.string   "ui_seat_id",             limit: 255
+    t.boolean  "disabled",                           default: false
+    t.integer  "cost",                   limit: 4
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.integer  "payment_transaction_id", limit: 4
   end
 
   create_table "jetsteals", force: :cascade do |t|
@@ -131,6 +131,13 @@ ActiveRecord::Schema.define(version: 20151228164120) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.boolean  "launched",                       default: false
+  end
+
+  create_table "payment_transactions", force: :cascade do |t|
+    t.integer  "contact_id", limit: 4
+    t.string   "status",     limit: 255, default: "pending"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "users", force: :cascade do |t|
