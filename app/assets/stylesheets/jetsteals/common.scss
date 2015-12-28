@@ -81,3 +81,20 @@ path[id^='seat']{
     color: white;
   }
 }
+
+.full-width{
+  width: 100%;
+}
+
+.padded{
+  padding: 10px;
+}
+
+.padded-large{
+  padding: 20px;
+}
+
+.bordered{
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
