@@ -64,6 +64,7 @@ $(document).on('ready page:load', ->
   if location.pathname.match(/\/jetsteals\/\d+/)
     pathArray = location.pathname.split('/')
     id = parseInt(pathArray[pathArray.length-1])
+    $('#jetsteal_id').val(id)
     $.ajax(
       url: "/jetsteals/#{id}/jetsteal_seats.json"
       success: (data)->
@@ -93,6 +94,10 @@ $(document).on('mouseleave', '.seat_breakup', ->
     'stroke': 'none'
     'stroke-width': '1px'
   })
+)
+
+$(document).on('ready page:load', ->
+  $('#transaction_form').validate()
 )
 
 ####

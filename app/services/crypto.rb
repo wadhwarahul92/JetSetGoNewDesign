@@ -1,9 +1,9 @@
 class Crypto
 
-  INIT_VECTOR = (0..15).to_a.pack("C*")
+  INIT_VECTOR = (0..15).to_a.pack('C*')
 
   def encrypt(plain_text, key)
-    secret_key =  [Digest::MD5.hexdigest(key)].pack("H*")
+    secret_key =  [Digest::MD5.hexdigest(key)].pack('H*')
     cipher = OpenSSL::Cipher::Cipher.new('aes-128-cbc')
     cipher.encrypt
     cipher.key = secret_key

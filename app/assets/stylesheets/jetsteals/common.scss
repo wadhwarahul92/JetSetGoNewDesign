@@ -98,3 +98,7 @@ path[id^='seat']{
   border: 1px solid lightgray;
   border-radius: 10px;
 }
+
+.error{
+  color: lighten(rgb(255, 0, 0), 10%);
+}

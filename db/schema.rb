@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226095003) do
+ActiveRecord::Schema.define(version: 20151228104739) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20151226095003) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "cc_avenue_transactions", force: :cascade do |t|
+    t.integer  "contact_id", limit: 4
+    t.boolean  "success",              default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.string   "state",              limit: 255
@@ -75,6 +82,15 @@ ActiveRecord::Schema.define(version: 20151226095003) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "email",      limit: 255
+    t.string   "phone",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -102,12 +118,13 @@ ActiveRecord::Schema.define(version: 20151226095003) do
   end
 
   create_table "jetsteal_seats", force: :cascade do |t|
-    t.integer  "jetsteal_id", limit: 4
-    t.string   "ui_seat_id",  limit: 255
-    t.boolean  "disabled",                default: false
-    t.integer  "cost",        limit: 4
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "jetsteal_id",              limit: 4
+    t.string   "ui_seat_id",               limit: 255
+    t.boolean  "disabled",                             default: false
+    t.integer  "cost",                     limit: 4
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.integer  "cc_avenue_transaction_id", limit: 4
   end
 
   create_table "jetsteals", force: :cascade do |t|

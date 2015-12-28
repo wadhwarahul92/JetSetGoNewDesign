@@ -6,8 +6,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title highlight-color text-center" id="myModalLabel">Checkout</h4>
       </div>
-      <%= form_tag '#' do %>
+      <%= form_tag '/transaction/ccavRequestHandler', id: 'transaction_form' do %>
           <div class="modal-body">
+            <input type="hidden" id="jetsteal_id" name="jetsteal_id">
             <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat.id}}" ng-repeat="chosen_seat in ctrl.chosen_seats">
             <div class="row">
               <div class="col-sm-12">
@@ -16,39 +17,18 @@
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name' %>
+                <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
               </div>
               <div class="col-sm-6">
-                <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name' %>
-              </div>
-              <div class="col-sm-6 margin-top">
-                <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number' %>
-              </div>
-              <div class="col-sm-6 margin-top">
-                <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email' %>
-              </div>
-            </div>
-            <div class="row margin-top">
-              <div class="col-sm-12">
-                <h4 class="highlight-dark-color">Credit Card Details</h4>
+                <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
-                <%= text_field_tag :cc_number, nil, class: 'form-control', placeholder: 'Credit card number' %>
+              <div class="col-sm-6 margin-top">
+                <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
               </div>
-              <div class="col-sm-4">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <%= text_field_tag :exp_mm, nil, placeholder: 'MM', class: 'form-control' %>
-                  </div>
-                  <div class="col-sm-6">
-                    <%= text_field_tag :exp_yy, nil, placeholder: 'YY', class: 'form-control' %>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <%= text_field_tag :cvv, nil, class: 'form-control', placeholder: 'CVV' %>
+              <div class="col-sm-6 margin-top">
+                <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
               </div>
             </div>
             <div class="row margin-top">

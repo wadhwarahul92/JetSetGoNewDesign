@@ -34,13 +34,16 @@ Rails.application.routes.draw do
     get ':id' => 'lists#show', as: 'jetsteal'
 
     get ':jetsteal_id/jetsteal_seats' => 'jetsteal_seats#index'
-
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  ####CC AVENUE
+  post 'transaction/ccavRequestHandler' => 'cc_avenue#initiate_request'
+  #############
 
   root 'jetsteals/welcome#index'
 

@@ -3,6 +3,7 @@
 //= require turbolinks
 //= require_tree ./common
 //= require ./vendors/angular
+//= require ./vendors/jquery_validate
 //= require_tree ./jetsteals
 
 try {
