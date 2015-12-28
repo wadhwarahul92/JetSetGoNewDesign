@@ -3,7 +3,7 @@ class Admin::CitiesController < Admin::BaseController
   before_filter :authenticate_admin
 
   def index
-    @cities = City.all
+    @cities = City.paginate(page: params[:page], per_page: 20)
   end
 
   def new
