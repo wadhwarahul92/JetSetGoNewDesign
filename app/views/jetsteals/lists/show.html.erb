@@ -5,12 +5,12 @@
         <h4 class="highlight-color"><%= @jetsteal.aircraft.memorable_name %></h4>
       </li>
       <li class="">
-        <div class="aircraft_image pointer" style="cursor: zoom-in; display: inline-block">
+        <div class="aircraft_image pointer" style="cursor: zoom-in; display: inline-block; width:100%">
           <% @jetsteal.aircraft.aircraft_images.each_with_index do |aircraft_image, index| %>
               <% if index == 0 %>
-                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered', 'data-mfp-src' => aircraft_image.image.url(:original) %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded-large bordered', 'data-mfp-src' => aircraft_image.image.url(:original) %>
               <%- else %>
-                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered', 'data-mfp-src' => aircraft_image.image.url(:original), style: 'display: none' %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded-large bordered', 'data-mfp-src' => aircraft_image.image.url(:original), style: 'display: none' %>
               <%- end %>
           <%- end %>
         </div>
