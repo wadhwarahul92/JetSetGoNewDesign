@@ -2,7 +2,7 @@ class Admin::AircraftsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_filter :set_aircraft, only: [:show]
+  before_filter :set_aircraft, only: [:show, :edit, :update]
 
   def index
     @aircrafts = Aircraft.includes(:aircraft_type).all
@@ -14,6 +14,19 @@ class Admin::AircraftsController < Admin::BaseController
 
   def show
 
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @aircraft.update_attributes(aircraft_params)
+      flash[:success] = 'Successfully updated'
+      redirect_to action: :index
+    else
+      render action: :edit
+    end
   end
 
   def create

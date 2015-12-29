@@ -16,6 +16,7 @@
         <th>Updated By</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -30,13 +31,18 @@
               <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
           <%- end %>
         </td>
-        <th>
+        <td>
+          <%= link_to edit_admin_aircraft_path(aircraft) do %>
+            <i class="fa fa-edit"></i>
+          <%- end %>
+        </td>
+        <td>
           <% unless aircraft.aircraft_images.any? %>
               <p class="text-danger">
                 <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
               </p>
           <%- end %>
-        </th>
+        </td>
       </tr>
       <%- end %>
       </tbody>
