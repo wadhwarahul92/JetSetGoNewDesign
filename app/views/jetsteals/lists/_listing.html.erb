@@ -1,7 +1,15 @@
 <% @jetsteals.each do |jetsteal| %>
     <div class="row margin-top">
       <div class="col-sm-3">
-        <%= image_tag jetsteal.aircraft.aircraft_images.first.image.url(:medium), class: 'full-width padded bordered' %>
+        <div class="aircraft_image" style="display: inline-block">
+          <% jetsteal.aircraft.aircraft_images.each_with_index do |aircraft_image, index| %>
+              <% if index == 0 %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered pointer', 'data-mfp-src' => aircraft_image.image.url(:original) %>
+              <%- else %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered pointer', 'data-mfp-src' => aircraft_image.image.url(:original), style: 'display: none' %>
+              <%- end %>
+          <%- end %>
+        </div>
       </div>
       <div class="col-sm-9">
         <ul class="list-inline">

@@ -1,1 +1,1 @@
-Rack::Timeout.timeout = 25 unless Rails.env == 'development'
+Rack::Timeout.timeout = 25
