@@ -22,5 +22,12 @@
         </ul>
         <%= render partial: 'jetsteals/lists/listing' %>
       </div>
+  <%- else %>
+    <div class="col-sm-9">
+      <h1 class="highlight-color text-center font-large"><i class="fa fa-meh-o"></i></h1>
+      <h3 class="highlight-color text-center">Sorry, we don't have any scheduled trip for this query</h3>
+      <h4 class="highlight-dark-color text-center"><i class="fa fa-info-circle"></i> You can always contact our operations and customer support for any custom requirements</h4>
+      <p class="text-center"><%= link_to 'Clear Filters', '/jetsteals/list', class: 'btn btn-blue' %></p>
+    </div>
   <%- end %>
 </div>

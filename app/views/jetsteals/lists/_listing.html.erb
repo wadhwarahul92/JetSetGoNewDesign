@@ -1,12 +1,12 @@
 <% @jetsteals.each do |jetsteal| %>
     <div class="row margin-top">
       <div class="col-sm-3">
-        <div class="aircraft_image" style="display: inline-block">
+        <div class="aircraft_image pointer" style="display: inline-block; cursor: zoom-in">
           <% jetsteal.aircraft.aircraft_images.each_with_index do |aircraft_image, index| %>
               <% if index == 0 %>
-                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered pointer', 'data-mfp-src' => aircraft_image.image.url(:original) %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered', 'data-mfp-src' => aircraft_image.image.url(:original) %>
               <%- else %>
-                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered pointer', 'data-mfp-src' => aircraft_image.image.url(:original), style: 'display: none' %>
+                  <%= image_tag aircraft_image.image.url(:medium), class: 'full-width padded bordered', 'data-mfp-src' => aircraft_image.image.url(:original), style: 'display: none' %>
               <%- end %>
           <%- end %>
         </div>
