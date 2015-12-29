@@ -97,7 +97,13 @@ $(document).on('mouseleave', '.seat_breakup', ->
 )
 
 $(document).on('ready page:load', ->
-  $('#transaction_form').validate()
+  $('#transaction_form').validate({
+    rules: {
+      phone: {
+        digits: true
+      }
+    }
+  })
 )
 
 ####

@@ -1,5 +1,9 @@
 class Contact < ActiveRecord::Base
 
+  include VersionTracker
+
+  has_paper_trail
+
   has_many :payment_transactions
 
   #validations

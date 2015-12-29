@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     get '/' => 'welcome#index'
     get 'list' => 'lists#index', as: 'jetsteals'
     get ':id' => 'lists#show', as: 'jetsteal'
-
     get ':jetsteal_id/jetsteal_seats' => 'jetsteal_seats#index'
   end
 
@@ -41,8 +40,15 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'jetsteals/welcome#index'
+  post 'payment_transactions/create' => 'payment_transactions#create'
 
+  post 'payment_transactions/success' => 'payment_transactions#success'
+
+  post 'payment_transactions/cancel' => 'payment_transactions#cancel'
+
+  post 'payment_transactions/failure' => 'payment_transactions#failure'
+
+  root 'jetsteals/welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

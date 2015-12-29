@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title highlight-color text-center" id="myModalLabel">Checkout</h4>
       </div>
-      <%= form_tag '/transaction/ccavRequestHandler', id: 'transaction_form' do %>
+      <%= form_tag '/payment_transactions/create', id: 'transaction_form' do %>
           <div class="modal-body">
             <input type="hidden" id="jetsteal_id" name="jetsteal_id">
             <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat.id}}" ng-repeat="chosen_seat in ctrl.chosen_seats">

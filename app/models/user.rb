@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include VersionTracker
+
   has_paper_trail
 
   # Include default devise modules. Others available are:
