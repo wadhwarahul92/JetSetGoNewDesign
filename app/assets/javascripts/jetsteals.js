@@ -5,7 +5,6 @@
 //= require ./vendors/angular
 //= require ./vendors/jquery_validate
 //= require ./vendors/lightbox
-//= require ./vendors/parallax
 //= require_tree ./jetsteals
 
 try {
