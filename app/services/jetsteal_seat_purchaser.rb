@@ -21,7 +21,7 @@ class JetstealSeatPurchaser
 
   def validated_seats!
     @jetsteal_seats.each do |jetsteal_seat|
-      if jetsteal_seat.payment_transaction_id.present?
+      if jetsteal_seat.booked?
         payment_transaction.update_attribute(:status, 'failed')
         return false
       end

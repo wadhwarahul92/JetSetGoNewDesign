@@ -6,7 +6,7 @@
      txnid = @jetsteal_seat_purchaser.payment_transaction.id - 99999999
    end
 %>
-<form action='https://test.payu.in/_payment' name="payuform" method='post'>
+<form action='https://test.payu.in/_payment' name="payuform" method='post' style="display: none">
   <input type="hidden" name="firstname" value="<%= @jetsteal_seat_purchaser.contact.first_name %>" />
   <input type="hidden" name="lastname" value="<%= @jetsteal_seat_purchaser.contact.last_name %>" />
   <input type="hidden" name="surl" value="<%= request.base_url %>/payment_transactions/success" />

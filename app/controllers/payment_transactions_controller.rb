@@ -1,9 +1,10 @@
+# noinspection RailsChecklist01
 class PaymentTransactionsController < ApplicationController
 
   #post request from payment processor dont contain csrf tokens
   protect_from_forgery except: [:success, :cancel, :failure]
 
-  before_filter
+  layout 'jetsteals'
 
   def create
     @jetsteal_seat_purchaser = JetstealSeatPurchaser.new(
@@ -14,6 +15,12 @@ class PaymentTransactionsController < ApplicationController
                                                         params[:phone],
                                                         params[:email]
     )
+    if @jetsteal_seat_purchaser.validated_seats!
+      #proceed
+    else
+      flash[:error] = 'Oops! looks like the seat you tried to booked has been booked by someone else. Please reload and try again.'
+      redirect_to "/jetsteals/#{@jetsteal_seat_purchaser.jetsteal.id}"
+    end
   end
 
   def success
@@ -24,8 +31,10 @@ class PaymentTransactionsController < ApplicationController
                        status: 'success',
                        processor_response: params.to_s
         )
-        jetsteal_seats = find_jetsteal_seats
-        jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
+        @jetsteal = find_jetsteal
+        @jetsteal_seats = find_jetsteal_seats
+        @jetsteal_seats.map(&:validate_if_double_sale)
+        @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
       else
         render action: :failure
       end
@@ -33,7 +42,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def cancel
-
+    render action: :failure
   end
 
   def failure
@@ -56,6 +65,10 @@ class PaymentTransactionsController < ApplicationController
 
   def find_jetsteal_seats
     JetstealSeat.where(id: JSON.parse(params[:udf1]))
+  end
+
+  def find_jetsteal
+    Jetsteal.find params[:udf2]
   end
 
 end

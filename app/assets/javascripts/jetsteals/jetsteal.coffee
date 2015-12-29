@@ -4,6 +4,8 @@ available_seat_color = 'rgb(232, 159, 43)'
 
 selected_seat_color = 'green'
 
+booked_seat_color = 'rgb(43, 99, 174)'
+
 class Jetsteal
 
   constructor: (@jetsteal_aircraft, @jetsteal_seats)->
@@ -12,6 +14,8 @@ class Jetsteal
     for jetsteal_seat in @jetsteal_seats
       if jetsteal_seat.disabled
         @jetsteal_aircraft.find("path##{jetsteal_seat.ui_seat_id}").css('fill', disabled_seat_color)
+      else if jetsteal_seat.booked
+        @jetsteal_aircraft.find("path##{jetsteal_seat.ui_seat_id}").css('fill', booked_seat_color)
       else
         @jetsteal_aircraft.find("path##{jetsteal_seat.ui_seat_id}").css('fill', available_seat_color)
 
@@ -28,7 +32,7 @@ app.controller 'JetstealController', [->
 
   @seatClicked = (seatIndex)->
     seat = @jetsteal.jetsteal_seats[seatIndex]
-    unless seat.disabled
+    unless seat.disabled or seat.booked
       if @chosen_seats.indexOf(seat) >= 0
         @removeFromChosen(seat)
       else
