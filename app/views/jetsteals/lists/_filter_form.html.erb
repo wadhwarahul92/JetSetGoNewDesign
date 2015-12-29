@@ -1,0 +1,11 @@
+<fieldset>
+  <legend class="main-blue-color"><small>Filter</small></legend>
+  <%= form_tag jetsteals_jetsteals_path, id: 'jetsteals_filter_form', method: :get do %>
+      <div class="form-group">
+        <%= select_tag :departure_airport_id, options_for_select(airports_for_collection, params[:departure_airport_id]), prompt: 'Choose departure airport', class: 'form-control auto-submit' %>
+      </div>
+      <div class="form-group">
+        <%= select_tag :arrival_airport_id, options_for_select(airports_for_collection, params[:arrival_airport_id]), prompt: 'Choose arrival airport', class: 'form-control auto-submit' %>
+      </div>
+  <%- end %>
+</fieldset>

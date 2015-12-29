@@ -1,0 +1,44 @@
+<% @jetsteals.each do |jetsteal| %>
+    <div class="row margin-top">
+      <div class="col-sm-3">
+        <%= image_tag jetsteal.aircraft.aircraft_images.first.image.url(:medium), class: 'full-width padded bordered' %>
+      </div>
+      <div class="col-sm-9">
+        <ul class="list-inline">
+          <% unless params[:departure_airport_id].present? %>
+              <li>
+                <%= image_tag jetsteal.departure_airport.city.image.url(:original), class: 'city_image' %>
+                <h5 class="text-center highlight-dark-color"><%= jetsteal.departure_airport.city.name %></h5>
+              </li>
+          <%- end %>
+          <% unless params[:departure_airport_id].present? or params[:arrival_airport_id].present? %>
+              <li><h6>to</h6></li>
+          <%- end %>
+          <% unless params[:arrival_airport_id].present? %>
+              <li>
+                <img src="<%= jetsteal.arrival_airport.city.image %>" class="city_image">
+                <h5 class="text-center highlight-dark-color"><%= jetsteal.arrival_airport.city.name %></h5>
+              </li>
+          <%- end %>
+          <li>
+            <h3 class="highlight-dark-color">
+              <%= jetsteal.aircraft.memorable_name %>
+            </h3>
+            <ul class="list-inline">
+              <li><i class="fa fa-plane"></i> <%= jetsteal.aircraft.aircraft_type.name %> (<%= jetsteal.aircraft.tail_number %>)</li>
+            </ul>
+            <ul class="list-inline">
+              <li data-toggle="tooltip" title="Seating capacity"><i class="fa fa-user"></i> <%= jetsteal.aircraft.seating_capacity %></li>
+            </ul>
+            <ul class="list-inline">
+              <li data-toggle="tooltip" title="Takes Off At"><i class="fa fa-clock-o"></i> <%= jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></li>
+            </ul>
+          </li>
+          <li>
+            <div><a class="btn btn-blue" href="/jetsteals/<%= jetsteal.id %>">View Details</a></div>
+            <div class="margin-top"><a class="btn btn-blue btn-padded" href="/jetsteals/<%= jetsteal.id %>">Book seats</a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+<%- end %>

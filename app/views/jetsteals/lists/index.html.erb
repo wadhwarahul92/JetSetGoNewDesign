@@ -1,55 +1,26 @@
 <div class="row">
   <div class="col-sm-3">
-    <fieldset>
-      <legend class="main-blue-color"><small>Filter</small></legend>
-      <%= form_tag jetsteals_jetsteals_path, method: :get do %>
-          <div class="form-group">
-            <%= select_tag :departure_airport_id, options_for_select(airports_for_collection), prompt: 'Choose departure airport', class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= select_tag :arrival_airport_id, options_for_select(airports_for_collection), prompt: 'Choose arrival airport', class: 'form-control' %>
-          </div>
-      <%- end %>
-    </fieldset>
+    <%= render partial: 'jetsteals/lists/filter_form' %>
   </div>
-  <div class="col-sm-9">
-    <% @jetsteals.each do |jetsteal| %>
-        <div class="row margin-top">
-          <div class="col-sm-3">
-            <%= image_tag jetsteal.aircraft.aircraft_images.first.image.url(:medium), class: 'full-width padded bordered' %>
-          </div>
-          <div class="col-sm-9">
-            <ul class="list-inline">
-              <li>
-                <%= image_tag jetsteal.departure_airport.city.image.url(:original), class: 'city_image' %>
-                <h5 class="text-center highlight-dark-color"><%= jetsteal.departure_airport.city.name %></h5>
+  <% if @jetsteals.present? and @jetsteals.any? %>
+      <div class="col-sm-9">
+        <ul class="list-inline">
+          <% if params[:departure_airport_id].present? %>
+            <li class="text-center">
+              <h4 class="highlight-color">Flying from</h4>
+              <%= image_tag @jetsteals.first.departure_airport.city.image.url(:original), class: 'city_image' %>
+              <h5 class="highlight-dark-color"><%= @jetsteals.first.departure_airport.city.name %></h5>
+            </li>
+          <%- end %>
+          <% if params[:arrival_airport_id].present? %>
+              <li class="text-center">
+                <h4 class="highlight-color">Flying to</h4>
+                <%= image_tag @jetsteals.first.arrival_airport.city.image.url(:original), class: 'city_image' %>
+                <h5 class="highlight-dark-color"><%= @jetsteals.first.arrival_airport.city.name %></h5>
               </li>
-              <li><h6>to</h6></li>
-              <li>
-                <img src="<%= jetsteal.arrival_airport.city.image %>" class="city_image">
-                <h5 class="text-center highlight-dark-color"><%=jetsteal.arrival_airport.city.name%></h5>
-              </li>
-              <li>
-                <h3 class="highlight-dark-color">
-                  <%=jetsteal.aircraft.memorable_name%>
-                </h3>
-                <ul class="list-inline">
-                  <li><i class="fa fa-plane"></i> <%=jetsteal.aircraft.aircraft_type.name%> (<%=jetsteal.aircraft.tail_number%>)</li>
-                </ul>
-                <ul class="list-inline">
-                  <li data-toggle="tooltip" title="Seating capacity"><i class="fa fa-user"></i> <%= jetsteal.aircraft.seating_capacity %></li>
-                </ul>
-                <ul class="list-inline">
-                  <li data-toggle="tooltip" title="Takes Off At"><i class="fa fa-clock-o"></i> <%= jetsteal.end_at %></li>
-                </ul>
-              </li>
-              <li>
-                <div><a class="btn btn-blue" href="/jetsteals/<%=jetsteal.id%>">View Details</a></div>
-                <div class="margin-top"><a class="btn btn-blue btn-padded" href="/jetsteals/<%=jetsteal.id%>">Book seats</a></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-    <%- end %>
-  </div>
+          <%- end %>
+        </ul>
+        <%= render partial: 'jetsteals/lists/listing' %>
+      </div>
+  <%- end %>
 </div>
