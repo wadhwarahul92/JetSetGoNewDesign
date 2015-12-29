@@ -1,0 +1,29 @@
+.main-heading{
+  font-weight: lighter;
+  font-size: 50px;
+  margin-top: 100px;
+}
+
+.text-light{
+  font-weight: lighter;
+}
+
+.plane-image{
+  margin-top: 100px;
+  font-size: 300px!important;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+  &:hover{
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.subscribe-field{
+  border-radius: 0;
+  height: 50px;
+  font-weight: lighter;
+  font-size: 20px;
+  width: 80%;
+  color: rgb(12, 62, 120);
+}
