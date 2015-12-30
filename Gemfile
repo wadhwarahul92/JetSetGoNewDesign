@@ -68,3 +68,5 @@ gem 'paper_trail', '~> 4.0.0'
 gem 'will_paginate'
 
 gem 'letter_opener', :group => :development
+
+gem 'dotenv-rails', :groups => [:development, :test]
