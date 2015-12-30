@@ -89,4 +89,15 @@ Rails.application.configure do
       :path => '/:class/:attachment/:id_partition/:style/:filename',
       :s3_protocol => :https
   }
+
+  config.action_mailer.smtp_settings = {
+      :user_name => ENV['AMAZON_EMAIL_USER'],
+      :password => ENV['AMAZON_EMAIL_PASSWORD'],
+      :domain => 'jetsetgo.in',
+      :address => 'email-smtp.us-west-2.amazonaws.com',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
+
 end

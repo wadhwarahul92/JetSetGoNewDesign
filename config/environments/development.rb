@@ -48,4 +48,6 @@ Rails.application.configure do
           :secret_access_key => 'pN2tMl5DeUJAtWueOBeSdamy96KMzSrMUn3Agb8x'
       }
   }
+
+  config.action_mailer.delivery_method = :letter_opener
 end

@@ -66,3 +66,5 @@ gem 'rails_12factor', group: :production
 gem 'paper_trail', '~> 4.0.0'
 
 gem 'will_paginate'
+
+gem 'letter_opener', :group => :development
