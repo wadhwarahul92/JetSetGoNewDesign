@@ -11,6 +11,10 @@ class JetstealMailer < ApplicationMailer
     @transaction = transaction
     @contact = contact
 
+    attachments['Jetsteal seat confirmation.pdf'] = WickedPdf.new.pdf_from_string(
+                                                                     render_to_string('pdfs/jetsteal_confirmation', layout: 'pdf')
+    )
+
     mail to: @contact.email,
         subject: 'Jetsteal Seats Confirmed!',
         bcc: Admin.get_all_emails

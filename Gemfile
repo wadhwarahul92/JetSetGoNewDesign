@@ -70,3 +70,7 @@ gem 'will_paginate'
 gem 'letter_opener', :group => :development
 
 gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'
