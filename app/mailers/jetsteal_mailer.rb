@@ -1,6 +1,7 @@
 class JetstealMailer < ApplicationMailer
 
   def test_mailer
+    lol
     mail to: 'suraj.pratap@jetsetgo.in',
          subject: 'Test to see mails are actually running'
   end
@@ -9,7 +10,7 @@ class JetstealMailer < ApplicationMailer
     @jetsteal = jetsteal
     @jetsteal_seats = jetsteal_seats
     @transaction = transaction
-    @contact = contac
+    @contact = contact
 
     attachments['Jetsteal seat confirmation.pdf'] = WickedPdf.new.pdf_from_string(
                                                                      render_to_string('pdfs/jetsteal_confirmation', layout: 'pdf')
