@@ -1,7 +1,6 @@
 class JetstealMailer < ApplicationMailer
 
   def test_mailer
-    lol
     mail to: 'suraj.pratap@jetsetgo.in',
          subject: 'Test to see mails are actually running'
   end
