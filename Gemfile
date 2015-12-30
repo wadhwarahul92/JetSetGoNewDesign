@@ -74,3 +74,5 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'wicked_pdf'
 
 gem 'wkhtmltopdf-binary'
+
+gem 'exception_notification', group: :production

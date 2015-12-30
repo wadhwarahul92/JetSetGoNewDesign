@@ -100,4 +100,11 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          :email => {
+                                              :email_prefix => 'JetSetGo new ERROR OCCURED',
+                                              :sender_address => %{'notifier' <notifier@jetsetgo.in>},
+                                              :exception_recipients => %w{suraj.pratap@jetsetgo.in mayur.singh@jetsetgo.in}
+                                          }
+
 end
