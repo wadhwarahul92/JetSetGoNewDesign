@@ -9,7 +9,7 @@ class JetstealMailer < ApplicationMailer
     @jetsteal = jetsteal
     @jetsteal_seats = jetsteal_seats
     @transaction = transaction
-    @contact = contact
+    @contact = contac
 
     attachments['Jetsteal seat confirmation.pdf'] = WickedPdf.new.pdf_from_string(
                                                                      render_to_string('pdfs/jetsteal_confirmation', layout: 'pdf')
