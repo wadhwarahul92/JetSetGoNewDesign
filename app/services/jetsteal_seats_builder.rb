@@ -18,7 +18,7 @@ class JetstealSeatsBuilder
   def find_seats_in_plane
     svg_string = @jetsteal.aircraft.aircraft_type.svg
     ui_seat_ids = svg_string.scan(/seat\d+/).sort
-    seat_numbers = ui_seat_ids.map{ |s| s.gsub(/seat/, '').to_i }
+    seat_numbers = ui_seat_ids.map{ |s| s.gsub(/seat/, '').to_i }.sort
     seat_numbers.each_with_index do |n, i|
       #designer must have not included seat_ids in svg image
       raise 'Problem in ui_seat_ids' unless n == (i+1)
