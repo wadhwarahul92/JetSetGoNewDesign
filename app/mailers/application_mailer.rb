@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@jetsetgo.in'
+  default from: 'monika@jetsetgo.in'
   layout 'mailer'
 end

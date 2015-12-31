@@ -1,3 +1,4 @@
+<h1 class="text-center">Please don't refresh or exit the browser window. This will just take few seconds.</h1>
 <%
    txnid = nil
    if Rails.env == 'production'
@@ -26,6 +27,6 @@
 </form>
 <script>
   $(document).on('ready page:load', function(){
-    document.payuform.submit();
+    setTimeout(function(){document.payuform.submit();},500);
   })
 </script>
