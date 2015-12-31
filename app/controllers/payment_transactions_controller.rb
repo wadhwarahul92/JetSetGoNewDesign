@@ -62,7 +62,8 @@ class PaymentTransactionsController < ApplicationController
 
   def find_payment_transaction
     if Rails.env == 'production'
-      PaymentTransaction.find params[:txnid]
+      #todo change this
+      PaymentTransaction.find(params[:txnid].to_i + 99999999)
     else
       PaymentTransaction.find(params[:txnid].to_i + 99999999)
     end

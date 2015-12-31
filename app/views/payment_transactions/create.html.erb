@@ -1,7 +1,8 @@
 <%
    txnid = nil
    if Rails.env == 'production'
-     txnid = @jetsteal_seat_purchaser.payment_transaction.id
+     #todo change this
+     txnid = @jetsteal_seat_purchaser.payment_transaction.id - 99999999
    else
      txnid = @jetsteal_seat_purchaser.payment_transaction.id - 99999999
    end
