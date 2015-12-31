@@ -96,9 +96,10 @@ Rails.application.configure do
       :port                 => 587,
       :domain               => 'gmail.com',
       :user_name            => 'monika@jetsetgo.in',
-      :password             => 'jetsetgo123',
+      :password             => ENV['MONIKA_EMAIL_PASSWORD'],
       :authentication       => 'plain',
-      :enable_starttls_auto => true  }
+      :enable_starttls_auto => true
+  }
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :email => {
