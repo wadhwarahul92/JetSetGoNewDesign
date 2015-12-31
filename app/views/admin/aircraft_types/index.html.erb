@@ -10,6 +10,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>ID</th>
         <th>Name</th>
         <th>Image</th>
         <th>Created By</th>
@@ -20,6 +21,7 @@
       <tbody>
       <% @aircraft_types.each do |aircraft_type| %>
       <tr>
+        <td><%= aircraft_type.id %></td>
         <td><%= aircraft_type.name %></td>
         <td><%= aircraft_type.svg.try(:html_safe) %></td>
         <td><%= aircraft_type.creator.full_name if aircraft_type.creator %></td>
