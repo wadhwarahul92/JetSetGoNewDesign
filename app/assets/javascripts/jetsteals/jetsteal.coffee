@@ -24,7 +24,7 @@ jetsteal = null
 
 app = angular.module 'jetsteal_app', []
 
-app.controller 'JetstealController', [->
+app.controller 'JetstealController', ['$http', ($http)->
 
   @jetsteal = jetsteal
 

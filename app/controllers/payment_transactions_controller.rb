@@ -15,7 +15,8 @@ class PaymentTransactionsController < ApplicationController
                                                         params[:phone],
                                                         params[:email]
     )
-    if @jetsteal_seat_purchaser.validated_seats!
+    seat_locker = JetstealSeatLocker.new(@jetsteal_seat_purchaser.jetsteal_seats)
+    if @jetsteal_seat_purchaser.validated_seats! and seat_locker.all_allowed_for_sale? and seat_locker.lock_all_for_sale
       #proceed
     else
       flash[:error] = 'Oops! looks like the seat you tried to booked has been booked by someone else. Please reload and try again.'
@@ -51,7 +52,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def failure
-
+    #possibly unlock all seats here.
   end
 
   private

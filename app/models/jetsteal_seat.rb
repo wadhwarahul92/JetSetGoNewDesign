@@ -1,5 +1,8 @@
 class JetstealSeat < ActiveRecord::Base
 
+  #max_lock_time is the time a seat can stay locked for
+  MAX_LOCK_TIME = 5.minutes
+
   class DoubleSaleException < Exception; end
 
   include VersionTracker
@@ -19,7 +22,21 @@ class JetstealSeat < ActiveRecord::Base
   ############
 
   def booked?
-    self.payment_transaction_id.present? and PaymentTransaction.find(self.payment_transaction_id).success?
+    begin
+      self.payment_transaction_id.present? and PaymentTransaction.find(self.payment_transaction_id).success?
+    rescue
+      false
+    end
+  end
+
+  #locking is different than being booked
+  #locking means someone tried to book the seat at that time
+  #seat is locked before being booked
+  #seat is never sold if its locked
+  #lock is time bound, check MAX_LOCK_TIME
+  def locked?
+    return true if self.locked_at.present? and self.locked_at + MAX_LOCK_TIME < DateTime.now
+    false
   end
 
   #This is highly unlikly and will be raised only if someone buys a seat during the time someone else is in procees of paying for it
