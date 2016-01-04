@@ -1,0 +1,23 @@
+#! /bin/sh -e
+
+# Author: Suraj Pratap
+# Date: 29/1/15
+# This is a shell script for Pulkit Bhatia (non-developer) to switch and test branches on his local development server
+
+if [ $1 ]
+then
+  cd ~/JetSetGo
+  git reset --hard
+  git checkout master
+  git pull
+  git checkout $1
+  git pull
+  bundle install
+  rake db:migrate --trace
+  rake db:seed --trace
+  rails s
+else
+  echo "No branch name specified."
+  echo "Usage: ./script/switch_branch 620_xxxxxx"
+fi
+exit 0
