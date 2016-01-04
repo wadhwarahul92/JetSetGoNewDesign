@@ -1,7 +1,7 @@
 class JetstealSeat < ActiveRecord::Base
 
   #max_lock_time is the time a seat can stay locked for
-  MAX_LOCK_TIME = 5.minutes
+  MAX_LOCK_TIME = 1.minutes
 
   class DoubleSaleException < Exception; end
 
