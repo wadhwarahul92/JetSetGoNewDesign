@@ -35,7 +35,7 @@ class JetstealSeat < ActiveRecord::Base
   #seat is never sold if its locked
   #lock is time bound, check MAX_LOCK_TIME
   def locked?
-    return true if self.locked_at.present? and self.locked_at + MAX_LOCK_TIME < DateTime.now
+    return true if self.locked_at.present? and self.locked_at + MAX_LOCK_TIME > DateTime.now
     false
   end
 
