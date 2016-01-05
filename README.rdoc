@@ -1,28 +1,93 @@
-== README
+== JetSetGo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+JetSetGo is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
 
-Things you may want to cover:
+== Getting Started
 
-* Ruby version
+* Ruby '2.2.3'
 
-* System dependencies
+* Rails '4.2.5'
 
-* Configuration
+* Database MySql
 
-* Database creation
+* Git
 
-* Database initialization
+* Trello
 
-* How to run the test suite
+== Github
 
-* Services (job queues, cache servers, search engines, etc.)
+Step 1: Take access for github repository from Team.
 
-* Deployment instructions
+Step 2: Type in terminal git clone [choose a clone url] - Clone a repository into a new directory
+        Example: git clone https://github.com/myapp/myproject.git
 
-* ...
+Step 3: Use command according to need:
+
+        * git pull
+        * git push
+        * git commit
+
+Step 4: Use Naming convention for create a branch according to trello card number.
+        Example: if trello card number is 2-add-content-to-user-view than create branch name like 2_add_content
+            Here 2 is trello card number.
+            add-content-to-user-view is card title.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Step 5: Create a new branch for every task, push the code on git repository after completed.
+        Go to github repository, Click on Compare & pull request and then click on Create pull request.
+
+
+== Trello
+
+Step 1: Create an Account on Trello
+
+Step 2: Get access from Team
+
+Step 3: There are some important information below:
+
+        * Upcoming
+        * Assigned
+        * Done
+        * In-Test
+        * Tested
+        * Verified
+
+        [Upcoming] represent upcoming card according to team member.
+
+        [Assigned] represent card assigned to which team member and it must be completed according to
+        conditions.
+
+        when [Assigned card] complete it drag to [Done]
+
+        After [done] it drag into [In-Test] for testing team.
+
+        Testing team check the mistakes. if any mistake occur,again it will moved it into [Assigned]
+        & cycle create till verified.
+
+        when card verified then it will moved into [verified] and technical team merge it into live server.
+
+
+
+== About Team
+
+    Technical Team members
+       * Suraj
+       * Mayur
+       * Vasudev
+
+    Quality Team
+       * Pulkit
+
+    Frontend Team
+       * Rahul
+
+
+
+
+
+
+
+
+
+
+
