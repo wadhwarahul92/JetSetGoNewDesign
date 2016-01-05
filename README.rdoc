@@ -1,6 +1,6 @@
 == JetSetGo
 
-[JetSetGo] is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
+JetSetGo is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
 
 == Getting Started
 
@@ -10,7 +10,33 @@
 
 * Database MySql
 
-[ruby on rails]
+* Git
 
-Create an Account on github repository
-[ruby on rails]: http://guides.rubyonrails.org/getting_started.html
+* Trello
+
+== Github
+
+Step 1: Create an Account on git repository
+
+Step 2: Type in terminal git clone [choose a clone url] - Clone a repository into a new directory
+
+Step 3: Use command according to need:
+
+        * git pull
+        * git push
+        * git commit
+
+Step 4: Use Naming convention for create a branch according to trello card number.
+        Example: if trello card number is 2-add-content-to-user-view than create branch name like 2_add_content
+            Here 2 is trello ticket number.
+            add-content-to-user-view is ticket title.
+
+
+Step 5: Create a new branch for every task, push the code on git repository after completed.
+        Go to github repository, Click on Compare & pull request and then click on Create pull request.
+
+
+
+
+
+
