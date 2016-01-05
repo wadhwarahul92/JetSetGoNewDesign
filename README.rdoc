@@ -67,6 +67,9 @@ Step 3: There are some important information below:
         when card verified then it will moved into [verified] and technical team merge it into live server.
 
 
+== Ruby Style Guide
+
+   * Ruby Style Guide[https://github.com/bbatsov/ruby-style-guide/blob/master/README.md]
 
 == About Team
 
