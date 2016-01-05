@@ -23,7 +23,7 @@ module JetstealsHelper
     view += "<div class='col-sm-6'><i class='fa fa-suitcase' data-toggle='tooltip' data-original-title='Baggage Capacity'></i> #{baggage} Kg</div>" if baggage.present?
     view += "<div class='col-sm-6'><i class='fa fa-tachometer' data-toggle='tooltip' data-original-title='Speed'></i> #{speed} Kts</div>" if speed.present?
 
-    raw view
+    view.html_safe
   end
 
 end
