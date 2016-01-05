@@ -38,13 +38,15 @@ class PaymentTransactionsController < ApplicationController
         @jetsteal = find_jetsteal
         @jetsteal_seats = find_jetsteal_seats
         @jetsteal_seats.map(&:validate_if_double_sale)
+        @contact = Contact.find(transaction.contact_id)
         transaction.update_attributes!(
             status: 'success',
             processor_response: params.to_s
         )
         #adding transaction id to jetsteal seat books it
         @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
-        JetstealMailer.jesteal_seat_confirmation(@jetsteal, @jetsteal_seats.to_a, transaction, Contact.find(transaction.contact_id)).deliver_later
+        JetstealMailer.jesteal_seat_confirmation(@jetsteal, @jetsteal_seats.to_a, transaction, @contact).deliver_later
+        SmsDelivery.new(@contact.phone.to_s, SmsTemplates.thanks_for_payment('Jetsteal™')).delay.deliver
       else
         render action: :failure
       end
