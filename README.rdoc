@@ -69,7 +69,7 @@ Step 3: There are some important information below:
 
 == Ruby Style Guide
 
-   * Ruby Style Guide[https://github.com/bbatsov/ruby-style-guide/blob/master/README.md]
+   <a href="https://github.com/bbatsov/ruby-style-guide/blob/master/README.md"> ruby style guide</a>
 
 == About Team
 
