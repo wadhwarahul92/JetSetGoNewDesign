@@ -28,12 +28,50 @@ Step 3: Use command according to need:
 
 Step 4: Use Naming convention for create a branch according to trello card number.
         Example: if trello card number is 2-add-content-to-user-view than create branch name like 2_add_content
-            Here 2 is trello ticket number.
-            add-content-to-user-view is ticket title.
+            Here 2 is trello card number.
+            add-content-to-user-view is card title.
 
 
 Step 5: Create a new branch for every task, push the code on git repository after completed.
         Go to github repository, Click on Compare & pull request and then click on Create pull request.
+
+
+== Trello
+
+Step 1: Create an Account on Trello
+
+Step 2: Get access from Team
+
+Step 3: There are some  important information below:
+
+        * Upcoming
+        * Assigned
+        * Done
+        * In-Test
+        * Tested
+        * Verified
+
+        [Upcoming] represent upcoming card according to team member.
+
+        [Assigned] represent card assigned to which team member and it must be completed according to
+        conditions.
+
+        when [Assigned card] complete it drag to [Done]
+
+        After [done] it drag into [In-Test] for testing team.
+
+        Testing team check the mistakes. if any mistake occur,again it will moved it into [Assigned]
+        & cycle create till verified.
+
+        when card verified then it will moved into [verified] and technical team merge it into live server.
+        
+
+
+
+
+
+
+
 
 
 
