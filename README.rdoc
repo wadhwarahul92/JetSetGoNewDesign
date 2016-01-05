@@ -1,10 +1,8 @@
 == JetSetGo
 
-JetSetGo is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
+[JetSetGo] is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
 
 == Getting Started
-
-Things you may want to cover:
 
 * Ruby '2.2.3'
 
@@ -12,3 +10,7 @@ Things you may want to cover:
 
 * Database MySql
 
+[ruby on rails]
+
+Create an Account on github repository
+[ruby on rails]: http://guides.rubyonrails.org/getting_started.html
