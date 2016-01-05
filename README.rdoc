@@ -16,9 +16,10 @@ JetSetGo is an exciting venture that will revolutionize the private aviation bus
 
 == Github
 
-Step 1: Create an Account on git repository
+Step 1: Take access for github repository from Team.
 
 Step 2: Type in terminal git clone [choose a clone url] - Clone a repository into a new directory
+        Example: git clone https://github.com/myapp/myproject.git
 
 Step 3: Use command according to need:
 
@@ -42,7 +43,7 @@ Step 1: Create an Account on Trello
 
 Step 2: Get access from Team
 
-Step 3: There are some  important information below:
+Step 3: There are some important information below:
 
         * Upcoming
         * Assigned
@@ -64,7 +65,7 @@ Step 3: There are some  important information below:
         & cycle create till verified.
 
         when card verified then it will moved into [verified] and technical team merge it into live server.
-        
+
 
 
 
