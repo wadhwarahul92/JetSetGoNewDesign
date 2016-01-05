@@ -68,6 +68,18 @@ Step 3: There are some important information below:
 
 
 
+== About Team
+
+    Technical Team members
+       * Suraj
+       * Mayur
+       * Vasudev
+
+    Quality Team
+       * Pulkit
+
+    Frontend Team
+       * Rahul
 
 
 
