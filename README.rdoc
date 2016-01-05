@@ -1,25 +1,14 @@
 == JetSetGo
 
+JetSetGo is an exciting venture that will revolutionize the private aviation business in the region by re-defining the experience for private charter customers through end to end control of the value chain with collaborative partnerships and technology at its core.
+
+== Getting Started
+
 Things you may want to cover:
 
-* Ruby version
+* Ruby '2.2.3'
 
-* System dependencies
+* Rails '4.2.5'
 
-* Configuration
+* Database MySql
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
