@@ -22,7 +22,7 @@ class PaymentTransactionsController < ApplicationController
       if seat_locker.all_allowed_for_sale?
         flash[:error] = 'Oops! looks like the seat you tried to booked has been booked by someone else. Please reload and try again.'
       else
-        flash[:error] = 'Oops! looks like someone else is trying to book one of the seat you chose. Please choose other seats or wait or some time.'
+        flash[:error] = 'Oops! looks like someone else is trying to book one of the seat you chose. Please choose other seats or wait for some time.'
       end
       redirect_to "/jetsteals/#{@jetsteal_seat_purchaser.jetsteal.id}"
     end
