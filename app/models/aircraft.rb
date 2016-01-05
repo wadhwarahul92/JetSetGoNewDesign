@@ -21,7 +21,8 @@ class Aircraft < ActiveRecord::Base
       :cabin_height_in_meters,
       :cabin_length_in_meters,
       :cabin_width_in_meters,
-      :memorable_name
+      :memorable_name,
+      :crew
   ##################
 
 end
