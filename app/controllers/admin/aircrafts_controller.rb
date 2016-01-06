@@ -53,7 +53,11 @@ class Admin::AircraftsController < Admin::BaseController
                                  :cabin_width_in_meters,
                                  :cabin_height_in_meters,
                                  :cabin_length_in_meters,
-                                 :memorable_name
+                                 :memorable_name,
+                                 :crew,
+                                 :wifi,
+                                 :phone,
+                                 :flight_attendant
     )
   end
 
