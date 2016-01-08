@@ -14,6 +14,7 @@
         <th>City</th>
         <th>Created By</th>
         <th>Updated By</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
@@ -23,6 +24,11 @@
             <td> <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %> <%= airport.city.name %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
+            <td>
+              <%= link_to edit_admin_airport_path(airport) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
           </tr>
       <%- end %>
       </tbody>
