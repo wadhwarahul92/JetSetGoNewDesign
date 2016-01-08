@@ -25,7 +25,9 @@ class Admin::AirportsController < Admin::BaseController
   def airport_params
     params.require(:airport).permit(
                                 :name,
-                                :city_id
+                                :city_id,
+                                :Longitude,
+                                :latitude
     )
   end
 
