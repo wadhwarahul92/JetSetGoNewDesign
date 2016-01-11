@@ -42,8 +42,13 @@
               <li data-toggle="tooltip" title="Takes Off At"><i class="fa fa-clock-o"></i> <%= jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></li>
             </ul>
           </li>
-          <li>
+          <li class="pull-right">
             <div><a class="btn btn-blue" href="/jetsteals/<%= jetsteal.id %>">View Details</a></div>
+            <% if jetsteal.can_be_sold_as_whole? %>
+              <div class="margin-top">
+                <%= link_to 'Book Plane', buy_as_whole_jetsteals_jetsteal_path(jetsteal), class: 'btn btn-blue btn-padded', remote: true %>
+              </div>
+            <%- end %>
             <div class="margin-top"><a class="btn btn-blue btn-padded" href="/jetsteals/<%= jetsteal.id %>">Book seats</a></div>
           </li>
         </ul>
