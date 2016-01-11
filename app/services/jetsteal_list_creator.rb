@@ -20,7 +20,7 @@ class JetstealListCreator
 
     filter_facilities
 
-    @list
+    @list.distinct
   end
 
   private
