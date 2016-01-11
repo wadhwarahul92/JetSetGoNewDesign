@@ -44,6 +44,18 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'query_diet'
+
+  gem 'letter_opener'
+
+  gem 'dotenv-rails'
+end
+
+group :production do
+  gem 'rails_12factor'
+
+  gem 'exception_notification'
 end
 
 gem 'simple_form'
@@ -61,18 +73,10 @@ gem 'paperclip', '~> 4.3'
 
 gem 'aws-sdk'
 
-gem 'rails_12factor', group: :production
-
 gem 'paper_trail', '~> 4.0.0'
 
 gem 'will_paginate'
 
-gem 'letter_opener', :group => :development
-
-gem 'dotenv-rails', :groups => [:development, :test]
-
 gem 'wicked_pdf'
 
 gem 'wkhtmltopdf-binary'
-
-gem 'exception_notification', group: :production

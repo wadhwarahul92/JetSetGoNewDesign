@@ -12,6 +12,7 @@
   <%= render partial: 'shared/zendesk_widget' %>
 </head>
 <body>
+<%= query_diet_widget if Rails.env.development? %>
 <%= render partial: 'jetsteals/shared/header' %>
 <div class="container-fluid">
   <%= yield %>
