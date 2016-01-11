@@ -2,6 +2,8 @@
 json.array! @airports do |airport|
   json.id airport.id
   json.name airport.name
+  json.longitude airport.longitude
+  json.latitude airport.latitude
   json.city {
     json.id airport.city.id
     json.name airport.city.name
