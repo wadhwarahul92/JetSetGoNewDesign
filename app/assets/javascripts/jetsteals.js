@@ -20,6 +20,6 @@ $(document).on('mouseenter', '[data-toggle=tooltip]', function(){
 ////////////////
 //ENABLE SELECT2
 $(document).on('ready page:load', function(){
-    $('#departure_airport_id,#arrival_airport_id').select2();
+    $('#departure_airport_id,#arrival_airport_id,#aircraft_type_id').select2();
 });
 ////////////////
