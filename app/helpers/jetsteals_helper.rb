@@ -26,4 +26,20 @@ module JetstealsHelper
     view.html_safe
   end
 
+  def jetsteal_inline_icons(jetsteal)
+    seat    = jetsteal.aircraft.seating_capacity
+    wifi    = jetsteal.aircraft.wifi
+    phone   = jetsteal.aircraft.phone
+    attendant  = jetsteal.aircraft.flight_attendant
+
+
+    view = ' '
+    view += "<li data-toggle='tooltip' title='Seating capacity'><i class='fa fa-user'> #{seat}</i></li>" if seat.present?
+    view += "<li data-toggle='tooltip' title='Wifi'><i class='fa fa-wifi'></i></li>" if wifi && !params[:wifi].present?
+    view += "<li data-toggle='tooltip' title='phone'><i class='fa fa-phone'></i></li>" if phone && !params[:phone].present?
+    view += "<li data-toggle='tooltip' title='Flight Attendant'><i class='fa fa-female '></i> #{attendant}</li> " if attendant.present? && !(attendant < 1) && !params[:flight_attendant].present?
+
+    view.html_safe
+  end
+
 end

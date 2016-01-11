@@ -19,6 +19,30 @@
                 <h5 class="highlight-dark-color"><%= @jetsteals.first.arrival_airport.city.name %></h5>
               </li>
           <%- end %>
+          <% if params[:wifi].present? %>
+              <li class='text-center' data-toggle='tooltip' title='Wifi'>
+                <h4 class="highlight-color">Wifi</h4>
+                <i class='fa fa-wifi fa-4x'></i>
+              </li>
+          <% end %>
+          <% if params[:phone].present? %>
+              <li class='text-center' data-toggle='tooltip' title='Phone'>
+                <h4 class="highlight-color">Phone</h4>
+                <i class='fa fa-phone fa-4x'></i>
+              </li>
+          <% end %>
+          <% if params[:flight_attendant].present? %>
+              <li class='text-center' data-toggle='tooltip' title='Phone'>
+                <h4 class="highlight-color">Flight Attendant</h4>
+                <i class='fa fa-female fa-4x'></i>
+              </li>
+          <% end %>
+          <% if params[:aircraft_type_id].present? %>
+              <li class='text-center svg-filter-box' data-toggle='tooltip' title='Aircraft Type'>
+                <h4 class="highlight-color">Aircraft Type</h4>
+                <i><%= @jetsteals.first.aircraft.aircraft_type.svg.try(:html_safe)%></i>
+              </li>
+          <% end %>
         </ul>
         <%= render partial: 'jetsteals/lists/listing' %>
       </div>
