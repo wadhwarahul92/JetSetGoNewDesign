@@ -47,7 +47,7 @@ json.array! @jetsteals do |jetsteal|
     json.crew aircraft.crew
     json.wifi aircraft.wifi?
     json.phone aircraft.phone?
-    json.flight_attendant aircraft.flight_attendant
+    json.flight_attendant aircraft.flight_attendant?
     json.aircraft_type do
       aircraft_type = aircraft.aircraft_type
       json.id aircraft_type.id
