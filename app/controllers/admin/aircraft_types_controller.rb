@@ -40,7 +40,8 @@ class Admin::AircraftTypesController < Admin::BaseController
   def aircraft_type_params
     params.require(:aircraft_type).permit(
                                       :name,
-                                      :svg
+                                      :svg,
+                                      :speed_in_kts
     )
   end
 
