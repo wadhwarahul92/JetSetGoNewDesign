@@ -5,7 +5,8 @@ module AircraftTypesHelper
   end
 
   def current_aircraft_types_for_collection(jetsteals)
-    jetsteals.collect{ |c| [c.aircraft.aircraft_type.name, c.aircraft.aircraft_type.id] }.uniq
+    aircraft_types = jetsteals.map{ |j| j.aircraft.aircraft_type }.uniq
+    aircraft_types.collect{ |a| [a.name, a.id] }
   end
 
 end

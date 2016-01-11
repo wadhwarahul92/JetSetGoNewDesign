@@ -7,35 +7,39 @@ class JetstealListCreator
   end
 
   def generate_list
-    @list = Jetsteal.ready_for_sale.includes(:departure_airport, :arrival_airport, :aircraft, :jetsteal_seats)
+
+    @list = Jetsteal.ready_for_sale.includes(:departure_airport, :arrival_airport).joins(
+        'LEFT OUTER JOIN aircrafts ON jetsteals.aircraft_id = aircrafts.id'
+    ).joins(
+         'LEFT OUTER JOIN aircraft_types ON aircrafts.aircraft_type_id = aircrafts.id'
+    )
+
     @list = @list.where(departure_airport_id: @params[:departure_airport_id]) if @params[:departure_airport_id].present?
+
     @list = @list.where(arrival_airport_id: @params[:arrival_airport_id]) if @params[:arrival_airport_id].present?
-    @list = filter_by_aircraft_id(@list) if @params[:aircraft_type_id].present?
-    @list = filter_by_wifi(@list) if @params[:wifi].present? && @params[:wifi] == 'Yes'
-    @list = filter_by_phone(@list) if @params[:phone].present? && @params[:phone] == 'Yes'
-    @list = filter_by_condition(@list, @params[:crew], 'crew') if @params[:crew].present?
-    @list = filter_by_condition(@list, @params[:flight_attendant], 'flight_attendant') if @params[:flight_attendant].present?
+
+    filter_facilities
+
     @list
   end
 
-  def filter_by_aircraft_id(list)
-    list.joins(:aircraft).merge(Aircraft.where(:aircraft_type_id => @params[:aircraft_type_id]))
-  end
+  private
 
-  def filter_by_wifi(list)
-    list.joins(:aircraft).merge(Aircraft.where(:wifi => true))
-  end
+  def filter_facilities
 
-  def filter_by_phone(list)
-    list.joins(:aircraft).merge(Aircraft.where(phone: true))
-  end
+    [:wifi, :phone, :flight_attendant].each do |attr|
 
-  def filter_by_condition(list,condition1,condition2)
-    if condition1 == 'Yes'
-      list.joins(:aircraft).merge(Aircraft.where("#{condition2} > 0"))
-    else
-      list.joins(:aircraft).merge(Aircraft.where("#{condition2} < 1"))
+      case @params[attr]
+        when 'Yes'
+          @list = @list.where("aircrafts.#{attr.to_s} IS TRUE")
+        when 'No'
+          @list = @list.where("aircrafts.#{attr.to_s} IS FALSE OR aircrafts.#{attr.to_s} IS NULL")
+        else
+          #do nothing
+      end
+
     end
+
   end
 
 end
