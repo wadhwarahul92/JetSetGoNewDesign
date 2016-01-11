@@ -45,8 +45,8 @@ json.array! @jetsteals do |jetsteal|
     json.cabin_length_in_meters aircraft.cabin_length_in_meters
     json.aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:large) }
     json.crew aircraft.crew
-    json.wifi aircraft.wifi
-    json.phone aircraft.phone
+    json.wifi aircraft.wifi?
+    json.phone aircraft.phone?
     json.flight_attendant aircraft.flight_attendant
     json.aircraft_type do
       aircraft_type = aircraft.aircraft_type
