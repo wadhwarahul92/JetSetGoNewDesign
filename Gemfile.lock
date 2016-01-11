@@ -118,6 +118,7 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     puma (2.15.3)
+    query_diet (0.5.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -214,6 +215,7 @@ DEPENDENCIES
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)
   puma
+  query_diet
   rack-timeout
   rails (= 4.2.5)
   rails_12factor
