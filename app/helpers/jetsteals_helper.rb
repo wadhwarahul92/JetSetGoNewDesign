@@ -15,7 +15,7 @@ module JetstealsHelper
     view = ''
     view += "<div class='col-sm-6'><i class='fa fa-wifi' data-toggle='tooltip' data-original-title='Wifi'></i></div>" if wifi
     view += "<div class='col-sm-6'><i class='fa fa-phone' data-toggle='tooltip' data-original-title='Phone'></i></div>" if phone
-    view += "<div class='col-sm-6'><i class='fa fa-female' data-toggle='tooltip' data-original-title='Flight Attendant'></i> #{attendant}</div>" if attendant.present? && !(attendant < 1)
+    view += "<div class='col-sm-6'><i class='fa fa-female' data-toggle='tooltip' data-original-title='Flight Attendant'></i></div>" if attendant
     view += "<div class='col-sm-6'><i class='fa fa-wifi' data-toggle='tooltip' data-original-title='Crew'></i> #{crew}</div>" if crew.present?
     view += "<div class='col-sm-6'><i class='fa fa-user' data-toggle='tooltip' data-original-title='Seats'></i> #{seat}</div>" if seat.present?
     view += "<div class='col-sm-6'><i class='fa fa-fighter-jet' data-toggle='tooltip' data-original-title='Height'></i><i class='fa fa-arrows-v'></i> #{height} ft</div>" if height.present?
@@ -37,7 +37,7 @@ module JetstealsHelper
     view += "<li data-toggle='tooltip' title='Seating capacity'><i class='fa fa-user'> #{seat}</i></li>" if seat.present?
     view += "<li data-toggle='tooltip' title='Wifi'><i class='fa fa-wifi'></i></li>" if wifi && !params[:wifi].present?
     view += "<li data-toggle='tooltip' title='phone'><i class='fa fa-phone'></i></li>" if phone && !params[:phone].present?
-    view += "<li data-toggle='tooltip' title='Flight Attendant'><i class='fa fa-female '></i> #{attendant}</li> " if attendant.present? && !(attendant < 1) && !params[:flight_attendant].present?
+    view += "<li data-toggle='tooltip' title='Flight Attendant'><i class='fa fa-female '></i> #{attendant}</li> " if attendant
 
     view.html_safe
   end
