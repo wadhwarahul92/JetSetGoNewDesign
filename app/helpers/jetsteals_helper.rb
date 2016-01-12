@@ -34,10 +34,10 @@ module JetstealsHelper
 
 
     view = ' '
-    view += "<li data-toggle='tooltip' title='Seating capacity'><i class='fa fa-user'> #{seat}</i></li>" if seat.present?
+    view += "<li data-toggle='tooltip' title='Seating capacity'><i class='fa fa-user'></i> #{seat}</li>" if seat.present?
     view += "<li data-toggle='tooltip' title='Wifi'><i class='fa fa-wifi'></i></li>" if wifi && !params[:wifi].present?
     view += "<li data-toggle='tooltip' title='phone'><i class='fa fa-phone'></i></li>" if phone && !params[:phone].present?
-    view += "<li data-toggle='tooltip' title='Flight Attendant'><i class='fa fa-female '></i> #{attendant}</li> " if attendant
+    view += "<li data-toggle='tooltip' title='Flight Attendant'><i class='fa fa-female '></i></li> " if attendant
 
     view.html_safe
   end
