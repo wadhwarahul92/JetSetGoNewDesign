@@ -2,10 +2,10 @@
   <legend class="main-blue-color"><small>Filter</small></legend>
   <%= form_tag jetsteals_jetsteals_path, id: 'jetsteals_filter_form', method: :get do %>
       <div class="form-group">
-        <%= select_tag :departure_airport_id, options_for_select(airports_for_collection, params[:departure_airport_id]), prompt: 'Choose departure airport', class: 'form-control auto-submit' %>
+        <%= select_tag :departure_airport_id, options_for_select(airports_for_collection_from_jetsteals(@jetsteals, 'departure'), params[:departure_airport_id]), prompt: 'Choose departure airport', class: 'form-control auto-submit' %>
       </div>
       <div class="form-group">
-        <%= select_tag :arrival_airport_id, options_for_select(airports_for_collection, params[:arrival_airport_id]), prompt: 'Choose arrival airport', class: 'form-control auto-submit' %>
+        <%= select_tag :arrival_airport_id, options_for_select(airports_for_collection_from_jetsteals(@jetsteals, 'arrival'), params[:arrival_airport_id]), prompt: 'Choose arrival airport', class: 'form-control auto-submit' %>
       </div>
       <div class="form-group">
         <%= select_tag :aircraft_type_id, options_for_select(current_aircraft_types_for_collection(@jetsteals), params[:aircraft_type_id]), prompt: 'Choose aircraft type', class: 'form-control auto-submit' %>
