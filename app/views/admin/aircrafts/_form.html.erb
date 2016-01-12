@@ -5,8 +5,8 @@
         <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
         <%= f.input :tail_number %>
         <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
-        <% [:wifi,:phone].each do |attr| %>
-            <div class="col-sm-6">
+        <% [:wifi,:phone,:flight_attendant].each do |attr| %>
+            <div class="col-sm-4">
               <%= f.input(attr, :value => true) %>
             </div>
         <%- end %>
@@ -21,8 +21,7 @@
             :cabin_width_in_meters,
             :cabin_height_in_meters,
             :cabin_length_in_meters,
-            :crew,
-            :flight_attendant].each do |attr| %>
+            :crew].each do |attr| %>
             <%= f.input(attr) %>
         <%- end %>
       </div>
