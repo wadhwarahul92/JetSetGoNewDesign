@@ -33,7 +33,7 @@
               <%= jetsteal.aircraft.memorable_name %>
             </h3>
             <ul class="list-inline">
-              <%= ("<li><i class='fa fa-plane'></i>#{jetsteal.aircraft.aircraft_type.name}(#{jetsteal.aircraft.tail_number})").html_safe unless params[:aircraft_type_id].present?%>
+              <%= ("<li><i class='fa fa-plane'></i> #{jetsteal.aircraft.aircraft_type.name}(#{jetsteal.aircraft.tail_number})").html_safe unless params[:aircraft_type_id].present?%>
             </ul>
             <ul class="list-inline">
               <%= jetsteal_inline_icons(jetsteal) %>
@@ -42,7 +42,7 @@
               <li data-toggle="tooltip" title="Takes Off At"><i class="fa fa-clock-o"></i> <%= jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></li>
             </ul>
           </li>
-          <li class="pull-right">
+          <li class="">
             <div><a class="btn btn-blue" href="/jetsteals/<%= jetsteal.id %>">View Details</a></div>
             <% if jetsteal.can_be_sold_as_whole? %>
               <div class="margin-top">

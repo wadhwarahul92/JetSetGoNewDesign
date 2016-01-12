@@ -21,7 +21,7 @@
           <%- end %>
           <% if params[:aircraft_type_id].present? %>
               <li class='text-center svg-filter-box' data-toggle='tooltip' title='Aircraft Type'>
-                <h4 class="highlight-color">Flying in</h4>
+                <!--<h4 class="highlight-color">Flying in</h4>-->
                 <span class="city_image"><%= @jetsteals.first.aircraft.aircraft_type.svg.try(:html_safe)%></span>
                 <h5 class="highlight-dark-color"><%= @jetsteals.first.aircraft.aircraft_type.name %></h5>
               </li>
