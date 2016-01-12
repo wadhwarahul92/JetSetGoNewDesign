@@ -1,7 +1,7 @@
 module AirportsHelper
 
   def airports_for_collection
-    Airport.all.collect{ |a| [a.name, a.id] }
+    Airport.includes(:city).all.collect{ |a| ["#{a.city.name} - #{a.name}", a.id] }
   end
 
 end
