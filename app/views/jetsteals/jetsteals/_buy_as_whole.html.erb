@@ -1,0 +1,69 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" id="modal_opener" style="display: none" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!--checkout modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title highlight-color text-center" id="myModalLabel">Checkout</h4>
+      </div>
+      <%= form_tag '/payment_transactions/create', id: 'transaction_form' do %>
+          <div class="modal-body">
+            <input type="hidden" value="sell_as_whole" name="sell_as_whole">
+            <input type="hidden" value="<%= @jetsteal.id %>" id="jetsteal_id" name="jetsteal_id">
+            <% @jetsteal.jetsteal_seats.each do |seat| %>
+                <input type="hidden" name="jetsteal_seat_ids[]" value="<%= seat.id %>">
+            <%- end %>
+            <div class="row">
+              <div class="col-sm-12">
+                <h4 class="highlight-dark-color">Contact Info</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
+              </div>
+              <div class="col-sm-6">
+                <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 margin-top">
+                <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
+              </div>
+              <div class="col-sm-6 margin-top">
+                <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
+              </div>
+            </div>
+            <div class="row margin-top">
+              <div class="col-sm-12">
+                <h4 class="highlight-dark-color">Payment Details</h4>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <strong>No of seats:</strong> <%= @jetsteal.jetsteal_seats.count %>
+                    <strong>Total Cost: </strong> ₹ <%= @jetsteal.cost %>
+                  </div>
+                  <div class="col-sm-12 margin-top">
+                    <small class="highlight-color"><i class="fa fa-info"></i> We use PayU Biz for payment transactions.</small>
+                    <br>
+                    <small class="highlight-color"><i class="fa fa-info"></i> You will get full details and confirmation on email after successful payment.</small>
+                    <br>
+                    <small class="highlight-color"><i class="fa fa-info"></i> Our operations team and customer support is available 24/7 for you.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-blue">Proceed</button>
+          </div>
+      <%- end %>
+    </div>
+  </div>
+</div>
+<!--checkout modal-->

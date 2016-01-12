@@ -1,0 +1,17 @@
+<% if @jetsteal.can_be_sold_as_whole? %>
+(function(){
+  var $tmpHtmlHolder = $('#tmp_html_holder');
+  if($tmpHtmlHolder && $tmpHtmlHolder.length > 0){
+    $tmpHtmlHolder.empty();
+  }else{
+    $('body').append('<div id="tmp_html_holder"></div>');
+    $tmpHtmlHolder = $('#tmp_html_holder');
+  }
+  $tmpHtmlHolder.append("<%= escape_javascript(render partial: 'buy_as_whole') %>");
+  $('#modal_opener')[0].click();
+})();
+<%- else %>
+(function(){
+  alert('Looks like some of the seats on this plane are already booked.');
+})();
+<%- end %>
