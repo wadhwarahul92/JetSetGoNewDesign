@@ -99,7 +99,7 @@ class PaymentTransactionsController < ApplicationController
     begin;@transaction = find_payment_transaction;end
     begin;@jetsteal_seats = find_jetsteal_seats;end
     if @transaction.present?
-      transaction.update_attributes!(
+      @transaction.update_attributes!(
           status: 'failure',
           processor_response: @response_data.to_s
       )
