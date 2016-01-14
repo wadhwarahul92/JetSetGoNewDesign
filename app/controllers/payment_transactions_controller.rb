@@ -76,7 +76,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def find_jetsteal_seats
-    JetstealSeat.where(id: JSON.parse(@response_data['merchant_param1']))
+    JetstealSeat.where(id: @response_data['merchant_param1'].split(',').map(&:to_i))
   end
 
   def find_jetsteal
