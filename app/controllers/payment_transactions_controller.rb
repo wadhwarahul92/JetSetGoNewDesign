@@ -47,6 +47,7 @@ class PaymentTransactionsController < ApplicationController
       SmsDelivery.new(@contact.phone.to_s, SmsTemplates.thanks_for_payment('Jetsteal')).delay.deliver
       redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
     else
+      to_do_on_failure
       render action: :failure
     end
   end
@@ -63,17 +64,7 @@ class PaymentTransactionsController < ApplicationController
 
   def failure
     decrypt_params if params[:encResp].present?
-    @jetsteal = nil;@transaction = nil;@jetsteal_seats = nil
-    begin;@jetsteal = find_jetsteal;end
-    begin;@transaction = find_payment_transaction;end
-    begin;@jetsteal_seats = find_jetsteal_seats;end
-    #unlock seats
-    if @jetsteal_seats.present? and @jetsteal_seats.any?
-      @jetsteal_seats.update_all( locked_at: nil )
-    end
-    if @response_data['failure_message'].present?
-      @failure_message = @response_data['failure_message']
-    end
+    to_do_on_failure
   end
 
   private
@@ -100,6 +91,17 @@ class PaymentTransactionsController < ApplicationController
     decrypted_string.split('&').each do |data|
       @response_data[data.split('=')[0]] = data.split('=')[1]
     end
+  end
+
+  def to_do_on_failure
+    @jetsteal = nil;@transaction = nil;@jetsteal_seats = nil
+    begin;@jetsteal = find_jetsteal;end
+    begin;@transaction = find_payment_transaction;end
+    begin;@jetsteal_seats = find_jetsteal_seats;end
+    #unlock seats
+    @jetsteal_seats.update_all( locked_at: nil ) if @jetsteal_seats.present? and @jetsteal_seats.any?
+    #set message to show on view
+    @failure_message = @response_data['failure_message'] if @response_data['failure_message'].present?
   end
 
 end
