@@ -80,3 +80,5 @@ gem 'will_paginate'
 gem 'wicked_pdf'
 
 gem 'wkhtmltopdf-binary'
+
+gem 'bootstrap-datepicker-rails'

@@ -2,5 +2,6 @@
  *= require_tree ./jetsteals
  *= require_tree ./common
  *= require ./vendors/lightbox
+ *= require bootstrap-datepicker
  *= require_self
  */

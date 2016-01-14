@@ -6,6 +6,7 @@
 //= require ./vendors/jquery_validate
 //= require ./vendors/lightbox
 //= require_tree ./jetsteals
+//= require bootstrap-datepicker
 
 try {
     Turbolinks.enableProgressBar();

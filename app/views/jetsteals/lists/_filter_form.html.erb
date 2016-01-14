@@ -1,6 +1,19 @@
 <fieldset>
-  <legend class="main-blue-color"><small>Filter</small></legend>
+  <legend class="main-blue-color">
+    <small><i class="fa fa-filter"></i> Filters</small>
+  </legend>
   <%= form_tag jetsteals_jetsteals_path, id: 'jetsteals_filter_form', method: :get do %>
+        <%
+           if params[:departure_airport_id].present? ||
+               params[:arrival_airport_id].present? ||
+               params[:aircraft_type_id].present? ||
+               params[:wifi].present? ||
+               params[:phone].present? ||
+               params[:flight_attendant].present? ||
+               params[:end_at].present?
+        %>
+            <small class="pull-right font-small"><a href="/jetsteals/list"><i class="fa fa-refresh"></i> clear filters</a></small>
+        <%- end %>
       <div class="form-group">
         <%= select_tag :departure_airport_id, options_for_select(airports_for_collection_from_jetsteals(@jetsteals, 'departure'), params[:departure_airport_id]), prompt: 'Choose departure airport', class: 'form-control auto-submit' %>
       </div>
@@ -18,6 +31,9 @@
       </div>
       <div class="form-group">
         <%= select_tag :flight_attendant, options_for_select(%w(Yes No), params[:flight_attendant]), prompt: 'Want flight attendant?', class: 'form-control auto-submit' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :end_at, params[:end_at], class: 'form-control', placeholder: 'Date of flight', 'data-provide' => 'datepicker', 'data-date-format' => 'dd M yyyy' %>
       </div>
   <%- end %>
 </fieldset>
