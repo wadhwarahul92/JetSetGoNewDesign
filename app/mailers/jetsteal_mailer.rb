@@ -5,7 +5,7 @@ class JetstealMailer < ApplicationMailer
          subject: 'Test to see mails are actually running'
   end
 
-  def jesteal_seat_confirmation(jetsteal, jetsteal_seats, transaction, contact)
+  def jetsteal_seat_confirmation(jetsteal, jetsteal_seats, transaction, contact)
     @jetsteal = jetsteal
     @jetsteal_seats = jetsteal_seats
     @transaction = transaction

@@ -39,11 +39,11 @@ class PaymentTransactionsController < ApplicationController
       @contact = Contact.find(transaction.contact_id)
       transaction.update_attributes!(
           status: 'success',
-          processor_response: params.to_s
+          processor_response: @response_data.to_s
       )
       #adding transaction id to jetsteal seat books it
       @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
-      JetstealMailer.jesteal_seat_confirmation(@jetsteal, @jetsteal_seats.to_a, transaction, @contact).deliver_later
+      JetstealMailer.jetsteal_seat_confirmation(@jetsteal, @jetsteal_seats.to_a, transaction, @contact).deliver_later
       SmsDelivery.new(@contact.phone.to_s, SmsTemplates.thanks_for_payment('Jetsteal')).delay.deliver
       redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
     else
