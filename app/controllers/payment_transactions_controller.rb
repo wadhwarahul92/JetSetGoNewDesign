@@ -62,7 +62,18 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def failure
-    #possibly unlock all seats here.
+    decrypt_params if params[:encResp].present?
+    @jetsteal = nil;@transaction = nil;@jetsteal_seats = nil
+    begin;@jetsteal = find_jetsteal;end
+    begin;@transaction = find_payment_transaction;end
+    begin;@jetsteal_seats = find_jetsteal_seats;end
+    #unlock seats
+    if @jetsteal_seats.present? and @jetsteal_seats.any?
+      @jetsteal_seats.update_all( locked_at: nil )
+    end
+    if @response_data['failure_message'].present?
+      @failure_message = @response_data['failure_message']
+    end
   end
 
   private
