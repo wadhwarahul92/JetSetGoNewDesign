@@ -47,10 +47,17 @@ class PaymentTransactionsController < ApplicationController
         @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
         JetstealMailer.jesteal_seat_confirmation(@jetsteal, @jetsteal_seats.to_a, transaction, @contact).deliver_later
         SmsDelivery.new(@contact.phone.to_s, SmsTemplates.thanks_for_payment('Jetsteal')).delay.deliver
+        redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
       else
         render action: :failure
       end
     end
+  end
+
+  def payment_success
+    @jetsteal = Jetsteal.find params[:jetsteal_id]
+    @jetsteal_seats = JetstealSeat.where(id: params[:jetsteal_seat_ids])
+    render action: :success
   end
 
   def cancel
