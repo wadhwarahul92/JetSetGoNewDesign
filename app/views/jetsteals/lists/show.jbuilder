@@ -4,6 +4,7 @@ json.sell_by_seats jetsteal.sell_by_seats?
 json.start_at jetsteal.start_at
 json.end_at jetsteal.end_at
 json.cost jetsteal.cost
+json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
 json.departure_airport do
   departure_airport = jetsteal.departure_airport
   json.id departure_airport.id

@@ -13,6 +13,28 @@
     <%= f.input :sell_by_seats, label: 'Select if selling by seats, or leave if selling trip as a whole' %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
+    <div class="form-group jetsteals-form form-inline">
+      <%= f.hidden_field :flight_duration_in_minutes %>
+      <label class="control-label" style='margin-bottom: 5px;' >
+        <abbr title="required">*</abbr>
+        Flight duration
+      </label>
+      <div>
+      <select class='hour form-control'>
+        <option value=''>Hr</option>
+        <% (0..23).each do |i| %>
+            <%= "<option value='#{i}'>#{i}</option>".html_safe %>
+        <%end%>
+      </select>
+      :
+      <select class='minute form-control'>
+        <option value=''>min</option>
+        <% (0..59).each do |i| %>
+            <%= "<option value='#{i}'>#{i}</option>".html_safe %>
+        <%end%>
+      </select>
+      </div>
+    </div>
     <%= f.input :cost, placeholder: "Don't put cost if selling by seats" %>
     <%= f.submit 'Save', class: 'btn btn-success' %>
 <%- end %>
