@@ -107,7 +107,7 @@ class PaymentTransactionsController < ApplicationController
     #unlock seats
     @jetsteal_seats.update_all( locked_at: nil ) if @jetsteal_seats.present? and @jetsteal_seats.any?
     #set message to show on view
-    @failure_message = @response_data['failure_message'] if @response_data['failure_message'].present?
+    @failure_message = (@response_data['failure_message'] || @response_data['status_message']) if @response_data['failure_message'].present?
   end
 
 end
