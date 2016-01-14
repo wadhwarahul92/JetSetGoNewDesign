@@ -76,11 +76,11 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def find_jetsteal_seats
-    JetstealSeat.where(id: @response_data['merchant_param1'].split(',').map(&:to_i))
+    JetstealSeat.where(id: @response_data['merchant_param2'].split(',').map(&:to_i))
   end
 
   def find_jetsteal
-    Jetsteal.find @response_data['merchant_param2']
+    Jetsteal.find @response_data['merchant_param3']
   end
 
   def decrypt_params

@@ -17,8 +17,9 @@
        'billing_name' => @jetsteal_seat_purchaser.contact.full_name,
        'billing_email' => @jetsteal_seat_purchaser.contact.email,
        'billing_tel' => @jetsteal_seat_purchaser.contact.phone,
-       'merchant_param1' => @jetsteal_seat_purchaser.jetsteal_seats.map(&:id).to_s,
-       'merchant_param2' => @jetsteal_seat_purchaser.jetsteal.id
+       'merchant_param1' => 'Product Info: JetSteals',
+       'merchant_param2' => @jetsteal_seat_purchaser.jetsteal_seats.map(&:id).to_s,
+       'merchant_param3' => @jetsteal_seat_purchaser.jetsteal.id
    }.each_pair do |key, value|
      merchant_data += key.to_s+'='+value.to_s+'&'
    end
