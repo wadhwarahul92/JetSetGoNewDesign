@@ -3,7 +3,10 @@ class Jetsteals::JetstealsController < Jetsteals::BaseController
   before_action :set_jetsteal
 
   def buy_as_whole
-    @whole_jet = params[:buy_as_whole] if params[:buy_as_whole].present?
+    respond_to do |format|
+      format.html{ redirect_to "/jetsteals/list?btn_click=#{params[:buy_as_whole]}" }
+      format.js
+    end
   end
 
   private
