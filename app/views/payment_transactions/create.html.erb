@@ -1,31 +1,38 @@
 <h1 class="text-center">Please don't refresh or exit the browser window. This will just take few seconds.</h1>
 <%
-   txnid = nil
-   if Rails.env == 'production'
-     #todo change this
-     txnid = @jetsteal_seat_purchaser.payment_transaction.id - 99999999
-   else
-     txnid = @jetsteal_seat_purchaser.payment_transaction.id - 99999999
-   end
-
    amount = params[:sell_as_whole] == 'sell_as_whole' ? @jetsteal_seat_purchaser.jetsteal.cost : @jetsteal_seat_purchaser.amount
 
+   working_key = CC_WORKING_KEY
+
+   merchant_data = ''
+
+   {
+       'merchant_id' => CC_MERCHANT_ID,
+       'order_id' => @jetsteal_seat_purchaser.payment_transaction.id,
+       'amount' => sprintf('%.2f', amount),
+       'currency' => 'INR',
+       'redirect_url' => "#{request.base_url}/payment_transactions/success",
+       'cancel_url' => "#{request.base_url}/payment_transactions/cancel",
+       'language' => 'EN',
+       'billing_name' => @jetsteal_seat_purchaser.contact.full_name,
+       'billing_email' => @jetsteal_seat_purchaser.contact.email,
+       'billing_tel' => @jetsteal_seat_purchaser.contact.phone,
+       'merchant_param1' => @jetsteal_seat_purchaser.jetsteal_seats.map(&:id).to_s,
+       'merchant_param2' => @jetsteal_seat_purchaser.jetsteal.id
+   }.each_pair do |key, value|
+     merchant_data += key.to_s+'='+value.to_s+'&'
+   end
+
+   crypto = CcCrypto.new
+
+   encrypted_data = crypto.encrypt(merchant_data,working_key)
+
 %>
-<form action='https://test.payu.in/_payment' name="payuform" method='post' style="display: none">
-  <input type="hidden" name="firstname" value="<%= @jetsteal_seat_purchaser.contact.first_name %>" />
-  <input type="hidden" name="lastname" value="<%= @jetsteal_seat_purchaser.contact.last_name %>" />
-  <input type="hidden" name="surl" value="<%= request.base_url %>/payment_transactions/success" />
-  <input type="hidden" name="phone" value="<%= @jetsteal_seat_purchaser.contact.phone %>" />
-  <input type="hidden" name="key" value="<%= PAYU_ID %>" />
-  <input type="hidden" name="hash" value = "<%= Digest::SHA2.new(512).hexdigest("#{PAYU_ID}|#{txnid}|#{sprintf('%.2f', amount)}|JetstealSeats|#{@jetsteal_seat_purchaser.contact.first_name}|#{@jetsteal_seat_purchaser.contact.email}|#{@jetsteal_seat_purchaser.jetsteal_seats.map(&:id).to_s}|#{@jetsteal_seat_purchaser.jetsteal.id}|||||||||#{PAYU_SALT}") %>" />
-  <input type="hidden" name="curl" value="<%= request.base_url %>/payment_transactions/failure" />
-  <input type="hidden" name="furl" value="<%= request.base_url %>/payment_transactions/cancel" />
-  <input type="hidden" name="txnid" value="<%= txnid %>" />
-  <input type="hidden" name="productinfo" value="JetstealSeats" />
-  <input type="hidden" name="amount" value="<%= sprintf('%.2f', amount) %>" />
-  <input type="hidden" name="email" value="<%= @jetsteal_seat_purchaser.contact.email %>" />
-  <input type="hidden" name="udf1" value="<%= @jetsteal_seat_purchaser.jetsteal_seats.map(&:id).to_s %>">
-  <input type="hidden" name="udf2" value="<%= @jetsteal_seat_purchaser.jetsteal.id %>">
+<form action='<%= CC_URL %>/transaction/transaction.do?command=initiateTransaction' name="payuform" method='post' style="display: none">
+
+  <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
+  <input type="hidden" name="access_code" value="<%= CC_ACCESS_KEY %>" />
+
   <input type= "submit" value="submit">
 </form>
 <script>
