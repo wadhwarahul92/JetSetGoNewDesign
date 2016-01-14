@@ -98,6 +98,12 @@ class PaymentTransactionsController < ApplicationController
     begin;@jetsteal = find_jetsteal;end
     begin;@transaction = find_payment_transaction;end
     begin;@jetsteal_seats = find_jetsteal_seats;end
+    if @transaction.present?
+      transaction.update_attributes!(
+          status: 'failure',
+          processor_response: @response_data.to_s
+      )
+    end
     #unlock seats
     @jetsteal_seats.update_all( locked_at: nil ) if @jetsteal_seats.present? and @jetsteal_seats.any?
     #set message to show on view
