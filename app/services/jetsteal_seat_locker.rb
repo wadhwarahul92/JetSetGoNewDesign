@@ -9,7 +9,7 @@ class JetstealSeatLocker
 
   def all_allowed_for_sale?
     @jetsteal_seats.each do |jetsteal_seat|
-      return false if jetsteal_seat.booked? or jetsteal_seat.locked?
+      return false if jetsteal_seat.booked? or jetsteal_seat.locked? or jetsteal_seat.disabled?
     end
     true
   end
