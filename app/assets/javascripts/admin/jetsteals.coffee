@@ -1,21 +1,21 @@
+jetsteals_form = angular.module 'jetsteals_form', []
+
+jetsteals_form.controller 'FormController', [->
+
+  @hr = '0'
+
+  @min_ = '0'
+
+  @flightDurationInMinutes = ->
+    hr = parseInt(@hr)
+    min = parseInt(@min_)
+    parseInt((hr*60) + min)
+
+  undefined
+]
+
+#if pathname = /admin/jetsteals/new, then bootstrap angular app to it
 $(document).on('ready page:load', ->
-  total_minutes = ''
-  hours_in_minutes = ''
-  minutes = ''
-  $('.jetsteals-form .hour').on('blur', ->
-      hours_in_minutes = parseInt(this.value) * 60
-      total_minutes = (parseInt(hours_in_minutes) + parseInt(minutes)).toString()
-      if $('.jetsteals-form .hour').val() != '' && $('.jetsteals-form .minute').val() != ''
-        $('.jetsteals-form #jetsteal_flight_duration_in_minutes').val(total_minutes)
-      else
-        $('.jetsteals-form #jetsteal_flight_duration_in_minutes').val('')
-  )
-  $('.jetsteals-form .minute').on('blur', ->
-      minutes = parseInt(this.value)
-      total_minutes = (parseInt(hours_in_minutes) + parseInt(minutes)).toString()
-      if $('.jetsteals-form .hour').val() != '' && $('.jetsteals-form .minute').val() != ''
-        $('.jetsteals-form #jetsteal_flight_duration_in_minutes').val(total_minutes)
-      else
-        $('.jetsteals-form #jetsteal_flight_duration_in_minutes').val('')
-  )
+  if document.getElementById('new_jetsteal')
+    angular.bootstrap(document, ['jetsteals_form'])
 )

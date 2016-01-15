@@ -26,6 +26,7 @@ class Jetsteal < ActiveRecord::Base
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :flight_duration_in_minutes, presence: true
+
   validate def end_date_after_start_date
     if self.start_at >= self.end_at
       self.errors.add(:end_at, 'must come after Start time')
@@ -40,6 +41,11 @@ class Jetsteal < ActiveRecord::Base
     unless self.sell_by_seats
       self.errors.add(:cost, 'is required if not selling by seats') unless self.cost.present?
     end
+  end
+  validate def flight_time_greater_than_zero
+             if self.flight_duration_in_minutes and self.flight_duration_in_minutes <= 0
+               self.errors.add :flight_duration_in_minutes, 'must be greater than 0'
+             end
   end
 
   ###########

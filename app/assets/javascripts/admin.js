@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree ./common
+//= require ./vendors/angular
 //= require_tree ./admin
 
 try {
