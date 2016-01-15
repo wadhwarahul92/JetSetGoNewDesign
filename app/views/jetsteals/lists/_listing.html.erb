@@ -48,8 +48,11 @@
               <div class="margin-top">
                 <%= link_to 'Book Plane', buy_as_whole_jetsteals_jetsteal_path(jetsteal, buy_as_whole: "buy_as_whole_#{jetsteal.id}"), class: 'btn btn-blue btn-padded',id: "buy_as_whole_#{jetsteal.id}", remote: true %>
               </div>
+            <%- else %>
+                <div class="margin-top">
+                  <a class="btn btn-blue btn-padded" href="/jetsteals/<%= jetsteal.id %>">Book seats</a>
+                </div>
             <%- end %>
-            <div class="margin-top"><a class="btn btn-blue btn-padded" href="/jetsteals/<%= jetsteal.id %>">Book seats</a></div>
           </li>
         </ul>
       </div>
