@@ -58,6 +58,7 @@ class Admin::JetstealsController < Admin::BaseController
                                  :sell_by_seats,
                                  :start_at,
                                  :end_at,
+                                 :flight_duration_in_minutes,
                                  :cost
     )
   end
