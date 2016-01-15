@@ -8,7 +8,9 @@ class JetstealListCreator
 
   def generate_list
 
-    @list = Jetsteal.ready_for_sale.includes(:departure_airport, :arrival_airport).joins(
+    @list = nil
+
+    @list = Jetsteal.ready_for_sale.includes(:departure_airport, :arrival_airport, :jetsteal_seats).joins(
         'LEFT OUTER JOIN aircrafts ON jetsteals.aircraft_id = aircrafts.id'
     ).joins(
          'LEFT OUTER JOIN aircraft_types ON aircrafts.aircraft_type_id = aircrafts.id'
@@ -20,7 +22,7 @@ class JetstealListCreator
 
     filter_facilities
 
-    @list.distinct
+    check_seats(@list.distinct)
   end
 
   private
@@ -40,6 +42,24 @@ class JetstealListCreator
 
     end
 
+  end
+
+  def check_seats(list)
+    final = []
+    list.each do |l|
+      if l.sell_by_seats?
+        a = l.jetsteal_seats.map{ |s| s.booked? or s.locked? or s.disabled? }
+        if a.index(false)
+          final << l
+        end
+      else
+        a = l.jetsteal_seats.map{ |s| s.booked? }
+        if a.index(false)
+          final << l
+        end
+      end
+    end
+    final
   end
 
 end
