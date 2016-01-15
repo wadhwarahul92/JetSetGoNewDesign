@@ -11,7 +11,7 @@ module AirportsHelper
       when 'arrival'
         jetsteals.map(&:arrival_airport).uniq.collect{ |a| ["#{a.city.name} - #{a.name}", a.id] }
       else
-        raise 'Type is required here, dumb-ass'
+        raise 'Type is required here, dumb-ass!'
     end
   end
 

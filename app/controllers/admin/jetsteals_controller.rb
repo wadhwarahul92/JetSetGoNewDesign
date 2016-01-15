@@ -1,10 +1,12 @@
 class Admin::JetstealsController < Admin::BaseController
 
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
-  before_filter :set_jetsteal, only: [:update, :edit, :launch]
+  before_action :set_jetsteal, only: [:update, :edit, :launch]
 
-  before_filter :check_if_launched, only: [:edit, :update]
+  before_action :check_if_launched, only: [:edit, :update]
+
+  before_action :build_jetsteal_seats, only: [:edit, :launch]
 
   def index
     @jetsteals = Jetsteal.includes(:departure_airport).includes(:arrival_airport).includes(:aircraft).order('created_at DESC')
@@ -25,7 +27,7 @@ class Admin::JetstealsController < Admin::BaseController
   end
 
   def edit
-    JetstealSeatsBuilder.new(@jetsteal).build_seats unless @jetsteal.jetsteal_seats.any?
+
   end
 
   def update
@@ -49,6 +51,10 @@ class Admin::JetstealsController < Admin::BaseController
   end
 
   private
+
+  def build_jetsteal_seats
+    JetstealSeatsBuilder.new(@jetsteal).build_seats unless @jetsteal.jetsteal_seats.any?
+  end
 
   def jetsteal_params
     params.require(:jetsteal).permit(

@@ -26,6 +26,7 @@ module JetstealsHelper
     view.html_safe
   end
 
+  # @param [JetSteal] jetsteal
   def jetsteal_inline_icons(jetsteal)
     seat    = jetsteal.aircraft.seating_capacity
     wifi    = jetsteal.aircraft.wifi
