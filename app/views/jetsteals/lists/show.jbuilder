@@ -1,8 +1,8 @@
 jetsteal = @jetsteal
 json.id jetsteal.id
 json.sell_by_seats jetsteal.sell_by_seats?
-json.start_at jetsteal.start_at
-json.end_at jetsteal.end_at
+json.start_at jetsteal.start_at.strftime('%d %b %Y, %I:%M %p')
+json.end_at jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
 json.cost jetsteal.cost
 json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
 json.departure_airport do
