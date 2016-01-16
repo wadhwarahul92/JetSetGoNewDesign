@@ -54,7 +54,7 @@ class PaymentTransactionsController < ApplicationController
       redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
     else
       to_do_on_failure
-      render action: :failure
+      redirect_to action: :failure, encResp: params[:encResp]
     end
   end
 
