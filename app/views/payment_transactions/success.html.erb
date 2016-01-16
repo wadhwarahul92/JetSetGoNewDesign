@@ -18,8 +18,10 @@
     <% @jetsteal_seats.each_with_index do |jetsteal_seat, index| %>
       ui_seat_ids[<%= index %>] = "<%= jetsteal_seat.ui_seat_id %>";
     <%- end %>
+    //fill all seats by available color
     $('path[id^=seat]').css('fill', 'rgb(232, 159, 43)');
     $.each(ui_seat_ids, function(i, ui_seat_id){
+      //fill these seats by booked color
       $("path#"+ui_seat_id).css('fill', 'rgb(43, 99, 174)');
     });
   });
