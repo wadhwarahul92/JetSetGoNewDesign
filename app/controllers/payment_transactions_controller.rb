@@ -54,7 +54,7 @@ class PaymentTransactionsController < ApplicationController
       redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
     else
       to_do_on_failure
-      redirect_to action: :failure, encResp: params[:encResp]
+      redirect_to action: :payment_failure, encResp: params[:encResp]
     end
   end
 
@@ -62,6 +62,12 @@ class PaymentTransactionsController < ApplicationController
     @jetsteal = Jetsteal.find params[:jetsteal_id]
     @jetsteal_seats = JetstealSeat.where(id: params[:jetsteal_seat_ids])
     render action: :success
+  end
+
+  def payment_failure
+    decrypt_params if params[:encResp].present?
+    to_do_on_failure
+    render action: :failure
   end
 
   def cancel

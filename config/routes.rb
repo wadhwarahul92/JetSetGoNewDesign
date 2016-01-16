@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
   get 'payment_success' => 'payment_transactions#payment_success'
 
+  get 'payment_failure' => 'payment_transactions#payment_failure'
+
   root 'jetsteals/welcome#index'
 
   # Example of regular route:
