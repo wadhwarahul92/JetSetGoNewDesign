@@ -70,6 +70,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def cancel
+    @failure_message = 'You cancelled the transaction.'
     render action: :failure
   end
 
