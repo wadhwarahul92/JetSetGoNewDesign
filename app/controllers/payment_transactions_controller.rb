@@ -54,7 +54,7 @@ class PaymentTransactionsController < ApplicationController
       redirect_to action: :payment_success, jetsteal_id: @jetsteal.id, jetsteal_seat_ids: @jetsteal_seats.map(&:id)
     else
       to_do_on_failure
-      redirect_to action: :payment_failure, encResp: params[:encResp]
+      redirect_to action: :payment_failure, failure_message: @failure_message
     end
   end
 
@@ -65,8 +65,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def payment_failure
-    decrypt_params if params[:encResp].present?
-    to_do_on_failure
+    @failure_message = params[:failure_message] if params[:failure_message].present?
     render action: :failure
   end
 
@@ -119,7 +118,7 @@ class PaymentTransactionsController < ApplicationController
     #unlock seats
     @jetsteal_seats.update_all( locked_at: nil ) if @jetsteal_seats.present? and @jetsteal_seats.any?
     #set message to show on view
-    @failure_message = (@response_data['failure_message'] || @response_data['status_message']) if @response_data['failure_message'].present?
+    @failure_message = (@response_data['failure_message'] || @response_data['status_message']) if @response_data['failure_message'].present? or @response_data['status_message'].present?
   end
 
 end
