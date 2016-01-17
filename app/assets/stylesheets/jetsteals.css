@@ -1,4 +1,5 @@
 /*
+ *= require ./vendors/bootstrap
  *= require_tree ./jetsteals
  *= require_tree ./common
  *= require ./vendors/lightbox
