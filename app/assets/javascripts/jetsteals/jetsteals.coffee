@@ -1,11 +1,11 @@
 $(document).on('ready page:load', ->
-  $.each( $('.aircraft_image'), (i, e)->
-    $(e).magnificPopup({
-      type: 'image'
-      delegate: 'img'
-      gallery: { enabled: true }
-    })
-  )
+#  $.each( $('.aircraft_image'), (i, e)->
+#    $(e).magnificPopup({
+#      type: 'image'
+#      delegate: 'img'
+#      gallery: { enabled: true }
+#    })
+#  )
 
   #click on btn if params btn_click present
   if location.search.match(/btn_click/)

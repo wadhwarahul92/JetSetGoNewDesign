@@ -1,113 +1,51 @@
-$highlight-color: rgb(31, 143, 207);
-$highlight-dark-color: rgb(12, 62, 120);
-$main-blue-color: rgb(6, 35, 68);
-$main-green-color: rgb(62, 210, 178);
-$main-yellow-color: rgb(238, 200, 47);
+$main-green-color: rgb(47, 191, 149);
 
-.navbar{
-  border-radius: 0!important;
+#header{
   background-color: $main-green-color;
-  border-color: $main-green-color;
-  .navbar-brand{
+  padding: 10px;
+  .logo{
+    height: 50px;
+  }
+  a{
     color: white!important;
   }
-}
-
-.highlight-color{
-  color: $highlight-color!important;
-}
-
-.highlight-dark-color {
-  color: $highlight-dark-color !important;
-}
-
-.main-blue-color{
-  color: $main-blue-color!important;
-}
-
-.main-green-color{
-  color: $main-green-color!important;
-}
-
-.main-yellow-color{
-  color: $main-yellow-color!important;
-}
-
-.btn{
-  //border-radius: 0;
-}
-
-.btn-blue{
-  background-color: darken($main-green-color, 15%);
-  color: white!important;
-  &:hover{
-    background-color: $main-green-color;
+  ul{
+    margin: 0;
+    margin-top: 7px;
   }
-  //border: none;
-}
-
-.btn-yellow{
-  background-color: $main-yellow-color;
-  color: white!important;
-  &:hover{
-    background-color: $main-green-color;
+  .logo_list{
+    .main_link{
+      width: 40px;
+      height: 35px;
+      display: inline-block;
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106758);
+    }
+    #jetsteal_link{
+      background-position: -74px -35px;
+    }
+    #experiences_link{
+      background-position: -140px 0;
+    }
+    #multi_trip_link{
+      background-position: -206px 0;
+    }
+    #rescue_link{
+      background-position: -272px 0;
+    }
+    #jetsetcars_link{
+      background-position: 0 83px;
+    }
+  }
+  .right_list{
+    margin-top: 13px;
+    float: right;
   }
 }
 
-.margin-top{
-  margin-top: 10px!important;
-}
-
-.container-fluid{
-  //background-color: $main-blue-color;
-}
-
-.btn-padded{
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-path[id^='seat']{
-  cursor: pointer;
-}
-
-.pointer{
-  cursor: pointer;
-}
-
-.seat_breakup{
-  &:hover{
-    background-color: $main-yellow-color;
-    color: white;
+.inline-list{
+  list-style-type: none;
+  li{
+    display: inline-block;
+    margin-right: 10px;
   }
-}
-
-.full-width{
-  width: 100%;
-}
-
-.padded{
-  padding: 10px;
-}
-
-.padded-large{
-  padding: 20px;
-}
-
-.bordered{
-  border: 1px solid lightgray;
-  border-radius: 10px;
-}
-
-.error{
-  color: lighten(rgb(255, 0, 0), 10%);
-}
-
-.background-blue{
-  background-color: $highlight-dark-color;
-  color: white!important;
-}
-
-.font-large{
-  font-size: 200px;
 }
