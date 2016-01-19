@@ -4,19 +4,19 @@
       <div class="row">
         <div class="small-3 columns text-center">
           <i class="fa fa-calendar"></i>
-          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Date of travel">
+          <input type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only" title="Date of travel">
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
-          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Departure airport">
+          <input type="text" ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only" title="Departure airport">
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
-          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Arrival airport">
+          <input type="text" ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only" title="Arrival airport">
         </div>
         <div class="small-3 columns text-center">
           <i class="fa fa-user"></i>
-          <input type="number" class="hide-for-small-only hide-for-medium-only" title="Number of passengers">
+          <input type="number" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only" title="Number of passengers">
         </div>
       </div>
     </div>
@@ -122,137 +122,139 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-</div>
 
-<div class="reveal" id="details_modal" data-reveal>
-  <h1>Yo, Aircraft & trip details here</h1>
-  <p class="lead">Your couch. It is mine.</p>
-  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
-<div class="full reveal" id="book_seat_modal" data-close-on-click="false" data-reveal>
-
-  <div class="row" style="margin-bottom: 10px" ng-style="{'background-color': ctrl.bookSeatJetsteal.color}">
-    <div class="small-12 columns">
-      <h3 style="padding: 10px; color: white" class="text-center">Choose your seats</h3>
-    </div>
+  <div class="reveal" id="details_modal" data-reveal>
+    <h1>Yo, Aircraft & trip details here</h1>
+    <p class="lead">Your couch. It is mine.</p>
+    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 
-  <div class="row">
-    <div class="small-3 columns">
-      <table>
-        <thead>
-        <tr>
-          <th colspan="2" class="text-center">Trip Info</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>
-            <img ng-src="{{ctrl.bookSeatJetsteal.departure_airport.city.image}}" src="" alt="">
-          </td>
-          <td>
-            <img ng-src="{{ctrl.bookSeatJetsteal.arrival_airport.city.image}}" src="" alt="">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>From:</strong> {{ctrl.bookSeatJetsteal.departure_airport.name}}, {{ctrl.bookSeatJetsteal.departure_airport.city.name}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>To:</strong> {{ctrl.bookSeatJetsteal.arrival_airport.name}}, {{ctrl.bookSeatJetsteal.arrival_airport.city.name}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>Departure At:</strong> {{ctrl.bookSeatJetsteal.flight_start_time}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>Arrival At:</strong> {{ctrl.bookSeatJetsteal.flight_end_time}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>Aircraft:</strong> {{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="small-6 columns">
-      <ul class="inline-list text-center">
-        <li><span class="" style="background-color: rgb(242, 208, 59)" >&nbsp;&nbsp;&nbsp;</span> <small><strong>Available seat</strong></small></li>
-        <li><span class="" style="background-color: rgb(241, 92, 92)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Seat not for sale</strong></small></li>
-        <li><span class="" style="background-color: rgb(43, 201, 167)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Chosen seat</strong></small></li>
-        <li><span class="" style="background-color: rgb(51, 122, 183)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Already booked</strong></small></li>
-      </ul>
-      <div ng-click="ctrl.resetChosenSeats()" id="svg_holder"></div>
-    </div>
-    <div class="small-3 columns">
-      <div ng-hide="ctrl.chosen_seats.length > 0">
-        <h4 class="highlight-color text-center">How to choose seats?</h4>
-        <ol>
-          <li class="margin-top">Click on <span style="background-color: rgb(242, 208, 59)" class="">&nbsp;&nbsp;&nbsp;</span> colored seat to add it to cart</li>
-          <li class="margin-top"><span style="background-color: rgb(241, 92, 92)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are not available for sale. Some operators customize their plane and remove some seats.</li>
-          <li class="margin-top">When you add a seat to cart its colored <span style="background-color: rgb(43, 201, 167)" class="">&nbsp;&nbsp;&nbsp;</span>, click on it again to remove it from cart.</li>
-          <li class="margin-top"><span style="background-color: rgb(51, 122, 183)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are already booked by others. Once you book a seat you can contact operations and customer support to know who shares your plane.</li>
-        </ol>
-      </div>
 
-      <div ng-show="ctrl.chosen_seats.length > 0">
-        <table style="width: 100%">
+  <div class="full reveal" id="book_seat_modal" data-close-on-click="false" data-reveal>
+
+    <div class="row" style="margin-bottom: 10px" ng-style="{'background-color': ctrl.bookSeatJetsteal.color}">
+      <div class="small-12 columns">
+        <h3 style="padding: 10px; color: white" class="text-center">Choose your seats</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-3 columns">
+        <table>
           <thead>
           <tr>
-            <th colspan="2" class="text-center">Chosen seats</th>
+            <th colspan="2" class="text-center">Trip Info</th>
           </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="seat_id in ctrl.chosen_seats">
-            <td class="text-center">{{seat_id}}</td>
-            <td class="text-center"><i class="fa fa-rupee"></i> {{ctrl.priceFor(seat_id)}}</td>
+          <tr>
+            <td>
+              <img ng-src="{{ctrl.bookSeatJetsteal.departure_airport.city.image}}" src="" alt="">
+            </td>
+            <td>
+              <img ng-src="{{ctrl.bookSeatJetsteal.arrival_airport.city.image}}" src="" alt="">
+            </td>
           </tr>
           <tr>
-            <th colspan="2" class="text-center">Grand Total</th>
+            <td colspan="2"><strong>From:</strong> {{ctrl.bookSeatJetsteal.departure_airport.name}}, {{ctrl.bookSeatJetsteal.departure_airport.city.name}}</td>
           </tr>
           <tr>
-            <td class="text-center">{{ctrl.chosen_seats.length}} Seats</td>
-            <td class="text-center"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</strong></td>
+            <td colspan="2"><strong>To:</strong> {{ctrl.bookSeatJetsteal.arrival_airport.name}}, {{ctrl.bookSeatJetsteal.arrival_airport.city.name}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Departure At:</strong> {{ctrl.bookSeatJetsteal.flight_start_time}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Arrival At:</strong> {{ctrl.bookSeatJetsteal.flight_end_time}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Aircraft:</strong> {{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
           </tr>
           </tbody>
         </table>
-        <a data-toggle="seat_checkout" class="button button_jsg large float-right"><i class="fa fa-credit-card"></i> Proceed</a>
       </div>
+      <div class="small-6 columns">
+        <ul class="inline-list text-center">
+          <li><span class="" style="background-color: rgb(242, 208, 59)" >&nbsp;&nbsp;&nbsp;</span> <small><strong>Available seat</strong></small></li>
+          <li><span class="" style="background-color: rgb(241, 92, 92)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Seat not for sale</strong></small></li>
+          <li><span class="" style="background-color: rgb(43, 201, 167)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Chosen seat</strong></small></li>
+          <li><span class="" style="background-color: rgb(51, 122, 183)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Already booked</strong></small></li>
+        </ul>
+        <div ng-click="ctrl.resetChosenSeats()" id="svg_holder"></div>
+      </div>
+      <div class="small-3 columns">
+        <div ng-hide="ctrl.chosen_seats.length > 0">
+          <h4 class="highlight-color text-center">How to choose seats?</h4>
+          <ol>
+            <li class="margin-top">Click on <span style="background-color: rgb(242, 208, 59)" class="">&nbsp;&nbsp;&nbsp;</span> colored seat to add it to cart</li>
+            <li class="margin-top"><span style="background-color: rgb(241, 92, 92)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are not available for sale. Some operators customize their plane and remove some seats.</li>
+            <li class="margin-top">When you add a seat to cart its colored <span style="background-color: rgb(43, 201, 167)" class="">&nbsp;&nbsp;&nbsp;</span>, click on it again to remove it from cart.</li>
+            <li class="margin-top"><span style="background-color: rgb(51, 122, 183)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are already booked by others. Once you book a seat you can contact operations and customer support to know who shares your plane.</li>
+          </ol>
+        </div>
 
+        <div ng-show="ctrl.chosen_seats.length > 0">
+          <table style="width: 100%">
+            <thead>
+            <tr>
+              <th colspan="2" class="text-center">Chosen seats</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="seat_id in ctrl.chosen_seats">
+              <td class="text-center">{{seat_id}}</td>
+              <td class="text-center"><i class="fa fa-rupee"></i> {{ctrl.priceFor(seat_id)}}</td>
+            </tr>
+            <tr>
+              <th colspan="2" class="text-center">Grand Total</th>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.chosen_seats.length}} Seats</td>
+              <td class="text-center"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</strong></td>
+            </tr>
+            </tbody>
+          </table>
+          <a data-toggle="seat_checkout" class="button button_jsg large float-right"><i class="fa fa-credit-card"></i> Proceed</a>
+        </div>
+
+      </div>
     </div>
+
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span style="font-size: 50px; color: white" aria-hidden="true">&times;</span>
+    </button>
   </div>
 
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span style="font-size: 50px; color: white" aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-<div class="reveal" id="seat_checkout" data-reveal>
-  <h3 class="text-center">Checkout</h3>
-  <%= form_tag '/payment_transactions/create' do %>
-      <input type="hidden" value="{{ctrl.bookSeatJetsteal.id}}" name="jetsteal_id">
-      <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat_id}}" ng-repeat="chosen_seat_id in ctrl.chosen_seats_ids()">
-      <fieldset>
-        <legend>Contact Info</legend>
-        <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
-        <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
-        <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
-        <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
-      </fieldset>
-      <fieldset>
-        <legend>Payment Details</legend>
-        <ul class="list-inline">
-          <li><strong>Number of seats:</strong> {{ctrl.chosen_seats.length}}</li>
-          <li><strong>Total amount:</strong> <i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</li>
-        </ul>
-      </fieldset>
-      <p><small>You will be redirect to CC Avenue payment gateway.</small></p>
-      <p><button class="button button_jsg float-right" type="submit"><i class="fa fa-credit-card"></i> Checkout</button></p>
-  <%- end %>
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div class="reveal" id="seat_checkout" data-reveal>
+    <h3 class="text-center">Checkout</h3>
+    <%= form_tag '/payment_transactions/create' do %>
+        <input type="hidden" value="{{ctrl.bookSeatJetsteal.id}}" name="jetsteal_id">
+        <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat_id}}" ng-repeat="chosen_seat_id in ctrl.chosen_seats_ids()">
+        <fieldset>
+          <legend>Contact Info</legend>
+          <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
+          <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
+          <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
+          <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
+        </fieldset>
+        <fieldset>
+          <legend>Payment Details</legend>
+          <ul class="list-inline">
+            <li><strong>Number of seats:</strong> {{ctrl.chosen_seats.length}}</li>
+            <li><strong>Total amount:</strong> <i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</li>
+          </ul>
+        </fieldset>
+        <p><small>You will be redirect to CC Avenue payment gateway.</small></p>
+        <p><button class="button button_jsg float-right" type="submit"><i class="fa fa-credit-card"></i> Checkout</button></p>
+    <%- end %>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </div>
 
 <div style="background-color: rgb(47, 191, 149)" class="reveal" id="info_modal" data-reveal>
