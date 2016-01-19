@@ -129,3 +129,20 @@ $main-red-color: rgb(228, 70, 71);
     background-color: $main-red-color;
   }
 }
+
+footer{background-color: rgb(5, 81, 139); padding:10px; margin-top: 20px; color: #ffffff;}
+footer .copyryt-con{font-size: 14px;}
+footer .copyryt-con p{margin-top: 10px;}
+footer .social-icon{font-size: 20px;}
+footer .social-icon span{background-color: #18374e;display: inline-block; margin: 0 3px;padding: 3px 10px; width: 35px;height: 35px;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;}
+#launcher{bottom:71px !important;}
+
+@media(max-width: 767px){
+  footer .copyryt-con p{text-align: center; font-size: 11px;}
+  footer .social-icon{text-align: center;}
+  .list_box .row{margin:0 !important; }
+
+}
