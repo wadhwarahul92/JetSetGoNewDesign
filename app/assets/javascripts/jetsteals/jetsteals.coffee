@@ -1,6 +1,24 @@
+window.chosen_seats = []
+
+window.seatClicked = (seat)->
+  if window.chosen_seats.indexOf(seat.id) >= 0
+    window.chosen_seats.splice(window.chosen_seats.indexOf(seat.id), 1)
+    $("path##{seat.id}").css('fill', available_seat_color)
+  else
+    window.chosen_seats.push(seat.id)
+    $("path##{seat.id}").css('fill', chosen_seat_color)
+
+disabled_seat_color = 'rgb(241, 92, 92)'
+
+available_seat_color = 'rgb(242, 208, 59)'
+
+chosen_seat_color = 'rgb(43, 201, 167)'
+
+already_booked_color = 'rgb(51, 122, 183)'
+
 list_app = angular.module 'list_app', []
 
-list_app.controller 'ListController', ['$http', ($http)->
+list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->
 
   @colors = [
     'rgb(5, 81, 139)',
@@ -8,6 +26,8 @@ list_app.controller 'ListController', ['$http', ($http)->
     'rgb(242, 208, 59)',
     'rgb(241, 92, 92)'
   ]
+
+  @chosen_seats = $window.chosen_seats
 
   @jetsteals = []
 
@@ -17,13 +37,53 @@ list_app.controller 'ListController', ['$http', ($http)->
 
   @bookSeatJetsteal = {}
 
+  @chosen_seats_ids = ->
+    ids = []
+    for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
+      if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
+        ids.push(jetsteal_seat.id)
+    ids
+
+  @resetChosenSeats = ->
+    @chosen_seats = $window.chosen_seats
+
+  @priceFor = (seat_id)->
+    for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
+      if jetsteal_seat.ui_seat_id == seat_id
+        return jetsteal_seat.cost
+
+  @grandTotal = ->
+    total = 0
+    for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
+      if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
+        total += jetsteal_seat.cost
+    total
+
+  @seatClicked = ->
+    alert 'seat clicked'
+
+  @paintSeatWithInitialColor = ->
+    for seat, index in @bookSeatJetsteal.jetsteal_seats
+      if seat.disabled
+        $("path##{seat.ui_seat_id}").css('fill', disabled_seat_color)
+      else if seat.booked
+        $("path##{seat.ui_seat_id}").css('fill', already_booked_color)
+      else
+        s = $("path##{seat.ui_seat_id}")
+        s.css('fill', available_seat_color)
+        s.attr('onclick', "seatClicked(#{s.attr('id')})")
+    null
+
   @bookSeatClicked = (jetsteal)->
     @bookSeatJetsteal = jetsteal
+    window.chosen_seats = []
+    @resetChosenSeats()
     $http.get("/aircraft_types/#{jetsteal.aircraft.aircraft_type.id}.json").success(
       (data)=>
         @bookSeatJetsteal.aircraft.aircraft_type.svg = data.svg
         $('#svg_holder').html(data.svg)
         $('#book_seat_modal').foundation('open')
+        @paintSeatWithInitialColor()
     ).error(
       ->
         alert 'error fetching aircraft type'
