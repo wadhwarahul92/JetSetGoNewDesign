@@ -9,7 +9,7 @@ class Jetsteals::ListsController < Jetsteals::BaseController
   end
 
   def get_list
-    @jetsteals = JetstealListCreator.new(params).generate_list(false)
+    @jetsteals = JetstealListCreator.new(params).generate_list
   end
 
 end

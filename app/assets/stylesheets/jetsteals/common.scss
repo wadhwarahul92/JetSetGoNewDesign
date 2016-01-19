@@ -2,6 +2,7 @@ $main-green-color: rgb(47, 191, 149);
 $dark-blue-color: rgb(12, 62, 120);
 $main-gray-color: rgba(158, 167, 166, 0.6);
 $main-gray-color-no-opaque: rgb(158, 167, 166);
+$main-red-color: rgb(228, 70, 71);
 
 #filter_bar{
   padding: 5px 30px 5px 30px;
@@ -120,5 +121,11 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
     box-shadow: 0 0 2px white;
     -webkit-box-shadow: 0 0 2px white;
     -moz-box-shadow: 0 0 2px white;
+  }
+  a{
+    color: white;
+  }
+  .button_jsg_danger{
+    background-color: $main-red-color;
   }
 }

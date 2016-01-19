@@ -1,5 +1,7 @@
 class Jetsteal < ActiveRecord::Base
 
+  attr_accessor :sold_out
+
   include VersionTracker
 
   has_paper_trail

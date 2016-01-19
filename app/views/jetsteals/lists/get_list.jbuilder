@@ -8,6 +8,7 @@ json.array! @jetsteals do |jetsteal|
   json.min_seat_cost jetsteal.min_seat_cost || 0
   json.cost jetsteal.cost
   json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
+  json.sold_out jetsteal.sold_out.present?
   json.departure_airport do
     departure_airport = jetsteal.departure_airport
     json.id departure_airport.id

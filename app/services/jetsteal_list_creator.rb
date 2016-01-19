@@ -6,7 +6,7 @@ class JetstealListCreator
     @params = params
   end
 
-  def generate_list(check_seats_ = true)
+  def generate_list
 
     @list = nil
 
@@ -22,7 +22,7 @@ class JetstealListCreator
 
     filter_facilities
 
-    check_seats_ ? check_seats(@list.distinct) : @list.distinct
+    check_seats(@list.distinct)
   end
 
   private
@@ -45,21 +45,22 @@ class JetstealListCreator
   end
 
   def check_seats(list)
-    final = []
     list.each do |l|
       if l.sell_by_seats?
         a = l.jetsteal_seats.map{ |s|  s.locked? or s.disabled? or s.booked? }
-        if a.index(false)
-          final << l
+        unless a.index(false)
+          # final << l
+          l.sold_out = true
         end
       else
         a = l.jetsteal_seats.map{ |s| s.booked? }
-        unless a.index(true)
-          final << l
+        if a.index(true)
+          # final << l
+          l.sold_out = true
         end
       end
     end
-    final
+    list
   end
 
 end
