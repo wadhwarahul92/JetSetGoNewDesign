@@ -31,7 +31,7 @@ class PaymentTransactionsController < ApplicationController
       end
       respond_to do |format|
         format.js { render status: :unprocessable_entity }
-        format.html { redirect_to "/jetsteals/#{@jetsteal_seat_purchaser.jetsteal.id}" }
+        format.html { redirect_to '/jetsteals/list}' }
       end
     end
   end

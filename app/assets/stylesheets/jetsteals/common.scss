@@ -5,6 +5,19 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+.outer_sold{
+  position: relative;
+  .sold_out{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    h2{
+      margin-top: 100px;
+    }
+    background-color: rgba(158, 167, 166, 0.7);
+  }
+}
+
 #filter_bar{
   padding: 5px 30px 5px 30px;
   background-color: $dark-blue-color;

@@ -42,7 +42,10 @@
   <div class="row">
     <div class="small-12 columns">
       <div class="small-12 medium-6 columns" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
-        <div class="list_box" ng-style="{'background-color': jetsteal.color}">
+        <div class="list_box outer_sold" ng-style="{'background-color': jetsteal.color}">
+          <div ng-show="jetsteal.sold_out" class="sold_out">
+            <h2 class="text-center">Sold Out</h2>
+          </div>
           <div class="row">
             <div class="medium-6 hide-for-small-only columns">
               <img ng-src="{{jetsteal.aircraft.aircraft_images[0]}}" class="aircraft_image" src="" alt="">
