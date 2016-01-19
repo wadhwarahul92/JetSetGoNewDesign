@@ -10,6 +10,7 @@ class AircraftType < ActiveRecord::Base
   validates :name, presence: true
   validates :svg, presence: true
   validates :speed_in_kts, presence: true
+  validates :description, presence: true
   ###################
 
 end
