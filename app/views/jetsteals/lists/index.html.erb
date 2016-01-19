@@ -1,61 +1,127 @@
-<div class="row">
-  <div class="col-sm-3">
-    <%= render partial: 'jetsteals/lists/filter_form' %>
-  </div>
-  <% if @jetsteals.present? and @jetsteals.any? %>
-      <div class="col-sm-9">
-        <ul class="list-inline">
-          <% if params[:departure_airport_id].present? %>
-            <li class="text-center">
-              <h4 class="highlight-color">Flying from</h4>
-              <%= image_tag @jetsteals.first.departure_airport.city.image.url(:original), class: 'city_image' %>
-              <h5 class="highlight-dark-color"><%= @jetsteals.first.departure_airport.city.name %></h5>
-            </li>
-          <%- end %>
-          <% if params[:arrival_airport_id].present? %>
-              <li class="text-center">
-                <h4 class="highlight-color">Flying to</h4>
-                <%= image_tag @jetsteals.first.arrival_airport.city.image.url(:original), class: 'city_image' %>
-                <h5 class="highlight-dark-color"><%= @jetsteals.first.arrival_airport.city.name %></h5>
-              </li>
-          <%- end %>
-          <% if params[:aircraft_type_id].present? %>
-              <li class='text-center svg-filter-box' data-toggle='tooltip' title='Aircraft Type'>
-                <!--<h4 class="highlight-color">Flying in</h4>-->
-                <span class="city_image"><%= @jetsteals.first.aircraft.aircraft_type.svg.try(:html_safe)%></span>
-                <h5 class="highlight-dark-color"><%= @jetsteals.first.aircraft.aircraft_type.name %></h5>
-              </li>
-          <% end %>
-          <% if params[:wifi].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Wifi'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-wifi fa-4x'></i>
-                <h5 class="highlight-dark-color">Wifi on-board</h5>
-              </li>
-          <% end %>
-          <% if params[:phone].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Phone'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-phone fa-4x'></i>
-                <h5 class="highlight-dark-color">Phone on-board</h5>
-              </li>
-          <% end %>
-          <% if params[:flight_attendant].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Flight attendant'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-female fa-4x'></i>
-                <h5 class="highlight-dark-color">Attendant on-board</h5>
-              </li>
-          <% end %>
-        </ul>
-        <%= render partial: 'jetsteals/lists/listing' %>
+<div ng-controller="ListController as ctrl">
+  <div class="row" id="filter_bar">
+    <div class="columns small-11">
+      <div class="row">
+        <div class="small-3 columns text-center">
+          <i class="fa fa-calendar"></i>
+          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Date of travel">
+        </div>
+        <div class="small-3 columns text-center">
+          <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
+          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Departure airport">
+        </div>
+        <div class="small-3 columns text-center">
+          <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
+          <input type="text" class="hide-for-small-only hide-for-medium-only" title="Arrival airport">
+        </div>
+        <div class="small-3 columns text-center">
+          <i class="fa fa-user"></i>
+          <input type="number" class="hide-for-small-only hide-for-medium-only" title="Number of passengers">
+        </div>
       </div>
-  <%- else %>
-    <div class="col-sm-9">
-      <h1 class="highlight-color text-center font-large"><i class="fa fa-meh-o"></i></h1>
-      <h3 class="highlight-color text-center">Sorry, we don't have any scheduled trip for this query</h3>
-      <h4 class="highlight-dark-color text-center"><i class="fa fa-info-circle"></i> You can always contact our operations and customer support for any custom requirements</h4>
-      <p class="text-center"><%= link_to 'Clear Filters', '/jetsteals/list', class: 'btn btn-blue' %></p>
     </div>
-  <%- end %>
+    <div class="small-1 columns">
+      <i id="info_button" class="fa fa-info-circle pull-right"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="small-12 medium-6 columns" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
+        <div class="list_box" ng-style="{'background-color': jetsteal.color}">
+          <div class="row">
+            <div class="medium-6 hide-for-small-only columns">
+              <img ng-src="{{jetsteal.aircraft.aircraft_images[0]}}" class="aircraft_image" src="" alt="">
+            </div>
+            <div class="medium-6 small-12 columns content_box">
+              <h6 class="text-center">{{jetsteal.aircraft.memorable_name}}</h6>
+              <h6 class="text-center"><small>{{jetsteal.aircraft.aircraft_type.name}}</small></h6>
+              <div class="row">
+                <div class="small-5 text-center columns">
+                  <img ng-src="{{jetsteal.departure_airport.city.image}}" src="" alt="">
+                  <h6 class="text-center"><small>{{jetsteal.departure_airport.city.name}}</small></h6>
+                  <h6 class="text-center"><small>{{jetsteal.flight_start_time}}</small></h6>
+                </div>
+                <div class="small-2 text-center columns middle_box">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/026/original/icon.png?1453190178" alt="">
+                </div>
+                <div class="small-5 text-center columns">
+                  <img ng-src="{{jetsteal.arrival_airport.city.image}}" src="" alt="">
+                  <h6 class="text-center"><small>{{jetsteal.arrival_airport.city.name}}</small></h6>
+                  <h6 class="text-center"><small>{{jetsteal.flight_end_time}}</small></h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-12 columns text-center">
+                  <h5 ng-show="jetsteal.sell_by_seats"><small>Seat @</small> <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}} <small>onwards</small></h5>
+                  <h5 ng-hide="jetsteal.sell_by_seats"><i class="fa fa-rupee"></i> {{jetsteal.cost}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns small-6 text-center">
+                  <a href="" class="button button_jsg">View Details</a>
+                </div>
+                <div class="columns small-6 text-center">
+                  <a ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" href="/jetsteals/{{jetsteal.id}}" class="button button_jsg">Book a seat</a>
+                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-hide="jetsteal.sell_by_seats || jetsteal.sold_out" class="button button_jsg">Book Jet</a>
+                  <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
+    <div class="row">
+      <div class="small-12 columns">
+        <h4 class="text-center">Book jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-4 columns">
+        <dl>
+          <dt>Aircraft Type</dt>
+          <dd>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</dd>
+          <dt>Departure Airport</dt>
+          <dd>{{ctrl.bookJetJetsteal.departure_airport.name}}</dd>
+          <dt>Departure City</dt>
+          <dd>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</dd>
+          <dt>Departure at</dt>
+          <dd>{{ctrl.bookJetJetsteal.flight_start_time}}</dd>
+          <dt>Arrival at</dt>
+          <dd>{{ctrl.bookJetJetsteal.flight_end_time}}</dd>
+        </dl>
+      </div>
+      <div class="small-8 columns">
+        <%= form_tag '/payment_transactions/create' do %>
+            <input type="hidden" value="sell_as_whole" name="sell_as_whole">
+            <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
+            <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookJetJetsteal.jetsteal_seats" value="{{seat.id}}">
+            <fieldset>
+              <legend>Contact Details</legend>
+              <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
+              <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
+              <%= number_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
+              <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
+            </fieldset>
+            <fieldset>
+              <legend>Payment Details</legend>
+              <ul class="inline-list">
+                <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
+                <li><strong>Amount to pay:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</li>
+              </ul>
+            </fieldset>
+            <fieldset>
+              <button type="submit" class="button button-large button_jsg float-right" ><i class="fa fa-credit-card"></i> Proceed to pay</button>
+            </fieldset>
+        <%- end %>
+      </div>
+    </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
 </div>

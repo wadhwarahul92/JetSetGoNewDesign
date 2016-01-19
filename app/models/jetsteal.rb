@@ -1,5 +1,7 @@
 class Jetsteal < ActiveRecord::Base
 
+  attr_accessor :sold_out
+
   include VersionTracker
 
   has_paper_trail
@@ -52,6 +54,16 @@ class Jetsteal < ActiveRecord::Base
 
   def can_be_sold_as_whole?
     !sell_by_seats?
+  end
+
+  def min_seat_cost
+    min = Float::INFINITY
+    jetsteal_seats.each do |jetsteal_seat|
+      if jetsteal_seat.cost.present?
+        min = jetsteal_seat.cost if jetsteal_seat.cost < min
+      end
+    end
+    min
   end
 
 end
