@@ -10,6 +10,7 @@ json.array! @jetsteals do |jetsteal|
   json.cost jetsteal.cost
   json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
   json.sold_out jetsteal.sold_out.present?
+  json.can_be_sold_as_whole jetsteal.can_be_sold_as_whole?
   json.departure_airport do
     departure_airport = jetsteal.departure_airport
     json.id departure_airport.id
@@ -59,6 +60,7 @@ json.array! @jetsteals do |jetsteal|
       json.id aircraft_type.id
       json.name aircraft_type.name
       json.speed_in_kts aircraft_type.speed_in_kts
+      json.description aircraft_type.description
     end
   end
   json.jetsteal_seats{

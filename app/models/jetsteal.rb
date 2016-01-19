@@ -53,7 +53,8 @@ class Jetsteal < ActiveRecord::Base
   ###########
 
   def can_be_sold_as_whole?
-    !sell_by_seats?
+    jetsteal_seats.each{ |seat| return false if seat.booked? }
+    cost.present? and cost.to_f > 0
   end
 
   def min_seat_cost
