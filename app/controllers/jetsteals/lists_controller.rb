@@ -1,7 +1,7 @@
 class Jetsteals::ListsController < Jetsteals::BaseController
 
   def index
-    @jetsteals = JetstealListCreator.new(params).generate_list
+    # @jetsteals = JetstealListCreator.new(params).generate_list
   end
 
   def show

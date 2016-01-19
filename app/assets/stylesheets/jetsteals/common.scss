@@ -1,4 +1,33 @@
 $main-green-color: rgb(47, 191, 149);
+$dark-blue-color: rgb(12, 62, 120);
+
+#filter_bar{
+  padding: 5px 30px 5px 30px;
+  background-color: $dark-blue-color;
+  i{
+    color: white!important;
+    font-size: 40px!important;
+  }
+  #info_button{
+    font-size: 20px!important;
+    margin-top: 18px;
+  }
+  input{
+    display: inline-block;
+    width: 70%;
+    margin: 0;
+    margin-top: 15px;
+    border: 0;
+    background: none;
+    border-bottom: 1px solid white;
+    color: white;
+    &:focus{
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
 
 #header{
   background-color: $main-green-color;

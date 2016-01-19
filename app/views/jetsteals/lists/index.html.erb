@@ -1,61 +1,25 @@
-<div class="row">
-  <div class="col-sm-3">
-    <%= render partial: 'jetsteals/lists/filter_form' %>
-  </div>
-  <% if @jetsteals.present? and @jetsteals.any? %>
-      <div class="col-sm-9">
-        <ul class="list-inline">
-          <% if params[:departure_airport_id].present? %>
-            <li class="text-center">
-              <h4 class="highlight-color">Flying from</h4>
-              <%= image_tag @jetsteals.first.departure_airport.city.image.url(:original), class: 'city_image' %>
-              <h5 class="highlight-dark-color"><%= @jetsteals.first.departure_airport.city.name %></h5>
-            </li>
-          <%- end %>
-          <% if params[:arrival_airport_id].present? %>
-              <li class="text-center">
-                <h4 class="highlight-color">Flying to</h4>
-                <%= image_tag @jetsteals.first.arrival_airport.city.image.url(:original), class: 'city_image' %>
-                <h5 class="highlight-dark-color"><%= @jetsteals.first.arrival_airport.city.name %></h5>
-              </li>
-          <%- end %>
-          <% if params[:aircraft_type_id].present? %>
-              <li class='text-center svg-filter-box' data-toggle='tooltip' title='Aircraft Type'>
-                <!--<h4 class="highlight-color">Flying in</h4>-->
-                <span class="city_image"><%= @jetsteals.first.aircraft.aircraft_type.svg.try(:html_safe)%></span>
-                <h5 class="highlight-dark-color"><%= @jetsteals.first.aircraft.aircraft_type.name %></h5>
-              </li>
-          <% end %>
-          <% if params[:wifi].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Wifi'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-wifi fa-4x'></i>
-                <h5 class="highlight-dark-color">Wifi on-board</h5>
-              </li>
-          <% end %>
-          <% if params[:phone].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Phone'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-phone fa-4x'></i>
-                <h5 class="highlight-dark-color">Phone on-board</h5>
-              </li>
-          <% end %>
-          <% if params[:flight_attendant].present? %>
-              <li class='text-center' data-toggle='tooltip' title='Flight attendant'>
-                <h4 class="highlight-color"></h4>
-                <i class='fa fa-female fa-4x'></i>
-                <h5 class="highlight-dark-color">Attendant on-board</h5>
-              </li>
-          <% end %>
-        </ul>
-        <%= render partial: 'jetsteals/lists/listing' %>
+<div class="row" id="filter_bar">
+  <div class="columns small-11">
+    <div class="row">
+      <div class="small-3 columns">
+        <i class="fa fa-calendar"></i>
+        <input type="text" class="hide-for-small-only hide-for-medium-only" title="Date of travel">
       </div>
-  <%- else %>
-    <div class="col-sm-9">
-      <h1 class="highlight-color text-center font-large"><i class="fa fa-meh-o"></i></h1>
-      <h3 class="highlight-color text-center">Sorry, we don't have any scheduled trip for this query</h3>
-      <h4 class="highlight-dark-color text-center"><i class="fa fa-info-circle"></i> You can always contact our operations and customer support for any custom requirements</h4>
-      <p class="text-center"><%= link_to 'Clear Filters', '/jetsteals/list', class: 'btn btn-blue' %></p>
+      <div class="small-3 columns">
+        <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
+        <input type="text" class="hide-for-small-only hide-for-medium-only" title="Departure airport">
+      </div>
+      <div class="small-3 columns">
+        <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
+        <input type="text" class="hide-for-small-only hide-for-medium-only" title="Arrival airport">
+      </div>
+      <div class="small-3 columns">
+        <i class="fa fa-user"></i>
+        <input type="number" class="hide-for-small-only hide-for-medium-only" title="Number of passengers">
+      </div>
     </div>
-  <%- end %>
+  </div>
+  <div class="small-1 columns">
+    <i id="info_button" class="fa fa-info-circle pull-right"></i>
+  </div>
 </div>
