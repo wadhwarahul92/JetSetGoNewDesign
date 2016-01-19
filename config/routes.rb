@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   resources :airports
 
+  resources :aircraft_types
+
   namespace :jetsteals do
     get '/' => 'welcome#index'
     get 'list' => 'lists#index', as: 'jetsteals'
