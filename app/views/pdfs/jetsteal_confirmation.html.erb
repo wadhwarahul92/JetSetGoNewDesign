@@ -5,6 +5,29 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
+    <h3 class="text-center">Itinerary Information</h3>
+    <table class=" table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Departure Airport</th>
+        <th>Departure At</th>
+        <th>Arrival Airport</th>
+        <th>Arrival At</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @jetsteal.departure_airport.name %></td>
+        <td><%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></td>
+        <td><%= @jetsteal.arrival_airport.name %></td>
+        <td><%= (@jetsteal.end_at + @jetsteal.flight_duration_in_minutes.minutes).strftime('%d %b %Y, %I:%M %p') %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
     <h3 class="text-center">Customer Info</h3>
     <table class="table table-striped">
       <thead>
@@ -41,7 +64,7 @@
       <% @jetsteal_seats.each do |jetsteal_seat| %>
           <tr>
             <td><%= jetsteal_seat.id %></td>
-            <td><%= jetsteal_seat.cost %></td>
+            <td><%= jetsteal_seat.cost || '--' %></td>
             <td><%= jetsteal_seat.booked? ? 'Confirmed' : 'Unconfirmed' %></td>
           </tr>
       <%- end %>

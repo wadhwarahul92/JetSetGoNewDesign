@@ -4,11 +4,11 @@
       <div class="row">
         <div class="small-3 columns text-center">
           <i class="fa fa-calendar"></i>
-          <input type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp" placeholder="Date" title="Date of travel">
+          <input ng-change="ctrl.checkFilters()" type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp" placeholder="Date" title="Date of travel">
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
-          <select ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Departure airport">
+          <select ng-change="ctrl.checkFilters()" ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Departure airport">
             <option value="">Departure Airport</option>
             <% Airport.order('name ASC').all.each do |airport| %>
                 <option value="<%= airport.id %>"><%= airport.name %></option>
@@ -17,7 +17,7 @@
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
-          <select ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
+          <select ng-change="ctrl.checkFilters()" ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
             <option value="">Departure Airport</option>
             <% Airport.order('name ASC').all.each do |airport| %>
                 <option value="<%= airport.id %>"><%= airport.name %></option>
@@ -26,8 +26,8 @@
         </div>
         <div class="small-3 columns text-center">
           <i class="fa fa-user"></i>
-          <select title="PAX" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only">
-            <option value="">PAX</option>
+          <select ng-change="ctrl.checkFilters()" title="Pax" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only">
+            <option value="">Pax</option>
             <% (0..10).each do |pax| %>
                 <option value="<%= pax %>"><%= pax %></option>
             <%- end %>
@@ -41,7 +41,7 @@
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <div class="small-12 medium-6 columns" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
+      <div class="small-12 medium-6 columns count_this" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
         <div class="list_box outer_sold" ng-style="{'background-color': jetsteal.color}">
           <div ng-show="jetsteal.sold_out" class="sold_out">
             <h2 class="text-center">Sold Out</h2>
@@ -84,34 +84,46 @@
           </div>
         </div>
       </div>
-      <!--<div ng-show="ctrl.filtersDontMatch()" style="height: 600px;padding-top: 50px" class="small-12 columns">-->
-        <!--<h4 class="text-center">Oops! we don't have any Jetsteal for current filter</h4>-->
-        <!--<h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>-->
-        <!--<p class="text-center"><a href="/jetsteals/list" class="button button_jsg">Remove filters</a></p>-->
-      <!--</div>-->
+      <div id="no_jetsteal" style="height: 600px;padding-top: 50px; display: none" class="small-12 columns">
+        <h4 class="text-center">Oops! we don't have any Jetsteal for current filter</h4>
+        <h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>
+        <p class="text-center"><a href="/jetsteals/list" class="button button_jsg">Remove filters</a></p>
+      </div>
     </div>
   </div>
 
   <div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
     <div class="row">
       <div class="small-12 columns">
-        <h4 class="text-center">Book jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</h4>
+        <h4 class="text-center">Book a jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</h4>
       </div>
     </div>
     <div class="row">
       <div class="small-4 columns">
-        <dl>
-          <dt>Aircraft Type</dt>
-          <dd>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</dd>
-          <dt>Departure Airport</dt>
-          <dd>{{ctrl.bookJetJetsteal.departure_airport.name}}</dd>
-          <dt>Departure City</dt>
-          <dd>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</dd>
-          <dt>Departure at</dt>
-          <dd>{{ctrl.bookJetJetsteal.flight_start_time}}</dd>
-          <dt>Arrival at</dt>
-          <dd>{{ctrl.bookJetJetsteal.flight_end_time}}</dd>
-        </dl>
+        <table>
+          <tbody>
+          <tr>
+            <th>Aircraft Type</th>
+            <td>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</td>
+          </tr>
+          <tr>
+            <th>Departure Airport</th>
+            <td>{{ctrl.bookJetJetsteal.departure_airport.name}}</td>
+          </tr>
+          <tr>
+            <th>Departure City</th>
+            <td>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</td>
+          </tr>
+          <tr>
+            <th>Departure at</th>
+            <td>{{ctrl.bookJetJetsteal.flight_start_time}}</td>
+          </tr>
+          <tr>
+            <th>Arrival at</th>
+            <td>{{ctrl.bookJetJetsteal.flight_end_time}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
       <div class="small-8 columns">
         <%= form_tag '/payment_transactions/create' do %>
@@ -129,7 +141,7 @@
               <legend>Payment Details</legend>
               <ul class="inline-list">
                 <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
-                <li><strong>Amount to pay:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</li>
+                <li><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</li>
               </ul>
             </fieldset>
             <fieldset>

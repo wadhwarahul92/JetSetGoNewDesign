@@ -4,36 +4,14 @@
       <table class="twelve columns">
         <tr>
           <td class="text-pad">
-            <h2>Hi <%= @contact.first_name %></h2>
-          </td>
-          <td class="expander"></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table class="row">
-  <tr>
-    <td class="wrapper last">
-      <table class="twelve columns">
-        <tr>
-          <td class="text-pad panel">
-            <p>Thanks for buying seats on our Jetsteal service (provided by JetSetGo).</p>
-            <p>This email includes a pdf with all required details.</p>
-          </td>
-          <td class="expander"></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table class="row">
-  <tr>
-    <td class="wrapper last">
-      <table class="twelve columns">
-        <tr>
-          <td class="text-pad center">
-            <center><p><small>Feel free to contact our operations and customer support.</small></p></center>
+            <h6>Dear <%= @contact.first_name.capitalize %></h6>
+            <p>Thank you for buying <%= @jetsteal_seats.count %> seat(s) on JetSetGo.</p>
+            <p>For any assistance, please feel free to contact us on +91-11-39585858 or info@jetsetgo.in</p>
+            <p>
+              Happy landings,
+              <br>
+              Monika from JetSetGo
+            </p>
           </td>
           <td class="expander"></td>
         </tr>

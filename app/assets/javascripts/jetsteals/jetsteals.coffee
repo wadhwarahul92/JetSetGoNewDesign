@@ -27,6 +27,18 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
     'rgb(241, 92, 92)'
   ]
 
+  @checkFilters = ->
+    setTimeout(
+      ->
+        if $('.count_this').length == $('.count_this.ng-hide').length
+          $('#no_jetsteal').show()
+        else
+          $('#no_jetsteal').hide()
+      ,
+      100
+    )
+    null
+
   @chosen_seats = $window.chosen_seats
 
   @jetsteals = []
