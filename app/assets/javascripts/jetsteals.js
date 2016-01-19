@@ -2,3 +2,4 @@
 //= require jquery_ujs
 //= require ./vendors/angular
 //= require_tree ./jetsteals
+//= require turbolinks

@@ -8,4 +8,8 @@ class Jetsteals::ListsController < Jetsteals::BaseController
     @jetsteal = Jetsteal.find params[:id]
   end
 
+  def get_list
+    @jetsteals = JetstealListCreator.new(params).generate_list(false)
+  end
+
 end

@@ -6,7 +6,7 @@ class JetstealListCreator
     @params = params
   end
 
-  def generate_list
+  def generate_list(check_seats_ = true)
 
     @list = nil
 
@@ -22,7 +22,7 @@ class JetstealListCreator
 
     filter_facilities
 
-    check_seats(@list.distinct)
+    check_seats_ ? check_seats(@list.distinct) : @list.distinct
   end
 
   private

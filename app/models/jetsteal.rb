@@ -54,4 +54,14 @@ class Jetsteal < ActiveRecord::Base
     !sell_by_seats?
   end
 
+  def min_seat_cost
+    min = Float::INFINITY
+    jetsteal_seats.each do |jetsteal_seat|
+      if jetsteal_seat.cost.present?
+        min = jetsteal_seat.cost if jetsteal_seat.cost < min
+      end
+    end
+    min
+  end
+
 end

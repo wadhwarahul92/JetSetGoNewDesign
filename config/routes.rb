@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :jetsteals do
     get '/' => 'welcome#index'
     get 'list' => 'lists#index', as: 'jetsteals'
+    get 'get_list' => 'lists#get_list'
     get ':id' => 'lists#show', as: 'jetsteal'
     get ':jetsteal_id/jetsteal_seats' => 'jetsteal_seats#index'
 

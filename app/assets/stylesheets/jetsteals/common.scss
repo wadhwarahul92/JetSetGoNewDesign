@@ -1,5 +1,7 @@
 $main-green-color: rgb(47, 191, 149);
 $dark-blue-color: rgb(12, 62, 120);
+$main-gray-color: rgba(158, 167, 166, 0.6);
+$main-gray-color-no-opaque: rgb(158, 167, 166);
 
 #filter_bar{
   padding: 5px 30px 5px 30px;
@@ -76,5 +78,48 @@ $dark-blue-color: rgb(12, 62, 120);
   li{
     display: inline-block;
     margin-right: 10px;
+  }
+}
+
+.aircraft_image{
+  //height: 250px!important;
+  width: 100%!important;
+}
+
+.list_box{
+  max-height: 250px;
+  overflow-y: hidden;
+  margin-top: 15px;
+  box-shadow: 0 0 10px $main-gray-color;
+  -webkit-box-shadow: 0 0 10px $main-gray-color;
+  -moz-box-shadow: 0 0 10px $main-gray-color;
+  color: white!important;
+  .content_box{
+    padding: 10px 0;
+    h6{
+      line-height: 1;
+      margin: 0;
+      small{
+        color: white!important;
+      }
+    }
+    h5{
+      small{
+        color: white;
+      }
+    }
+  }
+  .middle_box{
+    padding: 0;
+    img{
+      margin-top: 29px;
+    }
+  }
+  .button_jsg{
+    background-color: $dark-blue-color;
+    box-shadow: 0 0 5px white;
+    -webkit-box-shadow: 0 0 5px white;
+    -moz-box-shadow: 0 0 5px white;
+    border-radius: 5px;
   }
 }
