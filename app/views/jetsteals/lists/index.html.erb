@@ -10,7 +10,7 @@
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
           <select ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Departure airport">
             <option value="">Departure Airport</option>
-            <% Airport.all.each do |airport| %>
+            <% Airport.order('name ASC').all.each do |airport| %>
                 <option value="<%= airport.id %>"><%= airport.name %></option>
             <%- end %>
           </select>
@@ -19,7 +19,7 @@
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
           <select ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
             <option value="">Departure Airport</option>
-            <% Airport.all.each do |airport| %>
+            <% Airport.order('name ASC').all.each do |airport| %>
                 <option value="<%= airport.id %>"><%= airport.name %></option>
             <%- end %>
           </select>
@@ -75,8 +75,8 @@
               <!--</div>-->
               <div class="row" style="margin-top: 10px">
                 <div class="columns small-12 text-center">
-                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book seat @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}}</a>
-                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book Jet @ <i class="fa fa-rupee"></i> {{jetsteal.cost}}</a>
+                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a seat, starting @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}}</a>
+                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book a jet, starting @ <i class="fa fa-rupee"></i> {{jetsteal.cost}}</a>
                   <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
                 </div>
               </div>
