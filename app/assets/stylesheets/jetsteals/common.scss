@@ -87,7 +87,7 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 }
 
 .list_box{
-  max-height: 250px;
+  //max-height: 250px;
   overflow-y: hidden;
   margin-top: 15px;
   box-shadow: 0 0 10px $main-gray-color;
@@ -117,9 +117,8 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
   }
   .button_jsg{
     background-color: $dark-blue-color;
-    box-shadow: 0 0 5px white;
-    -webkit-box-shadow: 0 0 5px white;
-    -moz-box-shadow: 0 0 5px white;
-    border-radius: 5px;
+    box-shadow: 0 0 2px white;
+    -webkit-box-shadow: 0 0 2px white;
+    -moz-box-shadow: 0 0 2px white;
   }
 }
