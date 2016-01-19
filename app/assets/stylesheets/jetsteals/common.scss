@@ -3,6 +3,7 @@ $dark-blue-color: rgb(12, 62, 120);
 $main-gray-color: rgba(158, 167, 166, 0.6);
 $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
+$main-yellow-color: rgb(237, 202, 0);
 
 #filter_bar{
   padding: 5px 30px 5px 30px;
@@ -132,4 +133,14 @@ $main-red-color: rgb(228, 70, 71);
 
 path[id^=seat]{
   cursor: pointer;
+}
+
+.background-blue{
+  background-color: $dark-blue-color;
+  color: white;
+}
+
+.background-yellow{
+  background-color: $main-yellow-color;
+  color: white;
 }
