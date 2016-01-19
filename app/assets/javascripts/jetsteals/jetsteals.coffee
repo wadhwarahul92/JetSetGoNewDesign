@@ -18,8 +18,16 @@ list_app.controller 'ListController', ['$http', ($http)->
   @bookSeatJetsteal = {}
 
   @bookSeatClicked = (jetsteal)->
-    @bookJetJetsteal = jetsteal
-    $('.reveal-overlay').css('background-color', jetsteal.color)
+    @bookSeatJetsteal = jetsteal
+    $http.get("/aircraft_types/#{jetsteal.aircraft.aircraft_type.id}.json").success(
+      (data)=>
+        @bookSeatJetsteal.aircraft.aircraft_type.svg = data.svg
+        $('#svg_holder').html(data.svg)
+        $('#book_seat_modal').foundation('open')
+    ).error(
+      ->
+        alert 'error fetching aircraft type'
+    )
     null
 
   @detailsClicked = (jetsteal)->
