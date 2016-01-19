@@ -61,7 +61,7 @@
                   <a data-toggle="details_modal" ng-click="ctrl.detailsClicked(jetsteal)" class="button button_jsg">View Details</a>
                 </div>
                 <div class="columns small-6 text-center">
-                  <a ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" href="/jetsteals/{{jetsteal.id}}" class="button button_jsg">Book a seat</a>
+                  <a data-toggle="book_seat_modal" ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a seat</a>
                   <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-hide="jetsteal.sell_by_seats || jetsteal.sold_out" class="button button_jsg">Book Jet</a>
                   <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
                 </div>
@@ -128,6 +128,13 @@
     <h1>Yo, Aircraft & trip details here</h1>
     <p class="lead">Your couch. It is mine.</p>
     <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="large reveal" id="book_seat_modal" data-close-on-click="false" data-reveal>
+    <p>I'm big, like bear!</p>
     <button class="close-button" data-close aria-label="Close reveal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>
