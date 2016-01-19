@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114073217) do
+ActiveRecord::Schema.define(version: 20160119073744) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160114073217) do
     t.datetime "updated_at",                    null: false
     t.text     "svg",          limit: 16777215
     t.float    "speed_in_kts", limit: 24
+    t.text     "description",  limit: 65535
   end
 
   create_table "aircrafts", force: :cascade do |t|
