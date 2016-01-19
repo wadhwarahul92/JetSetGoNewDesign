@@ -99,8 +99,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="small-4 columns">
-        <table>
+      <div class="small-12 medium-4 columns">
+        <table style="width: 100%">
           <tbody>
           <tr>
             <th>Aircraft Type</th>
@@ -125,7 +125,7 @@
           </tbody>
         </table>
       </div>
-      <div class="small-8 columns">
+      <div class="small-12 medium-8 columns">
         <%= form_tag '/payment_transactions/create' do %>
             <input type="hidden" value="sell_as_whole" name="sell_as_whole">
             <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
