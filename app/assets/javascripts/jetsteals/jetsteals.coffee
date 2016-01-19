@@ -13,6 +13,13 @@ list_app.controller 'ListController', ['$http', ($http)->
 
   @bookJetJetsteal = {}
 
+  @detailsJetsteal = {}
+
+  @detailsClicked = (jetsteal)->
+    @detailsJetsteal = jetsteal
+    $('.reveal-overlay').css('background-color', jetsteal.color)
+    null
+
   @setColorsForJetsteals = ->
     for jetsteal, index in @jetsteals
       colorIndex = index % 4

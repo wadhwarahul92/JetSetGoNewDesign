@@ -58,7 +58,7 @@
               </div>
               <div class="row">
                 <div class="columns small-6 text-center">
-                  <a href="" class="button button_jsg">View Details</a>
+                  <a data-toggle="details_modal" ng-click="ctrl.detailsClicked(jetsteal)" class="button button_jsg">View Details</a>
                 </div>
                 <div class="columns small-6 text-center">
                   <a ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" href="/jetsteals/{{jetsteal.id}}" class="button button_jsg">Book a seat</a>
@@ -119,6 +119,15 @@
         <%- end %>
       </div>
     </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="reveal" id="details_modal" data-reveal>
+    <h1>Yo, Aircraft & trip details here</h1>
+    <p class="lead">Your couch. It is mine.</p>
+    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
     <button class="close-button" data-close aria-label="Close reveal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>
