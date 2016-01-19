@@ -7,4 +7,12 @@
 
 $(document).on('ready page:load', function(){
     $(document).foundation();
+
+    if(window.localStorage['visited_jetsteals']){
+
+    }else{
+        $('#info_button')[0].click();
+        window.localStorage['visited_jetsteals'] = true
+    }
+
 });

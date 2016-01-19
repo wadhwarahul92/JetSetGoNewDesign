@@ -39,9 +39,10 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @chosen_seats_ids = ->
     ids = []
-    for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
-      if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
-        ids.push(jetsteal_seat.id)
+    if @bookSeatJetsteal.jetsteal_seats
+      for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
+        if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
+          ids.push(jetsteal_seat.id)
     ids
 
   @resetChosenSeats = ->
@@ -54,9 +55,10 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @grandTotal = ->
     total = 0
-    for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
-      if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
-        total += jetsteal_seat.cost
+    if @bookSeatJetsteal.jetsteal_seats
+      for jetsteal_seat in @bookSeatJetsteal.jetsteal_seats
+        if @chosen_seats.indexOf(jetsteal_seat.ui_seat_id) >= 0
+          total += jetsteal_seat.cost
     total
 
   @seatClicked = ->
