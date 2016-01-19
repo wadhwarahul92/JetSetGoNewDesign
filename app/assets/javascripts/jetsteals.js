@@ -4,6 +4,8 @@
 //= require_tree ./jetsteals
 //= require turbolinks
 //= require foundation
+//= require ./vendors/foundation-datepicker
+//= require ./vendors/underscore
 
 $(document).on('ready page:load', function(){
     $(document).foundation();
@@ -15,4 +17,7 @@ $(document).on('ready page:load', function(){
         window.localStorage['visited_jetsteals'] = true
     }
 
+    $('.dp').fdatepicker({
+        format: 'd M yyyy'
+    });
 });

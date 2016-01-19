@@ -28,7 +28,11 @@ Rails.application.routes.draw do
 
   end
 
-  resources :airports
+  resources :airports do
+    collection do
+      get 'all_names'
+    end
+  end
 
   resources :aircraft_types
 

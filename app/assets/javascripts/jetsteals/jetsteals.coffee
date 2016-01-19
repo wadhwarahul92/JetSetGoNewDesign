@@ -37,6 +37,18 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @bookSeatJetsteal = {}
 
+  @filtersDontMatch = ->
+    if @date and _.filter(@jetsteals, (j)-> j.date == @date ).length == 0
+      return false
+    if @departure_airport_id and _.filter(@jetsteals, (j) -> j.departure_airport.id == @departure_airport_id).length == 0
+      return false
+    if @arrival_airport_id and _.filter(@jetsteals, (j) -> j.arrival_airport.id == @arrival_airport_id).length == 0
+      return false
+    if @pax and _.filter(@jetsteals, (j) -> j.aircraft.seating_capacity >= @pax).length == 0
+      return false
+    true
+
+
   @chosen_seats_ids = ->
     ids = []
     if @bookSeatJetsteal.jetsteal_seats

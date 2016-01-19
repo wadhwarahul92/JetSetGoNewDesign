@@ -1,22 +1,37 @@
 <div ng-controller="ListController as ctrl">
-  <div class="row" id="filter_bar">
+  <div class="row hide-for-small-only" id="filter_bar">
     <div class="columns small-11">
       <div class="row">
         <div class="small-3 columns text-center">
           <i class="fa fa-calendar"></i>
-          <input type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only" title="Date of travel">
+          <input type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp" placeholder="Date" title="Date of travel">
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
-          <input type="text" ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only" title="Departure airport">
+          <select ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Departure airport">
+            <option value="">Departure Airport</option>
+            <% Airport.all.each do |airport| %>
+                <option value="<%= airport.id %>"><%= airport.name %></option>
+            <%- end %>
+          </select>
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
-          <input type="text" ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only" title="Arrival airport">
+          <select ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
+            <option value="">Departure Airport</option>
+            <% Airport.all.each do |airport| %>
+                <option value="<%= airport.id %>"><%= airport.name %></option>
+            <%- end %>
+          </select>
         </div>
         <div class="small-3 columns text-center">
           <i class="fa fa-user"></i>
-          <input type="number" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only" title="Number of passengers">
+          <select title="PAX" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only">
+            <option value="">PAX</option>
+            <% (0..10).each do |pax| %>
+                <option value="<%= pax %>"><%= pax %></option>
+            <%- end %>
+          </select>
         </div>
       </div>
     </div>
@@ -26,7 +41,7 @@
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <div class="small-12 medium-6 columns" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
+      <div class="small-12 medium-6 columns" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out', 'sell_by_seats']">
         <div class="list_box" ng-style="{'background-color': jetsteal.color}">
           <div class="row">
             <div class="medium-6 hide-for-small-only columns">
@@ -60,7 +75,7 @@
                   <a data-toggle="details_modal" ng-click="ctrl.detailsClicked(jetsteal)" class="button button_jsg">View Details</a>
                 </div>
                 <div class="columns small-6 text-center">
-                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a seat</a>
+                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book seat</a>
                   <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-hide="jetsteal.sell_by_seats || jetsteal.sold_out" class="button button_jsg">Book Jet</a>
                   <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
                 </div>
@@ -69,6 +84,11 @@
           </div>
         </div>
       </div>
+      <!--<div ng-show="ctrl.filtersDontMatch()" style="height: 600px;padding-top: 50px" class="small-12 columns">-->
+        <!--<h4 class="text-center">Oops! we don't have any Jetsteal for current filter</h4>-->
+        <!--<h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>-->
+        <!--<p class="text-center"><a href="/jetsteals/list" class="button button_jsg">Remove filters</a></p>-->
+      <!--</div>-->
     </div>
   </div>
 

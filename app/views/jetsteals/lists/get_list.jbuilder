@@ -5,6 +5,7 @@ json.array! @jetsteals do |jetsteal|
   json.end_at jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
   json.flight_start_time jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
   json.flight_end_time (jetsteal.end_at + jetsteal.flight_duration_in_minutes.minutes).strftime('%d %b %Y, %I:%M %p')
+  json.date jetsteal.end_at.strftime('%d %b %Y')
   json.min_seat_cost jetsteal.min_seat_cost || 0
   json.cost jetsteal.cost
   json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
