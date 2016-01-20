@@ -22,7 +22,7 @@ class JetstealListCreator
 
     filter_facilities
 
-    check_seats(@list.distinct)
+    check_seats(@list.order('end_at ASC').distinct)
   end
 
   private
