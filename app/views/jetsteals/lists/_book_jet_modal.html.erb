@@ -1,0 +1,62 @@
+<div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
+  <div class="row">
+    <div class="small-12 columns">
+      <h4 class="text-center">Book a Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <table style="width: 100%">
+        <tbody>
+        <tr>
+          <th>Aircraft Type</th>
+          <td>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</td>
+        </tr>
+        <tr>
+          <th>Departure Airport</th>
+          <td>{{ctrl.bookJetJetsteal.departure_airport.name}}</td>
+        </tr>
+        <tr>
+          <th>Departure City</th>
+          <td>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</td>
+        </tr>
+        <tr>
+          <th>Departure at</th>
+          <td>{{ctrl.bookJetJetsteal.flight_start_time}}</td>
+        </tr>
+        <tr>
+          <th>Arrival at</th>
+          <td>{{ctrl.bookJetJetsteal.flight_end_time}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="small-12 medium-8 columns">
+      <%= form_tag '/payment_transactions/create' do %>
+          <input type="hidden" value="sell_as_whole" name="sell_as_whole">
+          <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
+          <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookJetJetsteal.jetsteal_seats" value="{{seat.id}}">
+          <fieldset>
+            <legend>Contact Details</legend>
+            <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
+            <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
+            <%= number_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
+            <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
+          </fieldset>
+          <fieldset>
+            <legend>Payment Details</legend>
+            <ul class="inline-list">
+              <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
+              <li><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost}}</li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <button type="submit" class="button button-large button_jsg float-right" ><i class="fa fa-credit-card"></i> Proceed to pay</button>
+          </fieldset>
+      <%- end %>
+    </div>
+  </div>
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

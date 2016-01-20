@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="small-12 columns">
+    <div class="small-12 medium-6 columns count_this" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out']">
+      <div class="list_box outer_sold" ng-style="{'background-color': jetsteal.color}">
+        <div ng-show="jetsteal.sold_out" class="sold_out">
+          <h2 class="text-center">Sold Out</h2>
+        </div>
+        <div class="row">
+          <div class="medium-6 hide-for-small-only columns">
+            <img ng-src="{{jetsteal.aircraft.aircraft_images[0]}}" class="aircraft_image" src="" alt="">
+          </div>
+          <div class="medium-6 small-12 columns content_box">
+            <h6 class="text-center">{{jetsteal.aircraft.aircraft_type.name}}</h6>
+            <div class="">
+              <div class="small-5 text-center columns">
+                <img ng-src="{{jetsteal.departure_airport.city.image}}" src="" alt="">
+                <h6 class="text-center"><small>{{jetsteal.departure_airport.city.name}}</small></h6>
+                <h6 class="text-center"><small>{{jetsteal.flight_start_time}}</small></h6>
+              </div>
+              <div class="small-2 text-center columns middle_box">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/026/original/icon.png?1453190178" alt="">
+              </div>
+              <div class="small-5 text-center columns">
+                <img ng-src="{{jetsteal.arrival_airport.city.image}}" src="" alt="">
+                <h6 class="text-center"><small>{{jetsteal.arrival_airport.city.name}}</small></h6>
+                <h6 class="text-center"><small>{{jetsteal.flight_end_time}}</small></h6>
+              </div>
+            </div>
+            <!--<div class="row">-->
+            <!--<div class="small-12 columns text-center">-->
+            <!--<h5 ng-show="jetsteal.sell_by_seats"><small>Seat @</small> <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}} <small>onwards</small></h5>-->
+            <!--<h5 ng-hide="jetsteal.sell_by_seats"><i class="fa fa-rupee"></i> {{jetsteal.cost}}</h5>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="" style="margin-top: 10px">
+              <div class="columns small-12 text-center">
+                <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat, starting @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}}</a>
+                <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book a Jet, starting @ <i class="fa fa-rupee"></i> {{jetsteal.cost}}</a>
+                <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="no_jetsteal" style="height: 600px;padding-top: 50px; display: none" class="small-12 columns">
+      <h4 class="text-center">Oops! we don't have any Jetsteal for current filter</h4>
+      <h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>
+      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null" class="button button_jsg">Remove filters</a></p>
+    </div>
+  </div>
+</div>

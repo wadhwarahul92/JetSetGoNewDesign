@@ -1,0 +1,26 @@
+<div class="reveal" id="seat_checkout" data-reveal>
+  <h3 class="text-center">Checkout</h3>
+  <%= form_tag '/payment_transactions/create' do %>
+      <input type="hidden" value="{{ctrl.bookSeatJetsteal.id}}" name="jetsteal_id">
+      <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat_id}}" ng-repeat="chosen_seat_id in ctrl.chosen_seats_ids()">
+      <fieldset>
+        <legend>Contact Info</legend>
+        <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
+        <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
+        <%= text_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
+        <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
+      </fieldset>
+      <fieldset>
+        <legend>Payment Details</legend>
+        <ul class="list-inline">
+          <li><strong>Number of seats:</strong> {{ctrl.chosen_seats.length}}</li>
+          <li><strong>Total amount:</strong> <i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</li>
+        </ul>
+      </fieldset>
+      <p><small>You will be redirect to CC Avenue payment gateway.</small></p>
+      <p><button class="button button_jsg float-right" type="submit"><i class="fa fa-credit-card"></i> Checkout</button></p>
+  <%- end %>
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

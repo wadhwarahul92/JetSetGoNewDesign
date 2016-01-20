@@ -1,0 +1,94 @@
+<div class="full reveal" id="book_seat_modal" data-close-on-click="false" data-reveal>
+
+  <div class="row" style="margin-bottom: 10px" ng-style="{'background-color': ctrl.bookSeatJetsteal.color}">
+    <div class="small-12 columns">
+      <h3 style="padding: 10px; color: white" class="text-center">Choose your seats</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-3 columns">
+      <table>
+        <thead>
+        <tr>
+          <th colspan="2" class="text-center">Trip Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <img ng-src="{{ctrl.bookSeatJetsteal.departure_airport.city.image}}" src="" alt="">
+          </td>
+          <td>
+            <img ng-src="{{ctrl.bookSeatJetsteal.arrival_airport.city.image}}" src="" alt="">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>From:</strong> {{ctrl.bookSeatJetsteal.departure_airport.name}}, {{ctrl.bookSeatJetsteal.departure_airport.city.name}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>To:</strong> {{ctrl.bookSeatJetsteal.arrival_airport.name}}, {{ctrl.bookSeatJetsteal.arrival_airport.city.name}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Departure At:</strong> {{ctrl.bookSeatJetsteal.flight_start_time}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Arrival At:</strong> {{ctrl.bookSeatJetsteal.flight_end_time}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Aircraft:</strong> {{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <ul class="inline-list text-center">
+        <li><span class="" style="background-color: rgb(242, 208, 59)" >&nbsp;&nbsp;&nbsp;</span> <small><strong>Available seat</strong></small></li>
+        <li><span class="" style="background-color: rgb(241, 92, 92)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Seat not for sale</strong></small></li>
+        <li><span class="" style="background-color: rgb(43, 201, 167)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Chosen seat</strong></small></li>
+        <li><span class="" style="background-color: rgb(51, 122, 183)">&nbsp;&nbsp;&nbsp;</span> <small><strong>Already booked</strong></small></li>
+      </ul>
+      <div ng-click="ctrl.resetChosenSeats()" id="svg_holder"></div>
+    </div>
+    <div class="small-12 medium-3 columns">
+      <div ng-hide="ctrl.chosen_seats.length > 0">
+        <h4 class="highlight-color text-center">How to choose seats?</h4>
+        <ol>
+          <li class="margin-top">Click on <span style="background-color: rgb(242, 208, 59)" class="">&nbsp;&nbsp;&nbsp;</span> colored seat to add it to cart</li>
+          <li class="margin-top"><span style="background-color: rgb(241, 92, 92)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are not available for sale. Some operators customize their plane and remove some seats.</li>
+          <li class="margin-top">When you add a seat to cart its colored <span style="background-color: rgb(43, 201, 167)" class="">&nbsp;&nbsp;&nbsp;</span>, click on it again to remove it from cart.</li>
+          <li class="margin-top"><span style="background-color: rgb(51, 122, 183)" class="">&nbsp;&nbsp;&nbsp;</span> colored seats are already booked by others. Once you book a seat you can contact operations and customer support to know who shares your plane.</li>
+        </ol>
+      </div>
+
+      <div ng-show="ctrl.chosen_seats.length > 0">
+        <table style="width: 100%">
+          <thead>
+          <tr>
+            <th colspan="2" class="text-center">Chosen seats</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="seat_id in ctrl.chosen_seats">
+            <td class="text-center">{{seat_id}}</td>
+            <td class="text-center"><i class="fa fa-rupee"></i> {{ctrl.priceFor(seat_id)}}</td>
+          </tr>
+          <tr>
+            <th colspan="2" class="text-center">Grand Total</th>
+          </tr>
+          <tr>
+            <td class="text-center">{{ctrl.chosen_seats.length}} Seats</td>
+            <td class="text-center"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal()}}</strong></td>
+          </tr>
+          </tbody>
+        </table>
+        <a data-toggle="seat_checkout" class="button button_jsg large float-right"><i class="fa fa-credit-card"></i> Proceed</a>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span style="font-size: 50px; color: white" aria-hidden="true">&times;</span>
+  </button>
+</div>
