@@ -5,6 +5,40 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+.select2-selection{
+  background: none!important;
+  border: none!important;
+  border-radius: 0;
+  border-bottom: 1px solid white!important;
+  margin-top: 19px;
+  height: 34px!important;
+}
+
+.select2-dropdown{
+  width: 170px!important;
+  font-size: 13px!important;
+  color: white!important;
+  background-color: $dark-blue-color!important;
+}
+
+.select2-search__field{
+  box-shadow: none!important;
+  height: 30px!important;
+  font-size: 12px!important;
+}
+
+.select2-selection__rendered{
+  color: white!important;
+}
+
+.select2-container{
+  font-size: 17px;
+}
+
+.select2-selection__arrow{
+  display: none!important;
+}
+
 .responsive_dropdown{
   font-size: 30px!important;
   color: white;

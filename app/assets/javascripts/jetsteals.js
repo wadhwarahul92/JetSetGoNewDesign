@@ -7,6 +7,7 @@
 //= require ./vendors/foundation-datepicker
 //= require ./vendors/underscore
 //= require ./vendors/loading-bar
+//= require ./common/select2
 
 $(document).on('ready page:load', function(){
     $(document).foundation();
@@ -26,5 +27,7 @@ $(document).on('ready page:load', function(){
     if(a.length > 0){
         a.foundation('open');
     }
+
+    $('.airports').select2();
 
 });
