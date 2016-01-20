@@ -37,7 +37,7 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <strong>No of seats:</strong> {{ctrl.chosen_seats.length}}
-                    <strong>Total Cost: </strong> ₹ {{ctrl.grandTotal()}}
+                    <strong>Total Cost: </strong> ₹ {{ctrl.grandTotal() | currency:"" | indianCurrency }}
                   </div>
                   <div class="col-sm-12 margin-top">
                     <small class="highlight-color"><i class="fa fa-info"></i> We use CC Avenue for payment transactions.</small>

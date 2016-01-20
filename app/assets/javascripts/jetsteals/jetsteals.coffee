@@ -1,3 +1,16 @@
+angular.module('CustomFilters', []).filter('indianCurrency', ->
+  return (input)->
+    return input unless input
+    numberPart = input.split('.')[0]
+    decimalPart = input.split('.')[1]
+    numberPart = numberPart.replace(/,/g, '')
+    lastThree = numberPart.substring(numberPart.length-3)
+    otherNumbers = numberPart.substring(0,numberPart.length-3)
+    if(otherNumbers != '')
+      lastThree = ',' + lastThree
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + '.' + decimalPart
+)
+
 window.chosen_seats = []
 
 window.seatClicked = (seat)->
@@ -16,7 +29,7 @@ chosen_seat_color = 'rgb(43, 201, 167)'
 
 already_booked_color = 'rgb(51, 122, 183)'
 
-list_app = angular.module 'list_app', ['angular-loading-bar']
+list_app = angular.module 'list_app', ['angular-loading-bar', 'CustomFilters']
 
 list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->
 
