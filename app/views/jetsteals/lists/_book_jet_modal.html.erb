@@ -9,6 +9,16 @@
       <table style="width: 100%">
         <tbody>
         <tr>
+          <td>
+            <img ng-src="{{ctrl.bookJetJetsteal.departure_airport.city.image}}" src="" alt="">
+            <p class="text-center"><small>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</small></p>
+          </td>
+          <td>
+            <img ng-src="{{ctrl.bookJetJetsteal.arrival_airport.city.image}}" src="" alt="">
+            <p class="text-center"><small>{{ctrl.bookJetJetsteal.arrival_airport.city.name}}</small></p>
+          </td>
+        </tr>
+        <tr>
           <th>Aircraft Type</th>
           <td>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</td>
         </tr>
@@ -17,16 +27,20 @@
           <td>{{ctrl.bookJetJetsteal.departure_airport.name}}</td>
         </tr>
         <tr>
-          <th>Departure City</th>
-          <td>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</td>
+          <th>Arrival Airport</th>
+          <td>{{ctrl.bookJetJetsteal.arrival_airport.name}}</td>
         </tr>
         <tr>
-          <th>Departure at</th>
-          <td>{{ctrl.bookJetJetsteal.flight_start_time}}</td>
+          <th>Departure Date</th>
+          <td>{{ctrl.bookJetJetsteal.flight_start_time.split(',')[0]}}</td>
         </tr>
         <tr>
-          <th>Arrival at</th>
-          <td>{{ctrl.bookJetJetsteal.flight_end_time}}</td>
+          <th>Departure Time</th>
+          <td>{{ctrl.bookJetJetsteal.flight_start_time.split(',')[1]}}</td>
+        </tr>
+        <tr>
+          <th>Arrival Time</th>
+          <td>{{ctrl.bookJetJetsteal.flight_end_time.split(',')[1]}}</td>
         </tr>
         </tbody>
       </table>

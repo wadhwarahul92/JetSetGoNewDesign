@@ -30,13 +30,16 @@
           <td colspan="2"><strong>To:</strong> {{ctrl.bookSeatJetsteal.arrival_airport.name}}, {{ctrl.bookSeatJetsteal.arrival_airport.city.name}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Departure At:</strong> {{ctrl.bookSeatJetsteal.flight_start_time}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>Arrival At:</strong> {{ctrl.bookSeatJetsteal.flight_end_time}}</td>
-        </tr>
-        <tr>
           <td colspan="2"><strong>Aircraft:</strong> {{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Departure Date:</strong> {{ctrl.bookSeatJetsteal.flight_start_time.split(',')[0]}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Departure Time:</strong> {{ctrl.bookSeatJetsteal.flight_start_time.split(',')[1]}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Arrival Time:</strong> {{ctrl.bookSeatJetsteal.flight_end_time.split(',')[1]}}</td>
         </tr>
         </tbody>
       </table>
