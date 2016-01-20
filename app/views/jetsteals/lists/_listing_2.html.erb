@@ -38,7 +38,18 @@
       </div>
     </div>
     <div id="no_jetsteal" style="height: 600px;padding-top: 50px; display: none" class="small-12 columns">
-      <h4 class="text-center">Oops! we don't have any Jetsteal for current filter</h4>
+      <h4 class="text-center">We are sorry we have no flights on this sector at the moment. Would you like to be notified if there are any in future?</h4>
+      <fieldset class="text-center">
+        <div class="row">
+          <div class="small-12 medium-4 small-centered">
+            <%= simple_form_for JetstealSubscription.new do |f| %>
+                <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
+                <%= f.input :email, label: false, placeholder: 'Your e-mail' %>
+                <%= f.submit 'Subscribe for Jetsteals alerts', class: 'button button-danger' %>
+            <%- end %>
+          </div>
+        </div>
+      </fieldset>
       <h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>
       <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null" class="button button_jsg">Remove filters</a></p>
     </div>

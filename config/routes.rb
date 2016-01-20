@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   resources :aircraft_types
 
+  resources :jetsteal_subscriptions
+
   namespace :jetsteals do
     get '/' => 'welcome#index'
     get 'list' => 'lists#index', as: 'jetsteals'

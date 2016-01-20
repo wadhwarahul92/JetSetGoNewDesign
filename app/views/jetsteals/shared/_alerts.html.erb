@@ -1,6 +1,15 @@
 <% if flash[:error].present? %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="tiny reveal" id="error_modal" data-reveal>
+        <%= flash[:error] %>
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% elsif flash[:success].present? %>
+    <div class="tiny reveal" id="error_modal" data-reveal>
       <%= flash[:error] %>
+      <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
 <%- end %>

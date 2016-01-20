@@ -21,4 +21,10 @@ $(document).on('ready page:load', function(){
     $('.dp').fdatepicker({
         format: 'd M yyyy'
     });
+
+    var a = $('#error_modal');
+    if(a.length > 0){
+        a.foundation('open');
+    }
+
 });

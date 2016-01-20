@@ -23,9 +23,8 @@
 <body>
 <%= query_diet_widget if Rails.env.development? %>
 <%= render partial: 'jetsteals/shared/header' %>
-<div class="container-fluid">
-  <%= yield %>
-</div>
+<%= render partial: 'jetsteals/shared/alerts' %>
+<%= yield %>
 <%= render partial: 'jetsteals/shared/footer' %>
 </body>
 </html>
