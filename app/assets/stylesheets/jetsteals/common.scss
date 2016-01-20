@@ -43,6 +43,9 @@ $main-yellow-color: rgb(237, 202, 0);
       border: none;
       box-shadow: none;
     }
+    option{
+      color: $dark-blue-color!important;
+    }
   }
   input{
     display: inline-block;
