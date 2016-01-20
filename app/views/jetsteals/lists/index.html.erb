@@ -4,7 +4,7 @@
       <div class="row">
         <div class="small-3 columns text-center">
           <i class="fa fa-calendar"></i>
-          <input ng-change="ctrl.checkFilters()" type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp" placeholder="Date" title="Date of travel">
+          <input ng-change="ctrl.checkFilters()" type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp datepicker-text" placeholder="Date" title="Date of travel">
         </div>
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
@@ -52,7 +52,7 @@
             </div>
             <div class="medium-6 small-12 columns content_box">
               <h6 class="text-center">{{jetsteal.aircraft.aircraft_type.name}}</h6>
-              <div class="row">
+              <div class="">
                 <div class="small-5 text-center columns">
                   <img ng-src="{{jetsteal.departure_airport.city.image}}" src="" alt="">
                   <h6 class="text-center"><small>{{jetsteal.departure_airport.city.name}}</small></h6>
@@ -73,7 +73,7 @@
                   <!--<h5 ng-hide="jetsteal.sell_by_seats"><i class="fa fa-rupee"></i> {{jetsteal.cost}}</h5>-->
                 <!--</div>-->
               <!--</div>-->
-              <div class="row" style="margin-top: 10px">
+              <div class="" style="margin-top: 10px">
                 <div class="columns small-12 text-center">
                   <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat, starting @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}}</a>
                   <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book a Jet, starting @ <i class="fa fa-rupee"></i> {{jetsteal.cost}}</a>
