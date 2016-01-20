@@ -6,10 +6,10 @@
           <h2 class="text-center">Sold Out</h2>
         </div>
         <div class="row">
-          <div class="medium-6 hide-for-small-only columns">
+          <div class="large-6 hide-for-small-only hide-for-medium-only columns">
             <img ng-src="{{jetsteal.aircraft.aircraft_images[0]}}" class="aircraft_image" src="" alt="">
           </div>
-          <div class="medium-6 small-12 columns content_box">
+          <div class="medium-12 large-6 small-12 columns content_box">
             <h6 class="text-center">{{jetsteal.aircraft.aircraft_type.name}}</h6>
             <div class="">
               <div class="small-5 text-center columns">
@@ -26,17 +26,11 @@
                 <h6 class="text-center"><small>{{jetsteal.flight_end_time}}</small></h6>
               </div>
             </div>
-            <!--<div class="row">-->
-            <!--<div class="small-12 columns text-center">-->
-            <!--<h5 ng-show="jetsteal.sell_by_seats"><small>Seat @</small> <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}} <small>onwards</small></h5>-->
-            <!--<h5 ng-hide="jetsteal.sell_by_seats"><i class="fa fa-rupee"></i> {{jetsteal.cost}}</h5>-->
-            <!--</div>-->
-            <!--</div>-->
             <div class="" style="margin-top: 10px">
               <div class="columns small-12 text-center">
                 <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat, starting @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost}}</a>
                 <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book a Jet, starting @ <i class="fa fa-rupee"></i> {{jetsteal.cost}}</a>
-                <a href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
+                <a style="margin-top: 8px" href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
               </div>
             </div>
           </div>
