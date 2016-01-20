@@ -5,6 +5,43 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+.responsive_dropdown{
+  font-size: 30px!important;
+  color: white;
+  margin-top: 11px;
+}
+
+.responsive_links{
+  background-color: $main-green-color;
+  a{
+    color: white!important;
+    display: inline-block;
+    width: 40px;
+    height: 35px;
+  }
+  .main_link{
+    width: 40px;
+    height: 35px;
+    display: inline-block;
+    background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106758);
+  }
+  .jetsteal_link{
+    background-position: -74px -35px;
+  }
+  .experiences_link{
+    background-position: -140px 0;
+  }
+  .multi_trip_link{
+    background-position: -206px 0;
+  }
+  .rescue_link{
+    background-position: -272px 0;
+  }
+  .jetsetcars_link{
+    background-position: 0 83px;
+  }
+}
+
 .outer_sold{
   position: relative;
   .sold_out{
