@@ -44,7 +44,9 @@ $main-yellow-color: rgb(237, 202, 0);
       box-shadow: none;
     }
     option{
-      color: $dark-blue-color!important;
+      //color: $dark-blue-color!important;
+      //-moz-color: $dark-blue-color!important;
+      //-webkit-color: $dark-blue-color!important;
     }
   }
   input{
