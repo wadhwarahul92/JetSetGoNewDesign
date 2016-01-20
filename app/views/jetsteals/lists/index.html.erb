@@ -18,7 +18,7 @@
         <div class="small-3 columns text-center">
           <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
           <select ng-change="ctrl.checkFilters()" ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
-            <option value="">Departure Airport</option>
+            <option value="">Arrival Airport</option>
             <% Airport.order('name ASC').all.each do |airport| %>
                 <option value="<%= airport.id %>"><%= airport.name %></option>
             <%- end %>
