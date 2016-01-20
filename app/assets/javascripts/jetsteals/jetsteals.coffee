@@ -16,7 +16,7 @@ chosen_seat_color = 'rgb(43, 201, 167)'
 
 already_booked_color = 'rgb(51, 122, 183)'
 
-list_app = angular.module 'list_app', []
+list_app = angular.module 'list_app', ['angular-loading-bar']
 
 list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->
 

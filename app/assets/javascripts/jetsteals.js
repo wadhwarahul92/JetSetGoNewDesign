@@ -6,6 +6,7 @@
 //= require foundation
 //= require ./vendors/foundation-datepicker
 //= require ./vendors/underscore
+//= require ./vendors/loading-bar
 
 $(document).on('ready page:load', function(){
     $(document).foundation();
