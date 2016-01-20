@@ -44,6 +44,8 @@
           <div class="small-12 medium-4 small-centered">
             <%= simple_form_for JetstealSubscription.new do |f| %>
                 <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
+                <%= f.input :name, label: false, placeholder: 'Your full name' %>
+                <%= f.input :phone, label: false, placeholder: 'Your phone number' %>
                 <%= f.input :email, label: false, placeholder: 'Your e-mail' %>
                 <%= f.submit 'Subscribe for Jetsteals alerts', class: 'button button-danger' %>
             <%- end %>

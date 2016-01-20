@@ -14,7 +14,7 @@ class JetstealSubscriptionsController < ApplicationController
   private
 
   def filtered_params
-    params.require(:jetsteal_subscription).permit(:email)
+    params.require(:jetsteal_subscription).permit(:email, :name, :phone)
   end
 
 end
