@@ -245,6 +245,10 @@ input.datepicker-text::-moz-placeholder {  /* Firefox 19+ */
 input.datepicker-text:-ms-input-placeholder {
   color: #ffffff !important;
 }
+@media(max-width: 1023px){
+ .list_box .row{margin: 0 !important;}
+.list_box{min-height: 255px;}
+}
 @media(max-width: 767px){
   footer .copyryt-con p{text-align: center; font-size: 11px;}
   footer .social-icon{text-align: center;}
