@@ -28,6 +28,6 @@ $(document).on('ready page:load', function(){
         a.foundation('open');
     }
 
-    $('.airports').select2();
+    $('.airports').select2({dropdownAutoWidth : true});
 
 });
