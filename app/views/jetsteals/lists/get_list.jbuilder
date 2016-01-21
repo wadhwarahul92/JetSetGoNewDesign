@@ -50,7 +50,8 @@ json.array! @jetsteals do |jetsteal|
     json.cabin_width_in_meters aircraft.cabin_width_in_meters
     json.cabin_height_in_meters aircraft.cabin_height_in_meters
     json.cabin_length_in_meters aircraft.cabin_length_in_meters
-    json.aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:large) }
+    json.aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:size_250x250) }
+    json.original_aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:original) }
     json.crew aircraft.crew
     json.wifi aircraft.wifi?
     json.phone aircraft.phone?

@@ -11,7 +11,7 @@
     <div class="row">
       <% @aircraft.aircraft_images.each do |aircraft_image| %>
       <div class="col-sm-12">
-        <%= image_tag aircraft_image.image.url(:medium) %>
+        <%= image_tag aircraft_image.image.url(AircraftImage::DEFAULT_SIZE) %>
         <% if aircraft_image.id.present? %>
             <%= link_to admin_aircraft_aircraft_image_path(@aircraft, aircraft_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
                 <i class="fa fa-trash fa-3"></i>

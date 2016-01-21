@@ -7,7 +7,10 @@
         </div>
         <div class="row">
           <div class="large-6 hide-for-small-only hide-for-medium-only columns">
-            <a style="display: inline-block;position: relative;" ng-hide="$index > 0" ng-repeat="image in jetsteal.aircraft.aircraft_images" href="{{image}}" data-lightbox="{{jetsteal.id}}">
+            <a style="display: inline-block; position: relative;"
+               ng-hide="$index > 0"
+               ng-repeat="image in jetsteal.aircraft.aircraft_images"
+               href="{{jetsteal.aircraft.original_aircraft_images[$index]}}" data-lightbox="{{jetsteal.id}}">
               <div class="text-center" style="display: inline-block; position: absolute; height: 100%; width: 100%">
                 <i ng-show="show_zoom && !jetsteal.sold_out" class="fa image_zoom fa-search-plus"></i>
               </div>
