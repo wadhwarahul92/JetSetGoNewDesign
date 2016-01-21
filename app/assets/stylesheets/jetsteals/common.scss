@@ -295,10 +295,7 @@ input.datepicker-text:-moz-placeholder {color: #ffffff !important;} /* Firefox 1
 input.datepicker-text::-moz-placeholder {color: #ffffff !important;}  /* Firefox 19+ */
 input.datepicker-text:-ms-input-placeholder {color: #ffffff !important;}
 
-//@media(max-width: 1023px) {
-//  .list_box .row {margin: 0;
-//  }
-//}
+
 @media(max-width: 990px) {
   .inline-list{margin-left: 0;}
   .inline-list li a{font-size: 12px;}
@@ -306,6 +303,11 @@ input.datepicker-text:-ms-input-placeholder {color: #ffffff !important;}
 
 }
 
+input.datepicker-text:-ms-input-placeholder {
+  color: #ffffff !important;
+}
+.logo-main-con{width:12%;}
+.select2-container{text-align:left;}
 @media(max-width: 767px){
   footer .copyryt-con p{text-align: center; font-size: 11px;}
   footer .social-icon{text-align: center;}
@@ -315,4 +317,8 @@ input.datepicker-text:-ms-input-placeholder {color: #ffffff !important;}
 @media(max-width: 460px) {
   .inline-list li{margin-right: 0}
   .list_box .button_jsg{ font-size: 12px; margin-top: 15px;}
+  .logo-main-con{width:100%;}
+}
+@media(max-width: 480px){
+.inline-list li{margin-right: 5px;}
 }
