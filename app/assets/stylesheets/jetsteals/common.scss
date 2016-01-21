@@ -5,6 +5,16 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+#new_jetsteal_subscription{
+  input{
+    margin-bottom: 0;
+  }
+}
+
+table{
+  width: 100%!important;
+}
+
 label.error{
   color: $main-red-color!important;
   text-align: right;

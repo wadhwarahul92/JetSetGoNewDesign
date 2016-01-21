@@ -43,17 +43,29 @@
         <div class="row">
           <div class="small-12 medium-4 small-centered">
             <%= simple_form_for JetstealSubscription.new do |f| %>
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <td><%= f.input :name, label: false %></td>
+                  </tr>
+                  <tr>
+                    <th>Contact Number</th>
+                    <td><%= f.input :phone, label: false %></td>
+                  </tr>
+                  <tr>
+                    <th>E-mail</th>
+                    <td><%= f.input :email, label: false %></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><%= f.submit 'Subscribe for Jetsteals alerts', class: 'button' %></td>
+                  </tr>
+                </table>
                 <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
-                <%= f.input :name, label: false, placeholder: 'Your full name' %>
-                <%= f.input :phone, label: false, placeholder: 'Your phone number' %>
-                <%= f.input :email, label: false, placeholder: 'Your e-mail' %>
-                <%= f.submit 'Subscribe for Jetsteals alerts', class: 'button button-danger' %>
             <%- end %>
           </div>
         </div>
       </fieldset>
-      <h1 class="text-center font-large"><i style="font-size: 150px;" class="fa fa-meh-o"></i></h1>
-      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button button_jsg">Remove filters</a></p>
+      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button alert">Remove filters</a></p>
     </div>
   </div>
 </div>
