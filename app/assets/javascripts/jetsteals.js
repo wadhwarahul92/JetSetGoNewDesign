@@ -10,9 +10,31 @@
 //= require ./vendors/select2.js
 //= require ./vendors/jquery_validate
 
+//stick a div on top when window reaches it
+function sticky_relocate(){
+    var div_to_stick = $('#filter_bar');
+    if(div_to_stick && div_to_stick.length > 0){
+        var window_top = $(window).scrollTop();
+        var sticky_placeholder = $('#sticky-placeholder');
+        var div_top = $('#sticky-anchor').offset().top;
+        if (window_top > div_top){
+            div_to_stick.addClass('stick');
+            sticky_placeholder.css('height', div_to_stick.height());
+        }else{
+            div_to_stick.removeClass('stick');
+            sticky_placeholder.css('height', 0);
+        }
+    }
+}
+////////////////////////////////////////////
+
 $(document).on('ready page:load', function(){
 
     $(document).foundation();
+
+    sticky_relocate();
+
+    $(window).on('scroll', function(){sticky_relocate()});
 
     if(window.localStorage['visited_jetsteals']){
         //do nothing

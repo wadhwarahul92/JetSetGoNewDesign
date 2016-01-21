@@ -3,3 +3,14 @@
 @import "vendors/foundation-datepicker";
 @import "vendors/loading-bar";
 @import "common/select2";
+
+
+//this class is applied to a div when it reaches to top of window and wants to just remain stuck
+.stick {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(158, 167, 166, 0.6);;
+}
+/////////////////
