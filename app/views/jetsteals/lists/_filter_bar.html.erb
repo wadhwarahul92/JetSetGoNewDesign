@@ -27,7 +27,7 @@
         <i class="fa fa-user"></i>
         <select ng-change="ctrl.checkFilters()" title="Pax" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only">
           <option value="">Pax</option>
-          <% (0..10).each do |pax| %>
+          <% (1..50).each do |pax| %>
               <option value="<%= pax %>"><%= pax %></option>
           <%- end %>
         </select>
