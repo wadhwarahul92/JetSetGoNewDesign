@@ -1,8 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree ./common
 //= require ./vendors/angular
+//= require ./vendors/bootstrap
+//= require ./vendors/select2
 //= require_tree ./admin
 
 try {

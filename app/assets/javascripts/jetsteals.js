@@ -7,7 +7,7 @@
 //= require ./vendors/foundation-datepicker
 //= require ./vendors/underscore
 //= require ./vendors/loading-bar
-//= require ./common/select2
+//= require vendors/select2.js
 
 $(document).on('ready page:load', function(){
     $(document).foundation();
