@@ -17,29 +17,38 @@
         <tbody>
         <tr>
           <td>
-            <img ng-src="{{ctrl.bookSeatJetsteal.departure_airport.city.image}}" src="" alt="">
+            <img class="city_image_" ng-src="{{ctrl.bookSeatJetsteal.departure_airport.city.image}}" src="" alt="">
+            <p class="text-center"><small>{{ctrl.bookSeatJetsteal.departure_airport.city.name}}</small></p>
           </td>
           <td>
-            <img ng-src="{{ctrl.bookSeatJetsteal.arrival_airport.city.image}}" src="" alt="">
+            <img class="city_image_" ng-src="{{ctrl.bookSeatJetsteal.arrival_airport.city.image}}" src="" alt="">
+            <p class="text-center"><small>{{ctrl.bookJetJetsteal.arrival_airport.city.name}}</small></p>
           </td>
         </tr>
+
         <tr>
-          <td colspan="2"><strong>From:</strong> {{ctrl.bookSeatJetsteal.departure_airport.name}}, {{ctrl.bookSeatJetsteal.departure_airport.city.name}}</td>
+          <th>Aircraft Type</th>
+          <td>{{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>To:</strong> {{ctrl.bookSeatJetsteal.arrival_airport.name}}, {{ctrl.bookSeatJetsteal.arrival_airport.city.name}}</td>
+          <th>Departure Airport</th>
+          <td>{{ctrl.bookSeatJetsteal.departure_airport.name}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Aircraft:</strong> {{ctrl.bookSeatJetsteal.aircraft.aircraft_type.name}}</td>
+          <th>Arrival Airport</th>
+          <td>{{ctrl.bookSeatJetsteal.arrival_airport.name}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Departure Date:</strong> {{ctrl.bookSeatJetsteal.flight_start_time.split(',')[0]}}</td>
+          <th>Departure Date</th>
+          <td>{{ctrl.bookSeatJetsteal.flight_start_time.split(',')[0]}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Departure Time:</strong> {{ctrl.bookSeatJetsteal.flight_start_time.split(',')[1]}}</td>
+          <th>Departure Time</th>
+          <td>{{ctrl.bookSeatJetsteal.flight_start_time.split(',')[1]}}</td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Arrival Time:</strong> {{ctrl.bookSeatJetsteal.flight_end_time.split(',')[1]}}</td>
+          <th>Arrival Time</th>
+          <td>{{ctrl.bookSeatJetsteal.flight_end_time.split(',')[1]}}</td>
         </tr>
         </tbody>
       </table>

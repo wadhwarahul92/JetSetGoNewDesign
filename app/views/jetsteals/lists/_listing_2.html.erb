@@ -51,6 +51,10 @@
         <div class="row">
           <div class="small-12 medium-4 small-centered">
             <%= simple_form_for JetstealSubscription.new do |f| %>
+                <%= f.input :date, input_html: {value: '{{ctrl.date}}'}, as: :hidden %>
+                <%= f.input :departure_airport, input_html: {value: '{{ctrl.departure_airport_id}}'}, as: :hidden %>
+                <%= f.input :arrival_airport, input_html: {value: '{{ctrl.arrival_airport_id}}'}, as: :hidden %>
+                <%= f.input :pax, input_html: {value: '{{ctrl.pax}}'}, as: :hidden %>
                 <table>
                   <tr>
                     <th>Name</th>

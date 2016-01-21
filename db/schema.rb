@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120123932) do
+ActiveRecord::Schema.define(version: 20160121122947) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -130,12 +130,16 @@ ActiveRecord::Schema.define(version: 20160120123932) do
   end
 
   create_table "jetsteal_subscriptions", force: :cascade do |t|
-    t.string   "email",       limit: 255
-    t.string   "name",        limit: 255
-    t.string   "phone",       limit: 255
+    t.string   "email",             limit: 255
+    t.string   "name",              limit: 255
+    t.string   "phone",             limit: 255
     t.boolean  "send_emails"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "date",              limit: 255
+    t.string   "departure_airport", limit: 255
+    t.string   "arrival_airport",   limit: 255
+    t.string   "pax",               limit: 255
   end
 
   create_table "jetsteals", force: :cascade do |t|

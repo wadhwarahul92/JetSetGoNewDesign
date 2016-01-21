@@ -1,7 +1,7 @@
 <div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
-  <div class="row">
+  <div class="row" style="    border-bottom: 1px solid lightgray;margin-bottom: 10px;">
     <div class="small-12 columns">
-      <h4 class="text-center">Book a Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</h4>
+      <h4 class="text-center">Book your Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</h4>
     </div>
   </div>
   <div class="row">
@@ -10,11 +10,11 @@
         <tbody>
         <tr>
           <td>
-            <img ng-src="{{ctrl.bookJetJetsteal.departure_airport.city.image}}" src="" alt="">
+            <img class="city_image_" ng-src="{{ctrl.bookJetJetsteal.departure_airport.city.image}}" src="" alt="">
             <p class="text-center"><small>{{ctrl.bookJetJetsteal.departure_airport.city.name}}</small></p>
           </td>
           <td>
-            <img ng-src="{{ctrl.bookJetJetsteal.arrival_airport.city.image}}" src="" alt="">
+            <img class="city_image_" ng-src="{{ctrl.bookJetJetsteal.arrival_airport.city.image}}" src="" alt="">
             <p class="text-center"><small>{{ctrl.bookJetJetsteal.arrival_airport.city.name}}</small></p>
           </td>
         </tr>
@@ -57,8 +57,8 @@
             <%= number_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
             <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
           </fieldset>
-          <fieldset>
-            <legend>Payment Details</legend>
+          <fieldset class="text-right">
+            <legend><strong>Payment Details</strong></legend>
             <ul class="inline-list">
               <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
               <li><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
