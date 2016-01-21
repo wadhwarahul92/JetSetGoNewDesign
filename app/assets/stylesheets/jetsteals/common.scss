@@ -290,24 +290,43 @@ footer .social-icon span{background-color: #18374e;display: inline-block; margin
 #launcher{bottom:71px !important;}
 .list_box .button_jsg{width: 95%; text-align: center; margin-top: 9px; margin-bottom: 0px;padding: 0.75em 1em;font-size: 12px;}
 .list_box .content_box h6 small{font-size: 11px;}
+
 input.datepicker-text::-webkit-input-placeholder {color: #ffffff !important;}
+
 input.datepicker-text:-moz-placeholder {color: #ffffff !important;} /* Firefox 18- */
-input.datepicker-text::-moz-placeholder {color: #ffffff !important;}  /* Firefox 19+ */
-input.datepicker-text:-ms-input-placeholder {color: #ffffff !important;}
+
+input.datepicker-text::-moz-placeholder {
+  color: #ffffff !important;
+}  /* Firefox 19+ */
+
+input.datepicker-text:-ms-input-placeholder {
+  color: #ffffff !important;
+}
 
 
 @media(max-width: 990px) {
   .inline-list{margin-left: 0;}
   .inline-list li a{font-size: 12px;}
-  #header .logo_list li{margin-right: 2px !important;}
-
+  #header{
+    .logo_list{
+      li{
+        margin-right: 2px !important;
+      }
+    }
+  }
 }
 
 input.datepicker-text:-ms-input-placeholder {
   color: #ffffff !important;
 }
-.logo-main-con{width:12%;}
-.select2-container{text-align:left;}
+.logo-main-con{
+  width:12%;
+}
+
+.select2-container{
+  text-align:left;
+}
+
 @media(max-width: 767px){
   footer .copyryt-con p{text-align: center; font-size: 11px;}
   footer .social-icon{text-align: center;}
@@ -319,6 +338,7 @@ input.datepicker-text:-ms-input-placeholder {
   .list_box .button_jsg{ font-size: 12px; margin-top: 15px;}
   .logo-main-con{width:100%;}
 }
+
 @media(max-width: 480px){
 .inline-list li{margin-right: 5px;}
 }
