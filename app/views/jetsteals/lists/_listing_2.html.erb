@@ -7,7 +7,7 @@
         </div>
         <div class="row">
           <div class="large-6 hide-for-small-only hide-for-medium-only columns">
-            <a href="{{jetsteal.aircraft.aircraft_images[0]}}" data-lightbox="{{jetsteal.id}}"><img ng-src="{{jetsteal.aircraft.aircraft_images[0]}}" class="aircraft_image" src="" alt=""></a>
+            <a ng-hide="$index > 0" ng-repeat="image in jetsteal.aircraft.aircraft_images" href="{{image}}" data-lightbox="{{jetsteal.id}}"><img ng-src="{{image}}" class="aircraft_image" src="" alt=""></a>
           </div>
           <div class="medium-12 large-6 small-12 columns content_box">
             <h6 class="text-center">{{jetsteal.aircraft.aircraft_type.name}}</h6>
