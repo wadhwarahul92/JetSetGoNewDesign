@@ -9,6 +9,7 @@
 //= require ./vendors/loading-bar
 //= require ./vendors/select2.js
 //= require ./vendors/jquery_validate
+//= require ./vendors/lightbox2
 
 //stick a div on top when window reaches it
 function sticky_relocate(){

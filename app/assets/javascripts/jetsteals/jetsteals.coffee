@@ -144,11 +144,17 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
     $('.reveal-overlay').css('background-color', jetsteal.color)
     null
 
+  @initLightBox = ->
+    if $window.lightbox and $window.lightbox.init
+      $window.lightbox.init()
+      null
+
   # fetching jetsteals
   $http.get('/jetsteals/get_list.json').success(
     (data)=>
       @jetsteals = data
       @setColorsForJetsteals()
+      @initLightBox()
   ).error(
     ->
       alert 'error fetching jetsteals, try again later'
