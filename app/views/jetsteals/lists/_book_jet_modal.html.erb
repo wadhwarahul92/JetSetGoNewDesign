@@ -1,13 +1,18 @@
 <div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
   <div class="row" style="    border-bottom: 1px solid lightgray;margin-bottom: 10px;">
     <div class="small-12 columns">
-      <h4 class="text-center">Book your Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</h4>
+      <h4 class="text-center">Book Your Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</h4>
     </div>
   </div>
   <div class="row">
     <div class="small-12 medium-4 columns">
       <table style="width: 100%">
-        <tbody>
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">Trip Info</th>
+          </tr>
+        </thead>
+        <tbody> 
         <tr>
           <td>
             <img class="city_image_" ng-src="{{ctrl.bookJetJetsteal.departure_airport.city.image}}" src="" alt="">
@@ -61,7 +66,7 @@
             <legend><strong>Payment Details</strong></legend>
             <ul class="inline-list">
               <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
-              <li><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
+              <li style="margin-right:0;"><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
             </ul>
           </fieldset>
           <fieldset>
