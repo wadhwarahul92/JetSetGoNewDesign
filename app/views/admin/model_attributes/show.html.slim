@@ -1,0 +1,11 @@
+h2
+  = @model.to_s
+  | #
+  = @model_instance.id
+
+table.table.table-striped
+  tbody
+    - attributes_for_model(@model_instance).each do |attr|
+      tr
+        th= attr
+        td= @model_instance.send(attr)

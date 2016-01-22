@@ -1,14 +1,22 @@
 - if @model_instances.any?
+  span.success Filter
+  = form_tag admin_model_path(@model), method: :get do
+    = select_tag :attr, options_for_select(attributes_for_model(@model_instances.first), params[:attr])
+    = text_field_tag :value, params[:value]
+    = submit_tag 'search', class: 'btn btn-xs btn-primary'
+  br
   = will_paginate @model_instances
   table.table.table-striped
     thead
       tr.info
         - attributes_for_model(@model_instances.first).each do |attr|
           th= attr
+        th View
     tbody
       - @model_instances.each do |model_instance|
         tr
           - attributes_for_model(model_instance).each do |attr|
             td= model_instance.send(attr)
+          td= link_to 'View', admin_model_model_attribute_path(@model, model_instance)
 - else
     p.text-danger There are no instances here!

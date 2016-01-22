@@ -26,7 +26,11 @@ Rails.application.routes.draw do
       resources :jetsteal_seats
     end
 
-    resources :models
+    resources :models do
+
+      resources :model_attributes
+
+    end
 
   end
 
