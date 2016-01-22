@@ -19,7 +19,7 @@
           </td>
         </tr>
         <tr>
-          <th>Aircraft Type</th>
+          <th>Aircraft Name</th>
           <td>{{ctrl.bookJetJetsteal.aircraft.aircraft_type.name}}</td>
         </tr>
         <tr>
@@ -51,7 +51,7 @@
           <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
           <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookJetJetsteal.jetsteal_seats" value="{{seat.id}}">
           <fieldset>
-            <legend>Contact Details</legend>
+            <legend style="font-weight:bold;">Contact Details</legend>
             <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
             <%= text_field_tag :last_name, nil, class: 'form-control', placeholder: 'Last Name', 'required' => 'required' %>
             <%= number_field_tag :phone, nil, class: 'form-control', placeholder: 'Phone Number', 'required' => 'required', 'minlength' => '10', 'maxlength' => '10' %>
