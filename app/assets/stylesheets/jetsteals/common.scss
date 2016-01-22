@@ -276,30 +276,69 @@ path[id^=seat]{
   color: white;
 }
 
-footer{background-color: rgb(5, 81, 139); padding:10px; margin-top: 20px; color: #ffffff;}
-footer .copyryt-con{font-size: 14px;}
-footer .copyryt-con p{margin-top: 10px;}
-footer .social-icon{font-size: 20px;}
-footer .social-icon span{background-color: #18374e;display: inline-block; margin: 0 3px;padding: 3px 10px; width: 35px;height: 35px;
+footer{
+  background-color: rgb(5, 81, 139);
+  padding:10px;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+footer .copyryt-con{
+  font-size: 14px;
+}
+
+footer .copyryt-con p{
+  margin-top: 10px;
+}
+
+footer .social-icon{
+  font-size: 20px;
+}
+
+footer .social-icon span{
+  background-color: #18374e;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 3px 10px;
+  width: 35px;
+  height: 35px;
   -webkit-border-radius:50%;
   -moz-border-radius:50%;
-  border-radius:50%;}
-#launcher{bottom:71px !important;}
-.list_box .button_jsg{width: 95%; text-align: center; margin-top: 9px; margin-bottom: 0;padding: 0.75em 1em;font-size: 12px;}
-.list_box .content_box h6 small{font-size: 11px;}
+  border-radius:50%;
+}
 
-input.datepicker-text::-webkit-input-placeholder {color: #ffffff !important;}
+#launcher{
+  bottom:71px !important;
+}
 
-input.datepicker-text:-moz-placeholder {color: #ffffff !important;} /* Firefox 18- */
+.list_box .button_jsg{
+  width: 95%;
+  text-align: center;
+  margin-top: 9px;
+  margin-bottom: 0;
+  padding: 0.75em 1em;
+  font-size: 12px;
+}
+
+.list_box .content_box h6 small{
+  font-size: 11px;
+}
+
+input.datepicker-text::-webkit-input-placeholder {
+  color: #ffffff !important;
+}
+
+input.datepicker-text:-moz-placeholder {
+  color: #ffffff !important;  /* Firefox 18- */
+}
 
 input.datepicker-text::-moz-placeholder {
-  color: #ffffff !important;
-}  /* Firefox 19+ */
+  color: #ffffff !important;   /* Firefox 19+ */
+} 
 
 input.datepicker-text:-ms-input-placeholder {
   color: #ffffff !important;
 }
-
 
 @media(max-width: 990px) {
   .inline-list{margin-left: 0;}
@@ -325,21 +364,44 @@ input.datepicker-text:-ms-input-placeholder {
 }
 
 @media(max-width: 1023px){
- .list_box .row{margin: 0 !important;}
-.list_box{min-height: 255px;}
+  .list_box .row{
+    margin: 0 !important;
+  }
+  
+  .list_box{
+    min-height: 255px;
+  }
 }
 @media(max-width: 767px){
-  footer .copyryt-con p{text-align: center; font-size: 11px;}
-  footer .social-icon{text-align: center;}
-  .list_box .row{margin:0 !important; }
+  footer .copyryt-con p{
+    text-align: center;
+    font-size: 11px;
+  }
+  
+  footer .social-icon{
+    text-align: center;
+  }
+  
+  .list_box .row{
+    margin:0 !important;
+  }
 }
 
 @media(max-width: 460px) {
-  .inline-list li{margin-right: 0}
-  .list_box .button_jsg{ font-size: 12px; margin-top: 15px;}
-  .logo-main-con{width:100%;}
+  .inline-list li{
+    margin-right: 0
+  }
+  
+  .list_box .button_jsg{
+    font-size: 12px;
+    margin-top: 15px;
+  }
+  
+  .logo-main-con{
+    width:100%;
+  }
 }
 
 @media(max-width: 480px){
-.inline-list li{margin-right: 5px;}
+  .inline-list li{margin-right: 5px;}
 }
