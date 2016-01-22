@@ -340,6 +340,21 @@ input.datepicker-text:-ms-input-placeholder {
   color: #ffffff !important;
 }
 
+.list_box{
+   .content_box{
+    h6{
+    margin-bottom:5px;
+   }
+  }
+
+}
+.list_box{
+  .content_box{
+      padding: 10px 0 5px 0;
+  }
+}
+.refresh-text{height:510px;}
+
 @media(max-width: 990px) {
   .inline-list{margin-left: 0;}
   .inline-list li a{font-size: 12px;}
@@ -361,6 +376,12 @@ input.datepicker-text:-ms-input-placeholder {
 
 .select2-container{
   text-align:left;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 @media(max-width: 1023px){
