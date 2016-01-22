@@ -39,6 +39,8 @@ group :development, :test do
 
   gem 'factory_girl_rails'
 
+  gem 'dotenv-rails'
+
 end
 
 group :development do
@@ -51,14 +53,14 @@ group :development do
   gem 'query_diet'
 
   gem 'letter_opener'
-
-  gem 'dotenv-rails'
 end
 
 group :production do
   gem 'rails_12factor'
 
   gem 'exception_notification'
+
+  gem 'ffaker'
 end
 
 gem 'simple_form'

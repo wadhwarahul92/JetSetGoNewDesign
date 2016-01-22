@@ -86,6 +86,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    ffaker (2.1.0)
     foundation-rails (6.1.1.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
@@ -238,6 +239,7 @@ DEPENDENCIES
   dotenv-rails
   exception_notification
   factory_girl_rails
+  ffaker
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
