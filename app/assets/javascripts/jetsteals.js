@@ -70,6 +70,40 @@ $(document).on('ready page:load', function(){
             required: true,
             email: true
         }
-    })
+    });
+
+    $('#checkout_seat').validate({
+        first_name: {
+            required: true
+        },
+        last_name: {
+            required: true
+        },
+        phone: {
+            required: true,
+            digits: true
+        },
+        email: {
+            required: true,
+            email: true
+        }
+    });
+
+    $('#checkout_jet').validate({
+        first_name: {
+            required: true
+        },
+        last_name: {
+            required: true
+        },
+        phone: {
+            required: true,
+            digits: true
+        },
+        email: {
+            required: true,
+            email: true
+        }
+    });
 
 });

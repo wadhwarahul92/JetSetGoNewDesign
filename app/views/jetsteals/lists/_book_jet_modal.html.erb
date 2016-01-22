@@ -46,7 +46,7 @@
       </table>
     </div>
     <div class="small-12 medium-8 columns">
-      <%= form_tag '/payment_transactions/create' do %>
+      <%= form_tag '/payment_transactions/create', id: 'checkout_jet' do %>
           <input type="hidden" value="sell_as_whole" name="sell_as_whole">
           <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
           <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookJetJetsteal.jetsteal_seats" value="{{seat.id}}">

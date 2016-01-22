@@ -1,6 +1,6 @@
 <div class="reveal" id="seat_checkout" data-reveal>
   <h3 class="text-center">Checkout</h3>
-  <%= form_tag '/payment_transactions/create' do %>
+  <%= form_tag '/payment_transactions/create', id: 'checkout_seat' do %>
       <input type="hidden" value="{{ctrl.bookSeatJetsteal.id}}" name="jetsteal_id">
       <input type="hidden" name="jetsteal_seat_ids[]" value="{{chosen_seat_id}}" ng-repeat="chosen_seat_id in ctrl.chosen_seats_ids()">
       <fieldset>
