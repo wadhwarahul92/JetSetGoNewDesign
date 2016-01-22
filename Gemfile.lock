@@ -71,6 +71,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
@@ -80,6 +81,12 @@ GEM
       actionmailer (~> 4.0)
       activesupport (~> 4.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    ffaker (2.1.0)
     foundation-rails (6.1.1.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
@@ -163,6 +170,23 @@ GEM
     request_store (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec-core (3.4.1)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.0)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -214,6 +238,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   exception_notification
+  factory_girl_rails
+  ffaker
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -226,6 +252,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.2.5)
   rails_12factor
+  rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form
