@@ -89,3 +89,5 @@ gem 'wkhtmltopdf-binary'
 gem 'bootstrap-datepicker-rails'
 
 gem 'foundation-rails'
+
+gem 'slim-rails'
