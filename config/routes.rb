@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :jetsteal_seats
     end
 
+    resources :models
+
   end
 
   resources :airports do

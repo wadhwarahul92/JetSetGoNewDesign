@@ -1,0 +1,14 @@
+- if @model_instances.any?
+  = will_paginate @model_instances
+  table.table.table-striped
+    thead
+      tr.info
+        - attributes_for_model(@model_instances.first).each do |attr|
+          th= attr
+    tbody
+      - @model_instances.each do |model_instance|
+        tr
+          - attributes_for_model(model_instance).each do |attr|
+            td= model_instance.send(attr)
+- else
+    p.text-danger There are no instances here!

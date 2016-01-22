@@ -1,0 +1,3 @@
+ul.list-unstyled
+  - @models.each do |model|
+    li= link_to model, admin_model_path(model)
