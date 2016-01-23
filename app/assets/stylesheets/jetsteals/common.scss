@@ -5,6 +5,17 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+#loading-bar{
+  .bar{
+    height: 4px!important;
+    background-color: $main-red-color!important;
+  }
+}
+
+#loading-bar-spinner{
+  display: none!important;
+}
+
 .lb-number{
   color: white!important;
 }

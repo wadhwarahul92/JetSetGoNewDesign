@@ -3,7 +3,7 @@ class AircraftTypesController < ApplicationController
   before_action :set_aircraft_type
 
   def show
-
+    sleep 2
   end
 
   private
