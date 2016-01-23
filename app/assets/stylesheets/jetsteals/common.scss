@@ -5,6 +5,17 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+.close-button,.lb-close{
+  -webkit-transition: -webkit-transform .3s ease-in-out!important;
+  -moz-transition: -moz-transform .3s ease-in-out!important;
+  transition: transform .3s ease-in-out!important;
+  &:hover{
+    transform:rotate(90deg)!important;
+    -moz-transform:rotate(90deg)!important;
+    -webkit-transform:rotate(90deg)!important;
+  }
+}
+
 #loading-bar{
   .bar{
     height: 4px!important;
