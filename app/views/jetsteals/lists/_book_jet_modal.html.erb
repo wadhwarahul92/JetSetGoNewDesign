@@ -63,7 +63,7 @@
             <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
           </fieldset>
           <fieldset class="text-right">
-            <legend><strong>Payment Details</strong></legend>
+            <legend class='column'><strong>Payment Details</strong></legend>
             <ul class="inline-list">
               <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
               <li style="margin-right:0;"><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
