@@ -45,7 +45,8 @@ class PaymentTransactionsController < ApplicationController
       @contact = Contact.find(transaction.contact_id)
       transaction.update_attributes!(
           status: 'success',
-          processor_response: @response_data.to_s
+          processor_response: @response_data.to_s,
+          amount: @response_data['amount']
       )
       #adding transaction id to jetsteal seat books it
       @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
