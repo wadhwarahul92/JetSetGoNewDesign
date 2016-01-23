@@ -19,18 +19,22 @@
           </div>
           <div class="medium-12 large-6 small-12 columns content_box">
             <h6 class="text-center">{{jetsteal.aircraft.aircraft_type.name}}</h6>
-            <div class="">
+            <div>
               <div class="small-5 text-center columns">
-                <img ng-src="{{jetsteal.departure_airport.city.image}}" src="" alt="">
+                <img class="city_image_on_main" ng-src="{{jetsteal.departure_airport.city.image}}" src="" alt="">
                 <h6 class="text-center"><small>{{jetsteal.departure_airport.city.name}}</small></h6>
-                <h6 class="text-center"><small>{{jetsteal.flight_start_time}}</small></h6>
               </div>
               <div class="small-2 text-center columns middle_box">
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/026/original/icon.png?1453190178" alt="">
               </div>
               <div class="small-5 text-center columns">
-                <img ng-src="{{jetsteal.arrival_airport.city.image}}" src="" alt="">
+                <img class="city_image_on_main" ng-src="{{jetsteal.arrival_airport.city.image}}" src="" alt="">
                 <h6 class="text-center"><small>{{jetsteal.arrival_airport.city.name}}</small></h6>
+              </div>
+              <div class="small-6 column">
+                <h6 class="text-center"><small>{{jetsteal.flight_start_time}}</small></h6>
+              </div>
+              <div class="small-6 column">
                 <h6 class="text-center"><small>{{jetsteal.flight_end_time}}</small></h6>
               </div>
             </div>
