@@ -4,13 +4,21 @@
       <table class="twelve columns">
         <tr>
           <td class="text-pad">
-            <h6>Dear <%= @contact.first_name.capitalize %></h6>
+            <p>Dear <%= @contact.first_name.capitalize %>,</p>
             <p>Thank you for buying <%= @jetsteal_seats.count %> seat(s) on JetSetGo.</p>
             <p>For any assistance, please feel free to contact us on +91-11-39585858 or info@jetsetgo.in</p>
             <p>
               Happy landings,
               <br>
               Monika from JetSetGo
+            </p>
+            <br>
+            <p>
+              © JetSetGo Delhi | Mumbai | Bengaluru | Dubai | New York.
+              <br>
+              <a href="http://jetsetgo.in/pages/privacy_and_policy">Privacy Policy</a>
+              <br>
+              <a href="http://jetsetgo.in/pages/terms_and_condition">Terms and Conditions</a>
             </p>
           </td>
           <td class="expander"></td>
