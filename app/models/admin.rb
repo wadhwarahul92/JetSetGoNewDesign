@@ -9,7 +9,7 @@ class Admin < User
   class <<self
 
     def get_all_emails
-      self.all.map(&:email).join(',')
+      self.all.map(&:email)
     end
 
   end
