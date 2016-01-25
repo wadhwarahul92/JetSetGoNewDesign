@@ -37,7 +37,11 @@
   <input type= "submit" value="submit">
 </form>
 <script>
+  <% if params[:platform] == 'ios' %>
+  document.payuform.submit();
+  <%- else %>
   $(document).on('ready page:load', function(){
     setTimeout(function(){document.payuform.submit();},500);
-  })
+  });
+  <%- end %>
 </script>
