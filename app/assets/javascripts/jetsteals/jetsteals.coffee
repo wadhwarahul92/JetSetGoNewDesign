@@ -149,6 +149,13 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
       $window.lightbox.init()
       null
 
+  @bookableSeats = ->
+    if @bookJetJetsteal and @bookJetJetsteal.jetsteal_seats
+      _.filter( @bookJetJetsteal.jetsteal_seats, (seat)-> !seat.booked and !seat.disabled )
+    else
+      []
+
+
   # fetching jetsteals
   $http.get('/jetsteals/get_list.json').success(
     (data)=>

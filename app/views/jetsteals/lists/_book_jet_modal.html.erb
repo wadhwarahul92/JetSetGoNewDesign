@@ -54,7 +54,7 @@
       <%= form_tag '/payment_transactions/create', id: 'checkout_jet' do %>
           <input type="hidden" value="sell_as_whole" name="sell_as_whole">
           <input type="hidden" value="{{ctrl.bookJetJetsteal.id}}" name="jetsteal_id">
-          <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookJetJetsteal.jetsteal_seats" value="{{seat.id}}">
+          <input type="hidden" name="jetsteal_seat_ids[]" ng-repeat="seat in ctrl.bookableSeats()" value="{{seat.id}}">
           <fieldset>
             <legend style="font-weight:bold;">Contact Details</legend>
             <%= text_field_tag :first_name, nil, class: 'form-control', placeholder: 'First Name', 'required' => 'required' %>
@@ -65,7 +65,7 @@
           <fieldset class="text-right">
             <legend class='column'><strong>Payment Details</strong></legend>
             <ul class="inline-list">
-              <li><strong>Number of seats:</strong> {{ctrl.bookJetJetsteal.jetsteal_seats.length}}</li>
+              <li><strong>Number of seats:</strong> {{ctrl.bookableSeats().length}}</li>
               <li style="margin-right:0;"><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
             </ul>
           </fieldset>
