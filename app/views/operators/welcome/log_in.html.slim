@@ -1,0 +1,18 @@
+.row
+  .col-sm-4
+  .col-sm-4
+    h2 Operator Sign in
+    - if @error.present?
+      .alert.alert-danger role="alert"
+        = @error
+    = form_tag operators_operator_sign_in_path do
+      .form-group
+        = label_tag :email
+        = email_field_tag :email, params[:email], class: 'form-control'
+      .form-group
+        = label_tag :password
+        = password_field_tag :password, nil, class: 'form-control'
+      .form-group
+        = submit_tag 'Sign in', class: 'btn btn-primary'
+    = link_to 'Sign up', operators_sign_up_path
+  .col-sm-4
