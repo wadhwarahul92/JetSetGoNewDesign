@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  namespace :operators do
+
+    get '/' => 'welcome#index'
+
+  end
+
   namespace :api do
     namespace :v1 do
       get 'ios_app_version' => 'base#index'

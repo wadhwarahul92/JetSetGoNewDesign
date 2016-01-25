@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     self.type == 'Admin'
   end
 
+  def operator?
+    self.type == 'Operator'
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
