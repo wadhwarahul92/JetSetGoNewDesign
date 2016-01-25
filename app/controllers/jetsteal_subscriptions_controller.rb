@@ -9,7 +9,7 @@ class JetstealSubscriptionsController < ApplicationController
       redirect_to params[:redirect_to]
     else
       flash[:error] = @jetsteal_subscription.errors.full_messages.first
-      redirect_to params[:redirect_to]
+      redirect_to (params[:redirect_to] || '/')
     end
   end
 
