@@ -6,7 +6,16 @@ class Operators::BaseController < ApplicationController
     if current_user.present? and current_user.operator?
       #do nothing
     else
-      raise ActionController::InvalidAuthenticityToken
+      redirect_to operators_sign_in_path
+    end
+  end
+
+  def authenticate_no_user
+    if current_user.present? and current_user.operator?
+      redirect_to '/operators'
+    else
+      sign_out(current_user) if current_user.present?
+      # do nothing
     end
   end
 

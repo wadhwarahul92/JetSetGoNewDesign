@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
     get '/' => 'welcome#index'
 
+    get 'sign_in' => 'welcome#log_in', as: :sign_in
+
+    get 'sign_up' => 'welcome#sign_up', as: :sign_up
+
+    post 'sign_in' => 'welcome#create_sign_in', as: :operator_sign_in
+
   end
 
   namespace :api do
