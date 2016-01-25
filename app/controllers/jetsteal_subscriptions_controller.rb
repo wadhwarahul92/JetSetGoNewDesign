@@ -1,5 +1,7 @@
 class JetstealSubscriptionsController < ApplicationController
 
+  protect_from_forgery except: [:create]
+
   def create
     @jetsteal_subscription = JetstealSubscription.new(filtered_params)
     if @jetsteal_subscription.save
