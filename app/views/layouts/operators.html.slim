@@ -1,7 +1,7 @@
 doctype html
 html lang="en"
   head
-    title JetSetGo | Operators
+    title JetYouOwn™
     meta name="viewport" content="width=device-width, initial-scale=1"
     = stylesheet_link_tag 'operators', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'operators', 'data-turbolinks-track' => true
@@ -9,5 +9,6 @@ html lang="en"
     = csrf_meta_tags
   body
     = query_diet_widget if Rails.env.development?
+    = render partial: 'operators/shared/header'
     .container-fluid
       = yield
