@@ -18,14 +18,21 @@ class JetstealMailer < ApplicationMailer
     else
       url = 'http://jet-set-go-finance.herokuapp.com/api/v1'
     end
+    begin
+      h = @transaction.processor_response.gsub(/[{}:]/,'').split(', ').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge)
+      address = "#{h['billing_address']}\n#{h['billing_city']}, #{h['billing_state']}, #{h['billing_country']}\n#{h['billing_zip']}"
+    rescue
+      address = ' -- '
+    end
     #creating pro_forma_invoice
     response = Net::HTTP.post_form(URI("#{url}/create_pro_forma"), {
-      client_name: @contact.full_name,
-      aircraft: @jetsteal.aircraft.aircraft_type.name,
-      departure_airport: @jetsteal.departure_airport.name,
-      arrival_airport: @jetsteal.arrival_airport.name,
-      amount: @transaction.amount,
-      token: 'HHJynwMowx9iyBUfMk2uJw'
+        client_name: @contact.full_name,
+        aircraft: @jetsteal.aircraft.aircraft_type.name,
+        departure_airport: @jetsteal.departure_airport.name,
+        arrival_airport: @jetsteal.arrival_airport.name,
+        amount: @transaction.amount,
+        token: 'HHJynwMowx9iyBUfMk2uJw',
+        client_address: address
     })
     if response.code == '200'
       pro_forma_id = JSON.parse(response.body)['id']
@@ -44,12 +51,12 @@ class JetstealMailer < ApplicationMailer
     ###########################
 
     attachments['Jetsteal seat confirmation.pdf'] = WickedPdf.new.pdf_from_string(
-                                                                     render_to_string('pdfs/jetsteal_confirmation', layout: 'pdf')
+        render_to_string('pdfs/jetsteal_confirmation', layout: 'pdf')
     )
 
     mail to: @contact.email,
-        subject: 'Jetsteal Seats Confirmed!',
-        bcc: Admin.get_all_emails
+         subject: 'Jetsteal Seats Confirmed!',
+         bcc: Admin.get_all_emails
   end
 
 end
