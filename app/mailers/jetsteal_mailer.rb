@@ -36,7 +36,7 @@ class JetstealMailer < ApplicationMailer
       if response.code == '200'
         invoice_id = JSON.parse(response.body)['id']
         response = Net::HTTP.get(URI("#{url}/invoice/#{invoice_id}?token=HHJynwMowx9iyBUfMk2uJw&format=pdf"))
-        if response[0..3] == "%PDF"
+        if response[0..3] == '%PDF'
           attachments['invoice.pdf'] = response
         end
       end
