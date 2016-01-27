@@ -6,6 +6,7 @@ class Api::V1::BaseController < ApplicationController
 
   def raise_support
     HelpMailer.support_ticket(params[:name], params[:email], params[:message]).deliver_later
+    render status: :ok, nothing: true
   end
 
 end
