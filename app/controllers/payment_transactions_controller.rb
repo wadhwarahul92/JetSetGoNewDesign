@@ -46,7 +46,12 @@ class PaymentTransactionsController < ApplicationController
       transaction.update_attributes!(
           status: 'success',
           processor_response: @response_data.to_s,
-          amount: @response_data['amount']
+          amount: @response_data['amount'],
+          billing_address: @response_data['billing_address'],
+          billing_city: @response_data['billing_city'],
+          billing_state: @response_data['billing_state'],
+          billing_zip: @response_data['billing_zip'],
+          billing_country: @response_data['billing_country'],
       )
       #adding transaction id to jetsteal seat books it
       @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }

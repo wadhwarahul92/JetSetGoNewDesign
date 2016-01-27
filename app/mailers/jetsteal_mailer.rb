@@ -19,8 +19,7 @@ class JetstealMailer < ApplicationMailer
       url = 'http://jet-set-go-finance.herokuapp.com/api/v1'
     end
     begin
-      h = @transaction.processor_response.gsub(/[{}:]/,'').split(', ').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge)
-      address = "#{h['billing_address']}\n#{h['billing_city']}, #{h['billing_state']}, #{h['billing_country']}\n#{h['billing_zip']}"
+      address = "#{@transaction.billing_address}\n#{@transaction.billing_city}, #{@transaction.billing_state}, #{@transaction.billing_country}\n#{@transaction.billing_zip}"
     rescue
       address = ' -- '
     end
