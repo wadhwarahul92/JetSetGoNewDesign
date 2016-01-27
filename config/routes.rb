@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'ios_app_version' => 'base#index'
+      get 'raise_support_issue' => 'base#raise_support'
     end
   end
 
