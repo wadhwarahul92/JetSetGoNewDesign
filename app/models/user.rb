@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   ###############Validations#####
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone, presence: true, length: {maximum: 10, minimum: 10}
+  validates :phone, presence: true, length: {maximum: 10, minimum: 10}, numericality: true
   ###############################
 
   def admin?

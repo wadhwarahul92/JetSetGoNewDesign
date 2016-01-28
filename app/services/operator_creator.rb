@@ -20,7 +20,7 @@ class OperatorCreator
 
     if @operator.save
       OperatorMailer.operator_sign_up_to_operator(@operator).deliver_later
-
+      AdminMailer.operator_signed_up(@operator).deliver_later
     else
       # do nothing
     end
