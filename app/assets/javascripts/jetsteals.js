@@ -46,7 +46,7 @@ $(document).on('ready page:load', function(){
     }
 
     $('.dp').fdatepicker({
-        format: 'd M yyyy'
+        format: 'dd M yyyy'
     });
 
     var a = $('#error_modal');
