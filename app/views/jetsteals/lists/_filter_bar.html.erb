@@ -5,7 +5,7 @@
       <div class="small-3 columns text-center">
         <i class="fa fa-calendar"></i>
         <input ng-change="ctrl.checkFilters()" type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp datepicker-text" placeholder="Date" title="Date of travel">
-        <i ng-click="ctrl.date=null" ng-show="ctrl.date" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
+        <i ng-click="ctrl.date=null;ctrl.checkFilters()" ng-show="ctrl.date" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
       <div class="small-3 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/024/original/takeoff-icon.png?1453120117' %>
@@ -15,7 +15,7 @@
               <option value="<%= airport.id %>"><%= airport.name %>, <%= airport.city.name %></option>
           <%- end %>
         </select>
-        <i ng-click="ctrl.departure_airport_id=null" onclick="$('#departure_airport_filter').select2('val', '')" ng-show="ctrl.departure_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
+        <i ng-click="ctrl.departure_airport_id=null;ctrl.checkFilters()" onclick="$('#departure_airport_filter').select2('val', '')" ng-show="ctrl.departure_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
       <div class="small-3 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/025/original/landing-icon.png?1453120137' %>
@@ -25,7 +25,7 @@
               <option value="<%= airport.id %>"><%= airport.name %>, <%= airport.city.name %></option>
           <%- end %>
         </select>
-        <i ng-click="ctrl.arrival_airport_id=null" onclick="$('#arrival_airport_filter').select2('val', '')" ng-show="ctrl.arrival_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
+        <i ng-click="ctrl.arrival_airport_id=null;ctrl.checkFilters()" onclick="$('#arrival_airport_filter').select2('val', '')" ng-show="ctrl.arrival_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
       <div class="small-3 columns text-center">
         <i class="fa fa-user"></i>
@@ -35,7 +35,7 @@
               <option value="<%= pax %>"><%= pax %></option>
           <%- end %>
         </select>
-        <i ng-click="ctrl.pax=null" ng-show="ctrl.pax" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
+        <i ng-click="ctrl.pax=null" ng-show="ctrl.pax;ctrl.checkFilters()" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
     </div>
   </div>
