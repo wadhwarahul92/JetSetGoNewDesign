@@ -1,0 +1,26 @@
+.row
+  .col-sm-4
+  .col-sm-4
+    h2 Operator sign up
+    - if @error
+      .alert.alert-danger role="alert"
+        = @error
+    = form_tag operators_operator_sign_up_path do
+      .form-group
+        = label_tag :first_name
+        = text_field_tag :first_name, params[:first_name], class: 'form-control'
+      .form-group
+        = label_tag :last_name
+        = text_field_tag :last_name, params[:last_name], class: 'form-control'
+      .form-group
+        = label_tag :phone
+        = text_field_tag :phone, params[:phone], class: 'form-control'
+      .form-group
+        = label_tag :email
+        = email_field_tag :email, params[:email], class: 'form-control'
+      .form-group
+        = label_tag :password
+        = password_field_tag :password, nil, class: 'form-control'
+      .form-group
+        = submit_tag 'Proceed', class: 'btn btn-primary'
+  .col-sm-4

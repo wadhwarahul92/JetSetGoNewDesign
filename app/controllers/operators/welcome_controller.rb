@@ -35,7 +35,13 @@ class Operators::WelcomeController < Operators::BaseController
   end
 
   def create_sign_up
-
+    @operator = OperatorCreator.new(params).create!
+    if @operator.errors.any?
+      @error = @operator.errors.full_messages.first
+      render action: :sign_up
+    else
+      redirect_to action: :index
+    end
   end
 
 end
