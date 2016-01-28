@@ -11,10 +11,10 @@
         <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email', 'required' => 'required' %>
       </fieldset>
       <fieldset>
-        <legend>Payment Details</legend>
+        <legend style="font-weight:bold;">Payment Details</legend>
         <ul class="list-inline">
           <li><strong>Number of seats:</strong> {{ctrl.chosen_seats.length}}</li>
-          <li><strong>Total amount:</strong> <i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"" | indianCurrency }}</li>
+          <li><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"" | indianCurrency }}</li>
         </ul>
       </fieldset>
       <p><small>You will be redirect to CC Avenue payment gateway.</small></p>
