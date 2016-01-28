@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
     post 'sign_in' => 'welcome#create_sign_in', as: :operator_sign_in
 
+    post 'sign_up' => 'welcome#create_sign_up', as: :operator_sign_up
+
   end
 
   namespace :api do

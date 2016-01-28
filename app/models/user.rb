@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   ###############Validations#####
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :phone, presence: true, length: {maximum: 10, minimum: 10}, numericality: true
   ###############################
 
   def admin?
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.try(:capitalize)}"
   end
 
 end

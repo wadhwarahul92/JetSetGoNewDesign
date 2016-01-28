@@ -26,3 +26,20 @@ module JetSetGo
     config.active_job.queue_adapter = :delayed_job
   end
 end
+
+#send emails to Suraj if DJ fails
+Delayed::Worker.class_eval do
+  def handle_failed_job_with_notification(job, error)
+    env = {}
+    env['exception_notifier.options'] = {
+        :sections => %w(backtrace delayed_job),
+        :email_prefix => '[Delayed Job ERROR] ',
+        :exception_recipients => %w(suraj.pratap@jetsetgo.in),
+        :sender_address => %{'notifier' <suraj.pratap@jetsetgo.in>}
+    }
+    env['exception_notifier.exception_data'] = {:job => job}
+    # ::ExceptionNotifier::Notifier.exception_notification(env, error).deliver
+    ExceptionNotifier.notify_exception(error, env: env).deliver_later
+  end
+end
+#################################
