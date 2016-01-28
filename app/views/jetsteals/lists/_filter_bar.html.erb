@@ -35,7 +35,7 @@
               <option value="<%= pax %>"><%= pax %></option>
           <%- end %>
         </select>
-        <i ng-click="ctrl.pax=null" ng-show="ctrl.pax;ctrl.checkFilters()" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
+        <i ng-click="ctrl.pax=null;ctrl.checkFilters()" ng-show="ctrl.pax" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
     </div>
   </div>
