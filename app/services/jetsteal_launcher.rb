@@ -8,9 +8,9 @@ class JetstealLauncher
   def launch!
     return false unless check_airport_distance
     if @jetsteal.sell_by_seats?
-      validate_per_seat and check_aircraft_images and @jetsteal.update_attribute :launched, true
+      validate_per_seat and check_aircraft_images and check_aircraft_svg and @jetsteal.update_attribute :launched, true
     else
-      validate_as_whole and check_aircraft_images and @jetsteal.update_attribute :launched, true
+      validate_as_whole and check_aircraft_images and check_aircraft_svg and @jetsteal.update_attribute :launched, true
     end
   end
 
@@ -63,6 +63,14 @@ class JetstealLauncher
       @message = 'Distance from Departure to Arrival airport is not present. Go to distance and create an entry for same.'
       false
     end
+  end
+
+  def check_aircraft_svg
+    unless @jetsteal.aircraft.svg.present?
+      @message = 'Aircraft has no svg, <Admin update, add svg in aircraft and not in aircraft type>'
+      return false
+    end
+    true
   end
 
 end

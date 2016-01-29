@@ -7,7 +7,7 @@
   </div>
   <div class="small-6 columns">
     <p class="text-center"><span style="background-color: rgb(51, 122, 183)" class="">&nbsp;&nbsp;&nbsp;</span> Your seats</p>
-    <%= @jetsteal.aircraft.aircraft_type.svg.html_safe %>
+    <%= @jetsteal.aircraft.aircraft_type.svg(@jetsteal.aircraft).html_safe %>
   </div>
 </div>
 <script>

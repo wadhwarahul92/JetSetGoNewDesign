@@ -57,7 +57,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :crew,
                                  :wifi,
                                  :phone,
-                                 :flight_attendant
+                                 :flight_attendant,
+                                 :svg
     )
   end
 

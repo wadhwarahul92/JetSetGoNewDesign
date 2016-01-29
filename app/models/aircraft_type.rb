@@ -13,4 +13,16 @@ class AircraftType < ActiveRecord::Base
   validates :description, presence: true
   ###################
 
+  #overirde #svg to return aircrafts svg if it is present
+
+  def svg(aircraft = nil)
+    if aircraft.present?
+      aircraft.svg || self[:svg]
+    else
+      self[:svg]
+    end
+  end
+
+  #######
+
 end

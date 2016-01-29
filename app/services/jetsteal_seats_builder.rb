@@ -16,7 +16,7 @@ class JetstealSeatsBuilder
   private
 
   def find_seats_in_plane
-    svg_string = @jetsteal.aircraft.aircraft_type.svg
+    svg_string = @jetsteal.aircraft.aircraft_type.svg(@jetsteal.aircraft)
     ui_seat_ids = svg_string.scan(/seat\d+/).sort
     seat_numbers = ui_seat_ids.map{ |s| s.gsub(/seat/, '').to_i }.sort
     seat_numbers.each_with_index do |n, i|
