@@ -1,6 +1,6 @@
 class Admin::AircraftTypesController < Admin::BaseController
 
-  after_filter :authenticate_admin
+  before_filter :authenticate_admin
 
   before_filter :set_aircraft_type, only: [:edit, :update]
 
