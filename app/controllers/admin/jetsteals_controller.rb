@@ -4,7 +4,7 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_action :set_jetsteal, only: [:update, :edit, :launch]
 
-  before_action :check_if_launched, only: [:edit, :update]
+  # before_action :check_if_launched, only: [:edit, :update]
 
   before_action :build_jetsteal_seats, only: [:edit, :launch]
 
