@@ -19,6 +19,14 @@ class JetstealSeat < ActiveRecord::Base
                self.errors.add(:cost, 'is required') unless self.cost.present?
              end
   end
+  validate def presence_of_seat_type
+             if self.jetsteal.sell_by_seats?
+               self.errors.add(:orientation, 'is required') unless self.orientation.present?
+               self.errors.add(:orientation, 'must be in 0 to 3') if self.orientation.present? and (self.orientation > 3 or self.orientation < 0)
+               self.errors.add(:seat_type, 'is required') unless self.seat_type.present?
+               self.errors.add(:seat_type, 'must be either seat or sofa') if self.seat_type.present? and !%w{seat sofa}.include?(self.seat_type)
+             end
+  end
   ############
 
   def booked?

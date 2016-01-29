@@ -1,7 +1,3 @@
-$(document).on('ready page:load', ->
-  $('#jetsteal_departure_airport_id,#jetsteal_arrival_airport_id,#jetsteal_aircraft_id').select2()
-)
-
 #/admin/jetsteals/1/jetsteal_seats
 initial_seat_color = 'gray'
 stroke_highlight_color = 'black'

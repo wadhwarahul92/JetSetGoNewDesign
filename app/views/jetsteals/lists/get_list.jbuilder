@@ -71,6 +71,8 @@ json.array! @jetsteals do |jetsteal|
       json.disabled jetsteal_seat.disabled?
       json.cost jetsteal_seat.cost
       json.booked jetsteal_seat.booked?
+      json.orientation jetsteal_seat.orientation
+      json.seat_type jetsteal_seat.seat_type
     end
   }
 end

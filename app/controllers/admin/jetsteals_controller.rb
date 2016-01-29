@@ -75,7 +75,9 @@ class Admin::JetstealsController < Admin::BaseController
             :id,
             :ui_seat_id,
             :disabled,
-            :cost
+            :cost,
+            :orientation,
+            :seat_type
         ]
     )
   end
