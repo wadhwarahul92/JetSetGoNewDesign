@@ -85,7 +85,7 @@ Rails.application.configure do
           :access_key_id => ENV['S3_BUCKET_ACCESS_KEY'],
           :secret_access_key => ENV['S3_BUCKET_SECRET']
       },
-      :url =>'d3hdtzk3ohuh17.cloudfront.net',
+      :url =>':s3_domain_url',
       :path => '/:class/:attachment/:id_partition/:style/:filename',
       :s3_protocol => :https
   }
