@@ -87,7 +87,8 @@ Rails.application.configure do
       },
       :url =>':s3_domain_url',
       :path => '/:class/:attachment/:id_partition/:style/:filename',
-      :s3_protocol => :https
+      :s3_protocol => :https,
+      :s3_host_alias => 'd3hdtzk3ohuh17.cloudfront.net'
   }
 
   config.action_mailer.delivery_method = :smtp
