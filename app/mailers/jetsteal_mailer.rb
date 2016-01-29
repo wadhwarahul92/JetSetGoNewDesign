@@ -11,6 +11,9 @@ class JetstealMailer < ApplicationMailer
     @transaction = transaction
     @contact = contact
 
+    token = ENV['FINANCE_TOKEN']
+    password = ENV['FINANCE_PASSWORD']
+
     ###creating invoice on invoice system
     url = nil
     if Rails.env.development?
@@ -30,18 +33,20 @@ class JetstealMailer < ApplicationMailer
         departure_airport: @jetsteal.departure_airport.name,
         arrival_airport: @jetsteal.arrival_airport.name,
         amount: @transaction.amount,
-        token: 'HHJynwMowx9iyBUfMk2uJw',
-        client_address: address
+        token: token,
+        client_address: address,
+        pass: password
     })
     if response.code == '200'
       pro_forma_id = JSON.parse(response.body)['id']
       response = Net::HTTP.post_form(URI("#{url}/create_invoice"), {
           pro_forma_invoice_id: pro_forma_id,
-          token: 'HHJynwMowx9iyBUfMk2uJw'
+          token: token,
+          pass: password
       })
       if response.code == '200'
         invoice_id = JSON.parse(response.body)['id']
-        response = Net::HTTP.get(URI("#{url}/invoice/#{invoice_id}?token=HHJynwMowx9iyBUfMk2uJw&format=pdf"))
+        response = Net::HTTP.get(URI("#{url}/invoice/#{invoice_id}?token=#{token}&pass=#{password}&format=pdf"))
         if response[0..3] == '%PDF'
           attachments['invoice.pdf'] = response
         end
