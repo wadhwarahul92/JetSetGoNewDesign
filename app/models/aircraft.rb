@@ -2,7 +2,7 @@ class Aircraft < ActiveRecord::Base
 
   include VersionTracker
 
-  has_paper_trail
+  has_paper_trail skip: [:svg]
 
   belongs_to :aircraft_type
 
@@ -22,7 +22,8 @@ class Aircraft < ActiveRecord::Base
       :cabin_length_in_meters,
       :cabin_width_in_meters,
       :memorable_name,
-      :crew
+      :crew,
+      :svg
   ##################
 
 end
