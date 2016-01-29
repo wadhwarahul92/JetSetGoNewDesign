@@ -92,10 +92,10 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => "AKIAIBX3UZ4VUNU53K7A",
-      :password => "Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26",
-      :domain => "jetsetgo.in",
-      :address => "email-smtp.us-east-1.amazonaws.com",
+      :user_name => 'AKIAIBX3UZ4VUNU53K7A',
+      :password => 'Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26',
+      :domain => 'jetsetgo.in',
+      :address => 'email-smtp.us-east-1.amazonaws.com',
       :port => 587,
       :authentication => :plain,
       :enable_starttls_auto => true
