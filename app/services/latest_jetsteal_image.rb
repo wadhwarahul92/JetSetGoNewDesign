@@ -5,7 +5,7 @@ class LatestJetstealImage
   require 'RMagick'
 
   def initialize
-    @jetsteal = Jetsteal.ready_for_sale.last
+    @jetsteal = Jetsteal.ready_for_sale.first
     @canvas = Magick::ImageList.new
     @canvas.new_image(400, 110, Magick::SolidFill.new('rgb(58, 181, 127)'))
     top_image = Magick::Image.read('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/039/original/private-jet-img.png?1454329216').first
