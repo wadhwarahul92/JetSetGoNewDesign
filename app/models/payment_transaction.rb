@@ -23,4 +23,12 @@ class PaymentTransaction < ActiveRecord::Base
     status == 'pending'
   end
 
+  def jetsteal_seats
+    return JetstealSeat.where(payment_transaction_id: self.id)
+  end
+
+  def jetsteal(jetsteal_id)
+    return Jetsteal.find(jetsteal_id)
+  end
+
 end
