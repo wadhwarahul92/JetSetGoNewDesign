@@ -73,6 +73,11 @@ Rails.application.routes.draw do
     get ':jetsteal_id/jetsteal_seats' => 'jetsteal_seats#index'
 
     resources :jetsteals do
+
+      collection do
+        get 'latest_image'
+      end
+
       member do
         get 'buy_as_whole'
       end

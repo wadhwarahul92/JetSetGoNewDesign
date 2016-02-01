@@ -91,3 +91,5 @@ gem 'bootstrap-datepicker-rails'
 gem 'foundation-rails'
 
 gem 'slim-rails'
+
+gem 'rmagick'
