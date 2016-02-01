@@ -14,6 +14,10 @@ class LatestJetstealImage
 
   def draw
 
+    url = "#{Rails.root}/tmp/jetsteal_popularity_footer#{@jetsteal.id}.png"
+
+    return url if File.file?(url)
+
     text = Magick::Draw.new
     text.font_family = 'sans-serif'
     text.annotate(@canvas, 10, 10, 10, 50, 'From:') do
@@ -81,8 +85,6 @@ class LatestJetstealImage
       self.font_weight = Magick::BoldWeight
       self.pointsize = 15
     end
-
-    url = "#{Rails.root}/tmp/#{SecureRandom.urlsafe_base64}#{Time.now.to_i}.png"
 
     @canvas.write(url)
 
