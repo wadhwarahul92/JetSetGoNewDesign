@@ -47,7 +47,7 @@ class LatestJetstealImage
 
     text_2 = Magick::Draw.new
     text_2.font_family = 'sans-serif'
-    text_2.annotate(@canvas, 10, 10, 180, 50, @jetsteal.end_at.strftime('On: %d %b %Y At: %I:%M %p')) do
+    text_2.annotate(@canvas, 10, 10, 180, 50, @jetsteal.end_at.strftime('On: %d %b %Y, At: %I:%M %p')) do
       self.fill = 'white'
       self.font_weight = Magick::BoldWeight
       self.gravity = Magick::WestGravity
@@ -75,7 +75,7 @@ class LatestJetstealImage
 
     text_4 = Magick::Draw.new
     text_4.font_family = 'sans-serif'
-    text_4.annotate(@canvas, 50, 12, 224, 93, cost_text) do
+    text_4.annotate(@canvas, 50, 12, 224, 91, cost_text) do
       self.fill = 'rgb(13, 60, 124)'
       self.gravity = Magick::WestGravity
       self.font_weight = Magick::BoldWeight
