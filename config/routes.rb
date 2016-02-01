@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '/' => 'welcome#index'
     get 'dashboard' => 'welcome#dashboard', as: 'dashboard'
     post 'sign_in' => 'welcome#log_in', as: 'sign_in'
-    get '/paid_seat/:date' => 'jetsteal_seats#paymented_seat'
+    get '/purchased_seat/:date' => 'jetsteal_seats#purchased_seat'
 
     resources :cities
 

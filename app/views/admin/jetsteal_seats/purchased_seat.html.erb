@@ -1,4 +1,4 @@
-<h2>Paymented Seats(<%= "#{@current_date.strftime('%d')} #{@current_date.strftime('%b')} #{@current_date.strftime('%Y')}" %>)</h2>
+<h2>Purchased Seats(<%= "#{@current_date.strftime('%d')} #{@current_date.strftime('%b')} #{@current_date.strftime('%Y')}" %>)</h2>
 <div class='col-xs-12 text-right'>
 	<%= will_paginate @payment_transactions if @payment_transactions.present?%>
 </div>
