@@ -8,7 +8,7 @@ class LatestJetstealImage
     @jetsteal = Jetsteal.ready_for_sale.last
     @canvas = Magick::ImageList.new
     @canvas.new_image(400, 110, Magick::SolidFill.new('rgb(58, 181, 127)'))
-    top_image = Magick::Image.read('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/038/original/private-jet-img.png?1454328396').first
+    top_image = Magick::Image.read('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/039/original/private-jet-img.png?1454329216').first
     @canvas.composite!(top_image, 0, 0, Magick::OverCompositeOp)
   end
 
@@ -75,9 +75,9 @@ class LatestJetstealImage
 
     text_4 = Magick::Draw.new
     text_4.font_family = 'sans-serif'
-    text_4.annotate(@canvas, 50, 12, 224, 91, cost_text) do
+    text_4.annotate(@canvas, 400, 12, 0, 91, "Starting @ INR #{cost_text}") do
       self.fill = 'rgb(13, 60, 124)'
-      self.gravity = Magick::WestGravity
+      self.gravity = Magick::CenterGravity
       self.font_weight = Magick::BoldWeight
       self.pointsize = 15
     end
