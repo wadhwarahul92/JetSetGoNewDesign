@@ -1,0 +1,58 @@
+<p>Hi Admins</p>
+<p>A new JetSteal is launched.</p>
+<% if @jetsteal.creator.present? %>
+    <p><strong>Created by:</strong> <%= @jetsteal.creator.full_name %></p>
+<%- end %>
+<p>
+  Here are the details:
+</p>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Departure Airport</th>
+    <th>Departure City</th>
+    <th>Arrival Airport</th>
+    <th>Arrival City</th>
+    <th>Time</th>
+    <th>Aircraft</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @jetsteal.departure_airport.name %></td>
+    <td><%= @jetsteal.departure_airport.city.name %></td>
+    <td><%= @jetsteal.arrival_airport.name %></td>
+    <td><%= @jetsteal.arrival_airport.city.name %></td>
+    <td><%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></td>
+    <td><%= @jetsteal.aircraft.tail_number %>, <%= @jetsteal.aircraft.aircraft_type.name %></td>
+    <td><%= @jetsteal.sell_by_seats? ? "Starting @ INR #{@jetsteal.min_seat_cost}" : @jetsteal.cost %></td>
+  </tr>
+  </tbody>
+</table>
+<% if @subscribers.present? and @subscribers.any? %>
+    <p>
+      And, following contacts were emailed as a reminder, as their recent searches match this jetsteal.
+    </p>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @subscribers.each do |subscriber| %>
+      <tr>
+        <td><%= subscriber.name %></td>
+        <td><%= subscriber.phone %></td>
+        <td><%= subscriber.email %></td>
+      </tr>
+      <%- end %>
+      </tbody>
+    </table>
+<%- end %>
+<p>
+  Monika
+</p>

@@ -10,4 +10,13 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  def new_jetsteal(jetsteal, subscribers)
+    @jetsteal = jetsteal
+    @subscribers = subscribers
+    mail(
+        to: Admin.get_all_emails,
+        subject: 'New jetsteal added'
+    )
+  end
+
 end
