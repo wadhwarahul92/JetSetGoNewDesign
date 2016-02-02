@@ -1,7 +1,4 @@
-<h2>Purchased Seats(<%= "#{@current_date.strftime('%d')} #{@current_date.strftime('%b')} #{@current_date.strftime('%Y')}" %>)</h2>
-<div class='col-xs-12 text-right'>
-	<%= will_paginate @payment_transactions if @payment_transactions.present?%>
-</div>
+<h2>Purchased Seats on <%= Date.today.strftime('%d %b %Y') %> </h2>
 <table class='table table-striped'>
 	<thead>
 		<tr class='info'>
@@ -14,40 +11,15 @@
   	</tr>
 	</thead>
 	<tbody>
-		<% @payment_transactions.each_with_index do|payment_transaction,index|%>
-			<% jetstealseats = payment_transaction.jetsteal_seats%>
-			<% jetsteal = payment_transaction.jetsteal(jetstealseats.first.jetsteal_id)%>		
+		<% @payment_transactions.each_with_index do |payment_transaction, index| %>
 			<tr>
-				<td><%=index+1%></td>
+				<td><%= index + 1 %></td>
 				<td><%= payment_transaction.id %></td>
 				<td><%= payment_transaction.contact.first_name %></td>
 				<td><%= payment_transaction.contact.last_name %></td>
 				<td><%= payment_transaction.contact.email %></td>
 				<td><%= payment_transaction.contact.phone %></td>
-				<%if jetstealseats.present? && jetsteal.present? && !jetsteal.sell_by_seats?%>
-					<tr>
-						<td></td>
-						<td><b>Tail number: <%=jetsteal.aircraft.tail_number%></b></td>
-						<td><b>Jet Amount(Rs.): <%= jetsteal.cost %>/-</b></td>
-					</tr>
-				<%else%>
-					<%if jetstealseats.present?%>
-						<tr>
-							<td></td>
-							<td><b>Tail number: <%=jetsteal.aircraft.tail_number%></b></td>
-							<td><b>No of seats: </b><%= jetstealseats.count %></td>
-							<% jetstealseats.each do |jetstealseat|%>
-								<tr>
-									<td></td>
-									<td><b>Seat No:</b> <%=jetstealseat.ui_seat_id%></td>
-									<td><b>Price:</b> <%=jetstealseat.cost%></td>
-								</tr>
-							<%end%>
-							<td colspan="3" class='text-center'><b>Total price(Rs.): <%=jetstealseats.sum(:cost)%>/-</b></td>
-						</tr>
-					<%end%>
-				<%end%>
 			</tr>
-		<%end%>
+		<% end %>
 	</tbody>
 </table>

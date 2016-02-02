@@ -1,8 +1,8 @@
 <div class='col-xs-12'>
-	<%= link_to "/admin/purchased_seat/#{@current_date.to_date.to_s}" do %>
+	<%= link_to "/admin/purchased_seat/#{Date.today.to_s}" do %>
 		<div class='col-xs-4 text-center cd'>
 			<div class="panel panel-default">
-		    <div class="panel-body"><%="#{@current_date.strftime('%b')} #{@current_date.strftime('%d')} #{@current_date.strftime('%Y')}" %></div>
+		    <div class="panel-body"> <%= Date.today.strftime('%d %b %Y') %> </div>
 		  </div>
 		</div>
 	<%end%>

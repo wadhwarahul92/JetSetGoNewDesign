@@ -9,7 +9,7 @@ class Admin::WelcomeController < Admin::BaseController
   end
 
   def dashboard
-    @current_date = DateTime.now
+
   end
 
   def log_in
