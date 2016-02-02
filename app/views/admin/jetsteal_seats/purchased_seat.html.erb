@@ -2,7 +2,7 @@
 <table class='table table-striped'>
 	<thead>
 		<tr class='info'>
-			<th>S.No</th>
+			<th>Amount Paid</th>
 	   	<th>Transaction Id</th> 
 	   	<th>First name</th>
 	   	<th>Last name</th>
@@ -11,15 +11,25 @@
   	</tr>
 	</thead>
 	<tbody>
-		<% @payment_transactions.each_with_index do |payment_transaction, index| %>
+		<% @payment_transactions.each do |payment_transaction| %>
 			<tr>
-				<td><%= index + 1 %></td>
+				<td><%= payment_transaction.amount.round(2) %></td>
 				<td><%= payment_transaction.id %></td>
 				<td><%= payment_transaction.contact.first_name %></td>
 				<td><%= payment_transaction.contact.last_name %></td>
 				<td><%= payment_transaction.contact.email %></td>
 				<td><%= payment_transaction.contact.phone %></td>
 			</tr>
+      <% payment_transaction.jetsteal_seats.each do |jetsteal_seat| %>
+          <tr>
+            <td></td>
+            <td><%= jetsteal_seat.ui_seat_id %></td>
+            <td><%= jetsteal_seat.cost %></td>
+            <td>Jetsteal id: <%= jetsteal_seat.jetsteal.id %></td>
+            <td>Departure airport: <%= jetsteal_seat.jetsteal.departure_airport.name %></td>
+            <td>Arrival airport: <%= jetsteal_seat.jetsteal.arrival_airport.name %></td>
+          </tr>
+      <%- end %>
 		<% end %>
 	</tbody>
 </table>
