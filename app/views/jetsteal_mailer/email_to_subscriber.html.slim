@@ -1,0 +1,21 @@
+p Dear #{@subscriber.name},
+p We have the following Jetsteal available.
+table
+  thead
+    tr
+      th Departure Airport
+      th Arrival Airport
+      th Time
+      th Price
+  tbody
+    tr
+      td= @jetsteal.departure_airport.name
+      td= @jetsteal.arrival_airport.name
+      td= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
+      td= @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost : @jetsteal.cost
+p You can always find an up-dated list of available JetSteals on http://jetsetgo.in
+p In case you have any questions please free to contact us on 91-11-39585858 or info@jetsetgo.in
+p
+  | Monika
+  br
+  | JetSetGo Aviation Services PVT. LTD.

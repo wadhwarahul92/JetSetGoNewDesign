@@ -8,9 +8,9 @@ class JetstealLauncher
   def launch!
     return false unless check_airport_distance
     if @jetsteal.sell_by_seats?
-      validate_per_seat and check_aircraft_images and @jetsteal.update_attribute :launched, true
+      validate_per_seat and check_aircraft_images and @jetsteal.update_attribute :launched, true and JetstealSubscribersEmail.new(@jetsteal).send_all
     else
-      validate_as_whole and check_aircraft_images and @jetsteal.update_attribute :launched, true
+      validate_as_whole and check_aircraft_images and @jetsteal.update_attribute :launched, true and JetstealSubscribersEmail.new(@jetsteal).send_all
     end
   end
 
