@@ -1,6 +1,7 @@
 <%= simple_form_for [:admin, @airport] do |f| %>
     <%= f.error_notification %>
     <%= f.input :name %>
+    <%= f.input :code %>
     <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
     <%= f.input :longitude %>
     <%= f.input :latitude %>
