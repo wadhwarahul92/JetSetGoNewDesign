@@ -23,4 +23,8 @@ class PaymentTransaction < ActiveRecord::Base
     status == 'pending'
   end
 
+  def jetsteal_seats
+    @jetsteal_seats = JetstealSeat.includes(:jetsteal).where(payment_transaction_id: self.id)
+  end
+
 end
