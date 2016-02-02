@@ -10,6 +10,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>Code</th>
         <th>Name</th>
         <th>City</th>
         <th>Created By</th>
@@ -20,8 +21,9 @@
       <tbody>
       <% @airports.each do |airport| %>
           <tr>
+            <td><%= airport.code %></td>
             <td><%= airport.name %></td>
-            <td> <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %> <%= airport.city.name %></td>
+            <td><%= image_tag airport.city.image.url(:original), style: 'width: 50px' %> <%= airport.city.name %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
             <td>
