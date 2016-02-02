@@ -63,4 +63,13 @@ class JetstealMailer < ApplicationMailer
          bcc: Admin.get_all_emails
   end
 
+  def email_to_subscriber(jetsteal, subscriber)
+    @subscriber = subscriber
+    @jetsteal = jetsteal
+    mail(
+        to: @subscriber.email,
+        subject: 'JetSetGo: New JetSteal available'
+    )
+  end
+
 end
