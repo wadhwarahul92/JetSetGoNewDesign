@@ -42,7 +42,8 @@ class Admin::AirportsController < Admin::BaseController
                                 :name,
                                 :city_id,
                                 :longitude,
-                                :latitude
+                                :latitude,
+                                :code
     )
   end
 
