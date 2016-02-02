@@ -2,7 +2,7 @@ class LatestJetstealImage
 
   #todo optimise this to search for image of that jetsteal first and return it, if present. This will save lots of processing
 
-  require 'RMagick'
+  require 'rmagick'
 
   def initialize
     @jetsteal = Jetsteal.ready_for_sale.last
