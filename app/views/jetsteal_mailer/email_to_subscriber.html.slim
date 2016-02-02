@@ -13,7 +13,7 @@ table style="width: 100%"
       td
         = @jetsteal.arrival_airport.name
         |,
-        = @jetsteal.departure_airport.name
+        = @jetsteal.arrival_airport.city.name
     tr
       th Time
       td= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
@@ -28,4 +28,4 @@ p In case you have any questions please free to contact us on 91-11-39585858 or 
 p
   | Monika
   br
-  | JetSetGo Aviation Services PVT. LTD.
+  | JetSetGo Aviation Services Private Limited
