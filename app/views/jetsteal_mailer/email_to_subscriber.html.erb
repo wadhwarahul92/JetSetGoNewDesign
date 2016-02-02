@@ -1,0 +1,27 @@
+<p>Dear <%= @subscriber.name %></p>
+<p>We have an exciting JetSteal available on your requested sectors so we thought of you. Details are as follows:</p>
+<table style="width: 100%">
+  <tr>
+    <th>Departure</th>
+    <td><%= @jetsteal.departure_airport.name %>, <%= @jetsteal.departure_airport.city.name %></td>
+  </tr>
+  <tr>
+    <th>Arrival</th>
+    <td><%= @jetsteal.arrival_airport.name %>, <%= @jetsteal.arrival_airport.city.name %></td>
+  </tr>
+  <tr>
+    <th>Time</th>
+    <td><%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></td>
+  </tr>
+  <tr>
+    <th>Price</th>
+    <td>Starting @ INR <%= @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost : @jetsteal.cost %></td>
+  </tr>
+</table>
+<p>Should you want to book it please click <a href="http://j.jetsetgo.in">here</a> or simply call us on +91-11-39585858 for any help.</p>
+<p>You can always find an up-dated list of available Jetsteal’s on <a href="http://j.jetsetgo.in/jetsteals/list">http://j.jetsetgo.in/jetsteals/list</a></p>
+<p>
+  Happy Landing,
+  <br>
+  Monica from JetSetGo
+</p>
