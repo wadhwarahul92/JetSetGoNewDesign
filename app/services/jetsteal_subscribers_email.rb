@@ -15,8 +15,8 @@ class JetstealSubscribersEmail
   private
 
   def find_matching_subscribers
-    JetstealSubscription.where(departure_airport: @jetsteal.departure_airport.id).each{ |j| @subscribers << j }
-    JetstealSubscription.where(arrival_airport: @jetsteal.arrival_airport.id).each{ |j| @subscribers << j }
+    JetstealSubscription.where(departure_airport: @jetsteal.departure_airport.id.to_s).each{ |j| @subscribers << j }
+    JetstealSubscription.where(arrival_airport: @jetsteal.arrival_airport.id.to_s).each{ |j| @subscribers << j }
     @subscribers.uniq!
   end
 

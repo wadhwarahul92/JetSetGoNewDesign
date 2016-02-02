@@ -1,18 +1,28 @@
 p Dear #{@subscriber.name},
 p We have the following Jetsteal available.
-table
-  thead
-    tr
-      th Departure Airport
-      th Arrival Airport
-      th Time
-      th Price
+table style="width: 100%"
   tbody
     tr
-      td= @jetsteal.departure_airport.name
-      td= @jetsteal.arrival_airport.name
+      th Departure
+      td
+        = @jetsteal.departure_airport.name
+        |,
+        = @jetsteal.departure_airport.city.name
+    tr
+      th Arrival
+      td
+        = @jetsteal.arrival_airport.name
+        |,
+        = @jetsteal.departure_airport.name
+    tr
+      th Time
       td= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')
-      td= @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost : @jetsteal.cost
+    tr
+      th Price
+      td
+        | Starting @ INR
+        '
+        = @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost.round(2) : @jetsteal.cost.round(2)
 p You can always find an up-dated list of available JetSteals on http://jetsetgo.in
 p In case you have any questions please free to contact us on 91-11-39585858 or info@jetsetgo.in
 p
