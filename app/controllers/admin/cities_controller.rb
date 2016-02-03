@@ -39,7 +39,8 @@ class Admin::CitiesController < Admin::BaseController
     params.require(:city).permit(
         :name,
         :state,
-        :image
+        :image,
+        :accomodation_category
     )
   end
 

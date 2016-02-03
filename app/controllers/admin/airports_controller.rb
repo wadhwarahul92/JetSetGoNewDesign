@@ -43,7 +43,14 @@ class Admin::AirportsController < Admin::BaseController
                                 :city_id,
                                 :longitude,
                                 :latitude,
-                                :code
+                                :code,
+                                :private_landing,
+                                :international,
+                                :night_landing,
+                                :night_parking,
+                                :ifr_or_vfr,
+                                :fuel_availability,
+                                :watch_hour_extension
     )
   end
 

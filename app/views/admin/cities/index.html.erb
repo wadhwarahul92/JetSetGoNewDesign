@@ -13,6 +13,7 @@
         <th></th>
         <th>Name</th>
         <th>State</th>
+        <th>Accomodation category</th>
         <th>Creator</th>
         <th>Updated By</th>
         <th></th>
@@ -28,6 +29,7 @@
             </td>
             <td><%= city.name %></td>
             <td><%= city.state %></td>
+            <td><%= city.accomodation_category.capitalize if city.accomodation_category.present?  %></td>
             <td><%= city.creator.full_name if city.creator %></td>
             <td><%= city.last_updater.full_name if city.last_updater.present? %></td>
             <td>

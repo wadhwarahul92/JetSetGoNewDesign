@@ -13,5 +13,6 @@ class City < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { scope: :state }
   validates :state, presence: true
   validates :image, presence: true
+  validates :accomodation_category, presence: true
   ###################
 end
