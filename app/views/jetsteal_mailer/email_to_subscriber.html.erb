@@ -1,7 +1,7 @@
 <table class="row">
   <tr>
     <td class="wrapper last">
-      <table class="table columns">
+      <table class="twelve columns">
         <tr>
           <td class="text-pad">
             <% # for emails that dont have any names, this is ported from last system %>
@@ -10,7 +10,12 @@
                 <p>Dear <%= @subscriber.name %>,</p>
             <%- end %>
             <p>We have an exciting JetSteal available on your requested sectors so we thought of you. Details are as follows:</p>
-            <p>
+            <p style="display: inline-block">
+              <% if @jetsteal.aircraft.aircraft_images.first.try(:image) %>
+                <img style="margin-right: 10px; padding: 2px; border: 1px solid lightgray" src="<%= @jetsteal.aircraft.aircraft_images.first.image.url(:size_250x250) %>" alt="">
+              <%- end %>
+              <strong style="display: inline-block; min-width: 80px">Aircraft:</strong>&nbsp;<%= @jetsteal.aircraft.aircraft_type.name %>
+              <br>
               <strong style="display: inline-block; min-width: 80px">Departure:</strong>&nbsp;<%= @jetsteal.departure_airport.name %>, <%= @jetsteal.departure_airport.city.name %>
               <br>
               <strong style="display: inline-block; min-width: 80px">Arrival:</strong>&nbsp;<%= @jetsteal.arrival_airport.name %>, <%= @jetsteal.arrival_airport.city.name %>
