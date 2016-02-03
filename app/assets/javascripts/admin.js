@@ -16,5 +16,6 @@ try {
 //ENABLE TOOLTIPS
 $(document).on('ready page:load', function(){
     $('[data-toggle=tooltip]').tooltip();
+    $('#jetsteal_departure_airport_id,#jetsteal_arrival_airport_id').select2();
 });
 /////////////////

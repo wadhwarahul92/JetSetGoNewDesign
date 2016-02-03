@@ -24,7 +24,11 @@
       <tbody>
       <tr>
         <td><%= @jetsteal.departure_airport.name %></td>
-        <td><%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></td>
+        <% if @jetsteal.sell_by_seats? %>
+            <td><%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %></td>
+        <%- else %>
+            <td><%= @jetsteal.end_at.strftime('%d %b %Y') %>, Any Time</td>
+        <%- end %>
         <td><%= @jetsteal.arrival_airport.name %></td>
         <td><%= (@jetsteal.end_at + @jetsteal.flight_duration_in_minutes.minutes).strftime('%d %b %Y, %I:%M %p') %></td>
       </tr>
