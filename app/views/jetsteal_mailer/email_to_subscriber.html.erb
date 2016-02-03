@@ -1,18 +1,31 @@
-<p>Dear <%= @subscriber.name %>,</p>
-<p>We have an exciting JetSteal available on your requested sectors so we thought of you. Details are as follows:</p>
-<p>
-  <strong style="display: inline-block; min-width: 80px">Departure:</strong>&nbsp;<%= @jetsteal.departure_airport.name %>, <%= @jetsteal.departure_airport.city.name %>
-  <br>
-  <strong style="display: inline-block; min-width: 80px">Arrival:</strong>&nbsp;<%= @jetsteal.arrival_airport.name %>, <%= @jetsteal.arrival_airport.city.name %>
-  <br>
-  <strong style="display: inline-block; min-width: 80px">Time:</strong>&nbsp;<%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %>
-  <br>
-  <strong style="display: inline-block; min-width: 80px">Price:</strong>&nbsp;Starting @ <%= @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost : @jetsteal.cost %>
-</p>
-<p>Should you want to book it please click <a href="http://j.jetsetgo.in">here</a> or simply call us on +91-11-39585858 for any help.</p>
-<p>You can always find an up-dated list of available Jetsteal’s <a href="http://j.jetsetgo.in/jetsteals/list">here</a>.</p>
-<p>
-  Happy Landing,
-  <br>
-  Monica from JetSetGo
-</p>
+<table class="row">
+  <tr>
+    <td class="wrapper last">
+      <table class="table columns">
+        <tr>
+          <td class="text-pad">
+            <p>Dear <%= @subscriber.name %>,</p>
+            <p>We have an exciting JetSteal available on your requested sectors so we thought of you. Details are as follows:</p>
+            <p>
+              <strong style="display: inline-block; min-width: 80px">Departure:</strong>&nbsp;<%= @jetsteal.departure_airport.name %>, <%= @jetsteal.departure_airport.city.name %>
+              <br>
+              <strong style="display: inline-block; min-width: 80px">Arrival:</strong>&nbsp;<%= @jetsteal.arrival_airport.name %>, <%= @jetsteal.arrival_airport.city.name %>
+              <br>
+              <strong style="display: inline-block; min-width: 80px">Time:</strong>&nbsp;<%= @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p') %>
+              <br>
+              <strong style="display: inline-block; min-width: 80px">Price:</strong>&nbsp;Starting @ <%= @jetsteal.sell_by_seats? ? @jetsteal.min_seat_cost : @jetsteal.cost %>
+            </p>
+            <p>Should you want to book it please click <a href="http://j.jetsetgo.in">here</a> or simply call us on +91-11-39585858 for any help.</p>
+            <p>You can always find an up-dated list of available Jetsteal’s <a href="http://j.jetsetgo.in/jetsteals/list">here</a>.</p>
+            <p>
+              Happy Landing,
+              <br>
+              Monica from JetSetGo
+            </p>
+          </td>
+          <td class="expander"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
