@@ -1,9 +1,26 @@
 <%= simple_form_for [:admin, @airport] do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :name %>
-    <%= f.input :code %>
-    <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
-    <%= f.input :longitude %>
-    <%= f.input :latitude %>
-    <%= f.submit 'Save', class: 'btn btn-success' %>
+    <div class='col-xs-6'>
+	    <%= f.error_notification %>
+	    <%= f.input :name %>
+	    <%= f.input :code %>
+	    <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
+	    <%= f.input :longitude %>
+	    <%= f.input :latitude %>
+	    <%= f.input :ifr_or_vfr, collection: ['ifr', 'vfr'] %>
+    </div>
+    <div class='col-xs-6'>
+	    <div class='col-xs-6'>
+	    	<%= f.input :private_landing %>
+		    <%= f.input :international %>
+		    <%= f.input :night_landing %>
+	    </div>
+		   <div class='col-xs-6'>
+		    <%= f.input :night_parking %>
+		    <%= f.input :fuel_availability %>
+		    <%= f.input :watch_hour_extension %>
+	    </div>
+	  </div>
+    <div class='col-xs-12'>
+    	<%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
 <%- end %>
