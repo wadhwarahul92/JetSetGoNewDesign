@@ -41,9 +41,10 @@
         </tr>
         <tr>
           <th>Departure Time</th>
-          <td>{{ctrl.bookJetJetsteal.flight_start_time.split(',')[1]}}</td>
+          <td ng-show="ctrl.bookJetJetsteal.sell_by_seats">{{ctrl.bookJetJetsteal.flight_start_time.split(',')[1]}}</td>
+          <td ng-hide="ctrl.bookJetJetsteal.sell_by_seats">Any Time</td>
         </tr>
-        <tr>
+        <tr ng-show="ctrl.bookJetJetsteal.sell_by_seats">
           <th>Arrival Time</th>
           <td>{{ctrl.bookJetJetsteal.flight_end_time.split(',')[1]}}</td>
         </tr>
