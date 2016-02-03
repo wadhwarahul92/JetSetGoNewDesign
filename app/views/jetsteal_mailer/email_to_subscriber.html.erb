@@ -4,7 +4,11 @@
       <table class="table columns">
         <tr>
           <td class="text-pad">
-            <p>Dear <%= @subscriber.name %>,</p>
+            <% # for emails that dont have any names, this is ported from last system %>
+            <% if @subscriber.name == 'placeholder' or @subscriber.phone == '9999999999' %>
+            <%- else %>
+                <p>Dear <%= @subscriber.name %>,</p>
+            <%- end %>
             <p>We have an exciting JetSteal available on your requested sectors so we thought of you. Details are as follows:</p>
             <p>
               <strong style="display: inline-block; min-width: 80px">Departure:</strong>&nbsp;<%= @jetsteal.departure_airport.name %>, <%= @jetsteal.departure_airport.city.name %>
