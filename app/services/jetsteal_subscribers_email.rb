@@ -8,8 +8,8 @@ class JetstealSubscribersEmail
 
   def send_all
     find_matching_subscribers
-    _send
-    AdminMailer.new_jetsteal(@jetsteal, @subscribers).deliver_later
+    # _send
+    # AdminMailer.new_jetsteal(@jetsteal, @subscribers).deliver_later
     true #return true signifies that emails are sent
   end
 
