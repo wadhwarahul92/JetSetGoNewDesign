@@ -13,11 +13,11 @@
         <th>Code</th>
         <th>Name</th>
         <th>City</th>
+        <th>IFR/VFR</th>
         <th>Private landing</th>
         <th>International</th>
         <th>Night landing</th>
         <th>Night parking</th>
-        <th>IFR/VFR</th>
         <th>Fuel availability</th>
         <th>Watch hour extension</th>
         <th>Created By</th>
@@ -35,11 +35,11 @@
               <br/> 
               <%= airport.city.name %>
             </td>
+            <td><%= airport.ifr_or_vfr.upcase if airport.ifr_or_vfr.present? %></td>
             <td><%= airport.private_landing %></td>
             <td><%= airport.international %></td>
             <td><%= airport.night_landing %></td>
             <td><%= airport.night_parking %></td>
-            <td><%= airport.ifr_or_vfr.upcase if airport.ifr_or_vfr.present? %></td>
             <td><%= airport.fuel_availability %></td>
             <td><%= airport.watch_hour_extension %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
