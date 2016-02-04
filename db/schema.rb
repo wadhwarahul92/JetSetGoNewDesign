@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203072658) do
+ActiveRecord::Schema.define(version: 20160204074954) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20160203072658) do
     t.boolean  "phone"
     t.boolean  "flight_attendant",                              default: false
     t.text     "svg",                          limit: 16777215
+    t.string   "year_of_manufacture",          limit: 255
+    t.boolean  "medical_evac",                                  default: false
+    t.float    "cruise_speed_in_nm_per_hour",  limit: 24
+    t.float    "flying_range_in_nm",           limit: 24
+    t.float    "per_hour_cost",                limit: 24
+    t.float    "catering_cost_per_pax",        limit: 24
+    t.boolean  "admin_verified",                                default: false
+    t.integer  "operator_id",                  limit: 4
   end
 
   create_table "airports", force: :cascade do |t|

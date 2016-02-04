@@ -4,4 +4,6 @@ class Operator < User
 
   has_paper_trail
 
+  has_many :aircrafts
+
 end
