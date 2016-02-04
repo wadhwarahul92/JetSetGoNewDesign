@@ -3,3 +3,5 @@
 *= require_tree ./operators
 *= require_self
 */
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
