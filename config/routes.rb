@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
     resources :airports
 
+    resources :operators
+
     resources :aircraft_types
 
     resources :aircrafts do
