@@ -1,7 +1,7 @@
 class Operators::AircraftsController < Operators::BaseController	
 
   def index
-    
+    @aircrafts = current_user.aircrafts.includes(:aircraft_type)
   end
 
   def new
