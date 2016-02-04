@@ -2,6 +2,7 @@
 *= require ./vendors/notify
 *= require ./vendors/bootstrap
 *= require_tree ./operators
+*= require ./vendors/loading-bar
 *= require_self
 */
 
