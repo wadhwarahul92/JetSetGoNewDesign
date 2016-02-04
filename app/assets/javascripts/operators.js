@@ -9,6 +9,7 @@
 //= require ./operators/base
 //= require ./operators/welcome
 //= require ./operators/aircrafts
+//= require ./operators/aircraft
 
 try {
     Turbolinks.enableProgressBar();
