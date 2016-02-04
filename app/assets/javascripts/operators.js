@@ -4,8 +4,17 @@
 //= require ./vendors/bootstrap
 //= require ./vendors/angular
 //= require ./vendors/angular-bootstrap
+//= require ./vendors/loading-bar
+//= require ./vendors/notify
 //= require ./operators/base
 //= require ./operators/welcome
+//= require ./operators/aircrafts
+
+try {
+    Turbolinks.enableProgressBar();
+}catch(e) {
+    console.log('ERROR: Turbolinks is not defined.')
+}
 
 $(document).on('ready page:load', function(){
     angular.bootstrap(document.body, ['operator_app'])
