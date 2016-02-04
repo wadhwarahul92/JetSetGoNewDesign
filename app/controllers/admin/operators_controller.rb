@@ -12,9 +12,8 @@ class Admin::OperatorsController < Admin::BaseController
 	end
 
 	def update
-		if @operator.update_attribute(:approved_by_admin, params[:approved_by_admin])
-      redirect_to action: :index
-    end
+		@operator.update_attribute(:approved_by_admin, params[:approved_by_admin])
+		redirect_to action: :index
 	end
 
 	private

@@ -16,7 +16,7 @@
 			<td><%= operator.email %></td>
 			<td><%= operator.phone %></td>
 			<td>
-				<%= link_to operator.approved_by_admin? ? 'active' : 'inactive', admin_operator_path(operator, approved_by_admin: operator.approved_by_admin? ? false : true), method: :put, class: 'btn btn-' + "#{operator.approved_by_admin? ? 'success ' : 'danger '}" +'btn-xs' %>
+				<%= link_to operator.approved_by_admin? ? 'active' : 'inactive', admin_operator_path(operator, approved_by_admin: operator.approved_by_admin? ? false : true), method: :put, class: "btn btn-#{operator.approved_by_admin? ? 'success ' : 'danger '} btn-xs" %>
 			</td>			
 		</tr>
 		<%end%>
