@@ -7,7 +7,7 @@
         <%= f.input :year_of_manufacture %>
         <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
         <%= f.input :operator_id, collection: operators_for_collection, prompt: 'Select Operator' %>
-        <% [:wifi,:phone,:flight_attendant,:medical_evac].each do |attr| %>
+        <% [:wifi, :phone, :flight_attendant, :medical_evac].each do |attr| %>
             <div class="col-sm-4">
               <%= f.input(attr, :value => true) %>
             </div>
