@@ -1,11 +1,25 @@
-class Operators::AircraftsController < Operators::BaseController	
+class Operators::AircraftsController < Operators::BaseController
+
+  before_filter :set_aircraft, only: [:edit, :update]	
 
   def index
-    
+    @aircrafts = current_user.aircrafts.includes(:aircraft_type)
   end
 
   def new
 
+  end
+
+  def edit
+  
+  end
+
+  def update
+    if @aircraft.update_attributes(aircraft_params)
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }
+    end
   end
 
   def create
@@ -40,4 +54,9 @@ class Operators::AircraftsController < Operators::BaseController
                   :flight_attendant
     )
   end
+
+  def set_aircraft
+    @aircraft = current_user.aircrafts.find params[:id]
+  end
+
 end

@@ -6,6 +6,7 @@
 //= require ./vendors/angular-bootstrap
 //= require ./vendors/loading-bar
 //= require ./vendors/notify
+//= require ./vendors/angular_animate
 //= require ./operators/base
 //= require ./operators/welcome
 //= require ./operators/aircrafts
