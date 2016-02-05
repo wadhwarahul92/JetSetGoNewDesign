@@ -3,4 +3,5 @@ window.operator_app = angular.module 'operator_app', [
   'angular-loading-bar'
   'cgNotify'
   'ngAnimate'
+  'angularFileUpload'
 ]

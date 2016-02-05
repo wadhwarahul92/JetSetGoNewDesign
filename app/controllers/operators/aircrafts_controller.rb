@@ -1,9 +1,11 @@
 class Operators::AircraftsController < Operators::BaseController
 
+  before_action :authenticate_operator
+
   before_filter :set_aircraft, only: [:edit, :update]	
 
   def index
-    @aircrafts = current_user.aircrafts.includes(:aircraft_type)
+    @aircrafts = current_user.aircrafts.includes(:aircraft_type, :aircraft_images)
   end
 
   def new

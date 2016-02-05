@@ -7,11 +7,15 @@
       <li><%= link_to 'Add aircraft', new_operators_aircraft_path, class: 'btn btn-primary' %></li>
       <uib-accordion>
         <uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">
+          <img ng-repeat="image in aircraft.aircraft_images" src="" ng-src="{{image}}" alt="">
           <table class="table table-striped">
             <tbody>
             <tr>
               <td>
                 <a ng-href="/operators/aircrafts/{{aircraft.id}}/edit"><i class="fa fa-edit"></i></a>
+              </td>
+              <td>
+                <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" >Add aircraft image</a>
               </td>
             </tr>
             <tr>
