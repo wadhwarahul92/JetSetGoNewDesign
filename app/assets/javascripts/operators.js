@@ -7,6 +7,7 @@
 //= require ./vendors/loading-bar
 //= require ./vendors/notify
 //= require ./vendors/angular_animate
+//= require ./vendors/angular-file-upload
 //= require ./operators/base
 //= require ./operators/welcome
 //= require ./operators/aircrafts

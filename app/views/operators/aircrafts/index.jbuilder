@@ -22,5 +22,7 @@ json.array! @aircrafts do |aircraft|
 		json.id aircraft.aircraft_type.id
 		json.name aircraft.aircraft_type.name
 	}
+
+  json.aircraft_images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
 	
 end

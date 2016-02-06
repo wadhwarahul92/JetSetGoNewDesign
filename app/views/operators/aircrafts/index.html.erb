@@ -3,74 +3,79 @@
     <%= render partial: 'operators/shared/sidebar' %>
   </div>
   <div class="col-sm-10">
-  	<ul class="list-inline">
-  		<li><%= link_to 'Add aircraft', new_operators_aircraft_path, class: 'btn btn-primary' %></li>
-	  		 <uib-accordion>
-	  		 	<uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">
-	  		 		<table class="table table-striped">
-	  		 			<tbody>
-	  		 				<tr>
-	  		 					<li>
-	  		 						<a ng-href="/operators/aircrafts/{{aircraft.id}}/edit"/><i class="fa fa-edit"></i></a>
-	  		 					</li>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Aircraft type</th>
-	  		 					<td>{{aircraft.aircraft_type.name}}</td>
-	  		 					<th>Seating capacity</th>
-	  		 					<td>{{aircraft.seating_capacity}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Baggage capacity in kg</th>
-	  		 					<td>{{aircraft.baggage_capacity_in_kg}}</td>
-	  		 					<th>Runway field length in feet</th>
-	  		 					<td>{{aircraft.runway_field_length_in_feet}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Number of toilets</th>
-	  		 					<td>{{aircraft.number_of_toilets}}</td>
-	  		 					<th>Cabin width in meters</th>
-	  		 					<td>{{aircraft.cabin_width_in_meters}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Cabin height in meters</th>
-	  		 					<td>{{aircraft.cabin_height_in_meters}}</td>
-	  		 					<th>Crew</th>
-	  		 					<td>{{aircraft.crew}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Wifi</th>
-	  		 					<td>{{aircraft.wifi}}</td>
-	  		 					<th>Phone</th>
-	  		 					<td>{{aircraft.phone}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Flight attendant</th>
-	  		 					<td>{{aircraft.flight_attendant}}</td>
-	  		 					<th>Year of manufacture</th>
-	  		 					<td>{{aircraft.year_of_manufacture}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Medical evac</th>
-	  		 					<td>{{aircraft.medical_evac}}</td>
-	  		 					<th>Cruise speed in nm per hour</th>
-	  		 					<td>{{aircraft.cruise_speed_in_nm_per_hour}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Flying range in nm</th>
-	  		 					<td>{{aircraft.flying_range_in_nm}}</td>
-	  		 					<th>Cost per hour</th>
-	  		 					<td>{{aircraft.per_hour_cost}}</td>
-	  		 				</tr>
-	  		 				<tr>
-	  		 					<th>Catering cost per pax</th>
-	  		 					<td>{{aircraft.catering_cost_per_pax}}</td>
-	  		 					<th></th>
-	  		 					<td></td>
-	  		 				</tr>
-	  		 			</tbody>
-	  		 		</table>
-	  		 </uib-accordion>
-	  	</ul>
+    <ul class="list-inline">
+      <li><%= link_to 'Add aircraft', new_operators_aircraft_path, class: 'btn btn-primary' %></li>
+      <uib-accordion>
+        <uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">
+          <img ng-repeat="image in aircraft.aircraft_images" src="" ng-src="{{image}}" alt="">
+          <table class="table table-striped">
+            <tbody>
+            <tr>
+              <td>
+                <a ng-href="/operators/aircrafts/{{aircraft.id}}/edit"><i class="fa fa-edit"></i></a>
+              </td>
+              <td>
+                <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" >Add aircraft image</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Aircraft type</th>
+              <td>{{aircraft.aircraft_type.name}}</td>
+              <th>Seating capacity</th>
+              <td>{{aircraft.seating_capacity}}</td>
+            </tr>
+            <tr>
+              <th>Baggage capacity in kg</th>
+              <td>{{aircraft.baggage_capacity_in_kg}}</td>
+              <th>Runway field length in feet</th>
+              <td>{{aircraft.runway_field_length_in_feet}}</td>
+            </tr>
+            <tr>
+              <th>Number of toilets</th>
+              <td>{{aircraft.number_of_toilets}}</td>
+              <th>Cabin width in meters</th>
+              <td>{{aircraft.cabin_width_in_meters}}</td>
+            </tr>
+            <tr>
+              <th>Cabin height in meters</th>
+              <td>{{aircraft.cabin_height_in_meters}}</td>
+              <th>Crew</th>
+              <td>{{aircraft.crew}}</td>
+            </tr>
+            <tr>
+              <th>Wifi</th>
+              <td>{{aircraft.wifi}}</td>
+              <th>Phone</th>
+              <td>{{aircraft.phone}}</td>
+            </tr>
+            <tr>
+              <th>Flight attendant</th>
+              <td>{{aircraft.flight_attendant}}</td>
+              <th>Year of manufacture</th>
+              <td>{{aircraft.year_of_manufacture}}</td>
+            </tr>
+            <tr>
+              <th>Medical evac</th>
+              <td>{{aircraft.medical_evac}}</td>
+              <th>Cruise speed in nm per hour</th>
+              <td>{{aircraft.cruise_speed_in_nm_per_hour}}</td>
+            </tr>
+            <tr>
+              <th>Flying range in nm</th>
+              <td>{{aircraft.flying_range_in_nm}}</td>
+              <th>Cost per hour</th>
+              <td>{{aircraft.per_hour_cost}}</td>
+            </tr>
+            <tr>
+              <th>Catering cost per pax</th>
+              <td>{{aircraft.catering_cost_per_pax}}</td>
+              <th></th>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </uib-accordion-group>
+      </uib-accordion>
+    </ul>
   </div>
 </div>
