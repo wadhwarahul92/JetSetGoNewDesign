@@ -23,6 +23,11 @@ json.array! @aircrafts do |aircraft|
 		json.name aircraft.aircraft_type.name
 	}
 
-  json.aircraft_images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+  json.aircraft_images{
+    json.array! aircraft.aircraft_images do |aircraft_image|
+      json.id aircraft_image.id
+      json.url aircraft_image.image.url(:size_250x250)
+    end
+  }
 	
 end

@@ -7,3 +7,13 @@
 */
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+#loading-bar-spinner{
+    display: none!important;
+}
+
+.aircraft_img{
+    padding: 5px;
+    border: 1px solid lightgray;
+    margin: 5px;
+}

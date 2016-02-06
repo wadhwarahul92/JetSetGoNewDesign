@@ -1,0 +1,8 @@
+.aircraft_image_holder{
+  display: inline-block;
+  .fa-times{
+    position: absolute;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}

@@ -7,7 +7,10 @@
       <li><%= link_to 'Add aircraft', new_operators_aircraft_path, class: 'btn btn-primary' %></li>
       <uib-accordion>
         <uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">
-          <img ng-repeat="image in aircraft.aircraft_images" src="" ng-src="{{image}}" alt="">
+          <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
+            <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
+            <img class="aircraft_img" src="" ng-src="{{image.url}}" alt="">
+          </div>
           <table class="table table-striped">
             <tbody>
             <tr>
