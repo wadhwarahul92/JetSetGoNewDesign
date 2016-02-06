@@ -8,7 +8,10 @@ angular.module('CustomFilters', []).filter('indianCurrency', ->
     otherNumbers = numberPart.substring(0,numberPart.length-3)
     if(otherNumbers != '')
       lastThree = ',' + lastThree
-    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + '.' + decimalPart
+    if decimalPart
+      otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + '.' + decimalPart
+    else
+      otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree
 )
 
 window.chosen_seats = []

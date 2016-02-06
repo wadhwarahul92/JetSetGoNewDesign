@@ -1,7 +1,7 @@
 <div class="large reveal" id="book_jet" data-close-on-click="false" data-reveal>
   <div class="row" style="    border-bottom: 1px solid lightgray;margin-bottom: 10px;">
     <div class="small-12 columns">
-      <h4 class="text-center">Book Your Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</h4>
+      <h4 class="text-center">Book Your Jet @ <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"":0 | indianCurrency }}</h4>
     </div>
   </div>
   <div class="row">
@@ -67,7 +67,7 @@
             <legend class='column'><strong>Payment Details</strong></legend>
             <ul class="inline-list">
               <li><strong>Number of seats:</strong> {{ctrl.bookableSeats().length}}</li>
-              <li style="margin-right:0;"><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"" | indianCurrency }}</li>
+              <li style="margin-right:0;"><strong>Amount to be paid:</strong> <i class="fa fa-rupee"></i> {{ctrl.bookJetJetsteal.cost | currency:"":0 | indianCurrency }}</li>
             </ul>
           </fieldset>
           <fieldset>
