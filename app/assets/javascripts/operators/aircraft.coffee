@@ -40,9 +40,12 @@ operator_app.controller 'AircraftController', ['$http', 'notify', ($http, notify
           classes: ['alert-danger']
         )
     )
-  
-  if ("#{location.pathname.split('/')[1]}" == 'operators') && ("#{location.pathname.split('/')[2]}" == 'aircrafts') && ("#{location.pathname.split('/')[4]}" == 'edit')
-    $http.get("/operators/aircrafts/#{location.pathname.split('/')[3]}/edit.json").success(
+
+  url_split = location.pathname.match(/\/operators\/aircrafts\/(\d+)\/edit/)
+  id = null
+  id = url_split[1] if url_split
+  if id
+    $http.get("/operators/aircrafts/#{id}/edit.json").success(
       (data)=>
         @aircraft = data
     ).error(
@@ -52,6 +55,7 @@ operator_app.controller 'AircraftController', ['$http', 'notify', ($http, notify
           classes: ['alert-danger']
         )
     )
+
 
   return undefined
 ]
