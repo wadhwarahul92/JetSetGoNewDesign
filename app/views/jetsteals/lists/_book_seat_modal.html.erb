@@ -83,14 +83,14 @@
           <tbody>
           <tr ng-repeat="seat_id in ctrl.chosen_seats">
             <td class="text-center">{{seat_id}}</td>
-            <td class="text-center"><i class="fa fa-rupee"></i> {{ctrl.priceFor(seat_id) | currency:"" | indianCurrency }}</td>
+            <td class="text-center"><i class="fa fa-rupee"></i> {{ctrl.priceFor(seat_id) | currency:"":0 | indianCurrency }}</td>
           </tr>
           <tr>
             <th colspan="2" class="text-center">Grand Total</th>
           </tr>
           <tr>
             <td class="text-center">{{ctrl.chosen_seats.length}} Seats</td>
-            <td class="text-center"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"" | indianCurrency }}</strong></td>
+            <td class="text-center"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency }}</strong></td>
           </tr>
           </tbody>
         </table>
