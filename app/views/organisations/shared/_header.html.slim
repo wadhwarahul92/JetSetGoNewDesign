@@ -11,4 +11,4 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav.navbar-right
         - if current_user.present?
           li= link_to current_user.full_name, 'Javascript:void(0)'
-          li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+          li= link_to 'Sign Out', destroy_user_session_path(redirect_to: '/organisations'), method: :delete

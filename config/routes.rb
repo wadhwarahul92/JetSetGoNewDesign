@@ -37,12 +37,13 @@ Rails.application.routes.draw do
 
     post 'sign_up' => 'welcome#create_'
 
+    post 'sign_in' => 'operators#log_in_'
+
     get ':organisation_id/operators' => 'operators#index'
 
     get ':organisation_id/operators/admin' => 'operators#admin'
 
     post ':organisation_id/operators/create_admin' => 'operators#create_admin'
-
   end
 
   namespace :admin do

@@ -2,7 +2,7 @@ class Organisation < ActiveRecord::Base
 
   has_many :operators
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: {minimum: 5}
 
   def has_admin?
     self.operators.each do |operator|
