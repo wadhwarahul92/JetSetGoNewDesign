@@ -110,3 +110,6 @@ Rails.application.configure do
                                           }
 
 end
+
+#todo change this to jetsetgo.in when changing server
+HOST_URL_FOR_MAILER = 'http://j.jetsetgo.in'
