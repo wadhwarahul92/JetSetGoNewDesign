@@ -1,0 +1,35 @@
+<div class="row" ng-controller="OrganisationAdminController as ctrl">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <fieldset>
+      <legend><small>Create Profile</small></legend>
+      <p>You are admin of <strong><%= @organisation.name %></strong>. You can later add more operators to your organisations and manage their roles</p>
+      <form ng-submit="ctrl.create()">
+        <div class="field margin-top">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" class="form-control" ng-model="ctrl.user.first_name">
+        </div>
+        <div class="field margin-top">
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" class="form-control" ng-model="ctrl.user.last_name">
+        </div>
+        <div class="field margin-top">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" ng-model="ctrl.user.email">
+        </div>
+        <div class="field margin-top">
+          <label for="phone">Phone</label>
+          <input type="number" id="phone" class="form-control" ng-model="ctrl.user.phone">
+        </div>
+        <div class="field margin-top">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" ng-model="ctrl.user.password">
+        </div>
+        <div class="field margin-top">
+          <input type="submit" value="Next" class="btn btn-primary margin-top">
+        </div>
+      </form>
+    </fieldset>
+  </div>
+  <div class="col-sm-4"></div>
+</div>

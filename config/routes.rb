@@ -27,6 +27,24 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :organisations do
+
+    get '/' => 'welcome#index'
+
+    get 'sign_up' => 'welcome#create'
+
+    get 'sign_in' => 'welcome#log_in'
+
+    post 'sign_up' => 'welcome#create_'
+
+    get ':organisation_id/operators' => 'operators#index'
+
+    get ':organisation_id/operators/admin' => 'operators#admin'
+
+    post ':organisation_id/operators/create_admin' => 'operators#create_admin'
+
+  end
+
   namespace :admin do
     get '/' => 'welcome#index'
     get 'dashboard' => 'welcome#dashboard', as: 'dashboard'
