@@ -6,6 +6,8 @@ class Operator < User
 
   has_many :aircrafts
 
+  belongs_to :organisation
+
   scope :verified, -> { where(approved_by_admin: true) }
 
 end

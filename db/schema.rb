@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204074954) do
+ActiveRecord::Schema.define(version: 20160208091722) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20160204074954) do
   create_table "aircrafts", force: :cascade do |t|
     t.string   "tail_number",                  limit: 255
     t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "seating_capacity",             limit: 4
     t.integer  "baggage_capacity_in_kg",       limit: 4
     t.integer  "landing_field_length_in_feet", limit: 4
@@ -62,16 +62,15 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.integer  "crew",                         limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                              default: false
-    t.text     "svg",                          limit: 16777215
+    t.boolean  "flight_attendant",                         default: false
     t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                                  default: false
+    t.boolean  "medical_evac",                             default: false
     t.float    "cruise_speed_in_nm_per_hour",  limit: 24
     t.float    "flying_range_in_nm",           limit: 24
     t.float    "per_hour_cost",                limit: 24
     t.float    "catering_cost_per_pax",        limit: 24
-    t.boolean  "admin_verified",                                default: false
-    t.integer  "operator_id",                  limit: 4
+    t.boolean  "admin_verified",                           default: false
+    t.integer  "organisation_id",              limit: 4
   end
 
   create_table "airports", force: :cascade do |t|
@@ -174,6 +173,13 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.datetime "updated_at",                                           null: false
     t.boolean  "launched",                             default: false
     t.integer  "flight_duration_in_minutes", limit: 4
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.boolean  "admin_verified",             default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "payment_transactions", force: :cascade do |t|
