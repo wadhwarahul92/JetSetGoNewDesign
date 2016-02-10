@@ -49,13 +49,28 @@ class LatestJetstealImage
       self.pointsize = 15
     end
 
-    text_2 = Magick::Draw.new
-    text_2.font_family = 'sans-serif'
-    text_2.annotate(@canvas, 10, 10, 180, 50, @jetsteal.end_at.strftime('On: %d %b %Y, At: %I:%M %p')) do
-      self.fill = 'white'
-      self.font_weight = Magick::BoldWeight
-      self.gravity = Magick::WestGravity
-      self.pointsize = 15
+    if @jetsteal.sell_by_seats?
+
+      text_2 = Magick::Draw.new
+      text_2.font_family = 'sans-serif'
+      text_2.annotate(@canvas, 10, 10, 180, 50, @jetsteal.end_at.strftime('On: %d %b %Y, At: %I:%M %p')) do
+        self.fill = 'white'
+        self.font_weight = Magick::BoldWeight
+        self.gravity = Magick::WestGravity
+        self.pointsize = 15
+      end
+
+    else
+
+      text_2 = Magick::Draw.new
+      text_2.font_family = 'sans-serif'
+      text_2.annotate(@canvas, 10, 10, 180, 50, @jetsteal.end_at.strftime('On: %d %b %Y, Any Time')) do
+        self.fill = 'white'
+        self.font_weight = Magick::BoldWeight
+        self.gravity = Magick::WestGravity
+        self.pointsize = 15
+      end
+
     end
 
     arrival_city_image = Magick::Image.read(@jetsteal.arrival_airport.city.image).first
