@@ -29,15 +29,6 @@ class Organisations::AircraftsController < Organisations::BaseController
     end
   end
 
-  def create
-  	@aircraft = current_user.aircrafts.new(aircraft_params)
-  	if @aircraft.save
-  		render status: :ok, nothing: true
-  	else
-      render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }
-  	end
-  end
-
 	private
 
   def aircraft_params

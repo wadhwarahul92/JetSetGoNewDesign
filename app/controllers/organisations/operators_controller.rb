@@ -6,6 +6,8 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   before_action :authenticate_operator, only: [:index]
 
+  #POST
+  # noinspection RailsChecklist01
   def log_in_
     @operator = Operator.where(email: params[:email]).first
     if @operator.present? and @operator.valid_password?(params[:password])

@@ -25,6 +25,10 @@ class Organisations::BaseController < ApplicationController
     end
   end
 
+  helper_method def current_organisation
+    @current_organisation ||= current_user.organisation
+  end
+
   protected
 
   # In Rails 4.2 and above
