@@ -12,11 +12,11 @@ class LatestJetstealImage
     @canvas.composite!(top_image, 0, 0, Magick::OverCompositeOp)
   end
 
-  def draw
+  def draw(cache = false)
 
     url = "#{Rails.root}/tmp/jetsteal_popularity_footer#{@jetsteal.id}.png"
 
-    return url if File.file?(url)
+    return url if File.file?(url) if cache
 
     text = Magick::Draw.new
     text.font_family = 'sans-serif'
@@ -79,7 +79,7 @@ class LatestJetstealImage
 
     text_4 = Magick::Draw.new
     text_4.font_family = 'sans-serif'
-    text_4.annotate(@canvas, 400, 12, 0, 91, "Starting @ INR #{cost_text}") do
+    text_4.annotate(@canvas, 400, 12, 0, 91, "Starting @ INR #{to_indian_format cost_text}") do
       self.fill = 'rgb(13, 60, 124)'
       self.gravity = Magick::CenterGravity
       self.font_weight = Magick::BoldWeight
@@ -89,6 +89,33 @@ class LatestJetstealImage
     @canvas.write(url)
 
     url
+  end
+
+  # @param [Integer] number
+  # @return [String]
+  def to_indian_format(number)
+    number = number.to_i.to_s
+    formatted_number = []
+    number.split('').reverse.each_with_index do |char, index|
+      if index < 3
+        formatted_number << char
+        next
+      end
+      if index == 3
+        # noinspection RubyResolve
+        formatted_number << ','
+        formatted_number << char
+        next
+      end
+      if index % 2 == 0
+        formatted_number << char
+        # noinspection RubyResolve
+        formatted_number << ','
+      end
+    end
+    formatted_number = formatted_number.reverse
+    formatted_number.shift if formatted_number[0] == ','
+    formatted_number.join
   end
 
 end
