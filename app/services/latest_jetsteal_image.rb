@@ -12,7 +12,7 @@ class LatestJetstealImage
     @canvas.composite!(top_image, 0, 0, Magick::OverCompositeOp)
   end
 
-  def draw(cache = false)
+  def draw(cache = true)
 
     url = "#{Rails.root}/tmp/jetsteal_popularity_footer#{@jetsteal.id}.png"
 
