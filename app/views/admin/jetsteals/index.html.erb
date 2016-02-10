@@ -46,7 +46,9 @@
             </td>
             <td>
               <% if jetsteal.launched? %>
-                  <span class="label label-success">Launched</span>
+                  <%= link_to unlaunch__admin_jetsteal_path(jetsteal), method: :put do %>
+                      <span class="label label-success">Launched</span>
+                  <%- end %>
               <%- else %>
                   <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal) %>
               <%- end %>

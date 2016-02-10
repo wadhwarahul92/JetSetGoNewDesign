@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :jetsteals do
       member do
         get 'launch'
+        put 'unlaunch_'
       end
       resources :jetsteal_seats
     end
