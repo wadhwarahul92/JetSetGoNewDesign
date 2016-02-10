@@ -15,6 +15,7 @@
 //= require ./organisations/sign_in_controller
 //= require ./organisations/aircrafts
 //= require ./organisations/aircraft
+//= require ./organisations/header_controller
 
 try {
     Turbolinks.enableProgressBar();

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="HeaderController as ctrl">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -13,10 +13,12 @@
       <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
           <li>
-            <span class="inline-block padding-top-15" uib-dropdown>
-              <a id="simple-dropdown" uib-dropdown-toggle href="Javascript:void(0)"><%= current_organisation.name %></a>
+            <span class="inline-block padding-top-15" uib-dropdown on-toggle="ctrl.organisationLinkToggled(open)">
+              <a id="simple-dropdown" uib-dropdown-toggle href="Javascript:void(0)">
+                <%= current_organisation.name %> <i ng-class="{'fa-caret-left': !ctrl.organisationLinkState, 'fa-caret-down': ctrl.organisationLinkState}" class="fa"></i>
+              </a>
               <ul uib-dropdown-menu aria-labelledby="simple-dropdown">
-                <li>hello</li>
+                <li><%= link_to 'Settings', '#' %></li>
               </ul>
             </span>
           </li>
