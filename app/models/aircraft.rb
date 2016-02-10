@@ -10,6 +10,8 @@ class Aircraft < ActiveRecord::Base
 
   belongs_to :operator
 
+  belongs_to :organisation
+
   accepts_nested_attributes_for :aircraft_images
 
   ####VALIDATIONS###
@@ -30,8 +32,9 @@ class Aircraft < ActiveRecord::Base
                         :flying_range_in_nm,
                         :per_hour_cost,
                         :catering_cost_per_pax,
-                        :operator_id
-  validates :operator, presence: true
+                        # :operator_id,
+                        :organisation_id
+  validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
   ##################
 

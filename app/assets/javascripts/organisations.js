@@ -13,6 +13,8 @@
 //= require ./organisations/sign_up_controller
 //= require ./organisations/organisation_admin_controller
 //= require ./organisations/sign_in_controller
+//= require ./organisations/aircrafts
+//= require ./organisations/aircraft
 
 try {
     Turbolinks.enableProgressBar();

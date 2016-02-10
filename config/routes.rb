@@ -44,6 +44,19 @@ Rails.application.routes.draw do
     get ':organisation_id/operators/admin' => 'operators#admin'
 
     post ':organisation_id/operators/create_admin' => 'operators#create_admin'
+
+    get '/aircrafts' => 'aircrafts#index'
+
+    get '/aircrafts/new' => 'aircrafts#new'
+
+    post '/aircrafts' => 'aircrafts#create'
+
+    get '/aircrafts/:id/edit' => 'aircrafts#edit'
+
+    resources :aircrafts do
+      resources :aircraft_images
+    end
+
   end
 
   namespace :admin do
