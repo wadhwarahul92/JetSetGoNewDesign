@@ -57,6 +57,8 @@ Rails.application.routes.draw do
       resources :aircraft_images
     end
 
+    resources :forum_topics
+
   end
 
   namespace :admin do

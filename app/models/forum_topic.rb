@@ -8,4 +8,8 @@ class ForumTopic < ActiveRecord::Base
 
   validates :operator, presence: true
 
+  validates :statement, presence: true, length: { minimum: 5, maximum: 250 }
+
+  validates :description, presence: true, length: { minimum: 5 }
+
 end
