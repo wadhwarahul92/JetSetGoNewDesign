@@ -126,6 +126,8 @@ class LatestJetstealImage
         formatted_number << char
         # noinspection RubyResolve
         formatted_number << ','
+      else
+        formatted_number << char
       end
     end
     formatted_number = formatted_number.reverse
