@@ -46,11 +46,11 @@
             </td>
             <td>
               <% if jetsteal.launched? %>
-                  <%= link_to unlaunch__admin_jetsteal_path(jetsteal), method: :put do %>
+                  <%= link_to unlaunch__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'Are you sure, you want to un-launch this?'} do %>
                       <span class="label label-success">Launched</span>
                   <%- end %>
               <%- else %>
-                  <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal) %>
+                  <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal), data: {confirm: 'Are you sure, you want to launch this?'} %>
               <%- end %>
             </td>
           </tr>
