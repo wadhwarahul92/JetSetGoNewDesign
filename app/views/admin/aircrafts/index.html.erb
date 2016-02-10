@@ -12,6 +12,7 @@
       <tr class="info">
         <th>Tail Number</th>
         <th>Type</th>
+        <th>Organisation</th>
         <th>Created By</th>
         <th>Updated By</th>
         <th></th>
@@ -24,6 +25,7 @@
       <tr>
         <td><%= aircraft.tail_number %></td>
         <td><%= aircraft.aircraft_type.name %></td>
+        <td><%= aircraft.organisation.name if aircraft.organisation %></td>
         <td><%= aircraft.creator.full_name if aircraft.creator %></td>
         <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
         <td>

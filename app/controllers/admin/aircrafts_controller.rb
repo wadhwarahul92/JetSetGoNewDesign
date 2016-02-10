@@ -62,7 +62,7 @@ class Admin::AircraftsController < Admin::BaseController
                                  :flying_range_in_nm,
                                  :per_hour_cost,
                                  :catering_cost_per_pax,
-                                 :operator_id,
+                                 :organisation_id,
                                  :year_of_manufacture,
                                  :medical_evac
     )
