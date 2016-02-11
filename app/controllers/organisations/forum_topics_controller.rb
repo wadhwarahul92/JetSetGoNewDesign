@@ -7,7 +7,7 @@ class Organisations::ForumTopicsController < Organisations::BaseController
   end
 
   def index
-    @forum_topics = ForumTopic.paginate(page: params[:page], per_page: 20)
+    @forum_topics = ForumTopic.order('created_at ASC').includes(:organisation).paginate(page: params[:page], per_page: 10)
   end
 
   def create

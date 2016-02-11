@@ -8,6 +8,7 @@ organisations_app.controller 'ForumTopicController', ['$http', 'notify', ($http,
         notify(
           message: 'New Froum Topic created.'
         )
+        Turbolinks.visit('/organisations/forum_topics')
     ).error(
       (data)->
         error = 'Something went wrong.'

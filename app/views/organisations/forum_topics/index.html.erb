@@ -6,5 +6,31 @@
     <ul class="list-inline">
       <li><%= link_to 'New Topic', new_organisations_forum_topic_path, class: 'btn btn-primary' %></li>
     </ul>
+    <fieldset>
+      <legend>Forum Topics</legend>
+      <ul class="list-unstyled">
+        <% @forum_topics.each do |forum_topic| %>
+          <li>
+            <%= link_to organisations_forum_topic_path(forum_topic) do %>
+                <div class="forum-topic-container margin-top">
+                  <h3><%= forum_topic.statement %></h3>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <p><%= forum_topic.description %></p>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                      <ul class="list-inline">
+                        <li><%= forum_topic.organisation.name %></li>
+                        <li><%= forum_topic.created_at.strftime('%d %b %Y') %></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            <%- end %>
+          </li>
+        <%- end %>
+        <li><%= will_paginate @forum_topics %></li>
+      </ul>
+    </fieldset>
   </div>
 </div>
