@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
           <li>
-            <span class="inline-block padding-top-15" uib-dropdown on-toggle="ctrl.organisationLinkToggled(open)">
+            <span class="inline-block padding-top-15" style="padding-right: 15px" uib-dropdown on-toggle="ctrl.organisationLinkToggled(open)">
               <a id="simple-dropdown" uib-dropdown-toggle href="Javascript:void(0)">
                 <%= current_organisation.name %> <i ng-class="{'fa-caret-left': !ctrl.organisationLinkState, 'fa-caret-down': ctrl.organisationLinkState}" class="fa"></i>
               </a>

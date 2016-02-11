@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210115323) do
+ActiveRecord::Schema.define(version: 20160211074041) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -134,6 +134,15 @@ ActiveRecord::Schema.define(version: 20160210115323) do
     t.float    "distance_in_nm",  limit: 24
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "forum_topic_comments", force: :cascade do |t|
+    t.text     "comment",         limit: 65535
+    t.integer  "forum_topic_id",  limit: 4
+    t.integer  "operator_id",     limit: 4
+    t.integer  "organisation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "forum_topics", force: :cascade do |t|

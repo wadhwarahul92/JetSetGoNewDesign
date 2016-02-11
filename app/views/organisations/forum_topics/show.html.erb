@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+    <%= render partial: 'organisations/shared/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <h3><%= @forum_topic.statement %></h3>
+    <p><%= @forum_topic.description %></p>
+    <ul class="list-inline">
+      <li><strong><%= @forum_topic.organisation.name %></strong></li>
+      <li><strong>Posted By:</strong> <%= @forum_topic.operator.full_name %></li>
+      <li><strong>Posted On:</strong> <%= @forum_topic.created_at.strftime('%d %b %Y') %></li>
+    </ul>
+  </div>
+</div>

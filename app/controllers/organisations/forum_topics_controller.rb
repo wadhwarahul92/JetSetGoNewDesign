@@ -2,6 +2,8 @@ class Organisations::ForumTopicsController < Organisations::BaseController
 
   before_action :authenticate_operator
 
+  before_action :set_forum_topic, only: [:show]
+
   def new
 
   end
@@ -19,7 +21,15 @@ class Organisations::ForumTopicsController < Organisations::BaseController
     end
   end
 
+  def show
+
+  end
+
   private
+
+  def set_forum_topic
+    @forum_topic = ForumTopic.find params[:id]
+  end
 
   def forum_topic_params
     params.permit(

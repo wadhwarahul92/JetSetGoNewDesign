@@ -4,6 +4,8 @@ class ForumTopic < ActiveRecord::Base
 
   belongs_to :operator
 
+  has_many :forum_topic_comments
+
   validates :organisation, presence: true
 
   validates :operator, presence: true
