@@ -41,8 +41,6 @@ Rails.application.routes.draw do
 
     post 'sign_in' => 'operators#log_in_'
 
-    get ':organisation_id/operators' => 'operators#index'
-
     get ':organisation_id/operators/admin' => 'operators#admin'
 
     post ':organisation_id/operators/create_admin' => 'operators#create_admin'
@@ -50,6 +48,8 @@ Rails.application.routes.draw do
     resources :aircrafts do
       resources :aircraft_images
     end
+
+    resources :operators
 
   end
 

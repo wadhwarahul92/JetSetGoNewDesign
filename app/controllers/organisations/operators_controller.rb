@@ -1,10 +1,12 @@
 class Organisations::OperatorsController < Organisations::BaseController
 
-  before_action :set_organisation, except: [:log_in_]
+  before_action :set_organisation, except: [:log_in_, :index, :edit, :update]
+
+  before_action :set_operator, only: [:edit, :update]
 
   before_action :authenticate_no_user, only: [:admin, :create_admin, :log_in_]
 
-  before_action :authenticate_operator, only: [:index]
+  before_action :authenticate_operator, only: [:index, :edit, :update]
 
   #POST
   # noinspection RailsChecklist01
@@ -19,7 +21,19 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def index
+    @operators = current_user.organisation.operators
+  end
 
+  def edit
+
+  end
+
+  def update
+    if @operator.update_attributes(operator_params)
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
+    end
   end
 
   def admin
@@ -52,6 +66,16 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def set_organisation
     @organisation = Organisation.find params[:organisation_id]
+  end
+
+  def set_operator
+    @operator = current_user.organisation.operators.find params[:id]
+  end
+
+  def operator_params
+    params.permit(
+              :roles
+    )
   end
 
 end

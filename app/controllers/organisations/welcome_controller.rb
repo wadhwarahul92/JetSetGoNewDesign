@@ -26,7 +26,7 @@ class Organisations::WelcomeController < Organisations::BaseController
   end
 
   def setting
-    params
+
   end
 
   private
