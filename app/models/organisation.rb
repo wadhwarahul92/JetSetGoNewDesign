@@ -1,5 +1,7 @@
 class Organisation < ActiveRecord::Base
 
+  has_many :forum_topics
+
   has_many :operators
 
   has_many :aircrafts

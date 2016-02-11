@@ -16,6 +16,7 @@
 //= require ./organisations/aircrafts
 //= require ./organisations/aircraft
 //= require ./organisations/header_controller
+//= require ./organisations/forum_topic_controller
 
 try {
     Turbolinks.enableProgressBar();

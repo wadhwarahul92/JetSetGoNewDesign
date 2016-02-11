@@ -6,6 +6,8 @@ class Operator < User
 
   serialize :roles, Array
 
+  has_many :forum_topics
+
   has_many :aircrafts
 
   belongs_to :organisation
