@@ -57,7 +57,9 @@ Rails.application.routes.draw do
       resources :aircraft_images
     end
 
-    resources :forum_topics
+    resources :forum_topics do
+      resources :forum_topic_comments
+    end
 
   end
 
