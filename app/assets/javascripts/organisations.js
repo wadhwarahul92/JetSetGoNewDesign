@@ -16,13 +16,10 @@
 //= require ./organisations/aircrafts
 //= require ./organisations/aircraft
 //= require ./organisations/header_controller
-<<<<<<< HEAD
 //= require ./organisations/forum_topic_controller
 //= require ./organisations/forum_topic_comments_controller
-=======
 //= require ./organisations/settings
 //= require ./organisations/operator
->>>>>>> origin/79_tabs_for_setting
 
 try {
     Turbolinks.enableProgressBar();
