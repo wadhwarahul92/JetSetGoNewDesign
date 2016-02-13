@@ -28,7 +28,7 @@
           <div ng-repeat="item in ctrl.roles">
             <div>
               <label>
-                <input type="checkbox" ng-checked="ctrl.operator.roles.indexOf(item) >= 0">
+                <input type="checkbox" ng-checked="ctrl.operator.roles.indexOf(item) >= 0" ng-model="role" ng-click="ctrl.change_roles(role)">
               </label>
               {{item}}
             </div>
