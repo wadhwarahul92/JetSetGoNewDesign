@@ -9,6 +9,7 @@
 //= require ./vendors/angular_animate
 //= require ./vendors/angular-file-upload
 //= require ./vendors/bootbox
+//= require ./vendors/underscore
 //= require ./organisations/base
 //= require ./organisations/sign_up_controller
 //= require ./organisations/organisation_admin_controller

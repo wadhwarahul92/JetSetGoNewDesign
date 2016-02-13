@@ -25,13 +25,27 @@
           <label for="roles">Roles</label>
         </div>
         <div class="col-sm-6">
-          <div ng-repeat="item in ctrl.roles">
-            <div>
-              <label>
-                <input type="checkbox" ng-checked="ctrl.operator.roles.indexOf(item) >= 0" ng-model="role" ng-click="ctrl.change_roles(role)">
-              </label>
-              {{item}}
-            </div>
+
+            <!--<div>-->
+              <!--<label>-->
+                <!--<input type="checkbox" ng-checked="ctrl.operator.roles.indexOf(item) >= 0" ng-model="Has_role" ng-click=" ctrl.roles = ctrl.change_roles(Has_role, item)">-->
+              <!--</label>-->
+              <!--{{item}}-->
+            <!--</div>-->
+              <!--<label class="checkbox-inline">-->
+                <!--<input type="checkbox" ng-model="value" ng-change="ctrl.change_roles(value)" ng-checked="ctrl.operator.roles.indexOf(item) >= 0"> {{item}}-->
+              <!--</label>-->
+
+            <!--<div class="btn-group">-->
+              <!--<label class="btn btn-primary" ng-model="checkModel.item" uib-btn-checkbox ng-repeat="item in ctrl.roles">{{item}}</label>-->
+            <!--</div>-->
+          <h4>Checkbox</h4>
+          <pre>Model: {{ctrl.roles}}</pre>
+          <pre>Results: {{checkResults}}</pre>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="ctrl.roles[0]" uib-btn-checkbox>{{ctrl.roles[0]}}</label>
+            <label class="btn btn-primary" ng-model="ctrl.roles[1]" uib-btn-checkbox>{{ctrl.roles[1]}}</label>
+            <!--<label class="btn btn-primary" ng-model="checkModel.right" uib-btn-checkbox>Right</label>-->
           </div>
         </div>
       </div>
