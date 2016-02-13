@@ -1,5 +1,9 @@
 class Organisation < ActiveRecord::Base
 
+  include VersionTracker
+
+  has_paper_trail
+
   has_many :forum_topics
 
   has_many :operators
