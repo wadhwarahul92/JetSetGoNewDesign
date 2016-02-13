@@ -1,5 +1,9 @@
 class ForumTopic < ActiveRecord::Base
 
+  include VersionTracker
+
+  has_paper_trail
+
   belongs_to :organisation
 
   belongs_to :operator

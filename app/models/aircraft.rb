@@ -12,6 +12,8 @@ class Aircraft < ActiveRecord::Base
 
   belongs_to :organisation
 
+  has_many :aircraft_unavailabilities
+
   accepts_nested_attributes_for :aircraft_images
 
   ####VALIDATIONS###
