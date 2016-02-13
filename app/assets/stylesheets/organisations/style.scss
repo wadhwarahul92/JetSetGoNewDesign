@@ -24,3 +24,21 @@
   border-radius: 5px;
   padding-left: 10px;
 }
+
+#tail_number{
+  text-transform: uppercase;
+}
+
+#organisation_name,input#first_name,input#last_name{
+  text-transform: capitalize;
+}
+
+#plus_91{
+  position: absolute;
+  margin-top: 32px;
+  margin-left: -35px;
+}
+
+input#phone{
+  padding-left: 35px;
+}

@@ -30,7 +30,7 @@
           <legend><small>Add a comment</small></legend>
           <form ng-submit="ctrl.addNewComment()">
             <div class="field">
-              <label for="comment"></label>
+              <label style="display: none" for="comment">Comment</label>
               <textarea id="comment" rows="2" class="form-control" ng-model="ctrl.newComment.comment"></textarea>
             </div>
             <div class="field margin-top">
