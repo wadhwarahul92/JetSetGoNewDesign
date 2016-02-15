@@ -15,7 +15,9 @@
             </div>
             <div class="field margin-top">
               <label for="start_at">Start At</label>
-              <input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">
+              <div><a id="start_at" href="Javascript:void(0)">Select Start time</a></div>
+              <datetimepicker datetimepicker-config="{ dropdownSelector: '#start_at' }" ng-model="ctrl.a_u.start_at"></datetimepicker>
+              <!--<input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">-->
             </div>
             <div class="field margin-top">
               <label for="end_at">End At</label>

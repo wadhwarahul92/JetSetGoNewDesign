@@ -11,6 +11,8 @@
 //= require ./vendors/bootbox
 //= require ./vendors/moment
 //= require ./vendors/full-calendar
+//= require ./vendors/angular-datetime-picker
+//= require ./vendors/angular-datetime-picker-template
 //= require ./organisations/base
 //= require ./organisations/sign_up_controller
 //= require ./organisations/organisation_admin_controller
