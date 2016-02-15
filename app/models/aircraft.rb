@@ -8,7 +8,7 @@ class Aircraft < ActiveRecord::Base
 
   has_many :aircraft_images
 
-  belongs_to :operator
+  # belongs_to :operator
 
   accepts_nested_attributes_for :aircraft_images
 
@@ -29,9 +29,9 @@ class Aircraft < ActiveRecord::Base
                         :cruise_speed_in_nm_per_hour,
                         :flying_range_in_nm,
                         :per_hour_cost,
-                        :catering_cost_per_pax,
-                        :operator_id
-  validates :operator, presence: true
+                        :catering_cost_per_pax
+                        # :operator_id
+  # validates :operator, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
   ##################
 
