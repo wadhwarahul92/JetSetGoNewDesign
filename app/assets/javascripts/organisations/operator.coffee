@@ -2,6 +2,12 @@ organisations_app.controller "OperatorController", ['$http', 'notify', ($http, n
 
   @roles = ['admin', 'operator']
 
+  @change_roles = (role) ->
+    if role
+      console.log(@roles)
+    else
+      console.log(@roles)
+
   @update = ->
     $http.put("/organisations/operators/#{@operator.id}.json", @operator).success(
       ->
