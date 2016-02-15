@@ -26,6 +26,7 @@
 //= require ./organisations/operator
 //= require ./organisations/aircrafts_service
 //= require ./organisations/new_unavailability_controller
+//= require ./organisations/aircraft_unavilabilities_controller
 
 try {
     Turbolinks.enableProgressBar();
@@ -35,5 +36,4 @@ try {
 
 $(document).on('ready page:load', function(){
     angular.bootstrap(document.body, ['organisations_app']);
-    $('#unavailabilities_calendar').fullCalendar();
 });
