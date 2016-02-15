@@ -3,6 +3,7 @@
 *= require ./vendors/bootstrap
 *= require_tree ./organisations
 *= require ./vendors/loading-bar
+*= require ./vendors/full-calendar
 *= require_self
 */
 

@@ -53,6 +53,8 @@ Rails.application.routes.draw do
       resources :forum_topic_comments
     end
     resources :operators
+
+    resources :aircraft_unavailabilities
   end
 
   namespace :admin do

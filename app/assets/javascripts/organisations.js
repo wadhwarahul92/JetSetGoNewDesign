@@ -9,6 +9,8 @@
 //= require ./vendors/angular_animate
 //= require ./vendors/angular-file-upload
 //= require ./vendors/bootbox
+//= require ./vendors/moment
+//= require ./vendors/full-calendar
 //= require ./organisations/base
 //= require ./organisations/sign_up_controller
 //= require ./organisations/organisation_admin_controller
@@ -20,6 +22,8 @@
 //= require ./organisations/forum_topic_comments_controller
 //= require ./organisations/settings
 //= require ./organisations/operator
+//= require ./organisations/aircrafts_service
+//= require ./organisations/new_unavailability_controller
 
 try {
     Turbolinks.enableProgressBar();
@@ -28,5 +32,6 @@ try {
 }
 
 $(document).on('ready page:load', function(){
-    angular.bootstrap(document.body, ['organisations_app'])
+    angular.bootstrap(document.body, ['organisations_app']);
+    $('#unavailabilities_calendar').fullCalendar();
 });

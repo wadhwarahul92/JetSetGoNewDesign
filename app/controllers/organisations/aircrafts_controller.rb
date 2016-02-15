@@ -5,7 +5,7 @@ class Organisations::AircraftsController < Organisations::BaseController
 	before_filter :set_aircraft, only: [:edit, :update]	
 
 	def index
-		@aircrafts = current_user.organisation.aircrafts.includes(:aircraft_type, :aircraft_images)
+		@aircrafts = current_organisation.aircrafts.includes(:aircraft_type, :aircraft_images)
   end
 
 	def new
