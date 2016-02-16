@@ -35,10 +35,8 @@ class Aircraft < ActiveRecord::Base
                         :per_hour_cost,
                         :catering_cost_per_pax,
                         :organisation_id,
-                        :icao_code
   validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
-  validates :icao_code, length: { is: 4 }
   ##################
 
 end

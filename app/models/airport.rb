@@ -13,8 +13,9 @@ class Airport < ActiveRecord::Base
   #####VALIDATIONS
   validates :name, presence: true, uniqueness: { scope: :city_id }
   validates :city, :longitude, :latitude, :ifr_or_vfr, :code, presence: true
-  validates :code, length: { is: 3 }
+  validates :code, length: { is: 3 }, presence: true
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
+  validates :icao_code, length: { is: 4 }, presence: true, uniqueness: true
   ################
 
   def distance_to(airport)
