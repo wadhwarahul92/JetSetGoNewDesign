@@ -12,10 +12,17 @@ class Airport < ActiveRecord::Base
 
   #####VALIDATIONS
   validates :name, presence: true, uniqueness: { scope: :city_id }
-  validates :city, :longitude, :latitude, :ifr_or_vfr, :code, presence: true
+  validates :city, :longitude, :latitude, :ifr_or_vfr, presence: true
   validates :code, uniqueness: true
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
   validates :icao_code, uniqueness: true
+
+  validate def icao_and_code_differs
+             if self.icao_code.present? and self.code.present? and self.icao_code == self.code
+               self.errors.add(:icao_code, 'cannot be same as IATA code')
+             end
+  end
+
   ################
 
   def distance_to(airport)

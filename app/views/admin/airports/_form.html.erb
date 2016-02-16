@@ -2,7 +2,7 @@
     <div class='col-xs-6'>
 	    <%= f.error_notification %>
 	    <%= f.input :name %>
-	    <%= f.input :code %>
+	    <%= f.input :code, label: 'IATA code' %>
       <%= f.input :icao_code %>
 	    <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
 	    <%= f.input :longitude %>
