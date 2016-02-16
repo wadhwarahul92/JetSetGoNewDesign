@@ -3,7 +3,11 @@ class Admin::CitiesController < Admin::BaseController
   before_filter :authenticate_admin
 
   def index
-    @cities = City.order('name ASC').paginate(page: params[:page], per_page: 20)
+    if params[:name].present?
+      @cities = City.where('lower(name) LIKE ?', "%#{params[:name].to_s.downcase}%").order('name ASC').paginate(page: params[:page], per_page: 20)
+    else
+      @cities = City.order('name ASC').paginate(page: params[:page], per_page: 20)
+    end
   end
 
   def new
