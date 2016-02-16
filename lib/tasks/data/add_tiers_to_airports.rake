@@ -101,6 +101,9 @@ namespace :db do
     tier_2.each do |name|
       city = City.where(name: name).first
       puts name unless city.present?
+      if city.present?
+        city.update_attribute(:accomodation_category, 'tier2')
+      end
     end
 
   end
