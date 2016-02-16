@@ -2,6 +2,12 @@
   <div class="col-sm-12">
     <ul class="list-inline">
       <li><%= link_to 'New City', new_admin_city_path, class: 'btn btn-primary' %></li>
+      <li>
+        <form action="/admin/cities" method="get">
+          <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name">
+          <input type="submit" value="search">
+        </form>
+      </li>
     </ul>
   </div>
 </div>
