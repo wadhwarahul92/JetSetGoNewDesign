@@ -15,11 +15,23 @@
             </div>
             <div class="field margin-top">
               <label for="start_at">Start At</label>
-              <input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">
+              <div class="dropdown">
+                <a role="button" data-toggle="dropdown" data-target="#" id="start_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedStartTime}}</span>
+                <ul class="dropdown-menu" role="menu">
+                  <datetimepicker datetimepicker-config="{ dropdownSelector: '#start_at' }" ng-model="ctrl.a_u.start_at"></datetimepicker>
+                </ul>
+              </div>
+              <!--<input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">-->
             </div>
             <div class="field margin-top">
               <label for="end_at">End At</label>
-              <input type="datetime" class="form-control" id="end_at" ng-model="ctrl.a_u.end_at">
+              <div class="dropdown">
+                <a role="button" data-toggle="dropdown" data-target="#" id="end_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedEndTime}}</span>
+                <ul class="dropdown-menu" role="menu">
+                  <datetimepicker datetimepicker-config="{ dropdownSelector: '#end_at' }" ng-model="ctrl.a_u.end_at"></datetimepicker>
+                </ul>
+              </div>
+              <!--<input type="datetime" class="form-control" id="end_at" ng-model="ctrl.a_u.end_at">-->
             </div>
             <div class="field margin-top">
               <label for="reason">Reason</label>
