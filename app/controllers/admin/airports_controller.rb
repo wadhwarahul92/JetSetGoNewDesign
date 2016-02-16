@@ -50,7 +50,8 @@ class Admin::AirportsController < Admin::BaseController
                                 :night_parking,
                                 :ifr_or_vfr,
                                 :fuel_availability,
-                                :watch_hour_extension
+                                :watch_hour_extension,
+                                :icao_code
     )
   end
 
