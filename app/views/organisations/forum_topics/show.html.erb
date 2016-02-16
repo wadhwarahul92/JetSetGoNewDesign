@@ -1,0 +1,44 @@
+<div class="row" ng-controller="ForumTopicCommentsController as ctrl">
+  <div class="col-sm-2">
+    <%= render partial: 'organisations/shared/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <h3><%= @forum_topic.statement %></h3>
+    <p><%= @forum_topic.description %></p>
+    <ul class="list-inline">
+      <li><strong><%= @forum_topic.organisation.name %></strong></li>
+      <li><strong>Posted By:</strong> <%= @forum_topic.operator.full_name %></li>
+      <li><strong>Posted On:</strong> <%= @forum_topic.created_at.strftime('%d %b %Y') %></li>
+    </ul>
+    <div class="row">
+      <div class="col-sm-8">
+        <ul class="list-unstyled" style="max-height: 400px;overflow-y: scroll">
+          <li ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
+            <div class="forum-topic-container margin-top">
+              <p><strong>{{forum_topic_comment.comment}}</strong></p>
+              <ul class="list-inline">
+                <li>{{forum_topic_comment.organisation}}</li>
+                <li><strong>By:</strong> {{forum_topic_comment.operator}}</li>
+                <li><strong>On:</strong> {{forum_topic_comment.created_at}}</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <fieldset>
+          <legend><small>Add a comment</small></legend>
+          <form ng-submit="ctrl.addNewComment()">
+            <div class="field">
+              <label style="display: none" for="comment">Comment</label>
+              <textarea id="comment" rows="2" class="form-control" ng-model="ctrl.newComment.comment"></textarea>
+            </div>
+            <div class="field margin-top">
+              <input type="submit" class="btn btn-primary" value="Save">
+            </div>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

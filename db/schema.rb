@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204074954) do
+ActiveRecord::Schema.define(version: 20160213063423) do
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -45,11 +45,20 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.text     "description",  limit: 65535
   end
 
+  create_table "aircraft_unavailabilities", force: :cascade do |t|
+    t.integer  "aircraft_id", limit: 4
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.text     "reason",      limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "aircrafts", force: :cascade do |t|
     t.string   "tail_number",                  limit: 255
     t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "seating_capacity",             limit: 4
     t.integer  "baggage_capacity_in_kg",       limit: 4
     t.integer  "landing_field_length_in_feet", limit: 4
@@ -62,16 +71,15 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.integer  "crew",                         limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                              default: false
-    t.text     "svg",                          limit: 16777215
+    t.boolean  "flight_attendant",                         default: false
     t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                                  default: false
+    t.boolean  "medical_evac",                             default: false
     t.float    "cruise_speed_in_nm_per_hour",  limit: 24
     t.float    "flying_range_in_nm",           limit: 24
     t.float    "per_hour_cost",                limit: 24
     t.float    "catering_cost_per_pax",        limit: 24
-    t.boolean  "admin_verified",                                default: false
-    t.integer  "operator_id",                  limit: 4
+    t.boolean  "admin_verified",                           default: false
+    t.integer  "organisation_id",              limit: 4
   end
 
   create_table "airports", force: :cascade do |t|
@@ -136,6 +144,24 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "forum_topic_comments", force: :cascade do |t|
+    t.text     "comment",         limit: 65535
+    t.integer  "forum_topic_id",  limit: 4
+    t.integer  "operator_id",     limit: 4
+    t.integer  "organisation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "forum_topics", force: :cascade do |t|
+    t.string   "statement",       limit: 255
+    t.text     "description",     limit: 65535
+    t.integer  "operator_id",     limit: 4
+    t.integer  "organisation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "jetsteal_seats", force: :cascade do |t|
     t.integer  "jetsteal_id",            limit: 4
     t.string   "ui_seat_id",             limit: 255
@@ -176,6 +202,13 @@ ActiveRecord::Schema.define(version: 20160204074954) do
     t.integer  "flight_duration_in_minutes", limit: 4
   end
 
+  create_table "organisations", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.boolean  "admin_verified",             default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
   create_table "payment_transactions", force: :cascade do |t|
     t.integer  "contact_id",         limit: 4
     t.string   "status",             limit: 255,   default: "pending"
@@ -191,23 +224,25 @@ ActiveRecord::Schema.define(version: 20160204074954) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "email",                  limit: 255,   default: "",    null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.string   "type",                   limit: 255
     t.string   "phone",                  limit: 255
-    t.boolean  "approved_by_admin",                  default: false
+    t.boolean  "approved_by_admin",                    default: false
+    t.text     "roles",                  limit: 65535
+    t.integer  "organisation_id",        limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

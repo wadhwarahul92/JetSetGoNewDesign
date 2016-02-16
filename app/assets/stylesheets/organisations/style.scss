@@ -1,0 +1,44 @@
+.aircraft_image_holder{
+  display: inline-block;
+  .fa-times{
+    position: absolute;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.margin-top{
+  margin-top: 10px;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.padding-top-15{
+  padding-top: 15px;
+}
+
+.forum-topic-container{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+#tail_number{
+  text-transform: uppercase;
+}
+
+#organisation_name,input#first_name,input#last_name{
+  text-transform: capitalize;
+}
+
+#plus_91{
+  position: absolute;
+  margin-top: 32px;
+  margin-left: -35px;
+}
+
+input#phone{
+  padding-left: 35px;
+}
