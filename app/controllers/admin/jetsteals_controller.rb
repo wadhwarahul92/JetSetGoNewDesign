@@ -2,7 +2,7 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_action :authenticate_admin
 
-  before_action :set_jetsteal, only: [:update, :edit, :launch]
+  before_action :set_jetsteal, only: [:update, :edit, :launch, :unlaunch_]
 
   # before_action :check_if_launched, only: [:edit, :update]
 
@@ -48,6 +48,14 @@ class Admin::JetstealsController < Admin::BaseController
       flash[:error] = jetsteal_launcher.error_message
       redirect_to action: :index
     end
+  end
+
+  #PUT
+  # noinspection RailsChecklist01
+  def unlaunch_
+    @jetsteal.update_attribute(:launched, false)
+    flash[:success] = "Jetsteal #{@jetsteal.id} un-launched"
+    redirect_to action: :index
   end
 
   private

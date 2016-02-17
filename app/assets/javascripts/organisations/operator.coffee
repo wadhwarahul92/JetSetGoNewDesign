@@ -1,12 +1,8 @@
-organisations_app.controller "OperatorController", ['$http', 'notify', ($http, notify) ->
+organisations_app.controller "OperatorController", ['$http', 'notify', '$scope', ($http, notify, $scope) ->
 
   @roles = ['admin', 'operator']
 
-  @change_roles = (role) ->
-    if role
-      console.log(@roles)
-    else
-      console.log(@roles)
+  @operatorRoleMap = {}
 
   @update = ->
     $http.put("/organisations/operators/#{@operator.id}.json", @operator).success(
@@ -20,6 +16,19 @@ organisations_app.controller "OperatorController", ['$http', 'notify', ($http, n
         )
     )
 
+  $scope.$watchCollection(
+    =>
+      @operatorRoleMap
+    ,
+    =>
+      if @operator
+        @operator.roles = []
+        angular.forEach(@operatorRoleMap, (value, key)=>
+          if value
+            @operator.roles.push(key)
+        )
+  )
+
   url_split = location.pathname.match(/\/organisations\/operators\/(\d+)\/edit/)
   id = null
   id = url_split[1] if url_split
@@ -27,6 +36,9 @@ organisations_app.controller "OperatorController", ['$http', 'notify', ($http, n
     $http.get("/organisations/operators/#{id}/edit.json").success(
       (data)=>
         @operator = data
+        if @operator.roles
+          for role in @operator.roles
+            @operatorRoleMap[role] = true
     ).error(
       ->
         notify(

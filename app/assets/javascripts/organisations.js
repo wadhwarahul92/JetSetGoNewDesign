@@ -11,6 +11,9 @@
 //= require ./vendors/bootbox
 //= require ./vendors/moment
 //= require ./vendors/full-calendar
+//= require ./vendors/angular-datetime-picker
+//= require ./vendors/angular-datetime-picker-template
+//= require ./vendors/underscore
 //= require ./organisations/base
 //= require ./organisations/sign_up_controller
 //= require ./organisations/organisation_admin_controller
@@ -24,6 +27,7 @@
 //= require ./organisations/operator
 //= require ./organisations/aircrafts_service
 //= require ./organisations/new_unavailability_controller
+//= require ./organisations/aircraft_unavilabilities_controller
 
 try {
     Turbolinks.enableProgressBar();
@@ -33,5 +37,4 @@ try {
 
 $(document).on('ready page:load', function(){
     angular.bootstrap(document.body, ['organisations_app']);
-    $('#unavailabilities_calendar').fullCalendar();
 });
