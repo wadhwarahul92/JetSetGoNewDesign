@@ -19,7 +19,11 @@ namespace :db do
 
               d = MathHelper.to_nm(MathHelper.distance_between_lat_long( airport_1.latitude, airport_1.longitude, airport_2.latitude, airport_2.longitude))
 
-              #todo complete this
+              Distance.create(
+                          from_airport_id: airport_1.id,
+                          to_airport_id: airport_2.id,
+                          distance: d
+              )
 
             end
 
