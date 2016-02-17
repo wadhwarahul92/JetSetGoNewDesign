@@ -12,9 +12,9 @@ class Organisations::OperatorsController < Organisations::BaseController
   # noinspection RailsChecklist01
   def log_in_
     @operator = Operator.where(email: params[:email]).first
-    if @operator.present? and @operator.valid_password?(params[:password])
+    if @operator.present? and @operator.valid_password?(params[:password]) and @operator.update_attribute(:api_token, SecureRandom.urlsafe_base64)
       sign_in(@operator)
-      render status: :ok, nothing: true
+      render status: :ok, json: { api_token: @operator.api_token }
     else
       render status: :unprocessable_entity, json: { errors: ['Email / password does not match.'] }
     end
