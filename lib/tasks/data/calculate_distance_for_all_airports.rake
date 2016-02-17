@@ -22,7 +22,7 @@ namespace :db do
               Distance.create(
                           from_airport_id: airport_1.id,
                           to_airport_id: airport_2.id,
-                          distance: d
+                          distance_in_nm: d
               )
 
             end
