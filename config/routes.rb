@@ -73,6 +73,8 @@ Rails.application.routes.draw do
 
     resources :organisations
 
+    resources :watch_hours
+
     resources :aircrafts do
       resources :aircraft_images
     end
