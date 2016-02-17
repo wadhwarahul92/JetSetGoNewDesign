@@ -25,6 +25,16 @@ class Organisations::BaseController < ApplicationController
     end
   end
 
+  def current_user
+    super || api_operator
+  end
+
+  def api_operator
+    if params[:api_token].present?
+      @api_user ||= Operator.where(api_token: params[:api_token]).first
+    end
+  end
+
   helper_method def current_organisation
     @current_organisation ||= current_user.organisation
   end
