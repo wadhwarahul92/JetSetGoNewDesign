@@ -7,6 +7,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
+    <%= will_paginate @distances %>
     <table class="table table-striped">
       <thead>
       <tr class="info">
@@ -35,5 +36,6 @@
       <%- end %>
       </tbody>
     </table>
+    <%= will_paginate @distances %>
   </div>
 </div>

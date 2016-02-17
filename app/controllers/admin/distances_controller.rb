@@ -3,7 +3,7 @@ class Admin::DistancesController < Admin::BaseController
   before_filter :set_distance ,only: [:edit, :update]
 
   def index
-    @distances = Distance.all
+    @distances = Distance.paginate(page: params[:page], per_page: 50)
   end
 
   def new
