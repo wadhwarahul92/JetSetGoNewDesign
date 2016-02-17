@@ -106,4 +106,10 @@ $(document).on('ready page:load', function(){
         }
     });
 
+    $('#download-app').on('mouseenter', function(){
+        $(this).addClass('tada');
+    }).on('mouseleave', function(){
+        $(this).removeClass('tada');
+    });
+
 });
