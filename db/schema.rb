@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160216123335) do
     t.string   "ifr_or_vfr",           limit: 255
     t.boolean  "fuel_availability"
     t.boolean  "watch_hour_extension"
+    t.string   "icao_code",            limit: 255
   end
 
   create_table "cities", force: :cascade do |t|

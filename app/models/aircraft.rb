@@ -8,7 +8,7 @@ class Aircraft < ActiveRecord::Base
 
   has_many :aircraft_images
 
-  belongs_to :operator
+  # belongs_to :operator
 
   belongs_to :organisation
 
@@ -34,10 +34,11 @@ class Aircraft < ActiveRecord::Base
                         :flying_range_in_nm,
                         :per_hour_cost,
                         :catering_cost_per_pax,
-                        # :operator_id,
-                        :organisation_id
+                        :organisation_id,
+                        :icao_code
   validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
+  validates :icao_code, length: { is: 4 }
   ##################
 
 end

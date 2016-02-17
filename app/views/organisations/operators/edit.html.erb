@@ -25,13 +25,8 @@
           <label for="roles">Roles</label>
         </div>
         <div class="col-sm-6">
-          <div ng-repeat="item in ctrl.roles">
-            <div>
-              <label>
-                <input type="checkbox" ng-checked="ctrl.operator.roles.indexOf(item) >= 0" ng-model="role" ng-click="ctrl.change_roles(role)">
-              </label>
-              {{item}}
-            </div>
+          <div class="btn-group">
+            <label ng-repeat="role in ctrl.roles" class="btn btn-primary" ng-model="ctrl.operatorRoleMap[role]" uib-btn-checkbox>{{role}}</label>
           </div>
         </div>
       </div>

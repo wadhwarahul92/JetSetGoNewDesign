@@ -74,7 +74,7 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def operator_params
     params.permit(
-              :roles
+              roles: []
     )
   end
 
