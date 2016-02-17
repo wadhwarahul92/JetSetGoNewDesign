@@ -4,4 +4,5 @@ window.organisations_app = angular.module 'organisations_app', [
   'cgNotify'
   'ngAnimate'
   'angularFileUpload'
+  'ui.bootstrap.datetimepicker'
 ]

@@ -43,4 +43,29 @@ module JetstealsHelper
     view.html_safe
   end
 
+  # @param [Integer] number
+  # @return [String]
+  def to_indian_format(number)
+    number = number.to_i.to_s
+    formatted_number = ''
+    number.split.reverse.each_with_index do |char, index|
+      if index < 3
+        formatted_number.prepend(char)
+        next
+      end
+      if index == 3
+        # noinspection RubyResolve
+        formatted_number.prepend ','
+        formatted_number.prepend(char)
+        next
+      end
+      if index % 2 == 0
+        # noinspection RubyResolve
+        formatted_number.prepend ','
+        formatted_number.prepend(char)
+      end
+    end
+    formatted_number.join
+  end
+
 end
