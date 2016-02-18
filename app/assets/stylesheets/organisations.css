@@ -1,10 +1,10 @@
 /*
 *= require ./vendors/notify
 *= require ./vendors/bootstrap
-*= require_tree ./organisations
 *= require ./vendors/loading-bar
 *= require ./vendors/full-calendar
 *= require ./vendors/angular-datetime-picker
+*= require_tree ./organisations
 *= require_self
 */
 

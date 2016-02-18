@@ -5,4 +5,5 @@ window.organisations_app = angular.module 'organisations_app', [
   'ngAnimate'
   'angularFileUpload'
   'ui.bootstrap.datetimepicker'
+  'ui.calendar'
 ]
