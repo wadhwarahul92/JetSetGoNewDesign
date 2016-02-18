@@ -30,10 +30,10 @@ window.gray_color =
   rgb: 'rgb(173, 182, 181)'
   hex: '#adb6b5'
 
-window.dark_orienge_color =
+window.dark_orange_color =
   rgb: 'rgb(204, 102, 0)'
   hex: '#cc6600'
 
-window.dark_orienge_color =
+window.green_color =
   rgb: 'rgb(173, 194, 75)'
   hex: '#adc24b'
