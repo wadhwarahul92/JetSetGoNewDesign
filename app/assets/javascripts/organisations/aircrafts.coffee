@@ -1,17 +1,22 @@
-organisations_app.controller 'AircraftsController', ['$http', 'notify', '$upload', ($http, notify, $upload)->
+organisations_app.controller 'AircraftsController', ['$http', 'notify', '$upload', 'AircraftsService', ($http, notify, $upload, AircraftsService)->
 
   @aircrafts = []
 
-  $http.get('/organisations/aircrafts.json').success(
-    (data)=>
-      @aircrafts = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching aircrafts'
-        classes: ['alert-danger']
-      )
+  AircraftsService.getAircraftsForCurrentOperator().then(
+    =>
+      @aircrafts = AircraftsService.aircraftsForCurrentOperator
   )
+
+#  $http.get('/organisations/aircrafts.json').success(
+#    (data)=>
+#      @aircrafts = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching aircrafts'
+#        classes: ['alert-danger']
+#      )
+#  )
 
   @uploadAircraftImage = (files, aircraft)->
     $upload.upload(
