@@ -6,6 +6,8 @@ class Airport < ActiveRecord::Base
 
   belongs_to :city
 
+  has_many :notams
+
   has_many :departing_jetsteals, class_name: 'Jetsteal', foreign_key: :departure_airport_id
 
   has_many :arriving_jetsteals, class_name: 'Jetsteal', foreign_key: :arrival_airport_id
