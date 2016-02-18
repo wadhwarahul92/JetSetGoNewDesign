@@ -1,4 +1,4 @@
-organisations_app.controller 'AircraftController', ['$http', 'notify', ($http, notify)->
+organisations_app.controller 'AircraftController', ['$http', 'notify', 'AircraftsService', ($http, notify, AircraftsService)->
   
   @aircraft = {
     tail_number: 'VT-'
@@ -20,6 +20,7 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', ($http, n
   @create = ->
     $http.post('/organisations/aircrafts.json', @aircraft).success(
       ->
+        AircraftsService.deleteCache()
         location.replace('/organisations/aircrafts')
     ).error(
       (data)->

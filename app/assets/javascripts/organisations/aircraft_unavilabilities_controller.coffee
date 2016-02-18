@@ -2,19 +2,19 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
 
   @events = []
 
-  $http.get('/organisations/aircraft_unavailabilities.json').success(
-    (data)=>
-      @events = data
-      $('#unavailabilities_calendar').fullCalendar({
-        events: @events
-      })
-  ).error(
-    ->
-      notify(
-        message: 'ERROR fetching aircraft unavilabilities'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('/organisations/aircraft_unavailabilities.json').success(
+#    (data)=>
+#      @events = data
+#      $('#unavailabilities_calendar').fullCalendar({
+#        events: @events
+#      })
+#  ).error(
+#    ->
+#      notify(
+#        message: 'ERROR fetching aircraft unavilabilities'
+#        classes: ['alert-danger']
+#      )
+#  )
 
   return undefined
 ]

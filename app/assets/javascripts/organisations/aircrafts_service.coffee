@@ -2,6 +2,9 @@ organisations_app.factory 'AircraftsService', ['$http', 'notify', '$q', ($http, 
 
   serviceInstance = {}
 
+  serviceInstance.deleteCache = ->
+    sessionStorage.removeItem('aircraftsForCurrentOperator')
+
   serviceInstance.setAircraftsForCurrentOperator = (array)->
     serviceInstance.aircraftsForCurrentOperator = array
     try
