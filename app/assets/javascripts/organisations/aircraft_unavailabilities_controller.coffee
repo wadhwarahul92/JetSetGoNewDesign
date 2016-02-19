@@ -21,6 +21,7 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
       card.removeClass('bounceInRight')
       card.addClass('unavailability_card')
       card.addClass('bounceOutRight')
+    null
 
   @neutralizeCard = ->
     try
