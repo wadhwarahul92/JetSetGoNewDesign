@@ -21,6 +21,28 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
     end
   end
 
+  def show
+    @aircraft_unavailability = AircraftUnavailability.find params[:id]
+  end
+
+  def update
+    @aircraft_unavailability = AircraftUnavailability.find params[:id]
+    if @aircraft_unavailability.update_attributes(aircraft_unavailability_params)
+      render status: :ok
+    else
+      render status: :unprocessable_entity, json: { errors: @aircraft_unavailability.errors.full_messages }
+    end
+  end
+
+  def destroy
+    @aircraft_unavailability = AircraftUnavailability.find params[:id]
+    if @aircraft_unavailability.destroy
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @aircraft_unavailability.errors.full_messages }
+    end
+  end
+
   private
 
   def aircraft_unavailability_params

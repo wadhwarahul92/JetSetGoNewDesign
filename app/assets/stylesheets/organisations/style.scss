@@ -42,3 +42,18 @@
 input#phone{
   padding-left: 35px;
 }
+
+.aircraft_unavailability_event{
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  cursor: pointer;
+  background-color: rgb(241, 92, 92);
+  &:hover{
+    background-color: rgb(204, 102, 0);
+  }
+}
+
+.fc-time{
+  display: none;
+}
