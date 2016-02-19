@@ -2,7 +2,7 @@
 
 # Author: Mayur Singh
 # Date: 19/2/16
-# This is a shell script for Rahul Wadhwa (non-developer) to commmit functionality on production server
+# This is a shell script for Rahul Wadhwa (non-developer) to commit functionality on production server
 
 
 if [ $1 ]
