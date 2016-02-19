@@ -12,7 +12,12 @@ then
   git add --all
   now=$(date +"%T")
   git commit -m "committed at $now"
-  git push origin $1
+  if ! [ $1 == master ]
+  then
+    git push origin $1
+  else
+    echo "Please use another branch"
+  fi
 else
   echo "No branch name specified."
   echo "Usage: commit_task <BRANCH NAME>"
