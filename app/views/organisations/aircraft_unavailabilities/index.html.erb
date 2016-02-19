@@ -10,7 +10,11 @@
       <div class="col-sm-8">
         <div ui-calendar="ctrl.calendarConfig.calendar" ng-model="ctrl.eventsSources"></div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 animated" id="unavailability_card">
+        <i ng-click="ctrl.hideCard()" style="position: absolute;
+            font-size: 25px;
+            margin-left: -18px;
+            margin-top: -19px;cursor: pointer" class="fa fa-times-circle-o"></i>
         <fieldset ng-show="ctrl.selectedEvent">
           <legend>{{ctrl.selectedEvent.title}}</legend>
           <!---->

@@ -7,6 +7,27 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
       @aircrafts = AircraftsService.aircraftsForCurrentOperator
   )
 
+  @showCard = ->
+    try
+      card = $('#unavailability_card')
+      card.removeClass('bounceOutRight')
+      card.addClass('unavailability_card')
+      card.addClass('bounceInRight')
+    null
+
+  @hideCard = ->
+    try
+      card = $('#unavailability_card')
+      card.removeClass('bounceInRight')
+      card.addClass('unavailability_card')
+      card.addClass('bounceOutRight')
+
+  @neutralizeCard = ->
+    try
+      card = $('#unavailability_card')
+      card.removeClass('bounceInRight')
+    null
+
   @eventsSources = []
 
   @selectedEvent = null
@@ -69,6 +90,7 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
     scope.selectedEvent = event
     $http.get("/organisations/aircraft_unavailabilities/#{scope.selectedEvent.id}.json").success(
       (data)->
+        scope.showCard()
         scope.a_u = data
     ).error(
       ->
@@ -99,6 +121,8 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
       eventClick: $scope.eventClicked
     }
   }
+
+  @hideCard()
 
   return undefined
 ]
