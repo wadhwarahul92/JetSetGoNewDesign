@@ -1,0 +1,20 @@
+#! /bin/sh -e
+
+# Author: Mayur Singh
+# Date: 19/2/16
+# This is a shell script for Rahul Wadhwa (non-developer) to commmit functionality on production server
+
+
+if [ $1 ]
+then
+  cd ~/JetSetGo
+  git status
+  git add --all
+  now=$(date +"%T")
+  git commit -m "committed at $now"
+  git push origin $1
+else
+  echo "No branch name specified."
+  echo "Usage: commit_task <BRANCH NAME>"
+fi
+exit 0
