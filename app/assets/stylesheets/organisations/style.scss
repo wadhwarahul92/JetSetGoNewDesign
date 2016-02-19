@@ -1,3 +1,7 @@
+body{
+  font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;;
+}
+
 .aircraft_image_holder{
   display: inline-block;
   .fa-times{
@@ -56,4 +60,10 @@ input#phone{
 
 .fc-time{
   display: none;
+}
+
+.unavailability_card{
+  padding: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 10px lightgrey;
 }

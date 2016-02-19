@@ -4,6 +4,7 @@
 *= require ./vendors/loading-bar
 *= require ./vendors/full-calendar
 *= require ./vendors/angular-datetime-picker
+*= require ./vendors/animate
 *= require_tree ./organisations
 *= require_self
 */

@@ -20,7 +20,7 @@ operator_app.controller 'AircraftController', ['$http', 'notify', ($http, notify
   @create = ->
     $http.post('/operators/aircrafts.json', @aircraft).success(
       ->
-        location.replace('/operators/aircrafts')
+        Turbolinks.visit('/operators/aircrafts')
     ).error(
       (data)->
         notify(
@@ -32,7 +32,7 @@ operator_app.controller 'AircraftController', ['$http', 'notify', ($http, notify
   @update = ->
     $http.put("/operators/aircrafts/#{@aircraft.id}.json", @aircraft).success(
       ->
-        location.replace('/operators/aircrafts')
+        Turbolinks.visit('/operators/aircrafts')
     ).error(
       (data)->
         notify(
