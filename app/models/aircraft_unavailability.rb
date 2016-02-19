@@ -14,4 +14,14 @@ class AircraftUnavailability < ActiveRecord::Base
              end
   end
 
+  validate :duplicate_times, on: :create
+
+  def duplicate_times
+    if self.aircraft_id.present? and self.start_at.present? and self.end_at.present?
+      if self.class.where(aircraft_id: self.aircraft_id).where('? BETWEEN start_at AND end_at', self.start_at).any? or self.class.where(aircraft_id: self.aircraft_id).where('? BETWEEN start_at AND end_at', self.end_at).any?
+        self.errors.add(:base, "There's already an unavailability for this aircraft in given time")
+      end
+    end
+  end
+
 end
