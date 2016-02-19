@@ -19,19 +19,33 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
 
   scope = this
 
+  @delete = ->
+    return unless @a_u
+    bootbox.confirm('Are you sure?', (result)=>
+      if result
+        $http.delete("/organisations/aircraft_unavailabilities/#{@a_u.id}").success(
+          =>
+            location.reload()
+        ).error(
+          (data)->
+            error = 'Something went wrong'
+            try
+              error = data.errors[0]
+            notify(
+              message: error
+              classes: ['alert-danger']
+            )
+        )
+    )
+    null
+
   @update = ->
     $http.put("/organisations/aircraft_unavailabilities/#{@a_u.id}", @a_u).success(
       (data)->
-        events = scope.eventsSources[0]
-        if events
-          event = _.find(events, {id: data.id})
-          if event
-            event.start = data.start_at
-            event.end = data.end_at
-            scope.selectedEvent = null
+        location.reload()
     ).error(
       (data)->
-        error = 'Something went worng'
+        error = 'Something went wrong'
         try
           error = data.errors[0]
         notify(
