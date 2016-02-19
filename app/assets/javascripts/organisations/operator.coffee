@@ -7,7 +7,7 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
   @update = ->
     $http.put("/organisations/operators/#{@operator.id}.json", @operator).success(
       ->
-        location.replace('/organisations/settings')
+        Turbolinks.visit('/organisations/settings')
     ).error(
       (data)->
         notify(
