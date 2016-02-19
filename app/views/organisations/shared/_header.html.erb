@@ -1,19 +1,46 @@
-<nav class="navbar navbar-default" ng-controller="HeaderController as ctrl">
+<div class="row" id="header">
+<nav class="navbar navbar-default custom-navbar" ng-controller="HeaderController as ctrl">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header navbar-responsive">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/organisations">JetYouOwn™</a>
     </div>
-    <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-      <% if current_user.present? %>
+    <div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">
+       <a class="logo-img" href="/organisations"><img class="" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>    
+    </div>
+    <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-hidden">
+    <div class="col-lg-5 col-md-5 col-sm-5">
+      <ul class="inline-list logo_list">
           <li>
-            <span class="inline-block padding-top-15" style="padding-right: 15px" uib-dropdown on-toggle="ctrl.organisationLinkToggled(open)">
+            <a class="main_link" id="jet_link" href="http://jetsetgo.in?current_page=jet"></a>
+          </li>
+          <li>
+            <a class="main_link" id="jetsteal_link" href="http://j.jetsetgo.in"></a>
+          </li>
+          <li>
+            <a class="main_link" id="experiences_link" href="http://jetsetgo.in?current_page=experience"></a>
+          </li>
+          <li>
+            <a class="main_link" id="multi_trip_link" href="http://jetsetgo.in?current_page=multi_trip"></a>
+          </li>
+          <li>
+            <a class="main_link" id="rescue_link" href="http://jetsetgo.in?current_page=ambulance"></a>
+          </li>
+          <li>
+            <a class="main_link" id="jetsetcars_link" href="http://jetsetgo.in?current_page=jetsetcars"></a>
+          </li>
+          <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 right-header pull-right">
+      <ul class="inline-list right_list">
+          <% if current_user.present? %>
+          <li>
+            <span style="padding-top:0;" uib-dropdown on-toggle="ctrl.organisationLinkToggled(open)">
               <a id="simple-dropdown" uib-dropdown-toggle href="Javascript:void(0)">
                 <%= current_organisation.name %> <i ng-class="{'fa-caret-left': !ctrl.organisationLinkState, 'fa-caret-down': ctrl.organisationLinkState}" class="fa"></i>
               </a>
@@ -23,9 +50,24 @@
             </span>
           </li>
           <li><%= link_to current_user.full_name, 'Javascript:void(0)' %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path(redirect_to: '/organisations'), method: :delete %></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path(redirect_to: '/organisations'), method: :delete %>
+          </li>
+          <%- else %>
+          <li>
+            <a href="tel:+911139585858"><i class="fa fa-phone"></i> +91-11-39585858</a>
+          </li>
+          <li>
+            <a href="mailto:info@jetsetgo.in"><i class="fa fa-envelope"></i> info@jetsetgo.in</a>
+          </li>
       <%- end %>
-      </ul>
+          
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    
+     
     </div>
   </div>
 </nav>
+</div>

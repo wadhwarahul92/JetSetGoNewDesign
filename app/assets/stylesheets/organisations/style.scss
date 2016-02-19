@@ -1,3 +1,5 @@
+$main-green-color: rgb(47, 191, 149);
+
 body{
   font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;;
 }
@@ -62,8 +64,154 @@ input#phone{
   display: none;
 }
 
-.unavailability_card{
+#header{    
+  background-color: #2fbf95;
   padding: 10px;
-  border: 1px solid lightgray;
-  box-shadow: 0 0 10px lightgrey;
+}
+.custom-navbar{
+  margin:0; 
+  background-color:transparent;
+  border:none;
+  .logo-img{
+    img{
+      height:50px;
+    }
+  }
+}
+
+#header{
+  background-color: $main-green-color;
+  padding: 10px;
+  .logo{
+    height: 50px;
+  }
+  a{
+    color: white!important;
+  }
+  ul{
+    margin: 7px 0 0;
+    padding:0
+  }
+  .logo_list{
+    li{
+      margin-right: 25px!important;
+      float:left;
+      list-style:none;
+    }
+    .main_link{
+      width: 40px;
+      height: 35px;
+      display: inline-block;
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106758);
+    }
+    #jetsteal_link{
+      background-position: -74px -35px;
+    }
+    #experiences_link{
+      background-position: -140px 0;
+    }
+    #multi_trip_link{
+      background-position: -206px 0;
+    }
+    #rescue_link{
+      background-position: -272px 0;
+    }
+    #jetsetcars_link{
+      background-position: 0 83px;
+    }
+  }
+  .right_list{
+    margin-top: 13px;
+    float: right;
+    list-style-type: none;
+  
+    li{
+      display: inline-block;
+      margin-right: 10px;
+
+      a{
+        text-decoration:none;
+      }
+      a:hover{
+        text-decoration:none;
+      }
+    }
+  }
+}
+
+.logo-main-con{
+  max-width: 145px;
+}
+.navbar-hidden{padding:0;}
+
+#header{
+  ul.dropdown-menu{
+  border-radius:0;
+  border:0;
+  border-bottom:1px solid #eee;
+    li{
+      width:100%;
+      a{
+        color:#000000 !important;
+        padding:5px;
+      }
+    }
+  }
+}
+
+@media(max-width:1060px){
+  #header{
+    ul.logo_list{
+      li{
+        margin-right: 10px !important;
+      }
+    }
+    ul.right_list{
+      float: none;
+      li{
+        margin-right:5px;
+      }
+    }
+  }
+}
+
+@media(max-width:1023px){
+  #header{
+    ul.logo_list{
+      li{
+        margin-right: 5px !important;
+      }
+    }
+    ul.right_list{
+      float: none;
+      font-size:10px;
+      li{
+        margin-right:3px;
+      }
+    }
+  }
+}
+
+@media(max-width:767px){
+.navbar-responsive{float:right}
+.navbar-hidden{margin-top:15px;}
+  #header{
+    ul.logo_list{
+      max-width: 310px;
+      margin: 7px auto 0 auto;
+      li{
+        margin-right: 10px !important;
+      }
+    }
+    ul.right_list{
+      float: none;
+      list-style-type: none;
+      font-size: 10px;
+      max-width: 310px;
+      margin: 5px auto 0 auto;
+      li{
+        margin-right:9px;
+      }
+    }
+  }
 }
