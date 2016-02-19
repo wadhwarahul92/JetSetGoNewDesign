@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :forum_topics do
       resources :forum_topic_comments
     end
+
     resources :operators
 
     resources :aircraft_unavailabilities
@@ -74,6 +75,8 @@ Rails.application.routes.draw do
     resources :organisations
 
     resources :watch_hours
+
+    resources :notams
 
     resources :aircrafts do
       resources :aircraft_images
