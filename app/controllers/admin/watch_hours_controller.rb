@@ -34,6 +34,10 @@ class Admin::WatchHoursController < Admin::BaseController
     end
 	end
 
+	def import
+
+	end
+
 	private
 
 	def watch_hour_params

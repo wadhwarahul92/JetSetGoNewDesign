@@ -74,7 +74,9 @@ Rails.application.routes.draw do
 
     resources :organisations
 
-    resources :watch_hours
+    resources :watch_hours do
+      collection { post :import }
+    end
 
     resources :notams
 

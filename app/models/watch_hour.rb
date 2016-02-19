@@ -12,4 +12,8 @@ class WatchHour < ActiveRecord::Base
     end
   end
 
+  def self.import(file)
+
+  end
+
 end
