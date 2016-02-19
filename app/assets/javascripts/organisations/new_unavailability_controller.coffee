@@ -1,4 +1,4 @@
-organisations_app.controller 'NewUnavailabilityController', ['$http', 'notify', 'AircraftsService', '$scope', ($http, notify, AircraftsService, $scope)->
+organisations_app.controller 'NewUnavailabilityController', ['$http', 'notify', 'AircraftsService', '$scope', 'AircraftUnavailabilitiesService', ($http, notify, AircraftsService, $scope, AircraftUnavailabilitiesService)->
 
   @aircrafts = []
 
@@ -28,6 +28,7 @@ organisations_app.controller 'NewUnavailabilityController', ['$http', 'notify', 
         notify(
           message: 'Aircraft unavailability added.'
         )
+        AircraftUnavailabilitiesService.deleteCache()
         Turbolinks.visit('/organisations/aircraft_unavailabilities')
     ).error(
       (data)->

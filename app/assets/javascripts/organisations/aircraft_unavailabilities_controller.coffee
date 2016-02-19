@@ -1,4 +1,4 @@
-organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'notify', '$scope', 'AircraftsService', ($http, notify, $scope, AircraftsService)->
+organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'notify', '$scope', 'AircraftsService', 'AircraftUnavailabilitiesService', ($http, notify, $scope, AircraftsService, AircraftUnavailabilitiesService)->
 
   @aircrafts = []
 
@@ -25,6 +25,7 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
       if result
         $http.delete("/organisations/aircraft_unavailabilities/#{@a_u.id}").success(
           =>
+            AircraftUnavailabilitiesService.deleteCache()
             location.reload()
         ).error(
           (data)->
@@ -42,6 +43,7 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
   @update = ->
     $http.put("/organisations/aircraft_unavailabilities/#{@a_u.id}", @a_u).success(
       (data)->
+        AircraftUnavailabilitiesService.deleteCache()
         location.reload()
     ).error(
       (data)->
@@ -76,16 +78,21 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
         )
     )
 
-  $http.get('/organisations/aircraft_unavailabilities.json').success(
-    (data)=>
-      @eventsSources.push data
-  ).error(
-    ->
-      notify(
-        message: 'ERROR fetching aircraft unavilabilities'
-        classes: ['alert-danger']
-      )
+  AircraftUnavailabilitiesService.getUnavailabilitiesForCurrentOperator().then(
+    =>
+      @eventsSources.push AircraftUnavailabilitiesService.unavailabilities
   )
+
+#  $http.get('/organisations/aircraft_unavailabilities.json').success(
+#    (data)=>
+#      @eventsSources.push data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'ERROR fetching aircraft unavilabilities'
+#        classes: ['alert-danger']
+#      )
+#  )
 
   @calendarConfig = {
     calendar: {

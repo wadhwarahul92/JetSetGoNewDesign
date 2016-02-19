@@ -27,8 +27,9 @@
 //= require ./organisations/settings
 //= require ./organisations/operator
 //= require ./organisations/aircrafts_service
+//= require ./organisations/aircraft_unavailabilities_service
 //= require ./organisations/new_unavailability_controller
-//= require ./organisations/aircraft_unavilabilities_controller
+//= require ./organisations/aircraft_unavailabilities_controller
 
 try {
     Turbolinks.enableProgressBar();
