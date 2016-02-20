@@ -7,13 +7,13 @@
 
 if [ $1 ]
 then
-  cd ~/JetSetGo
-  git status
-  git add --all
-  now=$(date +"%T")
-  git commit -m "committed at $now"
   if ! [ $1 == master ]
   then
+    cd ~/JetSetGo
+    git status
+    git add --all
+    now=$(date +"%T")
+    git commit -m "committed at $now"
     git push origin $1
   else
     echo "Please use another branch"
