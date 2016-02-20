@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216125037) do
+ActiveRecord::Schema.define(version: 20160220081320) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "aircraft_id",          limit: 4
+    t.integer  "departure_airport_id", limit: 4
+    t.integer  "arrival_airport_id",   limit: 4
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "empty_leg",                      default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
 
   create_table "admin_roles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -57,8 +68,8 @@ ActiveRecord::Schema.define(version: 20160216125037) do
   create_table "aircrafts", force: :cascade do |t|
     t.string   "tail_number",                  limit: 255
     t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
     t.integer  "seating_capacity",             limit: 4
     t.integer  "baggage_capacity_in_kg",       limit: 4
     t.integer  "landing_field_length_in_feet", limit: 4
@@ -71,14 +82,15 @@ ActiveRecord::Schema.define(version: 20160216125037) do
     t.integer  "crew",                         limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                         default: false
+    t.boolean  "flight_attendant",                              default: false
+    t.text     "svg",                          limit: 16777215
     t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                             default: false
+    t.boolean  "medical_evac",                                  default: false
     t.float    "cruise_speed_in_nm_per_hour",  limit: 24
     t.float    "flying_range_in_nm",           limit: 24
     t.float    "per_hour_cost",                limit: 24
     t.float    "catering_cost_per_pax",        limit: 24
-    t.boolean  "admin_verified",                           default: false
+    t.boolean  "admin_verified",                                default: false
     t.integer  "organisation_id",              limit: 4
   end
 

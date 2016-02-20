@@ -14,6 +14,10 @@ class Airport < ActiveRecord::Base
 
   has_many :arriving_jetsteals, class_name: 'Jetsteal', foreign_key: :arrival_airport_id
 
+  has_many :departing_activities, class_name: 'Activity', foreign_key: :departure_airport_id
+
+  has_many :arriving_activities, class_name: 'Activity', foreign_key: :arrival_airport_id
+
   #####VALIDATIONS
   validates :name, presence: true, uniqueness: { scope: :city_id }
   validates :city, :longitude, :latitude, :ifr_or_vfr, presence: true
