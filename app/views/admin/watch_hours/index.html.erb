@@ -1,17 +1,4 @@
 <div class="row">
-  <div class="col-sm-6">
-    <%= form_tag import_admin_watch_hours_path, multipart: true do %>
-        <div class="col-sm-4">
-          <%= file_field_tag :file %>
-        </div>
-        <div class="col-sm-4">
-          <%= submit_tag "Import" %>
-        </div>
-        <div class="col-sm-4"></div>
-    <% end %>
-  </div>
-  <div class="col-sm-6"></div>
-
   <div class="col-sm-12">
     <ul class="list-inline">
       <li><%= link_to 'New Watch Hour', new_admin_watch_hour_path, class: 'btn btn-primary' %></li>
