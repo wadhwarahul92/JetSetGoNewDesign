@@ -11,8 +11,7 @@ class Distance < ActiveRecord::Base
   validates_numericality_of :distance_in_nm,
   
                           only_integer: true,
-                          greater_than_or_equal_to: 0,
-                          message: 'Should not be negative'
+                          greater_than_or_equal_to: 0
 
   validate def check_from_and_to_differs
     self.errors.add(:to_airport_id, 'must be different') if self.from_airport_id == self.to_airport_id

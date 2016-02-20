@@ -14,8 +14,7 @@ class AircraftType < ActiveRecord::Base
   validates_numericality_of :speed_in_kts,
   
   							only_integer: true,
-  							greater_than_or_equal_to: 0,
-  							message: 'Should not be negative'
+  							greater_than_or_equal_to: 0
   ###################
 
 end
