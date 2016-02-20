@@ -53,7 +53,12 @@ Rails.application.routes.draw do
       resources :forum_topic_comments
     end
 
-    resources :operators
+    resources :operators do
+      collection do
+        get 'forgot_password'
+        post 'forgot_password_'
+      end
+    end
 
     resources :aircraft_unavailabilities
   end

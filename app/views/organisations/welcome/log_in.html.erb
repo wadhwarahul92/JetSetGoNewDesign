@@ -15,6 +15,9 @@
           <label for="password">Password</label>
           <input type="password" id="password" class="form-control" ng-model="ctrl.user.password">
         </div>
+        <p class="field margin-top">
+          <%= link_to 'Forgot password?', forgot_password_organisations_operators_path %>
+        </p>
         <div class="field">
           <input type="submit" class="btn btn-primary margin-top" value="Proceed">
         </div>

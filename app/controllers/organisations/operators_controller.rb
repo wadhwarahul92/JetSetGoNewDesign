@@ -1,10 +1,21 @@
 class Organisations::OperatorsController < Organisations::BaseController
 
-  before_action :set_organisation, except: [:log_in_, :index, :edit, :update]
+  before_action :set_organisation, except: [:log_in_,
+                                            :index,
+                                            :edit,
+                                            :update,
+                                            :forgot_password,
+                                            :forgot_password_
+  ]
 
   before_action :set_operator, only: [:edit, :update]
 
-  before_action :authenticate_no_user, only: [:admin, :create_admin, :log_in_]
+  before_action :authenticate_no_user, only: [:admin,
+                                              :create_admin,
+                                              :log_in_,
+                                              :forgot_password,
+                                              :forgot_password_
+  ]
 
   before_action :authenticate_operator, only: [:index, :edit, :update]
 
@@ -28,6 +39,29 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def edit
 
+  end
+
+  def forgot_password
+
+  end
+
+  # noinspection RailsChecklist01
+  def forgot_password_
+    @operator = Operator.where(email: params[:email]).first
+    if @operator.present?
+      raw, token = Devise.token_generator.generate(Operator, :reset_password_token)
+      if @operator.update_attributes(
+          reset_password_token: token,
+          reset_password_sent_at: Time.now.utc
+      )
+        OperatorMailer.forgot_password(@operator, raw).deliver_now
+        render status: :ok, nothing: true
+      else
+        render status: :unprocessable_entity, json: {errors: @operator.errors.full_messages}
+      end
+    else
+      render status: :unprocessable_entity, json: {errors: ['Email not registered.']}
+    end
   end
 
   def update
