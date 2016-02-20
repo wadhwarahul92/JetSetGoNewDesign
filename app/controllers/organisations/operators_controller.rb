@@ -8,6 +8,8 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   before_action :authenticate_operator, only: [:index, :edit, :update]
 
+  protect_from_forgery except: [:log_in_]
+
   #POST
   # noinspection RailsChecklist01
   def log_in_
