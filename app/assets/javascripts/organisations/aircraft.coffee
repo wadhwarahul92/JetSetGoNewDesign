@@ -21,7 +21,7 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
     $http.post('/organisations/aircrafts.json', @aircraft).success(
       ->
         AircraftsService.deleteCache()
-#        location.replace('/organisations/aircrafts')
+        Turbolinks.visit('/organisations/aircrafts')
     ).error(
       (data)->
         notify(
@@ -33,8 +33,8 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
   @update = ->
     $http.put("/organisations/aircrafts/#{@aircraft.id}.json", @aircraft).success(
       ->
-      AircraftsService.deleteCache()
-      Turbolinks.visit('/organisations/aircrafts')
+       AircraftsService.deleteCache()
+       Turbolinks.visit('/organisations/aircrafts')
     ).error(
       (data)->
         notify(
