@@ -8,7 +8,8 @@ organisations_app.factory 'AircraftUnavailabilitiesService', ['$http', 'notify',
   serviceInstance.setUnavailabilitiesForCurrentOperator = (array)->
     serviceInstance.unavailabilities = array
     try
-      sessionStorage.setItem('aircraft_unavailabilities', JSON.stringify(array))
+      # todo make alternate and consistent storage tech
+      # sessionStorage.setItem('aircraft_unavailabilities', JSON.stringify(array))
 
   serviceInstance.init = ->
     data = null
