@@ -37,6 +37,24 @@ class Aircraft < ActiveRecord::Base
                         :organisation_id
   validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
+
+  validates_numericality_of :seating_capacity,
+                            :baggage_capacity_in_kg,
+                            :runway_field_length_in_feet,
+                            :cabin_height_in_meters,
+                            :cabin_width_in_meters,
+                            :cruise_speed_in_nm_per_hour,
+                            :flying_range_in_nm,
+                            :per_hour_cost,
+                            :catering_cost_per_pax,
+                            :landing_field_length_in_feet,
+                            :number_of_toilets,
+                            :cabin_length_in_meters,
+                            :crew,
+                            
+                            only_integer: true,
+                            greater_than_or_equal_to: 0,
+                            message: 'Should not be negative'
   ##################
 
 end

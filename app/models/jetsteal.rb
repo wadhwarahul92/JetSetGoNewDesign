@@ -28,6 +28,11 @@ class Jetsteal < ActiveRecord::Base
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :flight_duration_in_minutes, presence: true
+  validates_numericality_of :cost,
+
+                            only_integer: true,
+                            greater_than_or_equal_to: 0,
+                            message: 'Should not be negative'
 
   validate def end_date_after_start_date
     if self.start_at >= self.end_at
