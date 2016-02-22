@@ -1,0 +1,72 @@
+<div class="row" ng-controller="NewTripController as ctrl">
+  <div class="col-sm-2">
+    <%= render partial: 'organisations/shared/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset>
+          <legend><small>New Trip</small></legend>
+          <div class="field">
+            <label for="aircraft">Select Aircraft</label>
+            <select id="aircraft" ng-model="ctrl.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><small>Activities</small></legend>
+          <div class="activity-box" ng-repeat="activity in ctrl.activities">
+            <i ng-click="ctrl.deleteActivity(activity)" class="fa fa-times-circle-o"></i>
+            <div class="row">
+              <div class="col-sm-6">
+                <label class="full-width">
+                  Departure Airport
+                  <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.departure_airport_id" ></select>
+                </label>
+              </div>
+              <div class="col-sm-6">
+                <label class="full-width">
+                  Arrival Airport
+                  <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.arrival_airport_id" ></select>
+                </label>
+              </div>
+              <div class="col-sm-6">
+                <label class="full-width">
+                  Start At
+                  <div class="dropdown">
+                    <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
+                    </ul>
+                  </div>
+                </label>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label class="full-width">
+                      Pax
+                      <select class="form-control" ng-model="activity.pax" ng-options="pax for pax in ctrl.paxRange"></select>
+                    </label>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="full-width">
+                      Empty leg?
+                      <input type="checkbox" class="form-control" ng-model="aircraft.empty_leg">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field margin-top">
+            <a href="" ng-click="ctrl.addActivity()" class="pull-right btn btn-success">Add Activity</a>
+          </div>
+        </fieldset>
+        <div>
+          <a href="" class="btn btn-primary full-width margin-top">Save</a>
+        </div>
+      </div>
+      <div class="col-sm-6"></div>
+    </div>
+  </div>
+</div>

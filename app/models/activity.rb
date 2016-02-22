@@ -10,6 +10,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :arrival_airport, class_name: 'Airport', foreign_key: :arrival_airport_id
 
+  belongs_to :trip
+
   validates_presence_of :aircraft, :departure_airport, :arrival_airport, :start_at, :end_at
 
   validate def end_at_after_start_at
@@ -24,6 +26,12 @@ class Activity < ActiveRecord::Base
                  aircraft_unavailabilities.where('? BETWEEN start_at AND end_at', self.end_at)
                self.errors.add(:base, 'There is an unavailability for this aircraft in given time')
              end
+  end
+
+  validates def arrival_and_departure_airport
+              if self.departure_airport_id == self.arrival_airport_id
+                self.errors.add(:arrival_airport, 'must be different')
+              end
   end
 
 end

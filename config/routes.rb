@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     end
 
     resources :aircraft_unavailabilities
+
+    resources :trips
   end
 
   namespace :admin do
