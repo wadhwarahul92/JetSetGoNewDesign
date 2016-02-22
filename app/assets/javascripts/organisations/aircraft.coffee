@@ -43,7 +43,7 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
         try
           error = data.errors[0]
         notify(
-          message:
+          message: error
           classes: ['alert-danger']
         )
     )
