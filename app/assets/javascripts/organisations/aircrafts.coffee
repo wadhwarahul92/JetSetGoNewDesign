@@ -29,8 +29,11 @@ organisations_app.controller 'AircraftsController', ['$http', 'notify', '$upload
         aircraft.aircraft_images.push(data)
     ).error(
       (data)->
+        error = 'Something went wrong'
+        try
+          error = data.errors[0]
         notify(
-          message: data.errors[0]
+          message: error
           classes: ['alert-danger']
         )
     )

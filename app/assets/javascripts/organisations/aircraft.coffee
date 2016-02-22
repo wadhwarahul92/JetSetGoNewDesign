@@ -24,8 +24,11 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
         Turbolinks.visit('/organisations/aircrafts')
     ).error(
       (data)->
+        error = 'Something went wrong'
+        try
+          error = data.errors[0]
         notify(
-          message: data.errors[0]
+          message: error
           classes: ['alert-danger']
         )
     )
@@ -36,8 +39,11 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
         Turbolinks.visit('/organisations/aircrafts')
     ).error(
       (data)->
+        error = 'Something went wrong'
+        try
+          error = data.errors[0]
         notify(
-          message: data.errors[0]
+          message: error
           classes: ['alert-danger']
         )
     )
