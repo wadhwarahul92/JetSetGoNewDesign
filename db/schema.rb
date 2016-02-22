@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220081320) do
+ActiveRecord::Schema.define(version: 20160222083028) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",          limit: 4
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20160220081320) do
     t.boolean  "empty_leg",                      default: false
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.integer  "trip_id",              limit: 4
+    t.integer  "pax",                  limit: 4
   end
 
   create_table "admin_roles", force: :cascade do |t|
@@ -242,6 +244,13 @@ ActiveRecord::Schema.define(version: 20160220081320) do
     t.string   "billing_state",      limit: 255
     t.string   "billing_zip",        limit: 255
     t.string   "billing_country",    limit: 255
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer  "organisation_id", limit: 4
+    t.string   "status",          limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "users", force: :cascade do |t|

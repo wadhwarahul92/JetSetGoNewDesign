@@ -12,6 +12,8 @@ class Organisation < ActiveRecord::Base
 
   has_many :forum_topic_comments
 
+  has_many :trips
+
   validates :name, presence: true, uniqueness: true, length: {minimum: 5}
 
   def has_admin?
