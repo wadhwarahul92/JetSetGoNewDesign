@@ -1,7 +1,8 @@
 <table class="table table-striped">
   <thead>
   <tr class="info">
-    <th>Name</th>
+    <th>Organisation</th>
+    <th>Operator</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -9,6 +10,17 @@
   <% @organisations.each do |organisation|%>
       <tr>
         <td><%= organisation.name %></td>
+        <td>
+          <table>
+
+              <% organisation.operators.each do |operator| %>
+                <tr> <td><%= operator.email %></td></tr>
+
+              <%- end %>
+
+          </table>
+
+        </td>
         <td>
           <%= link_to organisation.admin_verified? ? 'active' : 'inactive', admin_organisation_path(organisation, admin_verified: organisation.admin_verified? ? false : true), method: :put, class: "btn btn-#{organisation.admin_verified? ? 'success ' : 'danger '} btn-xs" %>
         </td>
