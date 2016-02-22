@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-2">
+    <%= render partial: '/organisations/shared/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <ul class="list-inline">
+      <li><%= link_to 'New Operator', new_organisations_operator_path, class: 'btn btn-primary' %></li>
+    </ul>
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @operators.each do |operator|%>
+          <tr>
+            <td><%= operator.first_name %></td>
+            <td><%= operator.last_name %></td>
+            <td><%= operator.email %></td>
+            <td><%= operator.phone %></td>
+          </tr>
+      <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
