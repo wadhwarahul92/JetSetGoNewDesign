@@ -8,7 +8,13 @@ class Trip < ActiveRecord::Base
 
   has_many :activities
 
-  STATUSES = %w{inquiry quoted confirmed}
+  STATUS_QUOTED = 'quoted'
+
+  STATUS_ENQUIRY = 'enquiry'
+
+  STATUS_CONFIRMED = 'confirmed'
+
+  STATUSES = [STATUS_ENQUIRY, STATUS_QUOTED, STATUS_CONFIRMED]
 
   validates_presence_of :organisation, :status
 

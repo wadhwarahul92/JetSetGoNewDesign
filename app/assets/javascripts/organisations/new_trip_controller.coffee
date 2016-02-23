@@ -1,10 +1,12 @@
-organisations_app.controller 'NewTripController', ['$http', 'notify', 'AircraftsService', ($http, notify, AircraftsService)->
-
-  trips = []
+organisations_app.controller 'NewTripController', ['$http', 'notify', 'AircraftsService', '$scope', ($http, notify, AircraftsService, $scope)->
 
   @airports = []
 
+  @aircraft = null
+
   @aircraft_id = null
+
+  @paxRange = _.range(30)
 
   @activities = [
     {
@@ -16,7 +18,25 @@ organisations_app.controller 'NewTripController', ['$http', 'notify', 'Aircrafts
     }
   ]
 
-  @paxRange = _.range(30)
+  $scope.$watch(
+    =>
+      @aircraft_id
+    ,
+    =>
+      if @aircraft_id
+        @getAircraft()
+  )
+
+  @getAircraft = ->
+    $http.get("/organisations/aircrafts/#{@aircraft_id}.json").success(
+      (data)=>
+        @aircraft = data
+    ).error(
+      ->
+        notify
+          message: 'Error fetching aircraft, 1x10098'
+          classes: ['alert-danger']
+    )
 
   @formatTime = (time)->
     data = null
@@ -38,6 +58,26 @@ organisations_app.controller 'NewTripController', ['$http', 'notify', 'Aircrafts
 
   @deleteActivity = (activity)->
     @activities.splice @activities.indexOf(activity), 1
+
+  @create = ->
+    if @aircraft
+      $http.post('/organisations/trips.json', {aircraft_id: @aircraft_id, activities: @activities}).success(
+        ->
+          notify
+            message: 'New trip created'
+      ).error(
+        (data)->
+          error = 'Something went wrong'
+          try
+            error = data.errors[0]
+          notify
+            message: error
+            classes: ['alert-danger']
+      )
+    else
+      notify
+        message: 'Choose aircraft first'
+        classes: ['alert-danger']
 
   AircraftsService.getAircraftsForCurrentOperator().then(
     =>
