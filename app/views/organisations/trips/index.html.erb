@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-controller="TripsController as ctrl">
   <div class="col-sm-2">
     <%= render partial: 'organisations/shared/sidebar' %>
   </div>
@@ -6,5 +6,54 @@
     <ul class="list-inline">
       <li><%= link_to 'Add a trip', new_organisations_trip_path, class: 'btn btn-primary' %></li>
     </ul>
+    <div class="row">
+      <div class="col-sm-8">
+        <div ui-calendar="ctrl.calendarConfig.calendar" ng-model="ctrl.events"></div>
+      </div>
+      <div class="col-sm-4">
+        <div ng-show="ctrl.activity" class="">
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="text-center highlight_" colspan="2">{{ctrl.activity.aircraft.tail_number}}</th>
+            </tr>
+            <tr>
+              <th class="text-center">Arrival</th>
+              <th class="text-center">Departure</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><img class="img-responsive" src="" ng-src="{{ctrl.activity.departure_airport.city.url}}" alt=""></td>
+              <td><img class="img-responsive" src="" ng-src="{{ctrl.activity.arrival_airport.city.url}}" alt=""></td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.departure_airport.city.name}}</td>
+              <td class="text-center">{{ctrl.activity.arrival_airport.city.name}}</td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.departure_airport.name}}</td>
+              <td class="text-center">{{ctrl.activity.arrival_airport.name}}</td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.start_at}}</td>
+              <td class="text-center">{{ctrl.activity.end_at}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><strong>Empty Leg?</strong></td>
+              <td class="text-center"><span class="label" ng-class="{'label-success':ctrl.activity.empty_leg, 'label-danger':!ctrl.activity.empty_leg}">{{ ctrl.activity.empty_leg ? 'YES' : 'NO' }}</span></td>
+            </tr>
+            <tr>
+              <td class="text-center"><strong>Pax</strong></td>
+              <td class="text-center">{{ctrl.activity.pax}}</td>
+            </tr>
+            <tr class="danger-row">
+              <td colspan="2" class="text-center"><a ng-click="ctrl.deleteActivity()" href="">Delete this trip</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

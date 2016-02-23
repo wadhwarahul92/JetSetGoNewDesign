@@ -5,6 +5,7 @@
 *= require ./vendors/full-calendar
 *= require ./vendors/angular-datetime-picker
 *= require ./vendors/animate
+*= require ./vendors/hover-css
 *= require_tree ./organisations
 *= require_self
 */
