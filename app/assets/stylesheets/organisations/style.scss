@@ -1,8 +1,17 @@
 $main-green-color: rgb(47, 191, 149);
 $main-red-color: rgb(241, 92, 92);
+$sky-blue-color: rgb(31, 141, 212);
+$main-yellow-color: rgb(237, 202, 0);
 
 body{
   font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;;
+}
+
+#loading-bar{
+  .bar{
+    height: 4px!important;
+    background-color: $main-red-color!important;
+  }
 }
 
 .aircraft_image_holder{
@@ -61,16 +70,41 @@ input#phone{
   }
 }
 
+.trip-event{
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  cursor: pointer;
+  background-color: $sky-blue-color;
+}
+
+.event-unavailability{
+  background-color: $main-red-color;
+}
+
+.event-empty-leg{
+  background-color: $main-yellow-color;
+}
+
+.btn-primary{
+  background-color: $sky-blue-color;
+}
+
+.btn{
+  border: none;
+  border-radius: 0;
+}
+
 .fc-time{
   display: none;
 }
 
-#header{    
+#header{
   background-color: #2fbf95;
   padding: 10px;
 }
 .custom-navbar{
-  margin:0; 
+  margin:0;
   background-color:transparent;
   border:none;
   .logo-img{
@@ -78,6 +112,18 @@ input#phone{
       height:50px;
     }
   }
+}
+
+.danger-row{
+  background-color: $main-red-color;
+  a{
+    color: white;
+  }
+}
+
+.highlight_{
+  background-color: $main-yellow-color;
+  color: white;
 }
 
 #header{
@@ -125,7 +171,7 @@ input#phone{
     margin-top: 13px;
     float: right;
     list-style-type: none;
-  
+
     li{
       display: inline-block;
       margin-right: 10px;
@@ -149,9 +195,9 @@ input#phone{
   margin-bottom: 10px;
   border-radius: 0;
   ul.dropdown-menu{
-  border-radius:0;
-  border:0;
-  border-bottom:1px solid #eee;
+    border-radius:0;
+    border:0;
+    border-bottom:1px solid #eee;
     li{
       width:100%;
       a{
@@ -196,8 +242,8 @@ input#phone{
 }
 
 @media(max-width:767px){
-.navbar-responsive{float:right}
-.navbar-hidden{margin-top:15px;}
+  .navbar-responsive{float:right}
+  .navbar-hidden{margin-top:15px;}
   #header{
     ul.logo_list{
       max-width: 310px;

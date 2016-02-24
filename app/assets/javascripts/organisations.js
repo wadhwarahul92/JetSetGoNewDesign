@@ -32,6 +32,8 @@
 //= require ./organisations/aircraft_unavailabilities_controller
 //= require ./organisations/forgot_password_controller
 //= require ./organisations/new_trip_controller
+//= require ./organisations/trips_controller
+//= require ./organisations/home_controller
 
 try {
     Turbolinks.enableProgressBar();

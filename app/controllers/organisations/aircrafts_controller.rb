@@ -21,6 +21,10 @@ class Organisations::AircraftsController < Organisations::BaseController
   	end
 	end
 
+  def show
+    @aircraft = current_organisation.aircrafts.find(params[:id])
+  end
+
 	def update
     if @aircraft.update_attributes(aircraft_params)
       render status: :ok, nothing: true

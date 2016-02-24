@@ -5,4 +5,8 @@ module ApplicationHelper
     "₹ #{number_with_delimiter(cost, delimiter: ',')}"
   end
 
+  def time_format
+    '%d %b %Y, %I:%M %p'
+  end
+
 end

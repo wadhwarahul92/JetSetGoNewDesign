@@ -1,6 +1,84 @@
-<div class="row">
+<div class="row" ng-controller="HomeController as ctrl">
   <div class="col-sm-2">
     <%= render partial: '/organisations/shared/sidebar' %>
   </div>
-  <div class="col-sm-10"></div>
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-sm-8">
+        <div ui-calendar="ctrl.calendarConfig.calendar" ng-model="ctrl.events"></div>
+      </div>
+      <div class="col-sm-4">
+        <fieldset ng-show="ctrl.activity && ctrl.activity.type == 'aircraft_unavailability'">
+          <legend class="text-center"><small>Aircraft Unavailability</small></legend>
+          <table class="table">
+            <tbody>
+            <tr>
+              <th class="text-center" colspan="2">{{ctrl.activity.aircraft.tail_number}}, {{ctrl.activity.aircraft.aircraft_type.name}}</th>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="2">
+                <img src="" ng-src="{{ctrl.activity.aircraft.images[0]}}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <th class="text-center">Start At</th>
+              <td class="text-center">{{ctrl.activity.start_at}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">End At</th>
+              <td class="text-center">{{ctrl.activity.end_at}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Reason</th>
+              <td class="text-center">{{ctrl.activity.reason}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </fieldset>
+        <fieldset ng-show="ctrl.activity && ctrl.activity.type == 'activity'">
+          <legend class="text-center"><small>{{ctrl.activity.empty_leg ? 'Empty Leg' : 'Trip'}}</small></legend>
+          <table class="table">
+            <tbody>
+            <tr>
+              <th class="text-center" colspan="2">{{ctrl.activity.aircraft.tail_number}}, {{ctrl.activity.aircraft.aircraft_type.name}}</th>
+            </tr>
+            <tr>
+              <td class="text-center" colspan="2">
+                <img src="" ng-src="{{ctrl.activity.aircraft.images[0]}}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <th class="text-center">Departure</th>
+              <th class="text-center">Arrival</th>
+            </tr>
+            <tr>
+              <td class="text-center">
+                <img class="img-responsive" src="" ng-src="{{ctrl.activity.departure_airport.city.image_url}}" alt="">
+              </td>
+              <td class="text-center">
+                <img class="img-responsive" src="" ng-src="{{ctrl.activity.arrival_airport.city.image_url}}" alt="">
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.departure_airport.name}}</td>
+              <td class="text-center">{{ctrl.activity.arrival_airport.name}}</td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.departure_airport.city.name}}</td>
+              <td class="text-center">{{ctrl.activity.arrival_airport.city.name}}</td>
+            </tr>
+            <tr>
+              <td class="text-center">{{ctrl.activity.start_at}}</td>
+              <td class="text-center">{{ctrl.activity.end_at}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Pax</th>
+              <td class="text-center">{{ctrl.activity.pax}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </fieldset>
+      </div>
+    </div>
+  </div>
 </div>

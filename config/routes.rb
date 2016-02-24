@@ -62,7 +62,13 @@ Rails.application.routes.draw do
 
     resources :aircraft_unavailabilities
 
-    resources :trips
+    resources :trips do
+      collection do
+        get 'all_events'
+      end
+    end
+
+    resources :activities
   end
 
   namespace :admin do

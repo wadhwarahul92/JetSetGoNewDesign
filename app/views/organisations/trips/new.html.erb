@@ -51,7 +51,7 @@
                   <div class="col-sm-6">
                     <label class="full-width">
                       Empty leg?
-                      <input type="checkbox" class="form-control" ng-model="aircraft.empty_leg">
+                      <input type="checkbox" class="form-control" ng-model="activity.empty_leg">
                     </label>
                   </div>
                 </div>
@@ -63,10 +63,24 @@
           </div>
         </fieldset>
         <div>
-          <a href="" class="btn btn-primary full-width margin-top">Save</a>
+          <a href="" ng-click="ctrl.create()" class="btn btn-primary full-width margin-top">Save</a>
         </div>
       </div>
-      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <fieldset ng-show="ctrl.aircraft">
+          <legend><small>Aircraft: {{ctrl.aircraft.tail_number}}, {{ctrl.aircraft.aircraft_type.name}}</small></legend>
+          <div class="row">
+            <div class="col-sm-6 text-center"><img src="" ng-src="{{ctrl.aircraft.aircraft_images[0]}}" alt=""></div>
+            <div class="col-sm-6">
+              <ul class="list-unstyled">
+                <li><strong>Seating Capacity:</strong> {{ctrl.aircraft.seating_capacity}}</li>
+                <li><strong>Per hour cost:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.per_hour_cost}}</li>
+                <li><strong>Catering cost per pax:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.catering_cost_per_pax}}</li>
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+      </div>
     </div>
   </div>
 </div>
