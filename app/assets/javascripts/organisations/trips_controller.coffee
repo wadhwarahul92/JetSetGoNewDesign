@@ -22,6 +22,9 @@ organisations_app.controller 'TripsController', ['$http', 'notify', ($http, noti
 
   @calendarConfig = {
     calendar: {
+      header: {
+        center: 'month,agendaWeek'
+      }
       eventClick: @eventClicked
       viewRender: (view, element)=>
         @refreshEvents(view)

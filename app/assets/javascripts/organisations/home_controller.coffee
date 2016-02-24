@@ -64,6 +64,9 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
 
   @calendarConfig = {
     calendar: {
+      header: {
+        center: 'month,agendaWeek'
+      }
       viewRender: (view, element)=>
         @refreshEvents(view)
       eventRender: $scope.eventRender

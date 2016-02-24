@@ -5,8 +5,77 @@ $main-yellow-color: rgb(237, 202, 0);
 $main-orange-color: rgb(187, 83, 0);
 $dark-blue-color: rgb(5, 34, 71);
 
+.main-heading{
+  margin: 0 0 10px;
+  padding: 10px;
+  background: red;
+  color: white;
+  a{
+    color: white;
+    font-size: small;
+    margin-top: 6px;
+  }
+}
+
+.trip_{
+  background-color: $sky-blue-color;
+}
+
+.a_u_{
+  background-color: $main-red-color;
+}
+
+.forum_{
+  background-color: $main-orange-color;
+}
+
+.schedule_{
+  background-color: $main-green-color;
+}
+
+.aircrafts_{
+  background-color: $dark-blue-color;
+}
+
 body{
   font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;;
+}
+
+.highlight_e_l{
+  background-color: $main-yellow-color;
+  color: white;
+}
+
+.highlight_trip{
+  background-color: $sky-blue-color;
+  color: white;
+}
+
+.highlight_au{
+  color: white;
+  background-color: $main-red-color;
+}
+
+.bordered{
+  border: 1px solid lightgray;
+}
+
+.form-control{
+  border-radius: 0;
+}
+
+.fc-state-default{
+  border-radius: 0;
+}
+
+.fc-corner-left{
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+}
+
+.fc-corner-right{
+  border-top-right-radius: 0!important;
+  border-bottom-right-radius: 0!important;
 }
 
 .sidebar-link{

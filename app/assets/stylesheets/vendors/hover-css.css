@@ -2022,7 +2022,7 @@
 
 /* Shutter Out Horizontal */
 .hvr-shutter-out-horizontal {
-    display: inline-block;
+    /*display: inline-block;*/
     vertical-align: middle;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -2045,7 +2045,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #2098d1;
+    background: rgb(158, 167, 166);
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 50%;

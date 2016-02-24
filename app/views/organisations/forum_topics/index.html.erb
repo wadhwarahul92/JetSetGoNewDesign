@@ -3,9 +3,10 @@
     <%= render partial: '/organisations/shared/sidebar' %>
   </div>
   <div class="col-sm-10">
-    <ul class="list-inline">
-      <li><%= link_to 'New Topic', new_organisations_forum_topic_path, class: 'btn btn-primary' %></li>
-    </ul>
+    <h3 class="main-heading forum_">
+      Forum Topics
+      <%= link_to 'New Topic', new_organisations_forum_topic_path, class: 'pull-right' %>
+    </h3>
     <fieldset>
       <legend>Forum Topics</legend>
       <ul class="list-unstyled">

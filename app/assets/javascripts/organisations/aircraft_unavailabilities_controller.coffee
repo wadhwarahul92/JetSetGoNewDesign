@@ -119,6 +119,9 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
 
   @calendarConfig = {
     calendar: {
+      header:{
+        center: 'month,agendaWeek'
+      }
       eventClick: $scope.eventClicked
     }
   }
