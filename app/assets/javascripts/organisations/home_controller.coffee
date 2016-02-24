@@ -2,6 +2,37 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
 
   @events = []
 
+  @activity = null
+
+  scope = this
+
+  $scope.eventClicked = (event, jsEvent, view)->
+    id = event.id
+    record_id = null
+    if id
+      if id.match(/activity-(\d+)/)
+        record_id = id.match(/activity-(\d+)/)[1]
+        $http.get("/organisations/activities/#{record_id}.json?format_as=event").success(
+          (data)=>
+            scope.activity = data
+        ).error(
+          ->
+            notify
+              message: 'Error fetching activity. 1x1009'
+              classes: ['alert-danger']
+        )
+      else
+        record_id = id.match(/aircraft_unavailability-(\d+)/)[1]
+        $http.get("/organisations/aircraft_unavailabilities/#{record_id}.json?format_as=event").success(
+          (data)=>
+            scope.activity = data
+        ).error(
+          ->
+            notify
+              message: 'Error fetch aircraft unavilability. 1x1009'
+              classes: ['alert-danger']
+        )
+
   @refreshEvents = (view)->
     start = null
     end = null
@@ -26,6 +57,7 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     element.attr({
       'uib-popover': event.popover
       'popover-trigger': 'mouseenter'
+      'popover-append-to-body': true
     })
     $compile(element)($scope)
 
@@ -34,6 +66,7 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
       viewRender: (view, element)=>
         @refreshEvents(view)
       eventRender: $scope.eventRender
+      eventClick: $scope.eventClicked
     }
   }
 

@@ -67,6 +67,8 @@ Rails.application.routes.draw do
         get 'all_events'
       end
     end
+
+    resources :activities
   end
 
   namespace :admin do
