@@ -43,4 +43,13 @@ try {
 
 $(document).on('ready page:load', function(){
     angular.bootstrap(document.body, ['organisations_app']);
+
+    $(document).on('click', '.btn', function(){
+        var _this = $(this);
+        _this.addClass('hvr-push');
+        setTimeout(function(){
+            _this.removeClass('hvr-push');
+        },300);
+    });
+
 });

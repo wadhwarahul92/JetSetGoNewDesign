@@ -1,7 +1,27 @@
-<ul class="list-unstyled text-center">
-  <li><%= link_to 'Home', '/organisations' %></li>
-  <li><%= link_to 'Aircrafts', '/organisations/aircrafts' %></li>
-  <li><%= link_to 'Forum', organisations_forum_topics_path %></li>
-  <li><%= link_to 'Aircraft Unavailability', organisations_aircraft_unavailabilities_path %></li>
-  <li><%= link_to 'Trips', organisations_trips_path %></li>
+<ul class="list-unstyled">
+  <li>
+    <%= link_to '/organisations', class: 'sidebar-link sidebar-home hvr-shrink' do %>
+        <i class="fa fa-calendar-check-o"></i> Schedule
+    <%- end %>
+  </li>
+  <li>
+    <%= link_to '/organisations/aircrafts', class: 'sidebar-link sidebar-aircrafts hvr-shrink' do %>
+        <i class="fa fa-plane"></i> Aircrafts
+    <%- end %>
+  </li>
+  <li>
+    <%= link_to organisations_forum_topics_path, class: 'sidebar-link sidebar-forum hvr-shrink' do %>
+      <i class="fa fa-quote-left"></i> Forum
+    <%- end %>
+  </li>
+  <li>
+    <%= link_to organisations_aircraft_unavailabilities_path, class: 'sidebar-link sidebar-a_u hvr-shrink' do %>
+      <i class="fa fa-lock"></i> Aircraft Unavailability
+    <%- end %>
+  </li>
+  <li>
+    <%= link_to organisations_trips_path, class: 'sidebar-link sidebar-trips hvr-shrink' do %>
+      <i class="fa fa-rocket"></i> Trips
+    <%- end %>
+  </li>
 </ul>

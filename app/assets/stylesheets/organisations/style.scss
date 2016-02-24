@@ -2,9 +2,49 @@ $main-green-color: rgb(47, 191, 149);
 $main-red-color: rgb(241, 92, 92);
 $sky-blue-color: rgb(31, 141, 212);
 $main-yellow-color: rgb(237, 202, 0);
+$main-orange-color: rgb(187, 83, 0);
+$dark-blue-color: rgb(5, 34, 71);
 
 body{
   font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;;
+}
+
+.sidebar-link{
+  display: inline-block;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: white;
+  &:hover{
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.sidebar-home{
+  background-color: $main-green-color;
+}
+
+.sidebar-trips{
+  background-color: $sky-blue-color;
+}
+
+.sidebar-a_u{
+  background-color: $main-red-color;
+}
+
+.sidebar-forum{
+  background-color: $main-orange-color;
+}
+
+.sidebar-aircrafts{
+  background-color: $dark-blue-color;
+}
+
+.popover-title{
+  color: white;
+  background-color: $main-green-color;
 }
 
 #loading-bar{

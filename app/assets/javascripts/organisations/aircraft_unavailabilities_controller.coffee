@@ -9,24 +9,24 @@ organisations_app.controller 'AircraftUnavailabilitiesController', ['$http', 'no
 
   @showCard = ->
     try
-      card = $('#unavailability_card')
-      card.removeClass('bounceOutRight')
-      card.addClass('unavailability_card')
-      card.addClass('bounceInRight')
+#      card = $('#unavailability_card')
+#      card.removeClass('bounceOutRight')
+#      card.addClass('unavailability_card')
+#      card.addClass('bounceInRight')
     null
 
   @hideCard = ->
     try
-      card = $('#unavailability_card')
-      card.removeClass('bounceInRight')
-      card.addClass('unavailability_card')
-      card.addClass('bounceOutRight')
+#      card = $('#unavailability_card')
+#      card.removeClass('bounceInRight')
+#      card.addClass('unavailability_card')
+#      card.addClass('bounceOutRight')
     null
 
   @neutralizeCard = ->
     try
-      card = $('#unavailability_card')
-      card.removeClass('bounceInRight')
+#      card = $('#unavailability_card')
+#      card.removeClass('bounceInRight')
     null
 
   @eventsSources = []

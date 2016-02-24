@@ -52,6 +52,7 @@ organisations_app.controller 'AircraftsController', ['$http', 'notify', '$upload
             )
         )
     )
+    null
 
   return undefined
 ]

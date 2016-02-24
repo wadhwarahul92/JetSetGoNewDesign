@@ -58,6 +58,7 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
       'uib-popover': event.popover
       'popover-trigger': 'mouseenter'
       'popover-append-to-body': true
+      'popover-title': event.popover_title
     })
     $compile(element)($scope)
 
