@@ -25,6 +25,7 @@ class Airport < ActiveRecord::Base
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
   validates :icao_code, uniqueness: true
 
+
   validate def icao_and_code_differs
              if self.icao_code.present? and self.code.present? and self.icao_code == self.code
                self.errors.add(:icao_code, 'cannot be same as IATA code')
