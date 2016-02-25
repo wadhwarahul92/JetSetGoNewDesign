@@ -2,8 +2,24 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
 
   @roles = ['admin', 'operator']
 
+  @operator = {}
+
   @operatorRoleMap = {}
 
+  @create = ->
+    $http.post("/organisations/operators.json", @operator).success(
+      ->
+        notify(
+          message: 'New operater created.'
+        )
+        Turbolinks.visit('/organisations/operators')
+    ).error(
+      (data)->
+        notify(
+          message: data.errors[0]
+          classes: ['alert-danger']
+        )
+    )
   @update = ->
     $http.put("/organisations/operators/#{@operator.id}.json", @operator).success(
       ->

@@ -3,6 +3,8 @@ class Organisations::OperatorsController < Organisations::BaseController
   before_action :set_organisation, except: [:log_in_,
                                             :index,
                                             :edit,
+                                            :new,
+                                            :create,
                                             :update,
                                             :forgot_password,
                                             :forgot_password_
@@ -34,7 +36,20 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def index
-    @operators = current_user.organisation.operators
+    @operators = current_user.organisation.operators.where.not(id: current_user.id)
+  end
+
+  def new
+
+  end
+
+  def create
+    @operator = Operator.new(operator_params)
+    if @operator.save
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
+    end
   end
 
   def edit
@@ -65,7 +80,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def update
-    if @operator.update_attributes(operator_params)
+    if @operator.update_attributes(operator_role_params)
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
@@ -108,10 +123,19 @@ class Organisations::OperatorsController < Organisations::BaseController
     @operator = current_user.organisation.operators.find params[:id]
   end
 
-  def operator_params
+  def operator_role_params
     params.permit(
               roles: []
     )
+  end
+
+  def operator_params
+    params.permit(:first_name,
+                  :last_name,
+                  :phone,
+                  :email,
+                  :password
+    ).merge(organisation_id: current_user.organisation.id)
   end
 
 end
