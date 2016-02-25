@@ -33,7 +33,7 @@ class Admin::WatchHoursController < Admin::BaseController
       render action: :edit
     end
 	end
-
+  
 	private
 
 	def watch_hour_params

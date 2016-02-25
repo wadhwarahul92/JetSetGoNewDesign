@@ -1,7 +1,6 @@
 <%= simple_form_for [:admin, @watch_hour] do |f| %>
     <%= f.error_notification %>
-     <%= f.input :airport_id, collection: airports_for_collection, prompt: 'Select airport' %>
-    <%#= f.input :airport_id %>
+    <%= f.input :airport_id, collection: airports_for_collection, prompt: 'Select airport' %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
     <%= f.submit 'Save', class: 'btn btn-success' %>

@@ -36,7 +36,8 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
   @update = ->
     $http.put("/organisations/aircrafts/#{@aircraft.id}.json", @aircraft).success(
       ->
-        Turbolinks.visit('/organisations/aircrafts')
+       AircraftsService.deleteCache()
+       Turbolinks.visit('/organisations/aircrafts')
     ).error(
       (data)->
         error = 'Something went wrong'
