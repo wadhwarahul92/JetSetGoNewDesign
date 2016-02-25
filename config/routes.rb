@@ -156,6 +156,6 @@ Rails.application.routes.draw do
 
   get 'payment_failure' => 'payment_transactions#payment_failure'
 
-  root 'jetsteals/welcome#index'
+  root 'welcome#index'
 
 end
