@@ -167,9 +167,12 @@ Rails.application.routes.draw do
 
   delete 'sign_out_' => 'welcome#sign_out_'
 
+  post 'sign_up_' => 'welcome#sign_up_'
+
   resources :templates do
     collection do
       get 'sign_in_modal'
+      get 'sign_up_modal'
     end
   end
 

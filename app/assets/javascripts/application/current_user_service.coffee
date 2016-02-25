@@ -22,7 +22,8 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
       notify
         message: 'You are already signed in.'
     else
-      serviceInstance.signInModalInstance = $uibModal.open(
+      serviceInstance.modal.close() if serviceInstance.modal
+      serviceInstance.modal = $uibModal.open(
         templateUrl: '/templates/sign_in_modal'
         size: 'sm'
         controller: 'SignInController'
@@ -52,8 +53,30 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
     notify
       message: "Welcome, #{currentUser.full_name}"
     serviceInstance.currentUser = currentUser
-    if serviceInstance.signInModalInstance
-      serviceInstance.signInModalInstance.close()
+    serviceInstance.modal.close() if serviceInstance.modal
+
+  serviceInstance.openSignUpModal = ->
+    if serviceInstance.currentUser
+      notify
+        message: 'You are already signed in.'
+        classes: ['alert-danger']
+    else
+      serviceInstance.modal.close() if serviceInstance.modal
+      serviceInstance.modal = $uibModal.open(
+        templateUrl: '/templates/sign_up_modal'
+        size: 'sm'
+        controller: 'SignUpController'
+        controllerAs: 'ctrl'
+      )
+
+  serviceInstance.init = ->
+    serviceInstance.getCurrentUser().then(
+      (data)=>
+        serviceInstance.setCurrentUser(data) if data and data.first_name
+    )
+
+  serviceInstance.init()
+
 
   return serviceInstance
 ]

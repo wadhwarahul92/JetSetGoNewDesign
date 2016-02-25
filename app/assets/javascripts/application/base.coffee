@@ -3,3 +3,9 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'cgNotify'
   'ui.bootstrap'
 ]
+
+jetsetgo_app.run ['notify', (notify)->
+  notify.config(
+    maximumOpen: 1
+  )
+]

@@ -1,19 +1,23 @@
 <div class="row">
+  <div class="text-center background-main-green padding-top padding-bottom margin-bottom">
+    <img style="height: 35px;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" alt="">
+  </div>
   <div class="col-sm-12">
-    <fieldset>
-      <form ng-submit="ctrl.create()">
-        <label class="full-width">
-          Email
-          <input type="email" class="form-control" ng-model="ctrl.email">
-        </label>
-        <label class="full-width">
-          Password
-          <input type="password" class="form-control" ng-model="ctrl.password">
-        </label>
-        <label class="full-width">
-          <input type="submit" value="Sign in" class="btn btn-primary form-control margin-top">
-        </label>
-      </form>
-    </fieldset>
+    <form ng-submit="ctrl.create()">
+      <label class="full-width">
+        Email
+        <input type="email" class="form-control" ng-model="ctrl.email">
+      </label>
+      <label class="full-width">
+        Password
+        <input type="password" class="form-control" ng-model="ctrl.password">
+      </label>
+      <label class="full-width">
+        <input type="submit" value="Sign in" class="btn btn-primary form-control margin-top">
+      </label>
+      <div class="margin-top text-center">
+        <a ng-click="ctrl.openSignUnModal()" href="">Register</a>
+      </div>
+    </form>
   </div>
 </div>

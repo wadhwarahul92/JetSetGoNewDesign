@@ -6,4 +6,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def sign_up_modal
+
+  end
+
 end

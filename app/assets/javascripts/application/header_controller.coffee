@@ -16,5 +16,8 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
   @signOut = ->
     CurrentUserService.signOut()
 
+  @openSignUpModal = ->
+    CurrentUserService.openSignUpModal()
+
   return undefined
 ]

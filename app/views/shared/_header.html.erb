@@ -12,7 +12,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="ctrl.currentUser" ><a ng-click="ctrl.openSignInModal()" href="">Sign in</a></li>
+        <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignInModal()" href="">Sign in</a></li>
+        <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignUpModal()" href="">Register</a></li>
         <li ng-show="ctrl.currentUser"><a ng-click="ctrl.signOut()" href="">Sign Out</a></li>
       </ul>
     </div>

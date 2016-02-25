@@ -9,6 +9,7 @@
 //= require ./application/current_user_service
 //= require ./application/header_controller
 //= require ./application/sign_in_controller
+//= require ./application/sign_up_controller
 
 $(document).on('ready page:load', function(){
 

@@ -28,4 +28,26 @@ class WelcomeController < ApplicationController
     render status: :ok, nothing: true
   end
 
+  def sign_up_
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
+      render action: :current_user_
+    else
+      render status: :unprocessable_entity, json: { errors: @user.errors.full_messages }
+    end
+  end
+
+  private
+
+  def user_params
+    params.permit(
+              :first_name,
+              :last_name,
+              :email,
+              :password,
+              :phone
+    )
+  end
+
 end

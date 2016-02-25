@@ -15,6 +15,7 @@ $dark-blue-color: rgb(5, 34, 71);
 .modal-content{
   border-radius: 0;
   padding: 10px;
+  padding-top: 0;
 }
 
 .full-width{
@@ -27,4 +28,30 @@ $dark-blue-color: rgb(5, 34, 71);
 
 .btn{
   border-radius: 0;
+}
+
+.form-control{
+  border-radius: 0;
+}
+
+.background-main-green{
+  background-color: $main-green-color;
+}
+
+.padding-top{
+  padding-top: 10px;
+}
+
+.padding-bottom{
+  padding-bottom: 10px;
+}
+
+.margin-bottom{
+  margin-bottom: 10px;
+}
+
+.plus_91{
+  position: absolute;
+  margin-top: 27px;
+  margin-left: -35px;
 }

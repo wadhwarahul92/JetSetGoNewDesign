@@ -4,6 +4,9 @@ jetsetgo_app.controller 'SignInController', ['$http', 'notify', 'CurrentUserServ
 
   @password = null
 
+  @openSignUnModal = ->
+    CurrentUserService.openSignUpModal()
+
   @create = ->
     $http.post('/sign_in_.json', {email: @email, password: @password}).success(
       (data)=>
