@@ -18,6 +18,10 @@
               <input type="text" class="form-control" ng-model="ctrl.operator.last_name">
             </div>
             <div class="field">
+              <label for="designation">Designation</label>
+              <select ng-options="n for n in ctrl.designations" id="designation" class="form-control" ng-model="ctrl.operator.designation"></select>
+            </div>
+            <div class="field">
               <label for="phone">Phone</label>
               <input type="text" class="form-control" ng-model="ctrl.operator.phone">
             </div>

@@ -132,6 +132,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   def operator_params
     params.permit(:first_name,
                   :last_name,
+                  :designation,
                   :phone,
                   :email,
                   :password

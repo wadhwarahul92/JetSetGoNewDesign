@@ -2,6 +2,8 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
 
   @roles = ['admin', 'operator']
 
+  @designations = ['ceo', 'coo', 'editor', 'finance', 'manager']
+
   @operator = {}
 
   @operatorRoleMap = {}
