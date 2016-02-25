@@ -4,7 +4,11 @@ class Admin::OrganisationsController < Admin::BaseController
   before_filter :set_oganisation, only: [:edit, :update]
 
   def index
-    @organisations = Organisation.all
+    if params[:name].present?
+      @organisations = Organisation.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @organisations = Organisation.all
+    end
   end
 
   def edit
