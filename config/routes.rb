@@ -143,6 +143,7 @@ Rails.application.routes.draw do
 
   end
 
+  ###payment api
 
   post 'payment_transactions/create' => 'payment_transactions#create'
 
@@ -155,6 +156,24 @@ Rails.application.routes.draw do
   get 'payment_success' => 'payment_transactions#payment_success'
 
   get 'payment_failure' => 'payment_transactions#payment_failure'
+
+  ####payment api
+
+  #get current_user
+
+  get 'current_user' => 'welcome#current_user_'
+
+  post 'sign_in_' => 'welcome#sign_in_'
+
+  delete 'sign_out_' => 'welcome#sign_out_'
+
+  resources :templates do
+    collection do
+      get 'sign_in_modal'
+    end
+  end
+
+  #################
 
   root 'welcome#index'
 

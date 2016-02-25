@@ -1,0 +1,30 @@
+$main-green-color: rgb(47, 191, 149);
+$main-red-color: rgb(241, 92, 92);
+$sky-blue-color: rgb(31, 141, 212);
+$main-yellow-color: rgb(237, 202, 0);
+$main-orange-color: rgb(187, 83, 0);
+$dark-blue-color: rgb(5, 34, 71);
+
+#loading-bar{
+  .bar{
+    height: 4px!important;
+    background-color: $main-red-color!important;
+  }
+}
+
+.modal-content{
+  border-radius: 0;
+  padding: 10px;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.margin-top{
+  margin-top: 10px;
+}
+
+.btn{
+  border-radius: 0;
+}
