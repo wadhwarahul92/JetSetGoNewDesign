@@ -4,8 +4,10 @@
   </div>
   <div class="col-sm-10">
     <h3 class="main-heading aircrafts_">
-      Aircrafts
-      <%= link_to 'Add aircraft', "/organisations/aircrafts/new", class: 'pull-right' %>
+      <i class="fa fa-plane"></i> Aircrafts
+      <%= link_to '/organisations/aircrafts/new', class: 'pull-right' do %>
+          <i class="fa fa-plus"></i> Add aircraft
+      <%- end %>
     </h3>
     <uib-accordion>
       <uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">

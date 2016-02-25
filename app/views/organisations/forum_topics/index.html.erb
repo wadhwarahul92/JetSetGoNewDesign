@@ -4,13 +4,13 @@
   </div>
   <div class="col-sm-10">
     <h3 class="main-heading forum_">
-      Forum Topics
-      <%= link_to 'New Topic', new_organisations_forum_topic_path, class: 'pull-right' %>
+      <i class="fa fa-quote-left"></i> Forum Topics
+      <%= link_to new_organisations_forum_topic_path, class: 'pull-right' do %>
+          <i class="fa fa-plus"></i> New Topic
+      <%- end %>
     </h3>
-    <fieldset>
-      <legend>Forum Topics</legend>
-      <ul class="list-unstyled">
-        <% @forum_topics.each do |forum_topic| %>
+    <ul class="list-unstyled">
+      <% @forum_topics.each do |forum_topic| %>
           <li>
             <%= link_to organisations_forum_topic_path(forum_topic) do %>
                 <div class="forum-topic-container margin-top">
@@ -29,9 +29,8 @@
                 </div>
             <%- end %>
           </li>
-        <%- end %>
-        <li><%= will_paginate @forum_topics %></li>
-      </ul>
-    </fieldset>
+      <%- end %>
+      <li><%= will_paginate @forum_topics %></li>
+    </ul>
   </div>
 </div>

@@ -4,8 +4,10 @@
   </div>
   <div class="col-sm-10">
     <h3 class="main-heading a_u_">
-      Aircraft Unavailabilities
-      <%= link_to 'Add aircraft unavailability', new_organisations_aircraft_unavailability_path, class: 'pull-right' %>
+      <i class="fa fa-lock"></i> Aircraft Unavailabilities
+      <%= link_to new_organisations_aircraft_unavailability_path, class: 'pull-right' do %>
+          <i class="fa fa-plus"></i> Add aircraft unavailability
+      <%- end %>
     </h3>
     <div class="row">
       <div class="col-sm-8">
