@@ -102,7 +102,7 @@ class Organisations::OperatorsController < Organisations::BaseController
               :email,
               :phone,
               :password
-          ).merge(roles: ['admin'])
+          ).merge(roles: ['admin'], designation: 'admin')
       )
       if @operator.save
         sign_in(@operator)

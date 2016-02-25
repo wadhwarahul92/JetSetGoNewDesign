@@ -14,7 +14,7 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
         notify(
           message: 'New operater created.'
         )
-        Turbolinks.visit('/organisations/operators')
+        Turbolinks.visit('/organisations/settings')
     ).error(
       (data)->
         notify(

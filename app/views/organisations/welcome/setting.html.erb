@@ -13,6 +13,7 @@
           <table class="table table-striped">
             <thead>
               <th>Email</th>
+              <th>Designation</th>
               <th>Action</th>
               <th>
                 <%= link_to '/organisations/operators/new', class: 'pull-right' do %>
@@ -23,6 +24,7 @@
             <tbody>
               <tr ng-repeat="operator in ctrl.operators">
                 <td>{{operator.email}}</td>
+                <td>{{operator.designation}}</td>
                 <td>
                   <a ng-href="/organisations/operators/{{operator.id}}/edit">
                     <i class="fa fa-edit"></i>
