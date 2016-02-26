@@ -18,8 +18,10 @@ class Aircraft < ActiveRecord::Base
 
   accepts_nested_attributes_for :aircraft_images
 
+  before_validation :upcase_tail_number
+
   ####VALIDATIONS###
-  validates :tail_number, uniqueness: true, presence: true, length: { minimum: 5, maximum: 6 }
+  validates :tail_number, uniqueness: true, presence: true,:case_sensitive => false, length: { minimum: 5, maximum: 6 }
   validates :aircraft_type, presence: true
   validates_presence_of :seating_capacity,
                         :baggage_capacity_in_kg,
@@ -39,6 +41,7 @@ class Aircraft < ActiveRecord::Base
                         :organisation_id
   validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
+  validates_format_of :tail_number, :with => /\AVT-[A-Z0-9]{3}\z/i
 
   validates_numericality_of :seating_capacity,
                             :baggage_capacity_in_kg,
@@ -57,5 +60,9 @@ class Aircraft < ActiveRecord::Base
                             # only_integer: true,
                             greater_than_or_equal_to: 0
   ##################
+
+  def upcase_tail_number
+    self.tail_number = self.tail_number.upcase if self.tail_number.present?
+  end
 
 end
