@@ -2,40 +2,46 @@
   <div class="col-sm-2">
     <%= render partial: 'organisations/shared/sidebar' %>
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-10 main-top-data">
     <h3><%= @forum_topic.statement %></h3>
-    <p><%= @forum_topic.description %></p>
-    <ul class="list-inline">
+    <ul class="list-inline text-right">
       <li><strong><%= @forum_topic.organisation.name %></strong></li>
       <li><strong>Posted By:</strong> <%= @forum_topic.operator.full_name %></li>
       <li><strong>Posted On:</strong> <%= @forum_topic.created_at.strftime('%d %b %Y') %></li>
     </ul>
+    <p class="main-text"><%= @forum_topic.description %></p>
+    
     <div class="row">
-      <div class="col-sm-8">
-        <ul class="list-unstyled" style="max-height: 400px;overflow-y: scroll">
-          <li ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
-            <div class="forum-topic-container margin-top">
-              <p><strong>{{forum_topic_comment.comment}}</strong></p>
-              <ul class="list-inline">
-                <li>{{forum_topic_comment.organisation}}</li>
-                <li><strong>By:</strong> {{forum_topic_comment.operator}}</li>
-                <li><strong>On:</strong> {{forum_topic_comment.created_at}}</li>
+      <div class="col-sm-12 scroll-con">
+        <ul class="list-unstyled comment-box">
+          <li class="bg-coment-green" ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
+            <div class="forum-topic-container forum-topic-container2 margin-top" <%= %>>
+            <img class="chat-arrow-left" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/068/original/Red_chat_arrow.png?1456395508">
+            <img class="chat-arrow-right" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/069/original/Green_chat_arrow.png?1456395538">
+            <ul class="list-inline date-main-con text-right">
+              <li><strong>{{forum_topic_comment.organisation}}</strong></li>
+              <li><strong>By:</strong> {{forum_topic_comment.operator}}</li>
+              <li><strong>On:</strong> {{forum_topic_comment.created_at}}</li>
               </ul>
+              <p>{{forum_topic_comment.comment}}</p>
+              
             </div>
           </li>
         </ul>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-12 comment-section">
         <fieldset>
           <legend><small>Add a comment</small></legend>
           <form ng-submit="ctrl.addNewComment()">
-            <div class="field">
+          <div class="row">
+            <div class="col-sm-10 field">
               <label style="display: none" for="comment">Comment</label>
               <textarea id="comment" rows="2" class="form-control" ng-model="ctrl.newComment.comment"></textarea>
             </div>
-            <div class="field margin-top">
-              <input type="submit" class="btn btn-primary" value="Save">
+            <div class="col-sm-2 text-right field">
+              <input type="submit" class="btn btn-primary save-btn" value="Save">
             </div>
+          </div>
           </form>
         </fieldset>
       </div>
