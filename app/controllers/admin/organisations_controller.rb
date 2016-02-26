@@ -1,7 +1,7 @@
 class Admin::OrganisationsController < Admin::BaseController
   before_filter :authenticate_admin
 
-  before_filter :set_oganisation, only: [:edit, :update]
+  before_filter :set_organisation, only: [:edit, :update]
 
   def index
     if params[:name].present?
@@ -22,7 +22,7 @@ class Admin::OrganisationsController < Admin::BaseController
 
   private
 
-  def set_oganisation
+  def set_organisation
     @organisation = Organisation.find params[:id]
   end
 
