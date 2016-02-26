@@ -51,7 +51,7 @@ class Aircraft < ActiveRecord::Base
                             :catering_cost_per_pax,
                             # :landing_field_length_in_feet,
                             :number_of_toilets,
-                            :cabin_length_in_meters,
+                            # :cabin_length_in_meters,
                             :crew,
 
                             # only_integer: true,
