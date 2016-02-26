@@ -17,5 +17,6 @@ class Operator < User
   scope :verified, -> { where(approved_by_admin: true) }
 
   validates :organisation, presence: true
+  validates :designation, presence: true
 
 end
