@@ -65,4 +65,14 @@ class Aircraft < ActiveRecord::Base
     self.tail_number = self.tail_number.upcase if self.tail_number.present?
   end
 
+  def ready_for_frontend?
+    has_atleast_one_image? and self.admin_verified?
+  end
+
+  private
+
+  def has_atleast_one_image?
+    self.aircraft_images.count > 0
+  end
+
 end

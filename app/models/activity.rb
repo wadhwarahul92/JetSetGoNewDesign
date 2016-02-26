@@ -48,6 +48,43 @@ class Activity < ActiveRecord::Base
              end
   end
 
+  #while creating an activity distance form A -> B must be present
+  validate def presence_of_distance
+             if self.departure_airport.present? and self.arrival_airport.present?
+               d = Distance.where(from_airport_id: self.departure_airport_id, to_airport_id: self.arrival_airport_id).first
+               if d.present? and d.distance_in_nm.present?
+                 # do nothing
+               else
+                 self.errors.add(:base, 'There is not distance available from departure airport to arrival airport, contact support.')
+               end
+             end
+  end
+
+  validate def aircraft_ready_for_frontend
+             if self.aircraft.ready_for_frontend?
+               #do nothing
+             else
+               self.errors.add(:base, 'This aircraft is not approved by us yet, contact support.')
+             end
+  end
+
+  validate def night_landing_requirement
+             if self.end_at.hour > Airport::NIGHT_LANDING_ONSET and !self.arrival_airport.night_landing?
+               self.add(:end_at, 'arrival airport does not supports night landing.')
+             end
+  end
+
+  #todo: complete this
+  # validate def runway_length_adequate
+  #            if self.aircraft.runway_field_length_in_feet < self.arrival_airport.
+  # end
+
+  validate def aircraft_flying_range
+    if self.aircraft.flying_range_in_nm < self.departure_airport.distance_to(self.arrival_airport)
+      self.errors.add(:aircraft, 'has lesser range than distance form departure airport to arrival airport')
+    end
+  end
+
   def activity_duration
     distance = self.departure_airport.distance_to(self.arrival_airport)
     speed = self.aircraft.cruise_speed_in_nm_per_hour

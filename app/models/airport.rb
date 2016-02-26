@@ -18,6 +18,8 @@ class Airport < ActiveRecord::Base
 
   has_many :arriving_activities, class_name: 'Activity', foreign_key: :arrival_airport_id
 
+  NIGHT_LANDING_ONSET = 17 #in hours, 5 PM
+
   #####VALIDATIONS
   validates :name, presence: true, uniqueness: { scope: :city_id }
   validates :city, :longitude, :latitude, :ifr_or_vfr, presence: true
