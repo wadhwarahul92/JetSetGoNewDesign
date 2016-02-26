@@ -1,4 +1,8 @@
 /*
+ *= require ./vendors/notify
+ *= require ./vendors/bootstrap
+ *= require ./vendors/loading-bar
+ *= require ./vendors/hover-css
  *= require_tree ./application
  *= require_self
  */
