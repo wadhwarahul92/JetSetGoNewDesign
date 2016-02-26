@@ -49,12 +49,12 @@ class Aircraft < ActiveRecord::Base
                             :flying_range_in_nm,
                             :per_hour_cost,
                             :catering_cost_per_pax,
-                            :landing_field_length_in_feet,
+                            # :landing_field_length_in_feet,
                             :number_of_toilets,
                             :cabin_length_in_meters,
                             :crew,
-                            
-                            only_integer: true,
+
+                            # only_integer: true,
                             greater_than_or_equal_to: 0
   ##################
 
