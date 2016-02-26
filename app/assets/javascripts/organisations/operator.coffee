@@ -2,6 +2,8 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
 
   @roles = ['admin', 'operator']
 
+  @designations = ['ceo', 'coo', 'editor', 'finance', 'manager']
+
   @operator = {}
 
   @operatorRoleMap = {}
@@ -12,7 +14,7 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
         notify(
           message: 'New operater created.'
         )
-        Turbolinks.visit('/organisations/operators')
+        Turbolinks.visit('/organisations/settings')
     ).error(
       (data)->
         notify(
