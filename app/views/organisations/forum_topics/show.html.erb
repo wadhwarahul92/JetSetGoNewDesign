@@ -9,7 +9,7 @@
       <li><strong>Posted By:</strong> <%= @forum_topic.operator.full_name %></li>
       <li><strong>Posted On:</strong> <%= @forum_topic.created_at.strftime('%d %b %Y') %></li>
     </ul>
-    <p><%= @forum_topic.description %></p>
+    <p class="main-text"><%= @forum_topic.description %></p>
     
     <div class="row">
       <div class="col-sm-12 scroll-con">
@@ -23,7 +23,7 @@
               <li><strong>By:</strong> {{forum_topic_comment.operator}}</li>
               <li><strong>On:</strong> {{forum_topic_comment.created_at}}</li>
               </ul>
-              <p><strong>{{forum_topic_comment.comment}}</strong></p>
+              <p>{{forum_topic_comment.comment}}</p>
               
             </div>
           </li>

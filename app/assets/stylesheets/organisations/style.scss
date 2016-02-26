@@ -374,11 +374,20 @@ input#phone{
   p{
     margin:10px 0;
     font-size:14px;
+  
+  }
+  p.main-text{
+    border-bottom:1px solid #c9c9c9;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-style:italic;
+    text-align:justify;
+    *font-weight:bold;
+    color:$dark-blue-color;
   }
 }
-
 .scroll-con{
- height:300px;
+ max-height:300px;
  overflow-y: scroll;
   ul.comment-box{
     margin:0;
@@ -417,6 +426,8 @@ input#phone{
     p{
       margin: 10px 8px;
       text-align:justify;
+      font-weight:bold;
+      color:#666666;
     }
     .chat-arrow-left{
     position:absolute;
@@ -531,15 +542,22 @@ input#phone{
     }
 
     .forum-topic-container2{
+      ul{
+        font-size:10px;
+      }
       p{
-        margin: 10px 8px;
+        margin: 5px 8px;
         font-size:12px;
+        text-align:left;
+        font-weight:normal;
       }
       .chat-arrow-left{
       left:-10px;
+      bottom:-5px;
       }
       .chat-arrow-right{
       right:-10px;
+      bottom:-5px;
       }
     }
     .date-main-con{
@@ -561,7 +579,25 @@ input#phone{
        }
     }
   }
-
+  .main-top-data{
+    h3{
+    font-size:20px;
+    }
+    ul{
+    text-align:left;
+    font-size:13px;
+    }
+  }
+  .comment-section{
+    .text-right{
+      text-align:left; 
+    }
+    .save-btn{
+      min-width:40%;
+    
+      margin-top:15px;
+    }
+  }
 }
 
 .full-width{
