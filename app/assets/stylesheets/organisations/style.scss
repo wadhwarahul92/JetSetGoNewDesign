@@ -5,6 +5,7 @@ $main-yellow-color: rgb(237, 202, 0);
 $main-orange-color: rgb(187, 83, 0);
 $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
+$main-blue-color:rgb(5, 81, 139);
 
 .main-heading{
   margin: 0 0 10px;
@@ -474,6 +475,88 @@ input#phone{
 /*forum show page*/
 
 /*changes Rahul 25-2-2016*/
+
+/*changes Rahul 26-2-2016*/
+/*add forum topics*/
+.forum-add-main-con{
+  .forum-main-heading{
+    margin:0;
+    background-color:$main-orange-color;
+    color:#ffffff;
+    border:0;
+    padding:5px 10px 8px 10px;
+  }
+  .forum-add-form{
+    background-color:#f8f8f8;
+    padding:15px;
+    .field{
+      margin-bottom:15px;
+      textarea{
+        height:100px;
+      }
+      .save-btn{
+        width:40%;
+        padding:10px;
+      }
+    }
+  }
+}
+/*add forum topics*/
+/*changes Rahul 26-2-2016*/
+
+/*changes Rahul 27-2-2016*/
+/*add aircraft page*/
+.add-aircraft-main-con{
+  h3.add-aircraft-heading{
+    margin:0;
+    background-color:$main-orange-color;
+    color:#ffffff;
+    border:0;
+    padding:5px 10px 8px 10px;
+  }
+  .add-aircraft-from{
+    background-color:#f8f8f8;
+    padding:15px;
+    .save-btn{
+      width:30%;
+    }
+    label{
+    
+    }
+    .form-colomn{
+      margin-bottom:15px;
+      .checkbox-text{
+        width:14px;
+        box-shadow:none;
+        margin:0;
+      }
+    }
+  }
+}
+/*add aircraft page*/
+
+/*aircraft page*/
+.panel-group{
+  .panel{
+    border-radius:0;
+    border-color:transparent;
+    .panel-heading{
+      border-radius:0;
+      border-color:transparent;
+      background-color:$main-blue-color;
+      color:#ffffff;
+    }
+    .panel-collapse{
+      .panel-body{
+        background-color:#f9f9f9;
+        padding:10px 0;
+      }
+    }
+  }
+}
+/*aircraft page*/
+
+/*changes Rahul 27-2-2016*/
 
 @media(max-width:1060px){
   #header{
