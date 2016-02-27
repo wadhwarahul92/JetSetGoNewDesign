@@ -26,6 +26,7 @@ class Airport < ActiveRecord::Base
   validates :code, uniqueness: true
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
   validates :icao_code, uniqueness: true
+  validates :runway_field_length_in_feet, presence: true
 
 
   validate def icao_and_code_differs

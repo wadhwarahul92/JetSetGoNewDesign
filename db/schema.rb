@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225095504) do
+ActiveRecord::Schema.define(version: 20160227062035) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",          limit: 4
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20160225095504) do
   create_table "aircrafts", force: :cascade do |t|
     t.string   "tail_number",                  limit: 255
     t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "seating_capacity",             limit: 4
     t.integer  "baggage_capacity_in_kg",       limit: 4
     t.integer  "landing_field_length_in_feet", limit: 4
@@ -84,34 +84,34 @@ ActiveRecord::Schema.define(version: 20160225095504) do
     t.integer  "crew",                         limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                              default: false
-    t.text     "svg",                          limit: 16777215
+    t.boolean  "flight_attendant",                         default: false
     t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                                  default: false
+    t.boolean  "medical_evac",                             default: false
     t.float    "cruise_speed_in_nm_per_hour",  limit: 24
     t.float    "flying_range_in_nm",           limit: 24
     t.float    "per_hour_cost",                limit: 24
     t.float    "catering_cost_per_pax",        limit: 24
-    t.boolean  "admin_verified",                                default: false
+    t.boolean  "admin_verified",                           default: false
     t.integer  "organisation_id",              limit: 4
   end
 
   create_table "airports", force: :cascade do |t|
-    t.string   "name",                 limit: 255
-    t.integer  "city_id",              limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.float    "longitude",            limit: 24
-    t.float    "latitude",             limit: 24
-    t.string   "code",                 limit: 255
+    t.string   "name",                        limit: 255
+    t.integer  "city_id",                     limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.float    "longitude",                   limit: 24
+    t.float    "latitude",                    limit: 24
+    t.string   "code",                        limit: 255
     t.boolean  "private_landing"
     t.boolean  "international"
     t.boolean  "night_landing"
     t.boolean  "night_parking"
-    t.string   "ifr_or_vfr",           limit: 255
+    t.string   "ifr_or_vfr",                  limit: 255
     t.boolean  "fuel_availability"
     t.boolean  "watch_hour_extension"
-    t.string   "icao_code",            limit: 255
+    t.string   "icao_code",                   limit: 255
+    t.float    "runway_field_length_in_feet", limit: 24
   end
 
   create_table "cities", force: :cascade do |t|
