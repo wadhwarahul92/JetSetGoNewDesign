@@ -28,12 +28,16 @@ class Airport < ActiveRecord::Base
   validates :icao_code, uniqueness: true
   validates :runway_field_length_in_feet, presence: true
 
+  validates_numericality_of :runway_field_length_in_feet,
+                            greater_than_or_equal_to: 0
+
 
   validate def icao_and_code_differs
              if self.icao_code.present? and self.code.present? and self.icao_code == self.code
                self.errors.add(:icao_code, 'cannot be same as IATA code')
              end
   end
+
 
   ################
 
