@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225095504) do
+ActiveRecord::Schema.define(version: 20160227062035) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",          limit: 4
@@ -96,21 +96,22 @@ ActiveRecord::Schema.define(version: 20160225095504) do
   end
 
   create_table "airports", force: :cascade do |t|
-    t.string   "name",                 limit: 255
-    t.integer  "city_id",              limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.float    "longitude",            limit: 24
-    t.float    "latitude",             limit: 24
-    t.string   "code",                 limit: 255
+    t.string   "name",                        limit: 255
+    t.integer  "city_id",                     limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.float    "longitude",                   limit: 24
+    t.float    "latitude",                    limit: 24
+    t.string   "code",                        limit: 255
     t.boolean  "private_landing"
     t.boolean  "international"
     t.boolean  "night_landing"
     t.boolean  "night_parking"
-    t.string   "ifr_or_vfr",           limit: 255
+    t.string   "ifr_or_vfr",                  limit: 255
     t.boolean  "fuel_availability"
     t.boolean  "watch_hour_extension"
-    t.string   "icao_code",            limit: 255
+    t.string   "icao_code",                   limit: 255
+    t.float    "runway_field_length_in_feet", limit: 24
   end
 
   create_table "cities", force: :cascade do |t|

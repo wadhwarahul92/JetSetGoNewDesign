@@ -26,6 +26,10 @@ class Airport < ActiveRecord::Base
   validates :code, uniqueness: true
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
   validates :icao_code, uniqueness: true
+  validates :runway_field_length_in_feet, presence: true
+
+  validates_numericality_of :runway_field_length_in_feet,
+                            greater_than_or_equal_to: 0
 
 
   validate def icao_and_code_differs
@@ -33,6 +37,7 @@ class Airport < ActiveRecord::Base
                self.errors.add(:icao_code, 'cannot be same as IATA code')
              end
   end
+
 
   ################
 
