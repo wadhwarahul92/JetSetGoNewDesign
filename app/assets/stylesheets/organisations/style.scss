@@ -215,7 +215,7 @@ input#phone{
 
 #header{
   background-color: #2fbf95;
-  padding: 10px;
+  padding: 10px 0;
 }
 .custom-navbar{
   margin:0;
@@ -260,11 +260,44 @@ input#phone{
       list-style:none;
     }
     .main_link{
-      width: 40px;
-      height: 35px;
+      width: 41px;
+      height: 37px;
       display: inline-block;
-      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106758);
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/070/original/organisation-header-icons.png?1456731998);
     }
+
+    .schedule-icon{
+      background-position: -2px 3px;
+    }
+    .aircraft-icon{
+      background-position: -74px 3px;
+    }
+    .forum-icon{
+      background-position: -142px 3px;
+    }
+    .unavailibility-icon{
+      background-position: -208px 3px;
+    }
+    .trips-icon{
+      background-position: -274px 3px;
+    }
+
+    .active_schedule{
+      background-position: -2px -35px;
+    }
+    .active_aircraft{
+      background-position: -74px -35px;
+    }
+    .active_forum{
+      background-position: -142px -35px;
+    }
+    .active_unavailibility{
+      background-position: -208px -35px;
+    }
+    .active_trips{
+      background-position: -274px -35px;
+    }
+
     #jetsteal_link{
       background-position: -74px -35px;
     }
@@ -602,7 +635,7 @@ input#phone{
   .navbar-hidden{margin-top:15px;}
   #header{
     ul.logo_list{
-      max-width: 310px;
+      max-width: 250px;
       margin: 7px auto 0 auto;
       li{
         margin-right: 10px !important;
@@ -612,7 +645,7 @@ input#phone{
       float: none;
       list-style-type: none;
       font-size: 10px;
-      max-width: 310px;
+      max-width: 250px;
       margin: 5px auto 0 auto;
       li{
         margin-right:9px;
