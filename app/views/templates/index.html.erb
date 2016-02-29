@@ -1,1 +1,24 @@
-lol
+<script type="text/ng-template" id="airportsTypeAhead.html">
+  <a>
+    <img src="" style="height: 50px;" ng-src="{{match.model.city.image}}">
+    <span ng-bind-html="match.model.label | uibTypeaheadHighlight:query"></span>
+  </a>
+</script>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div ng-repeat="activity in ctrl.activities">
+      <input title="Departure Airport"
+             placeholder="Departure"
+             autocomplete="off"
+             typeahead-editable="false"
+             typeahead-select-on-exact="true"
+             typeahead-template-url="airportsTypeAhead.html"
+             ng-model="activity.departure_airport_id"
+             uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+             typeahead-input-formatter="match.model.id"
+             type="text">
+    </div>
+    <a ng-click="ctrl.create()" href="">Search</a>
+  </div>
+</div>

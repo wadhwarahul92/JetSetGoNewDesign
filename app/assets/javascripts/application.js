@@ -17,6 +17,7 @@
 //= require ./application/sign_in_controller
 //= require ./application/sign_up_controller
 //= require ./application/index_controller
+//= require ./application/airports_service
 
 $(document).on('ready page:load', function(){
 
