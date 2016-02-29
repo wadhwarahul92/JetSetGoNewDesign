@@ -98,7 +98,7 @@ body{
 
 .header-icons-box a{
   padding-top: 0;
-  padding-right: 0;
+  //padding-right: 0;
   font-size: 25px;
 }
 
@@ -719,4 +719,8 @@ input#phone{
 
 .popover{
   border-radius: 0;
+}
+
+.large-button{
+  margin-bottom: 10px;
 }

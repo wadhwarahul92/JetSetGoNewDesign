@@ -1,5 +1,8 @@
+
+
 <div class="row" ng-controller="ForumTopicCommentsController as ctrl">
   <div class="col-sm-12 main-top-data">
+    <%= link_to 'Back', organisations_forum_topics_path, class: 'btn btn-primary large-button' %>
     <h3><%= @forum_topic.statement %></h3>
     <ul class="list-inline text-right">
       <li><strong><%= @forum_topic.organisation.name %></strong></li>
