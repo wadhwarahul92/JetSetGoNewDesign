@@ -10,6 +10,8 @@ class Aircraft < ActiveRecord::Base
 
   # belongs_to :operator
 
+  belongs_to :base_airport, class_name: 'Airport', foreign_key: :base_airport_id
+
   belongs_to :organisation
 
   has_many :aircraft_unavailabilities
@@ -38,7 +40,9 @@ class Aircraft < ActiveRecord::Base
                         :flying_range_in_nm,
                         :per_hour_cost,
                         :catering_cost_per_pax,
-                        :organisation_id
+                        :organisation_id,
+                        :base_airport_id
+
   validates :organisation, presence: true
   validates :year_of_manufacture, length: { is: 4 }, numericality: true
   validates_format_of :tail_number, :with => /\AVT-[A-Z0-9]{3}\z/i

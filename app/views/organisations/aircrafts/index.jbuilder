@@ -22,12 +22,17 @@ json.array! @aircrafts do |aircraft|
 		json.id aircraft.aircraft_type.id
 		json.name aircraft.aircraft_type.name
 	}
-
   json.aircraft_images{
     json.array! aircraft.aircraft_images do |aircraft_image|
       json.id aircraft_image.id
       json.url aircraft_image.image.url(:size_250x250)
     end
   }
-	
+  json.base_airport{
+    if aircraft.base_airport.present?
+      json.id aircraft.base_airport.id
+      json.name aircraft.base_airport.name
+    end
+  }
+
 end

@@ -17,6 +17,7 @@ json.flying_range_in_nm @aircraft.flying_range_in_nm
 json.per_hour_cost @aircraft.per_hour_cost
 json.catering_cost_per_pax @aircraft.catering_cost_per_pax
 json.aircraft_type_id @aircraft.aircraft_type_id
+json.base_airport_id @aircraft.base_airport_id
 json.aircraft_type{
 	json.id @aircraft.aircraft_type.id
 	json.name @aircraft.aircraft_type.name

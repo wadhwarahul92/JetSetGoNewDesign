@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227062035) do
+ActiveRecord::Schema.define(version: 20160229090646) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",          limit: 4
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20160227062035) do
     t.float    "catering_cost_per_pax",        limit: 24
     t.boolean  "admin_verified",                           default: false
     t.integer  "organisation_id",              limit: 4
+    t.integer  "base_airport_id",              limit: 4
   end
 
   create_table "airports", force: :cascade do |t|
