@@ -1,8 +1,5 @@
 <div class="row" ng-controller="OperatorController as ctrl">
-  <div class="col-sm-2">
-    <%= render partial: 'organisations/shared/sidebar' %>
-  </div>
-  <div class="col-sm-10">
+  <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
@@ -35,6 +32,7 @@
             </div>
             <div class="field">
               <input type="submit" value="Create"  class="btn btn-primary margin-top">
+              <%= link_to 'Back', organisations_settings_path, class: 'btn btn-primary margin-top' %>
             </div>
           </form>
         </fieldset>

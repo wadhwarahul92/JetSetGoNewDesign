@@ -1,8 +1,5 @@
 <div class="row" ng-controller="NewTripController as ctrl">
-  <div class="col-sm-2">
-    <%= render partial: 'organisations/shared/sidebar' %>
-  </div>
-  <div class="col-sm-10">
+  <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-6">
         <fieldset>
@@ -63,7 +60,8 @@
           </div>
         </fieldset>
         <div>
-          <a href="" ng-click="ctrl.create()" class="btn btn-primary full-width margin-top">Save</a>
+          <a href="" ng-click="ctrl.create()" class="btn btn-primary margin-top">Save</a>
+          <%= link_to 'Back', organisations_trips_path, class: 'btn btn-primary margin-top' %>
         </div>
       </div>
       <div class="col-sm-6">
