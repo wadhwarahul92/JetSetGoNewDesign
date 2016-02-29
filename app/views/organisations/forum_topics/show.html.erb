@@ -1,8 +1,5 @@
 <div class="row" ng-controller="ForumTopicCommentsController as ctrl">
-  <div class="col-sm-2">
-    <%= render partial: 'organisations/shared/sidebar' %>
-  </div>
-  <div class="col-sm-10 main-top-data">
+  <div class="col-sm-12 main-top-data">
     <h3><%= @forum_topic.statement %></h3>
     <ul class="list-inline text-right">
       <li><strong><%= @forum_topic.organisation.name %></strong></li>
