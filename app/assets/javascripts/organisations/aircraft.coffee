@@ -6,7 +6,7 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
 
   @aircraft_types = []
 
-  @airports = []
+  @base_airports = []
 
   $http.get('/aircraft_types.json').success(
     (data)=>
@@ -21,7 +21,7 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
 
   $http.get('/airports.json').success(
     (data)=>
-      @airports = data
+      @base_airports = data
   ).error(
     ->
       notify(

@@ -8,7 +8,7 @@
 </div>
 <div class="col-sm-6">
   <label for="base_airport_id">Base airport</label>
-  <select class="form-control" id="base_airport_id" ng-model="ctrl.aircraft.base_airport_id" ng-options="airport.id as airport.name for airport in ctrl.airports"></select>
+  <select class="form-control" id="base_airport_id" ng-model="ctrl.aircraft.base_airport_id" ng-options="base_airport.id as base_airport.name for base_airport in ctrl.base_airports"></select>
 </div>
 <div class="col-sm-6 form-colomn">
 	<label for="seating_capacity">Seating capacity</label>

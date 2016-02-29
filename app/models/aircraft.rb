@@ -18,8 +18,6 @@ class Aircraft < ActiveRecord::Base
 
   has_many :activities
 
-  has_many :base_airports
-
   accepts_nested_attributes_for :aircraft_images
 
   before_validation :upcase_tail_number
