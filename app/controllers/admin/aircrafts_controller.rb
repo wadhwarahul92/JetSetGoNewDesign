@@ -64,7 +64,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :catering_cost_per_pax,
                                  :organisation_id,
                                  :year_of_manufacture,
-                                 :medical_evac
+                                 :medical_evac,
+                                 :base_airport_id
     )
   end
 

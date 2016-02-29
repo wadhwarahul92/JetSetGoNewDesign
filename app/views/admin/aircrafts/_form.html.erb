@@ -6,6 +6,7 @@
         <%= f.input :tail_number %>
         <%= f.input :year_of_manufacture %>
         <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
+        <%= f.input :base_airport_id, collection: airports_for_collection, prompt: 'Select Aircraft type' %>
         <%= f.input :organisation_id, collection: organisations_for_collection, prompt: 'Select Organisation' %>
         <% [:wifi, :phone, :flight_attendant, :medical_evac].each do |attr| %>
             <div class="col-sm-4">

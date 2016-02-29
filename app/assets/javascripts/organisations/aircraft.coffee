@@ -6,6 +6,8 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
 
   @aircraft_types = []
 
+  @airports = []
+
   $http.get('/aircraft_types.json').success(
     (data)=>
       @aircraft_types = data
@@ -13,6 +15,17 @@ organisations_app.controller 'AircraftController', ['$http', 'notify', 'Aircraft
     ->
       notify(
         message: 'Error fetching aircraft types'
+        classes: ['alert-danger']
+      )
+  )
+
+  $http.get('/airports.json').success(
+    (data)=>
+      @airports = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching airports'
         classes: ['alert-danger']
       )
   )

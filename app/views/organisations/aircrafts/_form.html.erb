@@ -6,6 +6,10 @@
 	<label for="aircraft_type">Aircraft type</label>
 	<select class="form-control" id="aircraft_type" ng-model="ctrl.aircraft.aircraft_type_id" ng-options="aircraft_type.id as aircraft_type.name for aircraft_type in ctrl.aircraft_types"></select>
 </div>
+<div class="col-sm-6">
+  <label for="base_airport_id">Base airport</label>
+  <select class="form-control" id="base_airport_id" ng-model="ctrl.aircraft.base_airport_id" ng-options="airport.id as airport.name for airport in ctrl.airports"></select>
+</div>
 <div class="col-sm-6 form-colomn">
 	<label for="seating_capacity">Seating capacity</label>
 	<select ng-options="n for n in <%= (1..30).to_a.to_s %>" id="seating_capacity" class="form-control" ng-model="ctrl.aircraft.seating_capacity"></select>
