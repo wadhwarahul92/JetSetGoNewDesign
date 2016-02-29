@@ -10,4 +10,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def index
+
+  end
+
 end

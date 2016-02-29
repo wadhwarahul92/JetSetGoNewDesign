@@ -173,11 +173,12 @@ Rails.application.routes.draw do
     collection do
       get 'sign_in_modal'
       get 'sign_up_modal'
+      get 'index'
     end
   end
 
   #################
 
-  root 'jetsteals/welcome#index'
+  root 'welcome#index'
 
 end
