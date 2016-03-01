@@ -174,8 +174,11 @@ Rails.application.routes.draw do
       get 'sign_in_modal'
       get 'sign_up_modal'
       get 'index'
+      get 'search'
     end
   end
+
+  resources :searches
 
   #################
 

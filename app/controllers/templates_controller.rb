@@ -14,4 +14,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def search
+
+  end
+
 end

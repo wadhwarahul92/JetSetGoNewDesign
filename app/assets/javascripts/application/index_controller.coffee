@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', ($http, notify, AirportsService, $scope)->
+jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', ($http, notify, AirportsService, $scope, $location)->
 
   @activities = [{}]
 
@@ -42,9 +42,6 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     if index > 0
       @activities.splice index, 1
 
-  @setDepartureAirportId = (activity, departureAirport)->
-    console.log activity
-
   @validatedActivities = ->
     for activitiy in @activities
       unless activitiy.departure_airport
@@ -55,6 +52,16 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       unless activitiy.arrival_airport
         notify
           message: 'Arrival cannot be blank'
+          classes: ['alert-danger']
+        return false
+      unless activitiy.start_at
+        notify
+          message: 'Time cannot be blank.'
+          classes: ['alert-danger']
+        return false
+      unless activitiy.pax
+        notify
+          message: 'Pax cannot be blank.'
           classes: ['alert-danger']
         return false
     true
@@ -70,7 +77,18 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
         start_at: activity.start_at
         pax: activity.pax
       })
-    console.log _activities
+    $http.post('/searches.json', { activities: _activities }).success(
+      (data)->
+        $location.path("/searches/#{data.search_id}")
+    ).error(
+      (data)->
+        error = 'Something went wrong.'
+        try
+          error = data.errors[0]
+        notify
+          message: error
+          classes: ['alert-danger']
+    )
 
   return undefined
 ]

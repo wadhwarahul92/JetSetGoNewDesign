@@ -19,6 +19,7 @@
 //= require ./application/sign_up_controller
 //= require ./application/index_controller
 //= require ./application/airports_service
+//= require ./application/search_controller
 
 $(document).on('ready page:load', function(){
 
