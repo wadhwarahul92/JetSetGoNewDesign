@@ -14,27 +14,27 @@
     <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-hidden">
       <div class="col-lg-5 col-md-5 col-sm-5 header-icons-box">
         <ul class="inline-list logo_list">
-          <li>
+          <li uib-tooltip="Schedule" tooltip-placement="bottom">
             <%= link_to '/organisations', class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-calendar-check-o"></i>
             <%- end %>
           </li>
-          <li>
+          <li uib-tooltip="Aircraft" tooltip-placement="bottom">
             <%= link_to '/organisations/aircrafts', class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-plane"></i>
             <%- end %>
           </li>
-          <li>
+          <li uib-tooltip="Forum" tooltip-placement="bottom">
             <%= link_to organisations_forum_topics_path, class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-quote-left"></i>
             <%- end %>
           </li>
-          <li>
+          <li uib-tooltip="Unavailability" tooltip-placement="bottom">
             <%= link_to organisations_aircraft_unavailabilities_path, class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-lock"></i>
             <%- end %>
           </li>
-          <li>
+          <li uib-tooltip="Trip" tooltip-placement="bottom">
             <%= link_to organisations_trips_path, class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-rocket"></i>
             <%- end %>
