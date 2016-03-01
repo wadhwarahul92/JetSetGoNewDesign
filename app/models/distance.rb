@@ -9,8 +9,6 @@ class Distance < ActiveRecord::Base
   validates :to_airport_id, presence: true, uniqueness: {scope: :from_airport_id}
   validates :distance_in_nm, presence: true
   validates_numericality_of :distance_in_nm,
-  
-                          only_integer: true,
                           greater_than_or_equal_to: 0
 
   validate def check_from_and_to_differs
