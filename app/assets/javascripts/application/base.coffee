@@ -3,6 +3,7 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'cgNotify'
   'ui.bootstrap'
   'ngRoute'
+  'ui.bootstrap.datetimepicker'
 ]
 
 jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider)->

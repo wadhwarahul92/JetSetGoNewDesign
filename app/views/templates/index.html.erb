@@ -14,11 +14,28 @@
              typeahead-editable="false"
              typeahead-select-on-exact="true"
              typeahead-template-url="airportsTypeAhead.html"
-             ng-model="activity.departure_airport_id"
+             ng-model="activity.departure_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-             typeahead-input-formatter="match.model.id"
              type="text">
+      <input title="Arrival Airport"
+             placeholder="Arrival"
+             autocomplete="off"
+             typeahead-editable="false"
+             typeahead-select-on-exact="true"
+             typeahead-template-url="airportsTypeAhead.html"
+             ng-model="activity.arrival_airport_id"
+             uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+             type="text">
+      <div class="dropdown datetimepicker-holder">
+        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
+        </ul>
+      </div>
+      <input type="number" ng-model="activity.pax" placeholder="Pax">
+      <a href=""></a>
     </div>
     <a ng-click="ctrl.create()" href="">Search</a>
+    <a href="" ng-click="ctrl.addActivity()">Add Trip</a>
   </div>
 </div>

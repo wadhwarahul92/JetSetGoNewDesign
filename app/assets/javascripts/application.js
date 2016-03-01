@@ -11,6 +11,7 @@
 //= require ./vendors/angular-datetime-picker
 //= require ./vendors/angular-datetime-picker-template
 //= require ./vendors/underscore
+//= require ./vendors/angular-full-calendar
 //= require ./application/base
 //= require ./application/current_user_service
 //= require ./application/header_controller

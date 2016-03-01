@@ -9,6 +9,21 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @airports = AirportsService.airports
   )
 
+  @formatTime = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+    if data and data == 'Invalid date'
+      return 'Click to choose time'
+    else
+      return data
+
+  @addActivity = ->
+    @activities.push {}
+
+  @setDepartureAirportId = (activity, departureAirport)->
+    console.log activity
+
   @create = ->
     console.log @activities
 

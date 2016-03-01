@@ -3,6 +3,7 @@
  *= require ./vendors/bootstrap
  *= require ./vendors/loading-bar
  *= require ./vendors/hover-css
+ *= require ./vendors/angular-datetime-picker
  *= require_tree ./application
  *= require_self
  */
