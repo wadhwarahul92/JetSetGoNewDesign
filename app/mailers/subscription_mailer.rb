@@ -7,7 +7,7 @@ class SubscriptionMailer < ApplicationMailer
     @subscriber = subscriber
     mail = mail(
         to: subscriber.email,
-        subject: 'New Jetsteals™ available'
+        subject: 'New JetSteals™ available'
     )
     if subscriber.send_emails?
       mail
