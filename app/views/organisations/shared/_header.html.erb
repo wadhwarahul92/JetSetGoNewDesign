@@ -15,51 +15,21 @@
     <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-hidden">
       <div class="col-lg-5 col-md-5 col-sm-5 header-icons-box">
         <ul class="inline-list logo_list">
-<<<<<<< HEAD
           <li uib-tooltip="Schedule" tooltip-placement="bottom">
-            <%= link_to '/organisations', class: 'sidebar-link hvr-shrink' do %>
-                <i class="fa fa-calendar-check-o"></i>
-            <%- end %>
+            <%= link_to('', organisations_path, {id: "jet_link", class: 'sidebar-link hvr-shrink main_link schedule-icon'}) %>
           </li>
           <li uib-tooltip="Aircraft" tooltip-placement="bottom">
-            <%= link_to '/organisations/aircrafts', class: 'sidebar-link hvr-shrink' do %>
-                <i class="fa fa-plane"></i>
-            <%- end %>
+            <%= link_to('', organisations_aircrafts_path, {id: "jetsteal_link", class: 'sidebar-link hvr-shrink main_link aircraft-icon'}) %>
           </li>
           <li uib-tooltip="Forum" tooltip-placement="bottom">
-            <%= link_to organisations_forum_topics_path, class: 'sidebar-link hvr-shrink' do %>
-                <i class="fa fa-quote-left"></i>
-            <%- end %>
+            <%= link_to('', organisations_forum_topics_path, {id: "experiences_link", class: 'sidebar-link hvr-shrink main_link forum-icon'}) %>
           </li>
           <li uib-tooltip="Unavailability" tooltip-placement="bottom">
-            <%= link_to organisations_aircraft_unavailabilities_path, class: 'sidebar-link hvr-shrink' do %>
-                <i class="fa fa-lock"></i>
-            <%- end %>
+            <%= link_to('', organisations_aircraft_unavailabilities_path, {id: "multi_trip_link", class: 'sidebar-link hvr-shrink main_link unavailibility-icon'}) %>
           </li>
           <li uib-tooltip="Trip" tooltip-placement="bottom">
-            <%= link_to organisations_trips_path, class: 'sidebar-link hvr-shrink' do %>
-                <i class="fa fa-rocket"></i>
-            <%- end %>
-=======
-          <li>
-            <a ng-class="ctrl.icon_active" class="schedule-icon" id="jet_link" href="/organisations"></a>
+            <%= link_to('', organisations_trips_path, {id: "rescue_link", class: 'sidebar-link hvr-shrink main_link trips-icon'}) %>
           </li>
-          <li>
-            <a class="main_link aircraft-icon" id="jetsteal_link" href="/organisations/aircrafts"></a>
-          </li>
-          <li>
-            <a class="main_link forum-icon" id="experiences_link" href="/organisations/forum_topics"></a>
-          </li>
-          <li>
-            <a class="main_link unavailibility-icon" id="multi_trip_link" href="/organisations/aircraft_unavailabilities"></a>
-          </li>
-          <li>
-            <a class="main_link trips-icon" id="rescue_link" href="/organisations/trips"></a>
->>>>>>> origin/122_ui_issues_on_header
-          </li>
-          <!--<li>-->
-          <!--<a class="main_link" id="jetsetcars_link" href="http://jetsetgo.in?current_page=jetsetcars"></a>-->
-          <!--</li>-->
           <div class="clearfix"></div>
         </ul>
       </div>
