@@ -33,7 +33,7 @@
         </ul>
       </div>
       <input type="number" ng-model="activity.pax" placeholder="Pax">
-      <a href=""></a>
+      <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
     </div>
     <a ng-click="ctrl.create()" href="">Search</a>
     <a href="" ng-click="ctrl.addActivity()">Add Trip</a>

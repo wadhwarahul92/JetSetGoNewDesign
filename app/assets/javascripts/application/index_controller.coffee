@@ -21,6 +21,10 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @addActivity = ->
     @activities.push {}
 
+  @removeActivity = (index)->
+    if index > 0
+      @activities.splice index, 1
+
   @setDepartureAirportId = (activity, departureAirport)->
     console.log activity
 
