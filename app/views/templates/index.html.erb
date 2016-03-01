@@ -23,7 +23,7 @@
              typeahead-editable="false"
              typeahead-select-on-exact="true"
              typeahead-template-url="airportsTypeAhead.html"
-             ng-model="activity.arrival_airport_id"
+             ng-model="activity.arrival_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
       <div class="dropdown datetimepicker-holder">

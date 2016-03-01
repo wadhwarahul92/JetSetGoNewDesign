@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.respond_to?(:admin?) and resource_or_scope.admin?
       admin_path
     else
-      params[:redirect_to] ||  root_path
+      params[:redirect_to] || root_path
     end
   end
 

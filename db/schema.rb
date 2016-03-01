@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229090646) do
+ActiveRecord::Schema.define(version: 20160301091733) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",          limit: 4
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20160229090646) do
   create_table "aircrafts", force: :cascade do |t|
     t.string   "tail_number",                  limit: 255
     t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "seating_capacity",             limit: 4
     t.integer  "baggage_capacity_in_kg",       limit: 4
     t.integer  "landing_field_length_in_feet", limit: 4
@@ -84,15 +84,14 @@ ActiveRecord::Schema.define(version: 20160229090646) do
     t.integer  "crew",                         limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                              default: false
-    t.text     "svg",                          limit: 16777215
+    t.boolean  "flight_attendant",                         default: false
     t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                                  default: false
+    t.boolean  "medical_evac",                             default: false
     t.float    "cruise_speed_in_nm_per_hour",  limit: 24
     t.float    "flying_range_in_nm",           limit: 24
     t.float    "per_hour_cost",                limit: 24
     t.float    "catering_cost_per_pax",        limit: 24
-    t.boolean  "admin_verified",                                default: false
+    t.boolean  "admin_verified",                           default: false
     t.integer  "organisation_id",              limit: 4
     t.integer  "base_airport_id",              limit: 4
   end
@@ -248,89 +247,26 @@ ActiveRecord::Schema.define(version: 20160229090646) do
     t.string   "billing_country",    limit: 255
   end
 
-  create_table "rpush_apps", force: :cascade do |t|
-    t.string   "name",                    limit: 255,               null: false
-    t.string   "environment",             limit: 255
-    t.text     "certificate",             limit: 65535
-    t.string   "password",                limit: 255
-    t.integer  "connections",             limit: 4,     default: 1, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "type",                    limit: 255,               null: false
-    t.string   "auth_key",                limit: 255
-    t.string   "client_id",               limit: 255
-    t.string   "client_secret",           limit: 255
-    t.string   "access_token",            limit: 255
-    t.datetime "access_token_expiration"
+  create_table "search_activities", force: :cascade do |t|
+    t.integer  "search_id",            limit: 4
+    t.integer  "departure_airport_id", limit: 4
+    t.integer  "arrival_airport_id",   limit: 4
+    t.datetime "start_at"
+    t.integer  "pax",                  limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
-  create_table "rpush_feedback", force: :cascade do |t|
-    t.string   "device_token", limit: 64, null: false
-    t.datetime "failed_at",               null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "app_id",       limit: 4
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token", using: :btree
-
-  create_table "rpush_notifications", force: :cascade do |t|
-    t.integer  "badge",             limit: 4
-    t.string   "device_token",      limit: 64
-    t.string   "sound",             limit: 255,      default: "default"
-    t.text     "alert",             limit: 65535
-    t.text     "data",              limit: 65535
-    t.integer  "expiry",            limit: 4,        default: 86400
-    t.boolean  "delivered",                          default: false,     null: false
-    t.datetime "delivered_at"
-    t.boolean  "failed",                             default: false,     null: false
-    t.datetime "failed_at"
-    t.integer  "error_code",        limit: 4
-    t.text     "error_description", limit: 65535
-    t.datetime "deliver_after"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "alert_is_json",                      default: false
-    t.string   "type",              limit: 255,                          null: false
-    t.string   "collapse_key",      limit: 255
-    t.boolean  "delay_while_idle",                   default: false,     null: false
-    t.text     "registration_ids",  limit: 16777215
-    t.integer  "app_id",            limit: 4,                            null: false
-    t.integer  "retries",           limit: 4,        default: 0
-    t.string   "uri",               limit: 255
-    t.datetime "fail_after"
-    t.boolean  "processing",                         default: false,     null: false
-    t.integer  "priority",          limit: 4
-    t.text     "url_args",          limit: 65535
-    t.string   "category",          limit: 255
-    t.boolean  "content_available",                  default: false
-    t.text     "notification",      limit: 65535
-  end
-
-  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
-  add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.integer  "organisation_id", limit: 4
     t.string   "status",          limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-  end
-
-  create_table "user_search_activities", force: :cascade do |t|
-    t.integer  "departure_city_id", limit: 4
-    t.integer  "arrival_city_id",   limit: 4
-    t.datetime "start_at"
-    t.integer  "pax",               limit: 4
-    t.integer  "user_search_id",    limit: 4
-    t.integer  "search_index",      limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  create_table "user_searches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
