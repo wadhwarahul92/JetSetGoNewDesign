@@ -8,12 +8,14 @@
         <span class="icon-bar"></span>
       </button>
     </div>
+    <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">
       <a class="logo-img" href="/organisations"><img class="" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>
     </div>
     <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-hidden">
       <div class="col-lg-5 col-md-5 col-sm-5 header-icons-box">
         <ul class="inline-list logo_list">
+<<<<<<< HEAD
           <li uib-tooltip="Schedule" tooltip-placement="bottom">
             <%= link_to '/organisations', class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-calendar-check-o"></i>
@@ -38,6 +40,22 @@
             <%= link_to organisations_trips_path, class: 'sidebar-link hvr-shrink' do %>
                 <i class="fa fa-rocket"></i>
             <%- end %>
+=======
+          <li>
+            <a ng-class="ctrl.icon_active" class="schedule-icon" id="jet_link" href="/organisations"></a>
+          </li>
+          <li>
+            <a class="main_link aircraft-icon" id="jetsteal_link" href="/organisations/aircrafts"></a>
+          </li>
+          <li>
+            <a class="main_link forum-icon" id="experiences_link" href="/organisations/forum_topics"></a>
+          </li>
+          <li>
+            <a class="main_link unavailibility-icon" id="multi_trip_link" href="/organisations/aircraft_unavailabilities"></a>
+          </li>
+          <li>
+            <a class="main_link trips-icon" id="rescue_link" href="/organisations/trips"></a>
+>>>>>>> origin/122_ui_issues_on_header
           </li>
           <!--<li>-->
           <!--<a class="main_link" id="jetsetcars_link" href="http://jetsetgo.in?current_page=jetsetcars"></a>-->
@@ -77,6 +95,7 @@
         </ul>
       </div>
       <div class="clearfix"></div>
+    </div>
     </div>
   </div>
 </nav>
