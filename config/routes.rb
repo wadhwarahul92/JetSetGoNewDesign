@@ -175,6 +175,7 @@ Rails.application.routes.draw do
       get 'sign_up_modal'
       get 'index'
       get 'search'
+      get 'about_us'
     end
   end
 
@@ -186,6 +187,11 @@ Rails.application.routes.draw do
   post 'aircrafts' => 'aircrafts#index'
 
   #################
+
+  ########
+  #Overridden routes for angular js
+  #########
+  get 'about_us' => 'route_overrides#welcome_index'
 
   root 'welcome#index'
 

@@ -33,6 +33,8 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
     templateUrl: '/templates/search'
     controller: 'SearchController'
     controllerAs: 'ctrl'
+  }).when('/about_us', {
+    templateUrl: '/templates/about_us'
   })
 
   $locationProvider.html5Mode(true)
