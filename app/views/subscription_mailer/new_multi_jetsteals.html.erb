@@ -1,0 +1,154 @@
+<tr>
+  <td class="one-column">
+    <table width="100%">
+      <tr>
+        <td class="inner contents">
+          <% # for emails that dont have any names, this is ported from last system %>
+          <% if @subscriber.name == 'placeholder' or @subscriber.phone == '9999999999' %>
+          <%- else %>
+              <p class="h1">Dear <%= @subscriber.name %>,</p>
+          <%- end %>
+          <p>We have an exciting JetSteals™ available on your requested sectors so we thought of you. Details are as follows:</p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<% @jetsteals.each_slice(2) do |first, second| %>
+    <tr>
+      <td class="two-column">
+        <!--[if (gte mso 9)|(IE)]>
+        <table width="100%">
+          <tr>
+            <td width="50%" valign="top">
+        <![endif]-->
+        <div class="column">
+          <table width="100%">
+            <tr>
+              <td class="inner">
+                <table class="contents" style="padding: 5px;border: 1px solid lightblue;border-radius: 2px;">
+                  <tr>
+                    <td>
+                      <img src="<%= first.aircraft.aircraft_images.first.image.url(:size_250x250) %>" width="280" alt="" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text">
+                      <table style="width: 100%">
+                        <tr>
+                         <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightblue;" ><small style="font-size: 16px;"><%= first.aircraft.aircraft_type.name %></small></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text" style="border-bottom: 1px dashed lightblue; padding-bottom: 10px;">
+                      <table style="width: 100%">
+                        <tr>
+                          <td style="text-align: center" ><img style="width: 50px" src="<%= first.departure_airport.city.image.url(:original) %>" width="50" alt=""></td>
+                          <td style="text-align: center"><img style="width: 28px" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/071/original/grey_icon.png?1456907367" width="28" alt=""></td>
+                          <td style="text-align: center" ><img style="width: 50px" src="<%= first.arrival_airport.city.image.url(:original) %>" width="50" alt=""></td>
+                          <td style="text-align: center" ><small><%= first.end_at.strftime('%d %b %Y, %I:%M %p') %></small></td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center; color: #3D769A;" ><small><%= first.departure_airport.city.name %></small></td>
+                          <td style="text-align: center"><small></small></td>
+                          <td style="text-align: center; color: #3D769A;" ><small><%= first.arrival_airport.city.name %></small></td>
+                          <td style="text-align: center" ><strong style="color: #3D769A;">Starting @ </strong>INR <%= first.sell_by_seats? ? first.min_seat_cost : first.cost %></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="one-column">
+                      <table width="100%">
+                        <tr>
+                          <td class="inner contents">
+                            <div style="text-align: center"><%= link_to('Book', 'www.j.jetsetgo.in', {class: 'btn-small-blue'})%></div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!--[if (gte mso 9)|(IE)]>
+        </td><td width="50%" valign="top">
+        <![endif]-->
+        <div class="column">
+          <table width="100%">
+            <tr>
+              <td class="inner">
+                <% if second.present? %>
+                    <table class="contents" style="padding: 5px;border: 1px solid lightblue;border-radius: 2px;">
+                      <tr>
+                        <td>
+                          <img src="<%= second.aircraft.aircraft_images.first.image.url(:size_250x250) %>" width="280" alt="" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text">
+                          <table style="width: 100%">
+                            <tr>
+                              <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightblue;" ><small style="font-size: 16px;"><%= second.aircraft.aircraft_type.name %></small></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text" style=" border-bottom: 1px dashed lightblue; padding-bottom: 10px;">
+                          <table style="width: 100%">
+                            <tr>
+                              <td style="text-align: center" ><img style="width: 50px" src="<%= second.departure_airport.city.image.url(:original) %>" width="50" alt=""></td>
+                              <td style="text-align: center"><img style="width: 28px" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/071/original/grey_icon.png?1456907367" width="28" alt=""></td>
+                              <td style="text-align: center" ><img style="width: 50px" src="<%= second.arrival_airport.city.image.url(:original) %>" width="50" alt=""></td>
+                              <td style="text-align: center" ><small><%= second.end_at.strftime('%d %b %Y, %I:%M %p') %></small></td>
+                            </tr>
+                            <tr>
+                              <td style="text-align: center; color: #3D769A;" ><small><%= second.departure_airport.city.name %></small></td>
+                              <td style="text-align: center"><small></small></td>
+                              <td style="text-align: center; color: #3D769A;" ><small><%= second.arrival_airport.city.name %></small></td>
+                              <td style="text-align: center" ><strong style="color: #3D769A;">Starting @ </strong>INR <%= second.sell_by_seats? ? second.min_seat_cost : second.cost %></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="one-column">
+                          <table width="100%">
+                            <tr>
+                              <td class="inner contents">
+                                <div style="text-align: center"><%= link_to('Book', 'www.j.jetsetgo.in', {class: 'btn-small-blue'})%></div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                <%- end %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!--[if (gte mso 9)|(IE)]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+      </td>
+    </tr>
+<%- end %>
+<tr>
+  <td class="one-column">
+    <table width="100%">
+      <tr>
+        <td class="inner contents">
+          <p style="text-align: center"><small>Don't want to receive these emails? <a href="<%= HOST_URL_FOR_MAILER %>/jetsteal_subscriptions/<%= @subscriber.id %>/unsubscribe">unsubscribe</a></small></p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
