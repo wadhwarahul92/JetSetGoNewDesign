@@ -42,6 +42,7 @@ class SearchAlgorithm
 
     #########################
     # add initial ferry flight
+    # And, landing cost at arrival airport
     #########################
     unless search_activities.first.departure_airport == aircraft.base_airport
       plan << {
@@ -49,7 +50,9 @@ class SearchAlgorithm
           arrival_airport_id: search_activities.first.departure_airport.id,
           flight_type: 'ferry',
           start_at: search_activities.first.start_at - 45.minutes - aircraft.flight_time_in_hours_for(aircraft.base_airport, search_activities.first.departure_airport).hours ,
-          end_at: search_activities.first.start_at - 45.minutes
+          end_at: search_activities.first.start_at - 45.minutes,
+          landing_cost_at_arrival: search_activities.first.departure_airport.landing_cost,
+          handling_cost_at_takeoff: aircraft.base_airport.handling_cost
       }
     end
 
@@ -62,7 +65,9 @@ class SearchAlgorithm
           arrival_airport_id: search_activity.arrival_airport.id,
           flight_type: 'user_search',
           start_at: search_activity.start_at,
-          end_at: search_activity.start_at + aircraft.flight_time_in_hours_for(search_activity.departure_airport, search_activity.arrival_airport).hours
+          end_at: search_activity.start_at + aircraft.flight_time_in_hours_for(search_activity.departure_airport, search_activity.arrival_airport).hours,
+          landing_cost_at_arrival: search_activity.arrival_airport.landing_cost,
+          handling_cost_at_takeoff: search_activity.departure_airport.handling_cost
       }
     end
 
@@ -75,7 +80,9 @@ class SearchAlgorithm
           arrival_airport_id: aircraft.base_airport.id,
           flight_type: 'ferry',
           start_at: plan.last[:end_at] + 45.minutes,
-          end_at: plan.last[:end_at] + 45.minutes + aircraft.flight_time_in_hours_for(search_activities.last.arrival_airport, aircraft.base_airport).hours
+          end_at: plan.last[:end_at] + 45.minutes + aircraft.flight_time_in_hours_for(search_activities.last.arrival_airport, aircraft.base_airport).hours,
+          landing_cost_at_arrival: aircraft.base_airport.landing_cost,
+          handling_cost_at_takeoff: search_activities.last.arrival_airport.handling_cost
       }
     end
 

@@ -180,6 +180,11 @@ Rails.application.routes.draw do
 
   resources :searches
 
+  ######
+  # GET aircrafts for ids
+  ######
+  post 'aircrafts' => 'aircrafts#index'
+
   #################
 
   root 'welcome#index'
