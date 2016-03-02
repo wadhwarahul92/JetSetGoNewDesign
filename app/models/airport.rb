@@ -52,4 +52,12 @@ class Airport < ActiveRecord::Base
     end
   end
 
+  #####################################
+  # Every airport has one handling cost
+  #####################################
+  def handling_cost
+    # todo this is a stub, implement this
+    rand(20000..50000)
+  end
+
 end

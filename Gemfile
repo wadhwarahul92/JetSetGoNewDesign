@@ -93,3 +93,5 @@ gem 'foundation-rails'
 gem 'slim-rails' #todo remove this and convert all slim files to erb
 
 gem 'rmagick'
+
+gem 'time_difference'

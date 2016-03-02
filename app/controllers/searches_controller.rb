@@ -31,6 +31,9 @@ class SearchesController < ApplicationController
   def show
     if request.format == 'text/html'
       render template: 'welcome/index', layout: 'application'
+    elsif request.format == 'application/json'
+      @results = SearchAlgorithm.new(params[:id]).results
+      render status: :ok, json: @results.to_json
     end
   end
 
