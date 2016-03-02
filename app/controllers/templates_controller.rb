@@ -10,4 +10,12 @@ class TemplatesController < ApplicationController
 
   end
 
+  def index
+
+  end
+
+  def search
+
+  end
+
 end

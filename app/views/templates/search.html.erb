@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-3">
+
+  </div>
+  <div class="col-sm-9">
+    <div style="border: 1px solid lightgray" class="margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+      <img ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">
+      <ul class="list-unstyled">
+        <li><h4>{{result.aircraft.tail_number}}, {{result.aircraft.aircraft_type.name}}</h4></li>
+        <li>Baggage capacity: {{result.aircraft.baggage_capacity_in_kg}} Kg</li>
+        <li ng-repeat="flight_plan in result.flight_plan">
+          <h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>to</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</h4>
+          <div>Flying cost: <i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"" | indianCurrency}}</div>
+          <div>Handling cost at {{ctrl.airportForId(flight_plan.departure_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>
+          <div>Landing cost at {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival}}</div>
+        </li>
+      </ul>
+      <h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"" | indianCurrency}}</h4>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<script type="text/ng-template" id="airportsTypeAhead.html">
+  <a>
+    <img src="" style="height: 50px;" ng-src="{{match.model.city.image}}">
+    <span ng-bind-html="match.model.label | uibTypeaheadHighlight:query"></span>
+  </a>
+</script>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div ng-repeat="activity in ctrl.activities">
+      <input title="Departure Airport"
+             placeholder="Departure"
+             autocomplete="off"
+             typeahead-editable="false"
+             typeahead-select-on-exact="true"
+             typeahead-template-url="airportsTypeAhead.html"
+             ng-model="activity.departure_airport"
+             uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+             type="text">
+      <input title="Arrival Airport"
+             placeholder="Arrival"
+             autocomplete="off"
+             typeahead-editable="false"
+             typeahead-select-on-exact="true"
+             typeahead-template-url="airportsTypeAhead.html"
+             ng-model="activity.arrival_airport"
+             uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+             type="text">
+      <div class="dropdown datetimepicker-holder">
+        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
+        </ul>
+      </div>
+      <input type="number" ng-model="activity.pax" placeholder="Pax">
+      <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
+    </div>
+    <a ng-click="ctrl.create()" href="">Search</a>
+    <a href="" ng-click="ctrl.addActivity()">Add Trip</a>
+  </div>
+</div>

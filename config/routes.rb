@@ -173,11 +173,20 @@ Rails.application.routes.draw do
     collection do
       get 'sign_in_modal'
       get 'sign_up_modal'
+      get 'index'
+      get 'search'
     end
   end
 
+  resources :searches
+
+  ######
+  # GET aircrafts for ids
+  ######
+  post 'aircrafts' => 'aircrafts#index'
+
   #################
 
-  root 'jetsteals/welcome#index'
+  root 'welcome#index'
 
 end

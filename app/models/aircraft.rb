@@ -73,6 +73,12 @@ class Aircraft < ActiveRecord::Base
     has_atleast_one_image? and self.admin_verified?
   end
 
+  # @param [Airport] departure_airport
+  # @param [Airport] arrival_airport
+  def flight_time_in_hours_for(departure_airport, arrival_airport)
+    departure_airport.distance_to(arrival_airport) / self.cruise_speed_in_nm_per_hour
+  end
+
   private
 
   def has_atleast_one_image?
