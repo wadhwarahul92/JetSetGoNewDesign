@@ -14,32 +14,32 @@ class LatestJetstealImage
 
   def draw(cache = true)
 
-    ###############################
-    # Check if jetsteal is sold out
-    ###############################
-    # l = @jetsteal
-    # if l.sell_by_seats?
-    #   a = l.jetsteal_seats.map{ |s|  s.locked? or s.disabled? or s.booked? }
-    #   unless a.index(false)
-    #     # final << l
-    #     l.sold_out = true
-    #   end
-    # else
-    #   a = l.jetsteal_seats.map{ |s| s.booked? }
-    #   if a.index(true)
-    #     # final << l
-    #     l.sold_out = true
-    #   end
-    # end
-    # if l.sold_out
-    #   url = "#{Rails.root}/tmp/single_pixel_image.png"
-    #   return url if File.file?(url)
-    #   canvas = Magick::ImageList.new
-    #   canvas.new_image(1, 1)
-    #   canvas.write(url)
-    #   return url
-    # end
-    ##################################
+    ##############################
+    Check if jetsteal is sold out
+    ##############################
+    l = @jetsteal
+    if l.sell_by_seats?
+      a = l.jetsteal_seats.map{ |s|  s.locked? or s.disabled? or s.booked? }
+      unless a.index(false)
+        # final << l
+        l.sold_out = true
+      end
+    else
+      a = l.jetsteal_seats.map{ |s| s.booked? }
+      if a.index(true)
+        # final << l
+        l.sold_out = true
+      end
+    end
+    if l.sold_out
+      url = "#{Rails.root}/tmp/single_pixel_image.png"
+      return url if File.file?(url)
+      canvas = Magick::ImageList.new
+      canvas.new_image(1, 1)
+      canvas.write(url)
+      return url
+    end
+    #################################
 
     url = "#{Rails.root}/tmp/jetsteal_popularity_footer#{@jetsteal.id}.png"
 
