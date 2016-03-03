@@ -48,7 +48,7 @@ class SearchAlgorithm
       plan << {
           departure_airport_id: aircraft.base_airport.id,
           arrival_airport_id: search_activities.first.departure_airport.id,
-          flight_type: 'ferry',
+          flight_type: 'empty_leg',
           start_at: search_activities.first.start_at - 45.minutes - aircraft.flight_time_in_hours_for(aircraft.base_airport, search_activities.first.departure_airport).hours ,
           end_at: search_activities.first.start_at - 45.minutes,
           landing_cost_at_arrival: search_activities.first.departure_airport.landing_cost,
@@ -78,7 +78,7 @@ class SearchAlgorithm
       plan << {
           departure_airport_id: search_activities.last.arrival_airport.id,
           arrival_airport_id: aircraft.base_airport.id,
-          flight_type: 'ferry',
+          flight_type: 'empty_leg',
           start_at: plan.last[:end_at] + 45.minutes,
           end_at: plan.last[:end_at] + 45.minutes + aircraft.flight_time_in_hours_for(search_activities.last.arrival_airport, aircraft.base_airport).hours,
           landing_cost_at_arrival: aircraft.base_airport.landing_cost,
