@@ -6656,9 +6656,9 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
 
 angular.module("uib/template/accordion/accordion-group.html", []).run(["$templateCache", function($templateCache) {
     $templateCache.put("uib/template/accordion/accordion-group.html",
-        "<div class=\"panel\" ng-click=\"toggleOpen()\" style=\"cursor:pointer;\" ng-class=\"panelClass || 'panel-default'\">\n" +
+        "<div class=\"panel\" ng-class=\"panelClass || 'panel-default'\">\n" +
         "  <div role=\"tab\" id=\"{{::headingId}}\" aria-selected=\"{{isOpen}}\" class=\"panel-heading\" ng-keypress=\"toggleOpen($event)\">\n" +
-        "    <h4 class=\"panel-title\">\n" +
+        "    <h4 style=\"cursor:pointer;\" ng-click=\"toggleOpen()\" class=\"panel-title\">\n" +
         "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\"  uib-accordion-transclude=\"heading\"><span ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
         "        <i ng-show=\"!isOpen\" class=\"fa fa-arrow-circle-down pull-right \"></i>" +
         "        <i ng-show=\"isOpen\" class=\"fa fa-arrow-circle-up pull-right \"></i>" +

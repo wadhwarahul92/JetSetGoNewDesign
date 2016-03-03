@@ -602,6 +602,27 @@ input#phone{
 }
 
 /*changes Rahul 27-2-2016*/
+.organisation-main-icon{
+  width: 41px;
+  height: 33px;
+  display: inline-block;
+  background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/070/original/organisation-header-icons.png?1456731998);
+}
+.schedule-icon{
+  background-position: -2px 3px;
+}
+.aircraft-icon{
+  background-position: -74px 3px;
+}
+.forum-icon{
+  background-position: -142px 3px;
+}
+.unavailibility-icon{
+  background-position: -208px 3px;
+}
+.trips-icon{
+  background-position: -274px 3px;
+}
 
 @media(max-width:1060px){
   #header{
