@@ -15,7 +15,7 @@ class LatestJetstealImage
   def draw(cache = true)
 
     ##############################
-    Check if jetsteal is sold out
+    # Check if jetsteal is sold out
     ##############################
     l = @jetsteal
     if l.sell_by_seats?
