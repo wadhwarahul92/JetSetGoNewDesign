@@ -8,7 +8,7 @@ class SearchAlgorithm
   def results
     find_aircrafts
     make_results
-    make_intermediate_actvities
+    make_intermediate_activities
     @results
   end
 
@@ -102,7 +102,7 @@ class SearchAlgorithm
 
   end
 
-  def make_intermediate_actvities
+  def make_intermediate_activities
 
     @results.each do |result|
 
