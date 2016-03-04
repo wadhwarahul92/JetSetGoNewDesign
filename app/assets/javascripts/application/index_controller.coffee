@@ -14,6 +14,30 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @airports = []
 
+  @onSetTime = (newDate, oldDate, index)->
+    if index + 1 == @activities.length
+      #do nothing
+    else
+      alert 'cannot change date'
+      @activities[index].start_at  = oldDate
+
+  @beforeRenderDate = (view, dates, leftDate, upDate, rightDate, index)->
+    activeDate = null
+    if index > 0
+      previous_activity = @activities[index-1]
+      time = previous_activity.start_at
+      if time
+        activeDate = moment(time)
+        for date in dates
+          if date.localDateValue() <= activeDate.valueOf()
+            date.selectable = false
+    else
+      activeDate = moment(new Date())
+      for _date in dates
+        if _date.localDateValue() <= activeDate.valueOf()
+          _date.selectable = false
+
+
   @formatActivities = ->
     previous = null
     for activity in @activities
@@ -36,6 +60,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       return data
 
   @addActivity = ->
+    return unless @validatedActivities()
     @activities.push {}
 
   @removeActivity = (index)->
@@ -43,23 +68,28 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @activities.splice index, 1
 
   @validatedActivities = ->
-    for activitiy in @activities
-      unless activitiy.departure_airport
+    for activity in @activities
+      unless activity.departure_airport
         notify
           message: 'Departure cannot be blank.'
           classes: ['alert-danger']
         return false
-      unless activitiy.arrival_airport
+      unless activity.arrival_airport
         notify
           message: 'Arrival cannot be blank'
           classes: ['alert-danger']
         return false
-      unless activitiy.start_at
+      if activity.departure_airport == activity.arrival_airport
+        notify
+          message: 'Departure cannot be same as Arrival.'
+          classes: ['alert-danger']
+        return false
+      unless activity.start_at
         notify
           message: 'Time cannot be blank.'
           classes: ['alert-danger']
         return false
-      unless activitiy.pax
+      unless activity.pax
         notify
           message: 'Pax cannot be blank.'
           classes: ['alert-danger']
