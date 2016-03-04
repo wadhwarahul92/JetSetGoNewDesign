@@ -9,20 +9,24 @@
         <li><h4>{{result.aircraft.tail_number}}, {{result.aircraft.aircraft_type.name}}</h4></li>
         <li>Baggage capacity: {{result.aircraft.baggage_capacity_in_kg}} Kg</li>
         <li ng-repeat="flight_plan in result.flight_plan">
-          <h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>to</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</h4>
+          <h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>to</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}} </h4>
+          <div>{{ctrl.formatTime(flight_plan.start_at)}} --> {{ctrl.formatTime(flight_plan.end_at)}}</div>
           <div>Flying cost: <i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"" | indianCurrency}}</div>
           <div>Handling cost at {{ctrl.airportForId(flight_plan.departure_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>
           <div>Landing cost at {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival}}</div>
-          <div style="background-color: lightgray" ng-show="flight_plan.accommodation_plan">
+          <div style="background-color: lightgray;cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
+            <h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>
             Accommodation At: {{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}
             <br>
             Cost: <i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}
             <br>
             Nights: {{ flight_plan.accommodation_plan.nights }}
           </div>
-          <div style="background-color: yellow" ng-show="flight_plan.empty_leg_plan">
+          <div style="background-color: yellow; cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
+            <h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>
             <div style="border: 1px solid lightgray" ng-repeat="empty_leg in flight_plan.empty_leg_plan">
               <div>{{ ctrl.airportForId(empty_leg.departure_airport_id).name }} <strong>to</strong> {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</div>
+              <div>{{ ctrl.formatTime(empty_leg.start_at) }} --> {{ ctrl.formatTime(empty_leg.end_at) }}</div>
               <div>Flying cost: <i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</div>
               <div>Handling cost at {{ ctrl.airportForId(empty_leg.departure_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}} </div>
               <div>Landing cost at {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}} </div>
@@ -30,7 +34,7 @@
           </div>
         </li>
       </ul>
-      <h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"" | indianCurrency}}</h4>
+      <h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
     </div>
   </div>
 </div>

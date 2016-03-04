@@ -30,7 +30,7 @@ class SearchAlgorithm
 
       @results << {
           aircraft_id: aircraft.id,
-          flight_plan: flight_plan(aircraft)
+          flight_plan: flight_plan(aircraft),
       }
 
     end
@@ -61,6 +61,7 @@ class SearchAlgorithm
     # add plans for all user search activities
     ##########################################
     search_activities.each do |search_activity|
+      # noinspection RubyResolve
       plan << {
           departure_airport_id: search_activity.departure_airport.id,
           arrival_airport_id: search_activity.arrival_airport.id,
@@ -107,7 +108,7 @@ class SearchAlgorithm
 
       previous_plan = nil
 
-      result[:flight_plan].each_with_index do |plan, plan_index|
+      result[:flight_plan].each do |plan|
 
         if previous_plan.present?
 
@@ -124,6 +125,8 @@ class SearchAlgorithm
                 nights: nights,
                 cost: Airport.find(previous_plan[:arrival_airport_id]).accommodation_cost(nights)
             }
+
+            previous_plan[:chosen_intermediate_plan] = 'accommodation_plan'
 
           end
 
@@ -159,6 +162,8 @@ class SearchAlgorithm
                       flight_cost: aircraft.flight_time_in_hours_for(departure_airport, arrival_airport).hours * aircraft.per_hour_cost
                   }
               ]
+
+              previous_plan[:chosen_intermediate_plan] = 'empty_leg_plan'
 
             end
 
