@@ -52,12 +52,22 @@ class Airport < ActiveRecord::Base
     end
   end
 
-  #####################################
-  # Every airport has one handling cost
-  #####################################
+  ######################################################################
+  # Description: It calculates the handling cost at an airport
+  # @return [Float]
+  ######################################################################
   def handling_cost
     # todo this is a stub, implement this
     rand(20000..50000)
+  end
+
+  ######################################################################
+  # Description: It calculates the accommodation cost at an airport for given nights
+  # @param [Integer] nights
+  # @return [Float] cost
+  ######################################################################
+  def accommodation_cost(nights)
+    City::TIER_ACCOMMODATION_COST[self.city.accomodation_category.to_sym] * nights
   end
 
 end
