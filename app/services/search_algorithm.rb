@@ -39,10 +39,10 @@ class SearchAlgorithm
     airport_ids = ( @search_activities.map(&:departure_airport_id) + @search_activities.map(&:arrival_airport_id) + candidate_aircrafts_base_airport_ids ).uniq
 
     puts '==== Loading Airports'
-    @airports = Airport.where(id: airport_ids)
+    @airports = Airport.where(id: airport_ids).to_a
 
     puts '==== Loading Distances'
-    @distances = Distance.where(from_airport_id: @airports.map(&:id), to_airport_id: @airports.map(&:id))
+    @distances = Distance.where(from_airport_id: @airports.map(&:id), to_airport_id: @airports.map(&:id)).to_a
 
   end
 
@@ -210,7 +210,7 @@ class SearchAlgorithm
   def aircraft_for_id(id)
     @aircrafts_map ||= {}
     return @aircrafts_map[id] if @aircrafts_map[id].present?
-    @aircrafts_map[id] = @aircrafts.find(id)
+    @aircrafts_map[id] = @aircrafts.detect{ |aircraft| aircraft.id == id }
     @aircrafts_map[id]
   end
   
@@ -222,7 +222,7 @@ class SearchAlgorithm
   def base_airport(aircraft)
     @base_airport_map ||= {}
     return @base_airport_map[aircraft.id] if @base_airport_map[aircraft.id].present?
-    @base_airport_map[aircraft.id] = @airports.find(aircraft.base_airport_id)
+    @base_airport_map[aircraft.id] = @airports.detect{ |airport| airport.id == aircraft.base_airport_id }
     @base_airport_map[aircraft.id]
   end
   
@@ -234,7 +234,7 @@ class SearchAlgorithm
   def airport_for_id(id)
     @airport_id_map ||= {}
     return @airport_id_map[id] if @airport_id_map[id].present?
-    @airport_id_map[id] = @airports.find(id)
+    @airport_id_map[id] = @airports.detect{ |airport| airport.id == id }
     @airport_id_map[id]
   end
 
@@ -247,10 +247,7 @@ class SearchAlgorithm
   def airport_distance_in_nm(departure_airport, arrival_airport)
     @distance_map ||= {}
     return @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] if @distance_map["#{departure_airport.id}-#{arrival_airport.id}"].present?
-    @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] = @distances.where(
-        from_airport_id: departure_airport.id,
-        to_airport_id: arrival_airport.id
-    ).first.distance_in_nm
+    @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] = @distances.detect{ |distance| distance.from_airport_id == departure_airport.id and distance.to_airport_id == arrival_airport.id }.distance_in_nm
     @distance_map["#{departure_airport.id}-#{arrival_airport.id}"]
   end
 
