@@ -21,6 +21,7 @@
   <div class="col-sm-12">
     <div ng-repeat="activity in ctrl.activities">
       <input title="Departure Airport"
+             ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Departure"
              autocomplete="off"
              typeahead-editable="false"
@@ -30,6 +31,7 @@
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
       <input title="Arrival Airport"
+             ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Arrival"
              autocomplete="off"
              typeahead-editable="false"
@@ -41,10 +43,17 @@
       <div class="dropdown datetimepicker-holder">
         <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
         <ul class="dropdown-menu" role="menu">
-          <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
+          <datetimepicker
+              data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+          data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+          datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+          ng-model="activity.start_at"></datetimepicker>
         </ul>
       </div>
-      <input type="number" ng-model="activity.pax" placeholder="Pax">
+      <input type="number"
+             ng-disabled="$index+1 < ctrl.activities.length"
+             ng-model="activity.pax"
+             placeholder="Pax">
       <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
     </div>
     <a ng-click="ctrl.create()" href="">Search</a>
