@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', ($http, notify, $routeParams, AirportsService, AircraftsService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService)->
 
   @results = []
 
@@ -59,6 +59,27 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
     data
+
+  @enquire = (result)->
+    if CurrentUserService.currentUser
+      $http.post('/trips/enquire.json', {enquiry: result}).success(
+        ->
+          notify
+            message: 'Your enquiry has been registered. We shall contact you soon.'
+      ).error(
+        (data)->
+          error = 'Something went wrong.'
+          try
+            error = data.errors[0]
+          notify
+            message: error
+            classes: ['alert-danger']
+      )
+    else
+      notify
+        message: 'Please sign-in or register before enquiring.'
+        classes: ['alert-danger']
+      CurrentUserService.openSignInModal()
 
   return undefined
 ]

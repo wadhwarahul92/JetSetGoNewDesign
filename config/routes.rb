@@ -119,6 +119,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :trips do
+    collection do
+      post 'enquire'
+    end
+  end
+
   resources :aircraft_types
 
   resources :jetsteal_subscriptions do
