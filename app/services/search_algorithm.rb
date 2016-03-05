@@ -3,13 +3,12 @@ class SearchAlgorithm
 
   CONTINUOUS_FLIGHT_DELTA_TIME = 45.minutes
 
-  #todo comment out all log printers
   def initialize(search_id)
 
-    puts '==== Loading search from id'
+    # puts '==== Loading search from id'
     @search = Search.find(search_id)
 
-    puts '==== Loading search activities'
+    # puts '==== Loading search activities'
     @search_activities = @search.search_activities
 
     @results = []
@@ -18,7 +17,7 @@ class SearchAlgorithm
   def results
     find_aircrafts
     make_results
-    # make_intermediate_activities
+    make_intermediate_activities
     @results
   end
 
@@ -26,26 +25,30 @@ class SearchAlgorithm
 
   def find_aircrafts
 
-    puts '=== Loading verified organisations'
+    # puts '=== Loading verified organisations'
     verified_organisations = Organisation.where(admin_verified: true)
 
-    puts '== Loading Aircrafts'
+    max_pax = @search_activities.map(&:pax).max
+
+    # puts '== Loading Aircrafts'
     @aircrafts = Aircraft.where(
         organisation_id: verified_organisations.map(&:id),
         admin_verified: true
+    ).where(
+         'seating_capacity >= ?', max_pax
     )
 
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
 
     airport_ids = ( @search_activities.map(&:departure_airport_id) + @search_activities.map(&:arrival_airport_id) + candidate_aircrafts_base_airport_ids ).uniq
 
-    puts '==== Loading Airports'
+    # puts '==== Loading Airports'
     @airports = Airport.where(id: airport_ids).to_a
 
-    puts '==== Loading Distances'
+    # puts '==== Loading Distances'
     @distances = Distance.where(from_airport_id: @airports.map(&:id), to_airport_id: @airports.map(&:id)).to_a
 
-    puts '==== Loading Aircraft Images count'
+    # puts '==== Loading Aircraft Images count'
     @aircraft_images_count = ActiveRecord::Base.connection.execute(
         <<BEGIN
 SELECT aircraft_id, COUNT(aircraft_images.id)
