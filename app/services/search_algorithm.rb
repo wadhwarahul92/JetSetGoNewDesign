@@ -15,7 +15,7 @@ class SearchAlgorithm
   end
 
   def results
-    find_aircrafts
+    find_aircrafts_and_load_models
     make_results
     make_intermediate_activities
     @results
@@ -23,7 +23,7 @@ class SearchAlgorithm
 
   private
 
-  def find_aircrafts
+  def find_aircrafts_and_load_models
 
     # puts '=== Loading verified organisations'
     verified_organisations = Organisation.where(admin_verified: true)
@@ -189,7 +189,10 @@ BEGIN
                       end_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours,
                       landing_cost_at_arrival: arrival_airport.landing_cost,
                       handling_cost_at_takeoff: departure_airport.handling_cost,
-                      flight_cost: flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours * aircraft.per_hour_cost
+                      flight_cost: TimeDifference.between(
+                          previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+                          previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
+                      ).in_hours * aircraft.per_hour_cost
                   },
                   {
                       departure_airport_id: arrival_airport.id,
@@ -199,7 +202,10 @@ BEGIN
                       end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
                       landing_cost_at_arrival: departure_airport.landing_cost,
                       handling_cost_at_takeoff: arrival_airport.handling_cost,
-                      flight_cost: flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours * aircraft.per_hour_cost
+                      flight_cost: TimeDifference.between(
+                          plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport).hours,
+                          plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+                      ).in_hours * aircraft.per_hour_cost
                   }
               ]
 
