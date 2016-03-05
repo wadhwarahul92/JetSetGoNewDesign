@@ -121,7 +121,11 @@ Rails.application.routes.draw do
 
   resources :aircraft_types
 
-  resources :jetsteal_subscriptions
+  resources :jetsteal_subscriptions do
+    member do
+      get 'unsubscribe'
+    end
+  end
 
   namespace :jetsteals do
     get '/' => 'welcome#index'
@@ -143,8 +147,6 @@ Rails.application.routes.draw do
 
   end
 
-  ###payment api
-
   post 'payment_transactions/create' => 'payment_transactions#create'
 
   post 'payment_transactions/success' => 'payment_transactions#success'
@@ -157,10 +159,7 @@ Rails.application.routes.draw do
 
   get 'payment_failure' => 'payment_transactions#payment_failure'
 
-  ####payment api
-
   #get current_user
-
   get 'current_user' => 'welcome#current_user_'
 
   post 'sign_in_' => 'welcome#sign_in_'

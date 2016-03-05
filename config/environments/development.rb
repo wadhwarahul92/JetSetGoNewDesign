@@ -51,3 +51,5 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
 end
+
+HOST_URL_FOR_MAILER = 'http://localhost:3000'
