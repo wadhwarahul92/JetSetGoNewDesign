@@ -220,7 +220,7 @@ BEGIN
   end
 
   ######################################################################
-  # Description: This return the aircraft without hitting databse, uses cache
+  # Description: This return the aircraft without hitting database, uses cache
   # @param [Integer] id
   # @return [Aircraft]
   ######################################################################
