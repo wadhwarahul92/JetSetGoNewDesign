@@ -27,7 +27,8 @@ class Organisations::OperatorsController < Organisations::BaseController
   # noinspection RailsChecklist01
   def log_in_
     @operator = Operator.where(email: params[:email]).first
-    if @operator.present? and @operator.valid_password?(params[:password]) and @operator.update_attribute(:api_token, SecureRandom.urlsafe_base64)
+    if @operator.present? and @operator.valid_password?(params[:password])
+      @operator.update_attribute(:api_token, SecureRandom.urlsafe_base64) if @operator.api_token.blank?
       sign_in(@operator)
       render status: :ok, json: { api_token: @operator.api_token }
     else
@@ -65,9 +66,14 @@ class Organisations::OperatorsController < Organisations::BaseController
     @operator = Operator.where(email: params[:email]).first
     if @operator.present?
       raw, token = Devise.token_generator.generate(Operator, :reset_password_token)
+
+      ######################################################################
+      # Description: Destroying api token whenever user does forgot password
+      ######################################################################
       if @operator.update_attributes(
           reset_password_token: token,
-          reset_password_sent_at: Time.now.utc
+          reset_password_sent_at: Time.now.utc,
+          api_token: nil
       )
         OperatorMailer.forgot_password(@operator, raw).deliver_now
         render status: :ok, nothing: true
