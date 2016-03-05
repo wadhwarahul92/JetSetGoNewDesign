@@ -45,6 +45,9 @@ class SearchAlgorithm
     # puts '==== Loading Airports'
     @airports = Airport.where(id: airport_ids).to_a
 
+    # puts '==== Loading cities'
+    @cities = City.where(id: @airports.map(&:city_id)).to_a
+
     # puts '==== Loading Distances'
     @distances = Distance.where(from_airport_id: @airports.map(&:id), to_airport_id: @airports.map(&:id)).to_a
 
@@ -160,7 +163,7 @@ BEGIN
 
             previous_plan[:accommodation_plan] = {
                 nights: nights,
-                cost: airport_for_id(previous_plan[:arrival_airport_id]).accommodation_cost(nights)
+                cost: accommodation_cost_at_airport(airport_for_id(previous_plan[:arrival_airport_id]), nights)
             }
 
             previous_plan[:chosen_intermediate_plan] = 'accommodation_plan'
@@ -286,6 +289,31 @@ BEGIN
   ######################################################################
   def aircraft_ready_for_frontend?(aircraft)
     @aircraft_images_count[aircraft.id].present? and @aircraft_images_count[aircraft.id] > 0 and aircraft.admin_verified?
+  end
+
+  ######################################################################
+  # Description: It returns the city of airport without hitting database
+  # @param [Airport] airport
+  # @return [City]
+  ######################################################################
+  def city_for_airport(airport)
+    @city_map ||= {}
+    return @city_map[airport.id] if @city_map[airport.id].present?
+    @city_map[airport.id] = @cities.detect{ |city| city.id == airport.city_id }
+    @city_map[airport.id]
+  end
+
+  ######################################################################
+  # Description: It returns the cost of accommodation at an airport according to number of nights, uses cache
+  # @param [Airport] airport
+  # @param [Integer] nights
+  # @return [Float]
+  ######################################################################
+  def accommodation_cost_at_airport(airport, nights)
+    @accommodation_cost_map ||= {}
+    return @accommodation_cost_map["#{airport.id}-#{nights}"] if @accommodation_cost_map["#{airport.id}-#{nights}"].present?
+    @accommodation_cost_map["#{airport.id}-#{nights}"] = City::TIER_ACCOMMODATION_COST[city_for_airport(airport).accomodation_category.to_sym] * nights
+    @accommodation_cost_map["#{airport.id}-#{nights}"]
   end
 
 end
