@@ -1,3 +1,4 @@
+# noinspection RubyTooManyInstanceVariablesInspection
 class SearchAlgorithm
 
   CONTINUOUS_FLIGHT_DELTA_TIME = 45.minutes
