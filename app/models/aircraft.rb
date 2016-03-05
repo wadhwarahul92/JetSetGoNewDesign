@@ -73,6 +73,15 @@ class Aircraft < ActiveRecord::Base
     has_atleast_one_image? and self.admin_verified?
   end
 
+
+  ######################################################################
+  # Description: returns true if there is no aircraft unavailabilty for current time
+  # @return [Boolean]
+  ######################################################################
+  def is_working?
+    !self.aircraft_unavailabilities.where('? BETWEEN start_at AND end_at', DateTime.now).any?
+  end
+
   # @param [Airport] departure_airport
   # @param [Airport] arrival_airport
   def flight_time_in_hours_for(departure_airport, arrival_airport)
