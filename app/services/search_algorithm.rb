@@ -10,8 +10,8 @@ class SearchAlgorithm
     @search = Search.find(search_id)
 
     puts '==== Loading search activities'
-    @search_activities = @search.search_activities.includes(:departure_airport, :arrival_airport)
-    
+    @search_activities = @search.search_activities
+
     @results = []
   end
 
@@ -30,7 +30,7 @@ class SearchAlgorithm
     verified_organisations = Organisation.where(admin_verified: true)
 
     puts '== Loading Aircrafts'
-    @aircrafts = Aircraft.includes(:aircraft_images).where(
+    @aircrafts = Aircraft.where(
         organisation_id: verified_organisations.map(&:id),
         admin_verified: true
     )
@@ -45,12 +45,22 @@ class SearchAlgorithm
     puts '==== Loading Distances'
     @distances = Distance.where(from_airport_id: @airports.map(&:id), to_airport_id: @airports.map(&:id)).to_a
 
+    puts '==== Loading Aircraft Images count'
+    @aircraft_images_count = ActiveRecord::Base.connection.execute(
+        <<BEGIN
+SELECT aircraft_id, COUNT(aircraft_images.id)
+FROM aircraft_images
+WHERE aircraft_id IN (#{ @aircrafts.map(&:id).join(',').presence || '0' })
+GROUP BY aircraft_id
+BEGIN
+    ).to_h
+
   end
 
   def make_results
     @aircrafts.each do |aircraft|
 
-      next unless aircraft.ready_for_frontend?
+      next unless aircraft_ready_for_frontend?(aircraft)
 
       @results << {
           aircraft_id: aircraft.id,
@@ -214,7 +224,7 @@ class SearchAlgorithm
     @aircrafts_map[id] = @aircrafts.detect{ |aircraft| aircraft.id == id }
     @aircrafts_map[id]
   end
-  
+
   ######################################################################
   # Description: Returns the base airport for given id, it uses the preloaded @airports and does not fire on DB
   # @param [Aircraft] aircraft
@@ -226,7 +236,7 @@ class SearchAlgorithm
     @base_airport_map[aircraft.id] = @airports.detect{ |airport| airport.id == aircraft.base_airport_id }
     @base_airport_map[aircraft.id]
   end
-  
+
   ######################################################################
   # Description: This returns the airport for given id, This uses preloaded @airports and does not hit the database
   # @param [Integer] id
@@ -264,6 +274,15 @@ class SearchAlgorithm
     return @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] if @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"].present?
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"]
+  end
+
+  ######################################################################
+  # Description: This tells whether the aircraft is ready to be shown on frontend or not
+  # @param [Aircraft] aircraft
+  # @return [Boolean]
+  ######################################################################
+  def aircraft_ready_for_frontend?(aircraft)
+    @aircraft_images_count[aircraft.id].present? and @aircraft_images_count[aircraft.id] > 0 and aircraft.admin_verified?
   end
 
 end
