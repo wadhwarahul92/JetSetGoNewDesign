@@ -35,6 +35,26 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
     controllerAs: 'ctrl'
   }).when('/about_us', {
     templateUrl: '/templates/about_us'
+  }).when('/jet_set_wed', {
+    templateUrl: '/templates/jet_set_wed'
+  }).when('/heli_set_go', {
+    templateUrl: '/templates/heli_set_go'
+  }).when('/jet_set_yatra', {
+    templateUrl: '/templates/jet_set_yatra'
+  }).when('/media', {
+    templateUrl: '/templates/media'
+  }).when('/jet_setters', {
+    templateUrl: '/templates/jet_setters'
+  }).when('/contact_us', {
+    templateUrl: '/templates/contact_us'
+  }).when('/our_edge', {
+    templateUrl: '/templates/our_edge'
+  }).when('/join_us', {
+    templateUrl: '/templates/join_us'
+  }).when('/terms_of_use', {
+    templateUrl: '/templates/terms_of_use'
+  }).when('/privacy_policy', {
+    templateUrl: '/templates/privacy_policy'
   })
 
   $locationProvider.html5Mode(true)

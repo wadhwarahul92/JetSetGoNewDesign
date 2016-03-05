@@ -30,16 +30,19 @@ class Organisations::TripsController < Organisations::BaseController
   # noinspection RailsChecklist01
   def all_events
     if request.format == 'application/json'
+      aircraft_ids = current_organisation.aircrafts.map(&:id)
       if params[:start_at].present? and params[:end_at].present?
         start_at = DateTime.parse(params[:start_at])
         end_at = DateTime.parse(params[:end_at])
-        aircraft_ids = current_organisation.aircrafts.map(&:id)
         @activities = Activity.where(aircraft_id: aircraft_ids).where(
             'start_at BETWEEN ? AND ?', start_at, end_at
         )
         @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: aircraft_ids).where(
             'start_at BETWEEN ? AND ?', start_at, end_at
         )
+      else
+        @activities = Activity.where(aircraft_id: aircraft_ids)
+        @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: aircraft_ids)
       end
     end
   end

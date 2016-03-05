@@ -176,6 +176,16 @@ Rails.application.routes.draw do
       get 'index'
       get 'search'
       get 'about_us'
+      get 'jet_set_wed'
+      get 'heli_set_go'
+      get 'jet_set_yatra'
+      get 'media'
+      get 'jet_setters'
+      get 'contact_us'
+      get 'our_edge'
+      get 'join_us'
+      get 'terms_of_use'
+      get 'privacy_policy'
     end
   end
 
@@ -191,7 +201,19 @@ Rails.application.routes.draw do
   ########
   #Overridden routes for angular js
   #########
+
   get 'about_us' => 'route_overrides#welcome_index'
+  get 'jet_set_wed' => 'route_overrides#welcome_index'
+  get 'heli_set_go' => 'route_overrides#welcome_index'
+  get 'jet_set_yatra' => 'route_overrides#welcome_index'
+  get 'media' => 'route_overrides#welcome_index'
+  get 'jet_setters' => 'route_overrides#welcome_index'
+  get 'contact_us' => 'route_overrides#welcome_index'
+  get 'our_edge' => 'route_overrides#welcome_index'
+  get 'join_us' => 'route_overrides#welcome_index'
+  get 'terms_of_use' => 'route_overrides#welcome_index'
+  get 'privacy_policy' => 'route_overrides#welcome_index'
+
 
   root 'welcome#index'
 

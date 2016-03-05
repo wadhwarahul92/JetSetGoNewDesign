@@ -22,4 +22,44 @@ class TemplatesController < ApplicationController
 
   end
 
+  def jet_set_wed
+
+  end
+
+  def heli_set_go
+
+  end
+
+  def jet_set_yatra
+
+  end
+
+  def media
+
+  end
+
+  def jet_setters
+
+  end
+
+  def contact_us
+
+  end
+
+  def our_edge
+
+  end
+
+  def join_us
+
+  end
+
+  def terms_of_use
+
+  end
+
+  def privacy_policy
+
+  end
+
 end

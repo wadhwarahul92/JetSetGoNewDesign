@@ -2,12 +2,15 @@ events = []
 @activities.each do |activity|
   events << {
       id: "activity-#{activity.id}",
+      trip_id: activity.trip.id,
       start: activity.start_at.to_s,
       end: activity.end_at.to_s,
       title: ( activity.empty_leg? ? "#{activity.aircraft.tail_number} - Empty Leg" : "#{activity.aircraft.tail_number} - Trip"),
       className: ( activity.empty_leg? ? %w(trip-event hvr-shutter-out-horizontal event-empty-leg) : %w(trip-event hvr-shutter-out-horizontal)),
       popover: "#{activity.start_at.strftime(time_format)} TO #{activity.end_at.strftime(time_format)}",
-      popover_title: (activity.empty_leg? ? 'Empty Leg' : 'Trip')
+      popover_title: (activity.empty_leg? ? 'Empty Leg' : 'Trip'),
+      status: activity.trip.status,
+      empty_leg: activity.empty_leg?
   }
 end
 @aircraft_unavailabilities.each do |aircraft_unavailability|
