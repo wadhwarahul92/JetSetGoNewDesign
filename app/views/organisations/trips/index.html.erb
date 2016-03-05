@@ -1,8 +1,8 @@
 <div class="row" ng-controller="TripsController as ctrl">
   <div class="col-sm-12">
     <h3 class="main-heading trip_">
-      <i class="fa fa-rocket"></i> Trips
-      <%= link_to new_organisations_trip_path, class: 'pull-right' do %>
+      <i class="organisation-main-icon trips-icon"></i> <span style="position: relative; top: -6px;">Trips</span>
+      <%= link_to new_organisations_trip_path, class: 'pull-right', style:"position: relative; top: 5px;" do %>
           <i class="fa fa-plus"></i> Add trip
       <%- end %>
     </h3>
