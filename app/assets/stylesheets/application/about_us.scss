@@ -1,0 +1,191 @@
+@media(max-width:1100px){
+	.aboutus-banner{
+		h1{
+			font-size:40px;
+		}
+	}
+	.investor-heading{
+		margin-top:30px !important;
+		h3{
+			font-size:22px !important;
+		}
+		p{
+			
+		}
+	}
+	
+}
+
+@media(max-width:1023px){
+	.about-content{
+			padding:10px 0;
+			.about-img{
+				text-align:center;	
+			}
+			p{
+				font-size:12px !important;
+			}
+		}
+}
+
+@media(max-width:767px){
+	.aboutus-banner{
+		height:150px !important;
+		.heading {
+			h1{font-size:50px !important;}
+		}
+	} 
+	.investor-heading{
+		margin-top:10px !important;
+		h3{
+			font-size:16px !important;
+		}
+		p{
+			
+		}
+	}
+	.ceo-section{
+		padding:10px 0 !important;
+		.ceo{
+			margin-bottom:20px !important;
+		}
+		h3{
+			font-size:20px !important;
+		}
+		p{
+			font-size:12px !important;
+		}
+	}
+}
+
+/*about us banner section start*/
+.aboutus-banner{
+	width:100%;
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
+	background-size:cover;
+	height:233px;
+	.heading{
+		width:100%;
+		max-width:600px;
+		text-align:center;
+		margin:0 auto;
+		h1{
+			color:#ffffff;
+			font-size:70px;
+			display:inline-block;
+			text-transform:uppercase;
+			margin-top:50px;
+		}
+	}
+}
+/*about us banner section finish*/
+
+/*about content section start*/
+.about-content{
+	padding:40px 0;
+	p{
+		font-size:15px;
+		margin:20px 0;
+		text-align:justify;
+	}
+}
+/*about content section finish*/
+
+/*ceo section section start*/
+.ceo-section{
+	padding:40px 0;
+	background-color:#f3f3f3;
+	.ceo-name{
+		h3{
+			font-size:25px;
+			color:#252525;
+			text-transform:uppercase;
+			font-weight:bold;
+			margin:0;
+			margin-top:20%;
+		}
+		p{
+			font-size:12px;
+			margin:0;
+			color:#8b8b8b;
+		}
+	}
+	.ceo-content{
+		p{
+			font-size:14px;
+			margin:10px 0 0 0;
+			color:#252525;
+			text-align:justify;
+		}
+	}
+}
+/*ceo section section finish*/
+
+/*invester section start*/
+.invester-main-con{
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/081/original/invester-bg.png?1457156893) 100%;
+	padding:20px;
+	background-size:cover;
+	.invester-col{	
+		display: block;
+		margin:15px 0;
+		padding:10px 0;
+	}
+	.green{
+		background-color:rgba(70, 217, 191, 0.7);	
+	}
+	.green:before{
+		background-color:rgba(70, 217, 191, 0.8);	
+	}
+	.dark-blue{
+		background-color:rgba(0, 48, 86, 0.7);	
+	}
+	.dark-blue:before{
+		background-color:rgba(0, 48, 86, 0.8);	
+	}
+	.light-blue{
+		background-color:rgba(5, 81, 139, 0.7);	
+	}
+	.light-blue:before{
+		background-color:rgba(5, 81, 139, 0.8);	
+	}
+	.red{
+		background-color:rgba(241, 92, 92, 0.7);	
+	}
+	.red:before{
+		background-color:rgba(241, 92, 92, 0.8);	
+	}
+	.investor-heading{
+		margin-top:35px;
+		h3{
+			font-size:25px;
+			color:#ffffff;
+			margin:0;
+			font-weight:bold;
+			text-transform:uppercase;
+		}
+		p{
+			color:#ffffff;
+		}
+	}
+}
+/*invester section finish*/
+
+/*our team section start*/
+.our-team-section{
+	width:100%;
+	text-align:center;
+	.img-responsive{
+		display:inline-block;
+	}
+}
+/*our team section finish*/
+
+/*member section start*/
+.member-section-con{
+	width:100%;
+	padding:15px 0;
+	background-color:#f3f3f3;
+}
+/*member section finish*/
+

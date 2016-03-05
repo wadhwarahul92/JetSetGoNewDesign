@@ -33,6 +33,10 @@ $dark-blue-color: rgb(5, 34, 71);
   border-radius: 0;
 }
 
+.img-responsive{
+  display:inline-block;
+}
+
 .form-control{
   border-radius: 0;
 }
@@ -66,3 +70,95 @@ $dark-blue-color: rgb(5, 34, 71);
 .datetimepicker-holder{
   display: inline-block;
 }
+
+/*Header start 5-3-2016*/
+#header{
+  background-color: #2fbf95;
+  padding: 10px 0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  .navbar-responsive{
+    float:none;
+  }
+  .logo-main-con{
+    max-width: 145px;
+  }
+  .header-icons-box a{
+    padding-top: 0;
+    //padding-right: 0;
+    font-size: 25px;
+  }
+  .right-header{
+    ul{
+      li{
+        a{
+          color:#ffffff;
+        }
+      }
+    }
+  }
+  ul.logo_list{
+    padding:10px 0 0 0;
+    li{
+      margin-right: 25px!important;
+      float:left;
+      list-style:none;
+    }
+    .main_link{
+      width: 41px;
+      height: 37px;
+      display: inline-block;
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/070/original/organisation-header-icons.png?1456731998);
+    }
+
+    .schedule-icon{
+      background-position: -2px 3px;
+    }
+    .aircraft-icon{
+      background-position: -74px 3px;
+    }
+    .forum-icon{
+      background-position: -142px 3px;
+    }
+    .unavailibility-icon{
+      background-position: -208px 3px;
+    }
+    .trips-icon{
+      background-position: -274px 3px;
+    }
+
+    .active_schedule{
+      background-position: -2px -35px;
+    }
+    .active_aircraft{
+      background-position: -74px -35px;
+    }
+    .active_forum{
+      background-position: -142px -35px;
+    }
+    .active_unavailibility{
+      background-position: -208px -35px;
+    }
+    .active_trips{
+      background-position: -274px -35px;
+    }
+
+    #jetsteal_link{
+      background-position: -74px -35px;
+    }
+    #experiences_link{
+      background-position: -140px 0;
+    }
+    #multi_trip_link{
+      background-position: -206px 0;
+    }
+    #rescue_link{
+      background-position: -272px 0;
+    }
+    #jetsetcars_link{
+      background-position: 0 83px;
+    }
+  }
+}
+/*Header finish 5-3-2016*/
