@@ -12,7 +12,11 @@ class Organisations::BaseController < ApplicationController
     if current_user.present? and current_user.operator?
       #do nothing
     else
-      redirect_to '/organisations/sign_in'
+      if request.format == 'application/json'
+        render status: :unauthorized, json: [errors: ['You are not signed in.']]
+      else
+        redirect_to '/organisations/sign_in'
+      end
     end
   end
 
