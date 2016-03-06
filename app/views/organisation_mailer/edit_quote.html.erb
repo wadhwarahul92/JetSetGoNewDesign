@@ -1,0 +1,26 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1">Hi, <%= @operator.full_name %></p>
+
+            <p>
+              <strong><%= @operator.full_name %></strong> edit quote of <strong><%= @quote.organisation.name %></strong><br/><br/>
+              Status: <strong><%= @quote.status %></strong><br/>
+              Aircraft Type: <strong><%= @quote.activities.first.aircraft.aircraft_type.name %></strong><br/><br/>
+              <% @quote.activities.each_with_index do |activity,index| %>
+                  <strong><%= "#{index + 1}  " %></strong>
+                  Departure Airport :  <strong><%= activity.departure_airport.name %></strong><br/>
+                  Arrival Airport   :  <strong><%= activity.arrival_airport.name %></strong><br/>
+                  Start At          :  <strong><%= activity.start_at.strftime('%d %b %Y, %I:%M %p') %></strong><br/>
+                  End At            :  <strong><%= activity.end_at.strftime('%d %b %Y, %I:%M %p') %></strong><br/>
+                  Pax               :  <strong><%= activity.pax %></strong><br/><br/>
+              <% end %>
+              </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
