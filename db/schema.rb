@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305115158) do
+ActiveRecord::Schema.define(version: 20160306135111) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -19,14 +19,15 @@ ActiveRecord::Schema.define(version: 20160305115158) do
     t.integer  "arrival_airport_id",       limit: 4
     t.datetime "start_at"
     t.datetime "end_at"
-    t.boolean  "empty_leg",                           default: false
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.boolean  "empty_leg",                              default: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.integer  "trip_id",                  limit: 4
     t.integer  "pax",                      limit: 4
-    t.float    "flight_cost",              limit: 24, default: 0.0
-    t.float    "handling_cost_at_takeoff", limit: 24, default: 0.0
-    t.float    "landing_cost_at_arrival",  limit: 24, default: 0.0
+    t.float    "flight_cost",              limit: 24,    default: 0.0
+    t.float    "handling_cost_at_takeoff", limit: 24,    default: 0.0
+    t.float    "landing_cost_at_arrival",  limit: 24,    default: 0.0
+    t.text     "accommodation_plan",       limit: 65535
   end
 
   create_table "admin_roles", force: :cascade do |t|

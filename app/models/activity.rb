@@ -14,6 +14,11 @@ class Activity < ActiveRecord::Base
 
   validates_presence_of :aircraft, :departure_airport, :arrival_airport, :start_at, :end_at, :trip
 
+  ######################################################################
+  # Description: An activity can have an accommodation plan, accommodation plan kicks in as soon as activity ends
+  ######################################################################
+  serialize :accommodation_plan, Hash
+
   validate def end_at_after_start_at
              if self.start_at.present? and self.end_at.present? and self.end_at <= self.start_at
                self.errors.add(:end_at, 'must come after start at')
@@ -41,7 +46,9 @@ class Activity < ActiveRecord::Base
   end
 
   validate def overlapping_activity
-             aircraft_activities = self.aircraft.activities
+             aircraft_activities = self.aircraft.activities.joins(
+                                                               'LEFT OUTER JOIN trips ON trips.id = activities.trip_id'
+             ).where('trips.status = ?', Trip::STATUS_CONFIRMED)
              if aircraft_activities.where('? BETWEEN start_at AND end_at', self.start_at).any? or
                  aircraft_activities.where('? BETWEEN start_at AND end_at', self.end_at).any?
                self.errors.add(:base, "There's already an activity in given time frame")
