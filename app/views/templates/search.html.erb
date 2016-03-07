@@ -4,6 +4,7 @@
   </div>
   <div class="col-sm-9">
     <div style="border: 1px solid lightgray" class="margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+      <a href="" class="btn btn-primary" ng-click="ctrl.enquire(result)">Enquire now</a>
       <!--<img ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">-->
       <ul class="list-unstyled">
         <li><h4>{{result.aircraft.tail_number}}, {{result.aircraft.aircraft_type.name}}</h4></li>

@@ -87,6 +87,7 @@ BEGIN
     #########################
     unless search_activities.first.departure_airport_id == aircraft.base_airport_id
       plan << {
+          pax: 0,
           departure_airport_id: aircraft.base_airport_id,
           arrival_airport_id: search_activities.first.departure_airport_id,
           flight_type: 'empty_leg',
@@ -103,6 +104,7 @@ BEGIN
     search_activities.each do |search_activity|
       # noinspection RubyResolve
       plan << {
+          pax: search_activity.pax,
           departure_airport_id: search_activity.departure_airport_id,
           arrival_airport_id: search_activity.arrival_airport_id,
           flight_type: 'user_search',
@@ -118,6 +120,7 @@ BEGIN
     #######################
     unless search_activities.last.arrival_airport_id == aircraft.base_airport_id
       plan << {
+          pax: 0,
           departure_airport_id: search_activities.last.arrival_airport_id,
           arrival_airport_id: aircraft.base_airport_id,
           flight_type: 'empty_leg',
@@ -182,6 +185,7 @@ BEGIN
 
               previous_plan[:empty_leg_plan] = [
                   {
+                      pax: 0,
                       departure_airport_id: departure_airport.id,
                       arrival_airport_id: arrival_airport.id,
                       flight_type: 'empty_leg',
@@ -195,6 +199,7 @@ BEGIN
                       ).in_hours * aircraft.per_hour_cost
                   },
                   {
+                      pax: 0,
                       departure_airport_id: arrival_airport.id,
                       arrival_airport_id: departure_airport.id,
                       flight_type: 'empty_leg',
