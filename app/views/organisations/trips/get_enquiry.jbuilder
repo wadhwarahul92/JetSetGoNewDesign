@@ -3,9 +3,25 @@ json.status @trip.status
 json.activities{
   json.array! @trip.activities do |activity|
     json.id activity.id
-    json.aircraft_id activity.aircraft_id
-    json.departure_airport_id activity.departure_airport_id
-    json.arrival_airport_id activity.arrival_airport_id
+
+    aircraft = activity.aircraft
+
+    json.aircraft{
+      json.id aircraft.id
+      json.tail_number aircraft.tail_number
+      json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+    }
+
+    json.departure_airport{
+      json.id activity.departure_airport.id
+      json.name activity.departure_airport.name
+    }
+
+    json.arrival_airport{
+      json.id activity.arrival_airport.id
+      json.name activity.arrival_airport.name
+    }
+
     json.start_at activity.start_at.strftime(time_format)
     json.end_at activity.end_at.strftime(time_format)
     json.empty_leg activity.empty_leg?
