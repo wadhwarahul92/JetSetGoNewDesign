@@ -62,4 +62,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def enquiry
+
+  end
+
 end

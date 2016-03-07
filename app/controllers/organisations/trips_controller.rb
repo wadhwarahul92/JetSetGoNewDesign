@@ -37,8 +37,12 @@ class Organisations::TripsController < Organisations::BaseController
       @activities = Activity.includes(:trip).joins(
           'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
       ).where(
-           'trips.status = ?', Trip::STATUS_CONFIRMED
+          'trips.status = ?', Trip::STATUS_CONFIRMED
       ).includes(:aircraft).where(aircraft_id: aircraft_ids)
+
+      @enquiries = Trip.where(
+          organisation_id: current_organisation.id
+      ).where(status: Trip::STATUS_ENQUIRY).includes(:activities)
 
       @aircraft_unavailabilities = AircraftUnavailability.includes(:aircraft).where(aircraft_id: aircraft_ids)
 
@@ -54,6 +58,12 @@ class Organisations::TripsController < Organisations::BaseController
             'start_at BETWEEN ? AND ?', start_at, end_at
         )
 
+        @enquiries = @enquiries.joins(
+            'JOIN activities ON trips.id = activities.trip_id'
+        ).where(
+             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+        ).distinct
+
       end
 
     end
@@ -61,6 +71,15 @@ class Organisations::TripsController < Organisations::BaseController
 
   def create
     TripCreator.new(params[:aircraft_id], activities_params, current_organisation).create!
+  end
+
+  def get_enquiry
+    @trip = current_organisation.trips.find(params[:id])
+    if @trip.status == Trip::STATUS_ENQUIRY
+      render status: :ok
+    else
+      render status: :unprocessable_entity, nothing: true
+    end
   end
 
   private

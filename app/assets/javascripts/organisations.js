@@ -34,6 +34,7 @@
 //= require ./organisations/new_trip_controller
 //= require ./organisations/trips_controller
 //= require ./organisations/home_controller
+//= require ./organisations/enquiry_controller
 
 try {
     Turbolinks.enableProgressBar();
