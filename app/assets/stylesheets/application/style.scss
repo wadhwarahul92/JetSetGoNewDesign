@@ -109,39 +109,39 @@ $dark-blue-color: rgb(5, 34, 71);
       width: 41px;
       height: 37px;
       display: inline-block;
-      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/070/original/organisation-header-icons.png?1456731998);
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106738);
     }
 
     .schedule-icon{
-      background-position: -2px 3px;
+      background-position: 1px 3px;
     }
     .aircraft-icon{
-      background-position: -74px 3px;
+      background-position: -72px 3px;
     }
     .forum-icon{
-      background-position: -142px 3px;
+      background-position: -140px 3px;
     }
     .unavailibility-icon{
-      background-position: -208px 3px;
+      background-position: -205px 3px;
     }
     .trips-icon{
-      background-position: -274px 3px;
+      background-position: -271px 3px;
     }
 
     .active_schedule{
-      background-position: -2px -35px;
+      background-position: 1px -35px;
     }
     .active_aircraft{
-      background-position: -74px -35px;
+      background-position: -72px -35px;
     }
     .active_forum{
-      background-position: -142px -35px;
+      background-position: -140px -35px;
     }
     .active_unavailibility{
-      background-position: -208px -35px;
+      background-position: -205px -35px;
     }
     .active_trips{
-      background-position: -274px -35px;
+      background-position: -271px -35px;
     }
 
     #jetsteal_link{
@@ -162,3 +162,150 @@ $dark-blue-color: rgb(5, 34, 71);
   }
 }
 /*Header finish 5-3-2016*/
+
+/*footer start 7-3-2016*/
+#footer {
+  width:100%;
+  background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/083/original/footer-bg1.png?1457331730) 100% 100%;
+  background-size:cover;    
+  font-size:14px; margin-top:0px !important;
+}
+#footer .upper-img-con{
+  width:100%;
+}
+#footer .upper_footer {
+  padding:30px 0 0px 0;
+}
+#footer .member-of-con {
+  width:100%;
+  margin-bottom:20px;
+}
+#footer .network-con {
+  width:100%;
+}
+#footer .upper_footer .network-con{
+  width:100%;
+}
+#footer .upper_footer .footer_widget_con {
+}
+#footer .upper_footer .footer_widget_con h3 {
+  color:#FFF;
+  font-size:20px;
+  margin:10px 0;
+  font-weight:normal;
+  text-transform:uppercase
+}
+#footer .upper_footer .footer_widget_con #footer_logo {
+  margin:10px 0;
+}
+#footer .upper_footer .footer_widget_con .recent_post {
+  border-bottom:1px solid #fff;
+  padding:1px 0;
+}
+#footer .upper_footer .footer_widget_con p {
+  color:#fff;
+  margin:20px 0;
+}
+#footer .upper_footer .footer_widget_con a {
+  color:#fff;
+  margin:10px 0;
+}
+#footer .upper_footer .footer_widget_con .recent_post span {
+  font-size:13px;
+  color:#7d7d7d;
+}
+#footer .upper_footer .footer_widget_con .recent_post1 {
+  border:none;
+}
+#footer .upper_footer .footer_widget_con ul {
+  padding:0;
+}
+#footer .upper_footer .footer_widget_con ul li {
+  background-repeat:no-repeat;
+  list-style:none;
+  background-position:bottom;
+  padding:10px 0;
+  float:left;
+  width:45%;
+  margin-right:15px;
+  border-bottom:1px solid #ffffff;
+}
+#footer .upper_footer .footer_widget_con ul li.nomargin {
+  margin-right:0px;
+}
+#footer .upper_footer .footer_widget_con ul li a {
+  color:#fff;
+  font-size:14px;
+  padding:0 5px;
+  background-image:url(../images/minner-chat-icon.png);
+  background-repeat:no-repeat;
+  background-position:0 1px;
+}
+#footer .footer_widget_con ul.social_media {
+  width:100%;
+  padding:0;
+  margin:0;
+  display:inline-block;
+}
+#footer .footer_widget_con ul.social_media li {
+  list-style:none;
+  background-image:none;
+  padding:6px 0;
+  float:left;
+  width:25%;
+  margin:0;
+  border:none;
+}
+#footer .footer_widget_con ul.social_media li a {
+  display: inline-block;
+  font-size:22px;
+  color:#fff;
+  border-radius: 50%;
+  width:40px;
+  margin:0;
+  height:40px;
+  padding:5px 0;
+  background-color: #888888;
+  text-align:center;
+}
+#footer .footer_widget_con .social_media a.fb {
+  background-position:0 0px;
+}
+#footer .footer_widget_con .social_media a.tw {
+  background-position:-59px 0px;
+}
+#footer .footer_widget_con .social_media a.in {
+  background-position:-119px 0px;
+}
+#footer .footer_widget_con .social_media a.gplus {
+  background-position:-179px 0px;
+}
+#footer .footer_widget_con .social_media a.fb:hover {
+  background-position:0 -50px;
+}
+#footer .footer_widget_con .social_media a.tw:hover {
+  background-position:-59px -50px;
+}
+#footer .footer_widget_con .social_media a.in:hover {
+  background-position:-119px -50px;
+}
+#footer .footer_widget_con .social_media a.gplus:hover {
+  background-position:-179px -50px;
+}
+#footer .lower_footer {
+  width:100%;
+  padding:15px 0 25px 0;
+  position:relative;
+  font-size:15px;
+}
+#footer .lower_footer .copyryt {
+  color:#fff;
+  text-align:left;
+}
+#footer .lower_footer .privacy-policy-con{
+  text-align:right;
+}
+#footer .lower_footer .privacy-policy-con a{
+  color:#ffffff;
+}
+/*footer finish 7-3-2016*/
