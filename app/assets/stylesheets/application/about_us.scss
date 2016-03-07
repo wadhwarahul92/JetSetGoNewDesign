@@ -29,12 +29,6 @@
 }
 
 @media(max-width:767px){
-	.aboutus-banner{
-		height:150px !important;
-		.heading {
-			h1{font-size:50px !important;}
-		}
-	} 
 	.investor-heading{
 		margin-top:10px !important;
 		h3{
@@ -60,23 +54,8 @@
 
 /*about us banner section start*/
 .aboutus-banner{
-	width:100%;
 	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
 	background-size:cover;
-	height:233px;
-	.heading{
-		width:100%;
-		max-width:600px;
-		text-align:center;
-		margin:0 auto;
-		h1{
-			color:#ffffff;
-			font-size:70px;
-			display:inline-block;
-			text-transform:uppercase;
-			margin-top:50px;
-		}
-	}
 }
 /*about us banner section finish*/
 
