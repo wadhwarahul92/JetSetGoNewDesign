@@ -45,6 +45,12 @@ class Activity < ActiveRecord::Base
              end
   end
 
+  validate def pax_if_not_empty_leg
+             if self.empty_leg? and self.pax.blank?
+               self.errors.add(:pax, 'cannot be blank')
+             end
+  end
+
   validate def overlapping_activity
              aircraft_activities = self.aircraft.activities.joins(
                                                                'LEFT OUTER JOIN trips ON trips.id = activities.trip_id'

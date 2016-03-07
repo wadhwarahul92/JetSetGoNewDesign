@@ -17,7 +17,8 @@ class TripsController < ApplicationController
                                            empty_leg: (plan[:flight_type] == 'empty_leg' ? true: false),
                                            flight_cost: plan[:flight_cost],
                                            landing_cost_at_arrival: plan[:landing_cost_at_arrival],
-                                           handling_cost_at_takeoff: plan[:handling_cost_at_takeoff]
+                                           handling_cost_at_takeoff: plan[:handling_cost_at_takeoff],
+                                           pax: plan[:pax]
 
         )
 
@@ -34,7 +35,8 @@ class TripsController < ApplicationController
                                                empty_leg: true,
                                                flight_cost: empty_leg[:flight_cost],
                                                landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
-                                               handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff]
+                                               handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
+                                               pax: plan[:pax]
             )
 
           end
