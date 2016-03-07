@@ -90,26 +90,6 @@ class OrganisationMailer < ApplicationMailer
     )
   end
 
-  # On add Aircraft unavailability
-  # On edit Aircraft unavailability
-  # On delete Aircraft unavailability
-  #
-  # On add Trip
-  # On edit Trip
-  # On delete Trip
-  #
-  # On Create Enquiry
-  # On Edit Enquiry
-  # On Delete Enquiry
-  #
-  # On Quote
-  # On Edit Quote
-  # On Delete Quote
-  #
-  # On Approved Organisation by Admin
-  # On Approved Operator by Admin
-  # On Set Roles of Operator
-
   ######################################################################
   # Description: When a new Aircraft unavailability created
   ######################################################################
