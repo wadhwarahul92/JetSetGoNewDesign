@@ -38,7 +38,7 @@ end
       className: %w{trip-calendar trip-enquiry hvr-shutter-out-horizontal},
       popover: "#{enquiry.activities.first.start_at.strftime(time_format)} --TO-- #{enquiry.activities.last.end_at.strftime(time_format)}",
       popover_title: 'Enquiry',
-      status: Trip::STATUS_ENQUIRY,
+      status: Trip::STATUS_ENQUIRY
   }
 end
 json.array! events

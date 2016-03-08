@@ -65,6 +65,7 @@ Rails.application.routes.draw do
     resources :trips do
       member do
         get 'get_enquiry'
+        post 'send_quote'
       end
       collection do
         get 'all_events'

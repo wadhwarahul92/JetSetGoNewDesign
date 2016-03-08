@@ -1,10 +1,15 @@
 <i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
 <h3 class="text-center">Enquiry #{{ctrl.enquiry.id}}</h3>
+<ul class="list-inline">
+  <li><a ng-click="ctrl.sendQuote()" class="btn btn-primary" href="">Send Quote</a></li>
+</ul>
 <table class="table">
   <tbody>
   <tr>
-    <th class="text-center">Aircraft</th>
-    <th class="text-center">{{ctrl.enquiry.activities[0].aircraft.tail_number}}</th>
+    <th>Aircraft:</th>
+    <td>{{ctrl.enquiry.activities[0].aircraft.tail_number}}</td>
+    <th>Enquired By:</th>
+    <td>{{ctrl.enquiry.user}}</td>
   </tr>
   </tbody>
 </table>
