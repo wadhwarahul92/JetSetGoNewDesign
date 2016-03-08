@@ -11,7 +11,11 @@
   <base href="/">
 </head>
 <body>
-<%= render partial: 'shared/header' %>
+<% if params[:isFromMobile].present? && params[:isFromMobile] == 'yes'%>
+  <!--do nothing-->
+<% else %>
+    <%= render partial: 'shared/header' %>
+<% end %>
 <div class="container-fluid">
   <div ng-view></div>
 </div>
