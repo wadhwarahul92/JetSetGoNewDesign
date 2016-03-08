@@ -63,6 +63,9 @@ Rails.application.routes.draw do
     resources :aircraft_unavailabilities
 
     resources :trips do
+      member do
+        get 'get_enquiry'
+      end
       collection do
         get 'all_events'
       end
@@ -191,6 +194,7 @@ Rails.application.routes.draw do
       get 'join_us'
       get 'terms_of_use'
       get 'privacy_policy'
+      get 'enquiry'
     end
   end
 

@@ -7,6 +7,17 @@ $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
 
+.modal-content{
+  border-radius: 0;
+}
+
+.trip-calendar{
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .main-heading{
   margin: 0 0 10px;
   padding: 10px;

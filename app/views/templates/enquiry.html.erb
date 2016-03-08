@@ -1,0 +1,43 @@
+<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
+<h3 class="text-center">Enquiry #{{ctrl.enquiry.id}}</h3>
+<table class="table">
+  <tbody>
+  <tr>
+    <th class="text-center">Aircraft</th>
+    <th class="text-center">{{ctrl.enquiry.activities[0].aircraft.tail_number}}</th>
+  </tr>
+  </tbody>
+</table>
+<table class="table" ng-repeat="activity in ctrl.enquiry.activities">
+  <thead>
+  <tr class="info">
+    <th class="text-center" colspan="2"><h4>Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class=""><strong>Departure:</strong> {{activity.departure_airport.name}}</td>
+    <td class=""><strong>Arrival:</strong> {{activity.arrival_airport.name}}</td>
+  </tr>
+  <tr>
+    <td class="">{{activity.start_at}}</td>
+    <td class="">{{activity.end_at}}</td>
+  </tr>
+  <tr>
+    <th class="">Flight Cost</th>
+    <td class=""><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</td>
+  </tr>
+  <tr>
+    <th class="">Handling cost at "{{activity.departure_airport.name}}"</th>
+    <td class=""><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</td>
+  </tr>
+  <tr>
+    <th class="">Landing cost at "{{activity.arrival_airport.name}}"</th>
+    <td class=""><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</td>
+  </tr>
+  <tr ng-show="activity.accommodation_plan">
+    <th class="">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</th>
+    <td class=""><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</td>
+  </tr>
+  </tbody>
+</table>

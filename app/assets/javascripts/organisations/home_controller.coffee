@@ -1,4 +1,4 @@
-organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$compile', ($http, notify, $scope, $compile)->
+organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$compile', '$uibModal', ($http, notify, $scope, $compile, $uibModal)->
 
   @events = []
 
@@ -21,7 +21,7 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
               message: 'Error fetching activity. 1x1009'
               classes: ['alert-danger']
         )
-      else
+      else if id.match(/aircraft_unavailability-(\d+)/)
         record_id = id.match(/aircraft_unavailability-(\d+)/)[1]
         $http.get("/organisations/aircraft_unavailabilities/#{record_id}.json?format_as=event").success(
           (data)=>
@@ -31,6 +31,22 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
             notify
               message: 'Error fetch aircraft unavilability. 1x1009'
               classes: ['alert-danger']
+        )
+      else if id.match(/enquiry-(\d+)/)
+        record_id = id.match(/enquiry-(\d+)/)[1]
+        $uibModal.open(
+          size: 'lg'
+          templateUrl: '/templates/enquiry'
+          controller: 'EnquiryController'
+          controllerAs: 'ctrl'
+          backdrop: false
+          resolve: {
+            enquiry: ->
+              $http.get("/organisations/trips/#{record_id}/get_enquiry.json").then(
+                (response)->
+                  response.data
+              )
+          }
         )
 
   @refreshEvents = (view)->
