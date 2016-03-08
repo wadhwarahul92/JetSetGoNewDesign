@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     end
 
     resources :activities
+
   end
 
   namespace :admin do
