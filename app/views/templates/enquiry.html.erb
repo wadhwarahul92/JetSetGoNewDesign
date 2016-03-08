@@ -41,3 +41,15 @@
   </tr>
   </tbody>
 </table>
+<table class="table">
+  <tbody>
+  <tr ng-repeat="(tax, value) in ctrl.enquiry.tax">
+    <th>{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</th>
+    <td><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</td>
+  </tr>
+  <tr>
+    <th>GrandTotal</th>
+    <td><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</td>
+  </tr>
+  </tbody>
+</table>

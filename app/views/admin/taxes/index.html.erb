@@ -1,0 +1,5 @@
+<%= simple_form_for @tax, url: admin_taxes_path do |f| %>
+    <%= f.input :service_tax %>
+    <%= f.input :swachh_bharat_cess %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>

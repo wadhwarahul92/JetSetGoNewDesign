@@ -12,6 +12,9 @@ angular.module('CustomFilters', []).filter('indianCurrency', ->
       otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + '.' + decimalPart
     else
       otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree
+).filter('snakeToCamelCase', ->
+  return (input)->
+    input.split('_').map((w)-> return w.charAt(0).toUpperCase() + w.slice(1) ).join(' ')
 )
 
 window.organisations_app = angular.module 'organisations_app', [

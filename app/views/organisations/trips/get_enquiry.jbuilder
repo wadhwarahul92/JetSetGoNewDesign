@@ -1,5 +1,6 @@
 json.id @trip.id
 json.status @trip.status
+json.tax Tax.tax
 json.activities{
   json.array! @trip.activities do |activity|
     json.id activity.id
