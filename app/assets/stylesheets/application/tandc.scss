@@ -1,4 +1,4 @@
-/*join us banner section start*/
+/*terms banner section start*/
 .joinus-banner{
 	width:100%;
 	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
@@ -18,10 +18,10 @@
 		}
 	}
 }
-/*join us banner section finish*/
+/*terms banner section finish*/
 
-/*join us content section start*/
-.joinus-content{
+/*terms content section start*/
+.terms-content{
 	h2{
 		background-color:rgb(5, 81, 139);
 		color:#ffffff;
@@ -30,14 +30,17 @@
 		position:relative;
 		height:40px;
 	}
+	h3{
+		padding:0 10px;
+	}
 	p{
 		font-size:16px;
 		padding:10px;
-		
+		text-align:justify;
 	}
 	ul{
 		font-size:16px;
-		padding:10px 25px;
+		padding:0px 25px;
 	}
 }
 .join-us-image{
@@ -50,7 +53,7 @@
 .responsive-join-img{
 	display:none;
 }
-/*join us content section finish*/
+/*terms content section finish*/
 
 @media(max-width:767px){
 	.desk-join-img{

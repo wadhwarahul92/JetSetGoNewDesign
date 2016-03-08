@@ -7,11 +7,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="row">
         <div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">
-          <a class="logo-img" href="/index"><img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>
+          <a class="logo-img" href="/"><img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>
         </div>
-        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-hidden">
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
           <div class="col-lg-5 col-md-5 col-sm-5 header-icons-box">
             <ul class="inline-list logo_list">
               <li uib-tooltip="Schedule" tooltip-placement="bottom">
@@ -34,13 +33,12 @@
           </div>
           <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 right-header pull-right">
             <ul class="nav navbar-nav navbar-right">
-              <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignInModal()" href="">Sign in</a></li>
-              <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignUpModal()" href="">Register</a></li>
-              <li ng-show="ctrl.currentUser"><a ng-click="ctrl.signOut()" href="">Sign Out</a></li>
+              <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignInModal()" href=""><i class="fa fa-sign-in"></i> Sign in</a></li>
+              <li ng-hide="ctrl.currentUser"><a ng-click="ctrl.openSignUpModal()" href=""><i class="fa fa-user"></i> Register</a></li>
+              <li ng-show="ctrl.currentUser"><a ng-click="ctrl.signOut()" href=""><i class="fa fa-sign-out"></i> Sign Out</a></li>
             </ul>
       </div>
         </div>
-      </div>
     </div>
 
     <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

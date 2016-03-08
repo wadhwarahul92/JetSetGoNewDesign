@@ -73,7 +73,7 @@ $dark-blue-color: rgb(5, 34, 71);
 
 /*Header start 5-3-2016*/
 #header{
-  background-color: #2fbf95;
+  background-color: #46d9bf;
   padding: 10px 0;
   margin:0;
   border:0;
@@ -101,7 +101,7 @@ $dark-blue-color: rgb(5, 34, 71);
   ul.logo_list{
     padding:10px 0 0 0;
     li{
-      margin-right: 25px!important;
+      margin-right: 25px !important;
       float:left;
       list-style:none;
     }
@@ -252,7 +252,7 @@ $dark-blue-color: rgb(5, 34, 71);
   background-image:none;
   padding:6px 0;
   float:left;
-  width:25%;
+  width:45px;
   margin:0;
   border:none;
 }
@@ -310,42 +310,41 @@ $dark-blue-color: rgb(5, 34, 71);
 }
 /*footer finish 7-3-2016*/
 
-/*innter page start 7-3-2016*/
-.inner-banner{
-  width:100%;
-  height:233px;
-  .heading{
-    width:100%;
-    max-width:600px;
-    text-align:center;
-    margin:0 auto;
-    h1{
-      color:#ffffff;
-      font-size:70px;
-      display:inline-block;
-      text-transform:uppercase;
-      margin-top:50px;
-      margin-bottom:0;
-    }
-    h5{
-        font-size:30px;
-        color:#ffffff;
-        margin:0;
-      }
-  }
-}
-/*innter page finish 7-3-2016*/
-
 @media(max-width:767px){
-  .inner-banner{
-    height:150px !important;
-    .heading {
-      h1{
-        font-size:45px !important;
+  .res-header{
+    max-width:100%;
+    padding:0;
+    margin-top:10px;
+    .header-icons-box{
+      max-width:290px;
+      margin:0 auto;
+    }
+  }
+  #header{
+    ul.logo_list{
+      li{
+          margin-right: 10px !important;
       }
-      h5{
-        font-size:20px;
+    }
+  }
+  .navbar-right{
+    width:200px;
+    margin:0 auto;
+    li{
+      float:left;
+      width:50%;
+    }
+  }
+  .navbar-default{
+    .navbar-toggle{
+      border-color:#ffffff;
+      .icon-bar{
+        background-color:#ffffff;
       }
+    }
+    .navbar-toggle:hover{
+      background-color:#05518b;
     }
   } 
 }
+

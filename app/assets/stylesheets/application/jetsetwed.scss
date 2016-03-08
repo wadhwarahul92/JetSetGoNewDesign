@@ -1,11 +1,19 @@
 /*helisetgo banner section start*/
-.heli-banner{
+.wed-banner{
 	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
 	background-size:cover;
 }
 /*helisetgo banner section finish*/
 
-.helicontent{
+.wedcontent{
+	h2{
+		background-color:rgb(5, 81, 139);
+		color:#ffffff;
+		font-size:18px;
+		padding:10px;
+		position:relative;
+		height:40px;
+	}
 	p{
 		font-size:16px;
 		padding:10px;
@@ -16,6 +24,21 @@
 		img{
 			border-radius:10%;
 		}
+	}
+	.first-option{
+		top:43px !important;
+	}
+	.scnd-option{
+		top:118px !important;
+	}
+	.third-option{
+		bottom:112px !important;
+	}
+	.forth-option{
+		bottom:43px !important;
+	}
+	.sixth-option{
+		top:115px !important;
 	}
 }
 
