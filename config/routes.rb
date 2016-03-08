@@ -114,6 +114,8 @@ Rails.application.routes.draw do
 
     end
 
+    resources :taxes
+
   end
 
   resources :airports do

@@ -22,7 +22,7 @@ class TripsController < ApplicationController
 
         )
 
-        if plan[:chosen_intermediate_plan] == 'empty_leg' and plan[:empty_leg_plan].present? and plan[:empty_leg_plan].length > 0
+        if plan[:chosen_intermediate_plan] == 'empty_leg_plan' and plan[:empty_leg_plan].present? and plan[:empty_leg_plan].length > 0
 
           plan[:empty_leg_plan].each do |empty_leg|
 
@@ -43,6 +43,7 @@ class TripsController < ApplicationController
 
         elsif plan[:chosen_intermediate_plan] == 'accommodation_plan' and plan[:accommodation_plan].present?
 
+          # noinspection RubyResolve
           @activities.last.accommodation_plan = { nights: plan[:accommodation_plan][:nights], cost: plan[:accommodation_plan][:cost] }
 
         end
