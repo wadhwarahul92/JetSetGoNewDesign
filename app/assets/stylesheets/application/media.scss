@@ -1,0 +1,77 @@
+
+/*media banner section start*/
+.media-banner{
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
+	background-size:cover;
+}
+/*media banner section finish*/
+
+/*media-content section start*/
+.media-content-main{
+	width:100%;
+	a{
+		text-decoration:none;
+	}
+	a:hover{
+		text-decoration:none;	
+	}
+	.media-content{
+		width:100%;
+		max-height:200px;
+		margin:10px 0;
+		-webkit-box-shadow: 0px 0px 16px 2px rgba(204,204,204,0.77);
+		-moz-box-shadow: 0px 0px 16px 2px rgba(204,204,204,0.77);
+		box-shadow: 0px 0px 16px 2px rgba(204,204,204,0.77);
+		.media-img{
+			overflow:hidden;
+			img{
+				min-height:200px;
+			}
+		}
+		.media-text{
+			padding-left:0;
+			h4{
+				font-size:16px;
+				font-weight:bold;
+				text-align:justify;
+				margin:10px 0;
+				color:#ffffff;
+				padding-right:15px;
+			}
+			p{
+				font-size:13px;
+				color:#ffffff;
+				padding-right:15px;
+				margin:10px 0;
+				text-align:justify;
+			}
+			.posted-date{
+				font-size:12px;
+				color:#ffffff;
+				margin:2px 0;
+				padding-right:15px;
+				a{
+					color:#ffffff;
+					display:inline-block;
+				}
+				span.date{
+					display:inline-block;
+					float:right;
+				}
+			}
+		}
+	}
+	.media-bg1{
+		background-color:rgb(5, 81, 139);
+	}
+	.media-bg2{
+		background-color:rgb(0, 161, 216);
+	}
+	.media-bg3{
+		background-color:rgb(241, 92, 92);
+	}
+	.media-bg4{
+		background-color:rgb(242, 208, 59);
+	}
+}
+/*media-content section finish*/
