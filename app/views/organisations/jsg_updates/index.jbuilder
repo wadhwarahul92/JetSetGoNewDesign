@@ -5,5 +5,6 @@ json.array! @jsg_updates do |jsg_update|
   json.source_url jsg_update.source_url
   json.image_url jsg_update.image_url
   #json.posted_date jsg_update.posted_date
+  json.created_at jsg_update.created_at.strftime(time_format)
 
 end
