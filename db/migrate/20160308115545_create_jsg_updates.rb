@@ -5,7 +5,7 @@ class CreateJsgUpdates < ActiveRecord::Migration
       t.text :description
       t.text :source_url
       t.text :image_url
-      t.date :posted_date
+      #t.date :posted_date
 
       t.timestamps null: false
     end
