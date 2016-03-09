@@ -93,7 +93,7 @@ Rails.application.routes.draw do
 
     resources :aircrafts do
       member do
-        put '/approve' => 'aircrafts#admin_approve'
+        put :admin_approve
       end
       resources :aircraft_images
     end
