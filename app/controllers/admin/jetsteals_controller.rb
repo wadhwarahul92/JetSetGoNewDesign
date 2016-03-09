@@ -59,7 +59,7 @@ class Admin::JetstealsController < Admin::BaseController
   end
 
   def send_emails_
-    if @jetsteal.email_sent? or !@jetsteal.launched?
+    if @jetsteal.email_sent? #or !@jetsteal.launched?
       flash[:error] = 'Email is already sent for this or this jetsteal is not launched yet.'
       redirect_to action: :index
     else
