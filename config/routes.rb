@@ -96,6 +96,9 @@ Rails.application.routes.draw do
     resources :notams
 
     resources :aircrafts do
+      member do
+        put :admin_approve
+      end
       resources :aircraft_images
     end
 

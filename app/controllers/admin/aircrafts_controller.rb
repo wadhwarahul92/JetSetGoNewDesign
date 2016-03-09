@@ -2,7 +2,7 @@ class Admin::AircraftsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_filter :set_aircraft, only: [:show, :edit, :update]
+  before_filter :set_aircraft, only: [:show, :edit, :update, :admin_approve]
 
   def index
     @aircrafts = Aircraft.includes(:aircraft_type).all
@@ -26,6 +26,14 @@ class Admin::AircraftsController < Admin::BaseController
       redirect_to action: :index
     else
       render action: :edit
+    end
+  end
+
+  def admin_approve
+    if @aircraft.update_attribute(:admin_verified, params[:admin_verified])
+      redirect_to action: :index
+    else
+      redirect_to action: :index
     end
   end
 
