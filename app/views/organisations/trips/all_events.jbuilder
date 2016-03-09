@@ -38,7 +38,22 @@ end
       className: %w{trip-calendar trip-enquiry hvr-shutter-out-horizontal},
       popover: "#{enquiry.activities.first.start_at.strftime(time_format)} --TO-- #{enquiry.activities.last.end_at.strftime(time_format)}",
       popover_title: 'Enquiry',
-      status: Trip::STATUS_ENQUIRY,
+      status: Trip::STATUS_ENQUIRY
+  }
+end
+# noinspection RailsChecklist02
+@quotes.each do |quote|
+  next unless quote.activities.any?
+  events << {
+      id: "quote-#{quote.id}",
+      trip_id: quote.id,
+      start: quote.activities.first.start_at.to_s,
+      end: quote.activities.last.end_at.to_s,
+      title: "#{quote.activities.first.aircraft.tail_number} - Quote",
+      className: %w{trip-calendar trip-quote hvr-shutter-out-horizontal},
+      popover: "#{quote.activities.first.start_at.strftime(time_format)} --TO-- #{quote.activities.last.end_at.strftime(time_format)}",
+      popover_title: 'Quote',
+      status: Trip::STATUS_QUOTED
   }
 end
 json.array! events

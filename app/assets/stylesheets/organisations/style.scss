@@ -7,6 +7,38 @@ $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
 
+.trip-enquiry{
+  background-color: $main-blue-color;
+}
+
+.trip-quote{
+  background-color: $main-orange-color;
+}
+
+.btn-red{
+  background-color: $main-red-color;
+  color: white;
+  width: 100%;
+  &:hover{
+    color: white;
+  }
+  &:visited{
+    color: white;
+  }
+}
+
+.btn-blue{
+  background-color: $sky-blue-color;
+  color: white;
+  width: 100%;
+  &:hover{
+    color: white;
+  }
+  &:visited{
+    color: white;
+  }
+}
+
 .modal-content{
   border-radius: 0;
 }

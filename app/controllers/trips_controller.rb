@@ -2,8 +2,13 @@ class TripsController < ApplicationController
 
   before_action :set_aircraft_and_organisation
 
+  before_action :authenticate_user!, only: [:enquire]
+
   def enquire
-    @trip = @organisation.trips.new(status: Trip::STATUS_ENQUIRY)
+    @trip = @organisation.trips.new(
+        status: Trip::STATUS_ENQUIRY,
+        user_id: current_user.id
+    )
     if @trip.save
 
       @activities = []
