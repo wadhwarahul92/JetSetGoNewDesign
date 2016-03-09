@@ -73,6 +73,9 @@ Rails.application.routes.draw do
     end
 
     resources :activities
+
+    resources :jsg_updates
+
   end
 
   namespace :admin do
