@@ -131,6 +131,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :cities
+
   resources :aircraft_types
 
   resources :jetsteal_subscriptions do
@@ -204,10 +206,10 @@ Rails.application.routes.draw do
   resources :searches
 
   ######
+  # Highly specific url, to be changed later
   # GET aircrafts for ids
   ######
   post 'aircrafts' => 'aircrafts#index'
-
   #################
 
   ########

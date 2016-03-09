@@ -1,0 +1,21 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1">Hi, <%= @operator.full_name %></p>
+            <p>
+              <small><%= @operator.full_name %></small> edit aircraft unavailability of <small><%= @aircraft_unavailability.aircraft.aircraft_type.name %></small>
+              <br/><br/>
+              Email: <small><%= @operator.email %></small><br/>
+              Tail number : <small><%= @aircraft_unavailability.aircraft.tail_number %></small><br/>
+              Start at : <small><%= @aircraft_unavailability.start_at %></small><br/>
+              End at : <small><%= @aircraft_unavailability.end_at %></small>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

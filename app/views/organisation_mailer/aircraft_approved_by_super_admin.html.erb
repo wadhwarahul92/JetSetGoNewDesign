@@ -1,0 +1,18 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1">Hi, <%= @operator.full_name %></p>
+            <p>Your Aircraft approved by Admin<br/><br/>
+              Tail Number   : <strong><%= @aircraft.tail_number %></strong><br/>
+              Aircraft Type : <strong><%= @aircraft.aircraft_type.name %></strong><br/>
+              Organisation  : <strong><%= @organisation.name %></strong><br/>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
