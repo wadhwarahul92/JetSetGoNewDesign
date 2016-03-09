@@ -4,6 +4,6 @@ json.array! @jsg_updates do |jsg_update|
   json.description jsg_update.description
   json.source_url jsg_update.source_url
   json.image_url jsg_update.image_url
-  json.posted_date jsg_update.posted_date
+  #json.posted_date jsg_update.posted_date
 
 end
