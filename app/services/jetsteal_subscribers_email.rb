@@ -16,7 +16,7 @@ class JetstealSubscribersEmail
   def subscribers
     JetstealSubscription.where(departure_airport: @jetsteal.departure_airport_id.to_s).each{ |j| @subscribers << j }
     JetstealSubscription.where(arrival_airport: @jetsteal.arrival_airport_id.to_s).each{ |j| @subscribers << j }
-    @subscribers.uniq!
+    @subscribers.uniq!{ |s| s.email }
     @subscribers
   end
 

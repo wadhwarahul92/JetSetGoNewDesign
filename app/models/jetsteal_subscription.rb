@@ -4,7 +4,7 @@ class JetstealSubscription < ActiveRecord::Base
 
   has_paper_trail
 
-  validates :email, presence: true, format: { with: /\A.+@.+\z/ }, uniqueness: true
+  validates :email, presence: true, format: { with: /\A.+@.+\z/ }
 
   validates :name, presence: true
 
