@@ -44,6 +44,10 @@ class Organisations::TripsController < Organisations::BaseController
           organisation_id: current_organisation.id
       ).where(status: Trip::STATUS_ENQUIRY).includes(:activities)
 
+      @quotes = Trip.where(
+                        organisation_id: current_organisation.id
+      ).where(status: Trip::STATUS_QUOTED)
+
       @aircraft_unavailabilities = AircraftUnavailability.includes(:aircraft).where(aircraft_id: aircraft_ids)
 
       if params[:start_at].present? and params[:end_at].present?
@@ -64,6 +68,12 @@ class Organisations::TripsController < Organisations::BaseController
         ).where(
              'activities.start_at BETWEEN ? AND ?', start_at, end_at
         ).distinct
+
+        @quotes = @quotes.joins(
+                             'JOIN activities ON trips.id = activities.trip_id'
+        ).where(
+             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+        )
 
       end
 

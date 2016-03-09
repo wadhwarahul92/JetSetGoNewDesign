@@ -1,5 +1,4 @@
 //= require jquery
-//= require jquery_ujs
 //= require ./vendors/moment
 //= require ./vendors/angular
 //= require ./vendors/angular-route
