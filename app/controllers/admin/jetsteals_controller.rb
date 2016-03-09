@@ -67,7 +67,7 @@ class Admin::JetstealsController < Admin::BaseController
       subscribers = jetsteal_subscription_mailer.subscribers
       if subscribers.any?
         subscribers.each do |subscriber|
-          SubscriptionMailer.new_jetsteal(@jetsteal, subscriber).deliver_later
+          SubscriptionMailer.new_jetsteal(@jetsteal, subscriber).deliver_now
         end
       end
       @jetsteal.update_attribute(:email_sent, true)
