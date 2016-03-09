@@ -99,6 +99,7 @@ class Activity < ActiveRecord::Base
   end
 
   def activity_duration
+    return 0 if self.arrival_airport_id == self.departure_airport_id
     distance = self.departure_airport.distance_to(self.arrival_airport)
     speed = self.aircraft.cruise_speed_in_nm_per_hour
     ( distance / speed ).round(2)

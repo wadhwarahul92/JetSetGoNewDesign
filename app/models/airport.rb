@@ -44,6 +44,9 @@ class Airport < ActiveRecord::Base
   ################
 
   def distance_to(airport)
+
+    return 0.0 if self.id == airport.id
+
     d = Distance.where(from_airport_id: self.id, to_airport_id: airport.id).first
     if d.present?
       d.distance_in_nm

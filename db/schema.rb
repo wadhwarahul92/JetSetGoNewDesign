@@ -277,6 +277,13 @@ ActiveRecord::Schema.define(version: 20160308115545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "taxes", force: :cascade do |t|
+    t.float    "service_tax",        limit: 24
+    t.float    "swachh_bharat_cess", limit: 24
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "trips", force: :cascade do |t|
     t.integer  "organisation_id", limit: 4
     t.string   "status",          limit: 255
