@@ -2,7 +2,7 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_action :authenticate_admin
 
-  before_action :set_jetsteal, only: [:update, :edit, :launch, :unlaunch_]
+  before_action :set_jetsteal, only: [:update, :edit, :launch, :unlaunch_, :send_emails_]
 
   # before_action :check_if_launched, only: [:edit, :update]
 
@@ -56,6 +56,24 @@ class Admin::JetstealsController < Admin::BaseController
     @jetsteal.update_attribute(:launched, false)
     flash[:success] = "Jetsteal #{@jetsteal.id} un-launched"
     redirect_to action: :index
+  end
+
+  def send_emails_
+    if @jetsteal.email_sent? or !@jetsteal.launched?
+      flash[:error] = 'Email is already sent for this or this jetsteal is not launched yet.'
+      redirect_to action: :index
+    else
+      jetsteal_subscription_mailer = JetstealSubscribersEmail.new(@jetsteal)
+      subscribers = jetsteal_subscription_mailer.subscribers
+      if subscribers.any?
+        subscribers.each do |subscriber|
+          SubscriptionMailer.new_jetsteal(@jetsteal, subscriber).deliver_now
+        end
+      end
+      @jetsteal.update_attribute(:email_sent, true)
+      flash[:success] = 'Emails delivered.'
+      redirect_to action: :index
+    end
   end
 
   private

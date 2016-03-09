@@ -13,6 +13,13 @@ class JetstealSubscribersEmail
     true #return true signifies that emails are sent
   end
 
+  def subscribers
+    JetstealSubscription.where(departure_airport: @jetsteal.departure_airport_id.to_s).each{ |j| @subscribers << j }
+    JetstealSubscription.where(arrival_airport: @jetsteal.arrival_airport_id.to_s).each{ |j| @subscribers << j }
+    @subscribers.uniq!
+    @subscribers
+  end
+
   private
 
   def find_matching_subscribers

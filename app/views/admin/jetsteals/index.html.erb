@@ -19,6 +19,7 @@
         <th>End At</th>
         <th>Cost</th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -51,6 +52,11 @@
                   <%- end %>
               <%- else %>
                   <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal), data: {confirm: 'Are you sure, you want to launch this?'} %>
+              <%- end %>
+            </td>
+            <td>
+              <% unless jetsteal.email_sent? %>
+              <%= link_to 'send emails', send_emails__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'This will send emails to all subscribers of this sector. OK to proceed?'} %>
               <%- end %>
             </td>
           </tr>

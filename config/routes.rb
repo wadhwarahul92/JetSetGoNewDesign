@@ -111,6 +111,7 @@ Rails.application.routes.draw do
       member do
         get 'launch'
         put 'unlaunch_'
+        put 'send_emails_'
       end
       resources :jetsteal_seats
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308115545) do
+ActiveRecord::Schema.define(version: 20160309110829) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 20160308115545) do
     t.datetime "updated_at",                                           null: false
     t.boolean  "launched",                             default: false
     t.integer  "flight_duration_in_minutes", limit: 4
+    t.boolean  "email_sent",                           default: false
   end
 
   create_table "jsg_updates", force: :cascade do |t|
