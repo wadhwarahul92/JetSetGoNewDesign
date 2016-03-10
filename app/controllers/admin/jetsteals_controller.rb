@@ -8,6 +8,24 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_action :build_jetsteal_seats, only: [:edit, :launch]
 
+  def send_collection_emails
+    @jetsteals = Jetsteal.includes(:departure_airport).includes(:arrival_airport).includes(:aircraft).order('created_at DESC')
+  end
+
+  def send_collection_emails_
+    if params[:jetsteal_ids].present? and params[:jetsteal_ids].length > 0
+      @jetsteals = Jetsteal.where(id: params[:jetsteal_ids]).to_a
+      JetstealSubscription.all.uniq{ |s| s.email }.each do |subscriber|
+        SubscriptionMailer.new_multi_jetsteals(@jetsteals, subscriber).deliver_later
+      end
+      flash[:success] = 'All emails are added to queue. Will be delivered shortly.'
+      redirect_to action: :index
+    else
+      flash[:error] = 'No jetsteal selected.'
+      redirect_to action: :send_collection_emails
+    end
+  end
+
   def index
     @jetsteals = Jetsteal.includes(:departure_airport).includes(:arrival_airport).includes(:aircraft).order('created_at DESC')
   end

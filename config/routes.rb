@@ -113,6 +113,12 @@ Rails.application.routes.draw do
         put 'unlaunch_'
         put 'send_emails_'
       end
+
+      collection do
+        get 'send_collection_emails'
+        post 'send_collection_emails_'
+      end
+
       resources :jetsteal_seats
     end
 
