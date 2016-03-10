@@ -129,6 +129,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    paranoia (2.1.5)
+      activerecord (~> 4.0)
     puma (2.15.3)
     query_diet (0.5.3)
     rack (1.6.4)
@@ -260,6 +262,7 @@ DEPENDENCIES
   mysql2
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)
+  paranoia (~> 2.0)
   puma
   query_diet
   rack-timeout

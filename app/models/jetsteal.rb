@@ -6,6 +6,8 @@ class Jetsteal < ActiveRecord::Base
 
   has_paper_trail
 
+  acts_as_paranoid
+
   belongs_to :departure_airport, class_name: 'Airport', foreign_key: :departure_airport_id
 
   belongs_to :arrival_airport, class_name: 'Airport', foreign_key: :arrival_airport_id

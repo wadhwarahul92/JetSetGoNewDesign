@@ -20,6 +20,7 @@
         <th>Cost</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -58,6 +59,9 @@
               <% unless jetsteal.email_sent? %>
               <%= link_to 'send emails', send_emails__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'This will send emails to all subscribers of this sector. OK to proceed?'} %>
               <%- end %>
+            </td>
+            <td>
+              <%= link_to 'Archive', admin_jetsteal_path(jetsteal), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
             </td>
           </tr>
       <%- end %>

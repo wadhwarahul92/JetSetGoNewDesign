@@ -2,7 +2,7 @@ class Admin::JetstealsController < Admin::BaseController
 
   before_action :authenticate_admin
 
-  before_action :set_jetsteal, only: [:update, :edit, :launch, :unlaunch_, :send_emails_]
+  before_action :set_jetsteal, only: [:update, :edit, :launch, :unlaunch_, :send_emails_, :destroy]
 
   # before_action :check_if_launched, only: [:edit, :update]
 
@@ -74,6 +74,13 @@ class Admin::JetstealsController < Admin::BaseController
       flash[:success] = 'Emails delivered.'
       redirect_to action: :index
     end
+  end
+
+  # noinspection RailsChecklist01
+  def destroy
+    @jetsteal.destroy
+    flash[:success] = "Jetsteal ##{@jetsteal.id} archived."
+    redirect_to action: :index
   end
 
   private
