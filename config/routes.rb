@@ -98,6 +98,8 @@ Rails.application.routes.draw do
 
     resources :notams
 
+    resources :jsg_updates
+
     resources :aircrafts do
       member do
         put :admin_approve
