@@ -14,8 +14,10 @@ class JetstealSubscribersEmail
   end
 
   def subscribers
-    JetstealSubscription.where(departure_airport: @jetsteal.departure_airport_id.to_s).each{ |j| @subscribers << j }
-    JetstealSubscription.where(arrival_airport: @jetsteal.arrival_airport_id.to_s).each{ |j| @subscribers << j }
+    airport_ids = [@jetsteal.departure_airport_id.to_s, @jetsteal.arrival_airport_id.to_s]
+    JetstealSubscription.where(
+        "arrival_airport IN (#{airport_ids.join(',').presence || '0'}) OR departure_airport IN (#{airport_ids.join(',').presence || '0'})"
+    ).each{ |j| @subscribers << j }
     @subscribers.uniq!{ |s| s.email }
     @subscribers
   end
