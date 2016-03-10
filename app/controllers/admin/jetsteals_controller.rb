@@ -59,7 +59,7 @@ class Admin::JetstealsController < Admin::BaseController
   end
 
   def send_emails_
-    if @jetsteal.email_sent? #or !@jetsteal.launched?
+    if @jetsteal.email_sent? or !@jetsteal.launched?
       flash[:error] = 'Email is already sent for this or this jetsteal is not launched yet.'
       redirect_to action: :index
     else
@@ -67,7 +67,7 @@ class Admin::JetstealsController < Admin::BaseController
       subscribers = jetsteal_subscription_mailer.subscribers
       if subscribers.any?
         subscribers.each do |subscriber|
-          SubscriptionMailer.new_jetsteal(@jetsteal, subscriber).deliver_now
+          SubscriptionMailer.new_jetsteal(@jetsteal, subscriber).deliver_later
         end
       end
       @jetsteal.update_attribute(:email_sent, true)
