@@ -10,6 +10,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>Id</th>
         <th>Code</th>
         <th>Name</th>
         <th>City</th>
@@ -28,6 +29,7 @@
       <tbody>
       <% @airports.each do |airport| %>
           <tr>
+            <td><%= airport.id %></td>
             <td><%= airport.code %></td>
             <td><%= airport.name %></td>
             <td>
