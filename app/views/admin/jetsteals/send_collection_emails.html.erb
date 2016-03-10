@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <%= form_tag send_collection_emails__admin_jetsteals_path do %>
+    <%= form_tag send_collection_emails__admin_jetsteals_path, data: {confirm: 'This will send emails to all subscribers for selected jetsteals. Proceed?'} do %>
         <%= submit_tag 'Send emails', class: 'btn btn-primary' %>
     <table class="table table-striped">
       <thead>
