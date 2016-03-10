@@ -36,7 +36,9 @@ class Admin::JsgUpdatesController < Admin::BaseController
   end
 
   def destroy
-
+    @jsg_update.destroy
+    flash[:success] = "Jetsteal ##{@jsg_update.id} archived."
+    redirect_to action: :index
   end
 
   private

@@ -26,6 +26,7 @@
               <%= link_to edit_admin_jsg_update_path(jsg_update) do %>
                   <i class="fa fa-edit"></i>
               <%- end %>
+              <%= link_to 'Archive', admin_jsg_update_path(jsg_update), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
             </td>
           </tr>
       <%- end %>
