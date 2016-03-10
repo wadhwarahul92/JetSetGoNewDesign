@@ -1,7 +1,7 @@
 
 /*media banner section start*/
 .media-banner{
-	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/108/original/media2.png?1457611950) 100% no-repeat;
 	background-size:cover;
 }
 /*media banner section finish*/
@@ -46,6 +46,7 @@
 				padding-right:15px;
 				margin:10px 0;
 				text-align:justify;
+				color:#444444;
 			}
 			a.web-link{
 				color:#ffffff;
@@ -100,3 +101,21 @@
 	}
 }
 /*media-content section finish*/
+
+@media(max-width:990px){
+	.media-content-main{
+		.media-content{
+			width:100%;
+			max-height:inherit;
+			.media-img{
+				overflow:hidden;
+				img{
+					min-height:inherit;
+				}
+			}
+		}
+	}
+}
+@media(max-width:767px){
+
+}

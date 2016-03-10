@@ -1,7 +1,7 @@
 /*contact us banner section start*/
 .contactus-banner{
 	width:100%;
-	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/073/original/aboutus_banner.png?1457156736) 100% no-repeat;
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/099/original/contactus.png?1457595096) 100% no-repeat;
 	background-size:cover;
 	height:233px;
 	.heading{
@@ -43,6 +43,9 @@
 			p{
 				font-size:16px;
 				padding:10px;
+				margin:0;			
+				text-align:justify;
+				color:#444444;
 			}
 		}
 		.contact-main-form{
@@ -93,6 +96,9 @@
 					border:none;
 					color:#ffffff;
 					margin:25px 0;
+				}
+				.submit-btn:before{
+					background-color:#46d9bf;
 				}
 			}
 		}

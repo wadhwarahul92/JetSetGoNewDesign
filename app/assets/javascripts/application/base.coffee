@@ -47,6 +47,8 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
     templateUrl: '/templates/jet_setters'
   }).when('/contact_us', {
     templateUrl: '/templates/contact_us'
+    controller: 'ContactUsController'
+    controllerAs: 'ctrl'
   }).when('/our_edge', {
     templateUrl: '/templates/our_edge'
   }).when('/join_us', {

@@ -12,22 +12,23 @@
 	<div class="contact-info-main">
 		<div class="col-md-7 col-sm-6 col-xs-12 address-detail">
 			<h2>Address</h2>
-			<p>Lorem Ipsum is simply dummy text of the <br/> 
-			printing and typesetting industry. <br/>
-			Lorem Ipsum has been the industry's <br/>
+			<p>A411, Somdutt Chambers I, <br/> 
+			Bhikaji Cama Place, <br/>
+			New Delhi, 110066 <br/>
 			Delhi | Mumbai | Bengaluru | Dubai | New York</p>
 		</div>
 		<div class="col-md-5 col-sm-6 col-xs-12 contact-main-form">
-		<div class="contact-form">
-			<form action="" method="">
+		<div class="contact-form zoomIn animated">
+			<form ng-submit="ctrl.create()">
 				<h2>Get in Touch</h2>
-				<input type="text" class="contact-text" placeholder="Name"></input>
-				<input type="text" class="contact-text" placeholder="Email"></input>
-				<textarea class="contact-area" placeholder="Message"></textarea>
-				<input type="submit" value="Submit" class="submit-btn hvr-rectangle-in"></input>
+				<input type="text" class="contact-text" ng-model="ctrl.name" placeholder="Name"></input>
+				<input type="email" class="contact-text" placeholder="Email" ng-model="ctrl.email"></input>
+				<input ng-model="ctrl.phone" type="text" class="contact-text" placeholder="Phone"></input>
+				<textarea class="contact-area" ng-model="ctrl.message" placeholder="Message"></textarea>
+				<input type="submit" value="Submit" class="btn submit-btn hvr-rectangle-in"></input>
 			</form>
 		</div>
 		</div>
 	</div>
 </div>
-<!-- contact us content finish -->
+<!-- contact us content finish
