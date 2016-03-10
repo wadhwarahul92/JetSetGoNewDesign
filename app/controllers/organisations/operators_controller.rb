@@ -30,7 +30,7 @@ class Organisations::OperatorsController < Organisations::BaseController
     if @operator.present? and @operator.valid_password?(params[:password])
       @operator.update_attribute(:api_token, SecureRandom.urlsafe_base64) if @operator.api_token.blank?
       sign_in(@operator)
-      render status: :ok, json: { api_token: @operator.api_token }
+      render status: :ok, json: { api_token: @operator.api_token, user_id: @operator.id }
     else
       render status: :unprocessable_entity, json: { errors: ['Email / password does not match.'] }
     end
