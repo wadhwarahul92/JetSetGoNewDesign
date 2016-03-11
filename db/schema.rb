@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(version: 20160311052135) do
     t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.time     "deleted_at"
+    t.datetime "deleted_at"
   end
 
   create_table "notams", force: :cascade do |t|
