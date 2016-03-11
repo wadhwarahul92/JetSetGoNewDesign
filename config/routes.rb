@@ -184,6 +184,8 @@ Rails.application.routes.draw do
 
   end
 
+  get 'payment_transactions/create/:id/for_quote' => 'payment_transactions#create_for_quote'
+
   post 'payment_transactions/create' => 'payment_transactions#create'
 
   post 'payment_transactions/success' => 'payment_transactions#success'

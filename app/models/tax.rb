@@ -11,6 +11,12 @@ class Tax < ActiveRecord::Base
       }
     end
 
+    def total_tax_value
+      amount = 0.0
+      self.tax.each_value{ |value| amount += value }
+      amount
+    end
+
   end
 
 end
