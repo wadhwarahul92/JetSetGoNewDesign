@@ -13,8 +13,8 @@
       <% @quotes.each do |quote| %>
           <tr>
             <td>Quote#<%= quote.id %></td>
-            <td><%= quote.organisation.name %></td>
-            <td><%= quote.status %></td>
+            <td><%= quote.organisation.name.capitalize %></td>
+            <td><%= quote.status.capitalize %></td>
             <td>
               <%= link_to edit_admin_quote_path(quote) do %>
                   <i class="fa fa-edit"></i>

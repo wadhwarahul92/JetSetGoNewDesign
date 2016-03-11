@@ -10,9 +10,9 @@
       <table class="table table-striped">
         <head>
           <tr class="info">
-            <th>Organisation: <%= @quote.organisation.name %></th>
-            <th>Status: <%= @quote.status %> </th>
-            <th>Aircraft: <%= @quote.activities.first.aircraft.aircraft_type.name %></th>
+            <th>Organisation: <%= @quote.organisation.name.capitalize %></th>
+            <th>Status: <%= @quote.status.capitalize %> </th>
+            <th>Aircraft: <%= @quote.activities.first.aircraft.aircraft_type.name.capitalize %></th>
           </tr>
         </head>
       </table>
