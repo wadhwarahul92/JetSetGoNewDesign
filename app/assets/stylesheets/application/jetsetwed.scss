@@ -1,0 +1,88 @@
+/*helisetgo banner section start*/
+.wed-banner{
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/107/original/jetsetwed2.png?1457606387) 100% no-repeat;
+	background-size:cover;
+}
+/*helisetgo banner section finish*/
+
+.wedcontent{
+	h2{
+		background-color:rgb(5, 81, 139);
+		color:#ffffff;
+		font-size:18px;
+		padding:10px;
+		position:relative;
+		height:40px;
+	}
+	p{
+		font-size:16px;
+		padding:10px;
+		margin:0;		
+		text-align:justify;
+		color:#444444;
+	}
+	.desk-heli-img{
+		margin-top:20px;
+		img{
+			border-radius:10%;
+		}
+	}
+	.first-option{
+		top:43px !important;
+	}
+	.scnd-option{
+		top:118px !important;
+	}
+	.third-option{
+		bottom:112px !important;
+	}
+	.forth-option{
+		bottom:43px !important;
+	}
+	.sixth-option{
+		top:115px !important;
+	}
+}
+
+@media(max-width:767px){
+	.desk-heli-img{
+		margin:20px 0;
+	}
+	.wedcontent{
+		width:100%;
+	    margin:0 auto;
+    	.option-con{
+		    background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/094/original/responsive-design.png?1457433412) no-repeat;
+		    background-size:cover;
+		    width:300px;
+		    height:500px;
+		    margin:20px auto;
+		    position:relative;
+      		.option{
+		        width: 140px;
+		        float:left;
+		        text-align:center;
+		        position:static;
+		        min-height:100px;        
+     		}
+     		.first-option{
+		    	margin:60px 20px 0 0;
+		    }
+    		.scnd-option{
+        		margin:60px 0 0 0;
+        	}
+      		.third-option{
+        		margin:65px 20px 0 0;
+      		}
+      		.forth-option{
+        		margin:65px 0 0 0;
+      		}
+      		.fifth-option{
+         		margin:70px 20px 0 0;
+      		}
+      		.sixth-option{
+         		margin:70px 0 0 0;
+      		}
+  		}
+	}
+}

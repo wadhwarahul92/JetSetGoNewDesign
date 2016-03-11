@@ -1,0 +1,121 @@
+/*helisetgo banner section start*/
+.yatra-banner{
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/106/original/jetsetyatra.png?1457604841) 100% no-repeat;
+	background-size:cover;
+}
+/*helisetgo banner section finish*/
+
+.yatracontent{
+	h2{
+		background-color:rgb(5, 81, 139);
+		color:#ffffff;
+		font-size:18px;
+		padding:10px;
+		position:relative;
+		height:40px;
+	}
+	p{
+		font-size:16px;
+		padding:10px;
+		margin:0;
+		text-align:justify;
+		color:#444444;
+	}
+	a.book-btn{
+		padding:13px 25px;
+		text-decoration:none;
+		color:#ffffff;
+		display:inline-block;
+		margin:10px 0;
+		background-color:rgb(51,180,157);
+	}
+	.hvr-rectangle-in:before{
+		background-color:#46d9bf;	
+	}
+	.option-con{
+		background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/096/original/desktop-desgin4.png?1457515687);
+		width:429px;
+		height:427px;
+		
+	}
+	.first-option{
+		top: 30px !important;
+    	left: 203px !important;
+	}
+	.scnd-option{
+		top:110px !important;
+	}
+	.third-option{
+		bottom: 128px !important;
+    	right: -3px !important;
+	}
+	.forth-option{
+		bottom: 26px !important;
+    	left: 212px !important;
+	}
+	.fifth-option{
+		bottom: 60px !important;
+    	left: 72px !important;
+	}
+	.sixth-option{
+		top: 199px !important;
+    	left: 5px !important;
+	}
+	.seventh-option{
+		top: 50px;
+    	left: 63px;
+	}
+	.desk-yatra-img{
+		margin-top:20px;
+		img{
+			border-radius:10%;
+		}
+	}
+}
+
+@media(max-width:767px){
+	.desk-yatra-img{
+		text-align:center;
+		margin:20px 0;
+	}
+	.yatracontent{
+		width:100%;
+	    margin:0 auto;
+    	.option-con{
+		    background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/094/original/responsive-design.png?1457433412) no-repeat;
+		    background-size:cover;
+		    width:300px;
+		    height:670px;
+		    margin:20px auto;
+		    position:relative;
+      		.option{
+		        width: 140px;
+		        float:left;
+		        text-align:center;
+		        position:static;
+		        min-height:100px;        
+     		}
+     		.first-option{
+		    	margin:50px 20px 0 0;
+		    }
+    		.scnd-option{
+        		margin:50px 0 0 0;
+        	}
+      		.third-option{
+        		margin:60px 20px 0 0;
+      		}
+      		.forth-option{
+        		margin:60px 0 0 0;
+      		}
+      		.fifth-option{
+         		margin:80px 20px 0 0;
+      		}
+      		.sixth-option{
+         		margin:80px 0 0 0;
+      		}
+      		.seventh-option{
+         		margin:62px 0 0 0;
+      		}
+  		}
+	}
+}

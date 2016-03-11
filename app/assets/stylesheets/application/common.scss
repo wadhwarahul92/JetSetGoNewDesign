@@ -1,0 +1,135 @@
+/*innter page start 7-3-2016*/
+.inner-banner{
+  width:100%;
+  height:233px;
+  .heading{
+    width:100%;
+    max-width:600px;
+    text-align:center;
+    margin:0 auto;
+    h1{
+      color:#ffffff;
+      font-size:70px;
+      display:inline-block;
+      text-transform:uppercase;
+      margin-top:50px;
+      margin-bottom:0;
+    }
+    h5{
+        font-size:30px;
+        color:#ffffff;
+        margin:0;
+      }
+  }
+}
+
+.inner-option-con{
+  width:100%;
+  margin:0 auto;
+  .option-con{
+    background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/091/original/desktop-desgin3.png?1457421087) no-repeat;
+    width:400px;
+    height:430px;
+    margin:20px auto;
+    position:relative;
+    .option{
+      width: 110px;
+      position:absolute;
+      p{
+        font-size:12px;
+        text-align:center;
+        display:block;
+        color:#ffffff;
+        a{
+          color:#ffffff; 
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .first-option{
+      top:30px;
+      left:143px;
+    }
+    .scnd-option{
+      top:110px;
+      right:2px;
+    }
+    .third-option{
+      bottom:98px;
+      right:0px;
+    }
+    .forth-option{
+      bottom:30px;
+      left:143px;
+    }
+    .fifth-option{
+      bottom:120px;
+      left:0px;
+    }
+    .sixth-option{
+      top:100px;
+      left:0px;
+    }
+  }
+}
+/*innter page finish 7-3-2016*/
+
+@media(max-width:767px){
+  .inner-banner{
+    height:150px;
+    .heading {
+      h1{
+        font-size:40px;
+      }
+      h5{
+        font-size:20px;
+      }
+    }
+  } 
+  .inner-option-con{
+    width:100%;
+    margin:0 auto;
+    .option-con{
+      background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/094/original/responsive-design.png?1457433412) no-repeat;
+      background-size:cover;
+      width:300px;
+      height:500px;
+      margin:20px auto;
+      position:relative;
+      .option{
+        width: 140px;
+        float:left;
+        text-align:center;
+        position:static;
+        min-height:100px;
+        
+      }
+      .option p{
+        font-size:13px;
+        color:#ffffff;
+      }
+      .option p a{
+        color:#ffffff; 
+      }
+      .first-option{
+        margin:50px 20px 0 0;
+      }
+      .scnd-option{
+        margin:50px 0 0 0;
+      }
+      .third-option{
+        margin:60px 20px 0 0;
+      }
+      .forth-option{
+        margin:60px 0 0 0;
+      }
+      .fifth-option{
+         margin:80px 20px 0 0;
+      }
+      .sixth-option{
+         margin:70px 0 0 0;
+      }
+    }
+  }
+}

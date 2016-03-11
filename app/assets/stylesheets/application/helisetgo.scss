@@ -1,0 +1,28 @@
+/*helisetgo banner section start*/
+.heli-banner{
+	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/100/original/helisetgo.png?1457595115) 100% no-repeat;
+	background-size:cover;
+}
+/*helisetgo banner section finish*/
+
+.helicontent{
+	p{
+		font-size:16px;
+		padding:10px;
+		margin:0;		
+		text-align:justify;
+		color:#444444;
+	}
+	.desk-heli-img{
+		margin-top:20px;
+		img{
+			border-radius:10%;
+		}
+	}
+}
+
+@media(max-width:767px){
+	.desk-heli-img{
+		margin:20px 0;
+	}
+}

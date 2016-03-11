@@ -20,6 +20,7 @@
 //= require ./application/airports_service
 //= require ./application/search_controller
 //= require ./application/aircrafts_service
+//= require ./application/contact_us_controller
 
 $(document).on('ready page:load', function(){
 
