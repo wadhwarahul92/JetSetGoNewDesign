@@ -1,5 +1,7 @@
 class JsgUpdate < ActiveRecord::Base
 
+  acts_as_paranoid
+
   validates :title, presence: true
   validates :description, presence: true
   validates :source_url, presence: true
