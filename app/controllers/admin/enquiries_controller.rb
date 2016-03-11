@@ -5,7 +5,7 @@ class Admin::EnquiriesController < Admin::BaseController
   before_action :set_enquiry, only: [:show]
 
   def index
-    @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY).all
+    @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY)
   end
 
   def show

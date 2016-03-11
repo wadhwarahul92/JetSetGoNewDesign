@@ -5,7 +5,7 @@ class Admin::QuotesController < Admin::BaseController
   before_action :set_quote, only: [:show]
 
   def index
-   @quotes = Trip.where(status: Trip::STATUS_QUOTED).all
+   @quotes = Trip.where(status: Trip::STATUS_QUOTED)
   end
 
   def show
