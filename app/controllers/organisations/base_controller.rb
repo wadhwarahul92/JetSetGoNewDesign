@@ -47,7 +47,7 @@ class Organisations::BaseController < ApplicationController
 
   # In Rails 4.2 and above
   def verified_request?
-    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN']) || api_operator.present?
   end
 
 end
