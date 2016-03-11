@@ -10,13 +10,13 @@
       </tr>
       </thead>
       <tbody>
-      <% @quotes.each do |quote| %>
+      <% @enquiries.each do |enquiry| %>
           <tr>
-            <td>Quote#<%= quote.id %></td>
-            <td><%= quote.organisation.name.capitalize %></td>
-            <td><%= quote.status.capitalize %></td>
+            <td>Enquiry#<%= enquiry.id %></td>
+            <td><%= enquiry.organisation.name.capitalize %></td>
+            <td><%= enquiry.status.capitalize %></td>
             <td>
-              <%= link_to admin_quote_path(quote) do %>
+              <%= link_to admin_enquiry_path(enquiry) do %>
                   <i class="fa fa-eye"></i>
               <%- end %>
             </td>

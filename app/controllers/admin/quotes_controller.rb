@@ -2,17 +2,13 @@ class Admin::QuotesController < Admin::BaseController
 
   before_action :authenticate_admin
 
-  before_action :set_quote, only: [:edit, :update]
+  before_action :set_quote, only: [:show]
 
   def index
    @quotes = Trip.where(status: Trip::STATUS_QUOTED).all
   end
 
-  def edit
-
-  end
-
-  def update
+  def show
 
   end
 

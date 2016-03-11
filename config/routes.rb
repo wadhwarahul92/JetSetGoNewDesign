@@ -102,6 +102,8 @@ Rails.application.routes.draw do
 
     resources :quotes
 
+    resources :enquiries
+
     resources :aircrafts do
       member do
         put :admin_approve
