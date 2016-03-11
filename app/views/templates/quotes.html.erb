@@ -1,0 +1,7 @@
+<div class="col-sm-12">
+  <div ng-show="quote.activities && quote.activities.length > 0" ng-repeat="quote in ctrl.quotes">
+    <h3>Quote#{{quote.id}}</h3>
+    <p><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</p>
+    <a href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a>
+  </div>
+</div>

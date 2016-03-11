@@ -73,7 +73,7 @@ class Organisations::TripsController < Organisations::BaseController
                              'JOIN activities ON trips.id = activities.trip_id'
         ).where(
              'activities.start_at BETWEEN ? AND ?', start_at, end_at
-        )
+        ).distinct
 
       end
 
@@ -87,6 +87,15 @@ class Organisations::TripsController < Organisations::BaseController
   def get_enquiry
     @trip = current_organisation.trips.find(params[:id])
     if @trip.status == Trip::STATUS_ENQUIRY
+      render status: :ok
+    else
+      render status: :unprocessable_entity, nothing: true
+    end
+  end
+
+  def get_quote
+    @trip = current_organisation.trips.find(params[:id])
+    if @trip.status == Trip::STATUS_QUOTED
       render status: :ok
     else
       render status: :unprocessable_entity, nothing: true

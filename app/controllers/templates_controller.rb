@@ -66,4 +66,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def quotes
+
+  end
+
 end

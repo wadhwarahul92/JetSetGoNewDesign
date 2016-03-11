@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
     resources :trips do
       member do
+        get 'get_quote'
         get 'get_enquiry'
         post 'send_quote'
       end
@@ -75,6 +76,12 @@ Rails.application.routes.draw do
     resources :activities
 
     resources :jsg_updates
+
+    resources :templates do
+      collection do
+        get 'quote'
+      end
+    end
 
   end
 
@@ -143,6 +150,7 @@ Rails.application.routes.draw do
   resources :trips do
     collection do
       post 'enquire'
+      get 'get_quotes'
     end
   end
 
@@ -215,6 +223,7 @@ Rails.application.routes.draw do
       get 'terms_of_use'
       get 'privacy_policy'
       get 'enquiry'
+      get 'quotes'
     end
   end
 
@@ -242,6 +251,7 @@ Rails.application.routes.draw do
   get 'join_us' => 'route_overrides#welcome_index'
   get 'terms_of_use' => 'route_overrides#welcome_index'
   get 'privacy_policy' => 'route_overrides#welcome_index'
+  get 'quotes' => 'route_overrides#welcome_index'
 
 
   root 'welcome#index'

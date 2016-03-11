@@ -57,6 +57,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
     templateUrl: '/templates/terms_of_use'
   }).when('/privacy_policy', {
     templateUrl: '/templates/privacy_policy'
+  }).when('/quotes', {
+    templateUrl: '/templates/quotes'
+    controller: 'QuotesController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)
