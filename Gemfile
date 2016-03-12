@@ -97,3 +97,7 @@ gem 'rmagick'
 gem 'time_difference'
 
 gem 'paranoia', '~> 2.0'
+
+gem 'nokogiri'
+
+gem 'premailer-rails'
