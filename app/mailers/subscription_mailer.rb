@@ -22,7 +22,7 @@ class SubscriptionMailer < ApplicationMailer
   end
 
   def new_multi_jetsteals(jetsteals, subscriber)
-    @jetsteals = jetsteals
+    @jetsteals = jetsteals.sort_by { |j| j.end_at }
     @subscriber = subscriber
     mail = mail(
         to: subscriber.email,
