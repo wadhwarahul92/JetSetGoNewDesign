@@ -45,7 +45,7 @@ class Organisations::TripsController < Organisations::BaseController
       ).where(status: Trip::STATUS_ENQUIRY).includes(:activities)
 
       @quotes = Trip.where(
-                        organisation_id: current_organisation.id
+          organisation_id: current_organisation.id
       ).where(status: Trip::STATUS_QUOTED)
 
       @aircraft_unavailabilities = AircraftUnavailability.includes(:aircraft).where(aircraft_id: aircraft_ids)
@@ -66,13 +66,13 @@ class Organisations::TripsController < Organisations::BaseController
         @enquiries = @enquiries.joins(
             'JOIN activities ON trips.id = activities.trip_id'
         ).where(
-             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+            'activities.start_at BETWEEN ? AND ?', start_at, end_at
         ).distinct
 
         @quotes = @quotes.joins(
-                             'JOIN activities ON trips.id = activities.trip_id'
+            'JOIN activities ON trips.id = activities.trip_id'
         ).where(
-             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+            'activities.start_at BETWEEN ? AND ?', start_at, end_at
         )
 
       end
@@ -93,6 +93,15 @@ class Organisations::TripsController < Organisations::BaseController
     end
   end
 
+  def get_empty_legs
+    if request.format == 'application/json'
+      empty_leg_ids = current_organisation.trips.map{|n| n.id}
+      if empty_leg_ids.present?
+        @empty_legs = Activity.all.where(empty_leg: true, trip_id: empty_leg_ids)
+      end
+    end
+  end
+
   def send_quote
     @trip = current_organisation.trips.find(params[:id])
     if @trip.update_attribute(:status, Trip::STATUS_QUOTED)
@@ -106,12 +115,12 @@ class Organisations::TripsController < Organisations::BaseController
 
   def activities_params
     params.permit(activities: [
-        :departure_airport_id,
-        :arrival_airport_id,
-        :start_at,
-        :empty_leg,
-        :pax
-    ])
+                      :departure_airport_id,
+                      :arrival_airport_id,
+                      :start_at,
+                      :empty_leg,
+                      :pax
+                  ])
   end
 
 end
