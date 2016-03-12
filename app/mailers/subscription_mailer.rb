@@ -2,6 +2,8 @@ class SubscriptionMailer < ApplicationMailer
 
   layout 'mailer_2'
 
+  layout false, only: [:new_multi_jetsteals]
+
   def new_jetsteals(jetsteals, subscriber)
     @jetsteals = jetsteals
     @subscriber = subscriber
@@ -58,5 +60,4 @@ class SubscriptionMailer < ApplicationMailer
       mail
     end
   end
-
 end
