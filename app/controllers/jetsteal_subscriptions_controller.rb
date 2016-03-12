@@ -5,6 +5,7 @@ class JetstealSubscriptionsController < ApplicationController
   def create
     @jetsteal_subscription = JetstealSubscription.new(filtered_params)
     @jetsteal_subscription.send_emails = true
+
     if @jetsteal_subscription.save
       flash[:success] = 'Thank you for subscribing.'
       redirect_to (params[:redirect_to] || '/')
