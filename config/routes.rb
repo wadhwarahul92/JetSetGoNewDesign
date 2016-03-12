@@ -100,6 +100,10 @@ Rails.application.routes.draw do
 
     resources :jsg_updates
 
+    resources :quotes
+
+    resources :enquiries
+
     resources :aircrafts do
       member do
         put :admin_approve
