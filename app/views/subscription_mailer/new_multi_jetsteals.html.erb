@@ -26,7 +26,7 @@
           <table width="100%">
             <tr>
               <td class="inner">
-                <table class="contents" style="padding: 5px;border: 1px solid lightblue;border-radius: 2px;">
+                <table class="contents" style="padding: 5px;border: 1px solid lightgray;border-radius: 2px;">
                   <tr>
                     <td>
                       <img src="<%= first.aircraft.aircraft_images.first.image.url(:size_250x250) %>" width="280" alt="" />
@@ -36,13 +36,13 @@
                     <td class="text">
                       <table style="width: 100%">
                         <tr>
-                          <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightblue;" ><small style="font-size: 16px;"><%= first.aircraft.aircraft_type.name %></small></td>
+                          <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightgray;" ><small style="font-size: 16px;"><%= first.aircraft.aircraft_type.name %></small></td>
                         </tr>
                       </table>
                     </td>
                   </tr>
                   <tr>
-                    <td class="text" style="border-bottom: 1px dashed lightblue; padding-bottom: 10px;">
+                    <td class="text" style="border-bottom: 1px dashed lightgray; padding-bottom: 10px;">
                       <table style="width: 100%">
                         <tr>
                           <td style="text-align: center" ><img style="width: 50px" src="<%= first.departure_airport.city.image.url(:original) %>" width="50" alt=""></td>
@@ -91,7 +91,7 @@
             <tr>
               <td class="inner">
                 <% if second.present? %>
-                    <table class="contents" style="padding: 5px;border: 1px solid lightblue;border-radius: 2px;">
+                    <table class="contents" style="padding: 5px;border: 1px solid lightgray;border-radius: 2px;">
                       <tr>
                         <td>
                           <img src="<%= second.aircraft.aircraft_images.first.image.url(:size_250x250) %>" width="280" alt="" />
@@ -101,13 +101,13 @@
                         <td class="text">
                           <table style="width: 100%">
                             <tr>
-                              <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightblue;" ><small style="font-size: 16px;"><%= second.aircraft.aircraft_type.name %></small></td>
+                              <td style="text-align: center; color: #3D769A; border-bottom: 1px solid lightgray;" ><small style="font-size: 16px;"><%= second.aircraft.aircraft_type.name %></small></td>
                             </tr>
                           </table>
                         </td>
                       </tr>
                       <tr>
-                        <td class="text" style=" border-bottom: 1px dashed lightblue; padding-bottom: 10px;">
+                        <td class="text" style=" border-bottom: 1px dashed lightgray; padding-bottom: 10px;">
                           <table style="width: 100%">
                             <tr>
                               <td style="text-align: center" ><img style="width: 50px" src="<%= second.departure_airport.city.image.url(:original) %>" width="50" alt=""></td>
