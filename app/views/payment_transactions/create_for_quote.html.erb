@@ -18,6 +18,8 @@
        'billing_email' => @quote.user.email,
        'billing_tel' => @quote.user.phone,
        'merchant_param1' => "JetSetGo Quote #{@quote.id}",
+       'merchant_param2' => "#{current_user.id}",
+       'merchant_param3' => "#{@quote.id}"
    }.each_pair do |key, value|
      merchant_data += key.to_s+'='+value.to_s+'&'
    end

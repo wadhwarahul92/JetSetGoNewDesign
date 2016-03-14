@@ -37,9 +37,7 @@ class Trip < ActiveRecord::Base
 
     amount += ( ( Admin::JSG_COMMISSION_IN_PERCENTAGE / 100 ) * amount )
 
-    amount += ( (Tax.total_tax_value / 100) * amount )
-
-    amount
+    amount + ( (Tax.total_tax_value / 100) * amount )
 
   end
 

@@ -193,6 +193,10 @@ Rails.application.routes.draw do
   # Description: Payment apis for Quote
   ######################################################################
 
+  get 'payment_transactions/_success_for_quote' => 'payment_transactions/_success_for_quote'
+
+  get 'payment_transactions/failure_for_quote' => 'payment_transactions/failure_for_quote'
+
   get 'payment_transactions/create/:id/for_quote' => 'payment_transactions#create_for_quote'
 
   post 'payment_transactions/success_for_quote' => 'payment_transactions#success_for_quote'

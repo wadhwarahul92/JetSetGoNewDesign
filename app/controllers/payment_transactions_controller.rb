@@ -2,7 +2,7 @@
 class PaymentTransactionsController < ApplicationController
 
   #post request from payment processor dont contain csrf tokens
-  protect_from_forgery except: [:success, :cancel, :failure]
+  protect_from_forgery except: [:success, :cancel, :failure, :success_for_quote, :cancel_for_quote]
 
   before_action :decrypt_params, only: [:success]
 
@@ -10,6 +10,27 @@ class PaymentTransactionsController < ApplicationController
 
   def create_for_quote
     @quote = Trip.find(params[:id])
+  end
+
+  def success_for_quote
+    @quote_purchaser = QuotePurchaser.new(@response_data).process_purchase
+    if @quote_purchaser.status == 'success'
+      redirect_to action: :_success_for_quote
+    else
+      redirect_to action: :failure_for_quote
+    end
+  end
+
+  def _success_for_quote
+
+  end
+
+  def cancel_for_quote
+
+  end
+
+  def failure_for_quote
+
   end
 
   def create
