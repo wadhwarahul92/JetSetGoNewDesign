@@ -3,20 +3,6 @@
 	width:100%;
 	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/104/original/t_c.png?1457595174) 100% no-repeat;
 	background-size:cover;
-	height:233px;
-	.heading{
-		width:100%;
-		max-width:800px;
-		text-align:center;
-		margin:0 auto;
-		h1{
-			color:#ffffff;
-			font-size:70px;
-			display:inline-block;
-			text-transform:uppercase;
-			margin-top:50px;
-		}
-	}
 }
 /*terms banner section finish*/
 
@@ -72,6 +58,25 @@
 		height:150px !important;
 		.heading {
 			h1{font-size:45px !important;}
+		}
+	}
+	.terms-content{
+		h2{
+			font-size:15px;
+			padding:5px;
+			height:inherit;
+		}
+		h3{
+			padding:0;
+			font-size:18px;
+		}
+		p{
+			font-size:13px;
+			padding:5px 0;
+		}
+		ul{
+			font-size:13px;
+			padding:0 0 0 15px;
 		}
 	}
 }

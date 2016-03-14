@@ -3,20 +3,7 @@
 	width:100%;
 	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/099/original/contactus.png?1457595096) 100% no-repeat;
 	background-size:cover;
-	height:233px;
-	.heading{
-		width:100%;
-		max-width:600px;
-		text-align:center;
-		margin:0 auto;
-		h1{
-			color:#ffffff;
-			font-size:70px;
-			display:inline-block;
-			text-transform:uppercase;
-			margin-top:50px;
-		}
-	}
+	
 }
 /*contact us banner section finish*/
 
@@ -107,13 +94,31 @@
 /*contact us content section finish*/
 
 @media(max-width:767px){
-	.contact-form{
-		width:100% !important;
-		top:0 !important;
-		margin-bottom:20px !important;
+
+	.contact-us-content{
+		.contact-info-main{
+			.address-detail{
+				h2{
+					font-size:15px;
+					padding:5px;
+					height:inherit;
+				}
+				p{
+					font-size:13px;
+					padding:5px 0;
+				}
+			}
+		}
+		.contact-main-form{
+			margin-top:20px;
+			.contact-form{
+				width:100% !important;
+				top:0 !important;
+				margin-bottom:20px !important;
+			}
+		}
 	}
 	.contactus-banner{
-		height:150px !important;
 		.heading {
 			h1{font-size:45px !important;}
 		}
