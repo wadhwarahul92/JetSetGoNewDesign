@@ -1,84 +1,76 @@
-<div class="row" ng-controller="NewTripController as ctrl">
-  <div class="col-sm-12">
+<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
+
+<fieldset>
+  <legend><small>New Trip</small></legend>
+  <div class="field">
+    <label for="aircraft">Select Aircraft</label>
+    <select id="aircraft" ng-model="ctrl.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend><small>Activities</small></legend>
+  <div class="activity-box" ng-repeat="activity in ctrl.activities">
+    <i ng-click="ctrl.deleteActivity(activity)" class="fa fa-times-circle-o hvr-bounce-in"></i>
     <div class="row">
       <div class="col-sm-6">
-        <fieldset>
-          <legend><small>New Trip</small></legend>
-          <div class="field">
-            <label for="aircraft">Select Aircraft</label>
-            <select id="aircraft" ng-model="ctrl.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend><small>Activities</small></legend>
-          <div class="activity-box" ng-repeat="activity in ctrl.activities">
-            <i ng-click="ctrl.deleteActivity(activity)" class="fa fa-times-circle-o hvr-bounce-in"></i>
-            <div class="row">
-              <div class="col-sm-6">
-                <label class="full-width">
-                  Departure Airport
-                  <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.departure_airport_id" ></select>
-                </label>
-              </div>
-              <div class="col-sm-6">
-                <label class="full-width">
-                  Arrival Airport
-                  <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.arrival_airport_id" ></select>
-                </label>
-              </div>
-              <div class="col-sm-6">
-                <label class="full-width">
-                  Start At
-                  <div class="dropdown">
-                    <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-                    <ul class="dropdown-menu" role="menu">
-                      <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
-                    </ul>
-                  </div>
-                </label>
-              </div>
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label class="full-width">
-                      Pax
-                      <select class="form-control" ng-model="activity.pax" ng-options="pax for pax in ctrl.paxRange"></select>
-                    </label>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="full-width">
-                      Empty leg?
-                      <input type="checkbox" class="form-control" ng-model="activity.empty_leg">
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="field margin-top">
-            <a href="" ng-click="ctrl.addActivity()" class="pull-right btn btn-success">Add Activity</a>
-          </div>
-        </fieldset>
-        <div>
-          <a href="" ng-click="ctrl.create()" class="btn btn-primary margin-top">Save</a>
-          <%= link_to 'Back', organisations_trips_path, class: 'btn btn-primary margin-top' %>
-        </div>
+        <label class="full-width">
+          Departure Airport
+          <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.departure_airport_id" ></select>
+        </label>
       </div>
       <div class="col-sm-6">
-        <fieldset ng-show="ctrl.aircraft">
-          <legend><small>Aircraft: {{ctrl.aircraft.tail_number}}, {{ctrl.aircraft.aircraft_type.name}}</small></legend>
-          <div class="row">
-            <div class="col-sm-6 text-center"><img src="" ng-src="{{ctrl.aircraft.aircraft_images[0]}}" alt=""></div>
-            <div class="col-sm-6">
-              <ul class="list-unstyled">
-                <li><strong>Seating Capacity:</strong> {{ctrl.aircraft.seating_capacity}}</li>
-                <li><strong>Per hour cost:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.per_hour_cost}}</li>
-                <li><strong>Catering cost per pax:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.catering_cost_per_pax}}</li>
-              </ul>
-            </div>
+        <label class="full-width">
+          Arrival Airport
+          <select class="form-control" ng-options="airport.id as airport.label for airport in ctrl.airports" ng-model="activity.arrival_airport_id" ></select>
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label class="full-width">
+          Start At
+          <div class="dropdown">
+            <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+            <ul class="dropdown-menu" role="menu">
+              <datetimepicker datetimepicker-config="{ dropdownSelector: '.fa-calendar' }" ng-model="activity.start_at"></datetimepicker>
+            </ul>
           </div>
-        </fieldset>
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="full-width">
+              Pax
+              <select class="form-control" ng-model="activity.pax" ng-options="pax for pax in ctrl.paxRange"></select>
+            </label>
+          </div>
+          <div class="col-sm-6">
+            <label class="full-width">
+              Empty leg?
+              <input type="checkbox" class="form-control" ng-model="activity.empty_leg">
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="field margin-top">
+    <a href="" ng-click="ctrl.addActivity()" class="pull-right btn btn-success">Add Activity</a>
+  </div>
+</fieldset>
+<div>
+  <a href="" ng-click="ctrl.create()" class="btn btn-primary margin-top">Save</a>
 </div>
+<fieldset ng-show="ctrl.aircraft">
+  <legend><small>Aircraft: {{ctrl.aircraft.tail_number}}, {{ctrl.aircraft.aircraft_type.name}}</small></legend>
+  <div class="row">
+    <div class="col-sm-6 text-center"><img src="" width="100%" ng-src="{{ctrl.aircraft.aircraft_images[0]}}" alt=""></div>
+    <div class="col-sm-6">
+      <ul class="list-unstyled">
+        <li><strong>Seating Capacity:</strong> {{ctrl.aircraft.seating_capacity}}</li>
+        <li><strong>Per hour cost:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.per_hour_cost}}</li>
+        <li><strong>Catering cost per pax:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.catering_cost_per_pax}}</li>
+      </ul>
+    </div>
+  </div>
+</fieldset>

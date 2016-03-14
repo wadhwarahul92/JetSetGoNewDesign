@@ -7,6 +7,16 @@
       <div class="col-sm-8">
         <div ui-calendar="ctrl.calendarConfig.calendar" ng-model="ctrl.events"></div>
       </div>
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-sm-12">
+            <p><a ng-click="ctrl.newTrip()" class="btn btn-primary" href="">New Trip</a></p>
+          </div>
+          <div class="col-sm-12">
+            <p><a ng-click="ctrl.newUnavailability()" class="btn btn-primary" href="">New Unavailability</a></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

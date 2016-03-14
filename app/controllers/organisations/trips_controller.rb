@@ -14,7 +14,7 @@ class Organisations::TripsController < Organisations::BaseController
   end
 
   def new
-
+    render layout: false
   end
 
   def show

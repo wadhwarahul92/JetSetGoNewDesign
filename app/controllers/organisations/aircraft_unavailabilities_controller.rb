@@ -9,7 +9,7 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
   end
 
   def new
-
+    render layout: false
   end
 
   def create

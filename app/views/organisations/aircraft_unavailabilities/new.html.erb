@@ -1,47 +1,35 @@
-<div class="row" ng-controller="NewUnavailabilityController as ctrl">
-  <div class="col-sm-12">
-    <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-6">
-        <fieldset>
-          <legend><small>New unavailability</small></legend>
-          <form ng-submit="ctrl.create()">
-            <div class="field margin-top">
-              <label for="aircraft_id">Aircraft</label>
-              <select id="aircraft_id" ng-model="ctrl.a_u.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>
-            </div>
-            <div class="field margin-top">
-              <label for="start_at">Start At</label>
-              <div class="dropdown">
-                <a role="button" data-toggle="dropdown" data-target="#" id="start_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedStartTime}}</span>
-                <ul class="dropdown-menu" role="menu">
-                  <datetimepicker datetimepicker-config="{ dropdownSelector: '#start_at' }" ng-model="ctrl.a_u.start_at"></datetimepicker>
-                </ul>
-              </div>
-              <!--<input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">-->
-            </div>
-            <div class="field margin-top">
-              <label for="end_at">End At</label>
-              <div class="dropdown">
-                <a role="button" data-toggle="dropdown" data-target="#" id="end_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedEndTime}}</span>
-                <ul class="dropdown-menu" role="menu">
-                  <datetimepicker datetimepicker-config="{ dropdownSelector: '#end_at' }" ng-model="ctrl.a_u.end_at"></datetimepicker>
-                </ul>
-              </div>
-              <!--<input type="datetime" class="form-control" id="end_at" ng-model="ctrl.a_u.end_at">-->
-            </div>
-            <div class="field margin-top">
-              <label for="reason">Reason</label>
-              <textarea id="reason" class="form-control" rows="2" ng-model="ctrl.a_u.reason"></textarea>
-            </div>
-            <div class="field margin-top">
-              <input type="submit" class="btn btn-primary">
-              <%= link_to 'Back', organisations_aircraft_unavailabilities_path, class: 'btn btn-primary' %>
-            </div>
-          </form>
-        </fieldset>
-      </div>
-      <div class="col-sm-3"></div>
+<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
+<fieldset>
+  <legend><small>New unavailability</small></legend>
+  <form ng-submit="ctrl.create()">
+    <div class="field margin-top">
+      <label for="aircraft_id">Aircraft</label>
+      <select id="aircraft_id" ng-model="ctrl.a_u.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>
     </div>
-  </div>
-</div>
+    <div class="field margin-top">
+      <label for="start_at">Start At</label>
+      <div class="dropdown">
+        <a role="button" data-toggle="dropdown" data-target="#" id="start_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedStartTime}}</span>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker datetimepicker-config="{ dropdownSelector: '#start_at' }" ng-model="ctrl.a_u.start_at"></datetimepicker>
+        </ul>
+      </div>
+    </div>
+    <div class="field margin-top">
+      <label for="end_at">End At</label>
+      <div class="dropdown">
+        <a role="button" data-toggle="dropdown" data-target="#" id="end_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedEndTime}}</span>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker datetimepicker-config="{ dropdownSelector: '#end_at' }" ng-model="ctrl.a_u.end_at"></datetimepicker>
+        </ul>
+      </div>
+    </div>
+    <div class="field margin-top">
+      <label for="reason">Reason</label>
+      <textarea id="reason" class="form-control" rows="2" ng-model="ctrl.a_u.reason"></textarea>
+    </div>
+    <div class="field margin-top">
+      <input type="submit" class="btn btn-primary">
+    </div>
+  </form>
+</fieldset>

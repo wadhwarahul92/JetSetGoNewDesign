@@ -65,6 +65,7 @@ organisations_app.controller 'NewTripController', ['$http', 'notify', 'Aircrafts
         ->
           notify
             message: 'New trip created'
+          Turbolinks.visit '/organisations'
       ).error(
         (data)->
           error = 'Something went wrong'

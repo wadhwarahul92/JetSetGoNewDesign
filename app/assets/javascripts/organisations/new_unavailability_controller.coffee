@@ -29,7 +29,7 @@ organisations_app.controller 'NewUnavailabilityController', ['$http', 'notify', 
           message: 'Aircraft unavailability added.'
         )
         AircraftUnavailabilitiesService.deleteCache()
-        Turbolinks.visit('/organisations/aircraft_unavailabilities')
+        Turbolinks.visit('/organisations')
     ).error(
       (data)->
         error = 'ERROR:AU_C_1 Something went wrong.'
