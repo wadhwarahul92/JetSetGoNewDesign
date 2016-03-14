@@ -29,6 +29,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
     templateUrl: '/templates/index'
     controller: 'IndexController'
     controllerAs: 'ctrl'
+  }).when('/tmp_url', {
+    templateUrl: '/templates/index'
+    controller: 'IndexController'
+    controllerAs: 'ctrl'
   }).when('/searches/:id', {
     templateUrl: '/templates/search'
     controller: 'SearchController'

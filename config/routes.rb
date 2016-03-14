@@ -189,7 +189,17 @@ Rails.application.routes.draw do
 
   end
 
+  ######################################################################
+  # Description: Payment apis for Quote
+  ######################################################################
+
   get 'payment_transactions/create/:id/for_quote' => 'payment_transactions#create_for_quote'
+
+  post 'payment_transactions/success_for_quote' => 'payment_transactions#success_for_quote'
+
+  post 'payment_transactions/cancel_for_quote' => 'payment_transactions#cancel_for_quote'
+
+  ######################################################################
 
   post 'payment_transactions/create' => 'payment_transactions#create'
 
@@ -260,6 +270,10 @@ Rails.application.routes.draw do
   get 'privacy_policy' => 'route_overrides#welcome_index'
   get 'quotes' => 'route_overrides#welcome_index'
 
+
+  #TMP URL
+  get 'tmp_url' => 'welcome#tmp_index'
+  ########
 
   root 'welcome#index'
 

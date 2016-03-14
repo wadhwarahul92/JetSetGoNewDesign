@@ -4,6 +4,10 @@ class WelcomeController < ApplicationController
     redirect_to '/jetsteals/list'
   end
 
+  def tmp_index
+    render action: :index
+  end
+
   def current_user_
     if current_user.present?
       render status: :ok
