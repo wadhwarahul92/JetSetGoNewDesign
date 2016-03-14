@@ -72,8 +72,8 @@ class Organisations::TripsController < Organisations::BaseController
         @quotes = @quotes.joins(
             'JOIN activities ON trips.id = activities.trip_id'
         ).where(
-            'activities.start_at BETWEEN ? AND ?', start_at, end_at
-        )
+             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+        ).distinct
 
       end
 
@@ -99,6 +99,15 @@ class Organisations::TripsController < Organisations::BaseController
       if empty_leg_ids.present?
         @empty_legs = Activity.where(empty_leg: true, trip_id: empty_leg_ids)
       end
+    end
+  end
+
+  def get_quote
+    @trip = current_organisation.trips.find(params[:id])
+    if @trip.status == Trip::STATUS_QUOTED
+      render status: :ok
+    else
+      render status: :unprocessable_entity, nothing: true
     end
   end
 

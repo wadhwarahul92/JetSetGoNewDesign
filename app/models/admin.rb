@@ -6,6 +6,8 @@ class Admin < User
 
   has_many :admin_roleships
 
+  JSG_COMMISSION_IN_PERCENTAGE = 10
+
   class <<self
 
     def get_all_emails

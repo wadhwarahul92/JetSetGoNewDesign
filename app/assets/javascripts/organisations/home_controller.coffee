@@ -48,6 +48,22 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
               )
           }
         )
+      else if id.match(/quote-(\d+)/)
+        record_id = id.match(/quote-(\d+)/)[1]
+        $uibModal.open(
+          size: 'lg'
+          templateUrl: '/organisations/templates/quote'
+          controller: 'QuoteController'
+          controllerAs: 'ctrl'
+          backdrop: false
+          resolve: {
+            quote: ->
+              $http.get("/organisations/trips/#{record_id}/get_quote.json").then(
+                (response)->
+                  response.data
+              )
+          }
+        )
 
   @refreshEvents = (view)->
     start = null

@@ -8,6 +8,10 @@ class PaymentTransactionsController < ApplicationController
 
   layout 'jetsteals'
 
+  def create_for_quote
+    @quote = Trip.find(params[:id])
+  end
+
   def create
     @jetsteal_seat_purchaser = JetstealSeatPurchaser.new(
         params[:jetsteal_id],

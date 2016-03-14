@@ -1,8 +1,8 @@
 class TripsController < ApplicationController
 
-  before_action :set_aircraft_and_organisation
+  before_action :set_aircraft_and_organisation, only: [:enquire]
 
-  before_action :authenticate_user!, only: [:enquire]
+  before_action :authenticate_user!
 
   def enquire
     @trip = @organisation.trips.new(
@@ -74,6 +74,13 @@ class TripsController < ApplicationController
     else
       render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
     end
+  end
+
+  def get_quotes
+    @quotes = Trip.where(
+                      status: Trip::STATUS_QUOTED,
+                      user_id: current_user.id
+    ).order('updated_at DESC').includes(:activities)
   end
 
   private
