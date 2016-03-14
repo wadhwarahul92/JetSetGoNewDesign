@@ -106,5 +106,22 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     }
   }
 
+  @newTrip = ->
+    $uibModal.open(
+      size: 'lg'
+      templateUrl: '/organisations/trips/new'
+      controller: 'NewTripController'
+      controllerAs: 'ctrl'
+      backdrop: false
+    )
+  @newUnavailability = ->
+    $uibModal.open(
+      size: 'lg'
+      templateUrl: '/organisations/aircraft_unavailabilities/new'
+      controller: 'NewUnavailabilityController'
+      controllerAs: 'ctrl'
+      backdrop: false
+    )
+
   return undefined
 ]
