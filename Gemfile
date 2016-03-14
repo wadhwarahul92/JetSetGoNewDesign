@@ -101,3 +101,5 @@ gem 'paranoia', '~> 2.0'
 gem 'nokogiri'
 
 gem 'premailer-rails'
+
+gem 'newrelic_rpm'
