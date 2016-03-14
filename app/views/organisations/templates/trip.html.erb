@@ -1,0 +1,22 @@
+<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
+<h3 class="text-center">trip #{{ctrl.trip.id}}</h3>
+<table class="table">
+  <tbody>
+  <tr>
+    <th>Aircraft:</th>
+    <td>{{ctrl.trip.activities[0].aircraft.tail_number}}</td>
+  </tr>
+  </tbody>
+</table>
+<table class="table" ng-repeat="activity in ctrl.trip.activities">
+  <tbody>
+  <tr>
+    <td class=""><strong>Departure:</strong> {{activity.departure_airport.name}}</td>
+    <td class=""><strong>Arrival:</strong> {{activity.arrival_airport.name}}</td>
+  </tr>
+  <tr>
+    <td class="">{{activity.start_at}}</td>
+    <td class="">{{activity.end_at}}</td>
+  </tr>
+  </tbody>
+</table>

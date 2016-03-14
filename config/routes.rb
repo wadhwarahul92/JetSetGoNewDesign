@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       member do
         get 'get_quote'
         get 'get_enquiry'
+        get 'get_trip'
         post 'send_quote'
       end
       collection do
@@ -81,6 +82,8 @@ Rails.application.routes.draw do
     resources :templates do
       collection do
         get 'quote'
+        get 'aircraft_unavailability'
+        get 'trip'
       end
     end
 

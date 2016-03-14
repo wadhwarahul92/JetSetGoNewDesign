@@ -8,4 +8,12 @@ class Organisations::TemplatesController < Organisations::BaseController
 
   end
 
+  def aircraft_unavailability
+
+  end
+
+  def trip
+
+  end
+
 end

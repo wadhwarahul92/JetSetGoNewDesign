@@ -1,0 +1,22 @@
+<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
+<table class="table">
+  <thead>
+  <tr>
+    <th colspan="2" class="text-center">Aircraft Unavailability #{{ctrl.aircraft_unavailability.id}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th>Aircraft</th>
+    <td>{{ctrl.aircraft_unavailability.aircraft.tail_number}}</td>
+  </tr>
+  <tr>
+    <th>Start At</th>
+    <td>{{ctrl.aircraft_unavailability.start_at}}</td>
+  </tr>
+  <tr>
+    <th>End At</th>
+    <td>{{ctrl.aircraft_unavailability.end_at}}</td>
+  </tr>
+  </tbody>
+</table>

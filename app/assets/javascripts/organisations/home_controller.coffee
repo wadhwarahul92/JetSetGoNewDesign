@@ -11,26 +11,36 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     record_id = null
     if id
       if id.match(/activity-(\d+)/)
-        record_id = id.match(/activity-(\d+)/)[1]
-        $http.get("/organisations/activities/#{record_id}.json?format_as=event").success(
-          (data)=>
-            scope.activity = data
-        ).error(
-          ->
-            notify
-              message: 'Error fetching activity. 1x1009'
-              classes: ['alert-danger']
+        record_id = event.trip_id
+        $uibModal.open(
+          size: 'lg'
+          templateUrl: '/organisations/templates/trip'
+          controller: 'TripController'
+          controllerAs: 'ctrl'
+          backdrop: false
+          resolve: {
+            trip: ->
+              $http.get("/organisations/trips/#{record_id}/get_trip.json").then(
+                (response)->
+                  response.data
+              )
+          }
         )
       else if id.match(/aircraft_unavailability-(\d+)/)
         record_id = id.match(/aircraft_unavailability-(\d+)/)[1]
-        $http.get("/organisations/aircraft_unavailabilities/#{record_id}.json?format_as=event").success(
-          (data)=>
-            scope.activity = data
-        ).error(
-          ->
-            notify
-              message: 'Error fetch aircraft unavilability. 1x1009'
-              classes: ['alert-danger']
+        $uibModal.open(
+          size: 'lg'
+          templateUrl: "/organisations/templates/aircraft_unavailability"
+          controller: 'AircraftUnavailabilityController'
+          controllerAs: 'ctrl'
+          backdrop: false
+          resolve: {
+            aircraft_unavailability: ->
+              $http.get("/organisations/aircraft_unavailabilities/#{record_id}.json?format_as=event").then(
+                (response)->
+                  response.data
+              )
+          }
         )
       else if id.match(/enquiry-(\d+)/)
         record_id = id.match(/enquiry-(\d+)/)[1]
