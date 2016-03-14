@@ -4,7 +4,7 @@ class PaymentTransactionsController < ApplicationController
   #post request from payment processor dont contain csrf tokens
   protect_from_forgery except: [:success, :cancel, :failure, :success_for_quote, :cancel_for_quote]
 
-  before_action :decrypt_params, only: [:success]
+  before_action :decrypt_params, only: [:success, :success_for_quote]
 
   layout 'jetsteals'
 
