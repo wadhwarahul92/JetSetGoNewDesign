@@ -13,7 +13,8 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def success_for_quote
-    @quote_purchaser = QuotePurchaser.new(@response_data).process_purchase
+    @quote_purchaser = QuotePurchaser.new(@response_data)
+    @quote_purchaser.process_purchase
     if @quote_purchaser.status == 'success'
       redirect_to action: :_success_for_quote
     else
