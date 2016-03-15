@@ -3,7 +3,7 @@ class JetstealSubscriptionsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def create
-    if CaptchaValidator.new(params['g-recaptcha-response'], request.remote_ip).validated!
+    if params[:from_web].present? and CaptchaValidator.new(params['g-recaptcha-response'], request.remote_ip).validated!
       @jetsteal_subscription = JetstealSubscription.new(filtered_params)
       @jetsteal_subscription.send_emails = true
 
