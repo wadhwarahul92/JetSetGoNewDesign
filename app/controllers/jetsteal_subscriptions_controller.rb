@@ -7,6 +7,9 @@ class JetstealSubscriptionsController < ApplicationController
       @jetsteal_subscription = JetstealSubscription.new(filtered_params)
       @jetsteal_subscription.send_emails = true
 
+      puts 'CHECK'
+      puts @jetsteal_subscription.valid?
+
       if @jetsteal_subscription.save
         flash[:success] = 'Thank you for subscribing.'
         redirect_to (params[:redirect_to] || '/')
