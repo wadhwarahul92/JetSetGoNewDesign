@@ -36,7 +36,6 @@ list_app = angular.module 'list_app', ['angular-loading-bar', 'CustomFilters', '
 
 list_app.config ['noCAPTCHAProvider', (noCaptchaProvider)->
   noCaptchaProvider.setSiteKey('6LcF2RoTAAAAABZsp4msdsOCYJZ6eDkEG_sIdTF8');
-  noCaptchaProvider.setTheme('dark');
 ]
 
 list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->

@@ -5,6 +5,10 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+no-captcha:first-child{
+  display: inline-block!important;
+}
+
 .close-button,.lb-close{
   -webkit-transition: -webkit-transform .3s ease-in-out!important;
   -moz-transition: -moz-transform .3s ease-in-out!important;
