@@ -25,8 +25,11 @@
         Password
         <input type="password" class="form-control" ng-model="ctrl.user.password">
       </label>
+      <label class="full-width text-center captcha-holder">
+        <no-captcha g-recaptcha-response="ctrl.user.captcha" size="compact"></no-captcha>
+      </label>
       <label class="full-width">
-        <input type="submit" value="Register" class="btn btn-primary form-control margin-top">
+        <input type="submit" value="Register" class="btn btn-primary form-control">
       </label>
       <div class="margin-top text-center">
         <a ng-click="ctrl.openSignInModal()" href="">Sign In</a>

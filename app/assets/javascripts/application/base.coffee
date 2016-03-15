@@ -21,14 +21,16 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'ngRoute'
   'ui.bootstrap.datetimepicker'
   'CustomFilters'
+  'noCAPTCHA'
 ]
 
-jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider)->
+jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider', ($routeProvider, $locationProvider, noCaptchaProvider)->
 
   $routeProvider.when('/', {
     templateUrl: '/templates/index'
     controller: 'IndexController'
     controllerAs: 'ctrl'
+    #todo remove temporary path
   }).when('/tmp_url', {
     templateUrl: '/templates/index'
     controller: 'IndexController'
@@ -68,6 +70,9 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', ($routeProvider, $lo
   })
 
   $locationProvider.html5Mode(true)
+
+  noCaptchaProvider.setSiteKey('6LcF2RoTAAAAABZsp4msdsOCYJZ6eDkEG_sIdTF8');
+  noCaptchaProvider.setTheme('light');
 
   return undefined
 ]

@@ -9,6 +9,10 @@ body{
   font-family: 'Open Sans', sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial;
 }
 
+no-captcha:first-child{
+  display: inline-block!important;
+}
+
 #loading-bar{
   .bar{
     //height: 4px!important;
