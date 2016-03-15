@@ -10,6 +10,7 @@
 //= require ./vendors/select2.js
 //= require ./vendors/jquery_validate
 //= require ./vendors/lightbox2
+//= require ./vendors/angular-no-captcha
 
 //stick a div on top when window reaches it
 function sticky_relocate(){

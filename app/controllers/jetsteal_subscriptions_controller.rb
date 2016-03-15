@@ -3,15 +3,20 @@ class JetstealSubscriptionsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def create
-    @jetsteal_subscription = JetstealSubscription.new(filtered_params)
-    @jetsteal_subscription.send_emails = true
+    if CaptchaValidator.new(params['g-recaptcha-response'], request.remote_ip).validated!
+      @jetsteal_subscription = JetstealSubscription.new(filtered_params)
+      @jetsteal_subscription.send_emails = true
 
-    if @jetsteal_subscription.save
-      flash[:success] = 'Thank you for subscribing.'
-      redirect_to (params[:redirect_to] || '/')
+      if @jetsteal_subscription.save
+        flash[:success] = 'Thank you for subscribing.'
+        redirect_to (params[:redirect_to] || '/')
+      else
+        flash[:error] = @jetsteal_subscription.errors.full_messages.first
+        redirect_to (params[:redirect_to] || '/')
+      end
     else
-      flash[:error] = @jetsteal_subscription.errors.full_messages.first
-      redirect_to (params[:redirect_to] || '/')
+      flash[:error] = 'Captcha is invalid.'
+      redirect_to(params[:redirect_to] || '/')
     end
   end
 

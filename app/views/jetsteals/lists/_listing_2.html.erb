@@ -75,6 +75,11 @@
                     <td><%= f.input :email, label: false %></td>
                   </tr>
                   <tr>
+                    <td colspan="2">
+                      <no-captcha g-recaptcha-response="gRecaptchaResponse" theme='light'></no-captcha>
+                    </td>
+                  </tr>
+                  <tr>
                     <td colspan="2"><%= f.submit 'Subscribe for JetSteals alerts', class: 'button' %></td>
                   </tr>
                 </table>

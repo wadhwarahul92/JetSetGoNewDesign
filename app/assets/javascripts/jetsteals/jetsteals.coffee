@@ -32,7 +32,12 @@ chosen_seat_color = 'rgb(43, 201, 167)'
 
 already_booked_color = 'rgb(51, 122, 183)'
 
-list_app = angular.module 'list_app', ['angular-loading-bar', 'CustomFilters']
+list_app = angular.module 'list_app', ['angular-loading-bar', 'CustomFilters', 'noCAPTCHA']
+
+list_app.config ['noCAPTCHAProvider', (noCaptchaProvider)->
+  noCaptchaProvider.setSiteKey('6LcF2RoTAAAAABZsp4msdsOCYJZ6eDkEG_sIdTF8');
+  noCaptchaProvider.setTheme('dark');
+]
 
 list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->
 
