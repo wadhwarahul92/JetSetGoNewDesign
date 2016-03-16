@@ -95,9 +95,18 @@ class Organisations::TripsController < Organisations::BaseController
 
   def get_empty_legs
     if request.format == 'application/json'
-      empty_leg_ids = current_organisation.trips.map{|n| n.id}
-      if empty_leg_ids.present?
-        @empty_legs = Activity.all.where(empty_leg: true, trip_id: empty_leg_ids)
+      trip_ids = current_organisation.trips.map{|n| n.id}
+      if trip_ids.present?
+        @empty_legs = Activity.all.where(empty_leg: true, trip_id: trip_ids)
+      end
+    end
+  end
+
+  def get_enquiries
+    if request.format == 'application/json'
+      enquiry_ids = current_organisation.trips.where(status: Trip::STATUS_ENQUIRY)
+      if enquiry_ids.present?
+        @enquiries = Activity.all.where(trip_id: enquiry_ids)
       end
     end
   end

@@ -70,6 +70,7 @@ Rails.application.routes.draw do
       collection do
         get 'all_events'
         get 'get_empty_legs'
+        get 'get_enquiries'
       end
     end
 
