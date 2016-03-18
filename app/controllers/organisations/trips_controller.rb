@@ -1,3 +1,4 @@
+# noinspection RubyResolve
 class Organisations::TripsController < Organisations::BaseController
 
   before_action :authenticate_operator
@@ -98,6 +99,15 @@ class Organisations::TripsController < Organisations::BaseController
       empty_leg_ids = current_organisation.trips.map{|n| n.id}
       if empty_leg_ids.present?
         @empty_legs = Activity.where(empty_leg: true, trip_id: empty_leg_ids)
+      end
+    end
+  end
+
+  def get_enquiries
+    if request.format == 'application/json'
+      enquiry_ids = current_organisation.trips.where(status: Trip::STATUS_ENQUIRY)
+      if enquiry_ids.present?
+        @enquiries = Activity.all.where(trip_id: enquiry_ids)
       end
     end
   end
