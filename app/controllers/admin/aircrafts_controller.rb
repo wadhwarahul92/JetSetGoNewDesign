@@ -69,7 +69,7 @@ class Admin::AircraftsController < Admin::BaseController
                                  :cruise_speed_in_nm_per_hour,
                                  :flying_range_in_nm,
                                  :per_hour_cost,
-                                 :catering_cost_per_pax,
+                                 # :catering_cost_per_pax,
                                  :organisation_id,
                                  :year_of_manufacture,
                                  :medical_evac,

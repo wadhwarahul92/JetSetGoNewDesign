@@ -39,7 +39,7 @@ class Aircraft < ActiveRecord::Base
                         :cruise_speed_in_nm_per_hour,
                         :flying_range_in_nm,
                         :per_hour_cost,
-                        :catering_cost_per_pax,
+                        # :catering_cost_per_pax,
                         :organisation_id,
                         :base_airport_id
 
@@ -55,7 +55,7 @@ class Aircraft < ActiveRecord::Base
                             :cruise_speed_in_nm_per_hour,
                             :flying_range_in_nm,
                             :per_hour_cost,
-                            :catering_cost_per_pax,
+                            # :catering_cost_per_pax,
                             # :landing_field_length_in_feet,
                             :number_of_toilets,
                             # :cabin_length_in_meters,

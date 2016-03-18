@@ -51,7 +51,7 @@ class Organisations::AircraftsController < Organisations::BaseController
 	                :cruise_speed_in_nm_per_hour,
 	                :flying_range_in_nm,
 	                :per_hour_cost,
-	                :catering_cost_per_pax,
+	                # :catering_cost_per_pax,
 	                :phone,
 	                :flight_attendant,
 									:base_airport_id
