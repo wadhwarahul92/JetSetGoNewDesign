@@ -58,6 +58,9 @@ Rails.application.routes.draw do
         get 'forgot_password'
         post 'forgot_password_'
       end
+      member do
+        get 'profile'
+      end
     end
 
     resources :aircraft_unavailabilities

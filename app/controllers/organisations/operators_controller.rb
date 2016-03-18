@@ -7,7 +7,8 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :create,
                                             :update,
                                             :forgot_password,
-                                            :forgot_password_
+                                            :forgot_password_,
+                                            :profile
   ]
 
   before_action :set_operator, only: [:edit, :update]
@@ -117,6 +118,10 @@ class Organisations::OperatorsController < Organisations::BaseController
         render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
       end
     end
+  end
+
+  def profile
+    @operator = Operator.find current_user.id
   end
 
   private
