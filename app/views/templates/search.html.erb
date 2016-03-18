@@ -36,4 +36,7 @@
     </ul>
     <h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
   </div>
+  <div ng-show="ctrl.results.length == 0">
+    <h3 class="text-center">Oops! we don't have any aircrafts available matching your query.</h3>
+  </div>
 </div>
