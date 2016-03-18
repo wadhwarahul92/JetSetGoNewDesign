@@ -230,7 +230,6 @@ ActiveRecord::Schema.define(version: 20160314074533) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
-    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
