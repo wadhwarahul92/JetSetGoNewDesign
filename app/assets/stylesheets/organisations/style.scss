@@ -8,6 +8,28 @@ $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
 
+.settings_list{
+  a{
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.active_{
+  display: inline-block;
+  color: white;
+  background-color: #337ab7;
+  &:hover{
+    color: white;
+  }
+  &:visited{
+    color: white;
+  }
+  &:focus{
+    color: white;
+  }
+}
+
 .trip-enquiry{
   background-color: $main-blue-color;
 }

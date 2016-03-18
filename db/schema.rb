@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314074533) do
+ActiveRecord::Schema.define(version: 20160318113620) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(version: 20160314074533) do
     t.integer  "organisation_id",        limit: 4
     t.text     "api_token",              limit: 65535
     t.string   "designation",            limit: 255
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -26,7 +26,7 @@ class Organisations::WelcomeController < Organisations::BaseController
   end
 
   def setting
-
+    @operators = current_organisation.operators.with_deleted
   end
 
   private
