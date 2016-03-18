@@ -121,7 +121,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def profile
-    @operator = current_user
+    @operator = Operator.find current_user.id
   end
 
   private
