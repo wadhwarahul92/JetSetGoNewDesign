@@ -39,8 +39,8 @@ class Organisations::BaseController < ApplicationController
     end
   end
 
-  helper_method # @return [Organisation]
-      def current_organisation
+  # @return [Organisation]
+  helper_method def current_organisation
     @current_organisation ||= current_user.organisation
   end
 

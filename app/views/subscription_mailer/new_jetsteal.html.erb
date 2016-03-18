@@ -60,7 +60,13 @@
                                         <tr>
                                           <td class="text">
                                             <p style="text-align: center; font-size: 20px; color: #3D769A;"><%= "#{@jetsteal.aircraft.aircraft_type.name}" %></p>
-                                            <p style="text-align: center; color: gray;"><%= "#{@jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')}" %></p>
+                                            <p style="text-align: center; color: gray;">
+                                              <% if @jetsteal.sell_by_seats? %>
+                                                  <%= "#{@jetsteal.end_at.strftime('%d %b %Y, %I:%M %p')}" %>
+                                              <%- else %>
+                                                  <%= "#{@jetsteal.end_at.strftime('%d %b %Y, Any Time')}" %>
+                                              <%- end %>
+                                            </p>
                                             <p style="text-align: center; color: gray;"><%= "#{@jetsteal.aircraft.seating_capacity} Seats "  %></p>
                                           </td>
                                         </tr>
