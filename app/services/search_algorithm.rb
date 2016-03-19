@@ -35,7 +35,7 @@ class SearchAlgorithm
         organisation_id: verified_organisations.map(&:id),
         admin_verified: true
     ).where(
-         'seating_capacity >= ?', max_pax
+        'seating_capacity >= ?', max_pax
     )
 
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
@@ -94,7 +94,14 @@ BEGIN
           start_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(search_activities.first.departure_airport_id)).hours ,
           end_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
           landing_cost_at_arrival: airport_for_id(search_activities.first.departure_airport_id).landing_cost,
-          handling_cost_at_takeoff: base_airport(aircraft).handling_cost
+          handling_cost_at_takeoff: base_airport(aircraft).handling_cost,
+          #todo optimise this
+          watch_hour_at_arrival: WatchHour.where(
+              airport_id: search_activities.first.departure_airport_id
+          ).where(
+              '? BETWEEN start_at AND end_at', search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME
+          ).any?,
+          watch_hour_cost: (WatchHour.where(airport_id: search_activities.first.departure_airport_id).first.try(:cost) || 0)
       }
     end
 
@@ -111,7 +118,14 @@ BEGIN
           start_at: search_activity.start_at,
           end_at: search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours,
           landing_cost_at_arrival: airport_for_id(search_activity.arrival_airport_id).landing_cost,
-          handling_cost_at_takeoff: airport_for_id(search_activity.departure_airport_id).handling_cost
+          handling_cost_at_takeoff: airport_for_id(search_activity.departure_airport_id).handling_cost,
+          #todo optimise this
+          watch_hour_at_arrival: WatchHour.where(
+              airport_id: search_activity.departure_airport_id
+          ).where(
+              '? BETWEEN start_at AND end_at', search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
+          ).any?,
+          watch_hour_cost: (WatchHour.where(airport_id: search_activity.departure_airport_id).first.try(:cost) || 0)
       }
     end
 
@@ -127,7 +141,14 @@ BEGIN
           start_at: plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
           end_at: plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours,
           landing_cost_at_arrival: base_airport(aircraft).landing_cost,
-          handling_cost_at_takeoff: airport_for_id(search_activities.last.arrival_airport_id).handling_cost
+          handling_cost_at_takeoff: airport_for_id(search_activities.last.arrival_airport_id).handling_cost,
+          #todo optimise this
+          watch_hour_at_arrival: WatchHour.where(
+              airport_id: aircraft.base_airport_id
+          ).where(
+              '? BETWEEN start_at AND end_at', plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours
+          ).any?,
+          watch_hour_cost: (WatchHour.where(airport_id: aircraft.base_airport_id).first.try(:cost) || 0)
       }
     end
 
@@ -196,7 +217,14 @@ BEGIN
                       flight_cost: TimeDifference.between(
                           previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
                           previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
-                      ).in_hours * aircraft.per_hour_cost
+                      ).in_hours * aircraft.per_hour_cost,
+                      #todo optimise this
+                      watch_hour_at_arrival: WatchHour.where(
+                          airport_id: arrival_airport.id
+                      ).where(
+                          '? BETWEEN start_at AND end_at', previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
+                      ).any?,
+                      watch_hour_cost: (WatchHour.where(airport_id: arrival_airport.id).first.try(:cost) || 0)
                   },
                   {
                       pax: 0,
@@ -210,7 +238,14 @@ BEGIN
                       flight_cost: TimeDifference.between(
                           plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport).hours,
                           plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
-                      ).in_hours * aircraft.per_hour_cost
+                      ).in_hours * aircraft.per_hour_cost,
+                      #todo optimise this
+                      watch_hour_at_arrival: WatchHour.where(
+                          airport_id: departure_airport.id
+                      ).where(
+                          '? BETWEEN start_at AND end_at', plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+                      ).any?,
+                      watch_hour_cost: (WatchHour.where(airport_id: departure_airport.id).first.try(:cost) || 0)
                   }
               ]
 

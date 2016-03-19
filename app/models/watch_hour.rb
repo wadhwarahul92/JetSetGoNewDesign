@@ -12,4 +12,9 @@ class WatchHour < ActiveRecord::Base
     end
   end
 
+  #todo this is stub, change this
+  def cost
+    rand(10000..50000)
+  end
+
 end
