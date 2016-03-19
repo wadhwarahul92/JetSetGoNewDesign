@@ -8,7 +8,8 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :update,
                                             :forgot_password,
                                             :forgot_password_,
-                                            :profile
+                                            :profile,
+                                            :toggle
   ]
 
   before_action :set_operator, only: [:edit, :update]
@@ -20,7 +21,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                               :forgot_password_
   ]
 
-  before_action :authenticate_operator, only: [:index, :edit, :update]
+  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle]
 
   protect_from_forgery except: [:log_in_]
 
@@ -122,6 +123,20 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def profile
     @operator = Operator.find current_user.id
+  end
+
+  def toggle
+    @operator = Operator.with_deleted.find params[:id]
+    if @operator.organisation_id == current_organisation.id
+      if @operator.deleted_at.present?
+        @operator.update_attribute(:deleted_at, nil)
+      else
+        @operator.destroy
+      end
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: ['Unauthorised action.'] }
+    end
   end
 
   private

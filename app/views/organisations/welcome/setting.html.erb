@@ -19,17 +19,21 @@
           <th></th>
         </tr>
         <% @operators.each do |operator| %>
-        <tr>
-          <td><%= operator.full_name %></td>
-          <td><%= operator.designation %></td>
-          <td>
-            <% if operator.deleted_at.present? %>
-                <a href="">Activate</a>
-            <%- else %>
-                <a href="">Un-activate</a>
-            <%- end %>
-          </td>
-        </tr>
+            <tr>
+              <td><%= operator.full_name %></td>
+              <td><%= operator.designation %></td>
+              <td>
+                <% if current_user.is_admin? %>
+                    <% unless current_user.id == operator.id %>
+                        <% if operator.deleted_at.present? %>
+                            <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>
+                        <%- else %>
+                            <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Un-activate</a>
+                        <%- end %>
+                    <%- end %>
+                <%- end %>
+              </td>
+            </tr>
         <%- end %>
         </thead>
       </table>

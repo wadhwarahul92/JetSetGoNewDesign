@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       end
       member do
         get 'profile'
+        put 'toggle'
       end
     end
 

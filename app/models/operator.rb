@@ -19,4 +19,8 @@ class Operator < User
   validates :organisation, presence: true
   validates :designation, presence: true
 
+  def is_admin?
+    @is_admin ||= self.roles.include?('admin')
+  end
+
 end
