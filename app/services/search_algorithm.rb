@@ -101,7 +101,10 @@ BEGIN
           ).where(
               '? BETWEEN start_at AND end_at', search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME
           ).any?,
-          watch_hour_cost: (WatchHour.where(airport_id: search_activities.first.departure_airport_id).first.try(:cost) || 0)
+          watch_hour_cost: (WatchHour.where(airport_id: search_activities.first.departure_airport_id).first.try(:cost) || 0),
+          notam_at_arrival: Notam.where(airport_id: search_activities.first.departure_airport_id).where(
+              '? BETWEEN start_at AND end_at', search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME
+          ).any?
       }
     end
 
@@ -125,7 +128,10 @@ BEGIN
           ).where(
               '? BETWEEN start_at AND end_at', search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
           ).any?,
-          watch_hour_cost: (WatchHour.where(airport_id: search_activity.departure_airport_id).first.try(:cost) || 0)
+          watch_hour_cost: (WatchHour.where(airport_id: search_activity.departure_airport_id).first.try(:cost) || 0),
+          notam_at_arrival: Notam.where(airport_id: search_activities.first.departure_airport_id).where(
+              '? BETWEEN start_at AND end_at', search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
+          ).any?
       }
     end
 
@@ -148,7 +154,10 @@ BEGIN
           ).where(
               '? BETWEEN start_at AND end_at', plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours
           ).any?,
-          watch_hour_cost: (WatchHour.where(airport_id: aircraft.base_airport_id).first.try(:cost) || 0)
+          watch_hour_cost: (WatchHour.where(airport_id: aircraft.base_airport_id).first.try(:cost) || 0),
+          notam_at_arrival: Notam.where(airport_id: search_activities.first.departure_airport_id).where(
+              '? BETWEEN start_at AND end_at', plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours
+          ).any?
       }
     end
 
@@ -224,7 +233,10 @@ BEGIN
                       ).where(
                           '? BETWEEN start_at AND end_at', previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
                       ).any?,
-                      watch_hour_cost: (WatchHour.where(airport_id: arrival_airport.id).first.try(:cost) || 0)
+                      watch_hour_cost: (WatchHour.where(airport_id: arrival_airport.id).first.try(:cost) || 0),
+                      notam_at_arrival: Notam.where(airport_id: search_activities.first.departure_airport_id).where(
+                          '? BETWEEN start_at AND end_at', previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
+                      ).any?
                   },
                   {
                       pax: 0,
@@ -245,7 +257,10 @@ BEGIN
                       ).where(
                           '? BETWEEN start_at AND end_at', plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
                       ).any?,
-                      watch_hour_cost: (WatchHour.where(airport_id: departure_airport.id).first.try(:cost) || 0)
+                      watch_hour_cost: (WatchHour.where(airport_id: departure_airport.id).first.try(:cost) || 0),
+                      notam_at_arrival: Notam.where(airport_id: search_activities.first.departure_airport_id).where(
+                          '? BETWEEN start_at AND end_at', plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+                      ).any?
                   }
               ]
 
