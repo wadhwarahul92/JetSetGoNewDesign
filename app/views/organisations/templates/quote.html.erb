@@ -1,57 +1,78 @@
-<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
-<h3 class="text-center">quote #{{ctrl.quote.id}}</h3>
-<table class="table">
-  <tbody>
+<i class="fa fa-times cross" ng-click="$close()"></i>
+<table class="table table-main skyblue-bg">
   <tr>
-    <th>Aircraft:</th>
-    <td>{{ctrl.quote.activities[0].aircraft.tail_number}}</td>
-    <th>Enquired By:</th>
-    <td>{{ctrl.quote.user}}</td>
+    <td class="img-con">
+      <span>
+        <img class="img-responsive" ng-src="{{ctrl.quote.activities[0].aircraft.images[0]}}">
+      </span>
+    </td>
+    <td class="img-content quote-content">
+      <table>
+        <tr>
+          <th colspan="2" class="text-center main_heading">
+            <h3>quote #{{ctrl.quote.id}}</h3>
+          </th>
+        </tr>
+        <tr>
+          <th class="sub-heading">Aircraft:</th>
+          <td class="sub-result">{{ctrl.quote.activities[0].aircraft.tail_number}}</td>
+        </tr>
+        <tr>
+          <th class="sub-heading">Enquired By:</th>
+          <td class="sub-result">{{ctrl.quote.user}}</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <table class="sub-repeat-table" ng-repeat="activity in ctrl.quote.activities">
+              <tr>
+                <th colspan="2">
+                  <h4>Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4>
+                </th>
+              </tr>
+              <tr>
+                <th class="sub-heading">Departure:</th>
+                <td class="sub-result">{{activity.departure_airport.name}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">Arrival:</th>
+                <td class="sub-result">{{activity.arrival_airport.name}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">Start at:</th>
+                <td class="sub-result">{{activity.start_at}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">End at:</th>
+                <td class="sub-result">{{activity.end_at}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">Flight Cost:</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">Handling cost at "{{activity.departure_airport.name}}"</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</td>
+              </tr>
+              <tr ng-show="activity.accommodation_plan">
+                <th class="sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</td>
+              </tr>
+              <tr ng-repeat="(tax, value) in ctrl.quote.tax">
+                <th class="sub-heading">{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</td>
+              </tr>
+              <tr>
+                <th class="sub-heading">GrandTotal</th>
+                <td class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
-  </tbody>
-</table>
-<table class="table" ng-repeat="activity in ctrl.quote.activities">
-  <thead>
-  <tr class="info">
-    <th class="text-center" colspan="2"><h4>Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td class=""><strong>Departure:</strong> {{activity.departure_airport.name}}</td>
-    <td class=""><strong>Arrival:</strong> {{activity.arrival_airport.name}}</td>
-  </tr>
-  <tr>
-    <td class="">{{activity.start_at}}</td>
-    <td class="">{{activity.end_at}}</td>
-  </tr>
-  <tr>
-    <th class="">Flight Cost</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</td>
-  </tr>
-  <tr>
-    <th class="">Handling cost at "{{activity.departure_airport.name}}"</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</td>
-  </tr>
-  <tr>
-    <th class="">Landing cost at "{{activity.arrival_airport.name}}"</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</td>
-  </tr>
-  <tr ng-show="activity.accommodation_plan">
-    <th class="">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</td>
-  </tr>
-  </tbody>
-</table>
-<table class="table">
-  <tbody>
-  <tr ng-repeat="(tax, value) in ctrl.quote.tax">
-    <th>{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</th>
-    <td><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</td>
-  </tr>
-  <tr>
-    <th>GrandTotal</th>
-    <td><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</td>
-  </tr>
-  </tbody>
 </table>
