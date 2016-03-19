@@ -4,6 +4,8 @@ class AircraftUnavailability < ActiveRecord::Base
 
   has_paper_trail
 
+  acts_as_paranoid
+
   belongs_to :aircraft
 
   validates_presence_of :aircraft_id, :start_at, :end_at, :reason

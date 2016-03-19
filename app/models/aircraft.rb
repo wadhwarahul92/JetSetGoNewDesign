@@ -4,6 +4,8 @@ class Aircraft < ActiveRecord::Base
 
   has_paper_trail
 
+  acts_as_paranoid
+
   belongs_to :aircraft_type
 
   has_many :aircraft_images

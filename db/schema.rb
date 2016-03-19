@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318120304) do
+ActiveRecord::Schema.define(version: 20160319063735) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160318120304) do
     t.float    "handling_cost_at_takeoff", limit: 24,    default: 0.0
     t.float    "landing_cost_at_arrival",  limit: 24,    default: 0.0
     t.text     "accommodation_plan",       limit: 65535
+    t.datetime "deleted_at"
   end
 
   create_table "admin_roles", force: :cascade do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160318120304) do
     t.text     "reason",      limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.datetime "deleted_at"
   end
 
   create_table "aircrafts", force: :cascade do |t|
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 20160318120304) do
     t.boolean  "admin_verified",                           default: false
     t.integer  "organisation_id",              limit: 4
     t.integer  "base_airport_id",              limit: 4
+    t.datetime "deleted_at"
   end
 
   create_table "airports", force: :cascade do |t|
@@ -293,6 +296,7 @@ ActiveRecord::Schema.define(version: 20160318120304) do
     t.datetime "updated_at",                         null: false
     t.integer  "user_id",                limit: 4
     t.integer  "payment_transaction_id", limit: 4
+    t.datetime "deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
