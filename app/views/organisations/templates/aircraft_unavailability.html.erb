@@ -1,9 +1,27 @@
 <i class="fa fa-times cross" ng-click="$close()"></i>
 <div class="table table-main red-bg">
-  <div class="col-sm-3 col-xs-12"></div>
-  <div class="col-sm-9 col-xs-12"></div>
+  <div class="col-sm-3 col-xs-12 img-con">
+    <span >
+      <img class="img-responsive" ng-src="{{ctrl.aircraft_unavailability.aircraft.images[0]}}">
+    </span>
+  </div>
+  <div class="col-sm-9 col-xs-12 img-content">
+    <div class="text-center main_heading">
+      <h3>Aircraft Unavailability #{{ctrl.aircraft_unavailability.id}}</h3>
+    </div>
+    <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
+    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.aircraft.tail_number}}</div>
+    <div class="col-sm-6 col-xs-12 sub-heading">Start At:</div>
+    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.start_at}}</div>
+    <div class="col-sm-6 col-xs-12 sub-heading">End At:</div>
+    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.end_at}}</div>
+    <div class="col-sm-6 col-xs-12 sub-heading">Reason:</div>
+    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.reason}}</div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
 </div>
-<table class="table table-main red-bg">
+<!-- <table class="table table-main red-bg">
   <tbody>
     <tr>
       <td class="img-con">
@@ -38,4 +56,4 @@
       </td>
     </tr>
   </tbody>  
-</table>
+</table> -->

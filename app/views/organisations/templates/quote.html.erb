@@ -1,5 +1,50 @@
 <i class="fa fa-times cross" ng-click="$close()"></i>
-<table class="table table-main skyblue-bg">
+<div class="table table-main skyblue-bg">
+  <div class="col-sm-3 col-xs-12 img-con">
+    <span >
+      <img class="img-responsive" ng-src="{{ctrl.quote.activities[0].aircraft.images[0]}}">
+    </span>
+  </div>
+  <div class="col-sm-9 col-xs-12 img-content">
+      <div class="text-center main_heading">
+        <h3>quote #{{ctrl.quote.id}}</h3>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.quote.activities[0].aircraft.tail_number}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Enquired By:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.quote.user}}</div>
+      <div class="clearfix"></div>
+      <div class="sub-repeat-table" ng-repeat="activity in ctrl.quote.activities">
+      <h4>Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4>
+      <div class="col-sm-6 col-xs-12 sub-heading">Arrival:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{activity.arrival_airport.name}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Start at:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{activity.start_at}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">End at:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{activity.end_at}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Flight Cost:</div>
+      <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Handling cost at "{{activity.departure_airport.name}}"</div>
+      <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>
+      <div class="col-sm-6 col-xs-12 sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</div>
+      <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</div>
+      <div ng-show="activity.accommodation_plan">
+        <div class="col-sm-6 col-xs-12 sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</div>
+        <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</div>
+      </div>
+      <div ng-repeat="(tax, value) in ctrl.quote.tax">
+        <div class="col-sm-6 col-xs-12 sub-heading">{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</div>
+        <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</div>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-heading">GrandTotal</div>
+      <div class="col-sm-6 col-xs-12 sub-result"><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<!-- <table class="table table-main skyblue-bg">
   <tr>
     <td class="img-con">
       <span>
@@ -75,4 +120,4 @@
       </table>
     </td>
   </tr>
-</table>
+</table> -->
