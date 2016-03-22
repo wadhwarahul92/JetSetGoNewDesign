@@ -129,11 +129,15 @@ class FinancesController < ApplicationController
   private
 
   def hour_diff(start_at, end_at)
+    start_at = DateTime.parse(start_at) if start_at.is_a?(String)
+    end_at = DateTime.parse(end_at) if end_at.is_a?(String)
     hours = TimeDifference.between(start_at, end_at).in_hours
     hours.to_i
   end
 
   def min_diff(start_at, end_at)
+    start_at = DateTime.parse(start_at) if start_at.is_a?(String)
+    end_at = DateTime.parse(end_at) if end_at.is_a?(String)
     hours = TimeDifference.between(start_at, end_at).in_hours
     decimal_part = hours.to_s.split('.')[1]
     decimal_part.present? ? decimal_part.to_i : 0
