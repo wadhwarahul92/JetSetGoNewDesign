@@ -221,7 +221,7 @@ BEGIN
                       departure_airport_id: arrival_airport.id,
                       arrival_airport_id: departure_airport.id,
                       flight_type: 'empty_leg',
-                      start_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
+                      start_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport).hours,
                       end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
                       landing_cost_at_arrival: departure_airport.landing_cost,
                       handling_cost_at_takeoff: arrival_airport.handling_cost,
