@@ -105,10 +105,7 @@ class Organisations::TripsController < Organisations::BaseController
 
   def get_enquiries
     if request.format == 'application/json'
-      enquiry_ids = current_organisation.trips.where(status: Trip::STATUS_ENQUIRY)
-      if enquiry_ids.present?
-        @enquiries = Activity.all.where(trip_id: enquiry_ids)
-      end
+      @enquiries = current_organisation.trips.includes(:activities).where(status: Trip::STATUS_ENQUIRY)
     end
   end
 
