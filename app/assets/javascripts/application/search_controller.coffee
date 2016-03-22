@@ -81,5 +81,37 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         classes: ['alert-danger']
       CurrentUserService.openSignInModal()
 
+  @previewProForma = (result)->
+    if CurrentUserService.currentUser
+#      $http.post('/finances/preview_pro_forma', {result: result})
+      $http({
+        url: '/finances/preview_pro_forma'
+        method: 'POST'
+        data: {result: result}
+        responseType: 'arraybuffer'
+      }).success(
+        (data)->
+          anchor = angular.element '<a/>'
+          anchor.css {display: 'none'}
+          blob = new Blob([data], {type: "octet/stream"})
+          url = window.URL.createObjectURL(blob)
+          anchor.attr({
+            href: url
+            target: '_blank'
+            download: 'pro forma preview.pdf'
+          })[0].click();
+          anchor.remove();
+      ).error(
+        ->
+          notify
+            message: 'Sorry! could not preview pro forma.'
+            classes: ['alert-danger']
+      )
+    else
+      notify
+        message: 'Please sign-in or register first.'
+        classes: ['alert-danger']
+      CurrentUserService.openSignInModal()
+
   return undefined
 ]

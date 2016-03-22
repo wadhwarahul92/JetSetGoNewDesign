@@ -258,6 +258,12 @@ Rails.application.routes.draw do
 
   resources :searches
 
+  resources :finances do
+    collection do
+      post 'preview_pro_forma'
+    end
+  end
+
   ######
   # Highly specific url, to be changed later
   # GET aircrafts for ids

@@ -95,6 +95,9 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     htmlentities (4.3.4)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -118,6 +121,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     mysql2 (0.4.2)
     newrelic_rpm (3.15.0.314)
     nokogiri (1.6.7.1)
@@ -266,6 +270,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   foundation-rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener

@@ -103,3 +103,5 @@ gem 'nokogiri'
 gem 'premailer-rails'
 
 gem 'newrelic_rpm'
+
+gem 'httparty'
