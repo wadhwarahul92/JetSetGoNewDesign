@@ -1,33 +1,47 @@
 json.array! @empty_legs do |empty_leg|
 
   json.id empty_leg.id
-  json.trip_id empty_leg.trip_id
-  json.start_at empty_leg.start_at
-  json.end_at empty_leg.end_at
-  json.empty_leg empty_leg.empty_leg
-  json.pax empty_leg.pax
-  json.flight_cost empty_leg.flight_cost
-  json.handling_cost_at_takeoff empty_leg.handling_cost_at_takeoff
-  json.landing_cost_at_arrival empty_leg.landing_cost_at_arrival
-  json.accommodation_plan empty_leg.accommodation_plan
 
-  json.aircraft{
-    json.id empty_leg.aircraft.id
-    json.name empty_leg.aircraft.aircraft_type.name
-  }
+  json.status empty_leg.status
 
-  json.trip{
-    json.id empty_leg.trip.id
-  }
+  json.user_id empty_leg.user_id
 
-  json.departure_airport{
-    json.id empty_leg.departure_airport.id
-    json.name empty_leg.departure_airport.name
-  }
+  json.aircraft_image_url empty_leg.activities.first.aircraft.aircraft_images.first.image.url(:size_250x250)
 
-  json.arrival_airport{
-    json.id empty_leg.arrival_airport.id
-    json.name empty_leg.arrival_airport.name
+  json.activities{
+    json.array! empty_leg.activities do |activity|
+
+      json.id activity.id
+      json.start_at activity.start_at
+      json.end_at activity.end_at
+      json.pax activity.pax
+      json.flight_cost activity.flight_cost
+      json.handling_cost_at_takeoff activity.handling_cost_at_takeoff
+      json.landing_cost_at_arrival activity.landing_cost_at_arrival
+      json.accommodation_plan activity.accommodation_plan
+
+      json.aircraft{
+        json.id activity.aircraft.id
+        json.name activity.aircraft.aircraft_type.name
+      }
+
+      json.trip{
+        json.id activity.trip.id
+      }
+
+      json.departure_airport{
+        json.id activity.departure_airport.id
+        json.name activity.departure_airport.name
+        json.code activity.departure_airport.code
+      }
+
+      json.arrival_airport{
+        json.id activity.arrival_airport.id
+        json.name activity.arrival_airport.name
+        json.code activity.arrival_airport.code
+      }
+
+    end
   }
 
 end

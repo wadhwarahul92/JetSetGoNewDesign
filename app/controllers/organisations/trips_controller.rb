@@ -96,10 +96,11 @@ class Organisations::TripsController < Organisations::BaseController
 
   def get_empty_legs
     if request.format == 'application/json'
-      empty_leg_ids = current_organisation.trips.map{|n| n.id}
-      if empty_leg_ids.present?
-        @empty_legs = Activity.where(empty_leg: true, trip_id: empty_leg_ids)
-      end
+      @empty_legs = current_organisation.trips.joins(
+          'JOIN activities ON trips.id = activities.trip_id'
+      ).where(
+           'activities.empty_leg IS TRUE'
+      ).distinct
     end
   end
 
