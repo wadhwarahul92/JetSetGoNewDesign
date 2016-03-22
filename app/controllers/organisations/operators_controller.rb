@@ -123,6 +123,7 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def profile
     @operator = Operator.find current_user.id
+    render layout: "organisations"
   end
 
   def toggle
