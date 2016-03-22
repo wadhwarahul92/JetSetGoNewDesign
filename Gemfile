@@ -94,7 +94,7 @@ gem 'slim-rails' #todo remove this and convert all slim files to erb
 
 gem 'rmagick'
 
-gem 'time_difference'
+gem 'time_diff'
 
 gem 'paranoia', '~> 2.0'
 

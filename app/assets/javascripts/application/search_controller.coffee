@@ -6,6 +6,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @aircrafts = []
 
+  @tax = null
+
   AirportsService.getAirports().then(
     =>
       @airports = AirportsService.airports
@@ -13,7 +15,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
-      @results = data
+      @tax = data.tax
+      @results = data.results
       for result in @results
         @totalTripCost(result)
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
@@ -52,7 +55,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
 #    trip.totalCost = cost
-    cost
+    cost + ((@tax / 100) * cost)
 
   @formatTime = (time)->
     data = null

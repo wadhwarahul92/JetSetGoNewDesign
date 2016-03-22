@@ -33,7 +33,7 @@ class SearchesController < ApplicationController
       render template: 'welcome/index', layout: 'application'
     elsif request.format == 'application/json'
       @results = SearchAlgorithm.new(params[:id]).results
-      render status: :ok, json: @results.to_json
+      render status: :ok
     end
   end
 
