@@ -29,7 +29,7 @@ class BackgroundJob
       end
     rescue Exception => e
       ActionMailer::Base.mail(
-          to: 'suraj.pratap24@gmail.com',
+          to: %w(suraj.pratap24@gmail.com pulkit.bhatia@jetsetgo.in),
           subject: 'Error in BackgroundJob#populate_watch_hours',
           from: 'monika@jetsetgo.in',
           body: <<BEGIN
