@@ -317,7 +317,7 @@ input#phone{
 
 #header{
   background-color: $main-green-color;
-  padding: 10px;
+  padding: 10px 0;
   .logo{
     height: 50px;
   }
@@ -613,35 +613,7 @@ input#phone{
 /*changes Rahul 26-2-2016*/
 
 /*changes Rahul 27-2-2016*/
-/*add aircraft page*/
-.add-aircraft-main-con{
-  h3.add-aircraft-heading{
-    margin:0;
-    background-color:$dark-blue-color;
-    color:#ffffff;
-    border:0;
-    padding:5px 10px 8px 10px;
-  }
-  .add-aircraft-from{
-    background-color:#f8f8f8;
-    padding:15px;
-    .save-btn{
-      width:30%;
-    }
-    label{
-    
-    }
-    .form-colomn{
-      margin-bottom:15px;
-      .checkbox-text{
-        width:14px;
-        box-shadow:none;
-        margin:0;
-      }
-    }
-  }
-}
-/*add aircraft page*/
+
 
 /*aircraft page*/
 .panel-group{
@@ -671,6 +643,19 @@ input#phone{
 }
 
 /*changes Rahul 27-2-2016*/
+
+.navbar-default{
+  .navbar-toggle{
+    border-color:#ffffff;
+    .icon-bar{
+      background-color:#ffffff;
+    }
+  }
+}
+.navbar-toggle:hover{
+  background-color:#05518b !important;
+}
+
 .organisation-main-icon{
   width: 41px;
   height: 33px;
@@ -731,18 +716,18 @@ input#phone{
   .navbar-hidden{margin-top:15px;}
   #header{
     ul.logo_list{
-      max-width: 250px;
+      max-width: 230px;
       margin: 7px auto 0 auto;
       li{
-        margin-right: 10px !important;
+        
       }
     }
     ul.right_list{
       float: none;
       list-style-type: none;
       font-size: 10px;
-      max-width: 250px;
-      margin: 5px auto 0 auto;
+      max-width: 195px;
+      margin: 10px auto 0 auto;
       li{
         margin-right:9px;
       }
