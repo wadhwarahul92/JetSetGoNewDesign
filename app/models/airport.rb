@@ -25,9 +25,9 @@ class Airport < ActiveRecord::Base
   #####VALIDATIONS
   validates :name, presence: true, uniqueness: { scope: :city_id }
   validates :city, :longitude, :latitude, :ifr_or_vfr, presence: true
-  validates :code, uniqueness: true
+  # validates :code, uniqueness: true
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
-  validates :icao_code, uniqueness: true
+  # validates :icao_code, uniqueness: true
   validates :runway_field_length_in_feet, presence: true
 
   validates_numericality_of :runway_field_length_in_feet,
