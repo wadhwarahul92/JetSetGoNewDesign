@@ -1,8 +1,8 @@
 class BackgroundJob
 
-  def populate_watch_hours(filename)
+  def populate_watch_hours
     begin
-      book = RubyXL::Parser.parse("#{Rails.root}/tmp/#{filename}")
+      book = RubyXL::Parser.parse("#{Rails.root}/lib/statics/watch.xlsx")
       sheet = book.worksheets[0]
       index = 1
       row = sheet.sheet_data[index]
