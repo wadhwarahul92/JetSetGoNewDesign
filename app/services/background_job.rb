@@ -5,6 +5,8 @@ class BackgroundJob
       book = RubyXL::Parser.parse("#{Rails.root}/lib/statics/watch.xlsx")
       sheet = book.worksheets[0]
       index = 1
+      c = nil
+      airport = nil
       row = sheet.sheet_data[index]
       WatchHour.transaction do
         while row.present? and row[0].present?
@@ -32,6 +34,8 @@ class BackgroundJob
           from: 'monika@jetsetgo.in',
           body: <<BEGIN
 #{e.inspect}
+c = #{c}
+airport = #{airport}
 index = #{index}
 backtrace = #{e.backtrace}
 BEGIN
