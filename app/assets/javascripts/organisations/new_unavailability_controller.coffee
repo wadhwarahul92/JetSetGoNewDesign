@@ -41,5 +41,14 @@ organisations_app.controller 'NewUnavailabilityController', ['$http', 'notify', 
         )
     )
 
+  @formatTime = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+    if data and data == 'Invalid date'
+      return 'Click to choose time'
+    else
+      return data
+
   return undefined
 ]
