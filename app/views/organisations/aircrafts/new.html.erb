@@ -10,8 +10,14 @@
 					<div class="row">
 						<%= render partial: 'organisations/aircrafts/form' %>
 					</div>
-					<a ng-click="ctrl.create()" class="btn btn-primary save-btn">Save</a>
-          <%= link_to 'Back', organisations_aircrafts_path, class: 'btn btn-primary'%>
+					<div class="row">
+					<div class="col-sm-6 col-xs-6">
+						<a ng-click="ctrl.create()" class="btn btn-primary save-btn2">Save</a>
+					</div>
+					<div class="col-sm-6 col-xs-6">
+          			<%= link_to 'Back', organisations_aircrafts_path, class: 'btn btn-primary back-btn'%>
+          			</div>
+          			</div>
 				</div>
 			</div>
 		</div>

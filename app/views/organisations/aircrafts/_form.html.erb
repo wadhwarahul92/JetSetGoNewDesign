@@ -38,35 +38,50 @@
 	<label for="crew">Number of crew</label>
 	<select ng-options="n for n in [1,2,3,4,5]" id="crew" class="form-control text-boxes" ng-model="ctrl.aircraft.crew"></select>
 </div>
-<div class="col-sm-6 form-colomn">
-	<label for="wifi">wifi</label><br/>
-	<span ng-click="ctrl.aircraft.wifi = !ctrl.aircraft.wifi" class="main-yesno">
-        <span ng-class="{'yes-con' : ctrl.aircraft.wifi == true, 'no-con' : ctrl.aircraft.wifi != true}" class="">
-        	<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.wifi == true, 'fa-times' : ctrl.aircraft.wifi != true}"></i>
-        </span>
-    </span>
-    <input type="checkbox" id="wifi" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.wifi">
-</div>
-<div class="col-sm-6 form-colomn">
-	<label for="phone">Phone</label><br/>
-	<span ng-click="ctrl.aircraft.phone = !ctrl.aircraft.phone" class="main-yesno">
-		<span ng-class="{'yes-con' : ctrl.aircraft.phone == true, 'no-con' : ctrl.aircraft.phone != true}">
-			<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.phone == true, 'fa-times' : ctrl.aircraft.phone != true}"></i>
-		</span>
-	</span>
-	<input type="checkbox" id="phone" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.phone">
-</div>
-<div class="col-sm-6 form-colomn">
-	<label for="flight_attendant">Flight attendant</label>
-	<input type="checkbox" id="flight_attendant" class="form-control checkbox-text" ng-model="ctrl.aircraft.flight_attendant">
+
+<div class="col-md-6 col-sm-12 col-xs-12">
+	<div class="row">
+		<div class="col-sm-6 col-xs-6 form-colomn">
+			<label for="wifi">wifi</label><br/>
+			<span ng-click="ctrl.aircraft.wifi = !ctrl.aircraft.wifi" class="main-yesno">
+		        <span ng-class="{'yes-con' : ctrl.aircraft.wifi == true, 'no-con' : ctrl.aircraft.wifi != true}" class="">
+		        	<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.wifi == true, 'fa-times' : ctrl.aircraft.wifi != true}"></i>
+		        </span>
+		    </span>
+		    <input type="checkbox" id="wifi" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.wifi">
+		</div>
+		<div class="col-sm-6 col-xs-6 form-colomn">
+			<label for="phone">Phone</label><br/>
+			<span ng-click="ctrl.aircraft.phone = !ctrl.aircraft.phone" class="main-yesno">
+				<span ng-class="{'yes-con' : ctrl.aircraft.phone == true, 'no-con' : ctrl.aircraft.phone != true}">
+					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.phone == true, 'fa-times' : ctrl.aircraft.phone != true}"></i>
+				</span>
+			</span>
+			<input type="checkbox" id="phone" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.phone">
+		</div>
+		<div class="col-sm-6 col-xs-6 form-colomn">
+			<label for="flight_attendant">Flight attendant</label><br/>
+			<span ng-click="ctrl.aircraft.flight_attendant = !ctrl.aircraft.flight_attendant" class="main-yesno">
+				<span ng-class="{'yes-con' : ctrl.aircraft.flight_attendant == true, 'no-con' : ctrl.aircraft.flight_attendant != true}">
+					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.flight_attendant == true, 'fa-times' : ctrl.aircraft.flight_attendant != true}"></i>
+				</span>
+			</span>
+			<input type="checkbox" id="flight_attendant" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.flight_attendant">
+		</div>
+		<div class="col-sm-6 col-xs-6 form-colomn">
+			<label for="medical_evac">Medical evac</label><br/>
+			<span ng-click="ctrl.aircraft.medical_evac = !ctrl.aircraft.medical_evac" class="main-yesno">
+				<span ng-class="{'yes-con' : ctrl.aircraft.medical_evac == true, 'no-con' : ctrl.aircraft.medical_evac != true}">
+					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.medical_evac == true, 'fa-times' : ctrl.aircraft.medical_evac != true}"></i>
+				</span>
+			</span>
+			<input type="checkbox" id="medical_evac" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.medical_evac">
+		</div>
+	</div>
 </div>
 <div class="col-sm-6 form-colomn">
 	<label for="year_of_manufacture">Year of Manufacture</label>
 	<input type="text" id="year_of_manufacture" class="form-control text-boxes" ng-model="ctrl.aircraft.year_of_manufacture">
-</div>
-<div class="col-sm-6 form-colomn">
-	<label for="medical_evac">Medical evac</label>
-	<input type="checkbox" id="medical_evac" class="form-control checkbox-text" ng-model="ctrl.aircraft.medical_evac">
 </div>
 <div class="col-sm-6 form-colomn">
 	<label for="cruise_speed_in_nm_per_hour">Cruise speed in nm per hour</label>

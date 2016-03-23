@@ -15,9 +15,22 @@ $main-blue-color:rgb(5, 81, 139);
     border:0;
     text-align:center;
     font-size:25px;
-    padding:5px 10px 10px 10px;
+    padding:5px 10px 13px 10px;
     max-width:500px;
     border-bottom:1px solid #cccccc;
+    position:relative;
+  }
+  h3.add-aircraft-heading:after{
+    content:"";
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background-color:$main-green-color;
+    position:absolute;
+    border-radius:50%;
+    border:3px solid #ffffff;
+    bottom:-10px;
+    left:48%;
   }
   .add-aircraft-from{
     background-color:#fbfbfb;
@@ -74,6 +87,15 @@ $main-blue-color:rgb(5, 81, 139);
         margin:0;
       }
     }
+  }
+  .save-btn2{
+    width:50%;
+    padding:10px;
+    float:right;
+  }
+  .back-btn{
+    width:50%;
+    padding:10px;
   }
 }
 /*add aircraft page*/
