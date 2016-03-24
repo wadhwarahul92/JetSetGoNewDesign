@@ -28,18 +28,22 @@ module JetSetGo
 end
 
 #send emails to Suraj if DJ fails
-# Delayed::Worker.class_eval do
-#   def handle_failed_job_with_notification(job, error)
-#     env = {}
-#     env['exception_notifier.options'] = {
-#         :sections => %w(backtrace delayed_job),
-#         :email_prefix => '[Delayed Job ERROR] ',
-#         :exception_recipients => %w(suraj.pratap@jetsetgo.in),
-#         :sender_address => %{'notifier' <suraj.pratap@jetsetgo.in>}
-#     }
-#     env['exception_notifier.exception_data'] = {:job => job}
-#     # ::ExceptionNotifier::Notifier.exception_notification(env, error).deliver
-#     ExceptionNotifier.notify_exception(error, env: env).deliver_later
-#   end
-# end
+Delayed::Worker.class_eval do
+
+  PREVIOUS_DEF = self.instance_method :handle_failed_job
+
+  def handle_failed_job(job, error)
+    PREVIOUS_DEF.bind(self).call(job, error)
+    ActionMailer::Base.mail(
+                          to: 'suraj.pratap@jetsetgo.in',
+                          from: 'monika@jetsetgo.in',
+                          subject: 'JetSetGo: Failure in background job',
+                          body: <<BEGIN
+job = #{job.inspect}
+error = #{error.inspect}
+backtrace = #{error.try(:backtrace)}
+BEGIN
+    ).deliver_now
+  end
+end
 #################################
