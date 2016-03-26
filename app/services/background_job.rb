@@ -1,6 +1,6 @@
 class BackgroundJob
 
-  def populate_watch_hours
+  def populate_watch_hours(force = false)
     begin
       book = RubyXL::Parser.parse("#{Rails.root}/lib/statics/watch.xlsx")
       sheet = book.worksheets[0]
@@ -8,7 +8,8 @@ class BackgroundJob
       c = nil
       airport = nil
       row = sheet.sheet_data[index]
-      WatchHour.transaction do
+
+      if force
         while row.present? and row[0].present?
           puts row[0].value
 
@@ -26,7 +27,28 @@ class BackgroundJob
           index += 1
           row = sheet.sheet_data[index]
         end
+      else
+        WatchHour.transaction do
+          while row.present? and row[0].present?
+            puts row[0].value
+
+            ######
+            c = row[0].value
+            airport = Airport.where(icao_code: c).first
+            d = row[1].value.strftime('%d %b %Y')
+            m_1 = row[2].value.strftime('%H:%M')
+            m_2 = row[3].value.strftime('%H:%M')
+            start_at = DateTime.parse("#{d} #{m_1}")
+            end_at = DateTime.parse("#{d} #{m_2}")
+            WatchHour.create!(airport_id: airport.id, start_at: start_at, end_at: end_at)
+            ######
+
+            index += 1
+            row = sheet.sheet_data[index]
+          end
+        end
       end
+
     rescue Exception => e
       ActionMailer::Base.mail(
           to: %w(suraj.pratap24@gmail.com pulkit.bhatia@jetsetgo.in mayur.singh@jetsetgo.in),

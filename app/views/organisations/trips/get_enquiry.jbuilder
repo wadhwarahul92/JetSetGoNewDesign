@@ -37,5 +37,7 @@ json.activities{
         json.nights activity.accommodation_plan[:nights]
       }
     end
+    json.watch_hour_at_arrival activity.watch_hour_at_arrival?
+    json.watch_hour_cost activity.watch_hour_cost
   end
 }

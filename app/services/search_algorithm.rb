@@ -62,7 +62,7 @@ BEGIN
     ).to_h
 
     # puts '=== Loading Watch hours'
-    @watch_hours = WatchHour.where(airport_id: airport_ids).where('start_at >= ?', DateTime.now).to_a
+    @watch_hours = WatchHour.where(airport_id: airport_ids).where('end_at >= ?', DateTime.now).to_a
 
     # puts '=== Loading Notams'
     @notams = Notam.where(airport_id: airport_ids).where('start_at >= ?', DateTime.now).to_a
@@ -104,10 +104,6 @@ BEGIN
           watch_hour_at_arrival: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
           watch_hour_cost: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
           notam_at_arrival: airport_has_notam(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME),
-          # flight_cost: TimeDifference.between(
-          #     search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(search_activities.first.departure_airport_id)).hours,
-          #     search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME
-          # ).in_hours * aircraft.per_hour_cost
           flight_cost: flight_cost_for_aircraft(aircraft, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(search_activities.first.departure_airport_id)).hours, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)
       }
     end
@@ -126,13 +122,15 @@ BEGIN
           end_at: search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours,
           landing_cost_at_arrival: airport_for_id(search_activity.arrival_airport_id).landing_cost,
           handling_cost_at_takeoff: airport_for_id(search_activity.departure_airport_id).handling_cost,
-          watch_hour_at_arrival: airport_has_watch_hour(search_activity.arrival_airport_id, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours)[0],
-          watch_hour_cost: airport_has_watch_hour(search_activity.arrival_airport_id, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours)[1],
+          watch_hour_at_arrival: airport_has_watch_hour(
+              search_activity.arrival_airport_id,
+              search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
+          )[0],
+          watch_hour_cost: airport_has_watch_hour(
+              search_activity.arrival_airport_id,
+              search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
+          )[1],
           notam_at_arrival: airport_has_notam(search_activity.arrival_airport_id, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours),
-          # flight_cost: TimeDifference.between(
-          #     search_activity.start_at,
-          #     search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
-          # ).in_hours * aircraft.per_hour_cost
           flight_cost: flight_cost_for_aircraft(aircraft, search_activity.start_at, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours)
       }
     end
@@ -153,10 +151,6 @@ BEGIN
           watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)[0],
           watch_hour_cost: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)[1],
           notam_at_arrival: airport_has_notam(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours),
-          # flight_cost: TimeDifference.between(
-          #     plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
-          #     plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours
-          # ).in_hours * aircraft.per_hour_cost
           flight_cost: flight_cost_for_aircraft(aircraft, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)
       }
     end
@@ -225,10 +219,6 @@ BEGIN
                       end_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours,
                       landing_cost_at_arrival: arrival_airport.landing_cost,
                       handling_cost_at_takeoff: departure_airport.handling_cost,
-                      # flight_cost: TimeDifference.between(
-                      #     previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
-                      #     previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours
-                      # ).in_hours * aircraft.per_hour_cost,
                       watch_hour_at_arrival: airport_has_watch_hour(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours)[0],
                       watch_hour_cost: airport_has_watch_hour(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours)[1],
                       notam_at_arrival: airport_has_notam(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport).hours),
@@ -243,10 +233,6 @@ BEGIN
                       end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
                       landing_cost_at_arrival: departure_airport.landing_cost,
                       handling_cost_at_takeoff: arrival_airport.handling_cost,
-                      # flight_cost: TimeDifference.between(
-                      #     plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport).hours,
-                      #     plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
-                      # ).in_hours * aircraft.per_hour_cost,
                       watch_hour_at_arrival: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
                       watch_hour_cost: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
                       notam_at_arrival: airport_has_notam(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
@@ -375,6 +361,9 @@ BEGIN
   ######################################################################
   # noinspection RubyResolve
   def airport_has_watch_hour(airport_id, time)
+    if airport_id == 1682
+      Float.inspect
+    end
     @airport_watch_hour_map ||= {}
     return @airport_watch_hour_map["#{airport_id}-#{time.to_s}"] if @airport_watch_hour_map["#{airport_id}-#{time.to_s}"].present?
     watch_hour = @watch_hours.detect{ |w| w.airport_id == airport_id and ( w.start_at <= time and w.end_at >= time )}
