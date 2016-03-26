@@ -8,9 +8,8 @@
       <select id="aircraft" ng-model="ctrl.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control">
       </select>
     </div>
-    <legend><small>Activities</small></legend>
     <div class="activity-box da-box" ng-repeat="activity in ctrl.activities">
-      <i ng-click="ctrl.deleteActivity(activity)" class="fa fa-times-circle-o hvr-bounce-in scnd-cross"></i>
+      <!--<i ng-click="ctrl.deleteActivity(activity)" class="fa fa-times-circle-o hvr-bounce-in scnd-cross"></i>-->
       <div class="col-sm-6">
         <label class="full-width">
           Departure Airport
@@ -77,7 +76,6 @@
           <ul class="list-unstyled">
             <li><strong>Seating Capacity:</strong> {{ctrl.aircraft.seating_capacity}}</li>
             <li><strong>Per hour cost:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.per_hour_cost}}</li>
-            <li><strong>Catering cost per pax:</strong> <i class="fa fa-rupee"></i> {{ctrl.aircraft.catering_cost_per_pax}}</li>
           </ul>
         </div>
       </div>
