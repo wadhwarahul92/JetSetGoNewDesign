@@ -1,0 +1,63 @@
+$main-green-color: rgb(70, 217, 191);
+$main-red-color: rgb(241, 92, 92);
+$sky-blue-color: rgb(31, 141, 212);
+$main-yellow-color: rgb(237, 202, 0);
+$main-orange-color: rgb(187, 83, 0);
+$dark-blue-color: rgb(5, 34, 71);
+$gray-color: rgb(173, 182, 181);
+$main-blue-color:rgb(5, 81, 139);
+
+
+.blue-right-trip{
+	background-color:#329ce0;
+}
+.yellow-right-trip{
+	background-color:#f9d715;
+}
+.main-right-con{
+	h3{
+		margin:0;
+		padding:10px 0;
+		font-size:20px;
+	}
+	table{
+		tr{
+			th{
+				border:0px;
+			}
+			td{
+				border:0px;
+			}
+		}
+		tr.heading_main{
+			th{
+				color:#ffffff;
+				padding:15px 0;
+				font-size:17px;
+			}
+		}
+		.table-body{
+			background-color:#ffffff;
+			tr{
+				border:1px solid #eeeeee;
+				td{
+					p{
+						margin:0;
+						padding:5px 0;
+						span.label{
+							font-size:11px;
+							display:inline-block;
+							padding:4px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.highlight_trip{
+		background-color:#1176b7;
+	}
+	.highlight_{
+		background-color:#e5c300;
+	}
+}
