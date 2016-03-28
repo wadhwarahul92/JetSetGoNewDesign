@@ -7,7 +7,7 @@
   <div class="col-sm-2">
     <ul class="list-unstyled text-center settings_list">
       <li><a ng-class="(current_tab=='members') ? 'active_' : 'inactive_'" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a></li>
-      <li><a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.update_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and condition</a></li>
+      <li><a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.get_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and condition</a></li>
       <!--(status=='active') ? ['enabled'] : ['disabled', 'alik']-->
     </ul>
   </div>
