@@ -120,11 +120,12 @@ class Organisations::TripsController < Organisations::BaseController
   end
 
   def send_quote
-    @trip = current_organisation.trips.find(params[:id])
-    if @trip.update_attribute(:status, Trip::STATUS_QUOTED)
+    send_quote_service = SendQuoteService.new(params[:enquiry])
+    begin
+      send_quote_service.process!
       render status: :ok, nothing: true
-    else
-      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
+    rescue Exception => e
+      render status: :unprocessable_entity, json: { errors: [e.message] }
     end
   end
 

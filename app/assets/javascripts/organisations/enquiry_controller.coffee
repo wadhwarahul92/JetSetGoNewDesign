@@ -3,7 +3,7 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
   @enquiry = enquiry
 
   @sendQuote = ->
-    $http.post("/organisations/trips/#{@enquiry.id}/send_quote.json").success(
+    $http.post("/organisations/trips/#{@enquiry.id}/send_quote.json", {enquiry: @enquiry}).success(
       ->
         notify
           message: 'The quote has been successfully delivered to the client.We shall contact you soon.'
