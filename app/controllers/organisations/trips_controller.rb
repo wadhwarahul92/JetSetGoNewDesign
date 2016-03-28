@@ -22,6 +22,12 @@ class Organisations::TripsController < Organisations::BaseController
     @activity = Activity.find params[:id]
   end
 
+  def destroy_trip
+    @trip = Trip.find params[:id]
+    @trip.destroy
+    render status: :ok, nothing: true
+  end
+
   def destroy
     @activity = Activity.find params[:id]
     @activity.destroy

@@ -85,7 +85,7 @@ class Activity < ActiveRecord::Base
 
   validate def night_landing_requirement
              if self.end_at.hour > Airport::NIGHT_LANDING_ONSET and !self.arrival_airport.night_landing?
-               self.add(:end_at, 'arrival airport does not supports night landing.')
+               self.errors.add(:base, 'Arrival airport does not support night landing.')
              end
   end
 

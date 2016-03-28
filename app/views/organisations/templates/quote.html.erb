@@ -9,6 +9,9 @@
       <div class="text-center main_heading">
         <h3>quote #{{ctrl.quote.id}}</h3>
       </div>
+    <div>
+      <a href="" ng-click="ctrl.deleteQuote()">Delete this quote</a>
+    </div>
       <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
       <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.quote.activities[0].aircraft.tail_number}}</div>
       <div class="col-sm-6 col-xs-12 sub-heading">Enquired By:</div>

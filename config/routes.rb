@@ -72,6 +72,7 @@ Rails.application.routes.draw do
         get 'get_enquiry'
         get 'get_trip'
         post 'send_quote'
+        delete 'destroy_trip'
       end
       collection do
         get 'all_events'
