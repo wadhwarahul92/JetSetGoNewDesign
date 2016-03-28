@@ -39,12 +39,12 @@
                 <div class="listing-con">
                   <div class="row">
                     <div class="col-sm-6 col-xs-12 res-btm-border">
-                      <h5>Baggage capacity in kg</h5>
-                      <p>{{aircraft.baggage_capacity_in_kg}}</p>
-                    </div>
-                    <div class="col-sm-6 col-xs-12 res-btm-border">
                       <h5>Seating capacity</h5>
                       <p>{{aircraft.seating_capacity}}</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 res-btm-border">
+                      <h5>Baggage capacity in kg</h5>
+                      <p>{{aircraft.baggage_capacity_in_kg}}</p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -56,7 +56,7 @@
                       <p>{{aircraft.runway_field_length_in_feet}}</p>
                     </div>
                     <div class="col-sm-6 col-xs-12 res-btm-border">
-                      <h5>Seating capacity</h5>
+                      <h5>Number of toilets</h5>
                       <p>{{aircraft.number_of_toilets}}</p>
                     </div>
                     <div class="clearfix"></div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-sm-6 col-xs-12 res-btm-border">
                       <h5>Wifi</h5>
-                      <p>{{aircraft.wifi}}</p>
+                      <p><span class="fa" ng-class="aircraft.wifi ? 'fa-check-circle green-check-icon':'fa-times-circle red-cross-icon'"></span></p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -92,11 +92,11 @@
                   <div class="row">
                     <div class="col-sm-6 col-xs-12 res-btm-border">
                       <h5>Phone</h5>
-                      <p>{{aircraft.phone}}</p>
+                      <p><span class="fa" ng-class="aircraft.phone ? 'fa-check-circle green-check-icon':'fa-times-circle red-cross-icon'"></span></p>
                     </div>
                     <div class="col-sm-6 col-xs-12 res-btm-border">
                       <h5>Flight attendant</h5>
-                      <p>{{aircraft.flight_attendant}}</p>
+                      <p><span class="fa" ng-class="aircraft.flight_attendant ? 'fa-check-circle green-check-icon':'fa-times-circle red-cross-icon'"></span></p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -104,12 +104,12 @@
                 <div class="listing-con">
                   <div class="row">
                     <div class="col-sm-6 col-xs-12 res-btm-border">
-                      <h5>Year of manufacture</h5>
-                      <p>{{aircraft.year_of_manufacture}}</p>
+                      <h5>Medical evac</h5>
+                      <p><span class="fa" ng-class="aircraft.medical_evac ? 'fa-check-circle green-check-icon':'fa-times-circle red-cross-icon'"></span></p>
                     </div>
                     <div class="col-sm-6 col-xs-12 res-btm-border">
-                      <h5>Medical evac</h5>
-                      <p>{{aircraft.medical_evac}}</p>
+                      <h5>Year of manufacture</h5>
+                      <p>{{aircraft.year_of_manufacture}}</p>
                     </div>
                     <div class="clearfix"></div>
                   </div>

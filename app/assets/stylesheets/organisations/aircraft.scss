@@ -59,6 +59,14 @@ $main-blue-color:rgb(5, 81, 139);
         font-size:14px;
         color:#787878;
       }
+      .red-cross-icon{
+        color:$main-red-color;
+        font-size:18px;
+      }
+      .green-check-icon{
+        color:$main-green-color;
+        font-size:18px;
+      }
     }
   }
 }
