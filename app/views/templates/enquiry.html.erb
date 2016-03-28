@@ -28,29 +28,58 @@
     <td class="">{{activity.start_at}}</td>
     <td class="">{{activity.end_at}}</td>
   </tr>
-  <tr>
+  <tr ng-init="efc = false">
     <th class="">Flight Cost</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</td>
+    <td class="">
+      <span ng-hide="efc"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</span>
+      <input ng-show="efc" type="number" ng-model="activity.flight_cost">
+      <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
+      <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+    </td>
   </tr>
-  <tr>
+  <tr ng-init="ehc = false">
     <th class="">Handling cost at "{{activity.departure_airport.name}}"</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</td>
+    <td class="">
+      <span ng-hide="ehc"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</span>
+      <input ng-show="ehc" type="number" ng-model="activity.handling_cost_at_takeoff">
+      <i class="fa fa-edit" ng-click="ehc = !ehc" ng-hide="ehc"></i>
+      <i class="fa fa-check" ng-click="ehc = !ehc" ng-show="ehc"></i>
+    </td>
   </tr>
-  <tr>
+  <tr ng-init="elc = false">
     <th class="">Landing cost at "{{activity.arrival_airport.name}}"</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</td>
+    <td class="">
+      <span ng-hide="elc"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</span>
+      <input ng-show="elc" type="number" ng-model="activity.landing_cost_at_arrival">
+      <i class="fa fa-edit" ng-click="elc = !elc" ng-hide="elc"></i>
+      <i class="fa fa-check" ng-click="elc = !elc" ng-show="elc"></i>
+    </td>
   </tr>
-  <tr ng-show="activity.accommodation_plan">
+  <tr ng-init="ewc = false" ng-show="activity.watch_hour_at_arrival">
+    <th>Watch hour</th>
+    <td>
+      <span ng-hide="ewc"><i class="fa fa-rupee"></i> {{activity.watch_hour_cost | currency:"":0 | indianCurrency}}</span>
+      <input ng-show="ewc" type="number" ng-model="activity.watch_hour_cost">
+      <i class="fa fa-edit" ng-click="ewc = !ewc" ng-hide="ewc"></i>
+      <i class="fa fa-check" ng-click="ewc = !ewc" ng-show="ewc"></i>
+    </td>
+  </tr>
+  <tr ng-init="eac = false" ng-show="activity.accommodation_plan">
     <th class="">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</th>
-    <td class=""><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</td>
+    <td class="">
+      <span ng-hide="eac"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</span>
+      <input ng-show="eac" type="number" ng-model="activity.accommodation_plan.cost">
+      <i class="fa fa-edit" ng-click="eac = !eac" ng-hide="eac"></i>
+      <i class="fa fa-check" ng-click="eac = !eac" ng-show="eac"></i>
+    </td>
   </tr>
   </tbody>
 </table>
 <table class="table">
   <tbody>
-  <tr ng-repeat="(tax, value) in ctrl.enquiry.tax">
-    <th>{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</th>
-    <td><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</td>
+  <tr>
+    <th>Tax</th>
+    <td>{{ ctrl.enquiry.tax_value }}%</td>
   </tr>
   <tr>
     <th>GrandTotal</th>

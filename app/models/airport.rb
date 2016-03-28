@@ -60,8 +60,7 @@ class Airport < ActiveRecord::Base
   # @return [Float]
   ######################################################################
   def handling_cost
-    # todo this is a stub, implement this
-    rand(20000..50000)
+    12400
   end
 
   ######################################################################

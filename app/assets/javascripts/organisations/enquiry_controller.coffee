@@ -39,10 +39,8 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
     ( (tax / 100) * subTotal )
 
   @grandTotal = ->
-    grandTotal = @subTotal()
-    for tax, value in @enquiry.tax
-      grandTotal += @taxValue(value)
-    grandTotal
+    s = @subTotal()
+    s + ( (@enquiry.tax_value / 100) * s )
 
   return undefined
 ]
