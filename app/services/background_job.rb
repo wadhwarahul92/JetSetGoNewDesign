@@ -10,6 +10,7 @@ class BackgroundJob
       index = 1
       c = nil
       airport = nil
+      raise_error = false
       row = sheet.sheet_data[index]
 
       if force
@@ -44,6 +45,13 @@ class BackgroundJob
             ######
             c = row[0].value
             airport = Airport.where(icao_code: c).first
+
+            unless airport.present?
+              missing_airports << c
+              raise_error = true
+              next
+            end
+
             d = row[1].value.strftime('%d %b %Y')
             m_1 = row[2].value.strftime('%H:%M')
             m_2 = row[3].value.strftime('%H:%M')
@@ -55,6 +63,7 @@ class BackgroundJob
             index += 1
             row = sheet.sheet_data[index]
           end
+          raise Exception, 'airports missing' if raise_error
         end
       end
 
