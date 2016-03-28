@@ -144,7 +144,7 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def set_terms_and_condition
     @organisation = current_organisation
-    if @organisation.update_attributes(terms_and_condition: params[:t_and_c])
+    if current_organisation.update_attributes(terms_and_condition: params[:t_and_c])
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @organisation.errors.full_messages }

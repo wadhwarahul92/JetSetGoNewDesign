@@ -1,6 +1,6 @@
 organisations_app.controller "SettingsController", ['$http', 'notify', ($http, notify) ->
 
-  @terms_and_condition = 'csdcsd '
+  @terms_and_condition = null
 
   @toggleOperator = (id)->
     $http.put("/organisations/operators/#{id}/toggle.json").success(
@@ -28,7 +28,7 @@ organisations_app.controller "SettingsController", ['$http', 'notify', ($http, n
         )
     )
 
-  @create_t_and_c = ->
+  @update_t_and_c = ->
     $http.post("/organisations/operators/set_terms_and_condition.json", {t_and_c: @terms_and_condition}).success(
       ->
         notify(
