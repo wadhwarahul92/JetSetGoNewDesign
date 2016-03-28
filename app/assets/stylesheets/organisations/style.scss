@@ -30,6 +30,21 @@ $main-blue-color:rgb(5, 81, 139);
   }
 }
 
+.inactive_{
+  display: inline-block;
+  color: white;
+  background-color: #adb6b5;
+  &:hover{
+    color: white;
+  }
+  &:visited{
+    color: white;
+  }
+  &:focus{
+    color: white;
+  }
+}
+
 .trip-enquiry{
   background-color: $main-blue-color;
 }

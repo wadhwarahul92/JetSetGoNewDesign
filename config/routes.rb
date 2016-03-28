@@ -57,6 +57,8 @@ Rails.application.routes.draw do
       collection do
         get 'forgot_password'
         post 'forgot_password_'
+        post 'set_terms_and_condition'
+        get 'get_terms_and_condition'
       end
       member do
         get 'profile'

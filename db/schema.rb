@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324112946) do
+ActiveRecord::Schema.define(version: 20160328061908) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -234,7 +234,6 @@ ActiveRecord::Schema.define(version: 20160324112946) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
-    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
@@ -249,10 +248,11 @@ ActiveRecord::Schema.define(version: 20160324112946) do
   end
 
   create_table "organisations", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.boolean  "admin_verified",             default: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.string   "name",                limit: 255
+    t.boolean  "admin_verified",                    default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.text     "terms_and_condition", limit: 65535
   end
 
   create_table "payment_transactions", force: :cascade do |t|
@@ -287,6 +287,13 @@ ActiveRecord::Schema.define(version: 20160324112946) do
   create_table "taxes", force: :cascade do |t|
     t.float    "service_tax",        limit: 24
     t.float    "swachh_bharat_cess", limit: 24
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text     "description",     limit: 65535
+    t.integer  "organisation_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
