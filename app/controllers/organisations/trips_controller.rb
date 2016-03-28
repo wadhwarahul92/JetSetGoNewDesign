@@ -9,7 +9,11 @@ class Organisations::TripsController < Organisations::BaseController
         start_at = DateTime.parse(params[:start_at])
         end_at = DateTime.parse(params[:end_at])
         aircraft_ids = current_organisation.aircrafts.map(&:id)
-        @activities = Activity.where(aircraft_id: aircraft_ids).where('start_at BETWEEN ? AND ?', start_at, end_at)
+        @activities = Activity.joins(
+            'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
+        ).where(
+            'trips.status = ?', Trip::STATUS_CONFIRMED
+        ).where(aircraft_id: aircraft_ids).where('activities.start_at BETWEEN ? AND ?', start_at, end_at)
       end
     end
   end
