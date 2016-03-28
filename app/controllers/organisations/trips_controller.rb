@@ -132,6 +132,10 @@ class Organisations::TripsController < Organisations::BaseController
     @trip = current_organisation.trips.find params[:id]
   end
 
+  def get_trips
+    @trips = current_organisation.trips
+  end
+
   private
 
   def activities_params

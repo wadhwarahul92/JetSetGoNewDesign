@@ -76,6 +76,7 @@ Rails.application.routes.draw do
         post 'send_quote'
       end
       collection do
+        get 'get_trips'
         get 'all_events'
         get 'get_empty_legs'
         get 'get_enquiries'
