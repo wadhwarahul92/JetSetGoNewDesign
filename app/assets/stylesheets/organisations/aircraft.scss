@@ -40,6 +40,9 @@ $main-blue-color:rgb(5, 81, 139);
     bottom:-10px;
     left:48%;
   }
+  .aircraft_left-img{
+    text-align:center;
+  }
   .right-main-listing{
     width:100%;
     display:inline-block;
@@ -162,6 +165,60 @@ $main-blue-color:rgb(5, 81, 139);
     .back-btn{
       width:100%;
       padding:10px;
+    }
+  }
+  .aircraft-content-main{
+    position:relative;
+    .add-link{
+      font-size:14px;
+    }
+    h3.main-heading{
+      font-size:20px;
+    }
+  }
+  .aircraft-content-main{
+    .aircraft_left-img{
+      margin-bottom:30px;
+    }
+    .right-main-listing{
+      width:100%;
+      display:inline-block;
+      .listing-con{
+        padding:0px;
+        border-bottom:0px solid #eeeeee;
+        .res-btm-border{
+          padding:10px 10px;
+          border-bottom: 1px solid #eeeeee;
+        }
+        h5{
+          margin:0;
+          font-size:17px;
+          color:$main-blue-color;
+        }
+        p{
+          margin:0;
+          font-size:14px;
+          color:#787878;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width:400px){
+  .aircraft-content-main{
+    position:relative;
+    .add-link{
+      font-size:12px;
+      position:static;
+      text-align:right;
+      display:inline-block;
+      width:100%;
+      margin-bottom:5px;
+    }
+    h3.main-heading{
+      font-size:19px;
+      margin-bottom:20px;
     }
   }
 }
