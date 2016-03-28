@@ -49,6 +49,8 @@ class BackgroundJob
             unless airport.present?
               missing_airports << c
               raise_error = true
+              index += 1
+              row = sheet.sheet_data[index]
               next
             end
 
