@@ -6,7 +6,9 @@
   </div>
   <div class="col-sm-2">
     <ul class="list-unstyled text-center settings_list">
-      <li><a ng-class="{active_:current_tab=='members'}" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a></li>
+      <li><a ng-class="(current_tab=='members') ? 'active_' : 'inactive_'" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a></li>
+      <li><a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.update_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and condition</a></li>
+      <!--(status=='active') ? ['enabled'] : ['disabled', 'alik']-->
     </ul>
   </div>
   <div class="col-sm-10">
@@ -37,6 +39,19 @@
         <%- end %>
         </thead>
       </table>
+    </div>
+    <div ng-show="current_tab=='terms_and_condition'">
+      <fieldset>
+        <legend><small>Terms and condition</small></legend>
+        <form ng-submit="ctrl.create_t_and_c()">
+          <div class="field">
+            <textarea style="height:249px;" type="text" ng-model="ctrl.terms_and_condition" class="form-control"></textarea>
+          </div>
+          <div class="field">
+            <input type="submit" value="Save"  class="btn btn-primary margin-top">
+          </div>
+        </form>
+      </fieldset>
     </div>
   </div>
 </div>

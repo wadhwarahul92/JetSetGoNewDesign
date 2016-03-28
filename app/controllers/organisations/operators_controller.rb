@@ -9,7 +9,9 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :forgot_password,
                                             :forgot_password_,
                                             :profile,
-                                            :toggle
+                                            :toggle,
+                                            :set_terms_and_condition,
+                                            :get_terms_and_condition
   ]
 
   before_action :set_operator, only: [:edit, :update]
@@ -138,6 +140,19 @@ class Organisations::OperatorsController < Organisations::BaseController
     else
       render status: :unprocessable_entity, json: { errors: ['Unauthorised action.'] }
     end
+  end
+
+  def set_terms_and_condition
+    @organisation = current_organisation
+    if current_organisation.update_attributes(terms_and_condition: params[:t_and_c])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @organisation.errors.full_messages }
+    end
+  end
+
+  def get_terms_and_condition
+    @organisation = current_organisation
   end
 
   private
