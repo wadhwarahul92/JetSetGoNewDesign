@@ -11,17 +11,31 @@
       <div class="text-center main_heading">
         <h3>trip #{{ctrl.trip.id}}</h3>
       </div>
-      <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
-      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.trip.activities[0].aircraft.tail_number}}</div>
-      <div class="col-sm-6 col-xs-12 sub-heading">Departure:</div>
-      <div class="col-sm-6 col-xs-12 sub-result">{{activity.departure_airport.name}}</div>
-      <div class="col-sm-6 col-xs-12 sub-heading">Arrival:</div>
-      <div class="col-sm-6 col-xs-12 sub-result">{{activity.arrival_airport.name}}</div>
-      <div class="col-sm-6 col-xs-12 sub-heading">Start at:</div>
-      <div class="col-sm-6 col-xs-12 sub-result">{{activity.start_at}}</div>
-      <div class="col-sm-6 col-xs-12 sub-heading">End at:</div>
-      <div class="col-sm-6 col-xs-12 sub-result">{{activity.end_at}}</div>
-      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
+        <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.trip.activities[0].aircraft.tail_number}}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-heading">Departure:</div>
+        <div class="col-sm-6 col-xs-12 sub-result">{{activity.departure_airport.name}}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-heading">Arrival:</div>
+        <div class="col-sm-6 col-xs-12 sub-result">{{activity.arrival_airport.name}}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-heading">Start at:</div>
+        <div class="col-sm-6 col-xs-12 sub-result">{{activity.start_at}}</div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-heading">End at:</div>
+        <div class="col-sm-6 col-xs-12 sub-result">{{activity.end_at}}</div>
+        <div class="clearfix"></div>
+      </div>
     </div>
   </div>
   <div class="clearfix"></div>

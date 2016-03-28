@@ -9,15 +9,26 @@
     <div class="text-center main_heading">
       <h3>Aircraft Unavailability #{{ctrl.aircraft_unavailability.id}}</h3>
     </div>
-    <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
-    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.aircraft.tail_number}}</div>
-    <div class="col-sm-6 col-xs-12 sub-heading">Start At:</div>
-    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.start_at}}</div>
-    <div class="col-sm-6 col-xs-12 sub-heading">End At:</div>
-    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.end_at}}</div>
-    <div class="col-sm-6 col-xs-12 sub-heading">Reason:</div>
-    <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.reason}}</div>
-    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-heading">Aircraft:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.aircraft.tail_number}}</div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-heading">Start At:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.start_at}}</div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-heading">End At:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.end_at}}</div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-heading">Reason:</div>
+      <div class="col-sm-6 col-xs-12 sub-result">{{ctrl.aircraft_unavailability.reason}}</div>
+      <div class="clearfix"></div>
+    </div>
   </div>
   <div class="clearfix"></div>
 </div>

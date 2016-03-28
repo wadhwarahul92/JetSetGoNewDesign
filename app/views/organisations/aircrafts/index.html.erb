@@ -1,45 +1,77 @@
 <div class="row" ng-controller="AircraftsController as ctrl">
-  <div class="col-sm-12">
+  <div class="col-sm-12 aircraft-content-main">
     <h3 class="main-heading aircrafts_">
-      <i class="organisation-main-icon aircraft-icon"></i> <span style="position: relative; top: -6px;">Aircrafts</span>
-      <%= link_to '/organisations/aircrafts/new', class: 'pull-right', style:"position: relative; top: 5px;" do %>
+      <!-- <i class="organisation-main-icon aircraft-icon"></i> <span style="position: relative; top: -6px;"></span--> 
+      Aircrafts      
+    </h3>
+    <span></span>
+    <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
           <i class="fa fa-plus"></i> Add aircraft
       <%- end %>
-    </h3>
     <uib-accordion>
       <uib-accordion-group heading="{{ aircraft.tail_number }}" ng-repeat="aircraft in ctrl.aircrafts">
+        <div class="col-sm-3 col-xs-12" style="text-align: center;">
         <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
           <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
           <img class="aircraft_img" src="" ng-src="{{image.url}}" alt="">
         </div>
+        </div>
+        <div class="col-sm-9 col-xs-12">
+          <div class="table table-striped right-main-listing">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="listing-con">
+                  <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" ><i class="fa fa-picture-o"></i> Add aircraft image</a>
+                  <a class="pull-right" ng-href="/organisations/aircrafts/{{aircraft.id}}/edit"><i class="fa fa-pencil"></i></a>
+                </div>
+                <div class="listing-con">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Aircraft type</h5>
+                      <p>{{aircraft.aircraft_type.name}}</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Base Airport</h5>
+                      <p>{{aircraft.base_airport.name}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="listing-con">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Baggage capacity in kg</h5>
+                      <p>{{aircraft.baggage_capacity_in_kg}}</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Seating capacity</h5>
+                      <p>{{aircraft.seating_capacity}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="listing-con">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Runway field length in feet</h5>
+                      <p>{{aircraft.runway_field_length_in_feet}}</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <h5>Seating capacity</h5>
+                      <p>{{aircraft.number_of_toilets}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <table class="table table-striped">
           <tbody>
-          <tr>
-            <td colspan="2">
-              <a ng-href="/organisations/aircrafts/{{aircraft.id}}/edit"><i class="fa fa-edit"></i></a>
-            </td>
-            <td colspan="2">
-              <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" >Add aircraft image</a>
-            </td>
-          </tr>
-          <tr>
-            <th>Aircraft type</th>
-            <td>{{aircraft.aircraft_type.name}}</td>
-            <th>Base Airport</th>
-            <td>{{aircraft.base_airport.name}}</td>
-          </tr>
-          <tr>
-            <th>Baggage capacity in kg</th>
-            <td>{{aircraft.baggage_capacity_in_kg}}</td>
-            <th>Seating capacity</th>
-            <td>{{aircraft.seating_capacity}}</td>
-          </tr>
-          <tr>
-            <th>Runway field length in feet</th>
-            <td>{{aircraft.runway_field_length_in_feet}}</td>
-            <th>Number of toilets</th>
-            <td>{{aircraft.number_of_toilets}}</td>
-          </tr>
+          
+          
+          
+          
           <tr>
             <th>Cabin width in meters</th>
             <td>{{aircraft.cabin_width_in_meters}}</td>
@@ -76,8 +108,27 @@
             <th></th>
             <td></td>
           </tr>
+          <tr>
+            <th>Aircraft type</th>
+            <td>{{aircraft.aircraft_type.name}}</td>
+            <th>Base Airport</th>
+            <td>{{aircraft.base_airport.name}}</td>
+          </tr>
+          <tr>
+            <th>Baggage capacity in kg</th>
+            <td>{{aircraft.baggage_capacity_in_kg}}</td>
+            <th>Seating capacity</th>
+            <td>{{aircraft.seating_capacity}}</td>
+          </tr>
+          <tr>
+            <th>Runway field length in feet</th>
+            <td>{{aircraft.runway_field_length_in_feet}}</td>
+            <th>Number of toilets</th>
+            <td>{{aircraft.number_of_toilets}}</td>
+          </tr>
           </tbody>
         </table>
+        </div>
       </uib-accordion-group>
     </uib-accordion>
   </div>
