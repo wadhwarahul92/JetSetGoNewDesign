@@ -1,6 +1,9 @@
 class BackgroundJob
 
   def populate_watch_hours(force = false)
+
+    missing_airports = []
+
     begin
       book = RubyXL::Parser.parse("#{Rails.root}/lib/statics/watch.xlsx")
       sheet = book.worksheets[0]
@@ -16,6 +19,11 @@ class BackgroundJob
           ######
           c = row[0].value
           airport = Airport.where(icao_code: c).first
+
+          unless airport.present?
+            missing_airports << c
+          end
+
           d = row[1].value.strftime('%d %b %Y')
           m_1 = row[2].value.strftime('%H:%M')
           m_2 = row[3].value.strftime('%H:%M')
@@ -60,6 +68,7 @@ c = #{c}
 airport = #{airport}
 index = #{index}
 backtrace = #{e.backtrace}
+missing = #{missing_airports.uniq}
 BEGIN
       ).deliver_now
     end
