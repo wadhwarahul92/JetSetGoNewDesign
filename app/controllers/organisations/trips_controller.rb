@@ -88,7 +88,12 @@ class Organisations::TripsController < Organisations::BaseController
   end
 
   def create
-    TripCreator.new(params[:aircraft_id], activities_params, current_organisation).create!
+    begin
+      TripCreator.new(params[:aircraft_id], activities_params, current_organisation).create!
+      render status: :ok, nothing: true
+    rescue Exception => e
+      render status: :unprocessable_entity, json: { errors: [e.message] }
+    end
   end
 
   def get_enquiry
