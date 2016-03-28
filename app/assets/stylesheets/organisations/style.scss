@@ -210,7 +210,7 @@ body{
 }
 
 .margin-top{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .inline-block{
@@ -623,12 +623,36 @@ input#phone{
     .panel-heading{
       border-radius:0;
       border-color:transparent;
-      background-color:$main-blue-color;
-      color:#ffffff;
+      background-color:#f1f1f1;
+      padding:0;
+      span.aircraft-icon{
+        display:inline-block;
+        background-color:$main-blue-color;
+        padding:10px 0;
+        text-align:center;
+        width:4%;
+        font-size:20px;
+        i{
+          color:#ffffff;
+        }
+      }
+      h4{
+        color:$main-blue-color;
+        display:inline-block;
+        width:94%;
+        a{
+          span{
+            margin-left:10px;
+          }
+        }
+      }
+      i{
+        color:#aaaaaa;
+      }
     }
     .panel-collapse{
       .panel-body{
-        background-color:#f9f9f9;
+        *background-color:#f9f9f9;
         padding:10px 0;
       }
     }
@@ -706,6 +730,18 @@ input#phone{
       font-size:10px;
       li{
         margin-right:3px;
+      }
+    }
+  }
+  .panel-group{
+    .panel{
+      .panel-heading{
+        span.aircraft-icon{
+          width:6%
+        }
+        h4{
+          width:92%;
+        }
       }
     }
   }
@@ -805,8 +841,53 @@ input#phone{
       margin-top:15px;
     }
   }
+  .panel-group{
+    .panel{
+      .panel-heading{
+        span.aircraft-icon{
+          width:8%
+        }
+        h4{
+          width:90%;
+        }
+      }
+    }
+  }
 }
 
+@media(max-width:520px){
+  .panel-group{
+    .panel{
+      .panel-heading{
+        span.aircraft-icon{
+          width:10%
+        }
+        h4{
+          width:86%;
+        }
+      }
+    }
+  }
+}
+@media(max-width:520px){
+  .panel-group{
+    .panel{
+      .panel-heading{
+        span.aircraft-icon{
+          width:14%;
+          padding:3px 0 7px 0;
+          i{
+            font-size:14px;
+          }
+        }
+        h4{
+          width:82%;
+          font-size:15px;
+        }
+      }
+    }
+  }
+}
 .full-width{
   width: 100%;
 }

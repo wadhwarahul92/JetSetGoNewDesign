@@ -6658,10 +6658,11 @@ angular.module("uib/template/accordion/accordion-group.html", []).run(["$templat
     $templateCache.put("uib/template/accordion/accordion-group.html",
         "<div class=\"panel\" ng-class=\"panelClass || 'panel-default'\">\n" +
         "  <div role=\"tab\" id=\"{{::headingId}}\" aria-selected=\"{{isOpen}}\" class=\"panel-heading\" ng-keypress=\"toggleOpen($event)\">\n" +
+        "    <span class=\"aircraft-icon\"><i class=\"fa fa-plane \"></i></span>" +
         "    <h4 style=\"cursor:pointer;\" ng-click=\"toggleOpen()\" class=\"panel-title\">\n" +
         "      <a role=\"button\" data-toggle=\"collapse\" href aria-expanded=\"{{isOpen}}\" aria-controls=\"{{::panelId}}\" tabindex=\"0\" class=\"accordion-toggle\"  uib-accordion-transclude=\"heading\"><span ng-class=\"{'text-muted': isDisabled}\">{{heading}}</span></a>\n" +
-        "        <i ng-show=\"!isOpen\" class=\"fa fa-arrow-circle-down pull-right \"></i>" +
-        "        <i ng-show=\"isOpen\" class=\"fa fa-arrow-circle-up pull-right \"></i>" +
+        "        <i ng-show=\"!isOpen\" class=\"fa fa-chevron-down pull-right \"></i>" +
+        "        <i ng-show=\"isOpen\" class=\"fa fa-chevron-up pull-right \"></i>" +
         "    </h4>\n" +
         "  </div>\n" +
         "  <div id=\"{{::panelId}}\" aria-labelledby=\"{{::headingId}}\" aria-hidden=\"{{!isOpen}}\" role=\"tabpanel\" class=\"panel-collapse collapse\" uib-collapse=\"!isOpen\">\n" +
