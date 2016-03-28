@@ -22,6 +22,7 @@ class BackgroundJob
 
           unless airport.present?
             missing_airports << c
+            next
           end
 
           d = row[1].value.strftime('%d %b %Y')
