@@ -19,5 +19,7 @@
     <label>Designation </label>
     <div>{{ctrl.operator.designation }}</div>
   </div>
-  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <%= link_to('edit', update_profile_organisations_operator_path, method: :put)%>
+  </div>
 </div>
