@@ -29,7 +29,7 @@ organisations_app.controller "SettingsController", ['$http', 'notify', ($http, n
     )
 
   @update_t_and_c = ->
-    $http.post("/organisations/operators/set_terms_and_condition.json", {t_and_c: @terms_and_condition}).success(
+    $http.put("/organisations/operators/set_terms_and_condition.json", {t_and_c: @terms_and_condition}).success(
       ->
         notify(
           message: 'Terms and condition successfully saved.'
