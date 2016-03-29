@@ -22,20 +22,14 @@
               <div class="field margin-top">
                 <label for="start_at">Start At</label>
                 <div class="dropdown">
-                  <a role="button" data-toggle="dropdown" data-target="#" id="start_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedStartTime}}</span>
-                  <ul class="dropdown-menu" role="menu">
-                    <datetimepicker datetimepicker-config="{ dropdownSelector: '#start_at' }" ng-model="ctrl.a_u.start_at"></datetimepicker>
-                  </ul>
+                  <span>{{ctrl.formattedStartTime}}</span>
                 </div>
                 <!--<input type="datetime" class="form-control" id="start_at" ng-model="ctrl.a_u.start_at">-->
               </div>
               <div class="field margin-top">
                 <label for="end_at">End At</label>
                 <div class="dropdown">
-                  <a role="button" data-toggle="dropdown" data-target="#" id="end_at" href="Javascript:void(0)"><i class="fa fa-calendar"></i></a> <span>{{ctrl.formattedEndTime}}</span>
-                  <ul class="dropdown-menu" role="menu">
-                    <datetimepicker datetimepicker-config="{ dropdownSelector: '#end_at' }" ng-model="ctrl.a_u.end_at"></datetimepicker>
-                  </ul>
+                  <span>{{ctrl.formattedEndTime}}</span>
                 </div>
                 <!--<input type="datetime" class="form-control" id="end_at" ng-model="ctrl.a_u.end_at">-->
               </div>
@@ -44,9 +38,6 @@
                 <textarea id="reason" class="form-control" rows="2" ng-model="ctrl.a_u.reason"></textarea>
               </div>
               <div class="field margin-top">
-                <div class="col-sm-6 col-xs-12 button-con no-padding">
-                  <input type="submit" value="Save changes" class="btn btn-primary save-btn">
-                </div>
                 <div class="col-sm-6 col-xs-12 button-con no-padding">
                   <a href="" ng-click="ctrl.delete()" class="btn btn-danger delete-btn" >Delete Unavailability</a>
                 </div>
