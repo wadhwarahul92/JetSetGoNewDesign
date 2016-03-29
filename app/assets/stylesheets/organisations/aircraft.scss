@@ -49,6 +49,13 @@ $main-blue-color:rgb(5, 81, 139);
     .listing-con{
       padding:10px 10px;
       border-bottom:1px solid #eeeeee;
+      a.add-edit-btn{
+        background-color:$main-blue-color;
+        color:#ffffff;
+        display:inline-block;
+        padding:8px 15px;
+        border-radius:5px;
+      }
       h5{
         margin:0;
         font-size:17px;

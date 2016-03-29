@@ -1,28 +1,36 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 forum-content-main">
     <h3 class="main-heading forum_">
-      <i class="organisation-main-icon forum-icon"></i> <span style="position: relative; top: -6px;">Forum Topics</span>
-      <%= link_to new_organisations_forum_topic_path, class: 'pull-right', style:"position: relative; top: 5px;" do %>
-          <i class="fa fa-plus"></i> New Topic
-      <%- end %>
+      <!-- <i class="organisation-main-icon forum-icon"></i> <span style="position: relative; top: -6px;"></span> -->
+      Forum Topics
     </h3>
+    <%= link_to new_organisations_forum_topic_path, class: 'pull-right, add-link' do %>
+      <i class="fa fa-plus"></i> New Topic
+    <%- end %>
     <ul class="list-unstyled main-border">
       <% @forum_topics.each_with_index do |forum_topic, index| %>
           <li>
             <%= link_to organisations_forum_topic_path(forum_topic) do %>
-                <div class="forum-topic-container topic-main-con <%= index.even? ? 'bg1' : 'bg2' %>">
-                  <div class="row">
-                    <div class="col-sm-10">
-                    <h3><%= forum_topic.statement %></h3>
-                      <p><%= forum_topic.description %></p>
-                    </div>
-                    <div class="col-sm-2 text-right date-list">
+                <div class="forum-topic-container topic-main-con bg1">
+                  <div class="forum-heading-statement">
+                    <div class="col-sm-12 col-xs-12">
+                      <h3><%= forum_topic.statement %></h3>
                       <ul class="list-inline">
-                        <li class="organition-name"><%= forum_topic.organisation.name %></li>
-                        <li class="date-field"><%= forum_topic.created_at.strftime('%d %b %Y') %></li>
+                        <li class="organition-name">
+                          <%= forum_topic.organisation.name %> - 
+                        </li>
+                        <li class="date-field">
+                          <%= forum_topic.created_at.strftime('%d %b %Y') %>
+                        </li>
+                        <div class="clearfix"></div>
                       </ul>
                     </div>
+                    <div class="clearfix"></div>
                   </div>
+                    <div class="col-sm-12 col-xs-12">
+                      <p><%= forum_topic.description %></p>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             <%- end %>
           </li>
