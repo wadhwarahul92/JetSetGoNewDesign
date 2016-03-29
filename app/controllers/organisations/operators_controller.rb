@@ -9,6 +9,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :forgot_password,
                                             :forgot_password_,
                                             :profile,
+                                            :profile,
                                             :toggle,
                                             :set_terms_and_condition,
                                             :get_terms_and_condition
@@ -23,7 +24,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                               :forgot_password_
   ]
 
-  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle]
+  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle, :profile]
 
   protect_from_forgery except: [:log_in_]
 
@@ -126,6 +127,10 @@ class Organisations::OperatorsController < Organisations::BaseController
   def profile
     @operator = Operator.find current_user.id
     render layout: "organisations"
+  end
+
+  def update_profile
+    1
   end
 
   def toggle
