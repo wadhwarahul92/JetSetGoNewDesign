@@ -3,17 +3,20 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
   @enquiry = enquiry
 
   @deleteEnquiry = ->
-    $http.delete("/organisations/trips/#{@enquiry.id}/destroy_trip.json").success(
-      ->
-        Turbolinks.visit('/organisations')
-    ).error(
-      (data)->
-        error = 'Something went wrong.'
-        try
-          error = data.errors[0]
-        notify
-          message: error
-          classes: ['alert-danger']
+    bootbox.confirm('Are you sure?', (result)->
+      if result
+        $http.delete("/organisations/trips/#{@enquiry.id}/destroy_trip.json").success(
+          ->
+          Turbolinks.visit('/organisations')
+        ).error(
+          (data)->
+            error = 'Something went wrong.'
+            try
+              error = data.errors[0]
+            notify
+              message: error
+              classes: ['alert-danger']
+        )
     )
 
   @sendQuote = ->
