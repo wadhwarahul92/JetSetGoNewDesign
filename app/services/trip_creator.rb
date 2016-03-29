@@ -1,5 +1,7 @@
 class TripCreator
 
+  attr_accessor :trip
+
   def initialize(aircraft_id, activities, organisation)
     @aircraft = Aircraft.find(aircraft_id)
     @activities = activities[:activities]

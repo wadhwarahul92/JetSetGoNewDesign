@@ -1,0 +1,24 @@
+Admins,
+<br>
+Someone created an organisation on jetsetgo. We have to approve the organisation and all its aircrafts before they start showing in search results.
+<br>
+Here are the details.
+<br>
+<table border="1">
+  <tr>
+    <th>Organisation Name</th>
+    <td><%= @organisation.name %></td>
+  </tr>
+  <tr>
+    <th>Operator Name</th>
+    <td><%= @operator.full_name %></td>
+  </tr>
+  <tr>
+    <th>Operator email</th>
+    <td><%= @operator.email %></td>
+  </tr>
+  <tr>
+    <th>Operator phone</th>
+    <td><%= @operator.phone %></td>
+  </tr>
+</table>

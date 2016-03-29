@@ -116,6 +116,7 @@ class Organisations::OperatorsController < Organisations::BaseController
       )
       if @operator.save
         sign_in(@operator)
+        AdminMailer.new_organisation_and_admin_created(@organisation, @operator).deliver_later
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }

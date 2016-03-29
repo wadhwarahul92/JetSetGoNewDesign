@@ -41,7 +41,7 @@ Delayed::Worker.class_eval do
                           body: <<BEGIN
 job = #{job.inspect}
 error = #{error.inspect}
-backtrace = #{error.try(:backtrace)}
+backtrace = #{error.backtrace}
 BEGIN
     ).deliver_now
   end
