@@ -7,12 +7,15 @@ $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
 
+.login-header{
+	background-color:transparent !important;
+}
 .login-bg-con{
 	width:100%;
 	background:url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/119/original/login-bg.jpg?1459323088") no-repeat;
-	background-size:100%;
-	background-position:cover;
-	min-height:600px;
+	background-size:cover;
+	background-attachment: fixed;
+	}
 	.login-left-con{
 		margin-top:140px;
 		h4{
@@ -35,9 +38,10 @@ $main-blue-color:rgb(5, 81, 139);
 		}
 	}
 	.login-register-main{
-		background-color:rgba(256,256,256,0.8);
+		background-color:rgba(256,256,256,1);
 		padding-bottom:30px;
 		margin-top:50px;
+		min-height:400px;
 		h5{
 			font-size:20px;
 			margin:0;
@@ -46,13 +50,24 @@ $main-blue-color:rgb(5, 81, 139);
 			color:#ffffff;
 			margin-bottom:10px;
 		}
+		p{
+			text-align:justify;
+			color:#555;
+		}
 		form{
 			.field{
+				position:relative;
 				label{
 					color:#555555;
 					font-size:15px;
 					font-weight:normal;
 					margin-bottom:0;
+				}
+				.country-code-text{
+					display:inline-block;
+					position:absolute;
+					top:42px;
+					left:8px;
 				}
 				.text-field{
 					height:60px;
@@ -80,4 +95,3 @@ $main-blue-color:rgb(5, 81, 139);
 			}
 		}
 	}
-}

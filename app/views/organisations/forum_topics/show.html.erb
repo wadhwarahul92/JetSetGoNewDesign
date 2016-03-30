@@ -14,11 +14,11 @@
     <div class="row">
       <div class="col-sm-12 scroll-con">
         <ul class="list-unstyled comment-box">
-          <li ng-class="{true:'bg-coment-green', false:'bg-coment-red'}[<%= current_user.id %> == forum_topic_comment.operator_id]" ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
+          <li ng-class="{true:'bg-coment-green', false:'bg-coment-gray'}[<%= current_user.id %> == forum_topic_comment.operator_id]" ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
             <div class="forum-topic-container forum-topic-container2 margin-top">
-            <img class="chat-arrow-left" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/068/original/Red_chat_arrow.png?1456395508">
-            <img class="chat-arrow-right" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/069/original/Green_chat_arrow.png?1456395538">
-            <ul class="list-inline date-main-con text-right">
+            <img class="chat-arrow-left" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/120/original/gray_chat_arrow.png?1459331983">
+            <img class="chat-arrow-right" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/121/original/Green_chat_arrow.png?1459332001">
+            <ul class="list-inline date-main-con text-right" ng-class="{true:'bg-cmnt-darkgreen', false:'bg-cmnt-darkgray'}[<%= current_user.id %> == forum_topic_comment.operator_id]">
               <li><strong>{{forum_topic_comment.organisation}}</strong></li>
               <li><strong>By:</strong> {{forum_topic_comment.operator}}</li>
               <li><strong>On:</strong> {{forum_topic_comment.created_at}}</li>
