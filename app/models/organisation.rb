@@ -14,6 +14,8 @@ class Organisation < ActiveRecord::Base
 
   has_many :trips
 
+  has_many :organisation_documents
+
   validates :name, presence: true, uniqueness: true, length: {minimum: 5}
 
   def has_admin?

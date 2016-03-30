@@ -96,6 +96,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :organisation_documents
+
   end
 
   namespace :admin do
@@ -267,6 +269,8 @@ Rails.application.routes.draw do
       post 'preview_pro_forma'
     end
   end
+
+  resources :static_files
 
   ######
   # Highly specific url, to be changed later

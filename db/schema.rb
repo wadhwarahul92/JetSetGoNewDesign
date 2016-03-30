@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328061908) do
+ActiveRecord::Schema.define(version: 20160330064624) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -248,6 +248,16 @@ ActiveRecord::Schema.define(version: 20160328061908) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "organisation_documents", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "category",        limit: 255
+    t.string   "doc_type",        limit: 255
+    t.integer  "organisation_id", limit: 4
+    t.integer  "static_file_id",  limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.boolean  "admin_verified",                    default: false
@@ -283,6 +293,15 @@ ActiveRecord::Schema.define(version: 20160328061908) do
   create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "static_files", force: :cascade do |t|
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.integer  "file_file_size",    limit: 4
+    t.datetime "file_updated_at"
   end
 
   create_table "taxes", force: :cascade do |t|

@@ -1,6 +1,10 @@
-organisations_app.controller "SettingsController", ['$http', 'notify', ($http, notify) ->
+organisations_app.controller "SettingsController", ['$http', 'notify', '$upload', '$uibModal', ($http, notify, $upload, $uibModal) ->
+
+  @newDocument = {}
 
   @terms_and_condition = null
+
+  @documents = []
 
   @toggleOperator = (id)->
     $http.put("/organisations/operators/#{id}/toggle.json").success(
@@ -41,6 +45,76 @@ organisations_app.controller "SettingsController", ['$http', 'notify', ($http, n
           classes: ['alert-danger']
         )
     )
+
+  @getDocuments = ->
+    $http.get('/organisations/organisation_documents.json').success(
+      (data)=>
+        @documents = data
+    ).error(
+      ->
+        notify
+          message: 'Error fetching documents, ERROR10098'
+          classes: ['alert-danger']
+    )
+
+  @addStaticFile = (files)->
+    modal = $uibModal.open(
+      size: 'sm'
+      template: """
+      <h3 class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i> Hang tight while we upload the file to our servers.<h3>
+      """
+    )
+    $upload.upload(
+      file: files[0]
+      url: '/static_files.json'
+    ).success(
+      (data)=>
+        @newDocument.static_file_id = data.id
+        modal.close()
+    ).error(
+      (data)->
+        error = 'Error uploading document. Please try again.'
+        try
+          error = data.errors[0]
+        notify
+          message: error
+          classes: ['alert-danger']
+        modal.close()
+    )
+
+  @create = ->
+    $http.post('/organisations/organisation_documents.json', {organisation_document: @newDocument}).success(
+      (data)=>
+        notify
+          message: 'New document successfully added.'
+        @newDocument = {}
+        @documents.push data
+    ).error(
+      (data)->
+        error = 'Something went wrong. Could not create new document.'
+        try
+          error = data.errors[0]
+        notify
+          message: error
+          classes: ['alert-danger']
+    )
+
+  @delete = (document)->
+    bootbox.confirm('Are you sure?', (result)=>
+      if result
+        $http.delete("/organisations/organisation_documents/#{document.id}.json").success(
+          =>
+            notify
+              message: 'Document removed successfully.'
+            @documents.splice( @documents.indexOf(document), 1 )
+        ).error(
+          ->
+            notify
+              message: 'Unable to remove document. Error 1x0009'
+              classes: ['alert-danger']
+        )
+    )
+    return undefined
 
   return undefined
 ]

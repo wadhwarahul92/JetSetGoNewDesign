@@ -1,0 +1,1 @@
+json.partial! 'organisation_document', document: @organisation_document
