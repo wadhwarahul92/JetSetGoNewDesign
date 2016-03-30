@@ -32,13 +32,16 @@ json.activities{
     json.flight_cost activity.flight_cost
     json.handling_cost_at_takeoff activity.handling_cost_at_takeoff
     json.landing_cost_at_arrival activity.landing_cost_at_arrival
+
     if activity.accommodation_plan.present?
       json.accommodation_plan{
         json.cost activity.accommodation_plan[:cost]
         json.nights activity.accommodation_plan[:nights]
       }
     end
+
     json.watch_hour_at_arrival activity.watch_hour_at_arrival?
     json.watch_hour_cost activity.watch_hour_cost
+
   end
 }
