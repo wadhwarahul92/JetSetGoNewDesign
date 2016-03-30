@@ -23,4 +23,12 @@ class Organisation < ActiveRecord::Base
     false
   end
 
+  class <<self
+
+    def get_all_emails(organisation)
+      self.find(organisation.id).operators.map(&:email)
+    end
+
+  end
+
 end

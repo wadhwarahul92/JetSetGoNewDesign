@@ -49,4 +49,30 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When new aircraft created
+  # @param [Aircraft] aircraft
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def new_aircraft(aircraft)
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'an organisation added aircraft'
+    )
+  end
+
+  ######################################################################
+  # Description: When edit aircraft
+  # @param [Aircraft] aircraft
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def edit_aircraft(aircraft)
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'an organisation update aircraft'
+    )
+  end
+
 end

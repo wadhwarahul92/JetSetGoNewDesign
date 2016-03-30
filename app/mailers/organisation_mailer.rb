@@ -22,29 +22,13 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
  ######################################################################
-  def new_aircraft(aircraft, operator)
-    @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
-    mail(
-        to: @operator.email,
-        subject: 'JetSetGo - New aircraft created'
-    )
-  end
 
-  ######################################################################
-  # Description: When an aircraft deleted
-  # @param [Aircraft] aircraft
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def delete_aircraft(aircraft, operator)
+  def new_aircraft(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Aircraft Deleted'
+        to: (@emails),
+        subject: 'JetSetGo - New aircraft created'
     )
   end
 
@@ -54,12 +38,11 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def edit_aircraft(aircraft, operator)
+  def edit_aircraft(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Aircraft Edit'
     )
   end
@@ -70,15 +53,24 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def aircraft_approved_by_super_admin(aircraft, operator)
+  def aircraft_approved_by_super_admin(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Aircraft approved by Admin'
     )
   end
+
+  def aircraft_disapproved_by_super_admin(aircraft)
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft approved by Admin'
+    )
+  end
+
 
   ######################################################################
   # Description: When add a new forum topic

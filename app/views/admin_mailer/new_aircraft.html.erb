@@ -4,8 +4,8 @@
       <table width="100%">
         <tr>
           <td class="inner contents">
-            <p class="h1">Hi,</p>
-            <p>Organisation Add a new Aircraft</p>
+            <p class="h1">Hi, Admin</p>
+            <p><strong><%= @aircraft.organisation.name %></strong> Add a new Aircraft</p>
           </td>
         </tr>
       </table>
@@ -14,14 +14,7 @@
   <tr>
     <td class="two-column">
       <table width="100%">
-        <% @aircraft.attributes.except('id',
-                                       'aircraft_type_id',
-                                       'created_at',
-                                       'updated_at',
-                                       'admin_verified',
-                                       'organisation_id',
-                                       'base_airport_id',
-                                       'deleted_at').each_pair do |key, value| %>
+        <% @aircraft.attributes.each_pair do |key, value| %>
             <tr style="border: 1px solid #000000;">
               <td width="50%" valign="top" style="border: 1px solid #000000;">
                 <div class="column">

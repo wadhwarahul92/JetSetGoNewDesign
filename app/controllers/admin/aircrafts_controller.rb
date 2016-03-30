@@ -31,6 +31,11 @@ class Admin::AircraftsController < Admin::BaseController
 
   def admin_approve
     if @aircraft.update_attribute(:admin_verified, params[:admin_verified])
+      if params[:admin_verified] == 'true'
+        OrganisationMailer.aircraft_approved_by_super_admin(@aircraft).deliver_later
+      else
+        OrganisationMailer.aircraft_disapproved_by_super_admin(@aircraft).deliver_later
+      end
       redirect_to action: :index
     else
       redirect_to action: :index
