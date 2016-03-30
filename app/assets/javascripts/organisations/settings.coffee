@@ -12,7 +12,7 @@ organisations_app.controller "SettingsController", ['$http', 'notify', '$upload'
         Turbolinks.visit('/organisations/settings')
     ).error(
       (data)->
-        error = 'Somehting went wrong.'
+        error = 'Something went wrong.'
         try
           error = data.errors[0]
         notify
