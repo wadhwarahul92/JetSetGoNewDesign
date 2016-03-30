@@ -1,0 +1,77 @@
+$main-green-color: rgb(70, 217, 191);
+$main-red-color: rgb(241, 92, 92);
+$sky-blue-color: rgb(31, 141, 212);
+$main-yellow-color: rgb(237, 202, 0);
+$main-orange-color: rgb(187, 83, 0);
+$dark-blue-color: rgb(5, 34, 71);
+$gray-color: rgb(173, 182, 181);
+$main-blue-color:rgb(5, 81, 139);
+
+.login-bg-con{
+	width:100%;
+	background:url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/119/original/login-bg.jpg?1459323088") no-repeat;
+	background-size:100%;
+	background-position:cover;
+	min-height:600px;
+	.login-left-con{
+		margin-top:140px;
+		h4{
+			font-size:26px;
+			color:#ffffff;
+		}
+		h2{
+			font-size:60px;
+			font-weight:bold;
+			color:$main-red-color;
+		}
+		p{
+			font-size:16px;
+			text-align:justify;
+			color:#ffffff;
+		}
+	}
+	.login-register-main{
+		background-color:rgba(256,256,256,0.8);
+		padding-bottom:30px;
+		margin-top:50px;
+		h5{
+			font-size:25px;
+			margin-top:15px;
+			text-align:center;
+			color:$main-red-color;
+		}
+		form{
+			.field{
+				label{
+					color:#555555;
+					font-size:14px;
+					font-weight:normal;
+					margin-bottom:0;
+				}
+				.text-field{
+					height:60px;
+					background-color:#ffffff;
+				}
+				.text-field:focus{
+					background-color:#ffffff;	
+				}
+				.proceed-btn{
+					width: 100%;
+					padding:20px;
+					font-size:16px;
+				}
+				.register-click{
+					margin-top:10px;
+					font-size:17px;
+					display:inline-block;
+				}
+			}
+			.forget-text{
+				margin-top:5px;
+				a{
+					text-decoration:none;
+				}
+			}
+		}
+	}
+}

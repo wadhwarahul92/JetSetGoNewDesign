@@ -40,7 +40,7 @@ $main-blue-color:rgb(5, 81, 139);
 }
 .schedule-content-main{
 	h3.main-heading{
-		margin:0 auto 40px auto;
+		margin:10px auto 40px auto;
 	    color:$dark-blue-color;
 	    border:0;
 	    text-align:center;
@@ -297,6 +297,18 @@ $main-blue-color:rgb(5, 81, 139);
 				padding:2px 0;
 				color:#ffffff;
 			}
+		}
+	}
+	.schedule-content-main{
+		h3.main-heading{
+		    font-size:20px;
+		}
+	}
+}
+@media(max-width:767px){
+	.schedule-content-main{
+		h3.main-heading{
+		    font-size:19px;
 		}
 	}
 }

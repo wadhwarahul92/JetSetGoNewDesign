@@ -17,7 +17,7 @@ $main-blue-color:rgb(5, 81, 139);
     right:15px;
   }
   h3.main-heading{
-    margin:0 auto 40px auto;
+    margin:10px auto 40px auto;
     color:$dark-blue-color;
     border:0;
     text-align:center;
@@ -160,6 +160,31 @@ $main-blue-color:rgb(5, 81, 139);
     .back-btn{
       width:100%;
       padding:10px;
+    }
+  }
+  .forum-content-main{
+    .add-link{
+      font-size:14px;
+    }
+    h3.main-heading{
+      font-size:20px;
+    }
+  }
+}
+
+@media(max-width:400px){
+  .forum-content-main{
+    .add-link{
+      font-size:12px;
+      position:static;
+      text-align:right;
+      display:inline-block;
+      width:100%;
+      margin-bottom:5px;
+    }
+    h3.main-heading{
+      font-size:19px;
+      margin-bottom:20px;
     }
   }
 }
