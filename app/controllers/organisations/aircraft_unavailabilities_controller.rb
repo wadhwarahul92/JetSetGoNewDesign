@@ -15,6 +15,7 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
   def create
     @aircraft_unavailability = AircraftUnavailability.new(aircraft_unavailability_params)
     if @aircraft_unavailability.valid? and org_owns_aircraft_with_id?(params[:aircraft_id]) and @aircraft_unavailability.save
+      AdminMailer.operator_added_unavailability(current_user, @aircraft_unavailability).deliver_later
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @aircraft_unavailability.errors.full_messages }

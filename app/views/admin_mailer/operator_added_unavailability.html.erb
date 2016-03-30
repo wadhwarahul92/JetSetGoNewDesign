@@ -1,0 +1,14 @@
+Admins,
+<br>
+An organisation registered on our portal created an unavailability for one of their aircrafts. Please follow:
+<br>
+Details
+<br>
+<table border="1">
+  <% @unavailability.attributes.each_pair do |key, value| %>
+      <tr>
+        <th><%= key %></th>
+        <td><%= value %></td>
+      </tr>
+  <%- end %>
+</table>

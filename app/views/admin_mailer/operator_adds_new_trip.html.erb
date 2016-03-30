@@ -4,3 +4,29 @@ A registered organisation on our portal has added a new trip. Please follow:
 <br>
 Details
 <br>
+<table border="1">
+  <tr>
+    <th>Organisation</th>
+    <td><%= @operator.organisation.name %></td>
+  </tr>
+</table>
+<p>Trip</p>
+<table border="1">
+  <% @trip.attributes.each_pair do |key, value| %>
+      <tr>
+        <th><%= key %></th>
+        <td><%= value %></td>
+      </tr>
+  <%- end %>
+</table>
+<p>Legs</p>
+<% @trip.activities.each do |activity| %>
+    <table>
+      <% activity.attributes.each_pair do |key, value| %>
+          <tr>
+            <th><%= key %></th>
+            <td><%= value %></td>
+          </tr>
+      <%- end %>
+    </table>
+<%- end %>

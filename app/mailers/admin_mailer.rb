@@ -41,4 +41,12 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  def operator_added_unavailability(operator, unavailability)
+    @operator = operator
+    @unavailability = unavailability
+    mail(
+        subject: DEFAULT_SUBJECT + 'an organisation created unavailability for one of their aircrafts'
+    )
+  end
+
 end
