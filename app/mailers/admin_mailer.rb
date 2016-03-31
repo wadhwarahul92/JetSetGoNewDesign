@@ -49,4 +49,81 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When new aircraft created
+  # @param [Aircraft] aircraft
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def new_aircraft(aircraft)
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'an organisation added aircraft'
+    )
+  end
+
+  ######################################################################
+  # Description: When edit aircraft
+  # @param [Aircraft] aircraft
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def edit_aircraft(aircraft)
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'an organisation update aircraft'
+    )
+  end
+
+  ######################################################################
+  # Description: When add a new forum topic
+  # @param [ForumTopic] forum_topic
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def new_forum_topic(forum_topic)
+    @forum_topic = forum_topic
+    mail(
+        subject: DEFAULT_SUBJECT + 'new forum topic created'
+    )
+  end
+
+
+  ######################################################################
+  # Description: When add a new comment in forum topic
+  # @param [ForumTopicComment] comment
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def new_comment_forum_topic(forum_topic_comment)
+    @forum_topic_comment = forum_topic_comment
+    mail(
+        subject: DEFAULT_SUBJECT + 'New comment on Forum topic'
+    )
+  end
+
+
+  ######################################################################
+  # Description: When Aircraft unavailability deleted
+  # @param [AircraftUnavailability] aircraft_unavailability
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def delete_aircraft_unavailability(operator, aircraft_unavailability)
+    @aircraft_unavailability = aircraft_unavailability
+    @operator = operator
+    mail(
+        subject: DEFAULT_SUBJECT + 'Aircraft unavailability deleted'
+    )
+  end
+
+  ######################################################################
+  # Description: When trip deleted for single activity
+  # @param [Trip] trip
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def delete_single_trip(operator, activity)
+    @activity = activity
+    @operator = operator
+    mail(
+        subject: 'JetSetGo - Trip deleted'
+    )
+  end
+
 end

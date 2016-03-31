@@ -1,5 +1,7 @@
 class OrganisationMailer < ApplicationMailer
 
+  add_template_helper(ApplicationHelper)
+
   layout 'mailer_2'
 
   ######################################################################
@@ -22,29 +24,13 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
  ######################################################################
-  def new_aircraft(aircraft, operator)
-    @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
-    mail(
-        to: @operator.email,
-        subject: 'JetSetGo - New aircraft created'
-    )
-  end
 
-  ######################################################################
-  # Description: When an aircraft deleted
-  # @param [Aircraft] aircraft
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def delete_aircraft(aircraft, operator)
+  def new_aircraft(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Aircraft Deleted'
+        to: (@emails),
+        subject: 'JetSetGo - New aircraft created'
     )
   end
 
@@ -54,12 +40,11 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def edit_aircraft(aircraft, operator)
+  def edit_aircraft(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Aircraft Edit'
     )
   end
@@ -70,27 +55,35 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def aircraft_approved_by_super_admin(aircraft, operator)
+  def aircraft_approved_by_super_admin(aircraft)
     @aircraft = aircraft
-    @organisation = aircraft.organisation
-    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Aircraft approved by Admin'
     )
   end
 
+  def aircraft_disapproved_by_super_admin(aircraft)
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft approved by Admin'
+    )
+  end
+
+
   ######################################################################
   # Description: When add a new forum topic
   # @param [ForumTopic] forum_topic
-  # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_forum_topic(forum_topic, operator)
+  def new_forum_topic(forum_topic)
     @forum_topic = forum_topic
-    @operator = operator
+    @emails = Organisation.get_all_emails(forum_topic.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New forum topic created'
     )
   end
@@ -98,14 +91,13 @@ class OrganisationMailer < ApplicationMailer
   ######################################################################
   # Description: When add a new comment in forum topic
   # @param [ForumTopicComment] comment
-  # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_comment_forum_topic(comment, operator)
-    @comment = comment
-    @operator = operator
+  def new_comment_forum_topic(forum_topic_comment)
+    @forum_topic_comment = forum_topic_comment
+    @emails = Organisation.get_all_emails(forum_topic_comment.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New comment on Forum topic'
     )
   end
@@ -113,44 +105,30 @@ class OrganisationMailer < ApplicationMailer
   ######################################################################
   # Description: When a new Aircraft unavailability created
   # @param [AircraftUnavailability] aircraft_unavailability
-  # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_aircraft_unavailability(aircraft_unavailability, operator)
+  def new_aircraft_unavailability(operator, aircraft_unavailability)
     @aircraft_unavailability = aircraft_unavailability
     @operator = operator
+    @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New aircraft unavailability created'
     )
   end
 
-  ######################################################################
-  # Description: When Aircraft unavailability Edit
-  # @param [AircraftUnavailability] aircraft_unavailability
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def edit_aircraft_unavailability(aircraft_unavailability, operator)
-    @aircraft_unavailability = aircraft_unavailability
-    @operator = operator
-    mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Aircraft unavailability Edit'
-    )
-  end
 
   ######################################################################
   # Description: When Aircraft unavailability deleted
   # @param [AircraftUnavailability] aircraft_unavailability
-  # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def delete_aircraft_unavailability(aircraft_unavailability, operator)
+  def delete_aircraft_unavailability(operator, aircraft_unavailability)
     @aircraft_unavailability = aircraft_unavailability
     @operator = operator
+    @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Aircraft unavailability deleted'
     )
   end
@@ -161,41 +139,28 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_trip(trip, operator)
+  def new_trip(operator, trip)
     @trip = trip
     @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New Trip created'
     )
   end
 
   ######################################################################
-  # Description: When trip Edit
+  # Description: When trip deleted for single activity
   # @param [Trip] trip
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def edit_trip(trip, operator)
-    @trip = trip
+  def delete_single_trip(operator, activity)
+    @activity = activity
     @operator = operator
+    @emails = Organisation.get_all_emails(activity.trip.organisation)
     mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Edit Trip'
-    )
-  end
-
-  ######################################################################
-  # Description: When trip deleted
-  # @param [Trip] trip
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def delete_trip(trip, operator)
-    @trip = trip
-    @operator = operator
-    mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Trip deleted'
     )
   end

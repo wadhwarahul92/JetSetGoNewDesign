@@ -15,6 +15,8 @@ class Organisations::AircraftsController < Organisations::BaseController
 	def create
 		@aircraft = current_user.organisation.aircrafts.new(aircraft_params)
   	if @aircraft.save
+			AdminMailer.new_aircraft(@aircraft).deliver_later
+			OrganisationMailer.new_aircraft(@aircraft).deliver_later
   		render status: :ok, nothing: true
   	else
       render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }
@@ -27,6 +29,8 @@ class Organisations::AircraftsController < Organisations::BaseController
 
 	def update
     if @aircraft.update_attributes(aircraft_params)
+      AdminMailer.edit_aircraft(@aircraft).deliver_later
+      OrganisationMailer.edit_aircraft(@aircraft).deliver_later
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }

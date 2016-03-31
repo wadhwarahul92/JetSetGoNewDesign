@@ -12,6 +12,8 @@ class Organisations::ForumTopicCommentsController < Organisations::BaseControlle
         )
     )
     if @forum_topic_comment.save
+      AdminMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
+      OrganisationMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
       render status: :ok
     else
       render status: :unprocessable_entity, json: { errors: @forum_topic_comment.errors.full_messages }

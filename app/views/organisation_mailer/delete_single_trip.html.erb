@@ -1,0 +1,88 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1">Hi,</p>
+            <p>
+              <strong><%= @operator.full_name %></strong> delete a trip from Organisation <strong><%= @operator.organisation.name %></strong>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p>
+              <strong>Leg</strong>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+            <% @activity.attributes.except('id',
+                                          'aircraft_id',
+                                          'trip_id',
+                                          'created_at',
+                                          'updated_at',
+                                          'deleted_at',
+                                          'user_id',
+                                          'payment_transaction_id').each_pair do |key, value| %>
+                <tr style="border: 1px solid #000000;">
+                  <td width="50%" valign="top" style="border: 1px solid #000000;">
+                    <div class="column">
+                      <table width="100%">
+                        <tr>
+                          <td class="inner">
+                            <p class="h2" style="font-size: 14px;">
+                              <% if key == 'departure_airport_id' %>
+                                  departure airport
+                              <% elsif key == 'arrival_airport_id' %>
+                                  arrival airport
+                              <% else %>
+                                  <%= key %>
+                              <% end %>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </td>
+                  <td width="50%" valign="top" style="border: 1px solid #000000;">
+                    <div class="column">
+                      <table width="100%">
+                        <tr>
+                          <td class="inner">
+                            <p class="h2" style="font-size: 14px;">
+                              <% if key == 'departure_airport_id' %>
+                                  <%= @activity.departure_airport.name %>
+                              <% elsif key == 'arrival_airport_id' %>
+                                  <%= @activity.arrival_airport.name %>
+                              <% elsif key == 'start_at' || key == 'end_at' %>
+                                  <%= value.strftime(time_format) %>
+                              <% else %>
+                                  <%= value %>
+                              <% end %>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+                <br/>
+                <br/>
+            <% end %>
+      </table>
+    </td>
+  </tr>
+</table>

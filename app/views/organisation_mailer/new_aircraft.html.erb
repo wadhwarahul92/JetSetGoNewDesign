@@ -4,13 +4,49 @@
       <table width="100%">
         <tr>
           <td class="inner contents">
-            <p class="h1">Hi, <%= @operator.full_name %></p>
-            <p>You create a new Aircraft<br/><br/>
-              Tail Number   : <strong><%= @aircraft.tail_number %></strong><br/>
-              Aircraft Type : <strong><%= @aircraft.aircraft_type.name %></strong><br/>
-              Organisation  : <strong><%= @organisation.name %></strong></p>
+            <p class="h1">Hi,</p>
+            <p>Organisation Add a new Aircraft</p>
           </td>
         </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+        <% @aircraft.attributes.except('id',
+                                       'aircraft_type_id',
+                                       'created_at',
+                                       'updated_at',
+                                       'admin_verified',
+                                       'organisation_id',
+                                       'base_airport_id',
+                                       'deleted_at').each_pair do |key, value| %>
+            <tr style="border: 1px solid #000000;">
+              <td width="50%" valign="top" style="border: 1px solid #000000;">
+                <div class="column">
+                  <table width="100%">
+                    <tr>
+                      <td class="inner">
+                        <p class="h2" style="font-size: 14px;"><%= key %></p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+              <td width="50%" valign="top" style="border: 1px solid #000000;">
+                <div class="column">
+                  <table width="100%">
+                    <tr>
+                      <td class="inner">
+                        <p class="h2" style="font-size: 14px;"><%= value %></p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+        <% end %>
       </table>
     </td>
   </tr>
