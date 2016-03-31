@@ -19,6 +19,8 @@ class Organisations::ForumTopicsController < Organisations::BaseController
   def create
     @forum_topic = current_organisation.forum_topics.new(forum_topic_params.merge(operator_id: current_user.id))
     if @forum_topic.save
+      AdminMailer.new_forum_topic(@forum_topic).deliver_later
+      OrganisationMailer.new_forum_topic(@forum_topic).deliver_later
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @forum_topic.errors.full_messages }
