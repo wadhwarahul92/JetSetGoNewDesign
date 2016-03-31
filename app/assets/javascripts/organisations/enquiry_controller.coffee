@@ -3,11 +3,11 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
   @enquiry = enquiry
 
   @deleteEnquiry = ->
-    bootbox.confirm('Are you sure?', (result)->
+    bootbox.confirm('Are you sure?', (result)=>
       if result
         $http.delete("/organisations/trips/#{@enquiry.id}/destroy_trip.json").success(
           ->
-          Turbolinks.visit('/organisations')
+            Turbolinks.visit('/organisations')
         ).error(
           (data)->
             error = 'Something went wrong.'
@@ -18,6 +18,7 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
               classes: ['alert-danger']
         )
     )
+    return undefined
 
   @sendQuote = ->
     $http.post("/organisations/trips/#{@enquiry.id}/send_quote.json", {enquiry: @enquiry}).success(
@@ -27,7 +28,7 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
         $timeout(
           ->
             Turbolinks.visit('/organisations')
-          ,
+        ,
           1000
         )
     ).error(

@@ -126,4 +126,19 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When a new enquiry created , Enquiry is a trip where status is enquiry
+  # @param [Trip] enquiry
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def new_enquiry(operator, trip)
+    @trip = trip
+    @operator = operator
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - New enquiry created'
+    )
+  end
+
 end
