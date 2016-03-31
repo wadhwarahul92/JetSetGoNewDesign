@@ -58,6 +58,7 @@ organisations_app.controller "SettingsController", ['$http', 'notify', '$upload'
     )
 
   @addStaticFile = (files)->
+    return unless files[0]
     modal = $uibModal.open(
       size: 'sm'
       template: """
