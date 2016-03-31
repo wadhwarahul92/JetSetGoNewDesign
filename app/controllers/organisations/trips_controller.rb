@@ -36,7 +36,7 @@ class Organisations::TripsController < Organisations::BaseController
     @activity = Activity.find params[:id]
     @activity.destroy
     AdminMailer.delete_single_trip(current_user, @activity).deliver_later
-    OrganisationMailer.delete_single_trip(current_user, @activity).deliver_now
+    OrganisationMailer.delete_single_trip(current_user, @activity).deliver_later
     render status: :ok, nothing: true
   end
 
