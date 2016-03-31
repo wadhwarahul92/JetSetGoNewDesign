@@ -1,18 +1,19 @@
-
-
 <div class="row" ng-controller="ForumTopicCommentsController as ctrl">
-  <div class="col-sm-12 main-top-data">
-    <%= link_to 'Back', organisations_forum_topics_path, class: 'btn btn-primary large-button' %>
-    <h3><%= @forum_topic.statement %></h3>
+  <div class="col-sm-12 forum-content-main main-top-data">
+    <h3 class="main-heading">
+      Forum Topics Comments
+    </h3>
+    <!--%= link_to 'Back', organisations_forum_topics_path, class: 'btn btn-primary large-button' %-->
+    <h4 class="forum-heading"><%= @forum_topic.statement %></h4>
     <ul class="list-inline text-right">
       <li><strong><%= @forum_topic.organisation.name %></strong></li>
       <li><strong>Posted By:</strong> <%= @forum_topic.operator.full_name %></li>
       <li><strong>Posted On:</strong> <%= @forum_topic.created_at.strftime('%d %b %Y') %></li>
     </ul>
-    <p class="main-text"><%= @forum_topic.description %></p>
+    <p class="main-text forum-content"><%= @forum_topic.description %></p>
     
-    <div class="row">
-      <div class="col-sm-12 scroll-con">
+    <div class="row comment-section">
+      <div class="col-sm-12 col-xs-12 scroll-con">
         <ul class="list-unstyled comment-box">
           <li ng-class="{true:'bg-coment-green', false:'bg-coment-gray'}[<%= current_user.id %> == forum_topic_comment.operator_id]" ng-repeat="forum_topic_comment in ctrl.forum_topic_comments">
             <div class="forum-topic-container forum-topic-container2 margin-top">
@@ -29,21 +30,22 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm-12 comment-section">
-        <fieldset>
-          <legend><small>Add a comment</small></legend>
-          <form ng-submit="ctrl.addNewComment()">
-          <div class="row">
-            <div class="col-sm-10 field">
-              <label style="display: none" for="comment">Comment</label>
-              <textarea id="comment" rows="2" class="form-control" ng-model="ctrl.newComment.comment"></textarea>
+      <div class="col-sm-12 col-xs-12 comment-section">
+        <div class="col-xs-12">
+          <fieldset>
+            <legend><small>Add a comment</small></legend>
+            <form ng-submit="ctrl.addNewComment()">
+            <div class="row">
+              <div class="col-sm-12 field">
+                <label style="display: none" for="comment">Comment</label>
+                <textarea id="comment" rows="2" class="form-control comment-text" ng-model="ctrl.newComment.comment"></textarea>
+                <input type="submit" class="save-btn" value="">
+              </div>
             </div>
-            <div class="col-sm-2 text-right field">
-              <input type="submit" class="btn btn-primary save-btn" value="Save">
-            </div>
-          </div>
-          </form>
-        </fieldset>
+            </form>
+          </fieldset>
+        </div>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

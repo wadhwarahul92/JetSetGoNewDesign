@@ -38,17 +38,21 @@ $main-blue-color:rgb(5, 81, 139);
 		}
 	}
 	.login-register-main{
-		background-color:rgba(256,256,256,1);
+		background-color:rgba(256,256,256,0.5);
 		padding-bottom:30px;
+		border:1px solid rgba(256,256,256,0.7);
 		margin-top:50px;
 		min-height:400px;
 		h5{
-			font-size:20px;
+			font-size:28px;
 			margin:0;
 			padding:15px;
-			background-color:$main-blue-color;
-			color:#ffffff;
+			*background-color:$main-blue-color;
+			color:$main-blue-color;
+			font-weight:bold;
+			*text-align:center;
 			margin-bottom:10px;
+			border-bottom:1px solid $main-blue-color;
 		}
 		p{
 			text-align:justify;
@@ -70,15 +74,16 @@ $main-blue-color:rgb(5, 81, 139);
 					left:8px;
 				}
 				.text-field{
-					height:60px;
-					background-color:#ffffff;
+					height:50px;
+					background-color:rgba(0,0,0,0.1);
+					border:0px;
 				}
 				.text-field:focus{
 					background-color:#ffffff;	
 				}
 				.proceed-btn{
 					width: 100%;
-					padding:20px;
+					padding:18px;
 					font-size:16px;
 				}
 				.register-click{

@@ -41,6 +41,38 @@ $main-blue-color:rgb(5, 81, 139);
     bottom:-10px;
     left:48%;
   }
+  h4.forum-heading{
+    font-size:25px;
+    padding-bottom:5px;
+    margin:0;
+    color:$main-green-color;
+    border-bottom:1px solid #cccccc;
+  }
+  p.main-text{
+    padding-bottom: 10px;
+    font-size: 14px;
+    text-align:justify;
+    *font-weight:bold;
+    color:#444444;
+  }
+  .comment-section{
+    background-color:transparent;
+    padding:15px 0 15px 0;
+    position:relative;
+    .comment-text{
+      position:relative;
+    }
+    .save-btn{
+      width:19px;
+      height:18px;
+      background-image:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/122/original/chat-send-icon.png?1459332021');
+      background-color:transparent;
+      border:0px;
+      position:absolute;
+      top:5px;
+      right:20px;
+    }
+  }
   ul.list-unstyled{
     li{
       a{
