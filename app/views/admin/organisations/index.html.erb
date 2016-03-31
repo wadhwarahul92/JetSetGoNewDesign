@@ -27,7 +27,16 @@
           </table>
         </td>
         <td>
-          <%= link_to organisation.admin_verified? ? 'active' : 'inactive', admin_organisation_path(organisation, admin_verified: organisation.admin_verified? ? false : true), method: :put, class: "btn btn-#{organisation.admin_verified? ? 'success ' : 'danger '} btn-xs" %>
+
+          <% if organisation.admin_verified? %>
+              <span class="text-success">Verified by admin</span>
+              <%= link_to 'Un-verify', admin_organisation_path(organisation, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs' %>
+          <%- else %>
+              <span class="text-danger">Not Verified</span>
+              <%= link_to 'Verify', admin_organisation_path(organisation, admin_verified: true), method: :put, class: 'btn btn-success btn-xs' %>
+          <%- end %>
+
+
         </td>
       </tr>
   <%end%>

@@ -23,33 +23,39 @@
       </thead>
       <tbody>
       <% @aircrafts.each do |aircraft| %>
-      <tr>
-        <td><%= aircraft.tail_number %></td>
-        <td><%= aircraft.aircraft_type.name %></td>
-        <td><%= aircraft.organisation.name if aircraft.organisation %></td>
-        <td><%= aircraft.creator.full_name if aircraft.creator %></td>
-        <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
-        <td>
-          <%= link_to(aircraft.admin_verified? ? 'inactive':'active' , admin_approve_admin_aircraft_path(aircraft, admin_verified: aircraft.admin_verified? ? false : true), method: :put, class:"btn btn-#{aircraft.admin_verified? ? 'danger':'success'} btn-xs" ) %>
-        </td>
-        <td>
-          <%= link_to admin_aircraft_path(aircraft) do %>
-              <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
-          <%- end %>
-        </td>
-        <td>
-          <%= link_to edit_admin_aircraft_path(aircraft) do %>
-            <i class="fa fa-edit"></i>
-          <%- end %>
-        </td>
-        <td>
-          <% unless aircraft.aircraft_images.any? %>
-              <p class="text-danger">
-                <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
-              </p>
-          <%- end %>
-        </td>
-      </tr>
+          <tr>
+            <td><%= aircraft.tail_number %></td>
+            <td><%= aircraft.aircraft_type.name %></td>
+            <td><%= aircraft.organisation.name if aircraft.organisation %></td>
+            <td><%= aircraft.creator.full_name if aircraft.creator %></td>
+            <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
+            <td>
+              <% if aircraft.admin_verified? %>
+                  <span class="text-success">Verified by admin</span>
+                  <%= link_to( 'Un-verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+              <%- else %>
+                  <span class="text-danger">Not verified</span>
+                  <%= link_to( 'Verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
+              <%- end %>
+            </td>
+            <td>
+              <%= link_to admin_aircraft_path(aircraft) do %>
+                  <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
+              <%- end %>
+            </td>
+            <td>
+              <%= link_to edit_admin_aircraft_path(aircraft) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+            <td>
+              <% unless aircraft.aircraft_images.any? %>
+                  <p class="text-danger">
+                    <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
+                  </p>
+              <%- end %>
+            </td>
+          </tr>
       <%- end %>
       </tbody>
     </table>
