@@ -1,10 +1,12 @@
 json.array! @enquiries do |enquiry|
 
+  next unless enquiry.activities.any?
+
   json.id enquiry.id
-
   json.status enquiry.status
-
-  json.user_id enquiry.user_id
+  json.tax Tax.tax
+  json.tax_value Tax.total_tax_value
+  json.user enquiry.user.try(:full_name)
 
   json.activities{
     json.array! enquiry.activities do |activity|
@@ -30,6 +32,8 @@ json.array! @enquiries do |enquiry|
         json.aircraft{
           json.id activity.aircraft.id
           json.name activity.aircraft.aircraft_type.name
+          json.tail_number activity.aircraft.tail_number
+          json.images activity.aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
         }
 
         json.trip{
