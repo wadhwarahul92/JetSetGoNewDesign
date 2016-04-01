@@ -13,7 +13,8 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :toggle,
                                             :set_terms_and_condition,
                                             :get_terms_and_condition,
-                                            :log_out
+                                            :log_out,
+                                            :update_device_token
   ]
 
   before_action :set_operator, only: [:edit, :update]
@@ -25,7 +26,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                               :forgot_password_
   ]
 
-  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle, :profile, :update_profile]
+  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle, :profile, :update_profile, :update_device_token]
 
   protect_from_forgery except: [:log_in_]
 
@@ -175,6 +176,31 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def get_terms_and_condition
     @organisation = current_organisation
+  end
+
+  def update_device_token
+
+    case params[:type]
+      when 'ios'
+
+        if current_user.update_attributes(ios_app_devise_token: params[:device_token], send_app_notifications: true)
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+        end
+
+      when 'android'
+
+        if current_user.update_attributes(android_app_devise_token: params[:device_token], send_app_notifications: true)
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+        end
+
+      else
+        render status: :unprocessable_entity, json: { errors: ['type is not specified'] }
+    end
+
   end
 
   private
