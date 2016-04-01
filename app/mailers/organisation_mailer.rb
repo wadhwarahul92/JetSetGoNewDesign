@@ -18,12 +18,12 @@ class OrganisationMailer < ApplicationMailer
     )
   end
 
- ######################################################################
+  ######################################################################
   # Description: When new aircraft created
   # @param [Aircraft] aircraft
   # @param [Operator] operator
   # @return [ActionMailer::Base]
- ######################################################################
+  ######################################################################
 
   def new_aircraft(aircraft)
     @aircraft = aircraft
@@ -171,11 +171,12 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_enquiry(enquiry, operator)
-    @enquiry = enquiry
+  def new_enquiry(operator, trip)
+    @trip = trip
     @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New enquiry created'
     )
   end

@@ -4,9 +4,9 @@
       <table width="100%">
         <tr>
           <td class="inner contents">
-            <p class="h1">Hi,</p>
+            <p class="h1">Hi, Admin</p>
             <p>
-              <strong><%= @operator.full_name %></strong> create an Enquiry</strong>
+              <strong><%= @operator.full_name %></strong> create a trip from Organisation <strong><%= @operator.organisation.name %></strong>
             </p>
           </td>
         </tr>
@@ -68,8 +68,8 @@
   </tr>
   <tr>
     <td class="two-column">
-      <% @trip.activities.each do |activity| %>
-          <table width="100%" style="border: 1px solid #09c; margin-top: 10px; ">
+      <table width="100%">
+        <% @trip.activities.each do |activity| %>
             <% activity.attributes.except('id',
                                           'aircraft_id',
                                           'trip_id',
@@ -120,9 +120,11 @@
                     </div>
                   </td>
                 </tr>
+                <br/>
+                <br/>
             <% end %>
-          </table>
-      <% end %>
+        <% end %>
+      </table>
     </td>
   </tr>
 </table>

@@ -14,18 +14,18 @@ class TripsController < ApplicationController
       @activities = []
       params[:enquiry][:flight_plan].each do |plan|
         @activities << @trip.activities.new(
-                                           aircraft_id: @aircraft.id,
-                                           departure_airport_id: plan[:departure_airport_id],
-                                           arrival_airport_id: plan[:arrival_airport_id],
-                                           start_at: plan[:start_at],
-                                           end_at: plan[:end_at],
-                                           empty_leg: (plan[:flight_type] == 'empty_leg' ? true: false),
-                                           flight_cost: plan[:flight_cost],
-                                           landing_cost_at_arrival: plan[:landing_cost_at_arrival],
-                                           handling_cost_at_takeoff: plan[:handling_cost_at_takeoff],
-                                           pax: plan[:pax],
-                                           watch_hour_at_arrival: plan[:watch_hour_at_arrival],
-                                           watch_hour_cost: plan[:watch_hour_cost]
+            aircraft_id: @aircraft.id,
+            departure_airport_id: plan[:departure_airport_id],
+            arrival_airport_id: plan[:arrival_airport_id],
+            start_at: plan[:start_at],
+            end_at: plan[:end_at],
+            empty_leg: (plan[:flight_type] == 'empty_leg' ? true: false),
+            flight_cost: plan[:flight_cost],
+            landing_cost_at_arrival: plan[:landing_cost_at_arrival],
+            handling_cost_at_takeoff: plan[:handling_cost_at_takeoff],
+            pax: plan[:pax],
+            watch_hour_at_arrival: plan[:watch_hour_at_arrival],
+            watch_hour_cost: plan[:watch_hour_cost]
 
         )
 
@@ -34,18 +34,18 @@ class TripsController < ApplicationController
           plan[:empty_leg_plan].each do |empty_leg|
 
             @activities << @trip.activities.new(
-                                               aircraft_id: @aircraft.id,
-                                               departure_airport_id: empty_leg[:departure_airport_id],
-                                               arrival_airport_id: empty_leg[:arrival_airport_id],
-                                               start_at: empty_leg[:start_at],
-                                               end_at: empty_leg[:end_at],
-                                               empty_leg: true,
-                                               flight_cost: empty_leg[:flight_cost],
-                                               landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
-                                               handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
-                                               pax: plan[:pax],
-                                               watch_hour_at_arrival: plan[:watch_hour_at_arrival],
-                                               watch_hour_cost: plan[:watch_hour_cost]
+                aircraft_id: @aircraft.id,
+                departure_airport_id: empty_leg[:departure_airport_id],
+                arrival_airport_id: empty_leg[:arrival_airport_id],
+                start_at: empty_leg[:start_at],
+                end_at: empty_leg[:end_at],
+                empty_leg: true,
+                flight_cost: empty_leg[:flight_cost],
+                landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
+                handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
+                pax: plan[:pax],
+                watch_hour_at_arrival: plan[:watch_hour_at_arrival],
+                watch_hour_cost: plan[:watch_hour_cost]
             )
 
           end
@@ -70,6 +70,10 @@ class TripsController < ApplicationController
 
       if save_able
         @activities.map(&:save)
+
+        # AdminMailer.new_enquiry(current_user, @trip).deliver_later
+        OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
+
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: { errors: [@error] }
@@ -82,8 +86,8 @@ class TripsController < ApplicationController
 
   def get_quotes
     @quotes = Trip.where(
-                      status: Trip::STATUS_QUOTED,
-                      user_id: current_user.id
+        status: Trip::STATUS_QUOTED,
+        user_id: current_user.id
     ).order('updated_at DESC').includes(:activities)
   end
 

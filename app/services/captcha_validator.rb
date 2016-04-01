@@ -9,7 +9,8 @@ class CaptchaValidator
     @ip = ip
   end
 
-  def validated!
+  def validated!(force = false)
+    return true if force
     uri = URI(URL)
     response = Net::HTTP.post_form(uri, {
         secret: ENV['CAPTCHA_SECRET_KEY'],

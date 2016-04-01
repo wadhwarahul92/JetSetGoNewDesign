@@ -44,4 +44,9 @@ class Operators::WelcomeController < Operators::BaseController
     end
   end
 
+  def raise_support_issue
+    HelpMailer.support_ticket(params[:name], params[:email], params[:message]).deliver_later
+    render status: :ok, nothing: true
+  end
+
 end
