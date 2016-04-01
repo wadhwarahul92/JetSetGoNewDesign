@@ -180,4 +180,15 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When approved operator by Super Admin
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def approved_operator_by_admin(operator)
+    @operator = operator
+    mail(
+        subject: DEFAULT_SUBJECT + 'approve operator by Admin'
+    )
+  end
 end

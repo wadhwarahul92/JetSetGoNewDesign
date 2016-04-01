@@ -262,6 +262,7 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
+  # todo set roles of operator
   def set_roles_of_operator(operator)
     @operator = operator
     mail(
