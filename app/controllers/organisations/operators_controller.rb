@@ -31,7 +31,8 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def log_out
     begin
-      current_user.update_attribute(:send_app_notifications, false)
+      # todo add send_app_notifications to true when signed in from app
+      # current_user.update_attribute(:send_app_notifications, false)
     rescue Exception
       #do nothing
     end
