@@ -72,7 +72,7 @@ class TripsController < ApplicationController
         @activities.map(&:save)
 
         # AdminMailer.new_enquiry(current_user, @trip).deliver_later
-        OrganisationMailer.new_enquiry(current_user, @trip).deliver_now
+        OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
 
         render status: :ok, nothing: true
       else
