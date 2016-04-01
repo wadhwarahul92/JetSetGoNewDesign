@@ -107,3 +107,5 @@ gem 'newrelic_rpm'
 gem 'httparty'
 
 gem 'rubyXL'
+
+gem 'rpush'
