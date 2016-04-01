@@ -17,6 +17,8 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def update
     @organisation.update_attribute(:admin_verified, params[:admin_verified])
+    AdminMailer.approved_organisation(@organisation).deliver_later
+    OrganisationMailer.approved_organisation(@organisation).deliver_later
     redirect_to action: :index
   end
 

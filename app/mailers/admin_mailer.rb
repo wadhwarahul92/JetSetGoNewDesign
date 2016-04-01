@@ -94,7 +94,7 @@ class AdminMailer < ApplicationMailer
   def new_comment_forum_topic(forum_topic_comment)
     @forum_topic_comment = forum_topic_comment
     mail(
-        subject: DEFAULT_SUBJECT + 'New comment on Forum topic'
+        subject: DEFAULT_SUBJECT + 'new comment on Forum topic'
     )
   end
 
@@ -108,7 +108,7 @@ class AdminMailer < ApplicationMailer
     @aircraft_unavailability = aircraft_unavailability
     @operator = operator
     mail(
-        subject: DEFAULT_SUBJECT + 'Aircraft unavailability deleted'
+        subject: DEFAULT_SUBJECT + 'aircraft unavailability deleted'
     )
   end
 
@@ -122,7 +122,7 @@ class AdminMailer < ApplicationMailer
     @activity = activity
     @operator = operator
     mail(
-        subject: 'JetSetGo - Trip deleted'
+        subject: DEFAULT_SUBJECT + 'trip deleted'
     )
   end
 
@@ -136,9 +136,59 @@ class AdminMailer < ApplicationMailer
     @trip = trip
     @operator = operator
     mail(
-        to: @operator.email,
-        subject: 'JetSetGo - New enquiry created'
+        subject: DEFAULT_SUBJECT + 'new enquiry created'
     )
   end
 
+  ######################################################################
+  # Description: When enquiry deleted, Enquiry is a trip where status is enquiry
+  # @param [Trip] enquiry
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def delete_enquiry(operator, trip)
+    @trip = trip
+    @operator = operator
+    mail(
+        subject: DEFAULT_SUBJECT + 'delete enquiry'
+    )
+  end
+
+  ######################################################################
+  # Description: When a new quote created, Quote is a trip where status is quote
+  # @param [Trip] quote
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def send_quote(operator, trip)
+    @trip = trip
+    @operator = operator
+    mail(
+        subject: DEFAULT_SUBJECT + 'quote created'
+    )
+  end
+
+  ######################################################################
+  # Description: When approved organisation by Super Admin
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def approved_organisation(organisation)
+    @organisation = organisation
+    mail(
+        subject: DEFAULT_SUBJECT + 'approved organisation by Admin'
+    )
+  end
+
+  ######################################################################
+  # Description: When approved operator by Super Admin
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def approved_operator_by_admin(operator)
+    @operator = operator
+    mail(
+        subject: DEFAULT_SUBJECT + 'approve operator by Admin'
+    )
+  end
 end
