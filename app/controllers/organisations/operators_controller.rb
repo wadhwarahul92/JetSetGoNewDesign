@@ -30,7 +30,11 @@ class Organisations::OperatorsController < Organisations::BaseController
   protect_from_forgery except: [:log_in_]
 
   def log_out
-    #todo delete mobile uuid here --- MAYUR
+    begin
+      current_user.update_attribute(:send_app_notifications, false)
+    rescue Exception
+      #do nothing
+    end
     render status: :ok, nothing: true
   end
 

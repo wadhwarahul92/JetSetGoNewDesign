@@ -408,6 +408,7 @@ ActiveRecord::Schema.define(version: 20160401091342) do
     t.datetime "deleted_at"
     t.string   "ios_app_devise_token",     limit: 255
     t.string   "android_app_devise_token", limit: 255
+    t.boolean  "send_app_notifications",                 default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
