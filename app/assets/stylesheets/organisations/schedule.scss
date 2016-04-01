@@ -264,6 +264,13 @@ $main-blue-color:rgb(5, 81, 139);
 }
 
 @media(max-width:767px){
+	.buttons-con{
+			.send-btn{
+			}
+			.delete-btn{
+				margin-top:10px;
+			}
+		}
 	.table-main{
 		width:100%;
 		margin:0;
@@ -307,7 +314,6 @@ $main-blue-color:rgb(5, 81, 139);
 				font-size:13px;
 				padding:2px 0;
 				color:#ffffff;
-				font-weight:bold;
 			}
 			.sub-result{
 				font-size:14px;
