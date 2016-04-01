@@ -11,7 +11,8 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :profile,
                                             :toggle,
                                             :set_terms_and_condition,
-                                            :get_terms_and_condition
+                                            :get_terms_and_condition,
+                                            :log_out
   ]
 
   before_action :set_operator, only: [:edit, :update]
@@ -26,6 +27,11 @@ class Organisations::OperatorsController < Organisations::BaseController
   before_action :authenticate_operator, only: [:index, :edit, :update, :toggle]
 
   protect_from_forgery except: [:log_in_]
+
+  def log_out
+    #todo delete mobile uuid here --- MAYUR
+    render status: :ok, nothing: true
+  end
 
   #POST
   # noinspection RailsChecklist01
@@ -163,7 +169,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def set_operator
-    @operator = current_user.organisation.operators.find params[:id]
+    @operator = current_user
   end
 
   def operator_role_params

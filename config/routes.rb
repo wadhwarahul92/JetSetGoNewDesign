@@ -59,6 +59,7 @@ Rails.application.routes.draw do
         post 'forgot_password_'
         put 'set_terms_and_condition'
         get 'get_terms_and_condition'
+        get 'log_out'
       end
       member do
         get 'profile'
