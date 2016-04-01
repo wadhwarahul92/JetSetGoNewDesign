@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     post 'sign_up' => 'welcome#create_sign_up', as: :operator_sign_up
 
+    get 'api/v1/raise_support_issue' => 'welcome#raise_support_issue'
+
     resources :aircrafts do
       resources :aircraft_images
     end
