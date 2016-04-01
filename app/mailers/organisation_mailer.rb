@@ -182,31 +182,17 @@ class OrganisationMailer < ApplicationMailer
   end
 
   ######################################################################
-  # Description: When enquiry Edit, Enquiry is a trip where status is enquiry
-  # @param [Trip] enquiry
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def edit_enquiry(enquiry, operator)
-    @enquiry = enquiry
-    @operator = operator
-    mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Edit Enquiry'
-    )
-  end
-
-  ######################################################################
   # Description: When enquiry deleted, Enquiry is a trip where status is enquiry
   # @param [Trip] enquiry
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def delete_enquiry(enquiry, operator)
-    @enquiry = enquiry
+  def delete_enquiry(operator, trip)
+    @trip = trip
     @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Delete Enquiry'
     )
   end
@@ -217,27 +203,13 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_quote(quote, operator)
-    @quote = quote
+  def send_quote(operator, trip)
+    @trip = trip
     @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - New enquiry created'
-    )
-  end
-
-  ######################################################################
-  # Description: When quote Edit, Quote is a trip where status is quote
-  # @param [Trip] quote
-  # @param [Operator] operator
-  # @return [ActionMailer::Base]
-  ######################################################################
-  def edit_quote(quote, operator)
-    @quote = quote
-    @operator = operator
-    mail(
-        to: @operator.email,
-        subject: 'JetSetGo - Edit quote'
     )
   end
 
@@ -247,11 +219,13 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   # ######################################################################
-  def delete_quote(quote, operator)
-    @quote = quote
+  # todo email send when quote deleted
+  def delete_quote(trip, operator)
+    @trip = trip
     @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Delete quote'
     )
   end
@@ -261,10 +235,11 @@ class OrganisationMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def approved_organisation(operator)
-    @operator = operator
+  def approved_organisation(organisation)
+    @organisation = organisation
+    @emails = Organisation.get_all_emails(organisation)
     mail(
-        to: @operator.email,
+        to: @emails,
         subject: 'JetSetGo - Approved organisation by Admin'
     )
   end

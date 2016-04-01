@@ -29,6 +29,8 @@ class Organisations::TripsController < Organisations::BaseController
   def destroy_trip
     @trip = Trip.find params[:id]
     @trip.destroy
+    AdminMailer.delete_enquiry(current_user, @trip).deliver_later
+    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_later
     render status: :ok, nothing: true
   end
 
@@ -143,6 +145,8 @@ class Organisations::TripsController < Organisations::BaseController
     send_quote_service = SendQuoteService.new(params[:enquiry])
     begin
       send_quote_service.process!
+      AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
+      OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
