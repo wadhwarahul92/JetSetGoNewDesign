@@ -1,5 +1,10 @@
 organisations_app.controller 'HeaderController', [->
 
+  if location.pathname == '/organisations/sign_in' or location.pathname == '/organisations/sign_up' or location.pathname == '/organisations/operators/forgot_password' or location.pathname.match(/\/organisations\/\d+\/operators\/admin/)
+    $('body').addClass('login-bg-con')
+    $('footer').addClass('login-footer')
+    @transparent = true
+
   @organisationLinkState = false
 
   @organisationLinkToggled = (open)->

@@ -1,28 +1,36 @@
-<div class="row" ng-controller="SignInController as ctrl">
-  <div class="col-sm-4">
-    <h4>Create a new Organisation</h4>
-    <a href="/organisations/sign_up">Click here</a>
+<div class="row " ng-controller="SignInController as ctrl">
+  <div class="col-sm-8">
+      <div class="login-left-con">
+        <h4>Lorem Ipsum is simply dummy</h4>
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      </div>      
   </div>
   <div class="col-sm-4">
-    <fieldset>
-      <legend><small>Sign in</small></legend>
-      <form ng-submit="ctrl.create()">
-        <div class="field margin-top">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-control" ng-model="ctrl.user.email">
-        </div>
-        <div class="field margin-top">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" ng-model="ctrl.user.password">
-        </div>
-        <p class="field margin-top">
-          <%= link_to 'Forgot password?', forgot_password_organisations_operators_path %>
-        </p>
-        <div class="field">
-          <input type="submit" class="btn btn-primary margin-top" value="Proceed">
-        </div>
-      </form>
+    <fieldset class="login-register-main">
+      <h5>Sign in</h5>
+      <div class="col-xs-12">
+        <form ng-submit="ctrl.create()">
+          <div class="field margin-top">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control text-field" ng-model="ctrl.user.email">
+          </div>
+          <div class="field margin-top">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control text-field" ng-model="ctrl.user.password">
+          </div>
+          <p class="field forget-text">
+            <%= link_to 'Forgot password?', forgot_password_organisations_operators_path %>
+          </p>
+          <div class="field">
+            <input type="submit" class="btn btn-primary proceed-btn margin-top" value="Proceed">
+          </div>
+          <div class="field">
+            <a class="register-click" href="/organisations/sign_up">Click here Register</a>
+          </div>
+        </form>
+      </div>
     </fieldset>
   </div>
-  <div class="col-sm-4"></div>
+  <div class="clearfix"></div>
 </div>

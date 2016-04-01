@@ -253,12 +253,6 @@ body{
   text-transform: capitalize;
 }
 
-#plus_91{
-  position: absolute;
-  margin-top: 32px;
-  margin-left: -35px;
-}
-
 input#phone{
   padding-left: 35px;
 }
@@ -429,7 +423,6 @@ input#phone{
 .navbar-hidden{padding:0;}
 
 #header{
-  margin-bottom: 10px;
   border-radius: 0;
   ul.dropdown-menu{
     border-radius:0;
@@ -491,7 +484,7 @@ input#phone{
 /*forum show page*/
 .main-top-data{
   ul{
-  color:#888888;
+  color:#666666;
   }
   h3{
     margin:0;
@@ -504,29 +497,19 @@ input#phone{
     font-size:14px;
   
   }
-  p.main-text{
-    border-bottom:1px solid #c9c9c9;
-    padding-bottom: 10px;
-    font-size: 16px;
-    font-style:italic;
-    text-align:justify;
-    *font-weight:bold;
-    color:$dark-blue-color;
-  }
 }
 .scroll-con{
  max-height:300px;
  overflow-y: scroll;
   ul.comment-box{
     margin:0;
-    
   }
   li{
   border-radius:5px;
   border:none;
   }
-  li.bg-coment-red{
-  background-color:#fbcece;
+  li.bg-coment-gray{
+  background-color:#e0fffa;
   margin-left:17px;
   width:80%;
   float:left;
@@ -536,7 +519,7 @@ input#phone{
     }
   }
   li.bg-coment-green{
-  background-color:#c7f4ec;
+  background-color:#caeefb;
   margin-right:17px;
   width:80%;
   float:right;
@@ -554,8 +537,8 @@ input#phone{
     p{
       margin: 10px 8px;
       text-align:justify;
-      font-weight:bold;
       color:#666666;
+      font-size:14px;
     }
     .chat-arrow-left{
     position:absolute;
@@ -568,33 +551,32 @@ input#phone{
     bottom:-10px;
     }
   }
-  .date-main-con{
-    
+  .date-main-con{    
     padding:5px;
     margin:0;
     width:100%;
-    background-color:#f5f5f5;
     font-size:12px;
     -webkit-border-top-left-radius: 4px;
     -webkit-border-top-right-radius: 4px;
     -moz-border-radius-topleft: 4px;
     -moz-border-radius-topright: 4px;
+    *background-color:#f5f5f5;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    
-     li{
+    color:#444444;    
+    li{
 
-     }
+    }
+
+  }
+  ul.bg-cmnt-darkgreen{
+    background-color:#13a04e;
+  }
+  ul.bg-cmnt-darkgray{
+    background-color:#5e5e5e;
   }
 }
 
-.comment-section{
-  background-color:#f5f5f5;
-  padding:10px 20px 20px 20px;
-  .save-btn{
-    min-width:80%;
-  }
-}
 /*forum show page*/
 
 /*changes Rahul 25-2-2016*/

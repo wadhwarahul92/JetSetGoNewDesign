@@ -20,8 +20,12 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="listing-con">
-                  <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" ><i class="fa fa-picture-o"></i> Add aircraft image</a>
-                  <a class="pull-right" ng-href="/organisations/aircrafts/{{aircraft.id}}/edit"><i class="fa fa-pencil"></i></a>
+                  <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" class="add-edit-btn">
+                    <i class="fa fa-picture-o"></i> Add aircraft image
+                  </a>
+                  <a class="pull-right add-edit-btn" ng-href="/organisations/aircrafts/{{aircraft.id}}/edit">
+                    <i class="fa fa-pencil"></i> Edit
+                  </a>
                 </div>
                 <div class="listing-con">
                   <div class="row">

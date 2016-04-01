@@ -12,7 +12,6 @@ $main-blue-color:rgb(5, 81, 139);
 	.modal-content{		
 		position:relative;
 		i.cross{
-			color:#ffffff;
 			position:absolute;
 			right:-10px;
 			top:-10px;
@@ -30,9 +29,18 @@ $main-blue-color:rgb(5, 81, 139);
 .yellow-bg{
 	background-color:rgba(242,208,59,0.9) !important;
 }
+.red-color{
+	color:rgba(241,92,92,1) !important;
+}
+.skyblue-color{
+	color:rgba(31,141,212,1) !important;
+}
+.yellow-color{
+	color:rgba(242,208,59,1) !important;
+}
 .schedule-content-main{
 	h3.main-heading{
-		margin:0 auto 40px auto;
+		margin:10px auto 40px auto;
 	    color:$dark-blue-color;
 	    border:0;
 	    text-align:center;
@@ -58,7 +66,7 @@ $main-blue-color:rgb(5, 81, 139);
 	}
 	.schedule-main-left{
 		background-color:#f9f9f9;
-		min-height:400px;
+		padding-bottom:20px;
 		h4.schedule-category{
 			font-size: 18px;
 		    background-color: #05518b;
@@ -75,8 +83,8 @@ $main-blue-color:rgb(5, 81, 139);
 				border-bottom:1px solid #eeeeee;
 				padding-left:10px;
 				span.bullet-dot{
-					width:13px;
-					height:13px;
+					width:10px;
+					height:10px;
 					border-radius:50%;
 					display:inline-block;
 				}
@@ -89,13 +97,13 @@ $main-blue-color:rgb(5, 81, 139);
 				a.add-trip{
 					color:#1f8dd4;
 					padding-left:5px;
-					font-size:20px;
+					font-size:16px;
 					text-decoration: none;
 				}
 				a.add-unavailability{
 					color:$main-red-color;
 					padding-left:5px;
-					font-size:20px;
+					font-size:16px;
 					text-decoration: none;
 				}
 			}
@@ -106,6 +114,15 @@ $main-blue-color:rgb(5, 81, 139);
 	width:100%;
 	margin:0;
 	padding:30px 0;
+		.main_heading{
+			h3{
+			font-size:22px; 
+			padding:10px 0 40px 0;
+			border-bottom:1px solid #ccc;
+			margin:0 0 20px 0;
+			font-weight:bold;
+			}
+		}
 	.img-con{
 		span{
 			display:inline-block;
@@ -125,31 +142,35 @@ $main-blue-color:rgb(5, 81, 139);
 			h3{
 			font-size:22px; 
 			padding:10px 0 40px 0;
-			border-bottom:1px solid #ffffff;
+			border-bottom:1px solid #ccc;
 			margin:0 0 20px 0;
 			font-weight:bold;
-			color:#ffffff;
 			}
 		}
 		h4{
 			color:#ffffff;
 			text-align:center;
 			*border-bottom:1px solid #ffffff;
-			border-top:1px solid #ffffff;
+			border-top:1px solid #cccccc;
 			padding:15px 0;
 			margin-bottom:0;
 			font-weight:bold;
 		}
-		.sub-heading{
-			font-size:15px;
-			padding:7px 15px;
-			color:#ffffff;
-			font-weight:bold;
-		}
-		.sub-result{
-			font-size:15px;
-			padding:7px 15px;
-			color:#ffffff;
+		.sub-border-con{
+			padding:10px 15px;
+			.sub-heading{
+				font-size:17px;
+				padding:0;
+				color:$main-blue-color;
+				*font-weight:bold;
+				margin:0;
+			}
+			.sub-result{
+				font-size:14px;
+				padding:0;
+				color:#999;
+				margin:0;
+			}
 		}
 	}
 }
@@ -276,6 +297,18 @@ $main-blue-color:rgb(5, 81, 139);
 				padding:2px 0;
 				color:#ffffff;
 			}
+		}
+	}
+	.schedule-content-main{
+		h3.main-heading{
+		    font-size:20px;
+		}
+	}
+}
+@media(max-width:767px){
+	.schedule-content-main{
+		h3.main-heading{
+		    font-size:19px;
 		}
 	}
 }
