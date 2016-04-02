@@ -1,5 +1,7 @@
 class SendQuoteService
 
+  attr_accessor :trip
+
   def initialize(params)
     @params = params
   end

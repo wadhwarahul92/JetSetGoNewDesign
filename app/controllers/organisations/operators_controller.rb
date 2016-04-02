@@ -154,6 +154,8 @@ class Organisations::OperatorsController < Organisations::BaseController
     if @operator.organisation_id == current_organisation.id
       if @operator.deleted_at.present?
         @operator.update_attribute(:deleted_at, nil)
+        AdminMailer.approved_operator_by_admin(@operator).deliver_later
+        OrganisationMailer.approved_operator_by_admin(@operator).deliver_later
       else
         @operator.destroy
       end
