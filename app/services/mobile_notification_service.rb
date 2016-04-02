@@ -2,8 +2,22 @@ class MobileNotificationService
 
   class <<self
 
-    def new_forum_topic_added
+    ######################################################################
+    # Description: This sends app notifications to all operators when a new forum topic is added
+    # @param [ForumTopic] forum_topic
+    ######################################################################
+    def new_forum_topic_added(forum_topic)
+      #send notifications to all operators
+      Operator.find_each do |operator|
 
+        alert = "#{forum_topic.organisation}: ##{forum_topic.statement}".truncate(250)
+
+        self.new(operator).send_notification(alert, {
+            type: 1,
+            id: forum_topic.id
+        })
+
+      end
     end
 
   end
