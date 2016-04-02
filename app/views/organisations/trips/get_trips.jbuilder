@@ -1,7 +1,9 @@
 json.array! @trips do |trip|
+  next unless trip.activities.any?
   json.id trip.id
   json.status trip.status
   json.tax Tax.tax
+  json.tax_value Tax.total_tax_value
   json.user trip.user.try(:full_name)
   json.activities{
     json.array! trip.activities do |activity|
