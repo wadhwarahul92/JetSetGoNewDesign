@@ -1,20 +1,122 @@
-<i style="cursor: pointer; font-size: 20px" class="fa fa-times-circle-o pull-right" ng-click="$close()"></i>
-<h3 class="text-center">Enquiry #{{ctrl.enquiry.id}}</h3>
-<ul class="list-inline">
-  <li><a ng-click="ctrl.sendQuote()" class="btn btn-primary" href="">Send Quote</a></li>
-  <li><a ng-click="ctrl.deleteEnquiry()" href="">Delete</a></li>
-</ul>
-<table class="table">
-  <tbody>
-  <tr>
-    <th>Aircraft:</th>
-    <td>{{ctrl.enquiry.activities[0].aircraft.tail_number}}</td>
-    <th>Enquired By:</th>
-    <td>{{ctrl.enquiry.user}}</td>
-  </tr>
-  </tbody>
-</table>
-<table class="table" ng-repeat="activity in ctrl.enquiry.activities">
+<i class="fa fa-times cross red-color" ng-click="$close()"></i>
+<div class="table table-main ">
+  <div class="col-sm-12 col-xs-12">
+    <div class="text-center main_heading">
+        <h3 class="skyblue-color">Enquiry #{{ctrl.enquiry.id}}</h3>
+    </div>
+  </div>
+  <div class="col-sm-12 col-xs-12 img-content">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading">Aircraft:</h5>
+        <p class="sub-result">{{ctrl.enquiry.activities[0].aircraft.tail_number}}</p>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading">Enquired By:</h5>
+        <p class="sub-result">{{ctrl.enquiry.user}}</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div ng-repeat="activity in ctrl.enquiry.activities">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <h4 class="skyblue-color">Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Departure:</h5>
+          <p class="sub-result">{{activity.departure_airport.name}}</p>
+          <p class="sub-result">{{activity.start_at}}</p>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Arrival:</h5>
+          <p class="sub-result">{{activity.arrival_airport.name}}</p>
+          <p class="sub-result">{{activity.end_at}}</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div ng-init="efc = false" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Flight Cost:</h5>
+          <p class="sub-result">
+            <span ng-hide="efc"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</span>
+            <input ng-show="efc" type="number" ng-model="activity.flight_cost">
+            <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
+            <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+          </p>
+        </div>
+        <div ng-init="ehc = false" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Handling cost at "{{activity.departure_airport.name}}":</h5>
+          <p class="sub-result">
+            <span ng-hide="ehc"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</span>
+            <input ng-show="ehc" type="number" ng-model="activity.handling_cost_at_takeoff">
+            <i class="fa fa-edit" ng-click="ehc = !ehc" ng-hide="ehc"></i>
+            <i class="fa fa-check" ng-click="ehc = !ehc" ng-show="ehc"></i>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div ng-init="elc = false" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</h5>
+          <p class="sub-result">
+            <span ng-hide="elc"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</span>
+            <input ng-show="elc" type="number" ng-model="activity.landing_cost_at_arrival">
+            <i class="fa fa-edit" ng-click="elc = !elc" ng-hide="elc"></i>
+            <i class="fa fa-check" ng-click="elc = !elc" ng-show="elc"></i>
+          </p>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con" ng-init="ewc = false" ng-show="activity.watch_hour_at_arrival">
+          <h5 class="sub-heading">Watch hour</h5>
+          <p class="sub-result">
+            <span ng-hide="ewc"><i class="fa fa-rupee"></i> {{activity.watch_hour_cost | currency:"":0 | indianCurrency}}</span>
+            <input ng-show="ewc" type="number" ng-model="activity.watch_hour_cost">
+            <i class="fa fa-edit" ng-click="ewc = !ewc" ng-hide="ewc"></i>
+            <i class="fa fa-check" ng-click="ewc = !ewc" ng-show="ewc"></i>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div ng-init="eac = false" ng-show="activity.accommodation_plan" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</h5>
+          <p class="sub-result">
+            <span ng-hide="eac"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</span>
+            <input ng-show="eac" type="number" ng-model="activity.accommodation_plan.cost">
+            <i class="fa fa-edit" ng-click="eac = !eac" ng-hide="eac"></i>
+            <i class="fa fa-check" ng-click="eac = !eac" ng-show="eac"></i>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h4></h4>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading"><strong>Tax</strong></h5>
+        <p class="sub-result"><strong>{{ ctrl.enquiry.tax_value }}%</strong></p>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading"><strong>GrandTotal</strong></h5>
+        <p class="sub-result"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</strong></p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row list-inline buttons-con">
+      <div class="col-sm-6 col-xs-12">
+        <a ng-click="ctrl.sendQuote()" class="btn btn-primary send-btn pull-right" href="">Send Quote</a>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <a ng-click="ctrl.deleteEnquiry()" class="delete-btn" href="">Delete</a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- <table class="table" ng-repeat="activity in ctrl.enquiry.activities">
   <thead>
   <tr class="info">
     <th class="text-center" colspan="2"><h4>Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4></th>
@@ -87,4 +189,4 @@
     <td><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</td>
   </tr>
   </tbody>
-</table>
+</table> -->
