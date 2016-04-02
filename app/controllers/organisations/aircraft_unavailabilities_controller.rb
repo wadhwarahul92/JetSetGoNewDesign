@@ -18,6 +18,10 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
       AdminMailer.operator_added_unavailability(current_user, @aircraft_unavailability).deliver_later
       OrganisationMailer.new_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
 
+      current_organisation.operators.each do |operator|
+        NotificationService.aircraft_unavailability_added(operator, @aircraft_unavailability).deliver_later
+      end
+
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @aircraft_unavailability.errors.full_messages }
@@ -42,6 +46,11 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
     if @aircraft_unavailability.destroy
       AdminMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
       OrganisationMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
+
+      current_organisation.operators.each do |operator|
+        NotificationService.aircraft_unavailability_deleted(operator, @aircraft_unavailability).deliver_later
+      end
+
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @aircraft_unavailability.errors.full_messages }

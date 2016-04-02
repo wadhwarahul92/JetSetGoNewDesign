@@ -17,7 +17,12 @@ class Organisations::AircraftsController < Organisations::BaseController
   	if @aircraft.save
 			AdminMailer.new_aircraft(@aircraft).deliver_later
 			OrganisationMailer.new_aircraft(@aircraft).deliver_later
-  		render status: :ok, nothing: true
+
+			current_organisation.operators.each do |operator|
+				NotificationService.aircraft_added(operator, @aircraft).deliver_later
+			end
+
+			render status: :ok, nothing: true
   	else
       render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }
   	end
@@ -31,6 +36,11 @@ class Organisations::AircraftsController < Organisations::BaseController
     if @aircraft.update_attributes(aircraft_params)
       AdminMailer.edit_aircraft(@aircraft).deliver_later
       OrganisationMailer.edit_aircraft(@aircraft).deliver_later
+
+			current_organisation.operators.each do |operator|
+				NotificationService.aircraft_edit(operator, @aircraft).deliver_later
+			end
+
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @aircraft.errors.full_messages }
