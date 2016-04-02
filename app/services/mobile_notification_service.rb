@@ -25,6 +25,9 @@ class MobileNotificationService
         n.data = data
         n.save!
 
+        Rpush.push
+        Rpush.apns_feedback
+
       end
 
     end
