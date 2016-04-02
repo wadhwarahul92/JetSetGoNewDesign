@@ -1,4 +1,5 @@
 json.array! @trips do |trip|
+  next unless trip.activities.any?
   json.id trip.id
   json.status trip.status
   json.tax Tax.tax
