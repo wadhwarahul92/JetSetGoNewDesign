@@ -4,7 +4,7 @@ class ForumTopicComment < ActiveRecord::Base
 
   has_paper_trail
 
-  belongs_to :operator
+  belongs_to :operator, -> { with_deleted }
 
   belongs_to :organisation
 

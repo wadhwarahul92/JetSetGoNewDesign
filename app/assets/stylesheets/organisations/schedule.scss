@@ -172,6 +172,22 @@ $main-blue-color:rgb(5, 81, 139);
 				margin:0;
 			}
 		}
+		.buttons-con{
+			margin-top:20px;
+			.send-btn{
+				display:inline-block;
+				width:100%;
+				padding:15px;
+			}
+			.delete-btn{
+				display:inline-block;
+				width:100%;
+				background-color:$main-red-color;
+				color:#ffffff;
+				padding:15px;
+				text-align:center;
+			}
+		}
 	}
 }
 
@@ -210,6 +226,7 @@ $main-blue-color:rgb(5, 81, 139);
 		border:1px solid #cccccc;
 		display:inline-block;
 		margin-top:5px;
+		cursor:pointer;
 		.yes-con{
 			width:25px;
 			height:25px;
@@ -247,6 +264,13 @@ $main-blue-color:rgb(5, 81, 139);
 }
 
 @media(max-width:767px){
+	.buttons-con{
+			.send-btn{
+			}
+			.delete-btn{
+				margin-top:10px;
+			}
+		}
 	.table-main{
 		width:100%;
 		margin:0;
@@ -290,7 +314,6 @@ $main-blue-color:rgb(5, 81, 139);
 				font-size:13px;
 				padding:2px 0;
 				color:#ffffff;
-				font-weight:bold;
 			}
 			.sub-result{
 				font-size:14px;

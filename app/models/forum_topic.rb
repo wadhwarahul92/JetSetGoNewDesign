@@ -6,7 +6,7 @@ class ForumTopic < ActiveRecord::Base
 
   belongs_to :organisation
 
-  belongs_to :operator
+  belongs_to :operator, -> { with_deleted }
 
   has_many :forum_topic_comments
 
