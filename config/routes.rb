@@ -62,6 +62,7 @@ Rails.application.routes.draw do
         put 'set_terms_and_condition'
         get 'get_terms_and_condition'
         get 'log_out'
+        put 'update_device_token'
       end
       member do
         get 'profile'
