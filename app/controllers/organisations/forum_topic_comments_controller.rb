@@ -14,6 +14,11 @@ class Organisations::ForumTopicCommentsController < Organisations::BaseControlle
     if @forum_topic_comment.save
       AdminMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
       OrganisationMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
+
+      current_organisation.operators.each do |operator|
+        NotificationService.new_forum_topic_comment_added(operator, @forum_topic_comment).deliver_later
+      end
+
       render status: :ok
     else
       render status: :unprocessable_entity, json: { errors: @forum_topic_comment.errors.full_messages }

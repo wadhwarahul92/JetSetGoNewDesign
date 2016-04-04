@@ -21,6 +21,11 @@ class Organisations::ForumTopicsController < Organisations::BaseController
     if @forum_topic.save
       AdminMailer.new_forum_topic(@forum_topic).deliver_later
       OrganisationMailer.new_forum_topic(@forum_topic).deliver_later
+
+      current_organisation.operators.each do |operator|
+        NotificationService.new_forum_topic_added(operator, @forum_topic).deliver_later
+      end
+
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @forum_topic.errors.full_messages }
