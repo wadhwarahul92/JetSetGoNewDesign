@@ -143,7 +143,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   end
 
   def update_profile
-    if @operator.update_attributes(operator_params)
+    if @operator.update_attributes(operator_profile_params)
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
@@ -227,6 +227,13 @@ class Organisations::OperatorsController < Organisations::BaseController
                   :phone,
                   :email,
                   :password
+    ).merge(organisation_id: current_user.organisation.id)
+  end
+
+  def operator_profile_params
+    params.permit(:first_name,
+                  :last_name,
+                  :phone,
     ).merge(organisation_id: current_user.organisation.id)
   end
 
