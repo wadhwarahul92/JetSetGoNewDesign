@@ -12,12 +12,14 @@ class Organisations::ForumTopicCommentsController < Organisations::BaseControlle
         )
     )
     if @forum_topic_comment.save
+
+      ######################################################################
+      # Description: Notifications
+      ######################################################################
       AdminMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
       OrganisationMailer.new_comment_forum_topic(@forum_topic_comment).deliver_later
-
-      current_organisation.operators.each do |operator|
-        NotificationService.new_forum_topic_comment_added(operator, @forum_topic_comment).deliver_later
-      end
+      current_organisation.operators.each { |operator| NotificationService.new_forum_topic_comment_added(operator, @forum_topic_comment).deliver_later }
+      ######################################################################
 
       render status: :ok
     else

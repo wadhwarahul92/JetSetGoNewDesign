@@ -19,12 +19,14 @@ class Organisations::ForumTopicsController < Organisations::BaseController
   def create
     @forum_topic = current_organisation.forum_topics.new(forum_topic_params.merge(operator_id: current_user.id))
     if @forum_topic.save
+
+      ######################################################################
+      # Description: Notifications
+      ######################################################################
       AdminMailer.new_forum_topic(@forum_topic).deliver_later
       OrganisationMailer.new_forum_topic(@forum_topic).deliver_later
-
-      current_organisation.operators.each do |operator|
-        NotificationService.new_forum_topic_added(operator, @forum_topic).deliver_later
-      end
+      current_organisation.operators.each { |operator| NotificationService.new_forum_topic_added(operator, @forum_topic).deliver_later }
+      ######################################################################
 
       render status: :ok, nothing: true
     else

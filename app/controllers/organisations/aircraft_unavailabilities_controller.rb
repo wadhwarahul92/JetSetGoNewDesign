@@ -15,12 +15,14 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
   def create
     @aircraft_unavailability = AircraftUnavailability.new(aircraft_unavailability_params)
     if @aircraft_unavailability.valid? and org_owns_aircraft_with_id?(params[:aircraft_id]) and @aircraft_unavailability.save
+
+      ######################################################################
+      # Description: Notifications
+      ######################################################################
       AdminMailer.operator_added_unavailability(current_user, @aircraft_unavailability).deliver_later
       OrganisationMailer.new_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
-
-      current_organisation.operators.each do |operator|
-        NotificationService.aircraft_unavailability_added(operator, @aircraft_unavailability).deliver_later
-      end
+      current_organisation.operators.each{ |operator| NotificationService.aircraft_unavailability_added(operator, @aircraft_unavailability).deliver_later }
+      ######################################################################
 
       render status: :ok, nothing: true
     else
@@ -44,12 +46,14 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
   def destroy
     @aircraft_unavailability = AircraftUnavailability.find params[:id]
     if @aircraft_unavailability.destroy
+
+      ######################################################################
+      # Description: Notifications
+      ######################################################################
       AdminMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
       OrganisationMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
-
-      current_organisation.operators.each do |operator|
-        NotificationService.aircraft_unavailability_deleted(operator, @aircraft_unavailability).deliver_later
-      end
+      current_organisation.operators.each { |operator| NotificationService.aircraft_unavailability_deleted(operator, @aircraft_unavailability).deliver_later }
+      ######################################################################
 
       render status: :ok, nothing: true
     else
