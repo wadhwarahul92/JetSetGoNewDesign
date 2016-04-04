@@ -1,6 +1,8 @@
 <div class="row">
   <div class="small-12 columns">
-    <div class="small-12 medium-6 columns count_this" ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)" ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out']">
+    <div class="small-12 medium-6 columns count_this"
+         ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)"
+         ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out']">
       <div ng-mouseover="show_zoom=true" ng-mouseleave="show_zoom=false" ng-init="show_zoom=false" class="list_box outer_sold" ng-style="{'background-color': jetsteal.color}">
         <div ng-show="jetsteal.sold_out" class="sold_out">
           <h2 class="text-center">Sold Out</h2>
