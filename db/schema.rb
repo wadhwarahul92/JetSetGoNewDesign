@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401091342) do
+ActiveRecord::Schema.define(version: 20160404072838) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -234,9 +234,17 @@ ActiveRecord::Schema.define(version: 20160401091342) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
+    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
+  end
+
+  create_table "key_value_pairs", force: :cascade do |t|
+    t.string   "key",        limit: 255
+    t.text     "value",      limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "notams", force: :cascade do |t|
@@ -338,6 +346,7 @@ ActiveRecord::Schema.define(version: 20160401091342) do
     t.text     "notification",      limit: 65535
   end
 
+  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
   add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
 
   create_table "search_activities", force: :cascade do |t|
@@ -367,13 +376,6 @@ ActiveRecord::Schema.define(version: 20160401091342) do
   create_table "taxes", force: :cascade do |t|
     t.float    "service_tax",        limit: 24
     t.float    "swachh_bharat_cess", limit: 24
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
-  create_table "terms_and_conditions", force: :cascade do |t|
-    t.text     "description",     limit: 65535
-    t.integer  "organisation_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
