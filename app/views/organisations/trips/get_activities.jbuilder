@@ -3,11 +3,22 @@ if @activities.present?
     json.array! @activities do |activity|
 
       next unless @activities.any?
+
       json.tax Tax.tax
       json.tax_value Tax.total_tax_value
 
       json.id activity.id
       aircraft = activity.aircraft
+
+      json.trip{
+        json.id activity.trip.id
+        json.status activity.trip.status
+
+        json.organisation{
+          json.id activity.trip.organisation.id
+          json.name activity.trip.organisation.name
+        }
+      }
 
       json.aircraft{
         json.id aircraft.id
@@ -52,9 +63,6 @@ if @enquiries.present?
     json.array! @enquiries do |enquiry|
 
       next unless enquiry.activities.any?
-
-      json.tax Tax.tax
-      json.tax_value Tax.total_tax_value
 
       json.id enquiry.id
       json.status enquiry.status
@@ -117,9 +125,6 @@ if @quotes.present?
     json.array! @quotes do |quote|
 
       next unless quote.activities.any?
-
-      json.tax Tax.tax
-      json.tax_value Tax.total_tax_value
 
       json.id quote.id
       json.status quote.status
@@ -207,7 +212,13 @@ if @empty_legs.present?
       }
 
       json.trip{
-        json.id empty_leg.trip.id
+        json.id activity.trip.id
+        json.status activity.trip.status
+
+        json.organisation{
+          json.id activity.trip.organisation.id
+          json.name activity.trip.organisation.name
+        }
       }
 
       json.departure_airport{
