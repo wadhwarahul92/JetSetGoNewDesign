@@ -1,19 +1,20 @@
 <div class="row" ng-controller="AircraftsController as ctrl">
   <div class="col-sm-12 aircraft-content-main">
     <h3 class="main-heading aircrafts_">
-      <!-- <i class="organisation-main-icon aircraft-icon"></i> <span style="position: relative; top: -6px;"></span--> 
-      Aircrafts      
+      Aircrafts
     </h3>
-    <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
-          <i class="fa fa-plus"></i> Add aircraft
-      <%- end %>
+    <% if current_user.can_add_aircraft? %>
+        <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
+            <i class="fa fa-plus"></i> Add aircraft
+        <%- end %>
+    <%- end %>
     <uib-accordion>
       <uib-accordion-group heading="{{aircraft.tail_number}}" ng-repeat="aircraft in ctrl.aircrafts">
         <div class="col-sm-3 col-xs-12 aircraft_left-img">
-        <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
-          <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
-          <img class="aircraft_img" src="" ng-src="{{image.url}}" alt="">
-        </div>
+          <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
+            <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
+            <img class="aircraft_img" src="" ng-src="{{image.url}}" alt="">
+          </div>
         </div>
         <div class="col-sm-9 col-xs-12">
           <div class="table table-striped right-main-listing">
@@ -138,7 +139,7 @@
                       <p>{{aircraft.per_hour_cost}}</p>
                     </div>
                     <div class="col-sm-6 col-xs-12">
-                      
+
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -146,64 +147,6 @@
               </div>
             </div>
           </div>
-        <!-- <table class="table table-striped">
-          <tbody>
-          <tr>
-            <th>Aircraft type</th>
-            <td>{{aircraft.aircraft_type.name}}</td>
-            <th>Base Airport</th>
-            <td>{{aircraft.base_airport.name}}</td>
-          </tr>
-          <tr>
-            <th>Baggage capacity in kg</th>
-            <td>{{aircraft.baggage_capacity_in_kg}}</td>
-            <th>Seating capacity</th>
-            <td>{{aircraft.seating_capacity}}</td>
-          </tr>
-          <tr>
-            <th>Runway field length in feet</th>
-            <td>{{aircraft.runway_field_length_in_feet}}</td>
-            <th>Number of toilets</th>
-            <td>{{aircraft.number_of_toilets}}</td>
-          </tr>
-          <tr>
-            <th>Cabin width in meters</th>
-            <td>{{aircraft.cabin_width_in_meters}}</td>
-            <th>Cabin height in meters</th>
-            <td>{{aircraft.cabin_height_in_meters}}</td>
-          </tr>
-          <tr>
-            <th>Crew</th>
-            <td>{{aircraft.crew}}</td>
-            <th>Wifi</th>
-            <td>{{aircraft.wifi}}</td>
-          </tr>
-          <tr>
-            <th>Phone</th>
-            <td>{{aircraft.phone}}</td>
-            <th>Flight attendant</th>
-            <td>{{aircraft.flight_attendant}}</td>
-          </tr>
-          <tr>
-            <th>Year of manufacture</th>
-            <td>{{aircraft.year_of_manufacture}}</td>
-            <th>Medical evac</th>
-            <td>{{aircraft.medical_evac}}</td>
-          </tr>
-          <tr>
-            <th>Cruise speed in nm per hour</th>
-            <td>{{aircraft.cruise_speed_in_nm_per_hour}}</td>
-            <th>Flying range in nm</th>
-            <td>{{aircraft.flying_range_in_nm}}</td>
-          </tr>
-          <tr>
-            <th>Cost per hour</th>
-            <td>{{aircraft.per_hour_cost}}</td>
-            <th></th>
-            <td></td>
-          </tr>
-          </tbody>
-        </table> -->
         </div>
       </uib-accordion-group>
     </uib-accordion>

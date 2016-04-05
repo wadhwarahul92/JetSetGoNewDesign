@@ -13,7 +13,9 @@
   </div>
   <div class="col-sm-10">
     <div ng-show="current_tab=='members'">
-      <a class="pull-right btn btn-primary" style="margin-bottom: 10px" href="/organisations/operators/new"><i class="fa fa-plus"></i> Add new operator</a>
+      <% if current_user.can_add_new_operator? %>
+          <a class="pull-right btn btn-primary" style="margin-bottom: 10px" href="/organisations/operators/new"><i class="fa fa-plus"></i> Add new operator</a>
+      <%- end %>
       <table class="table">
         <thead>
         <tr class="info">
@@ -26,7 +28,7 @@
               <td><%= operator.full_name %></td>
               <td><%= operator.designation %></td>
               <td>
-                <% if current_user.is_admin? %>
+                <% if current_user.can_add_new_operator? %>
                     <% unless current_user.id == operator.id %>
                         <% if operator.deleted_at.present? %>
                             <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>

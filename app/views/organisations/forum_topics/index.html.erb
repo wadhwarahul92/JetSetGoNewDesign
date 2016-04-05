@@ -4,8 +4,10 @@
       <!-- <i class="organisation-main-icon forum-icon"></i> <span style="position: relative; top: -6px;"></span> -->
       Forum Topics
     </h3>
-    <%= link_to new_organisations_forum_topic_path, class: 'pull-right, add-link' do %>
-      <i class="fa fa-plus"></i> New Topic
+    <% if current_user.can_add_forum_topic? %>
+        <%= link_to new_organisations_forum_topic_path, class: 'pull-right, add-link' do %>
+            <i class="fa fa-plus"></i> New Topic
+        <%- end %>
     <%- end %>
     <ul class="list-unstyled main-border">
       <% @forum_topics.each_with_index do |forum_topic, index| %>

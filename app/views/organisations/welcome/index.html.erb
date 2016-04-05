@@ -11,15 +11,18 @@
         <div class="schedule-main-left">
           <!-- <h4 class="schedule-category">Add New Category</h4> -->
           <ul class="add-field-main">
-            <li class="add-field">
-              <img src="" alt="" />
-              <span class="bullet-dot blue-color"></span>
-              <a ng-click="ctrl.newTrip()" class="add-trip" href="javascript:void(0)">New Trip</a>
-            </li>
-            <li class="add-field">
-              <span class="bullet-dot red-color"></span> 
-              <a ng-click="ctrl.newUnavailability()" class="add-unavailability" href="javascript:void(0)">New Unavailability</a>
-            </li>
+            <% if current_user.can_add_trip? %>
+                <li class="add-field">
+                  <span class="bullet-dot blue-color"></span>
+                  <a ng-click="ctrl.newTrip()" class="add-trip" href="javascript:void(0)">New Trip</a>
+                </li>
+            <%- end %>
+            <% if current_user.can_add_unavailability? %>
+                <li class="add-field">
+                  <span class="bullet-dot red-color"></span>
+                  <a ng-click="ctrl.newUnavailability()" class="add-unavailability" href="javascript:void(0)">New Unavailability</a>
+                </li>
+            <%- end %>
             <li ng-show="ctrl.latest_update" class="add-field">
               <a href="" ng-href="{{ctrl.latest_update.source_url}}" target="_blank">
                 <table class="table">

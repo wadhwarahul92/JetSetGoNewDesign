@@ -33,18 +33,20 @@
       </div>
       <div class="col-sm-12 col-xs-12 comment-section">
         <div class="col-xs-12">
-          <fieldset>
-            <legend><small>Add a comment</small></legend>
-            <form ng-submit="ctrl.addNewComment()">
-            <div class="row">
-              <div class="col-sm-12 field">
-                <label style="display: none" for="comment">Comment</label>
-                <textarea id="comment" rows="2" class="form-control comment-text" ng-model="ctrl.newComment.comment"></textarea>
-                <input type="submit" class="save-btn" value="">
-              </div>
-            </div>
-            </form>
-          </fieldset>
+          <% if current_user.can_add_forum_topic_comment? %>
+              <fieldset>
+                <legend><small>Add a comment</small></legend>
+                <form ng-submit="ctrl.addNewComment()">
+                  <div class="row">
+                    <div class="col-sm-12 field">
+                      <label style="display: none" for="comment">Comment</label>
+                      <textarea id="comment" rows="2" class="form-control comment-text" ng-model="ctrl.newComment.comment"></textarea>
+                      <input type="submit" class="save-btn" value="">
+                    </div>
+                  </div>
+                </form>
+              </fieldset>
+          <%- end %>
         </div>
         <div class="clearfix"></div>
       </div>
