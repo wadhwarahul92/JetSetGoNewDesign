@@ -8,7 +8,7 @@ html lang="en"
     = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = query_diet_widget if Rails.env.development?
+    /= query_diet_widget if Rails.env.development?
     = render partial: 'operators/shared/header'
     .container-fluid
       = yield

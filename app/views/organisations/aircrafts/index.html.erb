@@ -8,6 +8,8 @@
             <i class="fa fa-plus"></i> Add aircraft
         <%- end %>
     <%- end %>
+    <h3 class="text-center" ng-show="ctrl.aircrafts.length == 0">You have not added any aircraft yet. Click
+      <a href="/organisations/aircrafts/new">here</a> to add your first aircraft.</h3>
     <uib-accordion>
       <uib-accordion-group heading="{{aircraft.tail_number}}" ng-repeat="aircraft in ctrl.aircrafts">
         <div class="col-sm-3 col-xs-12 aircraft_left-img">

@@ -30,7 +30,7 @@ html lang="en"
     meta name = "reply-to" content = "info@jetsetgo.in"
     meta name = "web_author" content = "Kanika Tekriwal,JetSetGo Aviation Services Private Limited,info@jetsetgo.in"
   body
-    = query_diet_widget if Rails.env.development?
+    /= query_diet_widget if Rails.env.development?
     = render partial: 'jetsteals/shared/header'
     = render partial: 'jetsteals/shared/alerts'
     = yield
