@@ -133,5 +133,12 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
       backdrop: false
     )
 
+  #get latest update from jsg
+  @latest_update = null
+  $http.get('/organisations/jsg_updates/last_record.json').success(
+    (data)=>
+      @latest_update = data
+  )
+
   return undefined
 ]

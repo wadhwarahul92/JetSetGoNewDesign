@@ -16,7 +16,13 @@
             </div>
             <div class="field">
               <label for="designation">Designation</label>
-              <select ng-options="n for n in ctrl.designations" id="designation" class="form-control" ng-model="ctrl.operator.designation"></select>
+              <select id="designation" class="form-control" ng-model="ctrl.operator.designation">
+                <option value="ceo">CEO</option>
+                <option value="coo">COO</option>
+                <option value="editor">Editor</option>
+                <option value="finance">Finance</option>
+                <option value="Manager">Manager</option>
+              </select>
             </div>
             <div class="field">
               <label for="phone">Phone</label>
@@ -37,7 +43,76 @@
           </form>
         </fieldset>
       </div>
-      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <h4>Each designation has different access levels.</h4>
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Designation</th>
+            <th>Access</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>Admin</th>
+            <td>
+              <ul>
+                <li>has full access</li>
+                <li>can add/remove operators</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>CEO</th>
+            <td>
+              <ul>
+                <li>has full access</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>COO</th>
+            <td>
+              <ul>
+                <li>can add trip</li>
+                <li>can add unavailability</li>
+                <li>can access forum</li>
+                <li>can view/edit schedule</li>
+                <li>can view/edit aircrafts</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>Editor</th>
+            <td>
+              <ul>
+                <li>can view schedule</li>
+                <li>can add/remove trips</li>
+                <li>can add/remove unavailabilities</li>
+                <li>can access forum</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>Finance</th>
+            <td>
+              <ul>
+                <li>can view schedule</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>Manager</th>
+            <td>
+              <ul>
+                <li>can view schedule</li>
+                <li>can add/remove operators</li>
+              </ul>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

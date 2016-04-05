@@ -8,4 +8,8 @@ class Organisations::JsgUpdatesController < Organisations::BaseController
     @jsg_updates = JsgUpdate.all
   end
 
+  def last_record
+    @jsg_update = JsgUpdate.last
+  end
+
 end

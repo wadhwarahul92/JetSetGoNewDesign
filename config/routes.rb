@@ -91,7 +91,11 @@ Rails.application.routes.draw do
 
     resources :activities
 
-    resources :jsg_updates
+    resources :jsg_updates do
+      collection do
+        get 'last_record'
+      end
+    end
 
     resources :templates do
       collection do
