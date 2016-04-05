@@ -1,5 +1,7 @@
 json.array! @empty_legs do |empty_leg|
 
+  next unless empty_leg.activities.any?
+
   json.id empty_leg.id
 
   json.status empty_leg.status
@@ -10,7 +12,6 @@ json.array! @empty_legs do |empty_leg|
 
   json.activities{
     json.array! empty_leg.activities do |activity|
-
       json.id activity.id
       json.start_at activity.start_at
       json.end_at activity.end_at

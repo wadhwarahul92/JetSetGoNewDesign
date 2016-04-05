@@ -101,6 +101,11 @@ class Organisations::TripsController < Organisations::BaseController
       trip_creator.create!
       AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
       OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
+
+      current_organisation.operators.each do |operator|
+        NotificationService.trip_added(operator, trip_creator.trip).deliver_later
+      end
+
       render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
@@ -147,6 +152,11 @@ class Organisations::TripsController < Organisations::BaseController
       send_quote_service.process!
       AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
+
+      send_quote_service.trip.organisation.operators.each do |operator|
+        NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
+      end
+
       render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
