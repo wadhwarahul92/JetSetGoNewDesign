@@ -98,15 +98,15 @@ class Organisations::TripsController < Organisations::BaseController
   def create
     begin
       trip_creator = TripCreator.new(params[:aircraft_id], activities_params, current_organisation)
-      trip_creator.create!
-      AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
-      OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
+      if trip_creator.create!
+        AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
+        OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
 
-      current_organisation.operators.each do |operator|
-        NotificationService.trip_added(operator, trip_creator.trip).deliver_later
+        current_organisation.operators.each do |operator|
+          NotificationService.trip_added(operator, trip_creator.trip).deliver_later
+        end
+        render status: :ok, nothing: true
       end
-
-      render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
     end

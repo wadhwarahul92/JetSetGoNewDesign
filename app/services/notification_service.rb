@@ -82,7 +82,7 @@ class NotificationService < MobileNotificationService
 
     def trip_added(operator, trip)
 
-      alert = "#{trip.organisation.name}: Add Trip##{trip.id}".truncate(250)
+      alert = "#{trip.organisation.name}: Created a Trip##{trip.id}".truncate(250)
 
       data = {
           type: 2,
