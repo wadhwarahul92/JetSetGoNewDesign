@@ -3,6 +3,8 @@ if @activities.present?
     json.array! @activities do |activity|
 
       next unless @activities.any?
+      json.tax Tax.tax
+      json.tax_value Tax.total_tax_value
 
       json.id activity.id
       aircraft = activity.aircraft
@@ -50,6 +52,9 @@ if @enquiries.present?
     json.array! @enquiries do |enquiry|
 
       next unless enquiry.activities.any?
+
+      json.tax Tax.tax
+      json.tax_value Tax.total_tax_value
 
       json.id enquiry.id
       json.status enquiry.status
@@ -113,6 +118,9 @@ if @quotes.present?
 
       next unless quote.activities.any?
 
+      json.tax Tax.tax
+      json.tax_value Tax.total_tax_value
+
       json.id quote.id
       json.status quote.status
       json.tax Tax.tax
@@ -172,6 +180,10 @@ end
 if @empty_legs.present?
   json.empty_legs{
     json.array! @empty_legs do |empty_leg|
+
+      json.tax Tax.tax
+      json.tax_value Tax.total_tax_value
+
       json.id empty_leg.id
       json.start_at empty_leg.start_at
       json.end_at empty_leg.end_at
