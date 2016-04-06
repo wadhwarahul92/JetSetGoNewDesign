@@ -3,11 +3,32 @@
     <h3 class="main-heading aircrafts_">
       Aircrafts
     </h3>
-    <% if current_user.can_add_aircraft? %>
+    <div class="col-sm-3">
+  <ul class="aircraft-tail-main">
+    <li ng-repeat="aircraft in ctrl.aircrafts">
+    <i class="fa fa-plane plane-icon"></i> {{aircraft.tail_number}}
+    </li>
+    <li class="add-aircrft-link">
+      <% if current_user.can_add_aircraft? %>
         <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
-            <i class="fa fa-plus"></i> Add aircraft
+          <i class="fa fa-plus"></i> Add aircraft
         <%- end %>
-    <%- end %>
+      <%- end %>
+    </li>
+  </ul>
+</div>
+<div class="col-sm-9">
+  <div class="aircraft-detail-main" ng-repeat="aircraft in ctrl.aircrafts">
+    <div class="col-sm-3">
+      <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
+        <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
+        <img class="aircraft_img img-responsive" src="" ng-src="{{image.url}}" alt="">
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
     <h3 class="text-center" ng-show="ctrl.aircrafts.length == 0">You have not added any aircraft yet. Click
       <a href="/organisations/aircrafts/new">here</a> to add your first aircraft.</h3>
     <uib-accordion>

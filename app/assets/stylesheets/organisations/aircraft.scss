@@ -9,12 +9,6 @@ $main-blue-color:rgb(5, 81, 139);
 
 .aircraft-content-main{
   position:relative;
-  .add-link{
-    font-size:16px;
-    position:absolute;
-    top:0;
-    right:15px;
-  }
   h3.main-heading{
     margin:10px auto 40px auto;
     color:$dark-blue-color;
@@ -39,6 +33,30 @@ $main-blue-color:rgb(5, 81, 139);
     border:3px solid #ffffff;
     bottom:-10px;
     left:48%;
+  }
+  ul.aircraft-tail-main{
+    padding:0;
+    margin:0;
+    li{
+      list-style:none;
+      padding:10px 5px;
+      margin-bottom:5px;
+      background-color:#cccccc;
+      .plane-icon{
+        padding:0 10px;
+      }
+    }
+    li.add-aircrft-link{
+      background-color:$main-blue-color;
+      text-align:center;
+      .add-link{
+        font-size:14px;
+        color:#ffffff;
+      }
+    }
+  }
+  .aircraft-detail-main{
+    background-color:#f1f1f1;
   }
   .aircraft_left-img{
     text-align:center;
