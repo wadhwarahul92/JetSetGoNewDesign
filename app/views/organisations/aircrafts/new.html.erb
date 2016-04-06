@@ -7,16 +7,15 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8 col-xs-12">
 				<div class="add-aircraft-from">
-					<div class="row">
 						<%= render partial: 'organisations/aircrafts/form' %>
-					</div>
-					<div class="row">
+					<div class="below-btn-con">
 					<div class="col-sm-6 col-xs-6">
 						<a ng-click="ctrl.create()" class="btn btn-primary save-btn2">Save</a>
 					</div>
 					<div class="col-sm-6 col-xs-6">
           			<%= link_to 'Back', organisations_aircrafts_path, class: 'btn btn-primary back-btn'%>
           			</div>
+          			<div class="clearfix"></div>
           			</div>
 				</div>
 			</div>

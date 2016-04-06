@@ -103,8 +103,7 @@ $main-blue-color:rgb(5, 81, 139);
     left:48%;
   }
   .add-aircraft-from{
-    background-color:#fbfbfb;
-    padding:15px;
+    *background-color:#fbfbfb;
     -webkit-box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
     -moz-box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
     box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
@@ -115,14 +114,25 @@ $main-blue-color:rgb(5, 81, 139);
       color:#777777;
       font-weight:normal;
     }
+    label.wifiphn-label{
+      float:left;
+      margin:10px 0 4px 0;
+    }
+    label.atndntevac-label{
+      float:left;
+      margin:4px 0 0 0;
+      line-height:15px;
+    }
     .main-yesno{
       width:50px; 
       height:27px;
       border-radius:30px;
       border:1px solid #cccccc;
       display:inline-block;
-      margin-top:2px;
+      margin-top:7px;
       cursor:pointer;
+      float:right;
+      margin-right:50px;
       .yes-con{
         width:25px;
         height:25px;
@@ -148,9 +158,22 @@ $main-blue-color:rgb(5, 81, 139);
         font-size:12px;
       }
     }
+    .grey-bg{
+      background-color:#f1f1f1;
+    }
     .form-colomn{
-      margin-bottom:15px;
+      padding:18px 0;
       .text-boxes{
+        border:0px;
+        box-shadow:none;
+        background-color:transparent;
+        text-align:center;
+        text-align-last:center;
+        color:#888;
+        option{
+          text-align:center;
+          text-align-last:center;
+        }
       }
       .checkbox-text{
         width:14px;
@@ -159,14 +182,18 @@ $main-blue-color:rgb(5, 81, 139);
       }
     }
   }
-  .save-btn2{
-    width:50%;
-    padding:10px;
-    float:right;
-  }
-  .back-btn{
-    width:50%;
-    padding:10px;
+  .below-btn-con{
+    background-color:#eeeeee;
+    padding:20px 0;
+    .save-btn2{
+      width:70%;
+      padding:10px;
+      float:right;
+    }
+    .back-btn{
+      width:70%;
+      padding:10px;
+    }
   }
 }
 /*add aircraft page*/
