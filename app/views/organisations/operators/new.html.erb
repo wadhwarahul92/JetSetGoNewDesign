@@ -1,10 +1,16 @@
-<div class="row" ng-controller="OperatorController as ctrl">
+<div class="row" style="padding-top: 10px" ng-controller="OperatorController as ctrl">
   <div class="col-sm-12">
     <div class="row">
-      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <h3>New Operator</h3>
+        <ul class="list-unstyled">
+          <li>Start by adding new operator to your JetSetGo organisation portal.</li>
+          <li>Every operator can be given a different access level which is based on their designation in organisation.</li>
+          <li></li>
+        </ul>
+      </div>
       <div class="col-sm-4">
         <fieldset>
-          <legend><small>New Operator</small></legend>
           <form ng-submit="ctrl.create()">
             <div class="field">
               <label for="first_name">First name</label>
