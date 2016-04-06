@@ -98,10 +98,15 @@ class Organisations::TripsController < Organisations::BaseController
   def create
     begin
       trip_creator = TripCreator.new(params[:aircraft_id], activities_params, current_organisation)
-      trip_creator.create!
-      AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
-      OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
-      render status: :ok, nothing: true
+      if trip_creator.create!
+        AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
+        OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
+
+        current_organisation.operators.each do |operator|
+          NotificationService.trip_added(operator, trip_creator.trip).deliver_later
+        end
+        render status: :ok, nothing: true
+      end
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
     end
@@ -147,6 +152,11 @@ class Organisations::TripsController < Organisations::BaseController
       send_quote_service.process!
       AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
+
+      send_quote_service.trip.organisation.operators.each do |operator|
+        NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
+      end
+
       render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
@@ -161,6 +171,37 @@ class Organisations::TripsController < Organisations::BaseController
     @trips = current_organisation.trips
   end
 
+  def get_activities
+    aircraft_ids = current_organisation.aircrafts.map(&:id)
+
+    @activities = Activity.includes(:trip).joins(
+        'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
+    ).where(
+        'trips.status = ?', Trip::STATUS_CONFIRMED
+    ).includes(:aircraft).where(aircraft_id: aircraft_ids)
+
+    @empty_legs = Activity.includes(:trip).joins(
+        'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
+    ).where(
+        'trips.status = ?', Trip::STATUS_CONFIRMED
+    ).includes(:aircraft).where(aircraft_id: aircraft_ids, empty_leg: true)
+
+    @enquiries = Trip.where(
+        organisation_id: current_organisation.id
+    ).where(status: Trip::STATUS_ENQUIRY).includes(:activities)
+
+    @quotes = Trip.where(
+        organisation_id: current_organisation.id
+    ).where(status: Trip::STATUS_QUOTED)
+
+    @aircraft_unavailabilities = AircraftUnavailability.includes(:aircraft).where(aircraft_id: aircraft_ids)
+
+
+    if params[:start_at].present? and params[:end_at].present?
+      filter_activities
+    end
+  end
+
   private
 
   def activities_params
@@ -173,4 +214,33 @@ class Organisations::TripsController < Organisations::BaseController
                   ])
   end
 
+  def filter_activities
+    start_at = DateTime.parse(params[:start_at])
+    end_at = DateTime.parse(params[:end_at])
+
+    @activities = @activities.where(
+        'start_at BETWEEN ? AND ?', start_at, end_at
+    )
+
+    @aircraft_unavailabilities = @aircraft_unavailabilities.where(
+        'start_at BETWEEN ? AND ?', start_at, end_at
+    )
+
+    @enquiries = @enquiries.joins(
+        'JOIN activities ON trips.id = activities.trip_id'
+    ).where(
+        'activities.start_at BETWEEN ? AND ?', start_at, end_at
+    ).distinct
+
+    @quotes = @quotes.joins(
+        'JOIN activities ON trips.id = activities.trip_id'
+    ).where(
+        'activities.start_at BETWEEN ? AND ?', start_at, end_at
+    ).distinct
+
+    @empty_legs = @empty_legs.where(
+        'start_at BETWEEN ? AND ?', start_at, end_at
+    )
+
+  end
 end

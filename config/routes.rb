@@ -86,6 +86,7 @@ Rails.application.routes.draw do
         get 'all_events'
         get 'get_empty_legs'
         get 'get_enquiries'
+        get 'get_activities'
       end
     end
 

@@ -80,6 +80,45 @@ class NotificationService < MobileNotificationService
 
     end
 
+    def trip_added(operator, trip)
+
+      alert = "#{trip.organisation.name}: Created a Trip##{trip.id}".truncate(250)
+
+      data = {
+          type: 2,
+          id: trip.id
+      }
+
+      notification(operator, alert, data)
+
+    end
+
+    def enquiry_added(operator, trip)
+
+      alert = "#{trip.user.full_name}: Request for Enquiry##{trip.id}".truncate(250)
+
+      data = {
+          type: 2,
+          id: trip.id
+      }
+
+      notification(operator, alert, data)
+
+    end
+
+    def quote_created(operator, trip)
+
+      alert = "#{trip.user.full_name}: Generated a Quote##{trip.id}".truncate(250)
+
+      data = {
+          type: 2,
+          id: trip.id
+      }
+
+      notification(operator, alert, data)
+
+    end
+
   end
 
 end
