@@ -3,35 +3,133 @@
     <h3 class="main-heading aircrafts_">
       Aircrafts
     </h3>
-    <div class="col-sm-3">
-  <ul class="aircraft-tail-main">
-    <li ng-repeat="aircraft in ctrl.aircrafts">
-    <i class="fa fa-plane plane-icon"></i> {{aircraft.tail_number}}
-    </li>
-    <li class="add-aircrft-link">
-      <% if current_user.can_add_aircraft? %>
-        <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
-          <i class="fa fa-plus"></i> Add aircraft
-        <%- end %>
-      <%- end %>
-    </li>
-  </ul>
-</div>
-<div class="col-sm-9">
-  <div class="aircraft-detail-main" ng-repeat="aircraft in ctrl.aircrafts">
-    <div class="col-sm-3">
-      <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
-        <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times"></i>
-        <img class="aircraft_img img-responsive" src="" ng-src="{{image.url}}" alt="">
+    <div class="row">
+      <div class="col-md-2 col-sm-3">
+        <ul class="aircraft-tail-main">
+          <li ng-class="ctrl.selectedAircraftId == aircraft.id ? 'selected-link': ''" ng-click="ctrl.selectedAircraftId = aircraft.id" ng-repeat="aircraft in ctrl.aircrafts">
+            <i class="fa fa-plane plane-icon"></i> {{aircraft.tail_number}}
+          </li>
+          <li class="add-aircrft-link">
+            <% if current_user.can_add_aircraft? %>
+              <%= link_to '/organisations/aircrafts/new', class: 'pull-right, add-link' do %>
+                <i class="fa fa-plus"></i> Add aircraft
+              <%- end %>
+            <%- end %>
+          </li>
+        </ul>
+    </div>
+    <div class="col-md-10 col-sm-9">
+      <div ng-show="ctrl.selectedAircraftId == aircraft.id" class="aircraft-detail-main" ng-repeat="aircraft in ctrl.aircrafts">
+      <div class="col-xs-12">
+        <a class="pull-right edit-btn" ng-href="/organisations/aircrafts/{{aircraft.id}}/edit">
+          <i class="fa fa-pencil"></i> Edit
+        </a>
+      </div>
+        <div class="col-md-2 col-sm-3 col-xs-12 aircraft-img-main">
+          <ul class="aircraft_image_holder">
+            <li ng-repeat="image in aircraft.aircraft_images">
+              <i ng-click="ctrl.deleteAircraftImage(image, aircraft)" class="fa fa-times cross-icon"></i>
+              <img class="aircraft_img img-responsive" src="" ng-src="{{image.url}}" alt="">
+            </li>
+            <li>
+              <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadAircraftImage($files, aircraft)" class="add-btn">
+                <i class="fa fa-plus"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-10 col-sm-9 col-xs-12">
+          <div class="row aircraft-right-detail">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Aircraft type</h5>
+              <p>{{aircraft.aircraft_type.name}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Base Airport</h5>
+              <p>{{aircraft.base_airport.name}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Seating capacity</h5>
+              <p>{{aircraft.seating_capacity}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Baggage capacity in kg</h5>
+              <p>{{aircraft.baggage_capacity_in_kg}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Runway field length in feet</h5>
+              <p>{{aircraft.runway_field_length_in_feet}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Number of toilets</h5>
+              <p>{{aircraft.number_of_toilets}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Cabin width in meters</h5>
+              <p>{{aircraft.cabin_width_in_meters}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Cabin height in meters</h5>
+              <p>{{aircraft.cabin_height_in_meters}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Crew</h5>
+              <p>{{aircraft.crew}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Wifi</h5>
+              <p>
+                <span class="fa fa-wifi"></span>
+                <span ng-hide="aircraft.wifi" class="not-avilable-line"></span>
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Phone</h5>
+              <p>
+                <span class="fa fa-phone"></span>
+                <span ng-hide="aircraft.phone" class="not-avilable-line"></span>
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Flight attendant</h5>
+              <p>
+                <span class="fa fa-user"></span>
+                <span ng-hide="aircraft.flight_attendant" class="not-avilable-line"></span>
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Medical evac</h5>
+              <p>
+                <span class="fa fa-medkit"></span>
+                <span ng-hide="aircraft.medical_evac" class="not-avilable-line"></span>
+              </p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Year of manufacture</h5>
+              <p>{{aircraft.year_of_manufacture}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Cruise speed in nm per hour</h5>
+              <p>{{aircraft.cruise_speed_in_nm_per_hour}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Flying range in nm</h5>
+              <p>{{aircraft.flying_range_in_nm}}</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <h5>Cost per hour</h5>
+              <p>{{aircraft.per_hour_cost}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
       </div>
     </div>
     <div class="clearfix"></div>
   </div>
-</div>
-<div class="clearfix"></div>
     <h3 class="text-center" ng-show="ctrl.aircrafts.length == 0">You have not added any aircraft yet. Click
       <a href="/organisations/aircrafts/new">here</a> to add your first aircraft.</h3>
-    <uib-accordion>
+    <!-- <uib-accordion>
       <uib-accordion-group heading="{{aircraft.tail_number}}" ng-repeat="aircraft in ctrl.aircrafts">
         <div class="col-sm-3 col-xs-12 aircraft_left-img">
           <div class="aircraft_image_holder" ng-repeat="image in aircraft.aircraft_images">
@@ -172,6 +270,6 @@
           </div>
         </div>
       </uib-accordion-group>
-    </uib-accordion>
+    </uib-accordion> -->
   </div>
 </div>
