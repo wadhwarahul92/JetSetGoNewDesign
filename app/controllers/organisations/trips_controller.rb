@@ -108,7 +108,6 @@ class Organisations::TripsController < Organisations::BaseController
         render status: :ok, nothing: true
       end
     rescue Exception => e
-      raise e
       render status: :unprocessable_entity, json: { errors: [e.message] }
     end
   end
