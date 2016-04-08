@@ -9,6 +9,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :forgot_password,
                                             :forgot_password_,
                                             :profile,
+                                            :edit_profile,
                                             :update_profile,
                                             :toggle,
                                             :set_terms_and_condition,
@@ -17,7 +18,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :update_device_token
   ]
 
-  before_action :set_operator, only: [:edit, :update]
+  before_action :set_operator, only: [:edit, :update, :edit_profile, :update_profile]
 
   before_action :authenticate_no_user, only: [:admin,
                                               :create_admin,
@@ -26,7 +27,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                               :forgot_password_
   ]
 
-  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle, :profile, :update_profile, :update_device_token]
+  before_action :authenticate_operator, only: [:index, :edit, :update, :toggle, :profile, :edit_profile, :update_profile, :update_device_token]
 
   protect_from_forgery except: [:log_in_]
 
@@ -140,6 +141,10 @@ class Organisations::OperatorsController < Organisations::BaseController
   def profile
     @operator = Operator.find current_user.id
     render layout: "organisations"
+  end
+
+  def edit_profile
+
   end
 
   def update_profile

@@ -3,7 +3,7 @@ json.array! @forum_topics do |forum_topic|
   json.id forum_topic.id
   json.statement forum_topic.statement
   json.description forum_topic.description
-  json.created_at forum_topic.created_at
+  json.created_at forum_topic.created_at.strftime(time_format)
   json.number_of_comments forum_topic.forum_topic_comments.count
 
   json.operator{

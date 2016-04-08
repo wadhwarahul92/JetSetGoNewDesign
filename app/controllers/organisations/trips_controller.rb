@@ -87,7 +87,7 @@ class Organisations::TripsController < Organisations::BaseController
         @quotes = @quotes.joins(
             'JOIN activities ON trips.id = activities.trip_id'
         ).where(
-             'activities.start_at BETWEEN ? AND ?', start_at, end_at
+            'activities.start_at BETWEEN ? AND ?', start_at, end_at
         ).distinct
 
       end
@@ -126,7 +126,7 @@ class Organisations::TripsController < Organisations::BaseController
       @empty_legs = current_organisation.trips.joins(
           'JOIN activities ON trips.id = activities.trip_id'
       ).where(
-           'activities.empty_leg IS TRUE'
+          'activities.empty_leg IS TRUE'
       ).distinct
     end
   end
@@ -172,34 +172,64 @@ class Organisations::TripsController < Organisations::BaseController
   end
 
   def get_activities
-    aircraft_ids = current_organisation.aircrafts.map(&:id)
 
-    @activities = Activity.includes(:trip).joins(
-        'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
+    start_at = DateTime.parse(params[:start_at])
+    end_at = DateTime.parse(params[:end_at])
+
+    @activities = Activity.joins(
+        'left outer JOIN trips on activities.trip_id = trips.id'
+    ).where(
+        'trips.organisation_id = ?', current_organisation.id
     ).where(
         'trips.status = ?', Trip::STATUS_CONFIRMED
-    ).includes(:aircraft).where(aircraft_id: aircraft_ids)
+    ).where(
+        'activities.start_at BETWEEN ? AND ? or activities.end_at BETWEEN ? AND ? or ? between activities.start_at and activities.end_at or ? between activities.start_at and activities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
+    ).distinct
 
-    @empty_legs = Activity.includes(:trip).joins(
-        'LEFT OUTER JOIN trips ON activities.trip_id = trips.id'
+    @empty_legs = Activity.joins(
+        'left outer JOIN trips on activities.trip_id = trips.id'
+    ).where(
+        'trips.organisation_id = ?', current_organisation.id
     ).where(
         'trips.status = ?', Trip::STATUS_CONFIRMED
-    ).includes(:aircraft).where(aircraft_id: aircraft_ids, empty_leg: true)
+    ).where(
+        'activities.start_at BETWEEN ? AND ? or activities.end_at BETWEEN ? AND ? or ? between activities.start_at and activities.end_at or ? between activities.start_at and activities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
+    ).where(
+        'activities.empty_leg is true'
+    ).distinct
 
-    @enquiries = Trip.where(
-        organisation_id: current_organisation.id
-    ).where(status: Trip::STATUS_ENQUIRY).includes(:activities)
+    enquiry_ids = Activity.joins(
+        'left outer JOIN trips on activities.trip_id = trips.id'
+    ).where(
+        'trips.organisation_id = ?', current_organisation.id
+    ).where(
+        'trips.status = ?', Trip::STATUS_ENQUIRY
+    ).where(
+        'activities.start_at BETWEEN ? AND ? or activities.end_at BETWEEN ? AND ? or ? between activities.start_at and activities.end_at or ? between activities.start_at and activities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
+    ).distinct.map(&:trip_id)
 
-    @quotes = Trip.where(
-        organisation_id: current_organisation.id
-    ).where(status: Trip::STATUS_QUOTED)
+    @enquiries = Trip.where(id: enquiry_ids)
 
-    @aircraft_unavailabilities = AircraftUnavailability.includes(:aircraft).where(aircraft_id: aircraft_ids)
+    quote_ids = Activity.joins(
+        'left outer JOIN trips on activities.trip_id = trips.id'
+    ).where(
+        'trips.organisation_id = ?', current_organisation.id
+    ).where(
+        'trips.status = ?', Trip::STATUS_QUOTED
+    ).where(
+        'activities.start_at BETWEEN ? AND ? or activities.end_at BETWEEN ? AND ? or ? between activities.start_at and activities.end_at or ? between activities.start_at and activities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
+    ).distinct.map(&:trip_id)
 
+    @quotes = Trip.where(id: quote_ids)
 
-    if params[:start_at].present? and params[:end_at].present?
-      filter_activities
-    end
+    @aircraft_unavailabilities = AircraftUnavailability.joins(
+        'left outer join aircrafts on aircraft_unavailabilities.aircraft_id = aircrafts.id'
+    ).where(
+        'aircrafts.organisation_id = ?', current_organisation.id
+    ).where(
+        'aircraft_unavailabilities.start_at BETWEEN ? AND ? or aircraft_unavailabilities.end_at Between ? AND ? or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
+    ).distinct.map(&:trip_id)
+
   end
 
   private
@@ -214,33 +244,4 @@ class Organisations::TripsController < Organisations::BaseController
                   ])
   end
 
-  def filter_activities
-    start_at = DateTime.parse(params[:start_at])
-    end_at = DateTime.parse(params[:end_at])
-
-    @activities = @activities.where(
-        'start_at BETWEEN ? AND ?', start_at, end_at
-    )
-
-    @aircraft_unavailabilities = @aircraft_unavailabilities.where(
-        'start_at BETWEEN ? AND ?', start_at, end_at
-    )
-
-    @enquiries = @enquiries.joins(
-        'JOIN activities ON trips.id = activities.trip_id'
-    ).where(
-        'activities.start_at BETWEEN ? AND ?', start_at, end_at
-    ).distinct
-
-    @quotes = @quotes.joins(
-        'JOIN activities ON trips.id = activities.trip_id'
-    ).where(
-        'activities.start_at BETWEEN ? AND ?', start_at, end_at
-    ).distinct
-
-    @empty_legs = @empty_legs.where(
-        'start_at BETWEEN ? AND ?', start_at, end_at
-    )
-
-  end
 end

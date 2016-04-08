@@ -1,8 +1,8 @@
-if @activities.present?
+if @activities.any?
   json.activities{
     json.array! @activities do |activity|
 
-      next unless @activities.any?
+      # next unless @activities.any?
 
       json.tax Tax.tax
       json.tax_value Tax.total_tax_value
@@ -22,6 +22,7 @@ if @activities.present?
 
       json.aircraft{
         json.id aircraft.id
+        json.name aircraft.aircraft_type.name
         json.tail_number aircraft.tail_number
         json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
       }
@@ -58,7 +59,7 @@ if @activities.present?
   }
 end
 
-if @enquiries.present?
+if @enquiries.any?
   json.enquiries{
     json.array! @enquiries do |enquiry|
 
@@ -120,7 +121,7 @@ if @enquiries.present?
   }
 end
 
-if @quotes.present?
+if @quotes.any?
   json.quotes{
     json.array! @quotes do |quote|
 
@@ -209,6 +210,8 @@ if @empty_legs.present?
       json.aircraft{
         json.id empty_leg.aircraft.id
         json.name empty_leg.aircraft.aircraft_type.name
+        json.tail_number empty_leg.aircraft.tail_number
+        json.images empty_leg.aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
       }
 
       json.trip{
@@ -236,7 +239,7 @@ if @empty_legs.present?
   }
 end
 
-if @aircraft_unavailabilities.present?
+if @aircraft_unavailabilities.any?
   json.aircraft_unavailabilities{
     json.array! @aircraft_unavailabilities do |aircraft_unavailability|
       json.id aircraft_unavailability.id

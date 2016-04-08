@@ -50,7 +50,7 @@
               </ul>
             </span>
               </li>
-              <li><%= link_to current_user.full_name, 'Javascript:void(0)' %></li>
+              <li><%= link_to current_user.full_name, profile_organisations_operator_path(current_user) %></li>
               <li><%= link_to 'Sign Out', destroy_user_session_path(redirect_to: '/organisations'), method: :delete %>
               </li>
           <%- else %>
