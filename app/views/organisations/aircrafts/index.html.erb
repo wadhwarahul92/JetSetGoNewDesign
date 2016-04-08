@@ -4,7 +4,7 @@
       Aircrafts
     </h3>
     <div class="row">
-      <div class="col-md-2 col-sm-3">
+      <div class="col-md-2 col-sm-3 col-xs-12">
         <ul class="aircraft-tail-main">
           <li ng-class="ctrl.selectedAircraftId == aircraft.id ? 'selected-link': ''" ng-click="ctrl.selectedAircraftId = aircraft.id" ng-repeat="aircraft in ctrl.aircrafts">
             <i class="fa fa-plane plane-icon"></i> {{aircraft.tail_number}}
@@ -18,7 +18,7 @@
           </li>
         </ul>
     </div>
-    <div class="col-md-10 col-sm-9">
+    <div class="col-md-10 col-sm-9 col-xs-12">
       <div ng-show="ctrl.selectedAircraftId == aircraft.id" class="aircraft-detail-main" ng-repeat="aircraft in ctrl.aircrafts">
       <div class="col-xs-12">
         <a class="pull-right edit-btn" ng-href="/organisations/aircrafts/{{aircraft.id}}/edit">
