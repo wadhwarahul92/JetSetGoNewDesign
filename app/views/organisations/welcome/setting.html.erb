@@ -23,34 +23,131 @@
         </ul>
       </div>
       <div class="col-md-10 col-sm-9 col-xs-12">
+
+      <!-- Member Section Start -->
+      <div ng-show="current_tab=='members'">
         <table class="table">
           <thead>
-          <tr class="info">
-            <th>Name</th>
-            <th>Designation</th>
-            <th></th>
-          </tr>
-          <% @operators.each do |operator| %>
+            <tr class="table-heading-con">
+              <th>Name</th>
+              <th>Designation</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @operators.each do |operator| %>
               <tr>
                 <td><%= operator.full_name %></td>
                 <td><%= operator.designation %></td>
                 <td>
                   <% if current_user.can_add_new_operator? %>
-                      <% unless current_user.id == operator.id %>
-                          <% if operator.deleted_at.present? %>
-                              <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>
-                          <%- else %>
-                              <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Un-activate</a>
-                          <%- end %>
+                    <% unless current_user.id == operator.id %>
+                      <% if operator.deleted_at.present? %>
+                        <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>
+                      <%- else %>
+                        <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Un-activate</a>
                       <%- end %>
+                    <%- end %>
                   <%- end %>
                 </td>
               </tr>
-          <%- end %>
-          </thead>
+            <%- end %>
+          </tbody>
         </table>
+        </div>
+        <!-- Member Section Finish -->
+
+        <!-- terms & Condition Section Start -->
+        <div ng-show="current_tab=='terms_and_condition'">
+          <fieldset class="tc-main-con">
+            <legend><small>Terms and condition</small></legend>
+            <form ng-submit="ctrl.update_t_and_c()">
+              <div class="row">
+                <div class="col-md-9 col-sm-8 col-xs-12 field">
+                  <textarea type="text" ng-model="ctrl.terms_and_condition" class="form-control tc_textarea"></textarea>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12 field">
+                  <input type="submit" value="Save"  class="btn btn-primary save-btn">
+                </div>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+      <!-- terms & Condition Section Finish -->
+
+      <!-- Documents Section Start -->
+      <div ng-show="current_tab=='documents'">
+        <div class="row documents-main-section">
+          <div class="col-sm-8">
+            <table ng-show="ctrl.documents.length > 0" class="table">
+              <thead>
+                <tr class="table-heading-con">
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Download</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="document in ctrl.documents">
+                  <td>{{document.name}}</td>
+                  <td>{{document.category}}</td>
+                  <td>{{document.doc_type}}</td>
+                  <td><a href="" ng-href="{{document.static_file.url}}" target="_blank" ><i class="fa fa-download"></i></a></td>
+                  <td><a href="" ng-click="ctrl.delete(document)"><i class="fa fa-times"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p ng-hide="ctrl.documents.length > 0">No documents uploaded.</p>
+          </div>
+          <div class="col-sm-4">
+            <fieldset class="right-new-document">
+              <h3>Add new document</h3>
+              <form class="col-xs-12" ng-submit="ctrl.create()">
+                <input type="hidden" ng-model="ctrl.newDocument.static_file_id">
+                <div class="margin-top">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" class="form-control" ng-model="ctrl.newDocument.name">
+                </div>
+                <div class="margin-top">
+                  <label for="category">Category</label>
+                  <select id="category" class="form-control" ng-model="ctrl.newDocument.category">
+                    <option value="Normal Flights">Normal Flights</option>
+                    <option value="Medical Flights">Medical Flights</option>
+                  </select>
+                </div>
+                <div class="margin-top">
+                  <label for="doc_type">Document Type</label>
+                  <select id="doc_type" class="form-control" ng-model="ctrl.newDocument.doc_type">
+                    <option value="Flight plan">Flight plan</option>
+                    <option value="Landing permission">Landing permission</option>
+                    <option value="Landing permission with watch hour extension">Landing permission with watch hour extension</option>
+                    <option value="Slot request">Slot request</option>
+                    <option value="Passenger manifest">Passenger manifest</option>
+                    <option value="Load n trim">Load n trim</option>
+                    <option value="Cancellation of flight">Cancellation of flight</option>
+                    <option value="AOR/NOR">AOR/NOR</option>
+                    <option value="Medical Evac">Medical Evac</option>
+                    <option value="Ambulance pass">Ambulance pass</option>
+                    <option value="WSO Landing Permission">WSO Landing Permission</option>
+                  </select>
+                </div>
+                <div class="margin-top">
+                  <a ng-hide="ctrl.newDocument.static_file_id" ng-file-select ng-file-change="ctrl.addStaticFile($files)" href=""><i class="fa fa-upload"></i> Upload a file</a>
+                  <span class="text-success" ng-show="ctrl.newDocument.static_file_id"><strong> File uploaded successfully. Now add other fields and press 'Save'</strong></span>
+                </div>
+                <input type="submit" value="Save" class="margin-top form-control btn btn-success" />
+              </form>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <!-- Documents Section Start -->
+
       </div>
     </div>
+
     <!-- <div class="col-sm-2">
       <ul class="list-unstyled text-center settings_list">
         <li><a ng-class="(current_tab=='members') ? 'active_' : 'inactive_'" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a></li>
@@ -171,5 +268,8 @@
         </div>
       </div>
     </div> -->
+
+
+
   </div>
 </div>
