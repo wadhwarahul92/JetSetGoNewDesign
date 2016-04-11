@@ -14,6 +14,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :toggle,
                                             :set_terms_and_condition,
                                             :get_terms_and_condition,
+                                            :update_organisation,
                                             :log_out,
                                             :update_device_token
   ]
@@ -182,6 +183,15 @@ class Organisations::OperatorsController < Organisations::BaseController
 
   def get_terms_and_condition
     @organisation = current_organisation
+  end
+
+  def update_organisation
+    @organisation = current_organisation
+    if current_organisation.update_attributes(image: params[:file])
+      render status: :ok, json: { image_url: current_organisation.image.url(:size_250x250) }
+    else
+      render status: :unprocessable_entity, json: { errors: @organisation.errors.full_messages }
+    end
   end
 
   def update_device_token

@@ -16,7 +16,7 @@
     display: none!important;
 }
 
-.aircraft_img{
+.aircraft_img, .organisation_img{
     padding: 5px;
     border: 1px solid lightgray;
     margin: 5px;

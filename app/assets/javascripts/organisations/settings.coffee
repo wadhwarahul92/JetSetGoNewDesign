@@ -4,6 +4,8 @@ organisations_app.controller "SettingsController", ['$http', 'notify', '$upload'
 
   @terms_and_condition = null
 
+  @organisation = {}
+
   @documents = []
 
   @toggleOperator = (id)->
@@ -113,6 +115,39 @@ organisations_app.controller "SettingsController", ['$http', 'notify', '$upload'
             notify
               message: 'Unable to remove document. Error 1x0009'
               classes: ['alert-danger']
+        )
+    )
+    return undefined
+
+  @get_organisation = ->
+    $http.get("/current_user.json").success(
+      (data)=>
+        @organisation = data.organisation
+    ).error(
+      (data)->
+        notify(
+          message: data.errors[0]
+          classes: ['alert-danger']
+        )
+    )
+
+  @uploadOrganisationImage = (files, organisation)->
+    return unless files[0]
+    $upload.upload(
+      file: files[0]
+      url: "/organisations/operators/update_organisation.json"
+      method: "put"
+    ).success(
+      (data)=>
+        @organisation.image = data.image_url
+    ).error(
+      (data)->
+        error = 'Something went wrong'
+        try
+          error = data.errors[0]
+        notify(
+          message: error
+          classes: ['alert-danger']
         )
     )
     return undefined

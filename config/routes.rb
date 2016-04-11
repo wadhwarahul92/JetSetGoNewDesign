@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
     post ':organisation_id/operators/create_admin' => 'operators#create_admin'
 
+    put 'update' => 'welcome#update'
+
     resources :aircrafts do
       resources :aircraft_images
     end
@@ -61,6 +63,7 @@ Rails.application.routes.draw do
         post 'forgot_password_'
         put 'set_terms_and_condition'
         get 'get_terms_and_condition'
+        get 'get_organisation'
         get 'log_out'
         put 'update_device_token'
       end

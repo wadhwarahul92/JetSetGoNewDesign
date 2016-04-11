@@ -4,6 +4,9 @@ class Organisation < ActiveRecord::Base
 
   has_paper_trail
 
+  has_attached_file :image, styles: {small: '50x50!', size_250x250: '250x250!'}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   has_many :forum_topics
 
   has_many :operators
