@@ -176,7 +176,7 @@ class Organisations::TripsController < Organisations::BaseController
     start_at = DateTime.parse(params[:start_at])
     end_at = DateTime.parse(params[:end_at])
 
-    @activities = Activity.joins(
+    trip_ids = Activity.joins(
         'left outer JOIN trips on activities.trip_id = trips.id'
     ).where(
         'trips.organisation_id = ?', current_organisation.id
@@ -184,7 +184,9 @@ class Organisations::TripsController < Organisations::BaseController
         'trips.status = ?', Trip::STATUS_CONFIRMED
     ).where(
         'activities.start_at BETWEEN ? AND ? or activities.end_at BETWEEN ? AND ? or ? between activities.start_at and activities.end_at or ? between activities.start_at and activities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
-    ).distinct
+    ).distinct.map(&:trip_id)
+
+    @trips = Trip.where(id: trip_ids)
 
     @empty_legs = Activity.joins(
         'left outer JOIN trips on activities.trip_id = trips.id'
@@ -228,7 +230,7 @@ class Organisations::TripsController < Organisations::BaseController
         'aircrafts.organisation_id = ?', current_organisation.id
     ).where(
         'aircraft_unavailabilities.start_at BETWEEN ? AND ? or aircraft_unavailabilities.end_at Between ? AND ? or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
-    ).distinct.map(&:trip_id)
+    ).distinct
 
   end
 

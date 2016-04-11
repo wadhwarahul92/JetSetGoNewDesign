@@ -9,6 +9,7 @@
       <li><a ng-class="(current_tab=='members') ? 'active_' : 'inactive_'" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a></li>
       <li><a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.get_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and condition</a></li>
       <li><a ng-class="(current_tab=='documents') ? 'active_' : 'inactive_'" ng-click="ctrl.getDocuments(); current_tab='documents'" href="">Documents</a></li>
+      <li><a ng-class="(current_tab=='organisation') ? 'active_' : 'inactive_'" ng-click="ctrl.get_organisation(); current_tab='organisation'" href="">Organisation</a></li>
     </ul>
   </div>
   <div class="col-sm-10">
@@ -122,6 +123,21 @@
           </fieldset>
         </div>
       </div>
+    </div>
+    <div ng-show="current_tab=='organisation'">
+      <fieldset>
+        <legend><small>Organisation</small></legend>
+          <div class="field" ng-show="ctrl.organisation.image">
+            <div class="aircraft_image_holder">
+              <img class="organisation_img" src="" ng-src="{{ctrl.organisation.image}}" alt="">
+            </div>
+          </div>
+          <div class="field">
+            <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadOrganisationImage($files, ctrl.organisation)">
+              <i class="fa fa-picture-o"></i> Add aircraft image
+            </a>
+          </div>
+      </fieldset>
     </div>
   </div>
 </div>

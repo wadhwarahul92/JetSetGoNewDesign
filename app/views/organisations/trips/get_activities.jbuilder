@@ -1,61 +1,64 @@
-if @activities.any?
-  json.activities{
-    json.array! @activities do |activity|
+if @trips.any?
+  json.trips{
 
-      # next unless @activities.any?
+    json.array! @trips do |quote|
 
+      next unless quote.activities.any?
+
+      json.id quote.id
+      json.status quote.status
       json.tax Tax.tax
       json.tax_value Tax.total_tax_value
+      json.user quote.user.try(:full_name)
 
-      json.id activity.id
-      aircraft = activity.aircraft
+      json.activities{
+        json.array! quote.activities do |activity|
 
-      json.trip{
-        json.id activity.trip.id
-        json.status activity.trip.status
+          json.id activity.id
+          json.start_at activity.start_at
+          json.end_at activity.end_at
+          json.empty_leg activity.empty_leg
+          json.pax activity.pax
+          json.flight_cost activity.flight_cost
+          json.handling_cost_at_takeoff activity.handling_cost_at_takeoff
+          json.landing_cost_at_arrival activity.landing_cost_at_arrival
+          json.watch_hour_at_arrival activity.watch_hour_at_arrival?
+          json.watch_hour_cost activity.watch_hour_cost
 
-        json.organisation{
-          json.id activity.trip.organisation.id
-          json.name activity.trip.organisation.name
-        }
+          if activity.accommodation_plan.present?
+            json.accommodation_plan{
+              json.cost activity.accommodation_plan[:cost]
+              json.nights activity.accommodation_plan[:nights]
+            }
+          end
+
+          json.aircraft{
+            json.id activity.aircraft.id
+            json.name activity.aircraft.aircraft_type.name
+            json.tail_number activity.aircraft.tail_number
+            json.images activity.aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+          }
+
+          json.trip{
+            json.id activity.trip.id
+          }
+
+          json.departure_airport{
+            json.id activity.departure_airport.id
+            json.name activity.departure_airport.name
+            json.code activity.departure_airport.code
+          }
+
+          json.arrival_airport{
+            json.id activity.arrival_airport.id
+            json.name activity.arrival_airport.name
+            json.code activity.arrival_airport.code
+          }
+
+        end
       }
-
-      json.aircraft{
-        json.id aircraft.id
-        json.name aircraft.aircraft_type.name
-        json.tail_number aircraft.tail_number
-        json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
-      }
-
-      json.departure_airport{
-        json.id activity.departure_airport.id
-        json.name activity.departure_airport.name
-      }
-
-      json.arrival_airport{
-        json.id activity.arrival_airport.id
-        json.name activity.arrival_airport.name
-      }
-
-      json.start_at activity.start_at.strftime(time_format)
-      json.end_at activity.end_at.strftime(time_format)
-      json.empty_leg activity.empty_leg?
-      json.pax (activity.pax.presence || 0)
-      json.flight_cost activity.flight_cost
-      json.handling_cost_at_takeoff activity.handling_cost_at_takeoff
-      json.landing_cost_at_arrival activity.landing_cost_at_arrival
-
-      if activity.accommodation_plan.present?
-        json.accommodation_plan{
-          json.cost activity.accommodation_plan[:cost]
-          json.nights activity.accommodation_plan[:nights]
-        }
-      end
-
-      json.watch_hour_at_arrival activity.watch_hour_at_arrival?
-      json.watch_hour_cost activity.watch_hour_cost
-
     end
+
   }
 end
 
@@ -215,12 +218,12 @@ if @empty_legs.present?
       }
 
       json.trip{
-        json.id activity.trip.id
-        json.status activity.trip.status
+        json.id empty_leg.trip.id
+        json.status empty_leg.trip.status
 
         json.organisation{
-          json.id activity.trip.organisation.id
-          json.name activity.trip.organisation.name
+          json.id empty_leg.trip.organisation.id
+          json.name empty_leg.trip.organisation.name
         }
       }
 
@@ -244,8 +247,8 @@ if @aircraft_unavailabilities.any?
     json.array! @aircraft_unavailabilities do |aircraft_unavailability|
       json.id aircraft_unavailability.id
       json.title "#{aircraft_unavailability.aircraft.tail_number} - #{aircraft_unavailability.reason}"
-      json.start aircraft_unavailability.start_at.to_s
-      json.end aircraft_unavailability.end_at.to_s
+      json.start aircraft_unavailability.start_at.strftime(time_format)
+      json.end aircraft_unavailability.end_at.strftime(time_format)
       json.className ['aircraft_unavailability_event']
     end
   }
