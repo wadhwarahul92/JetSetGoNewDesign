@@ -63,7 +63,6 @@ Rails.application.routes.draw do
         post 'forgot_password_'
         put 'set_terms_and_condition'
         get 'get_terms_and_condition'
-        put 'update_organisation'
         get 'get_organisation'
         get 'log_out'
         put 'update_device_token'
