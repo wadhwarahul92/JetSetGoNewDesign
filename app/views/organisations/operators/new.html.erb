@@ -1,5 +1,5 @@
 <div class="row" style="padding-top: 10px" ng-controller="OperatorController as ctrl">
-  <div class="col-sm-12 add-oprator-main">
+  <div class="col-sm-12 col-xs-12 add-oprator-main">
   <h3 class="main-heading">New Operator</h3>
   <div class="row">
     <div class="col-sm-8 col-xs-12 left-add-operator">
@@ -56,9 +56,57 @@
                   </li>
                 </ul>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 col-xs-12 right-add-operator">
     <h4>Each designation has different access levels.</h4>
-    <table class="table table-striped">
+    <div class="col-xs-12 add-operator-main">
+    <div class="column-con">
+      <h5>Admin</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> has full access</li>
+        <li><i class="fa fa-plane"></i> can add/remove operators</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>CEO</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> has full access</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>COO</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can add trip</li>
+        <li><i class="fa fa-plane"></i> can add unavailability</li>
+        <li><i class="fa fa-plane"></i> can access forum</li>
+        <li><i class="fa fa-plane"></i> can view/edit schedule</li>
+        <li><i class="fa fa-plane"></i> can view/edit aircrafts</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>Editor</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+        <li><i class="fa fa-plane"></i> can add/remove trips</li>
+        <li><i class="fa fa-plane"></i> can add/remove unavailabilities</li>
+        <li><i class="fa fa-plane"></i> can access forum</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>Finance</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+      </ul>
+    </div>
+    <div class="column-con no-border">
+      <h5>Manager</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+        <li><i class="fa fa-plane"></i> can add/remove operators</li>
+      </ul>
+    </div>
+</div>
+<div class="clearfix"></div>
+    <!-- <table class="table table-striped">
       <thead>
         <tr class="info">
           <th>Designation</th>
@@ -124,8 +172,10 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+  </div>
+  <div class="clearfix"></div>
   </div>
   </div>
-  </div>
+  <div class="clearfix"></div>
 </div>

@@ -78,7 +78,7 @@
       <!-- Documents Section Start -->
       <div ng-show="current_tab=='documents'">
         <div class="row documents-main-section">
-          <div class="col-sm-8">
+          <div class="col-sm-8 col-xs-12">
             <table ng-show="ctrl.documents.length > 0" class="table">
               <thead>
                 <tr class="table-heading-con">
@@ -101,7 +101,7 @@
             </table>
             <p ng-hide="ctrl.documents.length > 0">No documents uploaded.</p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 col-xs-12">
             <fieldset class="right-new-document">
               <h3>Add new document</h3>
               <form class="col-xs-12" ng-submit="ctrl.create()">
