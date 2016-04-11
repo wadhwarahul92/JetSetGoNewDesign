@@ -87,12 +87,12 @@ $main-blue-color:rgb(5, 81, 139);
             padding:5px 15px;
           }
           img{
-          padding:2px;
-          background-color:#ffffff;
-          margin:5px 0;
+            padding:2px;
+            background-color:#ffffff;
+            margin:5px 0;
           }
         }
-      }    
+      }
     }
     a.edit-btn{
       color:#888888;
@@ -178,7 +178,7 @@ $main-blue-color:rgb(5, 81, 139);
       line-height:15px;
     }
     .main-yesno{
-      width:50px; 
+      width:50px;
       height:27px;
       border-radius:30px;
       border:1px solid #cccccc;
@@ -256,10 +256,10 @@ $main-blue-color:rgb(5, 81, 139);
   .aircraft-content-main{
     .aircraft-detail-main{
       .aircraft-img-main{
-          border-right:0px;
-          border-bottom:1px solid #cccccc;
-          margin-bottom:20px;
-          padding-bottom:10px;
+        border-right:0px;
+        border-bottom:1px solid #cccccc;
+        margin-bottom:20px;
+        padding-bottom:10px;
         ul.aircraft_image_holder{
           li{
             text-align:center;
@@ -275,24 +275,24 @@ $main-blue-color:rgb(5, 81, 139);
               display:inline-block;
             }
           }
-        }    
+        }
       }
     }
   }
   .add-aircraft-main-con{
-      .grey-bg{
-        background-color:inherit !important;
-      }
-      .col-xs-12{
-        padding:0;
-        .form-colomn{
-          border-bottom:1px solid #eee;
-          padding:18px 5px;
-          .main-yesno{
-            margin-right:5px;
-          }
+    .grey-bg{
+      background-color:inherit !important;
+    }
+    .col-xs-12{
+      padding:0;
+      .form-colomn{
+        border-bottom:1px solid #eee;
+        padding:18px 5px;
+        .main-yesno{
+          margin-right:5px;
         }
       }
+    }
     .below-btn-con{
       .save-btn2{
         width:100%;
