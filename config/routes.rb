@@ -66,6 +66,7 @@ Rails.application.routes.draw do
         get 'get_organisation'
         get 'log_out'
         put 'update_device_token'
+        put 'update_organisation'
       end
       member do
         get 'profile'
