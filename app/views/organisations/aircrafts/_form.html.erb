@@ -1,97 +1,111 @@
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="tail_number">Tail number</label>
-	<input class="form-control text-boxes" type="text" id="tail_number" ng-model="ctrl.aircraft.tail_number">
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="aircraft_type">Aircraft type</label> -->
+	<select class="form-control text-boxes" id="aircraft_type" ng-model="ctrl.aircraft.aircraft_type_id" ng-options="aircraft_type.id as aircraft_type.name for aircraft_type in ctrl.aircraft_types">
+		<option value="">Select Aircraft type</option>
+	</select>
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="aircraft_type">Aircraft type</label>
-	<select class="form-control text-boxes" id="aircraft_type" ng-model="ctrl.aircraft.aircraft_type_id" ng-options="aircraft_type.id as aircraft_type.name for aircraft_type in ctrl.aircraft_types"></select>
+	<!-- <label for="tail_number">Tail number</label> -->
+	<input class="form-control text-boxes" placeholder="Tail number" type="text" id="tail_number" ng-model="ctrl.aircraft.tail_number">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-  <label for="base_airport_id">Base airport</label>
-  <select class="form-control text-boxes" id="base_airport_id" ng-model="ctrl.aircraft.base_airport_id" ng-options="base_airport.id as base_airport.name for base_airport in ctrl.base_airports"></select>
+  <!-- <label for="base_airport_id">Base airport</label> -->
+  <select class="form-control text-boxes" id="base_airport_id" ng-model="ctrl.aircraft.base_airport_id" ng-options="base_airport.id as base_airport.name for base_airport in ctrl.base_airports">
+  	<option value="">Select Base airport</option>
+  </select>
+</div>
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="seating_capacity">Seating capacity</label> -->
+	<select ng-options="n for n in <%= (1..30).to_a.to_s %>" id="seating_capacity" class="form-control text-boxes" ng-model="ctrl.aircraft.seating_capacity">
+		<option value="">Select Seating capacity</option>
+	</select>
+</div>
+<div class="col-sm-6 col-xs-12 grey-bg  form-colomn">
+	<!-- <label for="baggage_capacity_in_kg">Baggage capacity in kg</label> -->
+	<input type="number" id="baggage_capacity_in_kg" placeholder="Baggage capacity in kg" class="form-control text-boxes" ng-model="ctrl.aircraft.baggage_capacity_in_kg">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="seating_capacity">Seating capacity</label>
-	<select ng-options="n for n in <%= (1..30).to_a.to_s %>" id="seating_capacity" class="form-control text-boxes" ng-model="ctrl.aircraft.seating_capacity"></select>
+	<!-- <label for="runway_field_length_in_feet">Runway field length in feet</label> -->
+	<input type="number" id="runway_field_length_in_feet" placeholder="Runway field length in feet" class="form-control text-boxes" ng-model="ctrl.aircraft.runway_field_length_in_feet">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="baggage_capacity_in_kg">Baggage capacity in kg</label>
-	<input type="number" id="baggage_capacity_in_kg" class="form-control text-boxes" ng-model="ctrl.aircraft.baggage_capacity_in_kg">
+	<!-- <label for="number_of_toilets">Number of toilets</label> -->
+	<select ng-options="n for n in [0,1,2,3]" id="number_of_toilets" class="form-control text-boxes" ng-model="ctrl.aircraft.number_of_toilets">
+		<option value="">Select Number of toilets</option>
+	</select>
+</div>
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="cabin_width_in_meters">Cabin width in meters</label> -->
+	<input type="number" id="cabin_width_in_meters" placeholder="Cabin width in meters" class="form-control text-boxes" ng-model="ctrl.aircraft.cabin_width_in_meters">
+</div>
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="cabin_height_in_meters">Cabin height in meters</label> -->
+	<input type="number" id="cabin_height_in_meters" placeholder="Cabin height in meters" class="form-control text-boxes" ng-model="ctrl.aircraft.cabin_height_in_meters">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="runway_field_length_in_feet">Runway field length in feet</label>
-	<input type="number" id="runway_field_length_in_feet" class="form-control text-boxes" ng-model="ctrl.aircraft.runway_field_length_in_feet">
+	<!-- <label for="crew">Number of crew</label> -->
+	<select ng-options="n for n in [1,2,3,4,5]" id="crew" class="form-control text-boxes" ng-model="ctrl.aircraft.crew">
+		<option value="">Select Number of crew</option>
+	</select>
 </div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="number_of_toilets">Number of toilets</label>
-	<select ng-options="n for n in [0,1,2,3]" id="number_of_toilets" class="form-control text-boxes" ng-model="ctrl.aircraft.number_of_toilets"></select>
-</div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="cabin_width_in_meters">Cabin width in meters</label>
-	<input type="number" id="cabin_width_in_meters" class="form-control text-boxes" ng-model="ctrl.aircraft.cabin_width_in_meters">
-</div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="cabin_height_in_meters">Cabin height in meters</label>
-	<input type="number" id="cabin_height_in_meters" class="form-control text-boxes" ng-model="ctrl.aircraft.cabin_height_in_meters">
-</div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="crew">Number of crew</label>
-	<select ng-options="n for n in [1,2,3,4,5]" id="crew" class="form-control text-boxes" ng-model="ctrl.aircraft.crew"></select>
-</div>
-
 <div class="col-md-6 col-sm-12 col-xs-12">
-	<div class="row">
-		<div class="col-sm-6 col-xs-6 form-colomn">
-			<label for="wifi">wifi</label><br/>
-			<span ng-click="ctrl.aircraft.wifi = !ctrl.aircraft.wifi" class="main-yesno">
-		        <span ng-class="{'yes-con' : ctrl.aircraft.wifi == true, 'no-con' : ctrl.aircraft.wifi != true}" class="">
-		        	<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.wifi == true, 'fa-times' : ctrl.aircraft.wifi != true}"></i>
-		        </span>
-		    </span>
-		    <input type="checkbox" id="wifi" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.wifi">
-		</div>
-		<div class="col-sm-6 col-xs-6 form-colomn">
-			<label for="phone">Phone</label><br/>
-			<span ng-click="ctrl.aircraft.phone = !ctrl.aircraft.phone" class="main-yesno">
-				<span ng-class="{'yes-con' : ctrl.aircraft.phone == true, 'no-con' : ctrl.aircraft.phone != true}">
-					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.phone == true, 'fa-times' : ctrl.aircraft.phone != true}"></i>
-				</span>
+	<div class="col-sm-6 col-xs-6 form-colomn">
+		<label class="wifiphn-label" for="wifi">wifi</label>
+		<span ng-click="ctrl.aircraft.wifi = !ctrl.aircraft.wifi" class="main-yesno">
+	        <span ng-class="{'yes-con' : ctrl.aircraft.wifi == true, 'no-con' : ctrl.aircraft.wifi != true}" class="">
+	        	<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.wifi == true, 'fa-times' : ctrl.aircraft.wifi != true}"></i>
+	        </span>
+	    </span>
+	    <input type="checkbox" id="wifi" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.wifi">
+	    <div class="clearfix"></div>
+	</div>
+	<div class="col-sm-6 col-xs-6 form-colomn">
+		<label class="wifiphn-label" for="phone">Phone</label>
+		<span ng-click="ctrl.aircraft.phone = !ctrl.aircraft.phone" class="main-yesno">
+			<span ng-class="{'yes-con' : ctrl.aircraft.phone == true, 'no-con' : ctrl.aircraft.phone != true}">
+				<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.phone == true, 'fa-times' : ctrl.aircraft.phone != true}"></i>
 			</span>
-			<input type="checkbox" id="phone" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.phone">
-		</div>
-		<div class="col-sm-6 col-xs-6 form-colomn">
-			<label for="flight_attendant">Flight attendant</label><br/>
-			<span ng-click="ctrl.aircraft.flight_attendant = !ctrl.aircraft.flight_attendant" class="main-yesno">
-				<span ng-class="{'yes-con' : ctrl.aircraft.flight_attendant == true, 'no-con' : ctrl.aircraft.flight_attendant != true}">
-					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.flight_attendant == true, 'fa-times' : ctrl.aircraft.flight_attendant != true}"></i>
-				</span>
+		</span>
+		<input type="checkbox" id="phone" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.phone">
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="year_of_manufacture">Year of Manufacture</label> -->
+	<input type="text" id="year_of_manufacture" placeholder="Year of Manufacture" class="form-control text-boxes" ng-model="ctrl.aircraft.year_of_manufacture">
+</div>
+<div class="col-md-6 col-sm-12 col-xs-12 grey-bg">
+	<div class="col-sm-6 col-xs-6 form-colomn">
+		<label class="atndntevac-label" for="flight_attendant">Flight <br/>attendant</label>
+		<span ng-click="ctrl.aircraft.flight_attendant = !ctrl.aircraft.flight_attendant" class="main-yesno">
+			<span ng-class="{'yes-con' : ctrl.aircraft.flight_attendant == true, 'no-con' : ctrl.aircraft.flight_attendant != true}">
+				<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.flight_attendant == true, 'fa-times' : ctrl.aircraft.flight_attendant != true}"></i>
 			</span>
-			<input type="checkbox" id="flight_attendant" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.flight_attendant">
-		</div>
-		<div class="col-sm-6 col-xs-6 form-colomn">
-			<label for="medical_evac">Medical evac</label><br/>
-			<span ng-click="ctrl.aircraft.medical_evac = !ctrl.aircraft.medical_evac" class="main-yesno">
-				<span ng-class="{'yes-con' : ctrl.aircraft.medical_evac == true, 'no-con' : ctrl.aircraft.medical_evac != true}">
-					<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.medical_evac == true, 'fa-times' : ctrl.aircraft.medical_evac != true}"></i>
-				</span>
+		</span>
+	    <input type="checkbox" id="flight_attendant" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.flight_attendant">
+	    <div class="clearfix"></div>
+	</div>
+	<div class="col-sm-6 col-xs-6 form-colomn">
+		<label class="atndntevac-label" for="medical_evac">Medical <br/>evac</label>
+		<span ng-click="ctrl.aircraft.medical_evac = !ctrl.aircraft.medical_evac" class="main-yesno">
+			<span ng-class="{'yes-con' : ctrl.aircraft.medical_evac == true, 'no-con' : ctrl.aircraft.medical_evac != true}">
+				<i class="fa" ng-class="{'fa-check' : ctrl.aircraft.medical_evac == true, 'fa-times' : ctrl.aircraft.medical_evac != true}"></i>
 			</span>
-			<input type="checkbox" id="medical_evac" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.medical_evac">
-		</div>
+		</span>
+		<input type="checkbox" id="medical_evac" class="form-control ng-hide checkbox-text" ng-model="ctrl.aircraft.medical_evac">
+		<div class="clearfix"></div>
 	</div>
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="year_of_manufacture">Year of Manufacture</label>
-	<input type="text" id="year_of_manufacture" class="form-control text-boxes" ng-model="ctrl.aircraft.year_of_manufacture">
+	<!-- <label for="cruise_speed_in_nm_per_hour">Cruise speed in nm per hour</label> -->
+	<input type="number" id="cruise_speed_in_nm_per_hour" placeholder="Cruise speed in nm per hour" class="form-control text-boxes" ng-model="ctrl.aircraft.cruise_speed_in_nm_per_hour">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="cruise_speed_in_nm_per_hour">Cruise speed in nm per hour</label>
-	<input type="number" id="cruise_speed_in_nm_per_hour" class="form-control text-boxes" ng-model="ctrl.aircraft.cruise_speed_in_nm_per_hour">
+	<!-- <label for="flying_range_in_nm">Flying range in nm</label> -->
+	<input type="number" id="flying_range_in_nm" placeholder="Flying range in nm" class="form-control text-boxes" ng-model="ctrl.aircraft.flying_range_in_nm">
 </div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="flying_range_in_nm">Flying range in nm</label>
-	<input type="number" id="flying_range_in_nm" class="form-control text-boxes" ng-model="ctrl.aircraft.flying_range_in_nm">
+<div class="col-sm-6 col-xs-12 grey-bg form-colomn">
+	<!-- <label for="per_hour_cost">Cost per hour</label> -->
+	<input type="number" id="per_hour_cost" placeholder="Cost per hour" class="form-control text-boxes" ng-model="ctrl.aircraft.per_hour_cost">
 </div>
-<div class="col-sm-6 col-xs-12 form-colomn">
-	<label for="per_hour_cost">Cost per hour</label>
-	<input type="number" id="per_hour_cost" class="form-control text-boxes" ng-model="ctrl.aircraft.per_hour_cost">
-</div>
+<div class="clearfix"></div>

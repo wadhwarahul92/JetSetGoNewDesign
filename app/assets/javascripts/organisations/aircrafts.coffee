@@ -1,10 +1,14 @@
 organisations_app.controller 'AircraftsController', ['$http', 'notify', '$upload', 'AircraftsService', ($http, notify, $upload, AircraftsService)->
+  
+  @selectedAircraftId = null
 
   @aircrafts = []
 
   AircraftsService.getAircraftsForCurrentOperator().then(
     =>
       @aircrafts = AircraftsService.aircraftsForCurrentOperator
+      try
+        @selectedAircraftId = @aircrafts[0].id
   )
 
 #  $http.get('/organisations/aircrafts.json').success(

@@ -9,12 +9,6 @@ $main-blue-color:rgb(5, 81, 139);
 
 .aircraft-content-main{
   position:relative;
-  .add-link{
-    font-size:16px;
-    position:absolute;
-    top:0;
-    right:15px;
-  }
   h3.main-heading{
     margin:10px auto 40px auto;
     color:$dark-blue-color;
@@ -40,39 +34,99 @@ $main-blue-color:rgb(5, 81, 139);
     bottom:-10px;
     left:48%;
   }
-  .aircraft_left-img{
-    text-align:center;
-  }
-  .right-main-listing{
-    width:100%;
-    display:inline-block;
-    .listing-con{
-      padding:10px 10px;
-      border-bottom:1px solid #eeeeee;
-      a.add-edit-btn{
-        background-color:$main-blue-color;
-        color:#ffffff;
-        display:inline-block;
-        padding:8px 15px;
-        border-radius:5/px;
+  ul.aircraft-tail-main{
+    padding:0;
+    margin:0;
+    li{
+      list-style:none;
+      padding:10px 5px;
+      margin-bottom:5px;
+      background-color:#eeeeee;
+      cursor:pointer;
+      .plane-icon{
+        padding:0 10px;
       }
+    }
+    li.add-aircrft-link{
+      background-color:$main-blue-color;
+      text-align:center;
+      .add-link{
+        font-size:14px;
+        color:#ffffff;
+      }
+    }
+    li.selected-link{
+      background-color:$main-green-color;
+      color:#ffffff;
+    }
+  }
+  .aircraft-detail-main{
+    background-color:#f1f1f1;
+    padding-bottom:20px;
+    .aircraft-img-main{
+      border-right:1px solid #cccccc;
+      min-height:290px;
+      ul.aircraft_image_holder{
+        padding:0;
+        margin:0;
+        width:100%;
+        li{
+          list-style:none;
+          position:relative;
+          .cross-icon{
+            top: -6px;
+            left: -3px;
+            color:$main-red-color;
+          }
+          .add-btn{
+            background-color:$main-blue-color;
+            color:#ffffff;
+            width:100%;
+            text-align:center;
+            display:inline-block;
+            padding:5px 15px;
+          }
+          img{
+          padding:2px;
+          background-color:#ffffff;
+          margin:5px 0;
+          }
+        }
+      }    
+    }
+    a.edit-btn{
+      color:#888888;
+      display:inline-block;
+      margin:5px 0;
+    }
+    .aircraft-right-detail{
       h5{
         margin:0;
-        font-size:17px;
         color:$main-blue-color;
+        font-weight:bold;
+        font-size:12px;
       }
       p{
-        margin:0;
-        font-size:14px;
-        color:#787878;
+        color:#888888;
+        font-size:12px;
+        position:relative;
       }
-      .red-cross-icon{
-        color:$main-red-color;
-        font-size:18px;
+      .strick-icon{
+        text-decoration:line-through;
       }
-      .green-check-icon{
-        color:$main-green-color;
-        font-size:18px;
+      .not-avilable-line{
+        width:18px;
+        position:absolute;
+        display:inline-block;
+        height:1px;
+        top:8px;
+        left:-3px;
+        background-color:#cc0000;
+        -moz-transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
       }
     }
   }
@@ -103,8 +157,7 @@ $main-blue-color:rgb(5, 81, 139);
     left:48%;
   }
   .add-aircraft-from{
-    background-color:#fbfbfb;
-    padding:15px;
+    *background-color:#fbfbfb;
     -webkit-box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
     -moz-box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
     box-shadow: 0px 0px 8px 3px rgba(204,204,204,0.6);
@@ -115,14 +168,25 @@ $main-blue-color:rgb(5, 81, 139);
       color:#777777;
       font-weight:normal;
     }
+    label.wifiphn-label{
+      float:left;
+      margin:10px 0 4px 0;
+    }
+    label.atndntevac-label{
+      float:left;
+      margin:4px 0 0 0;
+      line-height:15px;
+    }
     .main-yesno{
       width:50px; 
       height:27px;
       border-radius:30px;
       border:1px solid #cccccc;
       display:inline-block;
-      margin-top:2px;
+      margin-top:7px;
       cursor:pointer;
+      float:right;
+      margin-right:50px;
       .yes-con{
         width:25px;
         height:25px;
@@ -148,9 +212,22 @@ $main-blue-color:rgb(5, 81, 139);
         font-size:12px;
       }
     }
+    .grey-bg{
+      background-color:#f1f1f1;
+    }
     .form-colomn{
-      margin-bottom:15px;
+      padding:18px 0;
       .text-boxes{
+        border:0px;
+        box-shadow:none;
+        background-color:transparent;
+        text-align:center;
+        text-align-last:center;
+        color:#888;
+        option{
+          text-align:center;
+          text-align-last:center;
+        }
       }
       .checkbox-text{
         width:14px;
@@ -159,82 +236,70 @@ $main-blue-color:rgb(5, 81, 139);
       }
     }
   }
-  .save-btn2{
-    width:50%;
-    padding:10px;
-    float:right;
-  }
-  .back-btn{
-    width:50%;
-    padding:10px;
+  .below-btn-con{
+    background-color:#eeeeee;
+    padding:20px 0;
+    .save-btn2{
+      width:70%;
+      padding:10px;
+      float:right;
+    }
+    .back-btn{
+      width:70%;
+      padding:10px;
+    }
   }
 }
 /*add aircraft page*/
 
 @media(max-width:767px){
-  .add-aircraft-main-con{
-    .save-btn2{
-      width:100%;
-      padding:10px;
-      float:right;
-    }
-    .back-btn{
-      width:100%;
-      padding:10px;
-    }
-  }
   .aircraft-content-main{
-    position:relative;
-    .add-link{
-      font-size:14px;
-    }
-    h3.main-heading{
-      font-size:20px;
-    }
-  }
-  .aircraft-content-main{
-    .aircraft_left-img{
-      margin-bottom:30px;
-    }
-    .right-main-listing{
-      width:100%;
-      display:inline-block;
-      .listing-con{
-        padding:0px;
-        border-bottom:0px solid #eeeeee;
-        .res-btm-border{
-          padding:10px 10px;
-          border-bottom: 1px solid #eeeeee;
-        }
-        h5{
-          margin:0;
-          font-size:17px;
-          color:$main-blue-color;
-        }
-        p{
-          margin:0;
-          font-size:14px;
-          color:#787878;
-        }
+    .aircraft-detail-main{
+      .aircraft-img-main{
+          border-right:0px;
+          border-bottom:1px solid #cccccc;
+          margin-bottom:20px;
+          padding-bottom:10px;
+        ul.aircraft_image_holder{
+          li{
+            text-align:center;
+            .cross-icon{
+              top: inherit;
+              left: inherit;
+            }
+            .add-btn{
+              max-width:255px;
+              margin:0 auto;
+            }
+            img{
+              display:inline-block;
+            }
+          }
+        }    
       }
     }
   }
-}
-
-@media(max-width:400px){
-  .aircraft-content-main{
-    position:relative;
-    .add-link{
-      font-size:12px;
-      position:static;
-      text-align:right;
-      display:inline-block;
-      width:100%;
-      margin-bottom:5px;
-    }
-    h3.main-heading{
-      font-size:19px;
-      margin-bottom:20px;
+  .add-aircraft-main-con{
+      .grey-bg{
+        background-color:inherit !important;
+      }
+      .col-xs-12{
+        padding:0;
+        .form-colomn{
+          border-bottom:1px solid #eee;
+          padding:18px 5px;
+          .main-yesno{
+            margin-right:5px;
+          }
+        }
+      }
+    .below-btn-con{
+      .save-btn2{
+        width:100%;
+      }
+      .back-btn{
+        width:100%;
+      }
     }
   }
 }

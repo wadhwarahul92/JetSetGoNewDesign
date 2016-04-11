@@ -1,124 +1,181 @@
 <div class="row" style="padding-top: 10px" ng-controller="OperatorController as ctrl">
-  <div class="col-sm-12">
-    <div class="row">
-      <div class="col-sm-4">
-        <h3>New Operator</h3>
-        <ul class="list-unstyled">
-          <li>Start by adding new operator to your JetSetGo organisation portal.</li>
-          <li>Every operator can be given a different access level which is based on their designation in organisation.</li>
-          <li></li>
-        </ul>
-      </div>
-      <div class="col-sm-4">
-        <fieldset>
-          <form ng-submit="ctrl.create()">
-            <div class="field">
-              <label for="first_name">First name</label>
-              <input type="text" ng-model="ctrl.operator.first_name" class="form-control">
+  <div class="col-sm-12 col-xs-12 add-oprator-main">
+  <h3 class="main-heading">New Operator</h3>
+  <div class="row">
+    <div class="col-sm-8 col-xs-12 left-add-operator">
+      <fieldset class="add-operator-main">
+        <form ng-submit="ctrl.create()">
+          <div class="col-sm-6 col-xs-12 grey-bg field">
+            <!-- <label for="first_name"></label> -->
+            <input type="text" placeholder="First name" ng-model="ctrl.operator.first_name" class="form-control" />
+          </div>
+          <div class="col-sm-6 col-xs-12 field">
+            <!-- <label for="last_name"></label> -->
+            <input type="text" placeholder="Last name" class="form-control" ng-model="ctrl.operator.last_name" />
+          </div>
+          <div class="col-sm-6 col-xs-12 field">
+            <!-- <label for="designation">Designation</label> -->
+            <select id="designation" class="form-control" ng-model="ctrl.operator.designation">
+              <option value="ceo">CEO</option>
+              <option value="coo">COO</option>
+              <option value="editor">Editor</option>
+              <option value="finance">Finance</option>
+              <option value="Manager">Manager</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-xs-12 grey-bg field">
+            <!-- <label for="phone"></label> -->
+            <input type="text" placeholder="Phone" class="form-control" ng-model="ctrl.operator.phone" />
+          </div>
+          <div class="col-sm-6 col-xs-12 grey-bg field">
+            <!-- <label for="email"></label> -->
+            <input type="text" placeholder="Email" class="form-control" ng-model="ctrl.operator.email" />
+          </div>
+          <div class="col-sm-6 col-xs-12 field">
+            <!-- <label for="password"></label> -->
+            <input type="password" placeholder="Password" class="form-control" ng-model="ctrl.operator.password" />
+          </div>
+          <div class="clearfix"></div>
+          <div class="btn-footer">
+            <div class="col-xs-6">
+              <input type="submit" value="Create"  class="btn btn-primary pull-right save-btn">
             </div>
-            <div class="field">
-              <label for="last_name">Last name</label>
-              <input type="text" class="form-control" ng-model="ctrl.operator.last_name">
+            <div class="col-xs-6">
+              <%= link_to 'Back', organisations_settings_path, class: 'btn btn-primary back-btn' %>
             </div>
-            <div class="field">
-              <label for="designation">Designation</label>
-              <select id="designation" class="form-control" ng-model="ctrl.operator.designation">
-                <option value="ceo">CEO</option>
-                <option value="coo">COO</option>
-                <option value="editor">Editor</option>
-                <option value="finance">Finance</option>
-                <option value="Manager">Manager</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input type="text" class="form-control" ng-model="ctrl.operator.phone">
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" ng-model="ctrl.operator.email">
-            </div>
-            <div class="field">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" ng-model="ctrl.operator.password">
-            </div>
-            <div class="field">
-              <input type="submit" value="Create"  class="btn btn-primary margin-top">
-              <%= link_to 'Back', organisations_settings_path, class: 'btn btn-primary margin-top' %>
-            </div>
+            <div class="clearfix"></div>
+          </div>
           </form>
         </fieldset>
-      </div>
-      <div class="col-sm-4">
-        <h4>Each designation has different access levels.</h4>
-        <table class="table table-striped">
-          <thead>
-          <tr class="info">
-            <th>Designation</th>
-            <th>Access</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th>Admin</th>
-            <td>
-              <ul>
-                <li>has full access</li>
-                <li>can add/remove operators</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th>CEO</th>
-            <td>
-              <ul>
-                <li>has full access</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th>COO</th>
-            <td>
-              <ul>
-                <li>can add trip</li>
-                <li>can add unavailability</li>
-                <li>can access forum</li>
-                <li>can view/edit schedule</li>
-                <li>can view/edit aircrafts</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th>Editor</th>
-            <td>
-              <ul>
-                <li>can view schedule</li>
-                <li>can add/remove trips</li>
-                <li>can add/remove unavailabilities</li>
-                <li>can access forum</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th>Finance</th>
-            <td>
-              <ul>
-                <li>can view schedule</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th>Manager</th>
-            <td>
-              <ul>
-                <li>can view schedule</li>
-                <li>can add/remove operators</li>
-              </ul>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        <ul class="list-unstyled">
+                  <li>
+                    <i class="fa fa-plane"></i> Start by adding new operator to your JetSetGo organisation portal.
+                  </li>
+                  <li>
+                    <i class="fa fa-plane"></i> Every operator can be given a different access level which is based on their designation in organisation.
+                  </li>
+                </ul>
   </div>
+  <div class="col-sm-4 col-xs-12 right-add-operator">
+    <h4>Each designation has different access levels.</h4>
+    <div class="col-xs-12 add-operator-main">
+    <div class="column-con">
+      <h5>Admin</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> has full access</li>
+        <li><i class="fa fa-plane"></i> can add/remove operators</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>CEO</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> has full access</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>COO</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can add trip</li>
+        <li><i class="fa fa-plane"></i> can add unavailability</li>
+        <li><i class="fa fa-plane"></i> can access forum</li>
+        <li><i class="fa fa-plane"></i> can view/edit schedule</li>
+        <li><i class="fa fa-plane"></i> can view/edit aircrafts</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>Editor</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+        <li><i class="fa fa-plane"></i> can add/remove trips</li>
+        <li><i class="fa fa-plane"></i> can add/remove unavailabilities</li>
+        <li><i class="fa fa-plane"></i> can access forum</li>
+      </ul>
+    </div>
+    <div class="column-con">
+      <h5>Finance</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+      </ul>
+    </div>
+    <div class="column-con no-border">
+      <h5>Manager</h5>
+      <ul>
+        <li><i class="fa fa-plane"></i> can view schedule</li>
+        <li><i class="fa fa-plane"></i> can add/remove operators</li>
+      </ul>
+    </div>
+</div>
+<div class="clearfix"></div>
+    <!-- <table class="table table-striped">
+      <thead>
+        <tr class="info">
+          <th>Designation</th>
+          <th>Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Admin</th>
+          <td>
+            <ul>
+              <li>has full access</li>
+              <li>can add/remove operators</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>CEO</th>
+          <td>
+            <ul>
+              <li>has full access</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>COO</th>
+          <td>
+            <ul>
+              <li>can add trip</li>
+              <li>can add unavailability</li>
+              <li>can access forum</li>
+              <li>can view/edit schedule</li>
+              <li>can view/edit aircrafts</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>Editor</th>
+          <td>
+            <ul>
+              <li>can view schedule</li>
+              <li>can add/remove trips</li>
+              <li>can add/remove unavailabilities</li>
+              <li>can access forum</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>Finance</th>
+          <td>
+            <ul>
+              <li>can view schedule</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>Manager</th>
+          <td>
+            <ul>
+              <li>can view schedule</li>
+              <li>can add/remove operators</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+  </div>
+  <div class="clearfix"></div>
+  </div>
+  </div>
+  <div class="clearfix"></div>
 </div>
