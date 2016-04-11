@@ -32,6 +32,7 @@ if params[:format_as] == 'event'
   json.departure_airport{
     json.id @activity.departure_airport.id
     json.name @activity.departure_airport.name
+    json.code @activity.departure_airport.code
     json.city{
       json.id @activity.departure_airport.city.id
       json.name @activity.departure_airport.city.name
@@ -42,6 +43,7 @@ if params[:format_as] == 'event'
   json.arrival_airport{
     json.id @activity.arrival_airport.id
     json.name @activity.arrival_airport.name
+    json.code @activity.arrival_airport.code
     json.city{
       json.id @activity.arrival_airport.city.id
       json.name @activity.arrival_airport.city.name

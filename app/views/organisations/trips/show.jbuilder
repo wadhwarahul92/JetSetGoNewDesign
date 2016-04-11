@@ -3,7 +3,9 @@ json.start_at @activity.start_at.strftime(time_format)
 json.end_at @activity.end_at.strftime(time_format)
 
 json.departure_airport{
+  json.id @activity.departure_airport.id
   json.name @activity.departure_airport.name
+  json.code @activity.departure_airport.code
   json.city{
     json.name @activity.departure_airport.city.name
     json.url @activity.departure_airport.city.image.url(:original)
@@ -11,7 +13,9 @@ json.departure_airport{
 }
 
 json.arrival_airport{
+  json.id @activity.arrival_airport.id
   json.name @activity.arrival_airport.name
+  json.code @activity.arrival_airport.code
   json.city{
     json.name @activity.arrival_airport.city.name
     json.url @activity.arrival_airport.city.image.url(:original)

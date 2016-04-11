@@ -33,6 +33,7 @@ json.array! @aircrafts do |aircraft|
     if aircraft.base_airport.present?
       json.id aircraft.base_airport.id
       json.name aircraft.base_airport.name
+      json.code aircraft.base_airport.code
     end
   }
 
