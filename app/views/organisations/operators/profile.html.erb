@@ -1,25 +1,63 @@
 <div class="row" ng-controller="ProfileController as ctrl">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <fieldset>
-      <legend>Profile</legend>
-    </fieldset>
-    <label>First Name </label>
-    <div>{{ctrl.operator.first_name}}</div>
-    <label>Last Name </label>
-    <div>{{ctrl.operator.last_name}}</div>
-    <label>Full Name </label>
-    <div>{{ctrl.operator.full_name}}</div>
-    <label>Phone </label>
-    <div>{{ctrl.operator.phone}}</div>
-    <label>Email</label>
-    <div>{{ctrl.operator.email}}</div>
-    <label>Organisation </label>
-    <div>{{ctrl.operator.organisation.name}}</div>
-    <label>Designation </label>
-    <div>{{ctrl.operator.designation }}</div>
-  </div>
-  <div class="col-sm-4">
-    <a ng-href="/organisations/operators/{{ctrl.operator.id}}/edit_profile">Edit</a>
+  <div class="profile-content-main">
+    <h3 class="main-heading">Profile</h3>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="profile-main-con">
+        <a class="edit-icon" ng-href="/organisations/operators/{{ctrl.operator.id}}/edit_profile">
+          <i class="fa fa-pencil" aria-hidden="true"></i> edit
+        </a>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/001/original/Screenshot_at_Jan_03_22-40-59.png?1451904897" />
+        </div>
+        <div class="col-md-9 col-sm-9">
+          <h2 class="full-name">{{ctrl.operator.full_name}}</h2>
+          <div class="row text-con">
+            <div class="col-md-2">
+            <label>Email : </label>
+            </div>
+            <div class="col-md-10">
+              <h3 class="email-no">{{ctrl.operator.email}}</h3>
+            </div>
+          </div>
+          <div class="row text-con">
+            <div class="col-md-2">
+            <label>Phone : </label>
+            </div>
+            <div class="col-md-10">
+              <h3 class="email-no">{{ctrl.operator.phone}}</h3>
+            </div>
+          </div>
+          <div class="row text-con">
+            <div class="col-md-2">
+            <label>Organisation : </label>
+            </div>
+            <div class="col-md-10">
+              <h3 class="email-no">{{ctrl.operator.organisation.name}}</h3>
+            </div>
+          </div>
+          <div class="row text-con">
+            <div class="col-md-2">
+            <label>Designation : </label>
+            </div>
+            <div class="col-md-10">
+              <h3 class="email-no">{{ctrl.operator.designation}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>
+
+  <!-- <label>First Name </label>
+    <div>{{ctrl.operator.first_name}}</div>
+    <label>Last Name </label>
+    <div>{{ctrl.operator.last_name}}</div> 
+    <label>Full Name </label>
+    <label>Phone </label>
+    <label>Email</label>
+    <label>Organisation </label>
+    <label>Designation </label>  -->
