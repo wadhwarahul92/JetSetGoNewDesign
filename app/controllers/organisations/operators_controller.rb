@@ -36,6 +36,8 @@ class Organisations::OperatorsController < Organisations::BaseController
     begin
       # todo add send_app_notifications to true when signed in from app
       # current_user.update_attribute(:send_app_notifications, false)
+      current_user.update_attribute(:api_token, nil) if current_user.api_token.present?
+      sign_out(current_user)
     rescue Exception
       #do nothing
     end
