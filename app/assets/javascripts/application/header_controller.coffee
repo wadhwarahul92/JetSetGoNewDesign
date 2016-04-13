@@ -2,6 +2,12 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
 
   @currentUser = null
 
+  @isFromMobile = false
+
+  x = location.search.match(/\?isfrommobile=([a-z]+)/)
+  if x != null && x[1] == 'yes'
+    @isFromMobile = true
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
