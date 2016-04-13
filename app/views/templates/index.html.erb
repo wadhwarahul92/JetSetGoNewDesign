@@ -40,12 +40,11 @@
   <!-- search con start -->
   <div class="search-main-con">
     <h2 class="col-xs-12">
-      <span>Your</span>
-      Private Jet
+      <span>Your</span>Private Jet
     </h2>
     <div class="col-xs-12">
-      <div ng-repeat="activity in ctrl.activities">
-      <input title="Departure Airport"
+      <span ng-repeat="activity in ctrl.activities">
+        <input class="search-textfield text-white" title="Departure Airport"
              ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Departure"
              autocomplete="off"
@@ -55,7 +54,7 @@
              ng-model="activity.departure_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
-      <input title="Arrival Airport"
+        <input class="search-textfield text-white" title="Arrival Airport"
              ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Arrival"
              autocomplete="off"
@@ -65,22 +64,24 @@
              ng-model="activity.arrival_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
-      <div class="dropdown datetimepicker-holder">
-        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-        <ul class="dropdown-menu" role="menu">
-          <datetimepicker
-              data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-          data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-          datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-          ng-model="activity.start_at"></datetimepicker>
-        </ul>
-      </div>
-      <input type="number"
-             ng-disabled="$index+1 < ctrl.activities.length"
-             ng-model="activity.pax"
-             placeholder="Pax">
-      <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
-    </div>
+        <div class="dropdown datetimepicker-holder search-textfield">
+          <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+          <ul class="dropdown-menu" role="menu">
+            <datetimepicker
+                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+            data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+            datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+            ng-model="activity.start_at"></datetimepicker>
+          </ul>
+        </div>
+        <input class="search-textfield text-white" type="number"
+               ng-disabled="$index+1 < ctrl.activities.length"
+               ng-model="activity.pax"
+               placeholder="Pax">
+        <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
+      </span>
+        <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
+        <a class="add-trip-btn" href="" ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
     </div>
   </div>
   <!-- search con finish -->

@@ -1,3 +1,4 @@
+$main-button-color : rgb(27,143,188);
 .top-header-search-con{
 	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
 	width:100%;
@@ -40,6 +41,36 @@
 				font-size:80px;
 			}
 		}
-		
+		.search-textfield{
+          width: 21%;
+          background-color: transparent;
+          border: 1px solid #ffffff;
+          padding:9px 5px;
+          a{
+            color: #ffffff;
+          }
+        }
+        .text-white{
+          color: #ffffff;
+        }
+        .search-btn{
+          width: 14.5%;
+          background-color: $main-button-color;
+          display: inline-block;
+          padding:10px 0;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+        }
+        .add-trip-btn{
+          color: #ffffff;
+          display: inline-block;
+          padding: 9px 30px;
+          margin-top: 10px;
+          border: 1px solid #ffffff;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+        }
 	}
 }
