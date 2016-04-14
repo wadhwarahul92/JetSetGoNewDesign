@@ -13,7 +13,7 @@ class Organisations::BaseController < ApplicationController
       #do nothing
     else
       if request.format == 'application/json'
-        render status: :unauthorized, json: [errors: ['You are not signed in.']]
+        render status: :unauthorized, json: { errors: ['You are not signed in.'] }
       else
         redirect_to '/organisations/sign_in'
       end
@@ -30,7 +30,7 @@ class Organisations::BaseController < ApplicationController
   end
 
   def current_user
-    super || api_operator
+    params[:api_token].present? ? api_operator : super
   end
 
   def api_operator
