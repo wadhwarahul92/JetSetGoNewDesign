@@ -260,8 +260,7 @@ class Organisations::OperatorsController < Organisations::BaseController
   def operator_profile_params
     params.permit(:first_name,
                   :last_name,
-                  :phone,
-                  :image
+                  :phone
     ).merge(organisation_id: current_user.organisation.id)
   end
 
