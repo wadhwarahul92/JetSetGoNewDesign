@@ -8,7 +8,17 @@
           <i class="fa fa-pencil" aria-hidden="true"></i> edit
         </a>
         <div class="col-md-3 col-sm-3 col-xs-12">
-          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/001/original/Screenshot_at_Jan_03_22-40-59.png?1451904897" />
+          <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/001/original/Screenshot_at_Jan_03_22-40-59.png?1451904897" />-->
+          <div class="field" ng-show="ctrl.operator.image">
+            <div class="operator_image_holder">
+              <img class="operator_img" style="width:100%;" src="" ng-src="{{ctrl.operator.image}}" alt="">
+            </div>
+          </div>
+          <div class="field">
+            <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadOperatorImage($files, ctrl.operator)">
+              <i class="fa fa-picture-o"></i> Add/Edit Image
+            </a>
+          </div>
         </div>
         <div class="col-md-9 col-sm-9">
           <h2 class="full-name">{{ctrl.operator.full_name}}</h2>

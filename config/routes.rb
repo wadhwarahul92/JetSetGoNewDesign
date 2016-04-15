@@ -73,6 +73,7 @@ Rails.application.routes.draw do
         get 'edit_profile'
         put 'update_profile'
         put 'toggle'
+        put 'update_image'
       end
     end
 

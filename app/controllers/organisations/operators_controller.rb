@@ -16,10 +16,11 @@ class Organisations::OperatorsController < Organisations::BaseController
                                             :get_terms_and_condition,
                                             :update_organisation,
                                             :log_out,
-                                            :update_device_token
+                                            :update_device_token,
+                                            :update_image
   ]
 
-  before_action :set_operator, only: [:edit, :update, :edit_profile, :update_profile]
+  before_action :set_operator, only: [:edit, :update, :edit_profile, :update_profile, :update_image]
 
   before_action :authenticate_no_user, only: [:admin,
                                               :create_admin,
@@ -158,6 +159,15 @@ class Organisations::OperatorsController < Organisations::BaseController
     end
   end
 
+  def update_image
+    @operator = current_user
+    if current_user.update_attributes(image: params[:file])
+      render status: :ok, json: { image_url: current_user.image.url(:size_250x250) }
+    else
+      render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
+    end
+  end
+
   def toggle
     @operator = Operator.with_deleted.find params[:id]
     if @operator.organisation_id == current_organisation.id
@@ -243,7 +253,7 @@ class Organisations::OperatorsController < Organisations::BaseController
                   :designation,
                   :phone,
                   :email,
-                  :password
+                  :password,
     ).merge(organisation_id: current_user.organisation.id)
   end
 
@@ -251,6 +261,7 @@ class Organisations::OperatorsController < Organisations::BaseController
     params.permit(:first_name,
                   :last_name,
                   :phone,
+                  :image
     ).merge(organisation_id: current_user.organisation.id)
   end
 
