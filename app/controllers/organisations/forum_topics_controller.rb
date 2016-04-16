@@ -10,9 +10,9 @@ class Organisations::ForumTopicsController < Organisations::BaseController
 
   def index
     if request.format == 'application/json'
-      @forum_topics = ForumTopic.order('created_at ASC').includes(:organisation)
+      @forum_topics = ForumTopic.order('created_at ASC').includes(:organisation).reverse_order
     else
-      @forum_topics = ForumTopic.order('created_at ASC').includes(:organisation).paginate(page: params[:page], per_page: 10)
+      @forum_topics = ForumTopic.order('created_at ASC').includes(:organisation).reverse_order.paginate(page: params[:page], per_page: 10)
     end
   end
 

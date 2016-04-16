@@ -6,7 +6,7 @@
   json.phone @operator.phone
   json.designation @operator.designation
 
-  json.image @operator.image.url(:size_250x250)
+  json.image @operator.image.url(:size_250x250) if @operator.image.present?
 
   json.organisation{
     json.id @operator.organisation.id
