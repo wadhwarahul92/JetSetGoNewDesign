@@ -1,5 +1,23 @@
 $main-skyblue-color : rgb(27,143,188);
 
+span.heading{
+  font-size:70px;
+  color: $main-skyblue-color;
+  display: inline-block;
+  margin:0 0 40px 0;
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+}
+span.heading:after{
+  content: "";
+  background-color: $main-skyblue-color;
+  height: 3px;
+  position: absolute;
+  width: 30%;
+  max-width: 100px;
+  bottom: -2px;
+  left: -5px;
+}
 //top header section
 .top-header-search-con{
 	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
@@ -134,24 +152,6 @@ $main-skyblue-color : rgb(27,143,188);
 .experience-main-con{
   text-align: center;
   padding:20px 0 30px 0;
-  span.heading{
-    font-size:70px;
-    color: $main-skyblue-color;
-    display: inline-block;
-    margin:0 0 40px 0;
-    border-bottom: 1px solid #eeeeee;
-    position: relative;
-  }
-  span.heading:after{
-    content: "";
-    background-color: $main-skyblue-color;
-    height: 3px;
-    position: absolute;
-    width: 30%;
-    max-width: 100px;
-    bottom: -2px;
-    left: -5px;
-  }
   .experience-widget{
     .experience-img{
       width: 100%;
@@ -252,22 +252,8 @@ $main-skyblue-color : rgb(27,143,188);
   background-size: cover;
   padding: 20px 0 30px 0;
   span.heading{
-    font-size:70px;
-    color: #ffffff;
-    display: inline-block;
     margin:0 0 0 6px;
-    border-bottom: 1px solid #eeeeee;
-    position: relative;
-  }
-  span.heading:after{
-    content: "";
-    background-color: $main-skyblue-color;
-    height: 3px;
-    position: absolute;
-    width: 30%;
-    max-width: 100px;
-    bottom: -2px;
-    left: -5px;
+    color: #ffffff;
   }
   .sub-heading{
     font-size: 23px;
@@ -277,7 +263,7 @@ $main-skyblue-color : rgb(27,143,188);
     width: 100%;
     margin: 20px 0;
     .jetsteal-text{
-      font-size: 25px;
+      font-size: 20px;
       margin: 0;
       margin-top: 11px;
       color: #ffffff;
@@ -306,13 +292,28 @@ $main-skyblue-color : rgb(27,143,188);
     height: 1px;
     background-color: rgba(256,256,256,0.6);
   }
+  .bottom-more-con{
+    width: 100%;
+    padding-top: 10px;
+    .more-btn{
+      background-color: #ffffff;
+      padding: 10px 30px;
+      display: inline-block;
+      color: #000;
+      font-size: 18px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
 }
 
 //jetsteel App section
 .jetsteal-app-con{
-  background-color: #000000;
-  min-height: 400px;
+  min-height: 460px;
   padding: 30px 0;
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/147/original/jetsteals_app_bg.jpg?1460959358);
+  background-size: cover;
   h2{
     font-size: 50px;
     color: #ffffff;
@@ -323,39 +324,23 @@ $main-skyblue-color : rgb(27,143,188);
     color: #ffffff;
     text-align: justify;
   }
+  .app-btn{
+    margin-top: 50px;
+  }
 }
 
-//jetsteel App section
+//media section
 .media-main-con{
   padding: 30px 0;
   .heading-con{
     text-align: center;
-    span.heading{
-      font-size:70px;
-      color: $main-skyblue-color;
-      display: inline-block;
-      margin:0 0 20px 0;
-      border-bottom: 1px solid #eeeeee;
-      position: relative;
-    }
-    span.heading:after{
-      content: "";
-      background-color: $main-skyblue-color;
-      height: 3px;
-      position: absolute;
-      width: 30%;
-      max-width: 100px;
-      bottom: -2px;
-      left: -5px;
-    }
   }
   .media-widget{
     margin: 20px 0;
+    position: relative;
     .media-img-con{
-      width: 30%;
-      height: 115px;
+      width: 28%;
       display: inline-block;
-      background-color: #eeeeee;
       float: left;
     }
     .media-widget-content{
@@ -372,6 +357,11 @@ $main-skyblue-color : rgb(27,143,188);
         padding-left: 10px;
         margin: 6px 0;
       }
+    }
+    .media-border{
+      position: absolute;
+      right: -44px;
+      bottom: -52px;
     }
   }
 }
@@ -396,5 +386,74 @@ $main-skyblue-color : rgb(27,143,188);
     padding: 20px 0;
     font-size: 20px;
     color: #ffffff;
+  }
+}
+
+@media(max-width: 1023px){
+  span.heading{
+    font-size: 40px;
+  }
+  //jetsetgo experince section
+  .experience-main-con{
+    .experience-widget {
+      .experience-img {
+        height: 240px;
+        .experience-hover{
+          p{
+            padding: 10px;
+            margin: 0;
+          }
+          h5{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  //jetsteel App section
+  .jetsteal-app-con{
+    h2{
+      font-size: 30px;
+      color: #ffffff;
+      margin: 30px 0;
+    }
+    p{
+      font-size: 14px;
+      color: #ffffff;
+      text-align: justify;
+    }
+    .app-btn{
+      margin-top: 50px;
+    }
+  }
+}
+@media(max-width: 767px){
+
+  //jetsetgo experince section
+  .experience-main-con {
+    .experience-widget {
+      .experience-img {
+        .experience-hover{
+          max-width: 396px;
+          margin: 0 auto;
+          p{
+            margin: 30px 0;
+          }
+        }
+      }
+    }
+  }
+  .media-main-con{
+    .media-widget{
+      .media-img-con{
+        text-align: center;
+      }
+    }
+  }
+  .jetsteal-app-con{
+    min-height: inherit;
+    h2{
+      margin: 0;
+    }
   }
 }

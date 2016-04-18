@@ -1,0 +1,102 @@
+footer{
+  width:100%;
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/157/original/footer_bg.jpg?1460972598);
+  background-size: cover;
+  padding: 30px 0;
+  h4{
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+  .member-con{
+    border-right:1px solid rgba(0,0,0,0.5);
+    min-height: 250px;
+    .newsletter-form-con{
+      margin-top: 20px;
+      position: relative;
+      p{
+        color: #ffffff;
+        font-size: 16px;
+      }
+      .newsletter-textfield{
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+        border: 1px solid #888888;
+        padding: 8px 37px 8px 3px;
+        color: #ffffff;
+      }
+      .newsletter-btn{
+        background-color: #cccccc;
+        width:25px;
+        height: 25px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        text-align: center;
+        border: 0;
+        top: 6px;
+        right: 18px;
+        i{
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  .logo-con{
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.5);
+    min-height: 250px;
+    .footer-logo-con{
+      margin: 70px 0 30px 0;
+    }
+    p{
+      color: #ffffff;
+    }
+  }
+  .services-con{
+    ul{
+      padding: 0;
+      li{
+        list-style: none;
+        width: 40%;
+        margin-right: 20px;
+        padding: 5px 0;
+        border-bottom: 1px dotted #888888;
+        a{
+          color:#ffffff;
+          font-size: 16px;
+        }
+      }
+      li.no-margin{
+        margin: 0;
+      }
+    }
+  }
+  .social-media-con{
+    text-align: center;
+    margin-top: 20px;
+    p{
+      font-size: 18px;
+      color: #ffffff;
+      span{
+        margin-right: 20px;
+      }
+      a{
+        color:#ffffff;
+        margin: 2px;
+        padding: 5px;
+      }
+    }
+  }
+  .copytext-con{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ffffff;
+    a{
+      color:#ffffff;
+    }
+  }
+}
