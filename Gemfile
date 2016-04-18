@@ -70,7 +70,7 @@ gem 'devise'
 gem 'puma'
 
 #heroku kills request that take more that 30 seconds to process, we shall takeover it and kill in 25 seconds
-gem 'rack-timeout'
+gem 'rack-timeout', group: :production
 
 gem 'delayed_job_active_record'
 
