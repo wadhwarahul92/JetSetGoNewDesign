@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, presence: true, length: {is: 10}, numericality: true
+
+  has_attached_file :image, presence: false, styles: {small: '50x50!', size_250x250: '250x250!'}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/ , :if => :image_attached?
+
   ###############################
 
   def admin?
@@ -30,6 +34,10 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name.capitalize} #{last_name.try(:capitalize)}"
+  end
+
+  def image_attached?
+    self.image.present?
   end
 
 end
