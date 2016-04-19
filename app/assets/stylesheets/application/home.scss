@@ -393,6 +393,100 @@ span.heading:after{
   span.heading{
     font-size: 40px;
   }
+  //top header section
+
+  .search-main-con{
+    position: relative;
+    width:100%;
+    display:inline-block;
+    h2{
+      font-size:100px;
+      span{
+        font-size:50px;
+      }
+    }
+    .search-main-form{
+      width: 80%;
+    }
+    .search-form{
+      position: relative;
+      width: 24.7%;
+      display: inline-block;
+    }
+    .search-textfield{
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      padding:9px 5px 9px 43px;
+      a{
+        color: #ffffff;
+      }
+    }
+    .date-textfield{
+      padding:9px 5px;
+    }
+    .pax-textfield{
+      padding:9px 5px 9px 33px;
+    }
+    .text-white{
+      color: #ffffff;
+    }
+    .search-icon{
+      background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/137/original/search_icon.png?1460550683);
+    }
+    .departure-icon{
+      width: 37px;
+      height: 20px;
+      display: inline-block;
+      background-position: -9px -11px;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+    }
+    .arrival-icon{
+      width: 37px;
+      height: 20px;
+      display: inline-block;
+      background-position: -59px -11px;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+    }
+    .pax-icon{
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background-position: -132px -9px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    .cross-icon{
+      position: absolute;
+      top: -10px;
+      right: -3px;
+      color: #ffffff;
+    }
+    .search-btn{
+      width: 14.5%;
+      background-color: $main-skyblue-color;
+      display: inline-block;
+      padding:10px 0;
+      text-align: center;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .add-trip-btn{
+      color: #ffffff;
+      display: inline-block;
+      padding: 9px 30px;
+      border: 1px solid #ffffff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
+
   //jetsetgo experince section
   .experience-main-con{
     .experience-widget {
