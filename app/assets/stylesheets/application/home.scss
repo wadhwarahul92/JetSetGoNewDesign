@@ -1,0 +1,459 @@
+$main-skyblue-color : rgb(27,143,188);
+
+span.heading{
+  font-size:70px;
+  color: $main-skyblue-color;
+  display: inline-block;
+  margin:0 0 40px 0;
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+}
+span.heading:after{
+  content: "";
+  background-color: $main-skyblue-color;
+  height: 3px;
+  position: absolute;
+  width: 30%;
+  max-width: 100px;
+  bottom: -2px;
+  left: -5px;
+}
+//top header section
+.top-header-search-con{
+	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
+	width:100%;
+	min-height:600px;		
+	header{
+		width:100%;
+		display:inline-block;
+		margin:10px 0;
+		.logo-con{
+			.logo-img{
+				max-width:120px;
+			}
+		}
+		.right-header-con{
+			ul{
+				padding:0;
+				margin:0;
+				li{
+					float:right;
+					list-style:none;
+					padding:12px;
+					font-size:16px;
+					a{
+						color:#ffffff;
+						text-decoration:none;
+					}
+				}
+			}
+		}
+	}
+	.search-main-con{
+        position: relative;
+		width:100%;
+		display:inline-block;
+		h2{
+			font-size:130px;
+			color:#ffffff;
+			margin:30px 0 20px 0;
+			span{
+				display:block;
+				font-size:80px;
+			}
+		}
+        .search-main-form{
+          position: relative;
+          margin-bottom: 15px;
+          display: inline-block;
+          width: 85%;
+        }
+        .search-form{
+          position: relative;
+          width: 24.7%;
+          display: inline-block;
+        }
+        .search-textfield{
+          width: 100%;
+          background-color: transparent;
+          border: 1px solid #ffffff;
+          padding:9px 5px 9px 43px;
+          a{
+            color: #ffffff;
+          }
+        }
+        .date-textfield{
+          padding:9px 5px;
+        }
+        .pax-textfield{
+          padding:9px 5px 9px 33px;
+        }
+        .text-white{
+          color: #ffffff;
+        }
+        .search-icon{
+          background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/137/original/search_icon.png?1460550683);
+        }
+        .departure-icon{
+          width: 37px;
+            height: 20px;
+            display: inline-block;
+            background-position: -9px -11px;
+            position: absolute;
+            top: 10px;
+            left: 5px;
+          }
+        .arrival-icon{
+          width: 37px;
+          height: 20px;
+          display: inline-block;
+          background-position: -59px -11px;
+          position: absolute;
+          top: 10px;
+          left: 5px;
+        }
+        .pax-icon{
+          width: 24px;
+          height: 24px;
+          display: inline-block;
+          background-position: -132px -9px;
+          position: absolute;
+          top: 5px;
+          left: 5px;
+        }
+        .cross-icon{
+          position: absolute;
+          top: -10px;
+          right: -3px;
+          color: #ffffff;
+        }
+        .search-btn{
+          width: 14.5%;
+          background-color: $main-skyblue-color;
+          display: inline-block;
+          padding:10px 0;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+        }
+        .add-trip-btn{
+          color: #ffffff;
+          display: inline-block;
+          padding: 9px 30px;
+          border: 1px solid #ffffff;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+        }
+	}
+}
+
+//jetsetgo experince section
+.experience-main-con{
+  text-align: center;
+  padding:20px 0 30px 0;
+  .experience-widget{
+    .experience-img{
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      .experience-hover{
+        background-color: rgba(0,0,0,0);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        p{
+          color: #ffffff;
+          font-size: 12px;
+          padding: 20px;
+          margin: 40px 0 20px 0;
+          opacity: 0;
+          -moz-transform: scale(2);
+          -webkit-transform: scale(2);
+          -o-transform: scale(2);
+          -ms-transform: scale(2);
+          transform: scale(2);
+          -webkit-transition: all 0.6s ease-in-out;
+          -moz-transition: all 0.6s ease-in-out;
+          -ms-transition: all 0.6s ease-in-out;
+          -o-transition: all 0.6s ease-in-out;
+          transition: all 0.6s ease-in-out;
+        }
+        h5{
+          opacity: 0;
+          -moz-transform: scale(3);
+          -webkit-transform: scale(3);
+          -o-transform: scale(3);
+          -ms-transform: scale(3);
+          transform: scale(3);
+          -webkit-transition: all 0.6s ease-in-out;
+          -moz-transition: all 0.6s ease-in-out;
+          -ms-transition: all 0.6s ease-in-out;
+          -o-transition: all 0.6s ease-in-out;
+          transition: all 0.6s ease-in-out;
+          a{
+            color: $main-skyblue-color;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    h3{
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+  }
+  .experience-widget:hover > .experience-img .experience-hover{
+    background-color: rgba(0,0,0,0.6);
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+  }
+  .experience-widget:hover > .experience-img .experience-hover p{
+    opacity: 1;
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+  .experience-widget:hover > .experience-img .experience-hover h5{
+    opacity: 1;
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+  }
+}
+
+//jetsteel section
+.jetsteel-main-con{
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/146/original/jetsteals_bg.jpg?1460637416);
+  min-height: 400px;
+  background-size: cover;
+  padding: 20px 0 30px 0;
+  span.heading{
+    margin:0 0 0 6px;
+    color: #ffffff;
+  }
+  .sub-heading{
+    font-size: 23px;
+    color: #ffffff;
+  }
+  .jetsteal-con{
+    width: 100%;
+    margin: 20px 0;
+    .jetsteal-text{
+      font-size: 20px;
+      margin: 0;
+      margin-top: 11px;
+      color: #ffffff;
+      .rotate-plain-icon{
+        margin:0 30px;
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+    .jetsteal-price{
+      display: inline-block;
+      padding: 5px 20px;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      font-size: 30px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
+  .line{
+    width: 100%;
+    height: 1px;
+    background-color: rgba(256,256,256,0.6);
+  }
+  .bottom-more-con{
+    width: 100%;
+    padding-top: 10px;
+    .more-btn{
+      background-color: #ffffff;
+      padding: 10px 30px;
+      display: inline-block;
+      color: #000;
+      font-size: 18px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
+}
+
+//jetsteel App section
+.jetsteal-app-con{
+  min-height: 460px;
+  padding: 30px 0;
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/147/original/jetsteals_app_bg.jpg?1460959358);
+  background-size: cover;
+  h2{
+    font-size: 50px;
+    color: #ffffff;
+    margin: 30px 0;
+  }
+  p{
+    font-size: 14px;
+    color: #ffffff;
+    text-align: justify;
+  }
+  .app-btn{
+    margin-top: 50px;
+  }
+}
+
+//media section
+.media-main-con{
+  padding: 30px 0;
+  .heading-con{
+    text-align: center;
+  }
+  .media-widget{
+    margin: 20px 0;
+    position: relative;
+    .media-img-con{
+      width: 28%;
+      display: inline-block;
+      float: left;
+    }
+    .media-widget-content{
+      width: 70%;
+      float:right;
+      h4{
+        font-size: 12px;
+        font-weight: bold;
+        padding-left: 10px;
+        margin: 0;
+      }
+      p{
+        font-size: 12px;
+        padding-left: 10px;
+        margin: 6px 0;
+      }
+    }
+    .media-border{
+      position: absolute;
+      right: -44px;
+      bottom: -52px;
+    }
+  }
+}
+
+//Subscrib section
+.subscrib-main-con{
+  background-color: #eeeeee;
+  padding: 20px 0;
+  .subscrib-textfield{
+    width: 70%;
+    padding: 20px 5px;
+    background-color: #ffffff;
+    border:0px;
+    float:left;
+    font-size: 20px;
+  }
+  .subscrib-btn{
+    width: 30%;
+    background-color: $main-skyblue-color;
+    border: 0;
+    float: right;
+    padding: 20px 0;
+    font-size: 20px;
+    color: #ffffff;
+  }
+}
+
+@media(max-width: 1023px){
+  span.heading{
+    font-size: 40px;
+  }
+  //jetsetgo experince section
+  .experience-main-con{
+    .experience-widget {
+      .experience-img {
+        height: 240px;
+        .experience-hover{
+          p{
+            padding: 10px;
+            margin: 0;
+          }
+          h5{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  //jetsteel App section
+  .jetsteal-app-con{
+    h2{
+      font-size: 30px;
+      color: #ffffff;
+      margin: 30px 0;
+    }
+    p{
+      font-size: 14px;
+      color: #ffffff;
+      text-align: justify;
+    }
+    .app-btn{
+      margin-top: 50px;
+    }
+  }
+}
+@media(max-width: 767px){
+
+  //jetsetgo experince section
+  .experience-main-con {
+    .experience-widget {
+      .experience-img {
+        .experience-hover{
+          max-width: 396px;
+          margin: 0 auto;
+          p{
+            margin: 30px 0;
+          }
+        }
+      }
+    }
+  }
+  .media-main-con{
+    .media-widget{
+      .media-img-con{
+        text-align: center;
+      }
+    }
+  }
+  .jetsteal-app-con{
+    min-height: inherit;
+    h2{
+      margin: 0;
+    }
+  }
+}

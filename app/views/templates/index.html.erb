@@ -1,4 +1,4 @@
-<a href="/about_us">About Us</a>
+<!-- <a href="/about_us">About Us</a>
 <a href="/jet_set_wed">JetSetWed™</a>
 <a href="/heli_set_go">HeliSetGo™</a>
 <a href="/jet_set_yatra">JetSetYatra™</a>
@@ -9,7 +9,12 @@
 <a href="/join_us">Join Us</a>
 <a href="/organisations" target="_self">JetYouOwn™</a>
 <a href="/terms_of_use">Terms of Use</a>
-<a href="/privacy_policy">Privacy Policy</a>
+<a href="/privacy_policy">Privacy Policy</a> -->
+<!--<div class="col-sm-12">-->
+<!---->
+<!--<a ng-click="ctrl.create()" href="">Search</a>-->
+<!--<a href="" ng-click="ctrl.addActivity()">Add Trip</a>-->
+<!--</div>-->
 
 <script type="text/ng-template" id="airportsTypeAhead.html">
   <a>
@@ -18,10 +23,35 @@
   </a>
 </script>
 
+<!-- top header search con start -->
+<div class="top-header-search-con">
+  <!-- header start -->
+  <header>
+    <div class="col-md-2 logo-con">
+      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/136/original/jsg_logo.png?1460534509" class="img-responsive logo-img" />
+    </div>
+    <div class="right-header-con col-sm-10">
+      <ul>
+        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Testimonial</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- header finish -->
 
-  <div class="col-sm-12">
-    <div ng-repeat="activity in ctrl.activities">
-      <input title="Departure Airport"
+  <!-- search con start -->
+  <div class="search-main-con">
+    <h2 class="col-xs-12">
+      <span>Your</span>Private Jet
+    </h2>
+    <div class="col-xs-12">
+      <span class="search-main-form" ng-repeat="activity in ctrl.activities">
+        <span class="search-form">
+          <span class="search-icon departure-icon"></span>
+          <input class="search-textfield text-white" title="Departure Airport"
              ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Departure"
              autocomplete="off"
@@ -31,7 +61,10 @@
              ng-model="activity.departure_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
-      <input title="Arrival Airport"
+        </span>
+        <span class="search-form">
+          <span class="search-icon arrival-icon"></span>
+          <input class="search-textfield text-white" title="Arrival Airport"
              ng-disabled="$index+1 < ctrl.activities.length"
              placeholder="Arrival"
              autocomplete="off"
@@ -41,22 +74,262 @@
              ng-model="activity.arrival_airport"
              uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
              type="text">
-      <div class="dropdown datetimepicker-holder">
-        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-        <ul class="dropdown-menu" role="menu">
-          <datetimepicker
-              data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-          data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-          datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-          ng-model="activity.start_at"></datetimepicker>
-        </ul>
-      </div>
-      <input type="number"
-             ng-disabled="$index+1 < ctrl.activities.length"
-             ng-model="activity.pax"
-             placeholder="Pax">
-      <a href="" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">remove</a>
+        </span>
+        <span class="search-form">
+          <div class="dropdown datetimepicker-holder search-textfield date-textfield">
+            <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+            <ul class="dropdown-menu" role="menu">
+              <datetimepicker
+                  data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+              data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+              datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+              ng-model="activity.start_at"></datetimepicker>
+            </ul>
+          </div>
+        </span>
+        <span class="search-form">
+          <span class="search-icon pax-icon"></span>
+          <input class="search-textfield text-white pax-textfield" type="number"
+                 ng-disabled="$index+1 < ctrl.activities.length"
+                 ng-model="activity.pax"
+                 placeholder="Pax">
+        </span>
+        <a href="javascript:void(0)" class="cross-icon" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </span>
+        <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
+        <a class="add-trip-btn" href="" ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
     </div>
-    <a ng-click="ctrl.create()" href="">Search</a>
-    <a href="" ng-click="ctrl.addActivity()">Add Trip</a>
   </div>
+  <!-- search con finish -->
+
+</div>
+<!-- top header search con finish -->
+
+<!-- jetsetgo experience con start -->
+<div class="experience-main-con">
+  <span class="heading">JetSetGo Experience</span>
+  <div class="clearfix"></div>
+  <div class="col-md-4 col-sm-4 col-xs-12 experience-widget">
+    <div class="experience-img">
+      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/142/original/experience_img1.jpg?1460624904" alt="" />
+      <div class="experience-hover">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <h5><a href="#">Take a Look</a></h5>
+      </div>
+    </div>
+    <h3>JetSetWed&trade;</h3>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-12 experience-widget">
+    <div class="experience-img">
+      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/143/original/experience_img2.jpg?1460624954" alt="" />
+      <div class="experience-hover">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <h5><a href="#">Take a Look</a></h5>
+      </div>
+    </div>
+    <h3>JetSetWed&trade;</h3>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-12 experience-widget">
+    <div class="experience-img">
+      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/144/original/experience_img3.jpg?1460625002" alt="" />
+      <div class="experience-hover">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <h5><a href="#">Take a Look</a></h5>
+      </div>
+    </div>
+    <h3>JetSetWed&trade;</h3>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- jetsetgo experience con finish -->
+
+<!-- jetsteal con start -->
+<div class="jetsteel-main-con">
+  <div class="col-xs-12">
+    <span class="heading">JetSteals&trade;</span>
+    <p class="sub-heading">Future is now ready for boarding.</p>
+  </div>
+  <div class="col-xs-12">
+    <div class="jetsteal-con">
+      <div class="row">
+        <div class="col-md-9 col-sm-8 col-xs-8">
+          <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-12">
+              <p class="jetsteal-text">Mumbai <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Delhi</p>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <p class="jetsteal-text">Mar 22 2016 Any Time</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-4">
+          <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 1,50,000</span>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="jetsteal-con">
+      <div class="row">
+        <div class="col-md-9 col-sm-8 col-xs-8">
+          <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-12">
+              <p class="jetsteal-text">Bhopal <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Cochin</p>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <p class="jetsteal-text">Mar 30 2016 Any Time</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-4">
+          <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,17,000</span>
+        </div>
+      </div>
+    </div>
+      <!--<div class="row">-->
+        <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="jetsteal-text">Mumbai</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="col-sm-1">&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="jetsteal-text"><i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="jetsteal-text">Delhi</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--<div class="col-md-4 col-sm-4">-->
+          <!--<p class="jetsteal-text">Mumbai <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Delhi</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-5 col-sm-5">-->
+          <!--<p class="jetsteal-text">Mar 22 2016 Any Time</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-3 col-sm-3">-->
+          <!--<span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 1,50,000</span>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+      <!--</div>-->
+
+    <!--<div class="jetsteal-con">-->
+      <!--<div class="row">-->
+        <!--<div class="col-md-4 col-sm-4">-->
+          <!--<p class="jetsteal-text">Bhopal <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Cochin</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-5 col-sm-5">-->
+          <!--<p class="jetsteal-text">Mar 30 2016 Any Time</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-3 col-sm-3">-->
+          <!--<span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,17,000</span>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="bottom-more-con">
+      <div class="row">
+        <div class="col-xs-6">
+          <a href="#" class="more-btn">More</a>
+        </div>
+        <div class="col-xs-6">
+          <a href="#" border="0"><img src="" alt="" /></a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!-- jetsteal con finish -->
+
+<!--jetsteal app con start-->
+<div class="jetsteal-app-con">
+  <div class="col-md-7 col-sm-12 col-xs-12">
+    <h2>The JetSteal App</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+    <p><a href="#"><img class="app-btn" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/156/original/app_icon.png?1460961679" alt="" /></a></p>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!--jetsteal app con finish-->
+
+<!--media con start-->
+<div class="media-main-con">
+  <div class="col-xs-12 heading-con">
+    <span class="heading">Media</span>
+  </div>
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/150/original/media_icon-1.png?1460959401" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        </div>
+        <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/149/original/dotted_line.png?1460959384" class="media-border" alt="" />
+      </div>
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/151/original/media_icon-2.png?1460959420" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/149/original/dotted_line.png?1460959384" class="media-border" alt="" />
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/152/original/media_icon-3.png?1460959434" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/153/original/media_icon-4.png?1460959448" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/154/original/media_icon-5.png?1460959462" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 media-widget">
+        <span class="media-img-con">
+          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/155/original/media_icon-6.png?1460959476" alt="" />
+        </span>
+        <div class="media-widget-content">
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!--media con finish-->
+
+<!--subscrib con start-->
+<div class="subscrib-main-con">
+  <div class="col-sm-10 col-sm-offset-1">
+    <input type="text" placeholder="Enter your email" class="subscrib-textfield" />
+    <button class="subscrib-btn">Subscribe</button>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<!--subscrib con finish-->
+
