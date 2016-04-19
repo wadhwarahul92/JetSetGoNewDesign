@@ -64,15 +64,13 @@ $main-blue-color:rgb(5, 81, 139);
 }
 
 .trip-enquiry{
-  background: rgba(31,141,212,0.2);
-  border: 1px solid #1f8dd4;
-  color: #1f8dd4;
+  border: none;
+  background-color: $main-blue-color;
 }
 
 .trip-quote{
-  background: rgba(187,83,0,0.2);
-  border: 1px solid #bb5300;
-  color: #bb5300;
+  border: none;
+  background-color: $main-orange-color;
 }
 
 .btn-red{
@@ -278,19 +276,27 @@ input#phone{
   padding-left: 35px;
 }
 
-.trip-event{
+.aircraft_unavailability_event{
+  border: none;
   border-radius: 0;
   padding: 5px;
   cursor: pointer;
-  background: rgba(5,81,139,0.4);
-  border: 1px solid #05518b;
-  color: #05518b;
+  background-color: rgb(241, 92, 92);
+  &:hover{
+    background-color: rgb(204, 102, 0);
+  }
+}
+
+.trip-event{
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  cursor: pointer;
+  background-color: $sky-blue-color;
 }
 
 .event-empty-leg{
-  background: rgba(237,202,0,0.2);
-  border: 1px solid #edca00;
-  color: #AF9814;
+  background-color: $main-yellow-color;
 }
 
 .btn-primary{
@@ -919,14 +925,6 @@ input#phone{
   margin-bottom: 10px;
 }
 
-.event-unavailability,.aircraft_unavailability_event{
-  border-radius: 0;
-  padding: 5px;
-  cursor: pointer;
-  &:hover{
-    background-color: rgb(241,92,92);
-  }
-  border: 1px solid rgb(241, 92, 92);
-  color: #f15c5c;
-  background: rgba(241,92,92,0.2);
+.event-unavailability{
+  background-color: $main-red-color;
 }

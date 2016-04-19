@@ -16,6 +16,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>id</th>
         <th></th>
         <th>Name</th>
         <th>State</th>
@@ -28,6 +29,7 @@
       <tbody>
       <% @cities.each do |city| %>
           <tr>
+            <td><%= city.id %></td>
             <td>
               <% if city.image.present? %>
                   <%= image_tag city.image.url(:original) %>
