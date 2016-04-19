@@ -1,0 +1,37 @@
+.custom-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.search-input{
+  width: 20%;
+  display: inherit;
+}
+.search-input-box span{
+  padding: 1px;
+  input, .custom-calander{
+    border: none;
+    border-bottom: 2px solid rgb(30,143,187);
+    box-shadow: none;
+    color: rgb(30,143,187);
+  }
+  .search-btn{
+    color: rgb(30,143,187);
+    padding: 5px 10px 5px 10px;
+    border-radius: 6px;
+    border: 2px solid rgb(30,143,187);
+  }
+}
+.padding-none{
+  padding: 0;
+}
+.custom-btn{
+  background: #1e8fbb;
+  color: white;
+  display: inline-block;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 5px;
+}
+.search-result-box{
+  padding: 20px;
+}
