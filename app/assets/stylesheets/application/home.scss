@@ -389,101 +389,69 @@ span.heading:after{
   }
 }
 
+@media(max-width: 1100px){
+  //top header section
+  .top-header-search-con{
+    background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
+    width:100%;
+    min-height:600px;
+    .search-main-con{
+      h2{
+        font-size:110px;
+        span{
+          font-size:70px;
+        }
+      }
+      .search-main-form{
+        width: 100%;
+      }
+      .search-form{
+      }
+      .search-textfield{
+
+      }
+      .departure-icon{
+      }
+      .arrival-icon{
+      }
+      .pax-icon{
+      }
+      .cross-icon{
+      }
+      .search-btn{
+        width: 15%;
+        margin-right: 10px;
+      }
+      .add-trip-btn{
+        color: #ffffff;
+        display: inline-block;
+        padding: 9px 30px;
+        border: 1px solid #ffffff;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
 @media(max-width: 1023px){
   span.heading{
     font-size: 40px;
   }
-  //top header section
 
-  .search-main-con{
-    position: relative;
+  //top header section
+  .top-header-search-con{
+    background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
     width:100%;
-    display:inline-block;
-    h2{
-      font-size:100px;
-      span{
-        font-size:50px;
+    min-height:600px;
+    .search-main-con{
+      h2{
+        font-size:100px;
+        span{
+          font-size:50px;
+        }
       }
-    }
-    .search-main-form{
-      width: 80%;
-    }
-    .search-form{
-      position: relative;
-      width: 24.7%;
-      display: inline-block;
-    }
-    .search-textfield{
-      width: 100%;
-      background-color: transparent;
-      border: 1px solid #ffffff;
-      padding:9px 5px 9px 43px;
-      a{
-        color: #ffffff;
-      }
-    }
-    .date-textfield{
-      padding:9px 5px;
-    }
-    .pax-textfield{
-      padding:9px 5px 9px 33px;
-    }
-    .text-white{
-      color: #ffffff;
-    }
-    .search-icon{
-      background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/137/original/search_icon.png?1460550683);
-    }
-    .departure-icon{
-      width: 37px;
-      height: 20px;
-      display: inline-block;
-      background-position: -9px -11px;
-      position: absolute;
-      top: 10px;
-      left: 5px;
-    }
-    .arrival-icon{
-      width: 37px;
-      height: 20px;
-      display: inline-block;
-      background-position: -59px -11px;
-      position: absolute;
-      top: 10px;
-      left: 5px;
-    }
-    .pax-icon{
-      width: 24px;
-      height: 24px;
-      display: inline-block;
-      background-position: -132px -9px;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-    }
-    .cross-icon{
-      position: absolute;
-      top: -10px;
-      right: -3px;
-      color: #ffffff;
-    }
-    .search-btn{
-      width: 14.5%;
-      background-color: $main-skyblue-color;
-      display: inline-block;
-      padding:10px 0;
-      text-align: center;
-      color: #ffffff;
-      text-decoration: none;
-    }
-    .add-trip-btn{
-      color: #ffffff;
-      display: inline-block;
-      padding: 9px 30px;
-      border: 1px solid #ffffff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
     }
   }
 
@@ -522,6 +490,54 @@ span.heading:after{
   }
 }
 @media(max-width: 767px){
+  .responsive-no-margin{
+    margin: 0;
+}
+  //top header section
+  .top-header-search-con{
+    background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
+    width:100%;
+    min-height:600px;
+    .search-main-con{
+      h2{
+        font-size:110px;
+        span{
+          font-size:70px;
+        }
+      }
+      .search-main-form{
+        width: 100%;
+      }
+      .search-form{
+        width: 49.7%;
+        margin-bottom: 5px;
+      }
+      .search-textfield{
+
+      }
+      .departure-icon{
+      }
+      .arrival-icon{
+      }
+      .pax-icon{
+      }
+      .cross-icon{
+      }
+      .search-btn{
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .add-trip-btn{
+        color: #ffffff;
+        display: inline-block;
+        padding: 9px 30px;
+        border: 1px solid #ffffff;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }
+    }
+  }
 
   //jetsetgo experince section
   .experience-main-con {
@@ -548,6 +564,113 @@ span.heading:after{
     min-height: inherit;
     h2{
       margin: 0;
+    }
+  }
+  //media section
+  .media-main-con{
+    .heading-con{
+    }
+    .media-widget{
+      .media-img-con{
+      }
+      .media-widget-content{
+        h4{
+        }
+        p{
+        }
+      }
+      .media-border{
+        display: none;
+      }
+    }
+  }
+
+  //jetsteel section
+  .jetsteel-main-con{
+    background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/146/original/jetsteals_bg.jpg?1460637416);
+    min-height: 400px;
+    background-size: cover;
+    padding: 20px 0 30px 0;
+    span.heading{
+      margin:0 0 0 6px;
+      color: #ffffff;
+    }
+    .sub-heading{
+      font-size: 23px;
+      color: #ffffff;
+    }
+    .jetsteal-con{
+      .jetsteal-text{
+      }
+      .jetsteal-price{
+        margin-top: 15px;
+      }
+    }
+    .bottom-more-con{
+      .more-btn{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+@media(max-width: 650px){
+  //top header section
+  .top-header-search-con{
+    background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
+    width:100%;
+    min-height:600px;
+    .search-main-con{
+      h2{
+        font-size:50px;
+        span{
+          font-size:20px;
+        }
+      }
+      .search-main-form{
+        width: 100%;
+      }
+      .search-form{
+        width: 100%;
+        margin-bottom: 5px;
+      }
+      .search-textfield{
+
+      }
+      .departure-icon{
+      }
+      .arrival-icon{
+      }
+      .pax-icon{
+      }
+      .cross-icon{
+      }
+      .search-btn{
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .add-trip-btn{
+      }
+    }
+  }
+
+  //Subscrib section
+  .subscrib-main-con{
+    .subscrib-textfield{
+      width: 100%;
+      padding: 10px 5px;
+      margin-bottom: 10px;
+      float:none;
+    }
+    .subscrib-btn{
+      width: 100%;
+      float: none;
+      padding: 10px 0;
     }
   }
 }

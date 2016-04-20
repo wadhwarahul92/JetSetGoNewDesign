@@ -301,11 +301,11 @@ no-captcha:first-child{
     }
   }
   .navbar-right{
-    width:200px;
+    width:inherit;
     margin:0 auto;
     li{
-      float:left;
-      width:50%;
+      float:none;
+      width:100%;
     }
   }
   .navbar-default{
