@@ -65,7 +65,7 @@ $main-blue-color:rgb(5, 81, 139);
 	    left:48%;
 	}
 	.schedule-main-left{
-		background-color:#f9f9f9;
+		*background-color: #f9f9f9;
 		//padding-bottom:20px;
 		h4.schedule-category{
 			font-size: 18px;
@@ -75,39 +75,88 @@ $main-blue-color:rgb(5, 81, 139);
 		    color: #ffffff;
 		}
 		ul.add-field-main{
-			padding:0;
-			margin:0;
+			padding: 0;
+			margin: 0;
 			li.add-field{
-				list-style:none;
-				padding:15px 0;
-				border-bottom:1px solid #eeeeee;
-				padding-left:10px;
+				list-style: none;
+				padding: 15px 0;
+				border-bottom: 1px solid #eeeeee;
 				span.bullet-dot{
-					width:10px;
-					height:10px;
-					border-radius:50%;
-					display:inline-block;
+					width: 10px;
+					height: 10px;
+					border-radius: 50%;
+					display: inline-block;
 				}
 				span.blue-color{
-					background-color:#1f8dd4;
+					background-color: #1f8dd4;
 				}
 				span.red-color{
 					background-color:$main-red-color;
 				}
+                span.yellow-color{
+                  background-color:$main-yellow-color;
+                }
+                span.grey-color{
+                  background-color:$gray-color;
+                }
+                span.green-color {
+                  background-color: $main-green-color;
+                }
 				a.add-trip{
-					color:#1f8dd4;
-					padding-left:5px;
-					font-size:16px;
-					text-decoration: none;
+                    width: 100%;
+                    font-size: 16px;
+                    text-decoration: none;
+                    padding: 10px;
+                    background-color: #1f8dd4;
+                    display: inline-block;
+                    color: #ffffff;
+
 				}
 				a.add-unavailability{
-					color:$main-red-color;
-					padding-left:5px;
-					font-size:16px;
+					width: 100%;
+					font-size: 16px;
 					text-decoration: none;
+                    padding: 10px;
+                    background-color: $main-red-color;
+                    display: inline-block;
+                    color: #ffffff;
 				}
+                .table{
+                  margin-bottom: 0;
+                  td{
+                    padding: 0;
+                    padding-right: 5px;
+                  }
+                }
 			}
+            .blue-text-color{
+              color:#1f8dd4;
+            }
+            .red-text-color{
+              color:$main-red-color;
+            }
+            .yellow-text-color{
+              color:$main-yellow-color;
+            }
+            .grey-text-color{
+              color:$gray-color;
+            }
+            .green-text-color{
+              color:$main-green-color;
+            }
+            li.add-bullet{
+              width:50%;
+              border-bottom: 0px;
+              text-align: center;
+            }
 		}
+        ul.color-code-con{
+            margin-top: 30px;
+            li.add-field{
+              padding: 5px 0;
+              text-align: left;
+            }
+        }
 	}
 }
 .table-main{

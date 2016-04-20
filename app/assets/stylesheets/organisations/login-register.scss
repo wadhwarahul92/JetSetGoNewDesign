@@ -16,8 +16,8 @@ $main-blue-color:rgb(5, 81, 139);
 }
 .login-bg-con{
 	width:100%;
-	background:url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/133/original/login-bg-image.jpg?1459768847") no-repeat;
-	background-size:cover;
+	background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/172/original/login-bg.jpg?1461133041") no-repeat;
+	background-size: cover;
 	background-attachment: fixed;
 	*background-color:$main-green-color;
 	}
@@ -42,28 +42,38 @@ $main-blue-color:rgb(5, 81, 139);
 		margin:10px 0;
 	}
 }
+.login-black-bg{
+  padding: 8px;
+  background-color:rgba(0,0,0,0.3);
+  margin-top:20px;
+  border-radius:10px;
+}
 .login-register-main{
-	background-color:rgba(256,256,256,0.8);
+	background-color:rgba(256,256,256,1);
 	padding-bottom:30px;
-	border:8px solid rgba(0,0,0,0.9);
-	margin-top:20px;
-	border-radius:15px;
 	min-height:400px;
-	-webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
-	box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+    border-radius:6px;
+	//-webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+	//-moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+	//box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
 	h5{
 		font-size:28px;
+        -webkit-border-top-left-radius: 6px;
+        -webkit-border-top-right-radius: 6px;
+        -moz-border-radius-topleft: 6px;
+        -moz-border-radius-topright: 6px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
 		margin:0;
 		padding:15px;
-		*background-color:$main-blue-color;
-		color:#292929;
+		background-color:$main-green-color;
+		color:#ffffff;
 		text-align:center;
 		*margin-bottom:10px;
 		*border-bottom:1px solid $main-blue-color;
 		position:relative;
 		.user-icon-top{
-			color:$main-blue-color;
+			*color:$main-blue-color;
 		}
 		.span-text{
 			display:inline-block;

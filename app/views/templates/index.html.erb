@@ -26,20 +26,37 @@
 <!-- top header search con start -->
 <div class="top-header-search-con">
   <!-- header start -->
-  <header>
-    <div class="col-md-2 logo-con">
-      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/136/original/jsg_logo.png?1460534509" class="img-responsive logo-img" />
-    </div>
-    <div class="right-header-con col-sm-10">
-      <ul>
-        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Testimonial</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </div>
-  </header>
+  <div ng-controller="HeaderController as ctrl">
+    <nav ng-hide="ctrl.isFromMobile" id="header" class="navbar navbar-default home-header header">
+      <div class="container-fluid">
+        <div class="navbar-header navbar-responsive">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">
+              <a class="logo-img" href="/"><img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>
+            </div>
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
+              <div class="col-sm-10 col-xs-12 right-nav pull-right">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a class="no-right-padding" href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Testimonial</a></li>
+                  <li><a href="#">About</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </div>
   <!-- header finish -->
 
   <!-- search con start -->
