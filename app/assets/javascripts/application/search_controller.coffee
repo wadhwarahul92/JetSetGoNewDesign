@@ -8,6 +8,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @tax = null
 
+  @user = false
+
+  if CurrentUserService.currentUser != null
+    @user = CurrentUserService.currentUser
+
   AirportsService.getAirports().then(
     =>
       @airports = AirportsService.airports

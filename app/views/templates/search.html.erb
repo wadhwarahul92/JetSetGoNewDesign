@@ -3,14 +3,17 @@
     <h1 style="color: rgb(30,143,187);">Choose Your Jet</h1>
   </div>
   <div class="col-sm-4">
-    <div class="col-sm-4"><img class="custom-img" src="http://avilabrothers.com/wp-content/uploads/2012/04/Usher12.jpg" alt=""></div>
-    <div class="col-sm-8" style="color: rgb(166,166,166)"> User full name</div>
+    <div class="text-right" ng-show="ctrl.user">
+      <span><img class="custom-img"  ng-src="{{ctrl.user.image}}" alt=""></span>
+      <span style="color: rgb(166,166,166)">{{ctrl.user.full_name}}</span>
+    </div>
   </div>
 </div>
 <div class="col-sm-12 search-input-box">
-  <span><input class="form-control search-input" type="text" id="departure_airport"></span>
-  <span><input class="form-control search-input" type="text" id="arrival_airport"></span>
-  <span><input class="form-control search-input" type="text" id="pax"></span>
+  <div class="col-sm-12">
+    <span><input class="form-control search-input" type="text" id="departure_airport"></span>
+    <span><input class="form-control search-input" type="text" id="arrival_airport"></span>
+    <span><input class="form-control search-input" type="text" id="pax"></span>
   <span>
     <div class="form-control search-input custom-calander dropdown datetimepicker-holder">
       <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
@@ -24,7 +27,8 @@
       </ul>
     </div>
   </span>
-  <span><a class="search-btn" ng-click="ctrl.create()" href="">Modify</a></span>
+    <span><a class="search-btn" ng-click="ctrl.create()" href="">Modify</a></span>
+  </div>
 </div>
 
 <div class="col-sm-12">
