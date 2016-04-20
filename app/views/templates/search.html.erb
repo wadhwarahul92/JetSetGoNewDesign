@@ -1,43 +1,88 @@
-<div class="search-body"></div>
-<div class="col-sm-3">
-
+<div class="col-sm-12">
+  <div class="col-sm-8">
+   <h1 style="color: rgb(30,143,187);">Choose Your Jet</h1>
+  </div>
+  <div class="col-sm-4">
+    <div class="col-sm-4"><img class="custom-img" src="http://avilabrothers.com/wp-content/uploads/2012/04/Usher12.jpg" alt=""></div>
+    <div class="col-sm-8" style="color: rgb(166,166,166)"> User full name</div>
+  </div>
 </div>
-<div class="col-sm-9">
-  <div style="border: 1px solid lightgray" class="margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
-    <a href="" class="btn btn-primary" ng-click="ctrl.enquire(result)">Enquire now</a>
-    <a href="" class="btn btn-success" ng-click="ctrl.previewProForma(result)">View Pro Forma Invoice</a>
-    <!--<img ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">-->
-    <ul class="list-unstyled">
-      <li><h4>{{result.aircraft.tail_number}}, {{result.aircraft.aircraft_type.name}}</h4></li>
-      <li>Baggage capacity: {{result.aircraft.baggage_capacity_in_kg}} Kg</li>
-      <li ng-repeat="flight_plan in result.flight_plan">
-        <h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>to</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}} </h4>
-        <div>{{ctrl.formatTime(flight_plan.start_at)}} --> {{ctrl.formatTime(flight_plan.end_at)}}</div>
-        <div>Flying cost: <i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"" | indianCurrency}}</div>
-        <div>Handling cost at {{ctrl.airportForId(flight_plan.departure_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>
-        <div>Landing cost at {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival}}</div>
-        <div style="background-color: lightgray;cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
-          <h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>
-          Accommodation At: {{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}
-          <br>
-          Cost: <i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}
-          <br>
-          Nights: {{ flight_plan.accommodation_plan.nights }}
+<div class="col-sm-12 search-input-box">
+  <span><input class="form-control search-input" type="text" id="departure_airport"></span>
+  <span><input class="form-control search-input" type="text" id="arrival_airport"></span>
+  <span><input class="form-control search-input" type="text" id="pax"></span>
+    <span>
+      <div class="search-input custom-calander dropdown datetimepicker-holder">
+        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker
+          data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+          data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+          datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+          ng-model="activity.start_at"></datetimepicker>
+        </ul>
+      </div>
+    </span>
+  <span><a class="search-btn" ng-click="ctrl.create()" href="">Modify</a></span>
+</div>
+
+<div class="col-sm-12">
+  <div class="col-sm-6 padding-none margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+    <div class="col-sm-12 search-result-box">
+      <div class="col-sm-12" style="border: 1px solid lightgray; padding: 0">
+        <img style="width: 100%;height: 300px;" ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">
+      </div>
+      <div class="col-sm-12" style="border: 1px solid lightgray; padding: 0">
+        <div class="col-sm-8">
+          <h3>{{result.aircraft.aircraft_type.name}}</h3>
+          <a href="" class="custom-btn" ng-click="">Details</a>
+          <a href="" class="custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>
         </div>
-        <div style="background-color: yellow; cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
-          <h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>
-          <div style="border: 1px solid lightgray" ng-repeat="empty_leg in flight_plan.empty_leg_plan">
-            <div>{{ ctrl.airportForId(empty_leg.departure_airport_id).name }} <strong>to</strong> {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</div>
-            <div>{{ ctrl.formatTime(empty_leg.start_at) }} --> {{ ctrl.formatTime(empty_leg.end_at) }}</div>
-            <div>Flying cost: <i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</div>
-            <div>Handling cost at {{ ctrl.airportForId(empty_leg.departure_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}} </div>
-            <div>Landing cost at {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}} </div>
-          </div>
+        <div class="col-sm-4 text-right">
+          <h3><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h3>
+          <a href="" class="custom-btn" ng-click="ctrl.enquire(result)">Enquiry</a>
+
         </div>
-      </li>
-    </ul>
-    <h3>Tax: {{ctrl.tax}}</h3>
-    <h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
+      </div>
+    </div>
+
+
+
+    <!--<h3>Tax: {{ctrl.tax}}</h3>-->
+    <!--<h4>Total Cost: <i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>-->
+
+
+
+    <!--<ul class="list-unstyled">-->
+      <!--<li><h4>{{result.aircraft.tail_number}}, {{result.aircraft.aircraft_type.name}}</h4></li>-->
+      <!--<li>Baggage capacity: {{result.aircraft.baggage_capacity_in_kg}} Kg</li>-->
+      <!--<li ng-repeat="flight_plan in result.flight_plan">-->
+        <!--<h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>to</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}} </h4>-->
+        <!--<div>{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
+        <!--<div>Flying cost: <i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"" | indianCurrency}}</div>-->
+        <!--<div>Handling cost at {{ctrl.airportForId(flight_plan.departure_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>-->
+        <!--<div>Landing cost at {{ctrl.airportForId(flight_plan.arrival_airport_id).name}}: <i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival}}</div>-->
+        <!--<div style="background-color: lightgray;cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">-->
+          <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>-->
+          <!--Accommodation At: {{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}-->
+          <!--<br>-->
+          <!--Cost: <i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}-->
+          <!--<br>-->
+          <!--Nights: {{ flight_plan.accommodation_plan.nights }}-->
+        <!--</div>-->
+        <!--<div style="background-color: yellow; cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">-->
+          <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>-->
+          <!--<div style="border: 1px solid lightgray" ng-repeat="empty_leg in flight_plan.empty_leg_plan">-->
+            <!--<div>{{ ctrl.airportForId(empty_leg.departure_airport_id).name }} <strong>to</strong> {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</div>-->
+            <!--<div>{{ ctrl.formatTime(empty_leg.start_at) }} &ndash;&gt; {{ ctrl.formatTime(empty_leg.end_at) }}</div>-->
+            <!--<div>Flying cost: <i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</div>-->
+            <!--<div>Handling cost at {{ ctrl.airportForId(empty_leg.departure_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}} </div>-->
+            <!--<div>Landing cost at {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}} </div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</li>-->
+    <!--</ul>-->
+
   </div>
   <div ng-show="ctrl.results.length == 0">
     <h3 class="text-center">Oops! we don't have any aircrafts available matching your query.</h3>
