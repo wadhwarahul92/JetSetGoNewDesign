@@ -2,6 +2,18 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @activities = [{}]
 
+  @options = {
+    barColor:'#2C3E50'
+    scaleColor:false
+    lineWidth:10
+    lineCap:'circle'
+    size: 400
+    animate: 5000
+    onStep: (from, to, current)->
+      span = $(this.el).find('.percent')
+      span.html("#{parseInt(current)}%")
+  }
+
   $scope.$watch(
     =>
       @activities
