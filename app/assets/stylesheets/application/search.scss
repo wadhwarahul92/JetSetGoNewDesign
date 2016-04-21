@@ -1,6 +1,6 @@
 .custom-img{
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
 }
 .search-input{
@@ -82,4 +82,22 @@
   -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.36);
   -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.36);
   box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.36);
+}
+.pd-10{
+  padding: 10px;
+}
+.font-16{
+  font-size: 16px;
+}
+.ft-16-gray{
+  font-size: 16px;
+  color: gray;
+}
+.ft-lg-blue{
+  font-size: 30px;
+  color: #1e8fbb;
+}
+.ft-md-blue{
+  font-size: 24px;
+  color: #1e8fbb;
 }

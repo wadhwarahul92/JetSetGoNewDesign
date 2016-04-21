@@ -1,11 +1,11 @@
 <div class="col-sm-12">
   <div class="col-sm-8">
-    <h1 style="color: rgb(30,143,187);">Choose Your Jet</h1>
+    <h1 style="color: rgb(30,143,187);">Choose Your Jet{{ctrl.tax}}</h1>
   </div>
   <div class="col-sm-4">
     <div class="text-right" ng-show="ctrl.user">
-      <span><img class="custom-img"  ng-src="{{ctrl.user.image}}" alt=""></span>
-      <span style="color: rgb(166,166,166)">{{ctrl.user.full_name}}</span>
+      <span class="pd-10"><img class="custom-img"  ng-src="{{ctrl.user.image}}" alt=""></span>
+      <span class="font-16" style="color: rgb(166,166,166)">{{ctrl.user.full_name}}</span>
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
         <div class="col-sm-12" style="border: 1px solid lightgray; padding: 0">
           <div class="col-sm-8">
             <h3>{{result.aircraft.aircraft_type.name}}</h3>
-            <a href="" class="no-text-decoration custom-btn" ng-click="">Details</a>
+            <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result, ctrl.tax)">Details</a>
             <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>
           </div>
           <div class="col-sm-4 text-right">
