@@ -276,6 +276,7 @@ Rails.application.routes.draw do
       get 'privacy_policy'
       get 'enquiry'
       get 'quotes'
+      get 'search_detail'
     end
   end
 
@@ -312,6 +313,7 @@ Rails.application.routes.draw do
   get 'terms_of_use' => 'route_overrides#welcome_index'
   get 'privacy_policy' => 'route_overrides#welcome_index'
   get 'quotes' => 'route_overrides#welcome_index'
+  get 'search_detail' => 'route_overrides#welcome_index'
 
 
   #TMP URL

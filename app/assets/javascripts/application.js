@@ -25,6 +25,7 @@
 //= require ./application/contact_us_controller
 //= require ./application/quotes_controller
 //= require ./application/about_us_controller
+//= require ./application/search_detail_controller
 
 $(document).on('ready page:load', function(){
 

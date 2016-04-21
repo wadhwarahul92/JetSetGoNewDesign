@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService','$uibModal', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal)->
 
   @results = []
 
@@ -7,6 +7,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @aircrafts = []
 
   @tax = null
+
+  @user = false
+
+  if CurrentUserService.currentUser != null
+    @user = CurrentUserService.currentUser
 
   AirportsService.getAirports().then(
     =>
@@ -17,8 +22,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     (data)=>
       @tax = data.tax
       @results = data.results
-      for result in @results
-        @totalTripCost(result)
+#      for result in @results
+#        @totalTripCost(result)
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
         =>
           @aircrafts = AircraftsService.aircrafts
@@ -39,7 +44,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     _.find(@airports, {id: id})
 
   @totalTripCost = (trip)->
-#    return trip.totalCost if trip.totalCost
     cost = 0.0
     for flight_plan in trip.flight_plan
       cost += flight_plan.flight_cost
@@ -58,7 +62,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
               cost += empty_leg.watch_hour_cost
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
-#    trip.totalCost = cost
+
     cost + ((@tax / 100) * cost)
 
   @formatTime = (time)->
@@ -119,6 +123,22 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         message: 'Please sign-in or register first.'
         classes: ['alert-danger']
       CurrentUserService.openSignInModal()
+
+
+  @modalDetail = (selectedDetail, tax)->
+    $uibModal.open(
+      size: 'lg'
+      templateUrl: '/templates/search_detail'
+      controller: 'SearchDetailController'
+      controllerAs: 'ctrl'
+      backdrop: false
+      resolve: {
+        detail: ->
+          return selectedDetail
+        tax: ->
+          return tax
+      }
+    )
 
   return undefined
 ]
