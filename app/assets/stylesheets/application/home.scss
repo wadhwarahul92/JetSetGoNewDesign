@@ -308,6 +308,32 @@ span.heading:after{
   }
 }
 
+//Jetsetgo Pulse section
+.pulse-main-con{
+  width: 100%;
+  display: inline-block;
+  padding: 20px 0 30px 0;
+  .canvas-main{
+    text-align: center;
+    position: relative;
+    span.percent{
+      position: absolute;
+      left: 45%;
+      top: 36%;
+      font-size: 20px;
+      color: #555555;
+      font-style: italic;
+    }
+    h5{
+      text-align: center;
+      color: #555555;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+}
 //jetsteel App section
 .jetsteal-app-con{
   min-height: 460px;

@@ -27,6 +27,16 @@ if params[:format_as] == 'event'
       json.id @activity.aircraft.aircraft_type.id
       json.name @activity.aircraft.aircraft_type.name
     }
+    json.base_airport{
+      # json.id @activity.aircraft.id
+      # json.name @activity.departure_airport.name
+      # json.code @activity.departure_airport.code
+      # json.city{
+      #   json.id @activity.departure_airport.city.id
+      #   json.name @activity.departure_airport.city.name
+      #   json.image_url @activity.departure_airport.city.image.url(:original)
+      # }
+    }
   }
 
   json.departure_airport{
