@@ -96,7 +96,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :activities
+    resources :activities 
 
     resources :jsg_updates do
       collection do
