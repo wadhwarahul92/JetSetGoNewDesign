@@ -22,6 +22,7 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'ui.bootstrap.datetimepicker'
   'CustomFilters'
   'noCAPTCHA'
+  'easypiechart'
 ]
 
 jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider', ($routeProvider, $locationProvider, noCaptchaProvider)->
