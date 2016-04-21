@@ -1,94 +1,92 @@
-<i class="fa fa-times cross red-color" ng-click="$close()"></i>
-
-<div class="table table-main ft-16-gray">
+<div class="table table-main popup-main">
+  <i class="fa fa-times cross_btn" ng-click="$close()"></i>
   <div class="col-sm-12 col-xs-12">
-    <div class="main_heading">
-      <h3 class="skyblue-color ft-lg-blue">Check Your Details</h3>
-    </div>
+    <span class="heading popup-heading">Check Your Details</span>
   </div>
-
-  <div class="col-sm-12">
-    <div class="col-sm-6 ft-md-blue">{{ctrl.detail.aircraft.aircraft_type.name}}</div>
-    <div class="col-sm-6">
-      <div class="col-sm-12">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6"> 20 April 2016</div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xs-12 img-con">
-    <span>
-      <img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">
-    </span>
-  </div>
-  <div class="col-sm-6">
-    <div class="col-sm-12 col-xs-12 img-content"  ng-repeat="flight_plan in ctrl.detail.flight_plan">
-      <div class="col-sm-12"><h4>{{ctrl.airportForId(flight_plan.departure_airport_id).name}} <small>-</small> {{ctrl.airportForId(flight_plan.arrival_airport_id).name}} </h4></div>
-      <div class="col-sm-12">
-        <div class="col-sm-6">Flying Cost</div>
-        <div class="col-sm-6"><i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"" | indianCurrency}}</div>
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-6">Landing Cost</div>
-        <div class="col-sm-6"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival}}</div>
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-6">Handling Cost</div>
-        <div class="col-sm-6"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</div>
-      </div>
-      <div ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'">
-        <div class="col-sm-12">
-          <div class="col-sm-6">Accomodation Cost</div>
-          <div class="col-sm-6"><i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}</div>
+  <div class="col-xs-12">
+    <div class="custom-box-shadow">
+        <div class="col-xs-12 aircraft-heading">
+          <div class="row">
+              <div class="col-sm-6 ft-md-blue">{{ctrl.detail.aircraft.aircraft_type.name}}</div>
+              <div class="col-sm-6"></div>
+          </div>
         </div>
-        <div class="col-sm-12">
-          <div class="col-sm-6">Accomodation Night</div>
-          <div class="col-sm-6">{{ flight_plan.accommodation_plan.nights }}</div>
+        <div class="col-sm-6 col-xs-12 img-con">
+            <span>
+              <img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">
+            </span>
         </div>
-      </div>
-      <!--<div style="background-color: yellow; cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">-->
-      <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>-->
-      <!--<div style="border: 1px solid lightgray" ng-repeat="empty_leg in flight_plan.empty_leg_plan">-->
-      <!--<div>{{ ctrl.airportForId(empty_leg.departure_airport_id).name }} <strong>to</strong> {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</div>-->
-      <!--<div>{{ ctrl.formatTime(empty_leg.start_at) }} &ndash;&gt; {{ ctrl.formatTime(empty_leg.end_at) }}</div>-->
-      <!--<div>Flying cost: <i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</div>-->
-      <!--<div>Handling cost at {{ ctrl.airportForId(empty_leg.departure_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}} </div>-->
-      <!--<div>Landing cost at {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}} </div>-->
-      <!--</div>-->
-      <!--</div>-->
-
-
-      <!--================================-->
-      <!--<ul class="list-unstyled">-->
-      <!--<li ng-repeat="flight_plan in ctrl.detail.flight_plan">-->
-      <!--<div>{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
-      <!--&lt;!&ndash;<div style="background-color: lightgray;cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">&ndash;&gt;-->
-      <!--&lt;!&ndash;<h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>&ndash;&gt;-->
-      <!--&lt;!&ndash;Accommodation At: {{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}&ndash;&gt;-->
-      <!--&lt;!&ndash;<br>&ndash;&gt;-->
-      <!--&lt;!&ndash;Cost: <i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}&ndash;&gt;-->
-      <!--&lt;!&ndash;<br>&ndash;&gt;-->
-      <!--&lt;!&ndash;Nights: {{ flight_plan.accommodation_plan.nights }}&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--<div style="background-color: yellow; cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">-->
-      <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>-->
-      <!--<div style="border: 1px solid lightgray" ng-repeat="empty_leg in flight_plan.empty_leg_plan">-->
-      <!--<div>{{ ctrl.airportForId(empty_leg.departure_airport_id).name }} <strong>to</strong> {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</div>-->
-      <!--<div>{{ ctrl.formatTime(empty_leg.start_at) }} &ndash;&gt; {{ ctrl.formatTime(empty_leg.end_at) }}</div>-->
-      <!--<div>Flying cost: <i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</div>-->
-      <!--<div>Handling cost at {{ ctrl.airportForId(empty_leg.departure_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}} </div>-->
-      <!--<div>Landing cost at {{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}: <i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}} </div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</li>-->
-      <!--</ul>-->
-
-    </div>
-    <div class="col-sm-12" style="color: #000000;">
-      <div class="col-sm-6">Grant Total</div>
-      <div class="col-sm-6">{{ctrl.totalTripCost(ctrl.detail) | currency:"":0 | indianCurrency}}</div>
+        <div class="col-sm-6">
+          <ul class="list-unstyled">
+            <li ng-repeat="flight_plan in ctrl.detail.flight_plan">
+              <!--<div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
+                <div class="accomodation-con" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
+                  <h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>
+                  <ul class="">
+                    <li class="list-accomodation">
+                      <ul>
+                        <li class="text-left">Accommodation At:</li>
+                        <li class="text-right">{{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}</li>
+                      </ul>
+                    </li>
+                    <li class="list-accomodation">
+                      <ul>
+                        <li class="text-left">Cost:</li>
+                        <li class="text-right">{{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}</li>
+                      </ul>
+                    </li>
+                    <li class="list-accomodation dotted-border">
+                      <ul>
+                        <li class="text-left">Night:</li>
+                        <li class="text-right">{{ flight_plan.accommodation_plan.nights }}</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                  <div class="accomodation-con" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
+                    <h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>
+                    <ul ng-repeat="empty_leg in flight_plan.empty_leg_plan">
+                      <li class="list-accomodation">
+                        <ul>
+                          <li class="text-left">
+                            <p class="airport-name">{{ ctrl.airportForId(empty_leg.departure_airport_id).name }}</p>
+                            <p class="timing-text">{{ ctrl.formatTime(empty_leg.start_at) }}</p>
+                          </li>
+                          <li class="text-right">
+                            <p class="airport-name">{{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</p>
+                            <p class="timing-text">{{ ctrl.formatTime(empty_leg.end_at) }}</p>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="list-accomodation">
+                        <ul>
+                          <li class="text-left">Flying cost</li>
+                          <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</li>
+                        </ul>
+                      </li>
+                      <li class="list-accomodation">
+                        <ul>
+                          <li class="text-left">Handling cost</li>
+                          <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff}}</li>
+                        </ul>
+                      </li>
+                      <li class="list-accomodation">
+                        <ul>
+                          <li class="text-left">Landing cost</li>
+                          <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival}}</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            <div class="col-sm-12" style="color: #000000;">
+              <div class="col-sm-6">Grant Total</div>
+              <div class="col-sm-6">{{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
     </div>
   </div>
-
   <div class="clearfix"></div>
 </div>

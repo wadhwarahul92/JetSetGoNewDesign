@@ -11,7 +11,8 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail','
       @airports = AirportsService.airports
   )
 
-  @totalTripCost = (trip)->
+  @totalTripCost = ->
+    trip = @detail
     cost = 0.0
     for flight_plan in trip.flight_plan
       cost += flight_plan.flight_cost
@@ -30,13 +31,16 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail','
               cost += empty_leg.watch_hour_cost
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
-    #    trip.totalCost = cost
     cost + ((@tax / 100) * cost)
-
-    return cost
 
   @airportForId = (id)->
     _.find(@airports, {id: id})
+
+  @formatTime = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+    data
 
   return undefined
 ]

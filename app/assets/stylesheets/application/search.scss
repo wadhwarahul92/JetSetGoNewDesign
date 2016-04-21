@@ -101,3 +101,71 @@
   font-size: 24px;
   color: #1e8fbb;
 }
+.custom-box-shadow{
+  display: inline-block;
+  border: 1px solid grey;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 0px 15px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 0px 15px 0px rgba(50, 50, 50, 0.75);
+}
+
+.modal-content{
+  padding: 0 !important;
+}
+.popup-main{
+  position: relative;
+  padding: 0;
+  .cross_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    color: #cc0000;
+  }
+  span.heading{
+    font-size: 45px;
+    margin-bottom: 20px;
+  }
+  span.heading:after{
+    left:0;
+  }
+  .custom-box-shadow{
+    .aircraft-heading{
+      border-bottom: 1px solid #cccccc;
+      margin: 20px 0 10px 0;
+    }
+    .accomodation-con{
+      ul{
+        padding: 0;
+        li.list-accomodation{
+          padding: 5px;
+          list-style: none;
+          border-bottom: 1px solid #cccccc;
+          ul{
+            padding: 0;
+            display: inline-block;
+            width: 100%;
+            li{
+              list-style: none;
+              float: left;
+              width: 50%;
+              p.airport-name{
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0;
+                margin-top: 15px;
+              }
+              p.timing-text{
+                margin: 0;
+                font-size: 11px;
+              }
+            }
+          }
+        }
+        li.dotted-border{
+          border-bottom: 3px dotted #cccccc;
+        }
+      }
+    }
+  }
+}
