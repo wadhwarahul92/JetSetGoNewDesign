@@ -10,7 +10,7 @@
             <a ng-class="(current_tab=='members') ? 'active_' : 'inactive_'" ng-click="current_tab='members'" href="Javascript:void(0)">Members</a>
           </li>
           <li>
-            <a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.get_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and condition</a>
+            <a ng-class="(current_tab=='terms_and_condition') ? 'active_' : 'inactive_'" ng-click="ctrl.get_t_and_c(); current_tab='terms_and_condition'" href="Javascript:void(0)">Terms and conditions</a>
           </li>
           <li>
             <a ng-class="(current_tab=='documents') ? 'active_' : 'inactive_'" ng-click="ctrl.getDocuments(); current_tab='documents'" href="">Documents</a>
@@ -61,7 +61,7 @@
         <!-- terms & Condition Section Start -->
         <div ng-show="current_tab=='terms_and_condition'">
           <fieldset class="tc-main-con">
-            <legend><small>Terms and condition</small></legend>
+            <legend><small>Terms and conditions</small></legend>
             <form ng-submit="ctrl.update_t_and_c()">
               <div class="row">
                 <div class="col-md-9 col-sm-8 col-xs-12 field">
