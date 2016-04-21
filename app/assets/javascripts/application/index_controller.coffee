@@ -3,11 +3,11 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @activities = [{}]
 
   @options = {
-    barColor:'#2C3E50'
+    barColor:'rgb(27,143,188)'
     scaleColor:false
     lineWidth:10
     lineCap:'circle'
-    size: 400
+    size: 220
     animate: 5000
     onStep: (from, to, current)->
       span = $(this.el).find('.percent')
