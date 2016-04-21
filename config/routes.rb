@@ -86,6 +86,7 @@ Rails.application.routes.draw do
         get 'get_trip'
         post 'send_quote'
         delete 'destroy_trip'
+        post 'feature_for_sale'
       end
       collection do
         get 'get_trips'

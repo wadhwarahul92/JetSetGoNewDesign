@@ -105,7 +105,7 @@ class Organisations::TripsController < Organisations::BaseController
         current_organisation.operators.each do |operator|
           NotificationService.trip_added(operator, trip_creator.trip).deliver_later
         end
-        render status: :ok, nothing: true
+        render status: :ok, json: { trip_id: trip_creator.trip.id }
       end
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
@@ -232,6 +232,11 @@ class Organisations::TripsController < Organisations::BaseController
         'aircraft_unavailabilities.start_at BETWEEN ? AND ? or aircraft_unavailabilities.end_at Between ? AND ? or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at or ? between aircraft_unavailabilities.start_at and aircraft_unavailabilities.end_at', start_at, end_at, start_at, end_at, start_at, end_at
     ).distinct
 
+  end
+
+  def feature_for_sale
+    #todo: do this
+    render status: :ok, nothing: true
   end
 
   private

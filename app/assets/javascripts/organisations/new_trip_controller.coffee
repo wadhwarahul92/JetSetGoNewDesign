@@ -62,10 +62,36 @@ organisations_app.controller 'NewTripController', ['$http', 'notify', 'Aircrafts
   @create = ->
     if @aircraft
       $http.post('/organisations/trips.json', {aircraft_id: @aircraft_id, activities: @activities}).success(
-        ->
+        (data)=>
           notify
             message: 'New trip created'
-          Turbolinks.visit '/organisations'
+          if @activities[0].empty_leg
+            bootbox.confirm('You have just created an empty leg, Would like to feature it for sale?', (result)=>
+              if result
+                full_price = null
+                per_seat_price = null
+                bootbox.prompt 'What should be the total price for this empty leg? (Inclusive of all taxes)', (result)=>
+                  if result and parseInt(result)
+                    full_price = parseInt(result)
+                    bootbox.prompt 'Do you also want to sell this empty on per seat basis? If Yes, what should be the price for 1 seat?', (result)=>
+                      if result and parseInt(result)
+                        per_seat_price = parseInt(result)
+                        $http.post("/organisations/trips/#{data.trip_id}/feature_for_sale.json").success(
+                          ->
+                            Turbolinks.visit '/organisations'
+                        ).error(
+                          ->
+                            alert 'Error'
+                        )
+                      else
+                        Turbolinks.visit '/organisations'
+                  else
+                    Turbolinks.visit '/organisations'
+              else
+                Turbolinks.visit '/organisations'
+            )
+          else
+            Turbolinks.visit '/organisations'
       ).error(
         (data)->
           error = 'Something went wrong'
