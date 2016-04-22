@@ -20,8 +20,9 @@
         <ul class="list-unstyled">
           <li ng-repeat="flight_plan in ctrl.detail.flight_plan">
 
-            <!--<div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
+
             <div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>
+            <div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} --> {{ctrl.formatTime(flight_plan.end_at)}}</div>
             <div class="col-sm-6">{{ ctrl.airportForId(flight_plan.departure_airport_id).name }} </div>
             <div class="col-sm-6"> -->  {{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</div>
             <div class="col-sm-6">landing_cost_at_arrival</div>
