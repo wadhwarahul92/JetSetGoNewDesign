@@ -52,35 +52,35 @@
           <span class="search-form">
             <span class="search-icon departure-icon"></span>
             <input class="search-textfield text-white" title="Departure Airport"
-               ng-disabled="$index+1 < ctrl.activities.length"
-               placeholder="Departure"
-               autocomplete="off"
-               typeahead-editable="false"
-               typeahead-select-on-exact="true"
-               typeahead-template-url="airportsTypeAhead.html"
-               ng-model="activity.departure_airport"
-               uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-               type="text">
+                   ng-disabled="$index+1 < ctrl.activities.length"
+                   placeholder="Departure"
+                   autocomplete="off"
+                   typeahead-editable="false"
+                   typeahead-select-on-exact="true"
+                   typeahead-template-url="airportsTypeAhead.html"
+                   ng-model="activity.departure_airport"
+                   uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                   type="text">
           </span>
           <span class="search-form">
             <span class="search-icon arrival-icon"></span>
             <input class="search-textfield text-white" title="Arrival Airport"
-               ng-disabled="$index+1 < ctrl.activities.length"
-               placeholder="Arrival"
-               autocomplete="off"
-               typeahead-editable="false"
-               typeahead-select-on-exact="true"
-               typeahead-template-url="airportsTypeAhead.html"
-               ng-model="activity.arrival_airport"
-               uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-               type="text">
+                   ng-disabled="$index+1 < ctrl.activities.length"
+                   placeholder="Arrival"
+                   autocomplete="off"
+                   typeahead-editable="false"
+                   typeahead-select-on-exact="true"
+                   typeahead-template-url="airportsTypeAhead.html"
+                   ng-model="activity.arrival_airport"
+                   uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                   type="text">
           </span>
           <span class="search-form">
             <div class="dropdown datetimepicker-holder search-textfield date-textfield">
               <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
               <ul class="dropdown-menu" role="menu">
                 <datetimepicker
-                    data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                 data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
                 datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
                 ng-model="activity.start_at"></datetimepicker>
@@ -98,8 +98,8 @@
             <i class="fa fa-times" aria-hidden="true"></i>
           </a>
         </span>
-          <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
-          <a class="add-trip-btn" href="" ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
+        <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
+        <a class="add-trip-btn" href="" ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
       </div>
     </div>
     <!-- search con finish -->
@@ -194,7 +194,7 @@
       <div class="bottom-more-con">
         <div class="row">
           <div class="col-xs-12">
-            <a href="#" class="more-btn">More</a>
+            <a href="/jetsteals/list" target="_self" class="more-btn">More</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -330,11 +330,10 @@
 
 <!--subscrib con start-->
 <!--<div class="subscrib-main-con">-->
-  <!--<div class="col-sm-10 col-sm-offset-1">-->
-    <!--<input type="text" placeholder="Enter your email" class="subscrib-textfield" />-->
-    <!--<button class="subscrib-btn">Subscribe</button>-->
-  <!--</div>-->
-  <!--<div class="clearfix"></div>-->
+<!--<div class="col-sm-10 col-sm-offset-1">-->
+<!--<input type="text" placeholder="Enter your email" class="subscrib-textfield" />-->
+<!--<button class="subscrib-btn">Subscribe</button>-->
+<!--</div>-->
+<!--<div class="clearfix"></div>-->
 <!--</div>-->
 <!--subscrib con finish-->
-
