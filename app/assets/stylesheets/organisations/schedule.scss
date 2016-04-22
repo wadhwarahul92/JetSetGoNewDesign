@@ -6,7 +6,7 @@ $main-orange-color: rgb(187, 83, 0);
 $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
-
+$green-color: rgb(173, 194, 74);
 .modal{
 	background-color:rgba(0,0,0,0.7) !important;
 	.modal-content{		
@@ -64,7 +64,7 @@ $main-blue-color:rgb(5, 81, 139);
 	    bottom:-10px;
 	    left:48%;
 	}
-	.schedule-main-left{
+	.schedule-main-right{
 		*background-color: #f9f9f9;
 		//padding-bottom:20px;
 		h4.schedule-category{
@@ -74,6 +74,31 @@ $main-blue-color:rgb(5, 81, 139);
 		    padding: 12px 10px;
 		    color: #ffffff;
 		}
+      .schedule-right-img-con{
+        position: relative;
+        .update-img{
+          width: 100%;
+          min-height: 250px;
+        }
+        .black-bg{
+          position: absolute;
+          background-color: rgba(0,0,0,0.5);
+          padding: 10px;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          text-align: center;
+          h4{
+            color: #ffffff;
+            margin: 106px 0 10px 0;
+
+          }
+          p{
+            color: #ffffff;
+          }
+        }
+      }
 		ul.add-field-main{
 			padding: 0;
 			margin: 0;
@@ -100,7 +125,7 @@ $main-blue-color:rgb(5, 81, 139);
                   background-color:$gray-color;
                 }
                 span.green-color {
-                  background-color: $main-green-color;
+                  background-color: $green-color;
                 }
 				a.add-trip{
                     width: 100%;
@@ -142,7 +167,7 @@ $main-blue-color:rgb(5, 81, 139);
               color:$gray-color;
             }
             .green-text-color{
-              color:$main-green-color;
+              color:$green-color;
             }
             li.add-bullet{
               width:50%;

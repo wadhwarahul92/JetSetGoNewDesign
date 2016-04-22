@@ -351,7 +351,6 @@ ActiveRecord::Schema.define(version: 20160422080706) do
     t.text     "notification",      limit: 65535
   end
 
-  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
   add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
 
   create_table "search_activities", force: :cascade do |t|
