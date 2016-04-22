@@ -20,9 +20,10 @@ span.heading:after{
 }
 //top header section
 .top-header-search-con{
-	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
+	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/175/original/home_header_bg.jpg?1461322101);
 	width:100%;
-	min-height:600px;		
+	min-height:600px;
+    background-size: cover;
 	header{
 		width:100%;
 		display:inline-block;
@@ -145,6 +146,10 @@ span.heading:after{
           -moz-border-radius: 10px;
           border-radius: 10px;
         }
+      ::-webkit-input-placeholder { color:#dddddd; }
+      ::-moz-placeholder { color:#dddddd; } /* firefox 19+ */
+      :-ms-input-placeholder { color:#dddddd; } /* ie */
+      input:-moz-placeholder { color:#dddddd; }
 	}
 }
 
@@ -415,7 +420,7 @@ span.heading:after{
   }
 }
 
-@media(max-width: 1100px){
+@media(max-width: 1200px){
   //top header section
   .top-header-search-con{
     background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
