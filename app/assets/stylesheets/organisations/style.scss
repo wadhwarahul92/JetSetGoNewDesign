@@ -7,6 +7,7 @@ $main-orange-color: rgb(187, 83, 0);
 $dark-blue-color: rgb(5, 34, 71);
 $gray-color: rgb(173, 182, 181);
 $main-blue-color:rgb(5, 81, 139);
+$green-color: rgb(173, 194, 74);
 
 .settings_list{
   a{
@@ -65,12 +66,12 @@ $main-blue-color:rgb(5, 81, 139);
 
 .trip-enquiry{
   border: none;
-  background-color: $main-blue-color;
+  background-color: #adb6b5;
 }
 
 .trip-quote{
   border: none;
-  background-color: $main-orange-color;
+  background-color: $green-color;
 }
 
 .btn-red{

@@ -234,7 +234,6 @@ ActiveRecord::Schema.define(version: 20160421063643) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
-    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
@@ -350,7 +349,6 @@ ActiveRecord::Schema.define(version: 20160421063643) do
     t.text     "notification",      limit: 65535
   end
 
-  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
   add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
 
   create_table "search_activities", force: :cascade do |t|
@@ -380,6 +378,13 @@ ActiveRecord::Schema.define(version: 20160421063643) do
   create_table "taxes", force: :cascade do |t|
     t.float    "service_tax",        limit: 24
     t.float    "swachh_bharat_cess", limit: 24
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text     "description",     limit: 65535
+    t.integer  "organisation_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -422,10 +427,6 @@ ActiveRecord::Schema.define(version: 20160421063643) do
     t.string   "ios_app_devise_token",     limit: 255
     t.string   "android_app_devise_token", limit: 255
     t.boolean  "send_app_notifications",                 default: true
-    t.string   "avatar_file_name",         limit: 255
-    t.string   "avatar_content_type",      limit: 255
-    t.integer  "avatar_file_size",         limit: 4
-    t.datetime "avatar_updated_at"
     t.string   "image_file_name",          limit: 255
     t.string   "image_content_type",       limit: 255
     t.integer  "image_file_size",          limit: 4
