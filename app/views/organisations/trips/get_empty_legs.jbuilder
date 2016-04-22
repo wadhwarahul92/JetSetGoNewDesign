@@ -34,6 +34,27 @@ json.array! @empty_legs do |empty_leg|
         json.name activity.aircraft.aircraft_type.name
       }
 
+      json.base_airport{
+        json.id activity.aircraft.base_airport.id
+        json.name activity.aircraft.base_airport.name
+        json.longitude activity.aircraft.base_airport.longitude
+        json.latitude activity.aircraft.base_airport.latitude
+        json.code activity.aircraft.base_airport.code
+        json.private_landing activity.aircraft.base_airport.private_landing?
+        json.night_parking activity.aircraft.base_airport.night_parking?
+        json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
+        json.fuel_availability activity.aircraft.base_airport.fuel_availability
+        json.watch_hour_extension activity.aircraft.base_airport.watch_hour_extension
+        json.icao_code activity.aircraft.base_airport.icao_code
+        json.runway_field_length_in_feet activity.aircraft.base_airport.runway_field_length_in_feet
+        json.landing_cost activity.aircraft.base_airport.landing_cost
+        json.city{
+          json.id activity.aircraft.base_airport.city.id
+          json.name activity.aircraft.base_airport.city.name
+          json.image_url activity.aircraft.base_airport.city.image.url(:original)
+        }
+      }
+
       json.trip{
         json.id activity.trip.id
       }
