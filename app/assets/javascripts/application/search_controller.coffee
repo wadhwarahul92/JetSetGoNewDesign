@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal)->
 
   @results = []
 
@@ -7,6 +7,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @aircrafts = []
 
   @tax = null
+
+  @user = false
+
+  if CurrentUserService.currentUser != null
+    @user = CurrentUserService.currentUser
 
   AirportsService.getAirports().then(
     =>
@@ -122,6 +127,21 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         message: 'Please sign-in or register first.'
         classes: ['alert-danger']
       CurrentUserService.openSignInModal()
+
+  @modalDetail = (selectedDetail, tax)->
+    $uibModal.open(
+      size: 'lg'
+      templateUrl: '/templates/search_detail'
+      controller: 'SearchDetailController'
+      controllerAs: 'ctrl'
+      backdrop: false
+      resolve: {
+        detail: ->
+          return selectedDetail
+        tax: ->
+          return tax
+      }
+    )
 
   return undefined
 ]
