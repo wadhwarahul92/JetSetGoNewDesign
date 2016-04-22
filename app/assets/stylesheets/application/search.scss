@@ -103,6 +103,7 @@
 .custom-box-shadow{
   display: inline-block;
   border: 1px solid grey;
+  width: 100%;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 0px 15px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 0px 15px 0px rgba(50, 50, 50, 0.75);
@@ -166,6 +167,18 @@
         li.dotted-border{
           border-bottom: 3px dotted #cccccc;
         }
+      }
+    }
+    .selected-color-con{
+      background-color: #f5f5f5;
+      margin:20px 0;
+      padding: 5px 5px 20px 5px;
+      min-height: 450px;
+      h3{
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+        padding: 10px 0 20px 0;
       }
     }
   }

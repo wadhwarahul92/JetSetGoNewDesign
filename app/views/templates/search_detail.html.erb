@@ -11,33 +11,76 @@
           <div class="col-sm-6"></div>
         </div>
       </div>
-      <div class="col-sm-6 col-xs-12 img-con">
-            <span>
-              <img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">
-            </span>
-      </div>
-      <div class="col-sm-6">
+      <!--<div class="col-sm-6 col-xs-12 img-con">-->
+            <!--<span>-->
+              <!--<img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">-->
+            <!--</span>-->
+      <!--</div>-->
+      <div class="col-sm-12 col-xs-12">
         <ul class="list-unstyled">
-          <li ng-repeat="flight_plan in ctrl.detail.flight_plan">
+          <li class="accomodation-con" ng-repeat="flight_plan in ctrl.detail.flight_plan">
+            <ul>
+              <!--<li class="list-accomodation">{{flight_plan.flight_type}}</li>-->
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">
+                    <p class="airport-name">{{ ctrl.airportForId(flight_plan.departure_airport_id).name }}</p>
+                    <p class="timing-text">{{ctrl.formatTime(flight_plan.start_at)}}</p>
+                  </li>
+                  <li class="text-right">
+                    <p class="airport-name">{{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</p>
+                    <p class="timing-text">{{ctrl.formatTime(flight_plan.end_at)}}</p>
+                  </li>
+                </ul>
+              </li>
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">landing_cost_at_arrival</li>
+                  <li class="text-right">{{flight_plan.landing_cost_at_arrival}}</li>
+                </ul>
+              </li>
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">handling_cost_at_takeoff</li>
+                  <li class="text-right">{{flight_plan.handling_cost_at_takeoff}}</li>
+                </ul>
+              </li>
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">watch_hour_cost</li>
+                  <li class="text-right">{{flight_plan.watch_hour_cost}}</li>
+                </ul>
+              </li>
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">watch_hour_cost</li>
+                  <li class="text-right">{{flight_plan.watch_hour_cost}}</li>
+                </ul>
+              </li>
+              <li class="list-accomodation">
+                <ul>
+                  <li class="text-left">flight_cost</li>
+                  <li class="text-right">{{flight_plan.flight_cost}}</li>
+                </ul>
+              </li>
+            </ul>
 
-
-            <div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>
-            <div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} --> {{ctrl.formatTime(flight_plan.end_at)}}</div>
-            <div class="col-sm-6">{{ ctrl.airportForId(flight_plan.departure_airport_id).name }} </div>
-            <div class="col-sm-6"> -->  {{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</div>
-            <div class="col-sm-6">landing_cost_at_arrival</div>
-            <div class="col-sm-6">{{flight_plan.landing_cost_at_arrival}}</div>
-            <div class="col-sm-6">handling_cost_at_takeoff</div>
-            <div class="col-sm-6">{{flight_plan.handling_cost_at_takeoff}}</div>
-            <div class="col-sm-6">watch_hour_cost</div>
-            <div class="col-sm-6">{{flight_plan.watch_hour_cost}}</div>
-            <div class="col-sm-6">flight_cost</div>
-            <div class="col-sm-6">{{flight_plan.flight_cost}}</div>
-
-
-
-            <div class="accomodation-con" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
-              <h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>
+            <!--<div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>-->
+            <!--<div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
+            <!--<div class="col-sm-6">{{ ctrl.airportForId(flight_plan.departure_airport_id).name }} </div>-->
+            <!--<div class="col-sm-6"> &ndash;&gt;  {{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</div>-->
+            <!--<div class="col-sm-6">landing_cost_at_arrival</div>-->
+            <!--<div class="col-sm-6">{{flight_plan.landing_cost_at_arrival}}</div>-->
+            <!--<div class="col-sm-6">handling_cost_at_takeoff</div>-->
+            <!--<div class="col-sm-6">{{flight_plan.handling_cost_at_takeoff}}</div>-->
+            <!--<div class="col-sm-6">watch_hour_cost</div>-->
+            <!--<div class="col-sm-6">{{flight_plan.watch_hour_cost}}</div>-->
+            <!--<div class="col-sm-6">flight_cost</div>-->
+            <!--<div class="col-sm-6">{{flight_plan.flight_cost}}</div>-->
+            <div class="col-sm-6">
+            <div class="accomodation-con selected-color-con" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
+              <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>-->
+              <h3>Selected Accommodation plan</h3>
               <ul class="">
                 <li class="list-accomodation">
                   <ul>
@@ -59,8 +102,11 @@
                 </li>
               </ul>
             </div>
-            <div class="accomodation-con" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
-              <h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>
+            </div>
+            <div class="col-sm-6">
+            <div class="accomodation-con selected-color-con" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
+              <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>-->
+              <h3>Selected Empty leg plan</h3>
               <ul ng-repeat="empty_leg in flight_plan.empty_leg_plan">
                 <li class="list-accomodation">
                   <ul>
@@ -93,6 +139,7 @@
                   </ul>
                 </li>
               </ul>
+            </div>
             </div>
           </li>
         </ul>
