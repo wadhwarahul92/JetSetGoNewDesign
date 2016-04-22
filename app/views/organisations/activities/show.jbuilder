@@ -12,10 +12,10 @@ if params[:format_as] == 'event'
   json.watch_hour_at_arrival @activity.watch_hour_at_arrival?
   json.watch_hour_cost @activity.watch_hour_cost
 
-  if activity.accommodation_plan.present?
+  if @activity.accommodation_plan.present?
     json.accommodation_plan{
-      json.cost activity.accommodation_plan[:cost]
-      json.nights activity.accommodation_plan[:nights]
+      json.cost @activity.accommodation_plan[:cost]
+      json.nights @activity.accommodation_plan[:nights]
     }
   end
 
@@ -28,14 +28,24 @@ if params[:format_as] == 'event'
       json.name @activity.aircraft.aircraft_type.name
     }
     json.base_airport{
-      # json.id @activity.aircraft.id
-      # json.name @activity.departure_airport.name
-      # json.code @activity.departure_airport.code
-      # json.city{
-      #   json.id @activity.departure_airport.city.id
-      #   json.name @activity.departure_airport.city.name
-      #   json.image_url @activity.departure_airport.city.image.url(:original)
-      # }
+      json.id @activity.aircraft.base_airport.id
+      json.name @activity.aircraft.base_airport.name
+      json.longitude @activity.aircraft.base_airport.longitude
+      json.latitude @activity.aircraft.base_airport.latitude
+      json.code @activity.aircraft.base_airport.code
+      json.private_landing @activity.aircraft.base_airport.private_landing?
+      json.night_parking @activity.aircraft.base_airport.night_parking?
+      json.ifr_or_vfr @activity.aircraft.base_airport.ifr_or_vfr
+      json.fuel_availability @activity.aircraft.base_airport.fuel_availability
+      json.watch_hour_extension @activity.aircraft.base_airport.watch_hour_extension
+      json.icao_code @activity.aircraft.base_airport.icao_code
+      json.runway_field_length_in_feet @activity.aircraft.base_airport.runway_field_length_in_feet
+      json.landing_cost @activity.aircraft.base_airport.landing_cost
+      json.city{
+        json.id @activity.aircraft.base_airport.city.id
+        json.name @activity.aircraft.base_airport.city.name
+        json.image_url @activity.aircraft.base_airport.city.image.url(:original)
+      }
     }
   }
 
