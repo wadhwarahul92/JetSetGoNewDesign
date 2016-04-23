@@ -156,41 +156,29 @@
       <p class="sub-heading">Future is now ready for boarding.</p>
     </div>
     <div class="col-xs-12">
-      <div class="jetsteal-con">
-        <div class="row">
-          <div class="col-md-9 col-sm-8 col-xs-12">
-            <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <p class="jetsteal-text">Mumbai <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Delhi</p>
+      <div class="jetsteal-con" ng-repeat="jetsteal in ctrl.jetsteals">
+        <a href="/jetsteals/list" target="_self">
+          <div class="row">
+            <div class="col-md-9 col-sm-8 col-xs-12">
+
+              <div class="row">
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <p class="jetsteal-text">{{jetsteal.departure_airport.name}} <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> {{jetsteal.arrival_airport.name}}</p>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                  <p class="jetsteal-text" ng-hide="jetsteal.sell_by_seats">{{ctrl.formatDate(jetsteal.flight_start_time)}} Any Time</p>
+                  <p class="jetsteal-text"ng-show="jetsteal.sell_by_seats">{{ctrl.formatTime(jetsteal.flight_start_time)}}</p>
+                </div>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-12">
-                <p class="jetsteal-text">Mar 22 2016 Any Time</p>
-              </div>
+
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
             </div>
           </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 1,50,000</span>
-          </div>
-        </div>
+        </a>
       </div>
       <div class="line"></div>
-      <div class="jetsteal-con">
-        <div class="row">
-          <div class="col-md-9 col-sm-8 col-xs-12">
-            <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <p class="jetsteal-text">Bhopal <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> Cochin</p>
-              </div>
-              <div class="col-md-5 col-sm-5 col-xs-12">
-                <p class="jetsteal-text">Mar 30 2016 Any Time</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,17,000</span>
-          </div>
-        </div>
-      </div>
       <div class="bottom-more-con">
         <div class="row">
           <div class="col-xs-12">
