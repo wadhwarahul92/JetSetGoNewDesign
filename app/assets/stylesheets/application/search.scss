@@ -208,12 +208,13 @@ $main-skyblue-color : rgb(27,143,188);
         font-size: 20px;
         text-align: center;
         margin: 0;
-        padding: 10px 0 5px 0;
+        padding: 10px 0 0 0;
         margin-bottom: 15px;
       }
       span.selected-border{
         border-bottom: 2px solid rgb(70, 217, 191);
         display: inline-block;
+        padding-bottom: 5px;
       }
     }
   }
