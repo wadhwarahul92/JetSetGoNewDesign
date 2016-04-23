@@ -14,13 +14,8 @@
             <input type="text" placeholder="Last name" class="form-control" ng-model="ctrl.operator.last_name" />
           </div>
           <div class="col-sm-6 col-xs-12 field">
-            <!-- <label for="designation">Designation</label> -->
-            <select id="designation" class="form-control" ng-model="ctrl.operator.designation">
-              <option value="ceo">CEO</option>
-              <option value="coo">COO</option>
-              <option value="editor">Editor</option>
-              <option value="finance">Finance</option>
-              <option value="Manager">Manager</option>
+            <select ng-options="n for n in <%= ['ceo','coo','editor', 'finance', 'manager'].to_s %>" id="designation" class="form-control text-boxes" ng-model="ctrl.operator.designation">
+              <option value="">Select Designation</option>
             </select>
           </div>
           <div class="col-sm-6 col-xs-12 grey-bg field">
