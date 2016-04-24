@@ -1,43 +1,44 @@
 <div class="col-sm-12">
-  <div class="col-sm-8">
-    <span class="heading popup-heading">Choose Your Jet</span>
-  </div>
-  <div class="col-sm-4">
-    <div class="text-right" ng-show="ctrl.user">
-      <span class="pd-10"><img class="custom-img"  ng-src="{{ctrl.user.image}}" alt=""></span>
-      <span class="font-16" style="color: rgb(166,166,166)">{{ctrl.user.full_name}}</span>
+  <div class="row">
+    <div class="col-sm-8">
+      <span class="heading popup-heading">Choose Your Jet</span>
+    </div>
+    <div class="col-sm-4">
+      <div class="text-right" ng-show="ctrl.user">
+        <span class="pd-10"><img class="custom-img"  ng-src="{{ctrl.user.image}}" alt=""></span>
+        <span class="font-16" style="color: rgb(166,166,166)">{{ctrl.user.full_name}}</span>
+      </div>
     </div>
   </div>
 </div>
 <div class="col-sm-12 search-input-box">
-  <div class="col-sm-12">
-    <span><input class="form-control search-input" type="text" id="departure_airport" placeholder="Departure Airport"></span>
-    <span><input class="form-control search-input" type="text" id="arrival_airport" placeholder="Arrival Airport"></span>
-    <span><input class="form-control search-input" type="text" id="pax" placeholder="Pax"></span>
-  <span>
-    <div class="form-control search-input custom-calander dropdown datetimepicker-holder">
-      <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-      <ul class="dropdown-menu" role="menu">
-        <datetimepicker
-        data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-        data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-        datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-        ng-model="activity.start_at">
-        </datetimepicker>
-      </ul>
+  <div class="row">
+    <div class="col-md-3">
+      <input class="form-control search-input" type="text" id="departure_airport" placeholder="Departure Airport">
     </div>
-     <!--<div class="dropdown datetimepicker-holder search-textfield date-textfield">-->
-       <!--<a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>-->
-       <!--<ul class="dropdown-menu" role="menu">-->
-         <!--<datetimepicker-->
-         <!--data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"-->
-         <!--data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"-->
-         <!--datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"-->
-         <!--ng-model="activity.start_at"></datetimepicker>-->
-       <!--</ul>-->
-     <!--</div>-->
-  </span>
-    <span><a class="search-btn" ng-click="ctrl.create()" href="">Modify</a></span>
+    <div class="col-md-3">
+      <input class="form-control search-input" type="text" id="arrival_airport" placeholder="Arrival Airport">
+    </div>
+    <div class="col-md-1">
+      <input class="form-control search-input" type="text" id="pax" placeholder="Pax">
+    </div>
+    <div class="col-md-3 textfield-border">
+      <div class="form-control search-input custom-calander dropdown datetimepicker-holder">
+        <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+        <ul class="dropdown-menu" role="menu">
+          <datetimepicker
+          data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+          data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+          datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+          ng-model="activity.start_at">
+          </datetimepicker>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <a class="search-btn" ng-click="ctrl.create()" href="">Modify</a>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>
 
