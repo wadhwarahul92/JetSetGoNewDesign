@@ -2,6 +2,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @results = []
 
+  @result_activities = []
+
   @airports = []
 
   @aircrafts = []
@@ -22,6 +24,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     (data)=>
       @tax = data.tax
       @results = data.results
+      @search_activities = data.search_activities
+
       for result in @results
         @totalTripCost(result)
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
