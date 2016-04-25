@@ -38,4 +38,9 @@ class SearchesController < ApplicationController
     end
   end
 
+  def get_for_index
+    @search = Search.find params[:id]
+    @search_activities = @search.search_activities
+  end
+
 end
