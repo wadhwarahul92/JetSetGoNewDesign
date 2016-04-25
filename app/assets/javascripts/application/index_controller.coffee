@@ -26,6 +26,8 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @airports = []
 
+  @jetsteals = []
+
   @onSetTime = (newDate, oldDate, index)->
     if index + 1 == @activities.length
       #do nothing
@@ -62,10 +64,30 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @airports = AirportsService.airports
   )
 
+  # fetching jetsteals
+  $http.get('/jetsteals/get_list.json').success(
+    (data)=>
+      @jetsteals = data.slice(0,2)
+  ).error(
+    ->
+      alert 'error fetching jetsteals, try again later'
+  )
+  ####################
+
+
   @formatTime = (time)->
     data = null
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+    if data and data == 'Invalid date'
+      return 'Click to choose time'
+    else
+      return data
+
+  @formatDate = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY')
     if data and data == 'Invalid date'
       return 'Click to choose time'
     else
