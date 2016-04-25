@@ -9,17 +9,24 @@ $main-skyblue-color : rgb(27,143,188);
   width: 20%;
   display: inherit;
 }
-.search-input-box span{
-  //padding: 5px 30px 5px 0;
-  input, .custom-calander{
-    border: none;
-    border-bottom: 2px solid rgb(30,143,187);
+.search-input-box{
+  border-bottom: 1px solid #cccccc;
+  .form-control{
+    width: 100%;
+    border: 0;
+    border-bottom: 3px solid $main-skyblue-color;
+    position: relative;
+    top:2px;
     box-shadow: none;
   }
   .search-btn{
     color: rgb(30,143,187);
     padding: 5px 10px 5px 10px;
     border-radius: 6px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin-top: -5px;
     border: 2px solid rgb(30,143,187);
   }
 }
@@ -208,12 +215,13 @@ $main-skyblue-color : rgb(27,143,188);
         font-size: 20px;
         text-align: center;
         margin: 0;
-        padding: 10px 0 5px 0;
+        padding: 10px 0 0 0;
         margin-bottom: 15px;
       }
       span.selected-border{
         border-bottom: 2px solid rgb(70, 217, 191);
         display: inline-block;
+        padding-bottom: 5px;
       }
     }
   }

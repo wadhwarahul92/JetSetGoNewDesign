@@ -78,7 +78,9 @@
                   <!--<div class="accomodation-con" ng-class="{flight_plan.chosen_intermediate_plan == 'accommodation_plan' ? 'select-color' : 'unselect-color', flight_plan.empty_leg_plan ? 'selected-color-con' : '' }" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">-->
                 <div class="accomodation-con unselect-color" ng-class="{'select-color': flight_plan.chosen_intermediate_plan == 'accommodation_plan', 'unselect-color': flight_plan.chosen_intermediate_plan == 'empty_leg_plan', 'selected-color-con': flight_plan.empty_leg_plan, '': !flight_plan.empty_leg_plan }" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
                   <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>-->
-                  <h3 class="" ng-class="flight_plan.accommodation_plan ? 'selected-border' : ''">Accommodation plan</h3>
+                  <h3 class="">
+                    <span ng-class="flight_plan.accommodation_plan ? 'selected-border' : ''">Accommodation plan</span>
+                  </h3>
                   <ul class="">
                     <li class="list-accomodation">
                       <ul>
