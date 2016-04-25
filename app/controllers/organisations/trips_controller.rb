@@ -123,7 +123,7 @@ class Organisations::TripsController < Organisations::BaseController
 
   def get_empty_legs
     if request.format == 'application/json'
-      @empty_legs = current_organisation.trips.joins(
+      @empty_legs = current_organisation.trips.where(status: Trip::STATUS_CONFIRMED).joins(
           'JOIN activities ON trips.id = activities.trip_id'
       ).where(
           'activities.empty_leg IS TRUE'
