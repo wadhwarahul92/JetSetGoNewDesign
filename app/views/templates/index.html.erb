@@ -157,7 +157,8 @@
     </div>
     <div class="col-xs-12">
       <div class="jetsteal-con" ng-repeat="jetsteal in ctrl.jetsteals">
-        <a href="/jetsteals/list" target="_self">
+
+        <a href="/jetsteals/list" target="_self" ng-hide="jetsteal.sold_out">
           <div class="row">
             <div class="col-md-9 col-sm-8 col-xs-12">
 
@@ -170,10 +171,10 @@
                   <p class="jetsteal-text"ng-show="jetsteal.sell_by_seats">{{ctrl.formatTime(jetsteal.flight_start_time)}}</p>
                 </div>
               </div>
-
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
-              <span class="jetsteal-price pull-right"><i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
+              <span class="jetsteal-price pull-right" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr" aria-hidden="true"></i>{{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
+              <span class="jetsteal-price pull-right" ng-show="jetsteal.sell_by_seats">@starting <br/> <i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</span>
             </div>
           </div>
         </a>
