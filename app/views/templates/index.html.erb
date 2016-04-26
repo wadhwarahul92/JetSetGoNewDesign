@@ -156,30 +156,32 @@
       <p class="sub-heading">Future is now ready for boarding.</p>
     </div>
     <div class="col-xs-12">
-      <div class="jetsteal-con" ng-repeat="jetsteal in ctrl.jetsteals">
+      <div ng-repeat="jetsteal in ctrl.jetsteals">
+        <div class="jetsteal-con">
 
-        <a href="/jetsteals/list" target="_self" ng-hide="jetsteal.sold_out">
-          <div class="row">
-            <div class="col-md-9 col-sm-8 col-xs-12">
+          <a href="/jetsteals/list" target="_self" ng-hide="jetsteal.sold_out">
+            <div class="row">
+              <div class="col-md-8 col-sm-8 col-xs-12">
 
-              <div class="row">
-                <div class="col-md-7 col-sm-7 col-xs-12">
-                  <p class="jetsteal-text">{{jetsteal.departure_airport.name}} <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> {{jetsteal.arrival_airport.name}}</p>
-                </div>
-                <div class="col-md-5 col-sm-5 col-xs-12">
-                  <p class="jetsteal-text" ng-hide="jetsteal.sell_by_seats">{{ctrl.formatDate(jetsteal.flight_start_time)}} Any Time</p>
-                  <p class="jetsteal-text"ng-show="jetsteal.sell_by_seats">{{ctrl.formatTime(jetsteal.flight_start_time)}}</p>
+                <div class="row">
+                  <div class="col-md-7 col-sm-7 col-xs-12">
+                    <p class="jetsteal-text">{{jetsteal.departure_airport.name}} <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> {{jetsteal.arrival_airport.name}}</p>
+                  </div>
+                  <div class="col-md-5 col-sm-5 col-xs-12">
+                    <p class="jetsteal-text" ng-hide="jetsteal.sell_by_seats">{{ctrl.formatDate(jetsteal.flight_start_time)}} Any Time</p>
+                    <p class="jetsteal-text"ng-show="jetsteal.sell_by_seats">{{ctrl.formatTime(jetsteal.flight_start_time)}}</p>
+                  </div>
                 </div>
               </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <span class="jetsteal-price pull-right" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
+                <span class="jetsteal-price pull-right" ng-show="jetsteal.sell_by_seats">@starting &nbsp; <i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</span>
+              </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-              <span class="jetsteal-price pull-right" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr" aria-hidden="true"></i>{{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
-              <span class="jetsteal-price pull-right" ng-show="jetsteal.sell_by_seats">@starting <br/> <i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</span>
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
+        <div ng-show="$index < 1" class="line"></div>
       </div>
-      <div class="line"></div>
       <div class="bottom-more-con">
         <div class="row">
           <div class="col-xs-12">
@@ -252,11 +254,11 @@
       <div class="row">
         <div class="col-sm-4 col-xs-12 media-widget">
           <span class="media-img-con">
-            <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/150/original/media_icon-1.png?1460959401" alt="" />
+            <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/177/original/verve_logo.png?1461569545" alt="" />
           </span>
           <div class="media-widget-content">
-            <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+            <h4>WINGED GUARDIAN</h4>
+            <p>When it comes to bridal shindigs, she takes the phrase 'sky's the limit' to new heights.</p>
           </div>
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/149/original/dotted_line.png?1460959384" class="media-border" alt="" />
         </div>
@@ -302,11 +304,11 @@
         </div>
         <div class="col-sm-4 col-xs-12 media-widget">
           <span class="media-img-con">
-            <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/155/original/media_icon-6.png?1460959476" alt="" />
+            <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/176/original/mail_today_logo.png?1461569503" alt="" />
           </span>
           <div class="media-widget-content">
-            <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+            <h4>Kanika Tekriwal beat back cancer before setting up online portal JetSetGo</h4>
+            <p>Kanika Tekriwal has been through a lot in her life. Diagnosed with cancer in 2011 when she was just 22</p>
           </div>
         </div>
         <div class="clearfix"></div>
