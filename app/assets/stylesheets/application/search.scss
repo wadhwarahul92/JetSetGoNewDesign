@@ -5,6 +5,9 @@ $main-skyblue-color : rgb(27,143,188);
   height: 75px;
   border-radius: 50%;
 }
+.c_disable{
+  pointer-events:none;
+}
 .search-input{
   width: 20%;
   display: inherit;

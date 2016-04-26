@@ -21,6 +21,10 @@ class SearchAlgorithm
     @results
   end
 
+  def search_activities
+    @search_activities
+  end
+
   private
 
   def find_aircrafts_and_load_models

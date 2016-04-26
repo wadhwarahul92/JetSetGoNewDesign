@@ -1,6 +1,12 @@
-jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', ($http, notify, AirportsService, $scope, $location)->
+jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', ($http, notify, AirportsService, $scope, $location, $routeParams)->
 
   @activities = [{}]
+
+  if $routeParams.search_id
+    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
+      (data)=>
+        @activities = data
+    )
 
   @options = {
     barColor:'rgb(27,143,188)'

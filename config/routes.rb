@@ -280,7 +280,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :searches
+  resources :searches do
+    member do
+      get 'get_for_index'
+    end
+  end
 
   resources :finances do
     collection do
