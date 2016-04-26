@@ -12,18 +12,18 @@
   </div>
 </div>
 <div class="col-sm-12 search-input-box">
-  <div class="row">
+  <div class="row" >
     <div ng-repeat="search_activity in ctrl.search_activities">
-      <div class="col-md-3">
+      <div class="col-md-3 c_disable">
         <input class="form-control search-input" ng-model="ctrl.airportForId(search_activity.departure_airport_id).name" type="text" id="departure_airport" placeholder="Departure Airport">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 c_disable">
         <input class="form-control search-input" ng-model="ctrl.airportForId(search_activity.arrival_airport_id).name" type="text" id="arrival_airport" placeholder="Arrival Airport">
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1 c_disable">
         <input class="form-control search-input" ng-model="search_activity.pax" type="text" id="pax" placeholder="Pax">
       </div>
-      <div class="col-md-3 textfield-border">
+      <div class="col-md-3 textfield-border c_disable" >
         <div class="form-control search-input custom-calander dropdown datetimepicker-holder">
           <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
           <ul class="dropdown-menu" role="menu">
