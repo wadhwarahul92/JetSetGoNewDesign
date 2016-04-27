@@ -4,6 +4,10 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
 
   @isFromMobile = false
 
+  @hideForPath = ->
+    if location.pathname == '/tmp_url'
+      return true
+
   x = location.search.match(/\?isfrommobile=([a-z]+)/)
   if x != null && x[1] == 'yes'
     @isFromMobile = true
