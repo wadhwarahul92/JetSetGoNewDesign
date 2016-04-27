@@ -14,12 +14,15 @@ $main-skyblue-color : rgb(27,143,188);
 }
 .search-input-box{
   border-bottom: 1px solid #cccccc;
+  .modify-textfield-con{
+    margin-top: 30px;
+  }
   .form-control{
     width: 100%;
     border: 0;
     border-bottom: 3px solid $main-skyblue-color;
     position: relative;
-    top:2px;
+    top: 2px;
     box-shadow: none;
   }
   .search-btn{
