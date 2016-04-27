@@ -3,7 +3,7 @@ jetsetgo_app.controller 'SignUpController', ['$http', 'notify', 'CurrentUserServ
   @user = {}
 
   @openSignInModal = ->
-    CurrentUserService.openSignInModal()
+    CurrentUserService.openSignInModal('md')
 
   @create = ->
     $http.post('/sign_up_.json', @user).success(
