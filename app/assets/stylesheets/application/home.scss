@@ -524,9 +524,12 @@ span.heading:after{
   }
 }
 @media(max-width: 767px){
+  span.heading{
+    font-size: 35px;
+  }
   .responsive-no-margin{
     margin: 0;
-}
+  }
   //top header section
   .top-header-search-con{
     background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);

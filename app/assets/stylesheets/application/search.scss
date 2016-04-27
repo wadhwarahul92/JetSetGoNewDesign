@@ -6,7 +6,7 @@ $main-skyblue-color : rgb(27,143,188);
   border-radius: 50%;
 }
 .c_disable{
-  pointer-events:none;
+  pointer-events: none;
 }
 .search-input{
   width: 20%;
@@ -14,12 +14,15 @@ $main-skyblue-color : rgb(27,143,188);
 }
 .search-input-box{
   border-bottom: 1px solid #cccccc;
+  .modify-textfield-con{
+    margin-top: 30px;
+  }
   .form-control{
     width: 100%;
     border: 0;
     border-bottom: 3px solid $main-skyblue-color;
     position: relative;
-    top:2px;
+    top: 2px;
     box-shadow: none;
   }
   .search-btn{
@@ -45,44 +48,103 @@ $main-skyblue-color : rgb(27,143,188);
 }
 .search-result-box{
   padding: 15px;
-}
-.icon-box{
-  position: absolute;
-  padding: 0;
-  width: 100%;
-  bottom: 0;
-  color:#ffffff;
-  li{
-    float: left;
-    list-style: none;
-    width: 16.6%;
-    text-align: center;
-    span.search-icon{
-      background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/171/original/search_page_icon.png?1461068543);
-      width: 75px;
-      height: 30px;
-      display: inline-block;
-    }
-    span.passenger-icon{
-      background-position: 21px -6px;
-    }
-    span.baggage-icon{
-      background-position: -36px -6px;
-    }
-    span.watch-icon{
-      background-position: -89px -6px;
-    }
-    span.speed-icon{
-      background-position: -141px -6px;
-    }
-    span.height-icon{
-      background-position: -211px -6px;
-    }
-    span.crew-icon{
-      background-position: -284px -6px;
+  .search-img-con{
+    position: relative;
+    .black-layer-con{
+      background-color: rgba(0,0,0,0.5);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      opacity: 0;
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+      overflow: hidden;
+      .icon-box{
+        position: absolute;
+        padding: 0;
+        width: 100%;
+        bottom: 100%;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        color: #ffffff;
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2);
+        li{
+          float: left;
+          list-style: none;
+          width: 16.6%;
+          text-align: center;
+          span.search-icon{
+            background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/171/original/search_page_icon.png?1461068543);
+            width: 75px;
+            height: 30px;
+            display: inline-block;
+          }
+          span.passenger-icon{
+            background-position: 21px -6px;
+          }
+          span.baggage-icon{
+            background-position: -36px -6px;
+          }
+          span.watch-icon{
+            background-position: -89px -6px;
+          }
+          span.speed-icon{
+            background-position: -141px -6px;
+          }
+          span.height-icon{
+            background-position: -211px -6px;
+          }
+          span.crew-icon{
+            background-position: -284px -6px;
+          }
+        }
+      }
     }
   }
+  h3{
+    font-size: 22px;
+    margin: 10px 0 20px 0;
+  }
+  h4{
+    font-size: 22px;
+    margin: 10px 0 20px 0;
+  }
 }
+.search-result-box:hover > .custom-shadow .search-img-con .black-layer-con {
+  opacity: 1;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.search-result-box:hover > .custom-shadow .search-img-con .black-layer-con .icon-box{
+  bottom: 0;
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
 .no-text-decoration{
   text-decoration: none !important;
 }
@@ -226,6 +288,57 @@ $main-skyblue-color : rgb(27,143,188);
         display: inline-block;
         padding-bottom: 5px;
       }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-result-box{
+    h3{
+      font-size: 14px;
+      margin: 5px 0;
+    }
+    h4{
+      font-size: 15px;
+      margin: 5px 0;
+    }
+    .custom-btn{
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+  }
+  .search-container{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-main-con{
+    span.heading{
+      margin-bottom: 0;
+    }
+  }
+  .search-input-box{
+    .search-btn{
+      margin: 20px 0;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .search-result-box{
+    h3{
+      font-size: 12px;
+      margin: 5px 0;
+    }
+    h4{
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    .custom-btn{
+      padding: 5px 5px;
+      font-size: 10px;
     }
   }
 }

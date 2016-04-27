@@ -24,3 +24,16 @@
 .home-header{
   background: transparent !important;
 }
+
+@media (max-width: 1024px) {
+  .header-container{
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px){
+  .header_row{
+    margin: 0;
+  }
+}
