@@ -9,7 +9,7 @@
 <div class="top-header-search-con">
   <div class="container">
     <!-- header start -->
-    <div ng-controller="HeaderController as ctrl">
+    <div>
       <nav ng-hide="ctrl.isFromMobile" id="header" class="navbar navbar-default home-header header">
         <div class="container-fluid">
           <div class="navbar-header navbar-responsive">
@@ -26,7 +26,9 @@
               <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
                 <div class="col-sm-10 col-xs-12 right-nav pull-right">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a class="no-right-padding" href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a></li>
+                    <li>
+                      <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
+                    </li>
                     <li><a href="/contact_us">Contact</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Testimonial</a></li>

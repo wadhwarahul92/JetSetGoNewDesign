@@ -1,12 +1,17 @@
-jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', ($http, notify, AirportsService, $scope, $location, $routeParams)->
+jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService)->
 
   @activities = [{}]
+
+  @currentUser = null
 
   if $routeParams.search_id
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
       (data)=>
         @activities = data
     )
+
+  @signIn = ->
+    CurrentUserService.openSignInModal()
 
   @options = {
     barColor:'rgb(27,143,188)'
@@ -28,6 +33,14 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @formatActivities()
     ,
     true
+  )
+
+  $scope.$watch(
+    =>
+      CurrentUserService.currentUser
+  ,
+    =>
+      @currentUser = CurrentUserService.currentUser
   )
 
   @airports = []
