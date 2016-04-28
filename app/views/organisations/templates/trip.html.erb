@@ -13,9 +13,6 @@
   </div>
   <div class="col-sm-9 col-xs-12 img-content">
     <div ng-repeat="activity in ctrl.trip.activities">
-      <!-- <div class="text-center main_heading">
-        <h3 class="skyblue-color">trip #{{ctrl.trip.id}}</h3>
-      </div> -->
       <div class="row">
         <div class="col-sm-6 col-xs-12 sub-border-con">
           <h5 class="sub-heading">Aircraft:</h5>
@@ -50,56 +47,3 @@
   </div>
   <div class="clearfix"></div>
 </div>
-
-<!-- <table class="table table-main skyblue-bg">
-  <tbody>
-  <tr>
-    <td class="img-con">
-      <span>
-        <img ng-src="{{ctrl.trip.activities[0].aircraft.images[0]}}" />
-      </span>
-    </td>
-    <td class="img-content">
-      <table ng-repeat="activity in ctrl.trip.activities">
-        <tr>
-          <th colspan="2" class="text-center main_heading">
-            <h3>trip #{{ctrl.trip.id}}</h3>
-          </th>
-        </tr>
-        <tr>
-          <th class="sub-heading">Aircraft:</th>
-          <td class="sub-result">{{ctrl.trip.activities[0].aircraft.tail_number}}</td>
-        </tr>
-        <tr>
-          <th class="sub-heading">Departure:</th>
-          <td class="sub-result">{{activity.departure_airport.name}}</td>
-        </tr>
-        <tr>
-          <th class="sub-heading">Arrival:</th>
-          <td class="sub-result">{{activity.arrival_airport.name}}</td>
-        </tr>
-        <tr>
-          <th class="sub-heading">Start at:</th>
-          <td class="sub-result">{{activity.start_at}}</td>
-        </tr>
-        <tr>
-          <th class="sub-heading">End at:</th>
-          <td class="sub-result">{{activity.end_at}}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  </tbody>
-</table> -->
-<!-- <table >
-  <tbody>
-  <tr>
-    <td class=""> </td>
-    <td class=""> </td>
-  </tr>
-  <tr>
-    <td class=""></td>
-    <td class=""></td>
-  </tr>
-  </tbody>
-</table> -->
