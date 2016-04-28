@@ -15,11 +15,17 @@
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
           <div class="col-sm-10 col-xs-12 right-nav pull-right">
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="no-right-padding" href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a></li>
-              <li><a href="#">Contact</a></li>
+              <li>
+                <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
+                <a ng-show="ctrl.currentUser" class="no-right-padding" href="">{{ctrl.currentUser.full_name}}</a>
+                <!--<a rel="nofollow" data-method="delete" href="/users/sign_out?redirect_to=%2Ftemp_url">Sign Out</a>-->
+                <%#= link_to 'Sign Out', destroy_user_session_path(redirect_to: '/organisations'), method: :delete, target: '_self' %>
+                <!--<a class="no-right-padding" href="#"><i class="fa fa-user" aria-hidden="true"></i> Guest</a>-->
+              </li>
+              <li><a href="/contact_us">Contact</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Testimonial</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="/about_us">About</a></li>
             </ul>
           </div>
         </div>
