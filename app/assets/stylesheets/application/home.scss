@@ -437,11 +437,14 @@ span.heading:after{
     margin: 20px 0;
     .jetsteal-text{
       font-size: 20px;
+      position: relative;
       margin: 0;
       margin-top: 11px;
       color: #ffffff;
       .rotate-plain-icon{
         margin:0 30px;
+        position: absolute;
+        right: -10px;
         -moz-transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
         -o-transform: rotate(45deg);
