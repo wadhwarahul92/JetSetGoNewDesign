@@ -716,6 +716,16 @@ span.heading:after{
   .responsive-no-margin{
     margin: 0;
   }
+
+  .main-nav li ul.sub-nav{
+    position: inherit;
+    bottom: 0;
+  }
+  .main-nav li ul.sub-nav li{
+    background-color:transparent;
+    text-align: left;
+    padding: 10px 14px;
+  }
   //top header section
   .top-header-search-con{
     //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
