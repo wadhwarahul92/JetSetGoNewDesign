@@ -337,6 +337,33 @@ $green-color: rgb(173, 194, 74);
 	}
 }
 
+@media(max-width:1120px){
+  .schedule-content-main {
+    .schedule-main-right {
+      ul.add-field-main {
+        li.add-field {
+          a.add-trip{
+            font-size: 13px;
+          }
+          a.add-unavailability{
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width:990px){
+  .schedule-content-main {
+    .schedule-main-right {
+      ul.add-field-main {
+        li.add-field {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
 @media(max-width:767px){
 	.buttons-con{
 			.send-btn{
@@ -398,14 +425,19 @@ $green-color: rgb(173, 194, 74);
 	}
 	.schedule-content-main{
 		h3.main-heading{
-		    font-size:20px;
-		}
-	}
-}
-@media(max-width:767px){
-	.schedule-content-main{
-		h3.main-heading{
 		    font-size:19px;
 		}
 	}
+  .schedule-content-main {
+    .schedule-main-right {
+      ul.add-field-main {
+        li.add-field {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+@media(max-width:600px){
+
 }
