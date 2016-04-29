@@ -13,6 +13,9 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @signIn = ->
     CurrentUserService.openSignInModal('md')
 
+  @signOut = ->
+    CurrentUserService.signOut()
+
   @options = {
     barColor:'rgb(27,143,188)'
     scaleColor:false

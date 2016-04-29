@@ -25,12 +25,13 @@
               </div>
               <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
                 <div class="col-sm-10 col-xs-12 right-nav pull-right">
-                  <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav navbar-right main-nav">
                     <li>
                       <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
-                      <a ng-show="ctrl.currentUser" class="no-right-padding" href="">{{ctrl.currentUser.full_name}}</a>
-                      <!--<a ng-show="ctrl.currentUser" ng-click="ctrl.signOut()" class="no-right-padding" href="" target="_self">Sign Out</a>-->
-
+                      <a ng-show="ctrl.currentUser" class="no-right-padding" href="">{{ctrl.currentUser.full_name}} <i class="fa fa-caret-down"></i></a>
+                      <ul class="sub-nav">
+                        <li ng-show="ctrl.currentUser" ><a ng-click="ctrl.signOut()" class="no-right-padding" href="">Sign Out</a></li>
+                      </ul>
                     </li>
                     <li><a href="/contact_us">Contact</a></li>
                     <li><a href="#">Services</a></li>

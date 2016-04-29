@@ -193,6 +193,7 @@ span.heading:after{
 				max-width:120px;
 			}
 		}
+
 		.right-header-con{
 			ul{
 				padding:0;
@@ -206,6 +207,12 @@ span.heading:after{
 						color:#ffffff;
 						text-decoration:none;
 					}
+                  ul.sub-nav{
+                    li{
+                      list-style: none;
+                      background-color: #002a80;
+                    }
+                  }
 				}
 			}
 		}
@@ -582,6 +589,26 @@ span.heading:after{
     color: #ffffff;
   }
 }
+
+.main-nav li{
+  position: relative;
+}
+.main-nav li ul.sub-nav{
+  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: -20px;
+}
+.main-nav li ul.sub-nav li{
+  list-style: none;
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 5px 0;
+  width: 100%;
+}
+.main-nav li:hover > ul.sub-nav{
+                    display: block;
+                  }
 
 @media(max-width: 1200px){
   //top header section
