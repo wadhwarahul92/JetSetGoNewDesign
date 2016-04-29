@@ -171,7 +171,7 @@
 
                 <div class="row">
                   <div class="col-md-7 col-sm-7 col-xs-12">
-                    <p class="jetsteal-text">{{jetsteal.departure_airport.name}} <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> {{jetsteal.arrival_airport.name}}</p>
+                    <p class="jetsteal-text">{{jetsteal.departure_airport.city.name}} <i class="fa fa-plane rotate-plain-icon" aria-hidden="true"></i> {{jetsteal.arrival_airport.city.name}}</p>
                   </div>
                   <div class="col-md-5 col-sm-5 col-xs-12">
                     <p class="jetsteal-text" ng-hide="jetsteal.sell_by_seats">{{ctrl.formatDate(jetsteal.flight_start_time)}}, Any Time</p>
