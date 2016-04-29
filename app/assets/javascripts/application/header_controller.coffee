@@ -15,13 +15,6 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
   @signIn = ->
     CurrentUserService.openSignInModal('md')
 
-#  @signOut = ->
-#    debugger
-#  #    $http.delete("/users/sign_out").success(
-#  #      @currentUser = null
-#  #      Turbolinks.visit('/tmp_url')
-#  #    )
-
   @hideForPath = ->
     if location.pathname == '/tmp_url'
       return true
