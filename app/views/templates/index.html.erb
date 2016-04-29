@@ -29,6 +29,8 @@
                     <li>
                       <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
                       <a ng-show="ctrl.currentUser" class="no-right-padding" href="">{{ctrl.currentUser.full_name}}</a>
+                      <!--<a ng-show="ctrl.currentUser" ng-click="ctrl.signOut()" class="no-right-padding" href="" target="_self">Sign Out</a>-->
+
                     </li>
                     <li><a href="/contact_us">Contact</a></li>
                     <li><a href="#">Services</a></li>
