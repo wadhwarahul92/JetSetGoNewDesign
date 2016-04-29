@@ -48,11 +48,17 @@ $main-blue-color:rgb(5, 81, 139);
       }
     }
     li.add-aircrft-link{
-      background-color:$main-blue-color;
       text-align:center;
+      background: transparent;
+      padding: 0;
       .add-link{
         font-size:14px;
+        background-color:$main-blue-color;
         color:#ffffff;
+        display: inline-block;
+        width: 100%;
+        text-decoration: none;
+        padding: 10px 0;
       }
     }
     li.selected-link{
