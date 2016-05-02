@@ -119,6 +119,10 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     return unless @validatedActivities()
     @activities.push {}
 
+  @addRoundTrip = ->
+    return unless @validatedActivities()
+    @activities.push {arrival_airport: @activities[0].departure_airport}
+
   @removeActivity = (index)->
     if index > 0
       @activities.splice index, 1

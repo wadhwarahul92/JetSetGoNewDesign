@@ -106,6 +106,7 @@
         </span>
         <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
         <a class="add-trip-btn" href="" ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
+        <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()"><i class="fa fa-plus" aria-hidden="true"></i> Round Trip</a>
       </div>
     </div>
     <!-- search con finish -->
