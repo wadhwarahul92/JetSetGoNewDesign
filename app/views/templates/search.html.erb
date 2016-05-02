@@ -56,12 +56,12 @@
             <img style="width: 100%;height: 300px;" ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">
             <div class="black-layer-con">
               <ul class="icon-box">
-                <li><span class="search-icon passenger-icon"></span></li>
-                <li><span class="search-icon baggage-icon"></span></li>
-                <li><span class="search-icon watch-icon"></span></li>
-                <li><span class="search-icon speed-icon"></span></li>
-                <li><span class="search-icon height-icon"></span></li>
-                <li><span class="search-icon crew-icon"></span></li>
+                <li><span class="search-icon seat-icon" uib-tooltip="{{result.aircraft.seating_capacity}} Seat"></span></li>
+                <li><span class="search-icon baggage-icon" uib-tooltip="{{result.aircraft.baggage_capacity_in_kg}}kg Baggage"></span></li>
+                <!--<li><span class="search-icon watch-icon" uib-tooltip="{{ctrl.formateTime()}}"></span></li>-->
+                <li><span class="search-icon speed-icon" uib-tooltip="{{result.aircraft.cruise_speed_in_nm_per_hour}}kts Spead"></span></li>
+                <li><span class="search-icon height-icon" uib-tooltip="{{result.aircraft.cabin_height_in_meters}}meter Cabin Height"></span></li>
+                <li><span class="search-icon crew-icon" uib-tooltip="{{result.aircraft.crew}} Crew"></span></li>
                 <div class="clearfix"></div>
               </ul>
             </div>

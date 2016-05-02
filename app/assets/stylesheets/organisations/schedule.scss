@@ -269,12 +269,17 @@ $green-color: rgb(173, 194, 74);
 	background-color:#ffffff;
 	padding-bottom:20px;
 	h2{
-		font-size: 18px; 
-		background-color: #05518b; 
+		font-size: 18px;
 		margin: 0; 
 		padding: 12px 15px; 
 		color: #ffffff; 
 	}
+    h2.new-unavailability-heading{
+      background-color: $main-red-color;
+    }
+    h2.new-trip-heading{
+      background-color: $sky-blue-color;
+    }
 	.field{
 		margin-top:15px;
 	}
@@ -293,6 +298,12 @@ $green-color: rgb(173, 194, 74);
 		display:inline-block;
 		margin-top:15px;
 	}
+    .red-btn{
+      background-color: $main-red-color;
+    }
+    .skynblue-btn{
+      background-color: $sky-blue-color;
+    }
 	.main-yesno{
 		width:50px; 
 		height:27px;
