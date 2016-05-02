@@ -156,7 +156,7 @@
 <!-- jetsetgo experience con finish -->
 
 <!-- jetsteal con start -->
-<div class="jetsteel-main-con">
+<div class="jetsteel-main-con" ng-show="ctrl.jetsteals.length > 0">
   <div class="container search-container">
     <div class="col-xs-12">
       <span class="heading">JetSteals&trade;</span>
@@ -182,12 +182,12 @@
               </div>
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <span class="jetsteal-price pull-right" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}}</span>
-                <span class="jetsteal-price pull-right" ng-show="jetsteal.sell_by_seats">@starting &nbsp; <i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</span>
+                <span class="jetsteal-price pull-right" ng-show="jetsteal.sell_by_seats">starting @ &nbsp; <i class="fa fa-inr" aria-hidden="true"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</span>
               </div>
             </div>
           </a>
         </div>
-        <div ng-show="$index < 1" class="line"></div>
+        <div ng-hide="$index < 1" class="line"></div>
       </div>
       <div class="bottom-more-con">
         <div class="row">
