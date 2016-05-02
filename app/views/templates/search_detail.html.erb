@@ -152,6 +152,12 @@
                   <ul>
                     <li class="list-accomodation">
                       <ul>
+                        <li class="text-left">Tax</li>
+                        <li class="text-right">{{ctrl.tax}}%</li>
+                      </ul>
+                    </li>
+                    <li class="list-accomodation">
+                      <ul>
                         <li class="text-left total_amount"><b>Grant Total</b></li>
                         <li class="text-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
