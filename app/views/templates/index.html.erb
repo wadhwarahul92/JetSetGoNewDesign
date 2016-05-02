@@ -163,9 +163,8 @@
     </div>
     <div class="col-xs-12">
       <div ng-repeat="jetsteal in ctrl.jetsteals">
-        <div class="jetsteal-con">
-
-          <a href="/jetsteals/list" target="_self" ng-hide="jetsteal.sold_out">
+        <div class="jetsteal-con" ng-hide="jetsteal.sold_out">
+          <a href="/jetsteals/list" target="_self" >
             <div class="row">
               <div class="col-md-8 col-sm-8 col-xs-12">
 
@@ -186,7 +185,7 @@
             </div>
           </a>
         </div>
-        <div ng-hide="$index < 1" class="line"></div>
+        <div ng-show="$index > 1" class="line"></div>
       </div>
       <div class="bottom-more-con">
         <div class="row">
