@@ -31,10 +31,10 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   $scope.$watch(
     =>
       @activities
-    ,
+  ,
     =>
       @formatActivities()
-    ,
+  ,
     true
   )
 
@@ -52,7 +52,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @onSetTime = (newDate, oldDate, index)->
     if index + 1 == @activities.length
-      #do nothing
+#do nothing
     else
       alert 'cannot change date'
       @activities[index].start_at  = oldDate
@@ -88,11 +88,14 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   # fetching jetsteals
   arr = []
+  length = 0
   $http.get('/jetsteals/get_list.json').success(
     (data)=>
-      $.each(data.slice(0,2), (i, v)=>
-        unless v.sold_out
+      $.each(data, (i, v)=>
+        unless v.sold_out && length < 1
           arr.push(v)
+          length + 1
+
           @jetsteals = arr
       )
   ).error(
