@@ -100,7 +100,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       notify
         message: 'Please sign-in or register before enquiring.'
         classes: ['alert-danger']
-      CurrentUserService.openSignInModal()
+      CurrentUserService.openSignInModal('md')
 
   @previewProForma = (result)->
     if CurrentUserService.currentUser
