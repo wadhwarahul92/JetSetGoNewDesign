@@ -83,16 +83,17 @@ $main-skyblue-color : rgb(27,143,188);
         li{
           float: left;
           list-style: none;
-          width: 16.6%;
+          width: 20%;
           text-align: center;
           span.search-icon{
-            background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/171/original/search_page_icon.png?1461068543);
+            background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/178/original/search_page_icon.png?1462186215);
             width: 75px;
             height: 30px;
             display: inline-block;
+            cursor: pointer;
           }
-          span.passenger-icon{
-            background-position: 21px -6px;
+          span.seat-icon{
+            background-position: 117px -6px;
           }
           span.baggage-icon{
             background-position: -36px -6px;
@@ -101,7 +102,7 @@ $main-skyblue-color : rgb(27,143,188);
             background-position: -89px -6px;
           }
           span.speed-icon{
-            background-position: -141px -6px;
+            background-position: -89px -6px;
           }
           span.height-icon{
             background-position: -211px -6px;

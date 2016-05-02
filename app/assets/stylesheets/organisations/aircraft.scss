@@ -70,8 +70,6 @@ $main-blue-color:rgb(5, 81, 139);
     background-color:#f1f1f1;
     padding-bottom:20px;
     .aircraft-img-main{
-      border-right:1px solid #cccccc;
-      min-height:290px;
       ul.aircraft_image_holder{
         padding:0;
         margin:0;
@@ -105,34 +103,37 @@ $main-blue-color:rgb(5, 81, 139);
       display:inline-block;
       margin:5px 0;
     }
-    .aircraft-right-detail{
-      h5{
-        margin:0;
-        color:$main-blue-color;
-        font-weight:bold;
-        font-size:14px;
-      }
-      p{
-        color:#888888;
-        font-size:14px;
-        position:relative;
-      }
-      .strick-icon{
-        text-decoration:line-through;
-      }
-      .not-avilable-line{
-        width:18px;
-        position:absolute;
-        display:inline-block;
-        height:1px;
-        top:8px;
-        left:-3px;
-        background-color:#cc0000;
-        -moz-transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
-        -o-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
-        transform: rotate(135deg);
+    .aircraft-content-main{
+      border-left:1px solid #cccccc;
+      .aircraft-right-detail{
+        h5{
+          margin:0;
+          color:$main-blue-color;
+          font-weight:bold;
+          font-size:14px;
+        }
+        p{
+          color:#888888;
+          font-size:14px;
+          position:relative;
+        }
+        .strick-icon{
+          text-decoration:line-through;
+        }
+        .not-avilable-line{
+          width:18px;
+          position:absolute;
+          display:inline-block;
+          height:1px;
+          top:8px;
+          left:-3px;
+          background-color:#cc0000;
+          -moz-transform: rotate(135deg);
+          -webkit-transform: rotate(135deg);
+          -o-transform: rotate(135deg);
+          -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
+        }
       }
     }
   }
@@ -282,6 +283,9 @@ $main-blue-color:rgb(5, 81, 139);
             }
           }
         }
+      }
+      .aircraft-content-main {
+        border-left: 0px;
       }
     }
   }
