@@ -11,4 +11,7 @@
   json.organisation{
     json.id @operator.organisation.id
     json.name @operator.organisation.name
+    if @operator.organisation.present?
+      json.image @operator.organisation.image.url(:size_250x250) if @operator.organisation.image.present?
+    end
   }
