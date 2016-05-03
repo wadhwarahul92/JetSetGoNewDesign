@@ -108,7 +108,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @formatTime = (time)->
     data = null
     try
-      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, hh:mm A')
     if data and data == 'Invalid date'
       return 'Click to choose time'
     else
