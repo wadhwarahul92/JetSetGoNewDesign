@@ -5,6 +5,8 @@ json.array! @trips do |trip|
   json.tax Tax.tax
   json.tax_value Tax.total_tax_value
   json.user trip.user.try(:full_name)
+  json.payment_status trip.payment_status
+  json.amount_paid trip.amount_paid
   json.activities{
     json.array! trip.activities do |activity|
       json.id activity.id
