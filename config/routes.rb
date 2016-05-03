@@ -94,6 +94,7 @@ Rails.application.routes.draw do
         get 'get_empty_legs'
         get 'get_enquiries'
         get 'get_activities'
+        get 'confirmed'
       end
     end
 

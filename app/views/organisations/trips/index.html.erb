@@ -9,69 +9,80 @@
         <div ui-calendar="ctrl.calendarConfig.calendar" ng-model="ctrl.events"></div>
       </div>
       <div class="col-sm-4">
-        <div ng-show="ctrl.activity" class="main-right-con" ng-class="{'yellow-right-trip':ctrl.activity.empty_leg, 'blue-right-trip':!ctrl.activity.empty_leg}">
-          <h3 class="text-center" ng-class="{'highlight_':ctrl.activity.empty_leg, 'highlight_trip':!ctrl.activity.empty_leg}">
-            {{ctrl.activity.aircraft.tail_number}}
-          </h3>
-          <div class="col-xs-12">
-            <table class="table" border="0">
-              <thead>
-              <tr class="heading_main">
-                <th class="text-center">Arrival</th>
-                <th class="text-center">Departure</th>
-              </tr>
-              </thead>
-              <tbody class="table-body">
-              <tr>
-                <td class="text-center">
-                  <img class="img-responsive" src="" ng-src="{{ctrl.activity.departure_airport.city.url}}" alt="">
-                  <p>{{ctrl.activity.departure_airport.city.name}}</p>
-                </td>
-                <td class="text-center">
-                  <img class="img-responsive" src="" ng-src="{{ctrl.activity.arrival_airport.city.url}}" alt="">
-                  <p>{{ctrl.activity.arrival_airport.city.name}}</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <p>{{ctrl.activity.departure_airport.name}}</p>
-                </td>
-                <td class="text-center">
-                  <p>{{ctrl.activity.arrival_airport.name}}</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <p>{{ctrl.activity.start_at}}</p>
-                </td>
-                <td class="text-center">
-                  <p>{{ctrl.activity.end_at}}</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <p><strong>Empty Leg?</strong></p>
-                </td>
-                <td class="text-center">
-                  <p><span class="label" ng-class="{'label-success':ctrl.activity.empty_leg, 'label-danger':!ctrl.activity.empty_leg}">{{ ctrl.activity.empty_leg ? 'YES' : 'NO' }}</span></p>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <p><strong>Pax</strong></p>
-                </td>
-                <td class="text-center">
-                  <p>{{ctrl.activity.pax}}</p>
-                </td>
-              </tr>
-              <tr class="danger-row">
-                <td colspan="2" class="text-center"><a ng-click="ctrl.deleteActivity()" href="">Delete this Activity</a></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+        <table class="table">
+          <tbody>
+          <tr>
+            <td><a href="/organisations/trips/confirmed">View all confirmed trips</a></td>
+          </tr>
+          <tr>
+            <td>
+              <div ng-show="ctrl.activity" class="main-right-con" ng-class="{'yellow-right-trip':ctrl.activity.empty_leg, 'blue-right-trip':!ctrl.activity.empty_leg}">
+                <h3 class="text-center" ng-class="{'highlight_':ctrl.activity.empty_leg, 'highlight_trip':!ctrl.activity.empty_leg}">
+                  {{ctrl.activity.aircraft.tail_number}}
+                </h3>
+                <div class="col-xs-12">
+                  <table class="table" border="0">
+                    <thead>
+                    <tr class="heading_main">
+                      <th class="text-center">Arrival</th>
+                      <th class="text-center">Departure</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    <tr>
+                      <td class="text-center">
+                        <img class="img-responsive" src="" ng-src="{{ctrl.activity.departure_airport.city.url}}" alt="">
+                        <p>{{ctrl.activity.departure_airport.city.name}}</p>
+                      </td>
+                      <td class="text-center">
+                        <img class="img-responsive" src="" ng-src="{{ctrl.activity.arrival_airport.city.url}}" alt="">
+                        <p>{{ctrl.activity.arrival_airport.city.name}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">
+                        <p>{{ctrl.activity.departure_airport.name}}</p>
+                      </td>
+                      <td class="text-center">
+                        <p>{{ctrl.activity.arrival_airport.name}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">
+                        <p>{{ctrl.activity.start_at}}</p>
+                      </td>
+                      <td class="text-center">
+                        <p>{{ctrl.activity.end_at}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">
+                        <p><strong>Empty Leg?</strong></p>
+                      </td>
+                      <td class="text-center">
+                        <p><span class="label" ng-class="{'label-success':ctrl.activity.empty_leg, 'label-danger':!ctrl.activity.empty_leg}">{{ ctrl.activity.empty_leg ? 'YES' : 'NO' }}</span></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">
+                        <p><strong>Pax</strong></p>
+                      </td>
+                      <td class="text-center">
+                        <p>{{ctrl.activity.pax}}</p>
+                      </td>
+                    </tr>
+                    <tr class="danger-row">
+                      <td colspan="2" class="text-center"><a ng-click="ctrl.deleteActivity()" href="">Delete this Activity</a></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

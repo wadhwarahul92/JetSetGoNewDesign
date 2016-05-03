@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm-12 trip-content-main">
+    <h3 class="main-heading trip_">
+      Confirmed Trips
+    </h3>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Trip Id</th>
+            <th>Client Name</th>
+            <th>Itinerary</th>
+            <th>Payment Status</th>
+            <th>Amount Paid</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @trips.each do |trip| %>
+            <% next unless trip.activities.any? %>
+              <tr ng-init="e_<%= trip.id %> = false">
+                <td><%= trip.id %></td>
+                <td><%= trip.user.try(:full_name) %></td>
+                <td>
+                  <% trip.activities.each do |activity| %>
+                      <%= activity.departure_airport.city.name %> --> <%= activity.arrival_airport.city.name %>
+                      <br>
+                  <%- end %>
+                </td>
+                <td>
+                  <span ng-hide="e_<%= trip.id %>"><%= trip.payment_status %></span>
+                  <select ng-show="e_<%= trip.id %>">
+                    <option value="unpaid">unpaid</option>
+                    <option value="partially paid">partially paid</option>
+                    <option value="fully paid">fully paid</option>
+                  </select>
+                </td>
+                <td>
+                  <span ng-hide="e_<%= trip.id %>"><%= trip.amount_paid %></span>
+                  <input ng-show="e_<%= trip.id %>" type="number" value="<%= trip.amount_paid %>">
+                </td>
+                <td>
+                  <a ng-hide="e_<%= trip.id %>" ng-click="e_<%= trip.id %> = !e_<%= trip.id %>" href="">edit</a>
+                  <a href="" onclick="saveData(this)" data-id="<%= trip.id %>" ng-show="e_<%= trip.id %>" ng-click="e_<%= trip.id %> = !e_<%= trip.id %>">save</a>
+                </td>
+              </tr>
+          <%- end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+</div>
+<%= form_tag '#', method: 'put', id: 'formData', style: 'display: none' do %>
+<input type="text" name="trip[payment_status]" id="payment_status">
+<input type="text" name="trip[amount_paid]" id="amount_paid">
+    <input type="text" name="redirect_url" value="/organisations/trips/confirmed">
+<input type="submit">
+<%- end %>
+<script>
+  function saveData(e){
+    var id = $(e).attr('data-id');
+    var form = $('#formData');
+    $('#payment_status').val( $(e).parents('tr').find('select').val() );
+    $('#amount_paid').val( $(e).parents('tr').find('input').val() );
+    form.attr('action', '/organisations/trips/' + id );
+    form.submit();
+  }
+</script>

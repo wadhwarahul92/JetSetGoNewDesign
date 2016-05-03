@@ -3,6 +3,16 @@ class Organisations::TripsController < Organisations::BaseController
 
   before_action :authenticate_operator
 
+  def update
+    @trip = current_organisation.trips.find params[:id]
+    @trip.update_attributes!(params[:trip].permit!)
+    redirect_to(params[:redirect_url] || '/')
+  end
+
+  def confirmed
+    @trips = current_organisation.trips.where(status: Trip::STATUS_CONFIRMED)
+  end
+
   def index
     if request.format == 'application/json'
       if params[:start_at].present? and params[:end_at].present?
