@@ -4,11 +4,11 @@
       Confirmed Trips
     </h3>
     <div class="row">
-      <div class="col-sm-2"></div>
+      <div class="col-sm-1"></div>
       <div class="col-sm-10">
-        <table class="">
+        <table class="confirmed-trip-table">
           <thead>
-          <tr>
+          <tr class="heading-row">
             <th>Trip Id</th>
             <th>Client Name</th>
             <th>Itinerary</th>
@@ -20,13 +20,21 @@
           <tbody>
           <% @trips.each do |trip| %>
             <% next unless trip.activities.any? %>
-              <tr ng-init="e_<%= trip.id %> = false">
+              <tr class="content-row" ng-init="e_<%= trip.id %> = false">
                 <td><%= trip.id %></td>
                 <td><%= trip.user.try(:full_name) %></td>
                 <td>
                   <% trip.activities.each do |activity| %>
-                      <%= activity.departure_airport.city.name %> --> <%= activity.arrival_airport.city.name %>
-                      <br>
+                      <p class="city-con">
+                        <span class="city-name-con">
+                          <img class="city-img" src="<%= activity.departure_airport.city.image %>" alt=""> <%= activity.departure_airport.city.name %>
+                        </span>
+                        <i class="fa fa-plane rotate-plain-icon"></i>
+                        <span class="city-name-con">
+                          <img class="city-img" src="<%= activity.arrival_airport.city.image %>" alt=""> <%= activity.arrival_airport.city.name %>
+                        </span>
+
+                      </p>
                   <%- end %>
                 </td>
                 <td>
@@ -42,7 +50,7 @@
                   <input ng-show="e_<%= trip.id %>" type="number" value="<%= trip.amount_paid %>">
                 </td>
                 <td>
-                  <a ng-hide="e_<%= trip.id %>" ng-click="e_<%= trip.id %> = !e_<%= trip.id %>" href="">edit</a>
+                  <a ng-hide="e_<%= trip.id %>" ng-click="e_<%= trip.id %> = !e_<%= trip.id %>" href=""><i class="fa fa-pencil edit-cion"></i></a>
                   <a href="" onclick="saveData(this)" data-id="<%= trip.id %>" ng-show="e_<%= trip.id %>" ng-click="e_<%= trip.id %> = !e_<%= trip.id %>">save</a>
                 </td>
               </tr>

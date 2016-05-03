@@ -90,6 +90,53 @@ $main-blue-color:rgb(5, 81, 139);
 	}
 }
 
+//confirmed page
+.confirmed-trip-table{
+  width: 100%;
+  tr.heading-row{
+    th{
+      padding: 10px;
+      background-color: $main-blue-color;
+      font-weight: normal;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+  tr.content-row{
+    td{
+      text-align: center;
+      border: 1px solid #eeeeee;
+      .city-con{
+        margin: 15px 0;
+        .city-name-con{
+          min-width: 170px;
+          display: inline-block;
+          text-align: left;
+        }
+        .rotate-plain-icon{
+          margin: 0 30px;
+          -moz-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+      .city-img{
+        height: 30px;
+      }
+      .edit-cion{
+        min-width: 50px;
+      }
+    }
+  }
+  tr:nth-child(even) {
+    background: #f7f7f7;
+  }
+  tr:nth-child(odd) {
+    background: #ffffff;
+  }
+}
 
 @media(max-width:767px){
 	.trip-content-main{
