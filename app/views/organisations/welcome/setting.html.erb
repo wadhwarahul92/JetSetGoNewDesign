@@ -1,7 +1,7 @@
 <div class="row" ng-controller="SettingsController as ctrl" ng-init="current_tab='members'">
   <div class="col-sm-12 setting-content-main">
     <h3 class="main-heading settings_">
-      Settings <!-- <i class="fa fa-cogs"></i> -->
+      Settings
     </h3>
     <div class="row">
       <div class="col-md-2 col-sm-3 col-xs-12">
@@ -39,7 +39,7 @@
             <% @operators.each do |operator| %>
                 <tr>
                   <td><%= operator.full_name %></td>
-                  <td><%= operator.designation %></td>
+                  <td><%= operator.designation.capitalize if operator.designation.present? %></td>
                   <td>
                     <% if current_user.can_add_new_operator? %>
                         <% unless current_user.id == operator.id %>
@@ -164,11 +164,5 @@
 
       </div>
     </div>
-
-
   </div>
 </div>
-
-
-
-

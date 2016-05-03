@@ -23,16 +23,53 @@ class Operator < User
     @is_admin ||= self.roles.include?('admin')
   end
 
+  # def can_add_trip?
+  #   %w{admin ceo coo editor}.include?(self.designation)
+  # end
+  #
+  # def can_add_unavailability?
+  #   can_add_trip?
+  # end
+  #
+  # def can_add_aircraft?
+  #   %w{admin ceo coo editor}.include?(self.designation)
+  # end
+  #
+  # def can_add_forum_topic?
+  #   %w{admin ceo coo editor}.include?(self.designation)
+  # end
+  #
+  # def can_add_forum_topic_comment?
+  #   %w{admin ceo coo editor}.include?(self.designation)
+  # end
+  #
+  # def can_add_new_operator?
+  #   %w{admin ceo manager}.include?(self.designation)
+  # end
+
+
   def can_add_trip?
     %w{admin ceo coo editor}.include?(self.designation)
+  end
+
+  def can_delete_trip?
+    can_add_trip?
   end
 
   def can_add_unavailability?
     can_add_trip?
   end
 
+  def can_delete_unavailability?
+    can_add_trip?
+  end
+
   def can_add_aircraft?
-    %w{admin ceo coo editor}.include?(self.designation)
+    %w{admin ceo}.include?(self.designation)
+  end
+
+  def can_edit_aircraft?
+    can_add_aircraft?
   end
 
   def can_add_forum_topic?
@@ -44,7 +81,7 @@ class Operator < User
   end
 
   def can_add_new_operator?
-    %w{admin ceo manager}.include?(self.designation)
+    %w{admin manager}.include?(self.designation)
   end
 
 end
