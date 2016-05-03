@@ -37,25 +37,25 @@
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Landing cost at arrival</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.landing_cost_at_arrival | currency:"" | indianCurrency}}</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Handling cost at takeoff</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.handling_cost_at_takeoff | currency:"" | indianCurrency}}</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Watch hour cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.watch_hour_cost | currency:"" | indianCurrency}}</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Flight cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.flight_cost | currency:"" | indianCurrency}}</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i>{{flight_plan.flight_cost | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
             </ul>
@@ -152,8 +152,8 @@
                   <ul>
                     <li class="list-accomodation">
                       <ul>
-                        <li class="text-left">Tax</li>
-                        <li class="text-right">{{ctrl.tax}}%</li>
+                        <li class="text-left"><b>Tax</b></li>
+                        <li class="text-right"><b><i class="fa fa-rupee"></i>{{ctrl.tax_in_rupees | currency:"":2 | indianCurrency}}</b></li>
                       </ul>
                     </li>
                     <li class="list-accomodation">
