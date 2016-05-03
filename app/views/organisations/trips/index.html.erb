@@ -65,7 +65,9 @@
                 </td>
               </tr>
               <tr class="danger-row">
-                <td colspan="2" class="text-center"><a ng-click="ctrl.deleteActivity()" href="">Delete this Activity</a></td>
+                <% if current_user.can_delete_trip? %>
+                    <td colspan="2" class="text-center"><a ng-click="ctrl.deleteActivity()" href="">Delete this Activity</a></td>
+                <% end %>
               </tr>
               </tbody>
             </table>

@@ -49,15 +49,27 @@ class Operator < User
 
 
   def can_add_trip?
-    %w{admin ceo editor}.include?(self.designation)
+    %w{admin ceo coo editor}.include?(self.designation)
+  end
+
+  def can_delete_trip?
+    can_add_trip?
   end
 
   def can_add_unavailability?
     can_add_trip?
   end
 
+  def can_delete_unavailability?
+    can_add_trip?
+  end
+
   def can_add_aircraft?
     %w{admin ceo}.include?(self.designation)
+  end
+
+  def can_edit_aircraft?
+    can_add_aircraft?
   end
 
   def can_add_forum_topic?

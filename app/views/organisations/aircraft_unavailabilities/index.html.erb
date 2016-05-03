@@ -16,8 +16,8 @@
             <!---->
             <form class="col-xs-12" ng-submit="ctrl.update()">
               <!--<div class="field margin-top">-->
-                <!--<label for="aircraft_id">Aircraft</label>-->
-                <!--<select id="aircraft_id" ng-model="ctrl.a_u.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>-->
+              <!--<label for="aircraft_id">Aircraft</label>-->
+              <!--<select id="aircraft_id" ng-model="ctrl.a_u.aircraft_id" ng-options="aircraft.id as aircraft.tail_number for aircraft in ctrl.aircrafts" class="form-control"></select>-->
               <!--</div>-->
               <div class="field margin-top">
                 <label for="start_at">Start At</label>
@@ -37,11 +37,13 @@
                 <label for="reason">Reason</label>
                 <textarea id="reason" class="form-control" rows="2" ng-model="ctrl.a_u.reason"></textarea>
               </div>
-              <div class="field margin-top">
-                <div class="col-sm-6 col-xs-12 button-con no-padding">
-                  <a href="" ng-click="ctrl.delete()" class="btn btn-danger delete-btn" >Delete Unavailability</a>
-                </div>
-              </div>
+              <% if current_user.can_delete_unavailability? %>
+                  <div class="field margin-top">
+                    <div class="col-sm-6 col-xs-12 button-con no-padding">
+                      <a href="" ng-click="ctrl.delete()" class="btn btn-danger delete-btn" >Delete Unavailability</a>
+                    </div>
+                  </div>
+              <% end %>
             </form>
             <div class="clearfix"></div>
           </div>
