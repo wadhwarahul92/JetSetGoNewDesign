@@ -94,3 +94,14 @@ $main-blue-color:rgb(5, 81, 139);
     }
   }
 }
+
+@media(max-width: 767px){
+  .profile-content-main{
+    .profile-main-con{
+      h2.full-name{
+        font-size: 30px;
+        padding: 10px 0;
+      }
+    }
+  }
+}
