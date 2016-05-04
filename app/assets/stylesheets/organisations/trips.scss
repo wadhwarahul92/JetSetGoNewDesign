@@ -9,73 +9,73 @@ $main-blue-color:rgb(5, 81, 139);
 
 
 .blue-right-trip{
-	background-color:#329ce0;
+	background-color: #329ce0;
 }
 .yellow-right-trip{
-	background-color:#f9d715;
+	background-color: #f9d715;
 }
 
 .trip-content-main{
 	h3.main-heading{
-		margin:10px auto 40px auto;
-	    color:$dark-blue-color;
-	    border:0;
-	    text-align:center;
-	    font-size:25px;
-	    padding:5px 10px 13px 10px;
-	    max-width:800px;
-	    border-bottom:1px solid #cccccc;
-	    position:relative;
-	    background-color:transparent;
-	    text-transform:uppercase;
+		margin: 10px auto 40px auto;
+	    color: $dark-blue-color;
+	    border: 0;
+	    text-align: center;
+	    font-size: 25px;
+	    padding: 5px 10px 13px 10px;
+	    max-width: 800px;
+	    border-bottom: 1px solid #cccccc;
+	    position: relative;
+	    background-color: transparent;
+	    text-transform: uppercase;
 	}
 	h3.main-heading:after{
-		content:"";
-	    display:inline-block;
-	    width:20px;
-	    height:20px;
-	    background-color:$main-green-color;
-	    position:absolute;
-	    border-radius:50%;
-	    border:3px solid #ffffff;
-	    bottom:-10px;
-	    left:48%;
+		content: "";
+	    display: inline-block;
+	    width: 20px;
+	    height: 20px;
+	    background-color: $main-green-color;
+	    position: absolute;
+	    border-radius: 50%;
+	    border: 3px solid #ffffff;
+	    bottom: -10px;
+	    left: 48%;
 	}
 }
 .main-right-con{
 	h3{
-		margin:0;
-		padding:10px 0;
-		font-size:20px;
+		margin: 0;
+		padding: 10px 0;
+		font-size: 20px;
 	}
 	table{
 		tr{
 			th{
-				border:0px;
+				border: 0px;
 			}
 			td{
-				border:0px;
+				border: 0px;
 			}
 		}
 		tr.heading_main{
 			th{
-				color:#ffffff;
-				padding:15px 0;
-				font-size:17px;
+				color: #555555;
+				padding: 15px 0;
+				font-size: 17px;
 			}
 		}
 		.table-body{
 			background-color:#ffffff;
 			tr{
-				border:1px solid #eeeeee;
+				border-bottom: 1px solid #eeeeee;
 				td{
 					p{
-						margin:0;
-						padding:5px 0;
+						margin: 0;
+						padding: 5px 0;
 						span.label{
-							font-size:11px;
-							display:inline-block;
-							padding:4px;
+							font-size: 11px;
+							display: inline-block;
+							padding: 4px;
 						}
 					}
 				}
@@ -83,24 +83,72 @@ $main-blue-color:rgb(5, 81, 139);
 		}
 	}
 	.highlight_trip{
-		background-color:#1176b7;
+		background-color: #1176b7;
 	}
 	.highlight_{
-		background-color:#e5c300;
+		background-color: #e5c300;
 	}
+}
+
+//confirmed page
+.confirmed-trip-table{
+  width: 100%;
+  tr.heading-row{
+    th{
+      padding: 10px;
+      background-color: $main-blue-color;
+      font-weight: normal;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+  tr.content-row{
+    td{
+      text-align: center;
+      border: 1px solid #eeeeee;
+      .city-con{
+        margin: 15px 0;
+        .city-name-con{
+          min-width: 170px;
+          display: inline-block;
+          text-align: left;
+        }
+        .rotate-plain-icon{
+          margin: 0 30px;
+          -moz-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+      .city-img{
+        height: 30px;
+      }
+      .edit-cion{
+        min-width: 50px;
+      }
+    }
+  }
+  tr:nth-child(even) {
+    background: #f7f7f7;
+  }
+  tr:nth-child(odd) {
+    background: #ffffff;
+  }
 }
 
 @media(max-width:767px){
 	.trip-content-main{
 		h3.main-heading{
-		    font-size:20px;
+		    font-size: 20px;
 		}
 	}
 }
 @media(max-width:400px){
 	.trip-content-main{
 		h3.main-heading{
-		    font-size:19px;
+		    font-size: 19px;
 		}
 	}
 }
