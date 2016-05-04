@@ -45,13 +45,11 @@ if @trips.any?
             json.longitude activity.aircraft.base_airport.longitude
             json.latitude activity.aircraft.base_airport.latitude
             json.code activity.aircraft.base_airport.code
-            json.icao_code activity.aircraft.base_airport.icao_code
             json.private_landing activity.aircraft.base_airport.private_landing?
             json.night_parking activity.aircraft.base_airport.night_parking?
             json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
             json.fuel_availability activity.aircraft.base_airport.fuel_availability
             json.watch_hour_extension activity.aircraft.base_airport.watch_hour_extension
-            json.icao_code activity.aircraft.base_airport.icao_code
             json.runway_field_length_in_feet activity.aircraft.base_airport.runway_field_length_in_feet
             json.landing_cost activity.aircraft.base_airport.landing_cost
             json.city{
@@ -69,14 +67,12 @@ if @trips.any?
             json.id activity.departure_airport.id
             json.name activity.departure_airport.name
             json.code activity.departure_airport.code
-            json.icao_code activity.departure_airport.icao_code
           }
 
           json.arrival_airport{
             json.id activity.arrival_airport.id
             json.name activity.arrival_airport.name
             json.code activity.arrival_airport.code
-            json.icao_code activity.arrival_airport.icao_code
           }
 
         end
@@ -324,14 +320,12 @@ if @empty_legs.present?
         json.id empty_leg.departure_airport.id
         json.name empty_leg.departure_airport.name
         json.code empty_leg.departure_airport.code
-        json.icao_code empty_leg.departure_airport.icao_code
       }
 
       json.arrival_airport{
         json.id empty_leg.arrival_airport.id
         json.name empty_leg.arrival_airport.name
         json.code empty_leg.arrival_airport.code
-        json.icao_code empty_leg.arrival_airport.icao_code
       }
     end
   }
@@ -345,6 +339,7 @@ if @aircraft_unavailabilities.any?
       json.start aircraft_unavailability.start_at.strftime(time_format)
       json.end aircraft_unavailability.end_at.strftime(time_format)
       json.className ['aircraft_unavailability_event']
+      json.image aircraft_unavailability.aircraft.aircraft_images.first.image.url(:size_250x250)
     end
   }
 end

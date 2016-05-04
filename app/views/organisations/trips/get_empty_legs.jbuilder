@@ -21,6 +21,8 @@ json.array! @empty_legs do |empty_leg|
       json.landing_cost_at_arrival activity.landing_cost_at_arrival
       json.watch_hour_at_arrival activity.watch_hour_at_arrival?
       json.watch_hour_cost activity.watch_hour_cost
+      json.empty_leg_whole_price activity.empty_leg_whole_price
+      json.empty_leg_seat_price activity.empty_leg_seat_price
 
       if activity.accommodation_plan.present?
         json.accommodation_plan{
@@ -31,6 +33,7 @@ json.array! @empty_legs do |empty_leg|
 
       json.aircraft{
         json.id activity.aircraft.id
+        json.tail_number activity.aircraft.tail_number
         json.name activity.aircraft.aircraft_type.name
       }
 
