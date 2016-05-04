@@ -26,6 +26,7 @@ json.array! @trips do |trip|
         json.longitude aircraft.base_airport.longitude
         json.latitude aircraft.base_airport.latitude
         json.code aircraft.base_airport.code
+        json.icao_code aircraft.base_airport.icao_code
         json.private_landing aircraft.base_airport.private_landing?
         json.night_parking aircraft.base_airport.night_parking?
         json.ifr_or_vfr aircraft.base_airport.ifr_or_vfr
@@ -46,12 +47,14 @@ json.array! @trips do |trip|
         json.id activity.departure_airport.id
         json.name activity.departure_airport.name
         json.code activity.departure_airport.code
+        json.icao_code activity.departure_airport.icao_code
       }
 
       json.arrival_airport{
         json.id activity.arrival_airport.id
         json.name activity.arrival_airport.name
         json.code activity.arrival_airport.code
+        json.icao_code activity.arrival_airport.icao_code
       }
 
       json.start_at activity.start_at.strftime(time_format)

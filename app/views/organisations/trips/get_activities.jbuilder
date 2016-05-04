@@ -45,6 +45,7 @@ if @trips.any?
             json.longitude activity.aircraft.base_airport.longitude
             json.latitude activity.aircraft.base_airport.latitude
             json.code activity.aircraft.base_airport.code
+            json.icao_code activity.aircraft.base_airport.icao_code
             json.private_landing activity.aircraft.base_airport.private_landing?
             json.night_parking activity.aircraft.base_airport.night_parking?
             json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
@@ -68,12 +69,14 @@ if @trips.any?
             json.id activity.departure_airport.id
             json.name activity.departure_airport.name
             json.code activity.departure_airport.code
+            json.icao_code activity.departure_airport.icao_code
           }
 
           json.arrival_airport{
             json.id activity.arrival_airport.id
             json.name activity.arrival_airport.name
             json.code activity.arrival_airport.code
+            json.icao_code activity.arrival_airport.icao_code
           }
 
         end
@@ -129,6 +132,7 @@ if @enquiries.any?
             json.longitude activity.aircraft.base_airport.longitude
             json.latitude activity.aircraft.base_airport.latitude
             json.code activity.aircraft.base_airport.code
+            json.icao_code activity.aircraft.base_airport.icao_code
             json.private_landing activity.aircraft.base_airport.private_landing?
             json.night_parking activity.aircraft.base_airport.night_parking?
             json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
@@ -152,12 +156,14 @@ if @enquiries.any?
             json.id activity.departure_airport.id
             json.name activity.departure_airport.name
             json.code activity.departure_airport.code
+            json.icao_code activity.departure_airport.icao_code
           }
 
           json.arrival_airport{
             json.id activity.arrival_airport.id
             json.name activity.arrival_airport.name
             json.code activity.arrival_airport.code
+            json.icao_code activity.arrival_airport.icao_code
           }
 
         end
@@ -211,6 +217,7 @@ if @quotes.any?
             json.longitude activity.aircraft.base_airport.longitude
             json.latitude activity.aircraft.base_airport.latitude
             json.code activity.aircraft.base_airport.code
+            json.icao_code activity.aircraft.base_airport.icao_code
             json.private_landing activity.aircraft.base_airport.private_landing?
             json.night_parking activity.aircraft.base_airport.night_parking?
             json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
@@ -234,12 +241,14 @@ if @quotes.any?
             json.id activity.departure_airport.id
             json.name activity.departure_airport.name
             json.code activity.departure_airport.code
+            json.icao_code activity.departure_airport.icao_code
           }
 
           json.arrival_airport{
             json.id activity.arrival_airport.id
             json.name activity.arrival_airport.name
             json.code activity.arrival_airport.code
+            json.icao_code activity.arrival_airport.icao_code
           }
 
         end
@@ -285,6 +294,7 @@ if @empty_legs.present?
         json.longitude empty_leg.aircraft.base_airport.longitude
         json.latitude empty_leg.aircraft.base_airport.latitude
         json.code empty_leg.aircraft.base_airport.code
+        json.icao_code empty_leg.aircraft.base_airport.icao_code
         json.private_landing empty_leg.aircraft.base_airport.private_landing?
         json.night_parking empty_leg.aircraft.base_airport.night_parking?
         json.ifr_or_vfr empty_leg.aircraft.base_airport.ifr_or_vfr
@@ -314,12 +324,14 @@ if @empty_legs.present?
         json.id empty_leg.departure_airport.id
         json.name empty_leg.departure_airport.name
         json.code empty_leg.departure_airport.code
+        json.icao_code empty_leg.departure_airport.icao_code
       }
 
       json.arrival_airport{
         json.id empty_leg.arrival_airport.id
         json.name empty_leg.arrival_airport.name
         json.code empty_leg.arrival_airport.code
+        json.icao_code empty_leg.arrival_airport.icao_code
       }
     end
   }

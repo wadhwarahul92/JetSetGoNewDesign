@@ -46,6 +46,7 @@ json.array! @enquiries do |enquiry|
         json.longitude activity.aircraft.base_airport.longitude
         json.latitude activity.aircraft.base_airport.latitude
         json.code activity.aircraft.base_airport.code
+        json.icao_code activity.aircraft.base_airport.icao_code
         json.private_landing activity.aircraft.base_airport.private_landing?
         json.night_parking activity.aircraft.base_airport.night_parking?
         json.ifr_or_vfr activity.aircraft.base_airport.ifr_or_vfr
@@ -66,12 +67,14 @@ json.array! @enquiries do |enquiry|
         json.id activity.departure_airport.id
         json.name activity.departure_airport.name
         json.code activity.departure_airport.code
+        json.icao_code activity.departure_airport.icao_code
       }
 
       json.arrival_airport{
         json.id activity.arrival_airport.id
         json.name activity.arrival_airport.name
         json.code activity.arrival_airport.code
+        json.icao_code activity.arrival_airport.icao_code
       }
 
     end
