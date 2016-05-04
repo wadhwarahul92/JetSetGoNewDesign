@@ -113,7 +113,7 @@ $green-color: rgb(173, 194, 74);
 					display: inline-block;
 				}
 				span.blue-color{
-					background-color: #1f8dd4;
+					background-color: $main-blue-color;
 				}
 				span.red-color{
 					background-color:$main-red-color;
@@ -132,7 +132,7 @@ $green-color: rgb(173, 194, 74);
                     font-size: 16px;
                     text-decoration: none;
                     padding: 10px;
-                    background-color: #1f8dd4;
+                    background-color: $main-blue-color;
                     display: inline-block;
                     color: #ffffff;
 
@@ -155,7 +155,7 @@ $green-color: rgb(173, 194, 74);
                 }
 			}
             .blue-text-color{
-              color:#1f8dd4;
+              color:$main-blue-color;
             }
             .red-text-color{
               color:$main-red-color;
@@ -278,7 +278,7 @@ $green-color: rgb(173, 194, 74);
       background-color: $main-red-color;
     }
     h2.new-trip-heading{
-      background-color: $sky-blue-color;
+      background-color: $main-blue-color;
     }
 	.field{
 		margin-top:15px;
@@ -302,7 +302,7 @@ $green-color: rgb(173, 194, 74);
       background-color: $main-red-color;
     }
     .skynblue-btn{
-      background-color: $sky-blue-color;
+      background-color: $main-blue-color;
     }
 	.main-yesno{
 		width:50px; 
