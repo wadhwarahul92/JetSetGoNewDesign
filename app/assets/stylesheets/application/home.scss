@@ -1,4 +1,5 @@
 $main-skyblue-color : rgb(27,143,188);
+$main-blue-color:rgb(5, 81, 139);
 
 //login popup
 
@@ -63,15 +64,15 @@ $main-skyblue-color : rgb(27,143,188);
     border-top-right-radius: 6px;
     margin:0;
     padding:15px;
-    //background-color:$main-skyblue-color;
-    color: $main-skyblue-color;
+    //background-color:$main-blue-color;
+    color: $main-blue-color;
     text-align: center;
     position: relative;
     .user-icon-top{
     }
     .span-text{
       display:inline-block;
-      background-color:$main-skyblue-color;
+      background-color:$main-blue-color;
       position:absolute;
       top:0;
       right:20px;
@@ -121,7 +122,7 @@ $main-skyblue-color : rgb(27,143,188);
         width: 100%;
         padding:15px 0 !important;
         font-size:16px;
-        background-color: $main-skyblue-color;
+        background-color: $main-blue-color;
         margin-top: 30px;
       }
       .register-click{
@@ -162,7 +163,7 @@ $main-skyblue-color : rgb(27,143,188);
 
 span.heading{
   font-size:70px;
-  color: $main-skyblue-color;
+  color: $main-blue-color;
   display: inline-block;
   margin:0 0 40px 0;
   border-bottom: 1px solid #eeeeee;
@@ -170,7 +171,7 @@ span.heading{
 }
 span.heading:after{
   content: "";
-  background-color: $main-skyblue-color;
+  background-color: $main-blue-color;
   height: 3px;
   position: absolute;
   width: 30%;
@@ -298,7 +299,7 @@ span.heading:after{
         }
         .search-btn{
           width: 14.5%;
-          background-color: $main-skyblue-color;
+          background-color: $main-blue-color;
           display: inline-block;
           padding:10px 0;
           text-align: center;
@@ -373,7 +374,7 @@ span.heading:after{
           -o-transition: all 0.6s ease-in-out;
           transition: all 0.6s ease-in-out;
           a{
-            color: $main-skyblue-color;
+            color: $main-blue-color;
             font-size: 16px;
             font-weight: bold;
             text-decoration: none;
@@ -584,7 +585,7 @@ span.heading:after{
   }
   .subscrib-btn{
     width: 30%;
-    background-color: $main-skyblue-color;
+    background-color: $main-blue-color;
     border: 0;
     float: right;
     padding: 20px 0;
