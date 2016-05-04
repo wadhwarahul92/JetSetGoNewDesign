@@ -1,7 +1,6 @@
 jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService)->
 
   @activities = [{}]
-
   @currentUser = null
 
   if $routeParams.search_id
