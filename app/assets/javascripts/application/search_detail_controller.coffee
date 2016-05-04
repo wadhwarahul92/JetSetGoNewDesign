@@ -42,7 +42,7 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail','
   @formatTime = (time)->
     data = null
     try
-      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm A')
     data
 
   return undefined
