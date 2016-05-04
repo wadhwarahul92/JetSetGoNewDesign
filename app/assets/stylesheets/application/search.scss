@@ -264,6 +264,9 @@ $main-skyblue-color : rgb(27,143,188);
             border-bottom: 1px solid #cccccc;
             padding: 5px 15px;
           }
+          .hide-text{
+            display: none;
+          }
         }
         li.dotted-border{
           border-bottom: 3px dotted #cccccc;

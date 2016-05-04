@@ -21,7 +21,7 @@
           <li class="accomodation-con" ng-repeat="flight_plan in ctrl.detail.flight_plan">
             <ul>
               <li class="empty-leg-heading">
-                <span class="heading-text" ng-class="">{{flight_plan.flight_type}}</span>
+                <span class="heading-text" ng-show="flight_plan.flight_type == 'empty_leg'" >{{flight_plan.flight_type}}</span>
               </li>
               <li class="list-accomodation">
                 <ul>
