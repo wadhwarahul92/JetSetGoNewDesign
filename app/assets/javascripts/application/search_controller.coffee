@@ -14,6 +14,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @searchId = $routeParams.id
 
+  @loading = true
+
   if CurrentUserService.currentUser != null
     @user = CurrentUserService.currentUser
 
@@ -30,11 +32,13 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       for result in @results
         @totalTripCost(result)
+
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
         =>
           @aircrafts = AircraftsService.aircrafts
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
+          @loading = false
       )
   ).error(
     (data)->
