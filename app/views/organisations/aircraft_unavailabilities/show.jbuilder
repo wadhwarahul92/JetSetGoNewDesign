@@ -19,6 +19,7 @@ if params[:format_as] == 'event'
     json.longitude @aircraft_unavailability.aircraft.base_airport.longitude
     json.latitude @aircraft_unavailability.aircraft.base_airport.latitude
     json.code @aircraft_unavailability.aircraft.base_airport.code
+    json.icao_code @aircraft_unavailability.aircraft.base_airport.icao_code
     json.private_landing @aircraft_unavailability.aircraft.base_airport.private_landing?
     json.night_parking @aircraft_unavailability.aircraft.base_airport.night_parking?
     json.ifr_or_vfr @aircraft_unavailability.aircraft.base_airport.ifr_or_vfr

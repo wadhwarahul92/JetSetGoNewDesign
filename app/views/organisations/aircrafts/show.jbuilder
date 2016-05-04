@@ -16,6 +16,7 @@ json.base_airport{
   json.longitude @aircraft.base_airport.longitude
   json.latitude @aircraft.base_airport.latitude
   json.code @aircraft.base_airport.code
+  json.icao_code @aircraft.base_airport.icao_code
   json.private_landing @aircraft.base_airport.private_landing?
   json.night_parking @aircraft.base_airport.night_parking?
   json.ifr_or_vfr @aircraft.base_airport.ifr_or_vfr
