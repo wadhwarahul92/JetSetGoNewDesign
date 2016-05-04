@@ -87,6 +87,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         ->
           notify
             message: 'Your enquiry has been registered. We shall contact you soon.'
+          result.enquired = true
       ).error(
         (data)->
           error = 'Something went wrong.'
