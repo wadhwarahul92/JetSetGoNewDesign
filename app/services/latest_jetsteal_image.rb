@@ -54,7 +54,7 @@ class LatestJetstealImage
       self.pointsize = 15
     end
 
-    departure_city_image = Magick::Image.read(@jetsteal.departure_airport.city.image).first
+    departure_city_image = Magick::Image.read(@jetsteal.departure_airport.city.image.to_s.gsub('https', 'http')).first
     departure_city_image = departure_city_image.resize_to_fill(30)
     @canvas.composite!(departure_city_image, 60, 35, Magick::OverCompositeOp)
 
@@ -100,7 +100,7 @@ class LatestJetstealImage
 
     end
 
-    arrival_city_image = Magick::Image.read(@jetsteal.arrival_airport.city.image).first
+    arrival_city_image = Magick::Image.read(@jetsteal.arrival_airport.city.image.to_s.gsub('https', 'http')).first
     arrival_city_image = arrival_city_image.resize_to_fit(30)
     @canvas.composite!(arrival_city_image, 130, 35, Magick::OverCompositeOp)
 
