@@ -33,6 +33,7 @@ json.array! @empty_legs do |empty_leg|
 
       json.aircraft{
         json.id activity.aircraft.id
+        json.tail_number activity.aircraft.tail_number
         json.name activity.aircraft.aircraft_type.name
       }
 

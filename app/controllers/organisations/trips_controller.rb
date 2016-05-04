@@ -257,7 +257,9 @@ class Organisations::TripsController < Organisations::BaseController
                       :arrival_airport_id,
                       :start_at,
                       :empty_leg,
-                      :pax
+                      :pax,
+                      :empty_leg_whole_price,
+                      :empty_leg_seat_price
                   ])
   end
 
