@@ -1,6 +1,6 @@
 //jetsetrescue banner section
-.yatra-banner{
-  background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/183/original/7.jpg?1462426040) 100% no-repeat;
+.rescue-banner{
+  background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/200/original/5.jpg?1462443264) 100% no-repeat;
   background-size: cover;
   .banner-content{
     width: 100%;
@@ -19,7 +19,7 @@
 }
 
 //jetsetrescue content section
-.yatracontent{
+.rescuecontent{
   h3{
     text-align: center;
     span.heading{
@@ -91,8 +91,8 @@
 }
 
 @media(max-width:1024px){
-  //helisetgo banner section
-  .yatra-banner{
+  //jetsetrescue banner section
+  .rescue-banner{
     .banner-content{
       padding: 0 10px;
       p{
@@ -102,8 +102,8 @@
       }
     }
   }
-  //helisetgo content section
-  .yatracontent{
+  //jetsetrescue content section
+  .rescuecontent{
     h3{
       text-align: center;
       span.heading{
@@ -135,8 +135,8 @@
 }
 
 @media(max-width:767px){
-  //helisetgo banner section
-  .yatra-banner{
+  //jetsetrescue banner section
+  .rescue-banner{
     .banner-content{
       padding: 0 10px;
       p{
@@ -146,8 +146,8 @@
       }
     }
   }
-  //helisetgo content section
-  .yatracontent{
+  //jetsetrescue content section
+  .rescuecontent{
     h3{
       text-align: center;
       span.heading{
