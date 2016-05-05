@@ -1,9 +1,22 @@
 /*contact us banner section start*/
+
 .contactus-banner{
-	width:100%;
-	background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/099/original/contactus.png?1457595096) 100% no-repeat;
-	background-size:cover;
-	
+  background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/213/original/1.jpg?1462452931) 100% no-repeat;
+  background-size: cover;
+  .banner-content{
+    width: 100%;
+    max-width: 900px;
+    margin: 18% auto 0 auto;
+    p{
+      font-size: 22px;
+      text-align: center;
+      color: #ffffff;
+      a{
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 /*contact us banner section finish*/
 
@@ -34,6 +47,12 @@
 				text-align:justify;
 				color:#444444;
 			}
+          .address-col,.phone-col, .email-col{
+            border-bottom: 1px solid #cccccc;
+          }
+          .contact-icon{
+            font-size: 35px;
+          }
           i{
             //font-size: 30px;
           }
@@ -47,7 +66,8 @@
 				-webkit-box-shadow: 0px 0px 12px 0px rgba(220,220,220,1);
 				-moz-box-shadow: 0px 0px 12px 0px rgba(220,220,220,1);
 				box-shadow: 0px 0px 12px 0px rgba(220,220,220,1);
-				padding:10px;
+				//padding:10px;
+              padding: 10px 20px 10px 20px;
 				h2{
 					//color:#ffffff;
 					font-size:25px;

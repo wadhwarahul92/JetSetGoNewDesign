@@ -1,10 +1,10 @@
 <!-- contactus banner section start -->
 <div class="inner-banner contactus-banner">
   <div class="heading">
-    <h1>Contact Us</h1>
+    <h1><span class="heading">Contact Us</span></h1>
   </div>
-  <div class="col-sm-12">
-    <h3>Our Professional Team will be glade to assist you. Please feel free to contact us. To get more info call +91-11-39585858 or send e-mail to info@jetsetgo.in</h3>
+  <div class="banner-content">
+    <p>Our Professional Team will be glade to assist you. Please feel free to contact us. To get more info call +91-11-39585858 or send e-mail to info@jetsetgo.in</p>
   </div>
 </div>
 <!-- contactus banner section finish -->
@@ -13,50 +13,46 @@
 <div class="contact-us-content">
 
   <div class="contact-info-main">
-    <div class="col-md-offset-1 col-md-6 col-sm-6 col-xs-12 contact-main-form margin-top-25">
-      <div class="contact-form zoomIn animated">
-        <form ng-submit="ctrl.create()">
-          <h2 class="text-center">Enquire Now</h2>
-          <label for="name">Name</label>
-          <input id="name" type="text" class="contact-text gray-color" ng-model="ctrl.name">
-          <label for="email">Email Id</label>
-          <input id="email" type="email" class="contact-text gray-color" ng-model="ctrl.email">
-          <label for="contact">Contact</label>
-          <input id="contact" ng-model="ctrl.phone" type="text" class="contact-text gray-color">
-          <label for="message">Message</label>
-          <textarea id="message" class="contact-area gray-color" ng-model="ctrl.message"></textarea>
-          <input type="submit" value="Send" class="btn submit-btn hvr-rectangle-in text-18">
-        </form>
-      </div>
-
-    </div>
-    <div class="col-md-5 col-sm-6 col-xs-12 address-detail">
-      <div class="col-sm-12">
-        <h2 class="margin-top-25">Address</h2>
-        <div class="col-sm-1"><i class="fa fa-building-o"></i></div>
-        <div class="col-sm-11">
-          <b>JetSetGo Aviation Services Private Limited</b><br/>
-
-          A411, Somdutt Chambers I, <br/>
-          Bhikaji Cama Place, New Delhi, 110066 <br/>
-          Delhi | Mumbai | Bengaluru | Dubai | New York
+    <div class="container">
+      <div class="col-md-offset-1 col-md-6 col-sm-6 col-xs-12 contact-main-form margin-top-25">
+        <div class="contact-form zoomIn animated">
+          <form ng-submit="ctrl.create()">
+            <h2 class="text-center">Enquire Now</h2>
+            <label for="name">Name</label>
+            <input id="name" type="text" class="contact-text gray-color" ng-model="ctrl.name">
+            <label for="email">Email Id</label>
+            <input id="email" type="email" class="contact-text gray-color" ng-model="ctrl.email">
+            <label for="contact">Contact</label>
+            <input id="contact" ng-model="ctrl.phone" type="text" class="contact-text gray-color">
+            <label for="message">Message</label>
+            <textarea id="message" class="contact-area gray-color" ng-model="ctrl.message"></textarea>
+            <input type="submit" value="Send" class="btn submit-btn hvr-rectangle-in text-18">
+          </form>
         </div>
       </div>
-
-      <div class="col-sm-12">
-        <h2 class="margin-top-25">Phone</h2>
-        <div class="col-sm-1"><i class="fa fa-mobile"></i></div>
-        <div class="col-sm-11">+91-11-39585858</div>
+      <div class="col-md-5 col-sm-6 col-xs-12 address-detail">
+        <h2 class="margin-top-25">Address</h2>
+        <div class="col-sm-12 address-col">
+          <div class="col-sm-2"><i class="fa fa-building-o contact-icon"></i></div>
+          <div class="col-sm-10">
+            <b>JetSetGo Aviation Services Private Limited</b><br/>
+              A411, Somdutt Chambers I, <br/>
+              Bhikaji Cama Place, New Delhi, 110066 <br/>
+              Delhi | Mumbai | Bengaluru | Dubai | New York
+          </div>
+        </div>
+        <div class="col-sm-12 phone-col">
+          <h2 class="margin-top-25">Phone</h2>
+          <div class="col-sm-2"><i class="fa fa-mobile contact-icon"></i></div>
+          <div class="col-sm-10">+91-11-39585858</div>
+        </div>
+        <div class="col-sm-12 email-col">
+          <h2 class="margin-top-25">Email</h2>
+          <div class="col-sm-2"><i class="fa fa-envelope-o contact-icon"></i></div>
+          <div class="col-sm-10">info@jetsetgo.in</div>
+        </div>
       </div>
-
-      <div class="col-sm-12">
-        <h2 class="margin-top-25">Email</h2>
-        <div class="col-sm-1"><i class="fa fa-envelope-o"></i></div>
-        <div class="col-sm-11">info@jetsetgo.in</div>
-      </div>
-
-
     </div>
   </div>
 </div>
-<!-- contact us content finish
+<!-- contact us content finish -->
