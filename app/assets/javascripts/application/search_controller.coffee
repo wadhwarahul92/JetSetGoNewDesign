@@ -145,7 +145,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       templateUrl: '/templates/search_detail'
       controller: 'SearchDetailController'
       controllerAs: 'ctrl'
-      backdrop: false
+      backdrop: true
       resolve: {
         detail: ->
           return selectedDetail
