@@ -20,7 +20,9 @@
         <ul class="list-unstyled">
           <li class="accomodation-con" ng-repeat="flight_plan in ctrl.detail.flight_plan">
             <ul>
-              <!--<li class="list-accomodation">{{flight_plan.flight_type}}</li>-->
+              <li class="empty-leg-heading">
+                <span class="heading-text" ng-show="flight_plan.flight_type == 'empty_leg'" >{{flight_plan.flight_type}}</span>
+              </li>
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">
@@ -36,28 +38,31 @@
               </li>
               <li class="list-accomodation">
                 <ul>
-                  <li class="text-left">Landing cost at arrival</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
+                  <li class="text-left">Flight cost</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
-                  <li class="text-left">Handling cost at takeoff</li>
+                  <li class="text-left">Handling cost</li>
                   <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
+                  <li class="text-left">Landing cost</li>
+                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
+                </ul>
+              </li>
+
+              <li class="list-accomodation" ng-show="flight_plan.watch_hour_cost">
+                <ul>
                   <li class="text-left">Watch hour cost</li>
                   <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
-              <li class="list-accomodation">
-                <ul>
-                  <li class="text-left">Flight cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"":2 | indianCurrency}}</li>
-                </ul>
-              </li>
+
+
             </ul>
 
             <!--<div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>-->
@@ -162,6 +167,9 @@
                         <li class="text-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
                     </li>
+                    <!--<li class="list-accomodation">-->
+                      <!--<a href="" class="custom-btn no-text-decoration " ng-click="ctrl.enquire(result)">Enquire</a>-->
+                    <!--</li>-->
                   </ul>
                 </div>
               </div>
