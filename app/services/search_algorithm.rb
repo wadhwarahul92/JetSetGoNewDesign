@@ -116,6 +116,7 @@ BEGIN
     # add plans for all user search activities
     ##########################################
     search_activities.each do |search_activity|
+
       # noinspection RubyResolve
       plan << {
           pax: search_activity.pax,
@@ -135,7 +136,9 @@ BEGIN
               search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours
           )[1],
           notam_at_arrival: airport_has_notam(search_activity.arrival_airport_id, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours),
-          flight_cost: flight_cost_for_aircraft(aircraft, search_activity.start_at, search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours)
+          flight_cost: flight_cost_for_aircraft(aircraft,
+                                                search_activity.start_at,
+                                                search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)).hours)
       }
     end
 
@@ -155,7 +158,9 @@ BEGIN
           watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)[0],
           watch_hour_cost: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)[1],
           notam_at_arrival: airport_has_notam(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours),
-          flight_cost: flight_cost_for_aircraft(aircraft, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)
+          flight_cost: flight_cost_for_aircraft(aircraft,
+                                                plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+                                                plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)).hours)
       }
     end
 
@@ -188,7 +193,7 @@ BEGIN
           stay_time = TimeDifference.between(
               previous_plan[:end_at],
               plan[:start_at]
-          ).in_hours
+          ).in_hours.to_f
 
           if stay_time > 4
 

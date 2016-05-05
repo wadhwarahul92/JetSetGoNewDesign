@@ -66,11 +66,13 @@
           <h5 class="sub-heading">{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</h5>
           <p class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</p>
         </div>
-        <div class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">GrandTotal</h5>
-          <p class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</p>
-        </div>
         <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 sub-border-con">
+        <h5 class="sub-heading">GrandTotal</h5>
+        <p class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</p>
       </div>
     </div>
   </div>
