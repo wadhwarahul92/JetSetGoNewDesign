@@ -254,6 +254,20 @@ $main-skyblue-color : rgb(27,143,188);
             }
           }
         }
+        li.empty-leg-heading{
+          list-style: none;
+          text-align: center;
+          .heading-text{
+            display: inline-block;
+            font-size: 20px;
+            margin-top: 20px;
+            border-bottom: 1px solid #cccccc;
+            padding: 5px 15px;
+          }
+          .hide-text{
+            display: none;
+          }
+        }
         li.dotted-border{
           border-bottom: 3px dotted #cccccc;
         }
