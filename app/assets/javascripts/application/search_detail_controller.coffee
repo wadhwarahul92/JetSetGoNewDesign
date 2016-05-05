@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail','tax','AirportsService', ($http, notify, detail, tax, AirportsService)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'AirportsService', ($http, notify, detail, tax, AirportsService)->
 
   @detail = detail
 

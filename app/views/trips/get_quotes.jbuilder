@@ -1,6 +1,7 @@
 json.array! @quotes do |quote|
 
   json.tax Tax.tax
+  json.tax_value Tax.total_tax_value
   json.id quote.id
   json.status quote.status
   json.jsg_commission Admin::JSG_COMMISSION_IN_PERCENTAGE

@@ -10,7 +10,7 @@ class TimeDifference
 
     def in_hours
       h = Time.diff(@start_at, @end_at, '%h.%m')
-      h[:diff].to_f
+      h[:diff]
     end
 
   end
