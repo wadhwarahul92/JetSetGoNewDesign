@@ -70,6 +70,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/quotes'
     controller: 'QuotesController'
     controllerAs: 'ctrl'
+  }).when('/jet_set_rescue', {
+    templateUrl: '/templates/jet_set_rescue'
+    controller: 'JetSetRescueController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)

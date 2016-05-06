@@ -278,6 +278,7 @@ Rails.application.routes.draw do
       get 'enquiry'
       get 'quotes'
       get 'search_detail'
+      get 'jet_set_rescue'
     end
   end
 
@@ -319,6 +320,7 @@ Rails.application.routes.draw do
   get 'privacy_policy' => 'route_overrides#welcome_index'
   get 'quotes' => 'route_overrides#welcome_index'
   get 'search_detail' => 'route_overrides#welcome_index'
+  get 'jet_set_rescue' => 'route_overrides#welcome_index'
 
 
   #TMP URL

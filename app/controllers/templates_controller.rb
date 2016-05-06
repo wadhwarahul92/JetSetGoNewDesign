@@ -74,4 +74,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def jet_set_rescue
+
+  end
+
 end
