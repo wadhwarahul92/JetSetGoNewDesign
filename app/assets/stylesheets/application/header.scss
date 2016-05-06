@@ -2,6 +2,7 @@
   width:100%;
   background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/163/original/search_header_bg.jpg?1461045995) ;
   background-size: cover;
+  z-index: 2;
   .logo-main-con{
 
   }
@@ -20,6 +21,9 @@
       }
     }
   }
+}
+.fixed-header{
+  position: fixed;
 }
 .home-header{
   background: transparent !important;
