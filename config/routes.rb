@@ -257,6 +257,7 @@ Rails.application.routes.draw do
   delete 'sign_out_' => 'welcome#sign_out_'
 
   post 'sign_up_' => 'welcome#sign_up_'
+  post 'create_contact' => 'welcome#create_contact'
 
   resources :templates do
     collection do

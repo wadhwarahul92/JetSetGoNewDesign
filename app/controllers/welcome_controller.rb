@@ -49,6 +49,16 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def create_contact
+    @contact = ContactDetail.new(contact_params)
+    if @contact.save
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @contact.errors.full_messages }
+    end
+
+  end
+
   private
 
   def user_params
@@ -58,6 +68,15 @@ class WelcomeController < ApplicationController
               :email,
               :password,
               :phone
+    )
+  end
+
+  def contact_params
+    params.permit(
+        :name,
+        :email,
+        :phone,
+        :message
     )
   end
 
