@@ -87,22 +87,17 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   # fetching jetsteals
   arr = []
-  length = 0
   $http.get('/jetsteals/get_list.json').success(
     (data)=>
       $.each(data, (i, v)=>
-        unless v.sold_out && length < 1
+        if !v.sold_out && arr.length < 2
           arr.push(v)
-          length + 1
-
           @jetsteals = arr
       )
   ).error(
     ->
       alert 'error fetching jetsteals, try again later'
   )
-  ####################
-
 
   @formatTime = (time)->
     data = null
