@@ -1,5 +1,5 @@
 class ContactDetail < ActiveRecord::Base
 
-  validates_presence_of :name, :message, :email, :phone, :email
+  validates_presence_of :name, :message, :email, :phone
 
 end
