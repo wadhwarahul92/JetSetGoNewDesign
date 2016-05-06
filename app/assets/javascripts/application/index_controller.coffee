@@ -87,7 +87,6 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   # fetching jetsteals
   arr = []
-  length = 0
   $http.get('/jetsteals/get_list.json').success(
     (data)=>
       $.each(data, (i, v)=>
