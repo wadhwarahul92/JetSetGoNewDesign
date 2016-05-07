@@ -31,6 +31,7 @@
             <thead>
             <tr class="table-heading-con">
               <th>Name</th>
+              <th>Email</th>
               <th>Designation</th>
               <th></th>
             </tr>
@@ -39,14 +40,15 @@
             <% @operators.each do |operator| %>
                 <tr>
                   <td><%= operator.full_name %></td>
+                  <td><%= operator.email %></td>
                   <td><%= operator.designation.capitalize if operator.designation.present? %></td>
                   <td>
                     <% if current_user.can_add_new_operator? %>
-                        <% unless current_user.id == operator.id %>
+                        <% unless current_user.id == operator.id || operator.designation == 'admin'  %>
                             <% if operator.deleted_at.present? %>
                                 <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>
                             <%- else %>
-                                <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Un-activate</a>
+                                <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Deactivate</a>
                             <%- end %>
                         <%- end %>
                     <%- end %>
