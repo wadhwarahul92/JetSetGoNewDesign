@@ -1,28 +1,25 @@
-jetsetgo_app.controller 'ContactUsController', ['$http', 'notify', ($http, notify)->
+jetsetgo_app.controller 'ContactUsController', ['$http', 'notify', '$location', ($http, notify, $location)->
 
-	@create = ->
-		return unless @validated()
+  @name = null
+  @phone = null
+  @email = null
+  @message = null
 
-	@validated = ->
-		unless @name
-			notify
-				message: 'Name is required.'
-				classes: ['alert-danger']
-			return		
-		unless @email
-			notify
-				message: 'Email is required.'
-				classes: ['alert-danger']
-			return
-		unless @phone
-			notify
-				message: 'Phone is required.'
-				classes: ['alert-danger']
-			return		
-		unless @message
-			notify
-				message: 'Message is required.'
-				classes: ['alert-danger']
+  @create = ->
+    $http.post('/create_contact.json', { name: @name, phone: @phone, email: @email, message: @message}).success(
+      (data)=>
+        notify
+          message: 'Successfully saved.'
+        $location.path("/tmp_url")
+    ).error(
+      (data)->
+        error = 'Something went wrong.'
+        try
+          error = data.errors[0]
+        notify
+          message: error
+          classes: ['alert-danger']
+    )
 
-	return undefined
+  return undefined
 ]
