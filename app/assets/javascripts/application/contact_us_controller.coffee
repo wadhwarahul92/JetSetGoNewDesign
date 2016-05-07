@@ -8,9 +8,12 @@ jetsetgo_app.controller 'ContactUsController', ['$http', 'notify', '$location', 
   @create = ->
     $http.post('/create_contact.json', { name: @name, phone: @phone, email: @email, message: @message}).success(
       (data)=>
+        @name = null
+        @phone = null
+        @email = null
+        @message = null
         notify
           message: 'Successfully saved.'
-        $location.path("/tmp_url")
     ).error(
       (data)->
         error = 'Something went wrong.'

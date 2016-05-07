@@ -13,9 +13,9 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
             message: 'Successfully signed out.'
       )
     else
-      notify
-        message: 'You are not signed in.'
-        classes: ['alert-danger']
+#      notify
+#        message: 'You are not signed in.'
+#        classes: ['alert-danger']
 
   serviceInstance.openSignInModal = (size = 'sm')->
     if serviceInstance.currentUser
@@ -42,16 +42,16 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
           serviceInstance.setCurrentUser(data)
       ).error(
         ->
-          notify
-            message: 'You are not signed in.'
-            classes: ['alert-danger']
+#          notify
+#            message: 'You are not signed in.'
+#            classes: ['alert-danger']
           serviceInstance.currentUser = null
       )
       return promise
 
   serviceInstance.setCurrentUser = (currentUser)->
-    notify
-      message: "Welcome, #{currentUser.full_name}"
+#    notify
+#      message: "Welcome, #{currentUser.full_name}"
     serviceInstance.currentUser = currentUser
     serviceInstance.modal.close() if serviceInstance.modal
 
