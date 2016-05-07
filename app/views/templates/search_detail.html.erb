@@ -30,7 +30,7 @@
                     <p class="timing-text">{{ctrl.formatTime(flight_plan.start_at)}}</p>
                     <i class="fa fa-plane plain-arrow-icon" aria-hidden="true"></i>
                   </li>
-                  <li class="text-right">
+                  <li class="text-right pull-right">
                     <p class="airport-name">{{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</p>
                     <p class="timing-text">{{ctrl.formatTime(flight_plan.end_at)}}</p>
                   </li>
@@ -39,26 +39,26 @@
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Flight cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"":2 | indianCurrency}}</li>
+                  <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.flight_cost | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Handling cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
+                  <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
               <li class="list-accomodation" ng-class="!flight_plan.watch_hour_cost ? 'no-bottom-border' : '' ">
                 <ul>
                   <li class="text-left">Landing cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
+                  <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
 
               <li class="list-accomodation" ng-class="flight_plan.watch_hour_cost ? 'no-bottom-border' : ''" ng-show="flight_plan.watch_hour_cost">
                 <ul>
                   <li class="text-left">Watch hour cost</li>
-                  <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
+                  <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
                 </ul>
               </li>
 
@@ -90,19 +90,19 @@
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Accommodation At:</li>
-                        <li class="text-right">{{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}</li>
+                        <li class="text-right pull-right">{{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}</li>
                       </ul>
                     </li>
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Cost:</li>
-                        <li class="text-right"><i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ flight_plan.accommodation_plan.cost | currency:"" | indianCurrency }}</li>
                       </ul>
                     </li>
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Night:</li>
-                        <li class="text-right">{{ flight_plan.accommodation_plan.nights }}</li>
+                        <li class="text-right pull-right">{{ flight_plan.accommodation_plan.nights }}</li>
                       </ul>
                     </li>
                   </ul>
@@ -121,7 +121,7 @@
                           <p class="airport-name">{{ ctrl.airportForId(empty_leg.departure_airport_id).name }}</p>
                           <p class="timing-text">{{ ctrl.formatTime(empty_leg.start_at) }}</p>
                         </li>
-                        <li class="text-right">
+                        <li class="text-right pull-right">
                           <p class="airport-name">{{ ctrl.airportForId(empty_leg.arrival_airport_id).name }}</p>
                           <p class="timing-text">{{ ctrl.formatTime(empty_leg.end_at) }}</p>
                         </li>
@@ -130,19 +130,19 @@
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Flying cost</li>
-                        <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{empty_leg.flight_cost | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Handling cost</li>
-                        <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff | currency:"" | indianCurrency}}</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
                     <li class="list-accomodation no-bottom-border">
                       <ul>
                         <li class="text-left">Landing cost</li>
-                        <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival | currency:"" | indianCurrency}}</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
                   </ul>
@@ -158,13 +158,13 @@
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left"><b>Tax</b></li>
-                        <li class="text-right"><b><i class="fa fa-rupee"></i> {{ctrl.tax_in_rupees | currency:"":2 | indianCurrency}}</b></li>
+                        <li class="text-right pull-right"><b><i class="fa fa-rupee"></i> {{ctrl.tax_in_rupees | currency:"":2 | indianCurrency}}</b></li>
                       </ul>
                     </li>
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left total_amount"><b>Grant Total</b></li>
-                        <li class="text-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
+                        <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
                     </li>
                     <!--<li class="list-accomodation">-->
