@@ -34,6 +34,11 @@ class SearchAlgorithm
 
     max_pax = @search_activities.map(&:pax).max
 
+    #find search start_time and search end_time
+    #all find a time duration during which if aircraft is unavailable, it can be safely removed from search algorithm
+    @start_time_for_unavailability = @search_activities.first.start_at - 3.hours
+    @end_time_for_unavailability = @search_activities.last.start_at + 5.hours
+
     # puts '== Loading Aircrafts'
     @aircrafts = Aircraft.where(
         organisation_id: verified_organisations.map(&:id),
@@ -77,6 +82,8 @@ BEGIN
     @aircrafts.each do |aircraft|
 
       next unless aircraft_ready_for_frontend?(aircraft)
+
+      next if aircraft_has_unavailability(aircraft)
 
       @results << {
           aircraft_id: aircraft.id,
@@ -421,6 +428,14 @@ BEGIN
     hours = TimeDifference.between(start_at, end_at).in_hours
     decimal_part = hours.to_s.split('.')[1]
     decimal_part.present? ? decimal_part.to_i : 0
+  end
+
+  def aircraft_has_unavailability(aircraft)
+    AircraftUnavailability.where(
+                              aircraft_id: aircraft.id,
+    ).where(
+         'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
+    ).any?
   end
 
 end
