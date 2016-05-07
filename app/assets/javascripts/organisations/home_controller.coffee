@@ -96,13 +96,13 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     )
 
   $scope.eventRender = (event, element, view)->
-    element.attr({
-      'uib-popover': event.popover
-      'popover-trigger': 'mouseenter'
-      'popover-append-to-body': true
-      'popover-title': event.popover_title
-    })
-    $compile(element)($scope)
+#    element.attr({
+#      'uib-popover': event.popover
+#      'popover-trigger': 'mouseenter'
+#      'popover-append-to-body': true
+#      'popover-title': event.popover_title
+#    })
+#    $compile(element)($scope)
 
   @calendarConfig = {
     calendar: {
