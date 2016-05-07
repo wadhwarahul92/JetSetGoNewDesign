@@ -3,10 +3,12 @@ organisations_app.controller 'QuoteController', ['quote', '$http', 'notify', (qu
   @quote = quote
 
   @deleteQuote = ->
-    $http.delete("/organisations/trips/#{@quote.id}/destroy_trip.json").success(
-      ->
-        Turbolinks.visit('/organisations')
-    )
+    bootbox.confirm 'Are you sure?', (result)=>
+      if result
+        $http.delete("/organisations/trips/#{@quote.id}/destroy_trip.json").success(
+          ->
+            Turbolinks.visit('/organisations')
+        )
 
   @subTotal = ->
     cost = 0.0

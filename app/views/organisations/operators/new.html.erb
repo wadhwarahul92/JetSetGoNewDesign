@@ -6,30 +6,21 @@
       <fieldset class="add-operator-main">
         <form ng-submit="ctrl.create()">
           <div class="col-sm-6 col-xs-12 grey-bg field">
-            <!-- <label for="first_name"></label> -->
             <input type="text" placeholder="First name" ng-model="ctrl.operator.first_name" class="form-control" />
           </div>
           <div class="col-sm-6 col-xs-12 field">
-            <!-- <label for="last_name"></label> -->
             <input type="text" placeholder="Last name" class="form-control" ng-model="ctrl.operator.last_name" />
           </div>
           <div class="col-sm-6 col-xs-12 field">
-            <select ng-options="n for n in <%= ['ceo','coo','editor', 'finance', 'manager'].to_s %>" id="designation" class="form-control text-boxes text-center" ng-model="ctrl.operator.designation">
-              <option disabled style="color: #ccc !important;" value="">Select Designation</option>
+            <select id="designation" class="form-control text-boxes text-center" ng-model="ctrl.operator.designation">
+              <option disabled style="color: #ccc !important;" value="">Select designation</option>
+              <option value="ceo">Ceo</option>
+              <option value="coo">Coo</option>
+              <option value="editor">Editor</option>
+              <option value="finance">Finance</option>
+              <option value="manager">Manager</option>
             </select>
           </div>
-          <style>
-            select:invalid { color: #cccccc; }
-            select:required:invalid {
-              color: gray;
-            }
-            option[value=""][disabled] {
-              display: none;
-            }
-            option {
-              color: #cccccc;
-            }
-          </style>
           <div class="col-sm-6 col-xs-12 grey-bg field">
             <!-- <label for="phone"></label> -->
             <input type="text" placeholder="Phone" class="form-control" ng-model="ctrl.operator.phone" />
@@ -186,3 +177,16 @@
   </div>
   <div class="clearfix"></div>
 </div>
+
+<style>
+    select:invalid { color: #cccccc; }
+    select:required:invalid {
+        color: gray;
+    }
+    option[value=""][disabled] {
+        display: none;
+    }
+    option {
+        color: #cccccc;
+    }
+</style>
