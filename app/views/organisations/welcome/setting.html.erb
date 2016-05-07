@@ -48,7 +48,7 @@
                             <% if operator.deleted_at.present? %>
                                 <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)" >Activate</a>
                             <%- else %>
-                                <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Un-activate</a>
+                                <a href="" ng-click="ctrl.toggleOperator(<%= operator.id %>)">Deactivate</a>
                             <%- end %>
                         <%- end %>
                     <%- end %>

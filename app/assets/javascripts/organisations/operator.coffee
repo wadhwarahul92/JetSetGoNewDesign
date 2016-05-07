@@ -2,13 +2,7 @@ organisations_app.controller "OperatorController", ['$http', 'notify', '$scope',
 
   @roles = ['admin', 'operator']
 
-#  @designations = ['ceo', 'coo', 'editor', 'finance', 'manager']
-
-  @designations = [{name:'Ceo', value:'dark'},
-                   {name:'Coo', value:'coo'},
-                   {name:'Editor', value:'editor'},
-                   {name:'Finance' value:'finance'},
-                   {name:'Manager', value:'manager'}]
+  @designations = ['ceo', 'coo', 'editor', 'finance', 'manager']
 
   @operator = {}
 

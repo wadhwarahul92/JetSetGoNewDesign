@@ -62,17 +62,17 @@
           <h5 class="sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</h5>
           <p class="sub-result"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</p>
         </div>
-        <div class="col-sm-6 col-xs-12 sub-border-con" ng-repeat="(tax, value) in ctrl.quote.tax">
-          <h5 class="sub-heading">{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}%</h5>
-          <p class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</p>
-        </div>
         <div class="clearfix"></div>
       </div>
     </div>
     <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-border-con" ng-repeat="(tax, value) in ctrl.quote.tax">
+        <h5 class="sub-heading"><b>{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}% </b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</b></p>
+      </div>
       <div class="col-xs-12 sub-border-con">
-        <h5 class="sub-heading">GrandTotal</h5>
-        <p class="sub-result"><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</p>
+        <h5 class="sub-heading"><b>GrandTotal</b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</b></p>
       </div>
     </div>
   </div>
