@@ -235,7 +235,7 @@ $main-skyblue-color : rgb(27,143,188);
             li{
               list-style: none;
               float: left;
-              width: 50%;
+              width: 47%;
               position: relative;
               p.airport-name{
                 font-size: 16px;
@@ -249,7 +249,7 @@ $main-skyblue-color : rgb(27,143,188);
               }
               i.plain-arrow-icon{
                 position: absolute;
-                right: -10px;
+                right: -30px;
                 top: 25px;
                 font-size: 20px;
                 -moz-transform: rotate(45deg);
@@ -278,9 +278,13 @@ $main-skyblue-color : rgb(27,143,188);
             display: none;
           }
         }
-        li.dotted-border{
-          border-bottom: 3px dotted #cccccc;
+        li.no-bottom-border{
+          border: 0;
         }
+      }
+      ul.dotted-border{
+        border-bottom: 3px dotted #cccccc;
+        padding-bottom: 10px;
       }
     }
     .selected-color-con{
