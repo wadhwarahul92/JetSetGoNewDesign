@@ -139,7 +139,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         classes: ['alert-danger']
       CurrentUserService.openSignInModal()
 
-  @modalDetail = (selectedDetail, tax)->
+  @modalDetail = (result, tax)->
     $uibModal.open(
       size: 'lg'
       templateUrl: '/templates/search_detail'
@@ -148,7 +148,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       backdrop: true
       resolve: {
         detail: ->
-          return selectedDetail
+          return result
         tax: ->
           return tax
       }
