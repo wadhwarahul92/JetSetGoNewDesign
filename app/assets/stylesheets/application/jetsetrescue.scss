@@ -2,10 +2,12 @@
 .rescue-banner{
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/200/original/5.jpg?1462443264) 100% no-repeat;
   background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
   .banner-content{
     width: 100%;
     max-width: 900px;
-    margin: 18% auto 0 auto;
+    margin: 12% auto 0 auto;
     p{
       font-size: 22px;
       text-align: center;
@@ -78,6 +80,7 @@
   .bg-img-section{
     background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/189/original/8.jpg?1462426812);
     background-size: cover;
+    background-attachment: fixed;
     min-height: 400px;
     display: inline-block;
     width: 100%;

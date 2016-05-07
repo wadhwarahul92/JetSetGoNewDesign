@@ -3,10 +3,12 @@ $main-blue-color:rgb(5, 81, 139);
 .heli-banner{
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/183/original/7.jpg?1462426040) 100% no-repeat;
   background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
   .banner-content{
     width: 100%;
     max-width: 900px;
-    margin: 18% auto 0 auto;
+    margin: 12% auto 0 auto;
     p{
       font-size: 22px;
       text-align: center;
@@ -80,6 +82,7 @@ $main-blue-color:rgb(5, 81, 139);
     background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/189/original/8.jpg?1462426812);
     background-size: cover;
     min-height: 400px;
+    background-attachment: fixed;
     display: inline-block;
     width: 100%;
     p{

@@ -2,10 +2,12 @@
 .yatra-banner{
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/205/original/1.jpg?1462446235) 100% no-repeat;
   background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
   .banner-content{
     width: 100%;
     max-width: 900px;
-    margin: 18% auto 0 auto;
+    margin: 12% auto 0 auto;
     p{
       font-size: 22px;
       text-align: center;
@@ -81,6 +83,7 @@
     min-height: 400px;
     display: inline-block;
     width: 100%;
+    background-attachment: fixed;
     p{
       font-size: 22px;
       color: #ffffff;
