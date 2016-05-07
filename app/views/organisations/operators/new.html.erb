@@ -12,7 +12,7 @@
             <input type="text" placeholder="Last name" class="form-control" ng-model="ctrl.operator.last_name" />
           </div>
           <div class="col-sm-6 col-xs-12 field">
-            <select ng-options="n for n in <%= ['ceo','coo','editor', 'finance', 'manager'].to_s.titleize %>" id="designation" class="form-control text-boxes text-center" ng-model="ctrl.operator.designation">
+            <select ng-options="n for n in  ctrl.designations" id="designation" class="form-control text-boxes text-center" ng-model="ctrl.operator.designation">
               <option disabled style="color: #ccc !important;" value="">Select designation</option>
             </select>
           </div>

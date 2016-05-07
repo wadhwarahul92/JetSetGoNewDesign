@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, presence: true, length: {is: 10}, numericality: true
-  validate :designation, :lowercase
 
   has_attached_file :image, presence: false, styles: {small: '50x50!', size_250x250: '250x250!'}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/ , :if => :image_attached?
@@ -39,12 +38,6 @@ class User < ActiveRecord::Base
 
   def image_attached?
     self.image.present?
-  end
-
-  def lowercase
-    if self.designation.present?
-      self.designation.downcase
-    end
   end
 
 end
