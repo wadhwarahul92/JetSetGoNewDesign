@@ -1,7 +1,19 @@
-<div class="col-sm-12">
-  <div ng-show="quote.activities && quote.activities.length > 0" ng-repeat="quote in ctrl.quotes">
-    <h3>Quote#{{quote.id}}</h3>
-    <p><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</p>
-    <a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a>
+<div class="container">
+  <div class="col-sm-12 search-main-con text-center">
+    <span class="heading popup-heading">Quotes</span>
+  </div>
+  <div class="col-sm-12">
+    <table class="quote-table">
+      <tr class="table-heading-con">
+        <th>Quote</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+      <tr ng-show="quote.activities && quote.activities.length > 0" ng-repeat="quote in ctrl.quotes">
+        <td>Quote #{{quote.id}}</td>
+        <td><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</td>
+        <td class="text-right"><a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>
+      </tr>
+    </table>
   </div>
 </div>

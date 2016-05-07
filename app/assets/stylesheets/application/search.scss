@@ -278,9 +278,13 @@ $main-skyblue-color : rgb(27,143,188);
             display: none;
           }
         }
-        li.dotted-border{
-          border-bottom: 3px dotted #cccccc;
+        li.no-bottom-border{
+          border: 0;
         }
+      }
+      ul.dotted-border{
+        border-bottom: 3px dotted #cccccc;
+        padding-bottom: 10px;
       }
     }
     .selected-color-con{

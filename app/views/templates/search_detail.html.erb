@@ -19,7 +19,7 @@
       <div class="col-sm-12 col-xs-12">
         <ul class="list-unstyled">
           <li class="accomodation-con" ng-repeat="flight_plan in ctrl.detail.flight_plan">
-            <ul>
+            <ul ng-class="flight_plan.flight_type == 'empty_leg' ? 'dotted-border' : ''">
               <li class="empty-leg-heading">
                 <span class="heading-text" ng-show="flight_plan.flight_type == 'empty_leg'" >Empty Leg</span>
               </li>
@@ -48,14 +48,14 @@
                   <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
-              <li class="list-accomodation">
+              <li class="list-accomodation" ng-class="!flight_plan.watch_hour_cost ? 'no-bottom-border' : '' ">
                 <ul>
                   <li class="text-left">Landing cost</li>
                   <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.landing_cost_at_arrival | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
 
-              <li class="list-accomodation" ng-show="flight_plan.watch_hour_cost">
+              <li class="list-accomodation" ng-class="flight_plan.watch_hour_cost ? 'no-bottom-border' : ''" ng-show="flight_plan.watch_hour_cost">
                 <ul>
                   <li class="text-left">Watch hour cost</li>
                   <li class="text-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
@@ -139,7 +139,7 @@
                         <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.handling_cost_at_takeoff | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
-                    <li class="list-accomodation">
+                    <li class="list-accomodation no-bottom-border">
                       <ul>
                         <li class="text-left">Landing cost</li>
                         <li class="text-right"><i class="fa fa-rupee"></i> {{empty_leg.landing_cost_at_arrival | currency:"" | indianCurrency}}</li>
