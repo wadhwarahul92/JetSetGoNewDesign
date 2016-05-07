@@ -61,11 +61,17 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     if index > 0
       previous_activity = @activities[index-1]
       time = previous_activity.start_at
-      if time
-        activeDate = moment(time)
-        for date in dates
-          if date.localDateValue() <= activeDate.valueOf()
-            date.selectable = false
+      if view == 'day'
+        previous_date = time.getDate()
+        for __date in dates
+          if parseInt(__date.display) < previous_date
+            __date.selectable = false
+      else
+        if time
+          activeDate = moment(time)
+          for date in dates
+            if date.localDateValue() <= activeDate.valueOf()
+              date.selectable = false
     else
       activeDate = moment(new Date())
       for _date in dates
