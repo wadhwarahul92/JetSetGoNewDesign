@@ -39,18 +39,22 @@
           <h5 class="sub-heading">Flight Cost:</h5>
           <p class="sub-result">
             <span ng-hide="efc"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</span>
-            <input ng-show="efc" type="number" ng-model="activity.flight_cost">
-            <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
-            <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+            <% if current_user.can_add_trip? %>
+                <input ng-show="efc" type="number" ng-model="activity.flight_cost">
+                <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
+                <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+            <% end %>
           </p>
         </div>
         <div ng-init="ehc = false" class="col-sm-6 col-xs-12 sub-border-con">
           <h5 class="sub-heading">Handling cost at "{{activity.departure_airport.name}}":</h5>
           <p class="sub-result">
             <span ng-hide="ehc"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</span>
+            <% if current_user.can_add_trip? %>
             <input ng-show="ehc" type="number" ng-model="activity.handling_cost_at_takeoff">
             <i class="fa fa-edit" ng-click="ehc = !ehc" ng-hide="ehc"></i>
             <i class="fa fa-check" ng-click="ehc = !ehc" ng-show="ehc"></i>
+            <% end %>
           </p>
         </div>
         <div class="clearfix"></div>
@@ -60,18 +64,22 @@
           <h5 class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</h5>
           <p class="sub-result">
             <span ng-hide="elc"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</span>
+            <% if current_user.can_add_trip? %>
             <input ng-show="elc" type="number" ng-model="activity.landing_cost_at_arrival">
             <i class="fa fa-edit" ng-click="elc = !elc" ng-hide="elc"></i>
             <i class="fa fa-check" ng-click="elc = !elc" ng-show="elc"></i>
+                <% end %>
           </p>
         </div>
         <div class="col-sm-6 col-xs-12 sub-border-con" ng-init="ewc = false" ng-show="activity.watch_hour_at_arrival">
           <h5 class="sub-heading">Watch hour</h5>
           <p class="sub-result">
             <span ng-hide="ewc"><i class="fa fa-rupee"></i> {{activity.watch_hour_cost | currency:"":0 | indianCurrency}}</span>
+            <% if current_user.can_add_trip? %>
             <input ng-show="ewc" type="number" ng-model="activity.watch_hour_cost">
             <i class="fa fa-edit" ng-click="ewc = !ewc" ng-hide="ewc"></i>
             <i class="fa fa-check" ng-click="ewc = !ewc" ng-show="ewc"></i>
+                <% end %>
           </p>
         </div>
         <div class="clearfix"></div>
@@ -81,9 +89,11 @@
           <h5 class="sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</h5>
           <p class="sub-result">
             <span ng-hide="eac"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</span>
+            <% if current_user.can_add_trip? %>
             <input ng-show="eac" type="number" ng-model="activity.accommodation_plan.cost">
             <i class="fa fa-edit" ng-click="eac = !eac" ng-hide="eac"></i>
             <i class="fa fa-check" ng-click="eac = !eac" ng-show="eac"></i>
+                <% end %>
           </p>
         </div>
         <div class="clearfix"></div>
