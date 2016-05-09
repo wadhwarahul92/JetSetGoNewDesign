@@ -5,6 +5,7 @@
   <div class="col-sm-4"></div>
   <div class="col-xs-12">
     <div class="login-black-bg">
+      <a href="#" class="closs-btn" ng-click="$close()"><i class="fa fa-times"></i></a>
       <fieldset class="login-register-main">
         <h5>
           <i class="fa fa-user user-icon-top"></i> Sign in
@@ -21,6 +22,9 @@
               <!--  <label for="password">Password</label> -->
               <input type="password" id="password" placeholder="Password" class="form-control text-field" n ng-model="ctrl.password" />
               <i class="fa fa-unlock-alt form-icon"></i>
+            </div>
+            <div class="field text-right">
+              <a href="#">Forget Password</a>
             </div>
             <!--<p class="field forget-text">-->
               <!--<%= link_to 'Forgot password?', forgot_password_organisations_operators_path, class: 'pull-right' %>-->

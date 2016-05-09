@@ -45,6 +45,15 @@ $main-blue-color:rgb(5, 81, 139);
   background-color:rgba(0,0,0,0.3);
   margin-top:20px;
   border-radius:10px;
+  position: relative;
+  .closs-btn{
+    color: #cc0000;
+    font-size: 25px;
+    position: absolute;
+    right: -10px;
+    top: -16px;
+    z-index: 1;
+  }
 }
 .login-register-main{
   background-color:rgba(256,256,256,1);
