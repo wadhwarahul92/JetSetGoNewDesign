@@ -96,11 +96,11 @@
       </div>
       <div class="col-sm-6 col-xs-12 sub-border-con">
         <h5 class="sub-heading"><strong>Tax</strong></h5>
-        <p class="sub-result"><strong>{{ ctrl.enquiry.tax_value }}%</strong></p>
+        <p class="sub-result"><strong><i class="fa fa-rupee"></i> {{ ctrl.taxValue(ctrl.enquiry.tax_value) | currency:"":2 | indianCurrency }}</strong></p>
       </div>
       <div class="col-sm-6 col-xs-12 sub-border-con">
         <h5 class="sub-heading"><strong>GrandTotal</strong></h5>
-        <p class="sub-result"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</strong></p>
+        <p class="sub-result"><strong><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":2 | indianCurrency}}</strong></p>
       </div>
       <div class="clearfix"></div>
     </div>
