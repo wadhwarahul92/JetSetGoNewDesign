@@ -43,7 +43,7 @@ class TripsController < ApplicationController
                 flight_cost: empty_leg[:flight_cost],
                 landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
                 handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
-                pax: plan[:pax],
+                pax: 0,
                 watch_hour_at_arrival: plan[:watch_hour_at_arrival],
                 watch_hour_cost: plan[:watch_hour_cost]
             )

@@ -69,11 +69,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-xs-12 sub-border-con" ng-repeat="(tax, value) in ctrl.quote.tax">
-        <h5 class="sub-heading"><b>{{tax | snakeToCamelCase}} @ {{value | currency:"":1 }}% </b></h5>
-        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.taxValue(value) | currency:"" | indianCurrency}}</b></p>
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading"><b>Tax</b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.taxValue(ctrl.quote.tax_value) | currency:"" | indianCurrency}}</b></p>
       </div>
-      <div class="col-xs-12 sub-border-con">
+      <div class="col-xs-6 sub-border-con">
         <h5 class="sub-heading"><b>GrandTotal</b></h5>
         <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</b></p>
       </div>
