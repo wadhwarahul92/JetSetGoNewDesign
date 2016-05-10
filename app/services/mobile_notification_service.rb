@@ -45,7 +45,7 @@ class MobileNotificationService
 
         Rpush.push
 
-        if TimeDifference.between(DateTime.now, KeyValuePair.last_push_notification_processed_at).in_hours > 24
+        if TimeDifference.between(DateTime.now, KeyValuePair.last_push_notification_processed_at).in_hours.to_f > 24
           Rpush.apns_feedback
           KeyValuePair.create(key: KeyValuePair::LAST_PUSH_NOTIFICATION_FEEDBACK_PROCESSED, value: DateTime.now)
         end
