@@ -24,6 +24,8 @@ if @trips.any?
           json.landing_cost_at_arrival activity.landing_cost_at_arrival
           json.watch_hour_at_arrival activity.watch_hour_at_arrival?
           json.watch_hour_cost activity.watch_hour_cost
+          json.empty_leg_whole_price activity.empty_leg_whole_price
+          json.empty_leg_seat_price activity.empty_leg_seat_price
 
           if activity.accommodation_plan.present?
             json.accommodation_plan{
@@ -107,6 +109,8 @@ if @enquiries.any?
           json.landing_cost_at_arrival activity.landing_cost_at_arrival
           json.watch_hour_at_arrival activity.watch_hour_at_arrival?
           json.watch_hour_cost activity.watch_hour_cost
+          json.empty_leg_whole_price activity.empty_leg_whole_price
+          json.empty_leg_seat_price activity.empty_leg_seat_price
 
           if activity.accommodation_plan.present?
             json.accommodation_plan{
@@ -193,6 +197,8 @@ if @quotes.any?
           json.landing_cost_at_arrival activity.landing_cost_at_arrival
           json.watch_hour_at_arrival activity.watch_hour_at_arrival?
           json.watch_hour_cost activity.watch_hour_cost
+          json.empty_leg_whole_price activity.empty_leg_whole_price
+          json.empty_leg_seat_price activity.empty_leg_seat_price
 
           if activity.accommodation_plan.present?
             json.accommodation_plan{
@@ -269,6 +275,8 @@ if @empty_legs.present?
       json.landing_cost_at_arrival empty_leg.landing_cost_at_arrival
       json.watch_hour_at_arrival empty_leg.watch_hour_at_arrival?
       json.watch_hour_cost empty_leg.watch_hour_cost
+      json.empty_leg_whole_price empty_leg.empty_leg_whole_price
+      json.empty_leg_seat_price empty_leg.empty_leg_seat_price
 
       if empty_leg.accommodation_plan.present?
         json.accommodation_plan{
