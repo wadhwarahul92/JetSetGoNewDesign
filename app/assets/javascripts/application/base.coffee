@@ -74,6 +74,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/jet_set_rescue'
     controller: 'JetSetRescueController'
     controllerAs: 'ctrl'
+  }).when('/forget_password', {
+    templateUrl: '/templates/forget_password'
+    controller: 'ForgetPasswordController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)

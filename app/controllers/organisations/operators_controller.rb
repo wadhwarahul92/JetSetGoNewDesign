@@ -97,7 +97,7 @@ class Organisations::OperatorsController < Organisations::BaseController
           reset_password_sent_at: Time.now.utc,
           api_token: nil
       )
-        OperatorMailer.forgot_password(@operator, raw).deliver_now
+        OperatorMailer.forgot_password(@operator, raw).deliver_later
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: {errors: @operator.errors.full_messages}

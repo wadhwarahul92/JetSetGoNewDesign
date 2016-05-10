@@ -259,6 +259,8 @@ Rails.application.routes.draw do
   post 'sign_up_' => 'welcome#sign_up_'
   post 'create_contact' => 'welcome#create_contact'
 
+  post 'forgot_password_' => 'welcome#forgot_password_'
+
   resources :templates do
     collection do
       get 'sign_in_modal'
@@ -280,6 +282,7 @@ Rails.application.routes.draw do
       get 'quotes'
       get 'search_detail'
       get 'jet_set_rescue'
+      get 'forget_password'
     end
   end
 
@@ -322,6 +325,7 @@ Rails.application.routes.draw do
   get 'quotes' => 'route_overrides#welcome_index'
   get 'search_detail' => 'route_overrides#welcome_index'
   get 'jet_set_rescue' => 'route_overrides#welcome_index'
+  get 'forget_password' => 'route_overrides#welcome_index'
 
 
   #TMP URL
