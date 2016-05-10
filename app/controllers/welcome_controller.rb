@@ -59,6 +59,29 @@ class WelcomeController < ApplicationController
 
   end
 
+  def forgot_password_
+    @user = User.where(email: params[:email]).first
+    if @user.present?
+      raw, token = Devise.token_generator.generate(User, :reset_password_token)
+
+      ######################################################################
+      # Description: Destroying api token whenever user does forgot password
+      ######################################################################
+      if @user.update_attributes(
+          reset_password_token: token,
+          reset_password_sent_at: Time.now.utc,
+          api_token: nil
+      )
+        OperatorMailer.forgot_password(@user, raw).deliver_later
+        render status: :ok, nothing: true
+      else
+        render status: :unprocessable_entity, json: {errors: @user.errors.full_messages}
+      end
+    else
+      render status: :unprocessable_entity, json: {errors: ['Email not registered.']}
+    end
+  end
+
   private
 
   def user_params

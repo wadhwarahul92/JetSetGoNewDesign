@@ -9,7 +9,7 @@ class CaptchaValidator
     @ip = ip
   end
 
-  def validated!(force = false)
+  def validated!(force = true)
     return true if force
     uri = URI(URL)
     response = Net::HTTP.post_form(uri, {

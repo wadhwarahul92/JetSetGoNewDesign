@@ -78,4 +78,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def forget_password
+
+  end
+
 end
