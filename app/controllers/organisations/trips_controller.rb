@@ -250,7 +250,7 @@ class Organisations::TripsController < Organisations::BaseController
   end
 
   def feature_for_sale
-    @activity = Activity.where(trip_id: params[:trip_id]).first
+    @activity = Activity.where(trip_id: params[:id]).first
     if @activity.update_attributes(empty_leg_whole_price: params[:empty_leg_whole_price], empty_leg_seat_price: params[:empty_leg_seat_price])
       render status: :ok ,nothing: true
     else

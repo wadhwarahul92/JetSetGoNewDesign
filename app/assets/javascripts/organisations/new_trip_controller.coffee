@@ -76,7 +76,7 @@ organisations_app.controller 'NewTripController', ['$http', 'notify', 'Aircrafts
                     bootbox.prompt 'Do you also want to sell this empty on per seat basis? If Yes, what should be the price for 1 seat?', (result)=>
                       if result and parseInt(result)
                         per_seat_price = parseInt(result)
-                        $http.post("/organisations/trips/#{data.trip_id}/feature_for_sale.json",trip_id: data.trip_id, empty_leg_whole_price: full_price, empty_leg_seat_price: per_seat_price).success(
+                        $http.post("/organisations/trips/#{data.trip_id}/feature_for_sale.json", empty_leg_whole_price: full_price, empty_leg_seat_price: per_seat_price).success(
                           ->
                             Turbolinks.visit '/organisations'
                         ).error(
