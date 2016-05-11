@@ -183,8 +183,13 @@ class Organisations::TripsController < Organisations::BaseController
 
   def get_activities
 
-    start_at = DateTime.parse(params[:start_at])
-    end_at = DateTime.parse(params[:end_at])
+    if params[:start_at].present? and params[:end_at].present?
+      start_at = DateTime.parse(params[:start_at])
+      end_at = DateTime.parse(params[:end_at])
+    else
+      start_at = DateTime.now - 1.month
+      end_at = DateTime.now
+    end
 
     trip_ids = Activity.joins(
         'left outer JOIN trips on activities.trip_id = trips.id'
