@@ -188,7 +188,7 @@ class Organisations::TripsController < Organisations::BaseController
       end_at = DateTime.parse(params[:end_at])
     else
       start_at = DateTime.now - 1.month
-      end_at = DateTime.now
+      end_at = DateTime.now + 1.month
     end
 
     trip_ids = Activity.joins(
