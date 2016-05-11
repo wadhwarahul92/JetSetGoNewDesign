@@ -1,10 +1,5 @@
 jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserService', '$scope', '$routeParams', ($http, notify, CurrentUserService, $scope, $routeParams)->
 
-  if location.pathname == '/forget_password'
-    $('body').addClass('login-bg-con')
-    $('footer').css('display','none')
-    $('#header').css('display', 'none')
-
   @currentUser = null
 
   @isFromMobile = false
