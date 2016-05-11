@@ -64,6 +64,8 @@ json.array! @trips do |trip|
       json.flight_cost activity.flight_cost
       json.handling_cost_at_takeoff activity.handling_cost_at_takeoff
       json.landing_cost_at_arrival activity.landing_cost_at_arrival
+      json.empty_leg_whole_price activity.empty_leg_whole_price
+      json.empty_leg_seat_price activity.empty_leg_seat_price
 
       if activity.accommodation_plan.present?
         json.accommodation_plan{
