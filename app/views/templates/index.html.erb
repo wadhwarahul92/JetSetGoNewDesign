@@ -67,7 +67,8 @@
                    typeahead-template-url="airportsTypeAhead.html"
                    ng-model="activity.departure_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-                   type="text">
+                   type="text"
+                   typeahead-min-length="0">
           </span>
           <span class="search-form">
             <span class="search-icon arrival-icon"></span>
@@ -80,7 +81,8 @@
                    typeahead-template-url="airportsTypeAhead.html"
                    ng-model="activity.arrival_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-                   type="text">
+                   type="text"
+                   typeahead-min-length="0">
           </span>
           <span class="search-form">
             <div class="dropdown datetimepicker-holder search-textfield date-textfield">
