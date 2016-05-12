@@ -68,6 +68,7 @@
                    ng-model="activity.departure_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
                    type="text"
+                   typeahead-select-on-blur="true"
                    typeahead-min-length="0">
           </span>
           <span class="search-form">
@@ -82,6 +83,7 @@
                    ng-model="activity.arrival_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
                    type="text"
+                   typeahead-select-on-blur="true"
                    typeahead-min-length="0">
           </span>
           <span class="search-form">
