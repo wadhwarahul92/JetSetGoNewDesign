@@ -68,7 +68,6 @@
                    ng-model="activity.departure_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
                    type="text"
-                   typeahead-select-on-blur="true"
                    typeahead-min-length="0">
           </span>
           <span class="search-form">
@@ -83,8 +82,13 @@
                    ng-model="activity.arrival_airport"
                    uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
                    type="text"
-                   typeahead-select-on-blur="true"
                    typeahead-min-length="0">
+          </span>
+          <span class="search-form">
+            <span class="search-icon pax-icon"></span>
+            <input class="search-textfield text-white pax-textfield" type="number"
+                   ng-model="activity.pax"
+                   placeholder="Pax">
           </span>
           <span class="search-form">
             <div class="dropdown datetimepicker-holder search-textfield date-textfield">
@@ -97,12 +101,6 @@
                 ng-model="activity.start_at"></datetimepicker>
               </ul>
             </div>
-          </span>
-          <span class="search-form">
-            <span class="search-icon pax-icon"></span>
-            <input class="search-textfield text-white pax-textfield" type="number"
-                   ng-model="activity.pax"
-                   placeholder="Pax">
           </span>
           <a href="javascript:void(0)" class="cross-icon" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">
             <i class="fa fa-times" aria-hidden="true"></i>
