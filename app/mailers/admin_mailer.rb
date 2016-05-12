@@ -191,4 +191,21 @@ class AdminMailer < ApplicationMailer
         subject: DEFAULT_SUBJECT + 'approve operator by Admin'
     )
   end
+
+  def aircraft_approved_by_admin(admin, aircraft)
+    @admin = admin
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'approve by Admin'
+    )
+  end
+
+  def aircraft_disapproved_by_admin(admin, aircraft)
+    @admin = admin
+    @aircraft = aircraft
+    mail(
+        subject: DEFAULT_SUBJECT + 'disapprove by Admin'
+    )
+  end
+
 end
