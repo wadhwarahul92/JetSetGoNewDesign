@@ -21,6 +21,12 @@ $main-blue-color:rgb(5, 81, 139);
   background-size: cover;
   background-attachment: fixed;
 }
+.autocomplete-height {
+  .dropdown-menu{
+    max-height: 400px;
+    overflow-x: scroll;
+  }
+}
 .login-left-con{
   margin-top:140px;
   h4{
