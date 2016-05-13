@@ -7,6 +7,8 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
       (data)=>
         @activities = data
+        for activity in @activities
+          activity.start_at = new Date(activity.start_at)
     )
 
   @signIn = ->
@@ -61,6 +63,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     if index > 0
       previous_activity = @activities[index-1]
       time = previous_activity.start_at
+      debugger
       previous_date = time.getDate()
       previous_month = time.getMonth()
       if view == 'day'
