@@ -73,6 +73,7 @@ class TripsController < ApplicationController
 
         AdminMailer.new_enquiry(current_user, @trip).deliver_later
         OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
+        CustomerMailer.new_enquiry(current_user, @trip).deliver_later
 
         @trip.organisation.operators.each do |operator|
           NotificationService.enquiry_added(operator, @trip).deliver_later

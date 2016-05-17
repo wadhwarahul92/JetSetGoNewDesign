@@ -7,6 +7,8 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
       (data)=>
         @activities = data
+        for activity in @activities
+          activity.start_at = new Date(activity.start_at)
     )
 
   @signIn = ->

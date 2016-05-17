@@ -83,7 +83,7 @@ BEGIN
 
       next unless aircraft_ready_for_frontend?(aircraft)
 
-      next if aircraft_has_unavailability(aircraft)
+      next if aircraft_has_unavailability(aircraft) or aircraft_has_flying_range(aircraft)
 
       @results << {
           aircraft_id: aircraft.id,
@@ -436,6 +436,20 @@ BEGIN
     ).where(
          'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
     ).any?
+  end
+
+  ######################################################################
+  # Description: It returns true if aircraft flying range is more then
+  #              or equal to total distance for all activities, else it returns false
+  # @param [Aircraft] aircraft
+  # @return [boolean]
+  ######################################################################
+  def aircraft_has_flying_range(aircraft)
+    @total_distance = 0.0
+    @search_activities.each do |f|
+      @total_distance += Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+    end
+    @total_distance >= aircraft.flying_range_in_nm
   end
 
 end
