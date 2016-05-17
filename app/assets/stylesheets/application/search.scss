@@ -358,6 +358,29 @@ $main-skyblue-color : rgb(27,143,188);
       margin: 20px 0;
     }
   }
+  .popup-main {
+    .custom-box-shadow {
+      .accomodation-con {
+        ul {
+          li.list-accomodation {
+            ul {
+              li {
+                p.airport-name{
+                  font-size: 12px;
+                }
+                p.timing-text{
+                  font-size: 9px;
+                }
+                i.plain-arrow-icon{
+                  right: -15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media (max-width: 600px) {
   .search-result-box{
