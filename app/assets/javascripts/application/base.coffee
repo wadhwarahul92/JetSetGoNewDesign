@@ -50,6 +50,8 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/heli_set_go'
   }).when('/jet_set_yatra', {
     templateUrl: '/templates/jet_set_yatra'
+    controller: 'JetSetYatraController'
+    controllerAs: 'ctrl'
   }).when('/media', {
     templateUrl: '/templates/media'
   }).when('/jet_setters', {
