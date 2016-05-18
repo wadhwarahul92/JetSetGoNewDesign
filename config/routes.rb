@@ -293,6 +293,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :yatra_enquiries
+
   resources :finances do
     collection do
       post 'preview_pro_forma'

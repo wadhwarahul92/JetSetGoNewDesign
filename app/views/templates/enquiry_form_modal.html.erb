@@ -10,23 +10,42 @@
         <div class="col-xs-12">
           <form ng-submit="ctrl.create()">
             <div class="field margin-top">
-              <input type="text" id="name" placeholder="Name" class="form-control text-field" ng-model="ctrl.name" />
+              <input type="text" id="name" placeholder="Name" class="form-control text-field" ng-model="ctrl.enquiry.name" />
               <i class="fa fa-user form-icon"></i>
             </div>
             <div class="field margin-top">
-              <input type="email" id="email" placeholder="Email Id" class="form-control text-field" n ng-model="ctrl.email" />
+              <input type="email" id="email" placeholder="Email Id" class="form-control text-field" n ng-model="ctrl.enquiry.email" />
               <i class="fa fa-unlock-alt form-icon"></i>
             </div>
             <div class="field margin-top">
-              <input type="number" id="mobile_no" placeholder="Mobile No." class="form-control text-field" n ng-model="ctrl.mobile_number" />
+              <input type="text" id="mobile_no" placeholder="Mobile No." class="form-control text-field" n ng-model="ctrl.enquiry.mobile_number" />
               <i class="fa fa-unlock-alt form-icon"></i>
+            </div>
+            <div class="field margin-top">
+              <!--<input type="datetime" id="date" placeholder="Date of Travel" class="form-control text-field" n ng-model="ctrl.enquiry.date_of_travel" />-->
+              <!--<i class="fa fa-unlock-alt form-icon"></i>-->
+              <span class="search-form">
+            <div class="dropdown datetimepicker-holder search-textfield date-textfield">
+              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.enquiry.date_of_travel) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(ctrl.enquiry.date_of_travel)}}</a>
+              <ul class="dropdown-menu" role="menu">
+                <datetimepicker
+                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+                datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+                ng-model="activity.start_at"></datetimepicker>
+              </ul>
+            </div>
+          </span>
             </div>
             <div class="field margin-top">
               <!--<input type="text" id="select_package" placeholder="Select Package" class="form-control text-field" n ng-model="ctrl.package" />-->
               <!--<i class="fa fa-unlock-alt form-icon"></i>-->
-              select
+              <select ng-options="n for n in ctrl.package" id="package" class="form-control text-boxes" ng-model="ctrl.enquiry.package">
+                <option value="">Select Package</option>
+              </select>
             </div>
             <div class="field">
+              <!--<input type="submit" value="Send Instructions" class="btn btn-primary proceed-btn margin-top">-->
               <input type="submit" class="btn btn-primary proceed-btn margin-top" value="Enquire">
             </div>
           </form>

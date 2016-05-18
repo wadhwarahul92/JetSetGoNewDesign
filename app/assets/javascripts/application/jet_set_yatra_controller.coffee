@@ -1,6 +1,6 @@
 jetsetgo_app.controller "JetSetYatraController", ['$http', 'notify', '$uibModal', 'CurrentUserService','AirportsService', ($http, notify, $uibModal, CurrentUserService, AirportsService) ->
 
-  @activities = [{}]
+#  @activities = [{}]
   @currentUser = null
   @airports = []
 
