@@ -192,6 +192,12 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When an Aircraft approved by Admin
+  # @param [Admin] admin
+  # @param [Aircraft] aircraft
+  # @return [ActionMailer::Base]
+  ######################################################################
   def aircraft_approved_by_admin(admin, aircraft)
     @admin = admin
     @aircraft = aircraft
@@ -200,6 +206,12 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When an Aircraft disapproved by Admin
+  # @param [Admin] admin
+  # @param [Aircraft] aircraft
+  # @return [ActionMailer::Base]
+  ######################################################################
   def aircraft_disapproved_by_admin(admin, aircraft)
     @admin = admin
     @aircraft = aircraft
@@ -208,6 +220,11 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When an enquiry received for yatra
+  # @param [YatraEnquiry] yatra_enquiry
+  # @return [ActionMailer::Base]
+  ######################################################################
   def create_yatra_enquiry(yatra_enquiry)
     @yatra_enquiry = yatra_enquiry
     mail(
