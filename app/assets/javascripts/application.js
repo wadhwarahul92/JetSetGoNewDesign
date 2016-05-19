@@ -34,6 +34,8 @@
 //= require ./application/jet_set_wed_enquiry_controller
 //= require ./application/jet_set_rescue_controller
 //= require ./application/jet_set_rescue_enquiry_controller
+//= require ./application/heli_set_go_controller
+//= require ./application/heli_set_go_enquiry_controller
 
 
 $(document).on('ready page:load', function(){
