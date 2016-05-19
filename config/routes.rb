@@ -283,6 +283,7 @@ Rails.application.routes.draw do
       get 'search_detail'
       get 'jet_set_rescue'
       get 'forget_password'
+      get 'enquiry_form_modal'
     end
   end
 
@@ -291,6 +292,8 @@ Rails.application.routes.draw do
       get 'get_for_index'
     end
   end
+
+  resources :yatra_enquiries
 
   resources :finances do
     collection do
