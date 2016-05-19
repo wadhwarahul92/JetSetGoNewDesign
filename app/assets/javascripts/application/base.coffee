@@ -46,6 +46,8 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     controllerAs: 'ctrl'
   }).when('/jet_set_wed', {
     templateUrl: '/templates/jet_set_wed'
+    controller: 'JetSetWedController'
+    controllerAs: 'ctrl'
   }).when('/heli_set_go', {
     templateUrl: '/templates/heli_set_go'
   }).when('/jet_set_yatra', {

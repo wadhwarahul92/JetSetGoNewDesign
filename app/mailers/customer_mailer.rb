@@ -8,7 +8,7 @@ class CustomerMailer < ApplicationMailer
     @trip = trip
     @customer = customer
     mail(
-        to: @customer,
+        to: @customer.email,
         subject: 'JetSetGo - Enquiry'
     )
   end
