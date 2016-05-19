@@ -31,7 +31,10 @@
 //= require ./application/jet_set_yatra_controller
 //= require ./application/jet_set_yatra_enquiry_controller
 //= require ./application/jet_set_wed_controller
-//= require ./application/jet_set_wed_enquiry_controller
+//= require ./application/jet_set_wed_controller
+//= require ./application/jet_set_rescue_controller
+//= require ./application/jet_set_rescue_enquiry_controller
+
 
 $(document).on('ready page:load', function(){
 
