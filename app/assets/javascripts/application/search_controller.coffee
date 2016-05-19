@@ -137,7 +137,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       notify
         message: 'Please sign-in or register first.'
         classes: ['alert-danger']
-      CurrentUserService.openSignInModal()
+      CurrentUserService.openSignInModal('md')
 
   @modalDetail = (result, tax)->
     $uibModal.open(

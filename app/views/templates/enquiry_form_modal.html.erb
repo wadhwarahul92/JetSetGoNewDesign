@@ -10,38 +10,39 @@
         <div class="col-xs-12">
           <form ng-submit="ctrl.create()">
             <div class="field margin-top">
-              <input type="text" id="name" placeholder="Name" class="form-control text-field" ng-model="ctrl.enquiry.name" />
+              <input type="text" id="name" placeholder="Name" class="form-control text-field" style="text-align: left" ng-model="ctrl.enquiry.name" />
               <i class="fa fa-user form-icon"></i>
             </div>
             <div class="field margin-top">
-              <input type="email" id="email" placeholder="Email Id" class="form-control text-field" n ng-model="ctrl.enquiry.email" />
-              <i class="fa fa-unlock-alt form-icon"></i>
+              <input type="email" id="email" placeholder="Email Id" class="form-control text-field" style="text-align: left" n ng-model="ctrl.enquiry.email" />
+              <i class="fa fa-envelope form-icon"></i>
             </div>
             <div class="field margin-top">
-              <input type="text" id="mobile_no" placeholder="Mobile No." class="form-control text-field" n ng-model="ctrl.enquiry.mobile_number" />
-              <i class="fa fa-unlock-alt form-icon"></i>
+              <input type="text" id="mobile_no" placeholder="Mobile No." class="form-control text-field" style="text-align: left" n ng-model="ctrl.enquiry.mobile_number" />
+              <i class="fa fa-phone form-icon"></i>
             </div>
             <div class="field margin-top">
               <!--<input type="datetime" id="date" placeholder="Date of Travel" class="form-control text-field" n ng-model="ctrl.enquiry.date_of_travel" />-->
               <!--<i class="fa fa-unlock-alt form-icon"></i>-->
               <span class="search-form">
-            <div class="dropdown datetimepicker-holder search-textfield date-textfield">
-              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.enquiry.date_of_travel) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(ctrl.enquiry.date_of_travel)}}</a>
-              <ul class="dropdown-menu" role="menu">
-                <datetimepicker
-                data-on-set-time="ctrl.onSetTime(newDate, oldDate, 0)"
-                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, 0)"
-                datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-                ng-model="ctrl.enquiry.date_of_travel"></datetimepicker>
-              </ul>
-            </div>
-          </span>
+                <div style="width:100%;" class="dropdown datetimepicker-holder search-textfield date-textfield celender-main">
+                  <a class="celender-text" role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.enquiry.date_of_travel) != 'Click to choose time' ? 'select-celender-text' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(ctrl.enquiry.date_of_travel)}}</a>
+                  <i class="fa fa-calendar form-icon"></i>
+                  <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                    data-on-set-time="ctrl.onSetTime(newDate, oldDate, 0)"
+                    data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, 0)"
+                    datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+                    ng-model="ctrl.enquiry.date_of_travel"></datetimepicker>
+                  </ul>
+                </div>
+              </span>
             </div>
             <div class="field margin-top">
               <!--<input type="text" id="select_package" placeholder="Select Package" class="form-control text-field" n ng-model="ctrl.package" />-->
               <!--<i class="fa fa-unlock-alt form-icon"></i>-->
-              <select ng-options="n for n in ctrl.package" id="package" class="form-control text-boxes" ng-model="ctrl.enquiry.package">
-                <option value="">Select Package</option>
+              <select ng-options="n for n in ctrl.package" id="package" style="padding: 6px 12px 6px 25px !important" class="form-control text-field text-select text-boxes" ng-model="ctrl.enquiry.package">
+                <option class="" value="">Select Package</option>
               </select>
             </div>
             <div class="field">
