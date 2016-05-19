@@ -29,10 +29,10 @@
               <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.enquiry.date_of_travel) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(ctrl.enquiry.date_of_travel)}}</a>
               <ul class="dropdown-menu" role="menu">
                 <datetimepicker
-                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+                data-on-set-time="ctrl.onSetTime(newDate, oldDate, 0)"
+                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, 0)"
                 datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-                ng-model="activity.start_at"></datetimepicker>
+                ng-model="ctrl.enquiry.date_of_travel"></datetimepicker>
               </ul>
             </div>
           </span>

@@ -472,7 +472,7 @@ ActiveRecord::Schema.define(version: 20160518091825) do
     t.text     "email",          limit: 65535
     t.text     "mobile_number",  limit: 65535
     t.text     "package",        limit: 65535
-    t.date     "date_of_travel"
+    t.datetime "date_of_travel"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

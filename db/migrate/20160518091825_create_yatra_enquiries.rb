@@ -5,7 +5,7 @@ class CreateYatraEnquiries < ActiveRecord::Migration
       t.text :email
       t.text :mobile_number
       t.text :package
-      t.date :date_of_travel
+      t.datetime :date_of_travel
 
       t.timestamps null: false
     end
