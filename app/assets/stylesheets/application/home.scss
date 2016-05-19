@@ -25,6 +25,7 @@ $main-blue-color:rgb(5, 81, 139);
   .dropdown-menu{
     max-height: 400px;
     overflow-x: scroll;
+    overflow-y: inherit;
   }
 }
 .login-left-con{
