@@ -208,4 +208,11 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  def create_yatra_enquiry(yatra_enquiry)
+    @yatra_enquiry = yatra_enquiry
+    mail(
+        subject: DEFAULT_SUBJECT + 'New Yatra Enquiry Received.'
+    )
+  end
+
 end
