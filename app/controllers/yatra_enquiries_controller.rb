@@ -4,7 +4,7 @@ class YatraEnquiriesController < ApplicationController
     @yatra_enquiry = YatraEnquiry.new(yatra_enquiry_params)
     if @yatra_enquiry.save
       AdminMailer.create_yatra_enquiry(@yatra_enquiry).deliver_later
-      Operator.all.first(2).each do |operator|
+      Operator.all.each do |operator|
         OrganisationMailer.create_yatra_enquiry(@yatra_enquiry, operator).deliver_later
       end
       render status: :ok, nothing: :true
