@@ -1,0 +1,164 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1">Hi, <%= @operator.full_name %></p>
+            <p><strong>Details:</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+            <tr style="border: 1px solid #000000;">
+              <td width="50%" valign="top" style="border: 1px solid #000000;">
+                <div class="column">
+                  <table width="100%">
+                    <tr>
+                      <td class="inner">
+                        <p class="h2" style="font-size: 14px;">Name</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+              <td width="50%" valign="top" style="border: 1px solid #000000;">
+                <div class="column">
+                  <table width="100%">
+                    <tr>
+                      <td class="inner">
+                        <p class="h2" style="font-size: 14px;"><%= @yatra_enquiry.name %></p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+        <tr style="border: 1px solid #000000;">
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;">Email</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;"><%= @yatra_enquiry.email %></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+        <tr style="border: 1px solid #000000;">
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;">Mobile No.</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;"><%= @yatra_enquiry.mobile_number %></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+        <tr style="border: 1px solid #000000;">
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;">Package</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;"><%= @yatra_enquiry.package %></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="two-column">
+      <table width="100%">
+        <tr style="border: 1px solid #000000;">
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;">Date of Travel</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td width="50%" valign="top" style="border: 1px solid #000000;">
+            <div class="column">
+              <table width="100%">
+                <tr>
+                  <td class="inner">
+                    <p class="h2" style="font-size: 14px;"><%= @yatra_enquiry.date_of_travel.strftime(time_format) %></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

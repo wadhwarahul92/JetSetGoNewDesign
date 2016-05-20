@@ -271,4 +271,19 @@ class OrganisationMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When an enquiry received for yatra
+  # @param [YatraEnquiry] yatra_enquiry
+  # @param [Operator] operator
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def create_yatra_enquiry(yatra_enquiry, operator)
+    @yatra_enquiry = yatra_enquiry
+    @operator = operator
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - New Yatra Enquiry Received.'
+    )
+  end
+
 end
