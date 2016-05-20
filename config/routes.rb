@@ -284,6 +284,7 @@ Rails.application.routes.draw do
       get 'jet_set_rescue'
       get 'forget_password'
       get 'enquiry_form_modal'
+      get 'profile'
     end
   end
 
@@ -329,6 +330,7 @@ Rails.application.routes.draw do
   get 'search_detail' => 'route_overrides#welcome_index'
   get 'jet_set_rescue' => 'route_overrides#welcome_index'
   get 'forget_password' => 'route_overrides#welcome_index'
+  get 'profile' => 'route_overrides#welcome_index'
 
 
   #TMP URL
