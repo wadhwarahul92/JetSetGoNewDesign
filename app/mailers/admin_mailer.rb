@@ -29,7 +29,7 @@ class AdminMailer < ApplicationMailer
     @organisation = organisation
     @operator = operator
     mail(
-        subject: DEFAULT_SUBJECT + 'someone created an organisation'
+        subject: DEFAULT_SUBJECT + 'Operator Sign Up Notification'
     )
   end
 
@@ -229,6 +229,18 @@ class AdminMailer < ApplicationMailer
     @yatra_enquiry = yatra_enquiry
     mail(
         subject: DEFAULT_SUBJECT + 'New Yatra Enquiry Received.'
+    )
+  end
+
+  ######################################################################
+  # Description: When a customer sign up
+  # @param [Customer] customer
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def customer_sign_up(customer)
+    @customer = customer
+    mail(
+        subject: DEFAULT_SUBJECT + 'Confirmation instructions.'
     )
   end
 

@@ -43,6 +43,8 @@ class WelcomeController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
+      CustomerMailer.sign_up(@user).deliver_later
+      AdminMailer.customer_sign_up(@user).deliver_later
       render action: :current_user_
     else
       render status: :unprocessable_entity, json: { errors: @user.errors.full_messages }
