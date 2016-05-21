@@ -22,13 +22,16 @@
                                        'organisation_id',
                                        'base_airport_id',
                                        'deleted_at').each_pair do |key, value| %>
+            <% next unless value.present? %>
             <tr style="border: 1px solid #000000;">
               <td width="50%" valign="top" style="border: 1px solid #000000;">
                 <div class="column">
                   <table width="100%">
                     <tr>
                       <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= key %></p>
+                        <p class="h2" style="font-size: 14px;">
+                          <%= key.gsub("_", " ").capitalize %>
+                        </p>
                       </td>
                     </tr>
                   </table>
@@ -39,7 +42,18 @@
                   <table width="100%">
                     <tr>
                       <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= value %></p>
+                        <p class="h2" style="font-size: 14px;">
+                        <%=
+                            case value
+                              when true
+                                "Yes"
+                              when false
+                                "No"
+                              else
+                                value
+                            end
+                        %>
+                        </p>
                       </td>
                     </tr>
                   </table>

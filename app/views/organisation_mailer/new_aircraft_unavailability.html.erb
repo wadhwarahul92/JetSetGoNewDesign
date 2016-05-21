@@ -30,7 +30,9 @@
                   <table width="100%">
                     <tr>
                       <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= key %></p>
+                        <p class="h2" style="font-size: 14px;">
+                          <%= key.gsub("_"," ").capitalize %>
+                        </p>
                       </td>
                     </tr>
                   </table>
