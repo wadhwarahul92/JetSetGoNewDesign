@@ -31,4 +31,19 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When an operator send a quote to customer
+  # @param [Customer] customer
+  # @param [Trip] trip
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def send_quote(customer, trip)
+    @trip = trip
+    @customer = customer
+    mail(
+        to: @customer.email,
+        subject: 'JetSetGo - Quotation For Your Private Jet.'
+    )
+  end
+
 end
