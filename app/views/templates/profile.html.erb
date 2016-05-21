@@ -1,0 +1,59 @@
+<div ng-controller="ProfileController as ctrl">
+    <!-- Profile  page start -->
+    <div class="heading text-center">
+      <h1 class="heading-top-space"><span class="heading">Profile</span></h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="profile-main-con">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="profile-img-con">
+                  <div class="img-con">
+                    <!--ng-show="ctrl.currentUser"-->
+                    <img src="" ng-src="{{ctrl.currentUser.image}}" alt="" />
+                  </div>
+                  <div class="change-pic-con">
+                    <a href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
+                      <i class="fa fa-picture-o"></i> Add/Edit Image
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="profile-content">
+                  <h2 class="name">{{ctrl.currentUser.full_name}}</h2>
+                  <div class="text-main">
+                    <div class="row">
+                      <p class="col-sm-4 profile-text">Email :</p>
+                      <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.email}}</p>
+                    </div>
+                  </div>
+                  <div class="text-main">
+                      <div class="row">
+                        <p class="col-sm-4 profile-text">Phone :</p>
+                        <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.phone}}</p>
+                      </div>
+                  </div>
+                  <div class="text-main" ng-show="{{!ctrl.currentUser.organisation.name}}">
+                  <div class="row">
+                    <p class="col-sm-4 profile-text">Organisation :</p>
+                    <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.organisation.name}}</p>
+                  </div>
+                  </div>
+                  <div class="text-main" ng-show="{{!ctrl.currentUser.designation}}">
+                  <div class="row">
+                    <p class="col-sm-4 profile-text">Designation :</p>
+                    <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.designation}}</p>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Profile  page finish -->
+</div>

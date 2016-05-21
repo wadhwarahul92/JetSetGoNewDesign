@@ -4,7 +4,6 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
 
   @isFromMobile = false
 
-  @currentUser = null
 
   if $routeParams.search_id
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(

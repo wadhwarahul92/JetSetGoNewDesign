@@ -82,4 +82,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def profile
+
+  end
+
 end
