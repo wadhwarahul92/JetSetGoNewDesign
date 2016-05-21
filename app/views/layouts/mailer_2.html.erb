@@ -46,7 +46,7 @@
       max-width: 600px;
     }
     .inner {
-      padding: 10px;
+      padding: 15px;
     }
     .contents {
       width: 100%;
@@ -65,8 +65,7 @@
     }
     .h2 {
       font-size: 18px;
-      font-weight: bold;
-      Margin-bottom: 12px;
+      margin: 0;
     }
     .full-width-image img {
       width: 100%;
@@ -80,10 +79,11 @@
     }
     .one-column p {
       font-size: 14px;
-      Margin-bottom: 10px;
+      margin: 0;
     }
 
     /*Two column layout*/
+
     .two-column {
       text-align: center;
       font-size: 0;
@@ -213,7 +213,8 @@
       background: #165379;
       color: white;
     }
-
+    .table-content tr:nth-child(odd){background-color: #f5f5f5}
+    .table-content tr:nth-child(even){background-color: #ffffff}
     /*Media Queries*/
     @media screen and (max-width: 400px) {
       .two-column .column,
