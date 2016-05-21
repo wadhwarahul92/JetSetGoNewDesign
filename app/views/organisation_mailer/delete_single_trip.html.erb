@@ -45,11 +45,11 @@
                           <td class="inner">
                             <p class="h2" style="font-size: 14px;">
                               <% if key == 'departure_airport_id' %>
-                                  departure airport
+                                  Departure airport
                               <% elsif key == 'arrival_airport_id' %>
-                                  arrival airport
+                                  Arrival airport
                               <% else %>
-                                  <%= key %>
+                                  <%= key.gsub("_"," ").capitalize %>
                               <% end %>
                             </p>
                           </td>
@@ -70,7 +70,16 @@
                               <% elsif key == 'start_at' || key == 'end_at' %>
                                   <%= value.strftime(time_format) %>
                               <% else %>
-                                  <%= value %>
+                                  <%=
+                                      case value
+                                        when true
+                                          "Yes"
+                                        when false
+                                          "No"
+                                        else
+                                          value
+                                      end
+                                  %>
                               <% end %>
                             </p>
                           </td>
