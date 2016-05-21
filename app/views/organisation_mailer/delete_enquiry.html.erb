@@ -67,7 +67,7 @@
                       <% elsif key == 'arrival_airport_id' %>
                           Arrival Airport
                       <% else %>
-                          <%= key %>
+                          <%= key.gsub("_", " ").capitalize %>
                       <% end %>
                     </p>
                   </td>
