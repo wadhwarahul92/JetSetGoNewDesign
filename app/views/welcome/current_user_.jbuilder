@@ -3,6 +3,9 @@ if current_user.present?
   json.first_name current_user.first_name
   json.last_name current_user.last_name
   json.full_name current_user.full_name
+  json.designation current_user.designation if current_user.designation.present?
+  json.phone current_user.phone if current_user.phone
+  json.email current_user.email if current_user.email
   json.image current_user.image.url(:size_250x250)
   if current_user.try(:organisation).present?
     json.organisation{
