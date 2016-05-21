@@ -1,59 +1,37 @@
 <table class="outer" align="center">
   <tr>
-    <td class="one-column">
-      <table width="100%">
-        <tr>
-          <td class="inner contents">
-            <p class="h1">Hi,</p>
-            <p>
-              <strong><%= @operator.full_name %></strong>
-              create a new unavailability of aircraft
-              <strong><%= @aircraft_unavailability.aircraft.aircraft_type.name %></strong> <br/>
-              Tail number <strong><%= @aircraft_unavailability.aircraft.tail_number %></strong>
-            </p>
-          </td>
-        </tr>
-      </table>
+    <td class="one-column inner contents">
+      <p class="h1">Hi,</p>
+      <p>
+        <strong><%= @operator.full_name %></strong>
+        create a new unavailability of aircraft
+        <strong><%= @aircraft_unavailability.aircraft.aircraft_type.name %></strong> <br/>
+        Tail number <strong><%= @aircraft_unavailability.aircraft.tail_number %></strong>
+      </p>
     </td>
   </tr>
   <tr>
     <td class="two-column">
-      <table width="100%">
+      <table class="table-content" width="100%" style="border: 1px solid #cccccc">
         <% @aircraft_unavailability.attributes.except('id',
                                                       'aircraft_id',
                                                       'created_at',
                                                       'updated_at',
                                                       'deleted_at').each_pair do |key, value| %>
-            <tr style="border: 1px solid #000000;">
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;">
-                          <%= key.gsub("_"," ").capitalize %>
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+            <tr>
+              <td class="inner" width="40%" valign="top" style="border-right: 1px solid #cccccc;">
+                <p class="h2" style="font-size: 14px;">
+                  <%= key.gsub("_"," ").capitalize %>
+                </p>
               </td>
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;">
-                          <% if key == 'start_at' ||  key == 'end_at'%>
-                              <%= value.strftime(time_format) %>
-                          <% else %>
-                              <%= value %>
-                          <% end %>
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+              <td class="inner" width="60%" valign="top">
+                <p class="h2" style="font-size: 14px;">
+                  <% if key == 'start_at' ||  key == 'end_at'%>
+                      <%= value.strftime(time_format) %>
+                  <% else %>
+                      <%= value %>
+                  <% end %>
+                </p>
               </td>
             </tr>
         <% end %>
