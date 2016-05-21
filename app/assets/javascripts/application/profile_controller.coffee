@@ -2,8 +2,6 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', 'CurrentUserSer
 
   @currentUser = null
 
-  @currentUser = null
-
   $scope.$watch(
     =>
       CurrentUserService.currentUser
