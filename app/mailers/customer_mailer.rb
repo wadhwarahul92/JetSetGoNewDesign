@@ -32,7 +32,7 @@ class CustomerMailer < ApplicationMailer
   end
 
   ######################################################################
-  # Description: When an operator send a quote
+  # Description: When an operator send a quote to customer
   # @param [Customer] customer
   # @param [Trip] trip
   # @return [ActionMailer::Base]
