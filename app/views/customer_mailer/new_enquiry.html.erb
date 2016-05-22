@@ -1,143 +1,64 @@
 <table class="outer" align="center">
   <tr>
-    <td class="one-column">
-      <table width="100%">
-        <tr>
-          <td class="inner contents">
-            <p class="h1">Dear <%= @customer.first_name %>,</p>
-            <p>JetSetGo has received your trip details. We are going to quickly double check with the operator on price and availability before we proceed to confirm your booking.
-              Our operators put in their best to maintain prices and schedules by the clock but the scope for change always exists. You will only find this all the more beneficial.</p>
-          </td>
-        </tr>
-      </table>
+    <td class="one-column inner contents">
+      <p class="h1">Dear <%= @customer.first_name %>,</p>
+      <p>JetSetGo has received your trip details. We are going to quickly double check with the operator on price and availability before we proceed to confirm your booking.
+        Our operators put in their best to maintain prices and schedules by the clock but the scope for change always exists. You will only find this all the more beneficial.</p>
     </td>
   </tr>
   <tr >
     <td class="one-column">
-      <table width="100%">
-        <tr style="border: 1px solid #000000;">
-          <td class="inner contents">
-        <tr style="text-align: center">
-          <td class="one-column">
-            <table width="100%">
-              <tr>
-                <td class="inner contents">
-                  <p class="h1" style="text-align: center">Itinerary Details</p>
-                </td>
-              </tr>
-            </table>
+      <table width="100%" style="border: 1px solid #cccccc">
+        <tr>
+          <td class="one-column inner contents" style="border-bottom: 1px dotted #cccccc;">
+            <p class="h1" style="text-align: center">Itinerary Details</p>
+          </td>
+        <tr>
+        <tr>
+          <td class="one-column inner contents">
+            <p class="h1">Journey Details:</p>
           </td>
         </tr>
         <tr>
-          <td class="one-column">
+          <td class="two-column" style="border-bottom: 1px dotted #cccccc;">
             <table width="100%">
-              <tr>
-                <td class="inner contents">
-                  <p class="h1">Journey Details:</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td class="three-column">
-            <table width="100%">
-              <tr style="text-align: left;">
-                <td width="200" valign="top">
-                  <div class="column">
-                    <table width="100%">
-                      <tr>
-                        <td class="inner">
-                          <p class="h1" style="font-size: 14px;">
-                            Departure
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </td>
-                <td width="200" valign="top">
-
-                </td>
-                <td width="200" valign="top">
-                  <div class="column">
-                    <table width="100%">
-                      <tr>
-                        <td class="inner">
-                          <p class="h1" style="font-size: 14px;">
-                            Arrival
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <% @trip.activities.each do |activity| %>
-            <% next if activity.empty_leg %>
-
-            <tr>
-              <td class="three-column">
-                <table width="100%">
-                  <tr style="text-align: left;">
-                    <td width="200" valign="top">
-                      <div class="column">
-                        <table width="100%">
-                          <tr>
-                            <td class="inner">
-                              <p class="h2" style="font-size: 14px;">
-                                <%= activity.departure_airport.name %>
-                                <br>
-                                <%= activity.departure_airport.city.name %>
-                                <br>
-                                <%= activity.start_at.strftime(time_format)%>
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
+              <% @trip.activities.each do |activity| %>
+                  <% next if activity.empty_leg %>
+                  <tr>
+                    <td class="inner" width="50%" style="text-align: left;">
+                      <p class="h1" style="font-size: 14px;">
+                        Departure
+                      </p>
+                      <p class="h2" style="font-size: 14px;">
+                        <%= activity.departure_airport.name %>
+                        <br>
+                        <%= activity.departure_airport.city.name %>
+                        <br>
+                        <%= activity.start_at.strftime(time_format)%>
+                      </p>
                     </td>
-                    <td width="200" valign="top">
-
+                    <td class="inner" width="50%" style="text-align: left;">
+                      <p class="h1" style="font-size: 14px;">
+                        Arrival
+                      </p>
+                      <p class="h2" style="font-size: 14px;">
+                        <%= activity.arrival_airport.name %>
+                        <br>
+                        <%= activity.arrival_airport.city.name %>
+                        <br>
+                        <%= activity.end_at.strftime(time_format)%>
+                      </p>
                     </td>
-                    <td width="200" valign="top">
-                      <div class="column">
-                        <table width="100%">
-                          <tr>
-                            <td class="inner">
-                              <p class="h2" style="font-size: 14px;">
-                                <%= activity.arrival_airport.name %>
-                                <br>
-                                <%= activity.arrival_airport.city.name %>
-                                <br>
-                                <%= activity.end_at.strftime(time_format)%>
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
-                  </td>
                   </tr>
-                </table>
-              </td>
-            </tr>
-            <% end %>
-        <tr style="text-align: center">
-          <td class="one-column">
-            <table width="100%">
-              <tr>
-                <td class="inner contents">
-                  <p class="h1">Aircraft Details:</p>
-                </td>
-              </tr>
+              <% end %>
             </table>
           </td>
         </tr>
-
-
+        <tr>
+          <td class="one-column inner" style="border-bottom: 1px dotted #cccccc;">
+            <p class="h1">Aircraft Details:</p>
+          </td>
+        </tr>
         <tr>
           <td class="two-column">
             <table width="100%">
@@ -149,12 +70,6 @@
                   <%= @trip.activities.first.aircraft.tail_number %> - <%= @trip.activities.first.aircraft.aircraft_type.name %>
                 </td>
               </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td class="two-column">
-            <table width="100%">
               <tr>
                 <td width="50%" valign="top">
                   Seats:
@@ -163,12 +78,6 @@
                   <%= @trip.activities.first.aircraft.seating_capacity %>
                 </td>
               </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td class="two-column">
-            <table width="100%">
               <tr>
                 <td width="50%" valign="top">
                   Crew:
@@ -180,8 +89,6 @@
             </table>
           </td>
         </tr>
-
-
         <tr>
           <td class="one-column">
             <table width="100%">
@@ -193,49 +100,37 @@
             </table>
           </td>
         </tr>
-        <tr style="text-align: left">
+        <tr>
           <td class="two-column">
             <table width="100%">
               <tr>
-                <td width="50%" valign="top">
-                 <p class="h1" style="text-align: left; padding: 10px">Name:</p>
+                <td class="inner" width="50%" valign="top">
+                 <p class="h1" style="text-align: left;">Name:</p>
                 </td>
-                <td width="50%" valign="top">
-                  <p class="h1" style="text-align: left; padding: 10px"><%= @customer.full_name %></p>
+                <td class="inner contents" width="50%" valign="top">
+                  <%= @customer.full_name %>
                 </td>
               </tr>
-            </table>
-          </td>
-        </tr>
-        <tr style="text-align: left">
-          <td class="two-column">
-            <table width="100%">
               <tr>
-                <td width="50%" valign="top">
-                 <p class="h1" style="text-align: left; padding: 10px">Email Id:</p>
+                <td class="inner" width="50%" valign="top">
+                  <p class="h1" style="text-align: left;">Email Id:</p>
                 </td>
-                <td width="50%" valign="top">
-                  <p class="h1" style="text-align: left; padding: 10px"><%= @customer.email %></p>
+                <td class="inner contents"width="50%" valign="top">
+                  <%= @customer.email %>
+                </td>
+              </tr>
+              <tr>
+                <td class="inner"width="50%" valign="top">
+                  <p class="h1" style="text-align: left;">Contact No:</p>
+                </td>
+                <td class="inner contents" width="50%" valign="top">
+                  <%= @customer.phone %>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
-          <td class="two-column">
-            <table width="100%">
-              <tr>
-                <td width="50%" valign="top">
-                  <p class="h1" style="text-align: left; padding: 10px">Contact No:</p>
-                </td>
-                <td width="50%" valign="top">
-                  <p class="h1" style="text-align: left; padding: 10px"><%= @customer.phone %></p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr style="text-align: center">
           <td class="one-column">
             <table width="100%">
               <tr>
