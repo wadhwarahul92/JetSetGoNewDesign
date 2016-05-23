@@ -10,8 +10,8 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
       @currentUser = CurrentUserService.currentUser
   )
 
-  if @currentUser == null
-    $location.path("/tmp_url")
+#  if @currentUser == null
+#    $location.path("/tmp_url")
 
   @uploadUserImage = (files, operator)->
     return unless files[0]
