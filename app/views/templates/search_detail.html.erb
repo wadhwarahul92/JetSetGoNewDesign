@@ -22,6 +22,7 @@
             <ul ng-class="flight_plan.flight_type == 'empty_leg' ? 'dotted-border' : ''">
               <li class="empty-leg-heading">
                 <span class="heading-text" ng-show="flight_plan.flight_type == 'empty_leg'" >Empty Leg</span>
+                <span class="heading-text" ng-show="flight_plan.flight_type == 'user_search'">Your Trip</span>
               </li>
               <li class="list-accomodation">
                 <ul>
@@ -61,8 +62,6 @@
                   <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
                 </ul>
               </li>
-
-
             </ul>
 
             <!--<div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>-->
