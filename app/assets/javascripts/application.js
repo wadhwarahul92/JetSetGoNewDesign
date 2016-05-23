@@ -1,4 +1,5 @@
 //= require jquery
+//= require turbolinks
 //= require ./vendors/moment
 //= require ./vendors/angular
 //= require ./vendors/angular-route
@@ -39,6 +40,11 @@
 //= require ./application/heli_set_go_enquiry_controller
 //= require ./application/profile_controller
 
+try {
+    Turbolinks.enableProgressBar();
+}catch(e) {
+    console.log('ERROR: Turbolinks is not defined.')
+}
 
 $(document).on('ready page:load', function(){
 
