@@ -13,8 +13,8 @@ class TripCreator
     Trip.transaction do
       @trip = Trip.create!(status: Trip::STATUS_CONFIRMED, organisation_id: @organisation.id)
       @activities.each do |activity|
-        # create_activity(activity.merge(trip_id: @trip.id))
-        @aircraft.activities.create!(activity.merge(trip_id: @trip.id))
+        # @aircraft.activities.create!(activity.merge(trip_id: @trip.id))
+        create_activity(activity.merge(trip_id: @trip.id))
       end
     end
   end
