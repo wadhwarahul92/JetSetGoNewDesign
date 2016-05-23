@@ -2,6 +2,7 @@
   <tr>
     <td class="one-column inner contents">
       <p class="h1">Dear <%= @customer.first_name %>,</p>
+      <br>
       <p>JetSetGo has received your trip details. We are going to quickly double check with the operator on price and availability before we proceed to confirm your booking.
         Our operators put in their best to maintain prices and schedules by the clock but the scope for change always exists. You will only find this all the more beneficial.</p>
     </td>
@@ -67,23 +68,23 @@
                  Aircraft Name:
                 </td>
                 <td width="50%" valign="top">
-                  <%= @trip.activities.first.aircraft.tail_number %> - <%= @trip.activities.first.aircraft.aircraft_type.name %>
+                  <p><%= @trip.activities.first.aircraft.tail_number %> - <%= @trip.activities.first.aircraft.aircraft_type.name %></p>
                 </td>
               </tr>
               <tr>
                 <td width="50%" valign="top">
-                  Seats:
+                 <p>Seats:</p>
                 </td>
                 <td width="50%" valign="top">
-                  <%= @trip.activities.first.aircraft.seating_capacity %>
+                  <p><%= @trip.activities.first.aircraft.seating_capacity %></p>
                 </td>
               </tr>
               <tr>
                 <td width="50%" valign="top">
-                  Crew:
+                  <p>Crew:</p>
                 </td>
                 <td width="50%" valign="top">
-                  <%= @trip.activities.first.aircraft.crew %>
+                  <p><%= @trip.activities.first.aircraft.crew %></p>
                 </td>
               </tr>
             </table>
