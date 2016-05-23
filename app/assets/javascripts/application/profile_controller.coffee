@@ -1,4 +1,4 @@
-jetsetgo_app.controller "ProfileController", ['$http','$location', 'notify', '$upload', 'CurrentUserService', '$scope', ($http, $location, notify, $upload, CurrentUserService, $scope) ->
+jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'CurrentUserService', '$scope', '$location', ($http, notify, $upload, CurrentUserService, $scope, $location) ->
 
   @currentUser = null
 
@@ -11,9 +11,7 @@ jetsetgo_app.controller "ProfileController", ['$http','$location', 'notify', '$u
   )
 
   if @currentUser == null
-    $location.path("/tmp_url");
-  else
-#    do nothing
+    $location.path("/tmp_url")
 
   @uploadUserImage = (files, operator)->
     return unless files[0]
