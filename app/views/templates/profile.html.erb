@@ -15,7 +15,7 @@
                     <img src="" ng-src="{{ctrl.currentUser.image}}" alt="" />
                   </div>
                   <div class="change-pic-con">
-                    <a href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
+                    <a href="" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
                       <i class="fa fa-picture-o"></i> Add/Edit Image
                     </a>
                   </div>
@@ -45,7 +45,7 @@
                   <div class="text-main" ng-show="{{!ctrl.currentUser.designation}}">
                   <div class="row">
                     <p class="col-sm-4 profile-text">Designation :</p>
-                    <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.designation}}</p>
+                    <p class="col-sm-8 profile-text-detail txt-capitalize">{{ctrl.currentUser.designation}}</p>
                   </div>
                   </div>
                 </div>

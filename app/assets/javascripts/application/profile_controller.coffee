@@ -1,4 +1,4 @@
-jetsetgo_app.controller "ProfileController", ['$http', 'notify', 'CurrentUserService', '$scope', ($http, notify, CurrentUserService, $scope) ->
+jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'CurrentUserService', '$scope', ($http, notify, $upload, CurrentUserService, $scope) ->
 
   @currentUser = null
 

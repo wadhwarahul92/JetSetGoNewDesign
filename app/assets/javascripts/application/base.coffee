@@ -17,6 +17,7 @@ angular.module('CustomFilters', []).filter('indianCurrency', ->
 window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'angular-loading-bar'
   'cgNotify'
+  'angularFileUpload'
   'ui.bootstrap'
   'ngRoute'
   'ui.bootstrap.datetimepicker'
