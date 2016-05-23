@@ -1,4 +1,4 @@
-jetsetgo_app.controller "ProfileController", ['$http', 'notify', 'CurrentUserService', '$scope', ($http, notify, CurrentUserService, $scope) ->
+jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'CurrentUserService', '$scope', '$location', ($http, notify, $upload, CurrentUserService, $scope, $location) ->
 
   @currentUser = null
 
@@ -10,11 +10,14 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', 'CurrentUserSer
       @currentUser = CurrentUserService.currentUser
   )
 
+  if @currentUser == null
+    $location.path("/tmp_url")
+
   @uploadUserImage = (files, operator)->
     return unless files[0]
     $upload.upload(
       file: files[0]
-      url: "/template/#{currentUser.id}/update_image.json"
+      url: "/customers/update_image.json"
       method: "put"
     ).success(
       (data)=>

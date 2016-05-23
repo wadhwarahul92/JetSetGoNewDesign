@@ -36,16 +36,16 @@
                         <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.phone}}</p>
                       </div>
                   </div>
-                  <div class="text-main" ng-show="{{!ctrl.currentUser.organisation.name}}">
+                  <div class="text-main" ng-show="ctrl.currentUser.organisation.name">
                   <div class="row">
                     <p class="col-sm-4 profile-text">Organisation :</p>
                     <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.organisation.name}}</p>
                   </div>
                   </div>
-                  <div class="text-main" ng-show="{{!ctrl.currentUser.designation}}">
+                  <div class="text-main" ng-show="ctrl.currentUser.designation">
                   <div class="row">
                     <p class="col-sm-4 profile-text">Designation :</p>
-                    <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.designation}}</p>
+                    <p class="col-sm-8 profile-text-detail txt-capitalize">{{ctrl.currentUser.designation}}</p>
                   </div>
                   </div>
                 </div>

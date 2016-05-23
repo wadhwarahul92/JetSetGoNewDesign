@@ -5,6 +5,7 @@
 //= require ./vendors/angular-bootstrap
 //= require ./vendors/angular_animate
 //= require ./vendors/notify
+//= require ./vendors/angular-file-upload
 //= require ./vendors/loading-bar
 //= require ./vendors/bootstrap
 //= require ./vendors/angular-datetime-picker
