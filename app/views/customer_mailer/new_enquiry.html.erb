@@ -56,35 +56,35 @@
           </td>
         </tr>
         <tr>
-          <td class="one-column inner" style="border-bottom: 1px dotted #cccccc;">
+          <td class="one-column inner">
             <p class="h1">Aircraft Details:</p>
           </td>
         </tr>
         <tr>
-          <td class="two-column">
+          <td class="two-column" style="border-bottom: 1px dotted #cccccc;">
             <table width="100%">
               <tr>
-                <td width="50%" valign="top">
-                 Aircraft Name:
+                <td class="inner" width="50%" valign="top">
+                 <p class="h1" style="text-align: left">Aircraft Name:</p>
                 </td>
-                <td width="50%" valign="top">
-                  <p><%= @trip.activities.first.aircraft.tail_number %> - <%= @trip.activities.first.aircraft.aircraft_type.name %></p>
-                </td>
-              </tr>
-              <tr>
-                <td width="50%" valign="top">
-                 <p>Seats:</p>
-                </td>
-                <td width="50%" valign="top">
-                  <p><%= @trip.activities.first.aircraft.seating_capacity %></p>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.tail_number %> - <%= @trip.activities.first.aircraft.aircraft_type.name %></p>
                 </td>
               </tr>
               <tr>
-                <td width="50%" valign="top">
-                  <p>Crew:</p>
+                <td class="inner" width="50%" valign="top">
+                 <p class="h1" style="text-align: left">Seats:</p>
                 </td>
-                <td width="50%" valign="top">
-                  <p><%= @trip.activities.first.aircraft.crew %></p>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.seating_capacity %></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="inner" width="50%" valign="top">
+                  <p class="h1" style="text-align: left">Crew:</p>
+                </td>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.crew %></p>
                 </td>
               </tr>
             </table>
