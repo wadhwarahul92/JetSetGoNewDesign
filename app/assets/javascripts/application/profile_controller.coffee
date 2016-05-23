@@ -10,6 +10,42 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
       @currentUser = CurrentUserService.currentUser
   )
 
+#  setTimeout(
+#    ->
+#    unless @currentUser
+#      debugger
+#      $location.path("tmp_url")
+#    3000
+#  )
+
+#  @checkFilters = ->
+#
+#    null
+
+#  setTimeout(
+#    ->
+#      debugger
+#      if  @currentUser
+#        $location.path("/tmp_url")
+#      else
+##          do nothing
+#  ,
+#    3000
+#  )
+#  null
+
+#  @checkFilters = ->
+#    setTimeout(
+#      ->
+#        if $('.count_this').length == $('.count_this.ng-hide').length
+#          $('#no_jetsteal').show()
+#        else
+#          $('#no_jetsteal').hide()
+#    ,
+#      100
+#    )
+#    null
+
 #  if @currentUser == null
 #    $location.path("/tmp_url")
 
