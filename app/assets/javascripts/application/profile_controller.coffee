@@ -14,7 +14,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
     return unless files[0]
     $upload.upload(
       file: files[0]
-      url: "/template/#{currentUser.id}/update_image.json"
+      url: "/customers/update_image.json"
       method: "put"
     ).success(
       (data)=>

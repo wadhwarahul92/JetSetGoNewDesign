@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :customers do
+    collection do
+      put 'update_image'
+    end
+  end
+
   namespace :organisations do
 
     get '/' => 'welcome#index'
