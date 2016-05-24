@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :customers do
     collection do
       put 'update_image'
+      put 'update_profile'
     end
   end
 
