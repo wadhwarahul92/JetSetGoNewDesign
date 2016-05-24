@@ -2,6 +2,10 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
 
   @currentUser = null
 
+  @upd_profile = false
+
+  @btn_show = false
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -10,44 +14,15 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
       @currentUser = CurrentUserService.currentUser
   )
 
-#  setTimeout(
-#    ->
-#    unless @currentUser
-#      debugger
-#      $location.path("tmp_url")
-#    3000
-#  )
+  scope = this
 
-#  @checkFilters = ->
-#
-#    null
-
-#  setTimeout(
-#    ->
-#      debugger
-#      if  @currentUser
-#        $location.path("/tmp_url")
-#      else
-##          do nothing
-#  ,
-#    3000
-#  )
-#  null
-
-#  @checkFilters = ->
-#    setTimeout(
-#      ->
-#        if $('.count_this').length == $('.count_this.ng-hide').length
-#          $('#no_jetsteal').show()
-#        else
-#          $('#no_jetsteal').hide()
-#    ,
-#      100
-#    )
-#    null
-
-#  if @currentUser == null
-#    $location.path("/tmp_url")
+  setTimeout(
+    ->
+      unless scope.currentUser
+        location.replace('tmp_url')
+    ,
+    1500
+  )
 
   @uploadUserImage = (files, operator)->
     return unless files[0]
@@ -69,6 +44,23 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
         )
     )
     return undefined
+
+  @update_profile = ->
+    $http.put("/customers/update_profile.json", @currentUser).success(
+      =>
+        notify(
+          message: 'Successfully saved.'
+        )
+        @btn_show = false
+    ).error(
+      (data)=>
+        notify(
+          message: data.errors[0]
+          classes: ['alert-danger']
+        )
+        @upd_profile = true
+        @btn_show = true
+    )
 
   return undefined
 ]
