@@ -162,7 +162,7 @@ class Organisations::TripsController < Organisations::BaseController
       send_quote_service.process!
       AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
-      CustomerMailer.send_quote(current_user, send_quote_service.trip.user).deliver_later
+      CustomerMailer.send_quote(send_quote_service.trip.user, send_quote_service.trip.user).deliver_later
 
       send_quote_service.trip.organisation.operators.each do |operator|
         NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
