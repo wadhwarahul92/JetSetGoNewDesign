@@ -4,12 +4,15 @@
       <div class="col-sm-8">
         <span class="heading popup-heading tmp-after_" style="font-size: 45px; font-family: arial, sans-serif; color: #000000;">Choose Your Jet</span>
       </div>
-      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+          <a class="search-btn pull-right" style="color: black; border: 2px solid black;padding: 10px 20px;margin-top: 15px;" href="/tmp_url?search_id={{ctrl.searchId}}">Modify Search</a>
+      </div>
     </div>
   </div>
-  <div class="col-xs-12 search-input-box">
+  <div class="col-xs-12 search-input-box" style="border: none">
     <div class="row" >
-      <div class="col-md-10 col-sm-10 col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">
+      <!--<div class="col-md-10 col-sm-10 col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">-->
+      <div class="col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12 c_disable">
             <small ng-show="$index == 0" style="font-size: 70%">Departure</small>
@@ -40,9 +43,7 @@
         </div>
       </div>
 
-      <div class="col-md-2 col-sm-2 col-xs-12 modify-textfield-con" style="margin-top: 20px;">
-        <a class="search-btn" style="color: black; margin: 0; border: 2px solid black;" href="/tmp_url?search_id={{ctrl.searchId}}">Modify</a>
-      </div>
+
       <div class="clearfix"></div>
     </div>
   </div>
