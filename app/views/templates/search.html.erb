@@ -2,7 +2,7 @@
   <div class="col-sm-12 search-main-con">
     <div class="row">
       <div class="col-sm-8">
-        <span class="heading popup-heading">Choose Your Jet</span>
+        <span class="heading popup-heading tmp-after_" style="font-size: 45px; font-family: arial, sans-serif; color: #000000;">Choose Your Jet</span>
       </div>
       <div class="col-sm-4"></div>
     </div>
@@ -12,17 +12,21 @@
       <div class="col-md-10 col-sm-10 col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12 c_disable">
-            <input class="form-control search-input" ng-model="ctrl.airportForId(search_activity.departure_airport_id).name" type="text" id="departure_airport" placeholder="Departure Airport">
+            <small ng-show="$index == 0" style="font-size: 70%">Departure</small>
+            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.departure_airport_id).name" type="text" id="departure_airport" placeholder="Departure Airport">
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 c_disable">
-            <input class="form-control search-input" ng-model="ctrl.airportForId(search_activity.arrival_airport_id).name" type="text" id="arrival_airport" placeholder="Arrival Airport">
+            <small ng-show="$index == 0" style="font-size: 70%">Arrival</small>
+            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.arrival_airport_id).name" type="text" id="arrival_airport" placeholder="Arrival Airport">
           </div>
           <div class="col-md-2 col-sm-6 col-xs-12 c_disable">
-            <input class="form-control search-input" ng-model="search_activity.pax" type="text" id="pax" placeholder="Pax">
+            <small ng-show="$index == 0" style="font-size: 70%">Pax</small>
+            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="search_activity.pax" type="text" id="pax" placeholder="Pax">
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12 textfield-border c_disable" >
-            <div class="form-control search-input custom-calander dropdown datetimepicker-holder">
-              <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
+            <small ng-show="$index == 0" style="font-size: 70%">Time</small>
+            <div class="form-control search-input custom-calander dropdown datetimepicker-holder" style="border: 1px solid #000000;">
+              <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)" style="color: #000000"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
               <ul class="dropdown-menu" role="menu">
                 <datetimepicker
                 data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
@@ -36,8 +40,8 @@
         </div>
       </div>
 
-      <div class="col-md-2 col-sm-2 col-xs-12 modify-textfield-con">
-        <a class="search-btn" href="/tmp_url?search_id={{ctrl.searchId}}">Modify</a>
+      <div class="col-md-2 col-sm-2 col-xs-12 modify-textfield-con" style="margin-top: 20px;">
+        <a class="search-btn" style="color: black; margin: 0; border: 2px solid black;" href="/tmp_url?search_id={{ctrl.searchId}}">Modify</a>
       </div>
       <div class="clearfix"></div>
     </div>
