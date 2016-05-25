@@ -87,6 +87,12 @@
             <span class="search-icon pax-icon"></span>
             <input class="search-textfield text-white pax-textfield" type="number"
                    ng-model="activity.pax"
+                   uib-typeahead="airport as pax for pax in [0,1,2,3,4,5,6,7,8,9,10]"
+                   ng-disabled="$index+1 < ctrl.activities.length"
+                   autocomplete="off"
+                   typeahead-editable="false"
+                   typeahead-select-on-exact="true"
+                   typeahead-min-length="0"
                    placeholder="Pax">
           </span>
           <span class="search-form">
@@ -205,7 +211,7 @@
 <!--jetsetgo pulse start-->
 <div class="pulse-main-con">
   <div class="container search-container">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center" style="    margin-bottom: 28px;">
       <span class="heading">JetSetGo Pulse</span>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 canvas-main">
