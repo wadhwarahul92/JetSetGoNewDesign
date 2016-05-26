@@ -62,7 +62,8 @@ class Admin::AirportsController < Admin::BaseController
                                 :fuel_availability,
                                 :watch_hour_extension,
                                 :icao_code,
-                                :runway_field_length_in_feet
+                                :runway_field_length_in_feet,
+                                :landing_cost
     )
   end
 
