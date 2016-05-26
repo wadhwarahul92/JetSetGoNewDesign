@@ -10,7 +10,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @tax = null
 
-  @total_tax_value = null
+  @taxDetail = null
 
   @user = false
 
@@ -29,7 +29,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
       @tax = data.tax
-      @total_tax_value = data.total_tax_value
+      @taxDetail = data.taxDetail
       @results = data.results
       @search_activities = data.search_activities
 
@@ -77,7 +77,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
 #    trip.totalCost = cost
-    cost + (((@total_tax_value) / 100) * cost)
+    cost + (((@tax) / 100) * cost)
 
   @formatTime = (time)->
     data = null
@@ -142,7 +142,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
 
-  @modalDetail = (result, tax, total_tax_value)->
+  @modalDetail = (result, tax, taxDetail)->
     $uibModal.open(
       size: 'lg'
       templateUrl: '/templates/search_detail'
@@ -154,8 +154,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           return result
         tax: ->
           return tax
-        total_tax_value: ->
-          return total_tax_value
+        taxDetail: ->
+          return taxDetail
       }
     )
 

@@ -77,7 +77,7 @@
               <h4 class="text-gray"><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <small>Estimated</small></h4>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-8">
-              <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result, ctrl.tax, ctrl.total_tax_value)">Details</a>
+              <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result, ctrl.tax, ctrl.taxDetail)">Details</a>
               <a href="" class="custom-btn no-text-decoration" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
               <span ng-show="result.enquired">Enquired</span>
               <!--<a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>-->
