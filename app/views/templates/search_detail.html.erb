@@ -8,7 +8,7 @@
       <div class="col-xs-12 aircraft-heading">
         <div class="row">
           <div class="col-sm-6 ft-md-blue">{{ctrl.detail.aircraft.aircraft_type.name}}</div>
-          <div class="col-sm-6"></div>
+          <div class="col-sm-6 text-right"><strong>Per hour cost: &nbsp;<i class="fa fa-rupee"></i> {{ctrl.detail.aircraft.per_hour_cost | currency:"":2 | indianCurrency}}</strong></div>
         </div>
       </div>
       <!--<div class="col-sm-6 col-xs-12 img-con">-->
@@ -64,19 +64,6 @@
                 </ul>
               </li>
             </ul>
-
-            <!--<div class="col-sm-12" style="background: orange"> {{flight_plan.flight_type}}</div>-->
-            <!--<div class="col-sm-12">{{ctrl.formatTime(flight_plan.start_at)}} &ndash;&gt; {{ctrl.formatTime(flight_plan.end_at)}}</div>-->
-            <!--<div class="col-sm-6">{{ ctrl.airportForId(flight_plan.departure_airport_id).name }} </div>-->
-            <!--<div class="col-sm-6"> &ndash;&gt;  {{ ctrl.airportForId(flight_plan.arrival_airport_id).name }}</div>-->
-            <!--<div class="col-sm-6">landing_cost_at_arrival</div>-->
-            <!--<div class="col-sm-6">{{flight_plan.landing_cost_at_arrival}}</div>-->
-            <!--<div class="col-sm-6">handling_cost_at_takeoff</div>-->
-            <!--<div class="col-sm-6">{{flight_plan.handling_cost_at_takeoff}}</div>-->
-            <!--<div class="col-sm-6">watch_hour_cost</div>-->
-            <!--<div class="col-sm-6">{{flight_plan.watch_hour_cost}}</div>-->
-            <!--<div class="col-sm-6">flight_cost</div>-->
-            <!--<div class="col-sm-6">{{flight_plan.flight_cost}}</div>-->
             <div class="row">
               <div class="" ng-class="flight_plan.empty_leg_plan ? 'col-sm-6' : 'col-sm-12'">
                 <!--<div class="accomodation-con unselect-color" ng-class="flight_plan.empty_leg_plan ? 'selected-color-con' : ''" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">-->
