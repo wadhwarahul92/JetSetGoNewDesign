@@ -6,8 +6,8 @@ class Tax < ActiveRecord::Base
 
     def tax
       {
-          service_tax: self.first.service_tax,
-          swachh_bharat_cess: self.first.swachh_bharat_cess
+          service_tax: 14.5,
+          swachh_bharat_cess: 0.5
       }
     end
 

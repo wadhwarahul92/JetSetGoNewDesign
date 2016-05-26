@@ -76,7 +76,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
               cost += empty_leg.watch_hour_cost
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
-#    trip.totalCost = cost
+    trip.totalCost = cost
     cost + (((@tax) / 100) * cost)
 
   @formatTime = (time)->
