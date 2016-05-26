@@ -97,8 +97,13 @@
           <!--</span>-->
            <span class="search-form">
             <span class="search-icon pax-icon"></span>
-            <input class="search-textfield text-white pax-textfield" type="number"
+            <input class="search-textfield text-white pax-textfield" type="text"
                    ng-model="activity.pax"
+                   autocomplete="off"
+                   typeahead-editable="false"
+                   typeahead-select-on-exact="true"
+                   uib-typeahead="pax for pax in ['1','2','3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']"
+                   typeahead-min-length="0"
                    placeholder="Pax">
           </span>
           <span class="search-form">
