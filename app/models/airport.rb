@@ -4,6 +4,8 @@ class Airport < ActiveRecord::Base
 
   has_paper_trail
 
+  acts_as_paranoid
+
   belongs_to :city
 
   has_many :watch_hours

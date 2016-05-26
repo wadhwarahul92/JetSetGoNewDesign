@@ -5,7 +5,7 @@ class Admin::AirportsController < Admin::BaseController
   before_filter :set_airport, only: [:edit, :update]
 
   def index
-    @airports = Airport.includes(:city).all
+    @airports = Airport.with_deleted.includes(:city).all
   end
 
   def new
@@ -33,6 +33,16 @@ class Admin::AirportsController < Admin::BaseController
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @airport = Airport.with_deleted.find params[:id]
+    if @airport.deleted_at.present?
+      @airport.update_attribute(:deleted_at, nil)
+    else
+      @airport.destroy
+    end
+    redirect_to action: :index
   end
 
   private

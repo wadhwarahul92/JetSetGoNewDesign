@@ -13,6 +13,7 @@
         <th>Id</th>
         <th>Code</th>
         <th>Name</th>
+        <th>Status</th>
         <th>City</th>
         <th>IFR/VFR</th>
         <th>Private landing</th>
@@ -32,6 +33,10 @@
             <td><%= airport.id %></td>
             <td><%= airport.code %></td>
             <td><%= airport.name %></td>
+            <td>
+              <%= airport.deleted_at.present? ? 'UnActive' : 'Active' %>
+              | <%= link_to 'Toggle', admin_airport_path(airport), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
             <td>
               <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %>
               <br/> 
