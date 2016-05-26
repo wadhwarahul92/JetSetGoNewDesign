@@ -33,8 +33,13 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
               cost += empty_leg.watch_hour_cost
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
-    @tax_in_rupees = (cost * @tax/100)
-    cost + ((@tax / 100) * cost)
+
+    @tax_in_rupees = (cost * (@tax.service_tax + @tax.swachh_bharat_cess)/100)
+    cost + (((@tax.service_tax + @tax.swachh_bharat_cess) / 100) * cost)
+
+
+  @serviceTaxCost = (percentage)->
+    @tax_in_rupees * (percentage/100)
 
   @airportForId = (id)->
     _.find(@airports, {id: id})

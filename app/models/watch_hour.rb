@@ -14,7 +14,8 @@ class WatchHour < ActiveRecord::Base
 
   #todo this is stub, change this
   def cost
-    rand(10000..50000)
+    # rand(10000..50000)
+    0
   end
 
 end
