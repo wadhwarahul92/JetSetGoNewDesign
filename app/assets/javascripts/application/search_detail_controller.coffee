@@ -1,10 +1,12 @@
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'AirportsService', ($http, notify, detail, tax, AirportsService)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', ($http, notify, detail, tax, taxDetail, AirportsService)->
 
   @detail = detail
 
   @airports = []
 
   @tax = tax
+
+  @taxDetail = taxDetail
 
   @tax_in_rupees = 0.0
 
@@ -34,8 +36,8 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
 
-    @tax_in_rupees = (cost * (@tax.service_tax + @tax.swachh_bharat_cess)/100)
-    cost + (((@tax.service_tax + @tax.swachh_bharat_cess) / 100) * cost)
+    @tax_in_rupees = (cost * (@tax)/100)
+    cost + (((@tax) / 100) * cost)
 
 
   @serviceTaxCost = (percentage)->
