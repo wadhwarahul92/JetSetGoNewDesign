@@ -56,10 +56,11 @@
                 </ul>
               </li>
 
-              <li class="list-accomodation" ng-class="flight_plan.watch_hour_cost ? 'no-bottom-border' : ''" ng-show="flight_plan.watch_hour_cost">
+              <li class="list-accomodation" ng-class="flight_plan.watch_hour_cost ? 'no-bottom-border' : ''" ng-show="flight_plan.watch_hour_at_arrival">
                 <ul>
                   <li class="text-left">Watch hour cost</li>
-                  <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
+                  <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>-->
+                  <li class="text-right pull-right"> On actual <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
                 </ul>
               </li>
             </ul>
@@ -157,7 +158,18 @@
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left"><b>Tax</b></li>
-                        <li class="text-right pull-right"><b><i class="fa fa-rupee"></i> {{ctrl.tax_in_rupees | currency:"":2 | indianCurrency}}</b></li>
+                      </ul>
+                    </li>
+                    <li class="list-accomodation">
+                      <ul>
+                        <li class="text-left">Service tax @ {{ctrl.tax.service_tax}}%</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.tax.service_tax) | currency:"" | indianCurrency}}</li>
+                      </ul>
+                    </li>
+                    <li class="list-accomodation">
+                      <ul>
+                        <li class="text-left">Swachh bharat cess tax @ {{ctrl.tax.swachh_bharat_cess}}%</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.tax.swachh_bharat_cess) | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
                     <li class="list-accomodation">

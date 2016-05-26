@@ -81,7 +81,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm:ss A')
     if data and data == 'Invalid date'
-      return 'Click to choose time'
+      return 'Departure time'
     else
       return data
 
