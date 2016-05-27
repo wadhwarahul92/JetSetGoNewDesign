@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', ($http, notify, detail, tax, taxDetail, AirportsService)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService)->
 
   @detail = detail
 
@@ -7,8 +7,6 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
   @tax = tax
 
   @taxDetail = taxDetail
-
-  @tax_in_rupees = 0.0
 
   AirportsService.getAirports().then(
     =>
@@ -35,13 +33,11 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
               cost += empty_leg.watch_hour_cost
         if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
           cost += chosen_plan.cost
-
-    @tax_in_rupees = (cost * (@tax)/100)
     cost + (((@tax) / 100) * cost)
 
 
   @serviceTaxCost = (percentage)->
-    @tax_in_rupees * (percentage/100)
+    @totalTripCost() * (percentage/100)
 
   @airportForId = (id)->
     _.find(@airports, {id: id})
@@ -51,6 +47,28 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm A')
     data
+
+  @enquire = (detail)->
+    if CurrentUserService.currentUser
+      $http.post('/trips/enquire.json', {enquiry: detail}).success(
+        ->
+          notify
+            message: 'Your enquiry has been registered. We shall contact you soon.'
+          detail.enquired = true
+      ).error(
+        (data)->
+          error = 'Something went wrong.'
+          try
+            error = data.errors[0]
+          notify
+            message: error
+            classes: ['alert-danger']
+      )
+    else
+      notify
+        message: 'Please sign-in or register before enquiring.'
+        classes: ['alert-danger']
+      CurrentUserService.openSignInModal('md')
 
   return undefined
 ]
