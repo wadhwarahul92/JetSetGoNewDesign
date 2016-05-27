@@ -41,7 +41,7 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
 
 
   @serviceTaxCost = (percentage)->
-    @totalTripCost() * (percentage/100)
+    @subTotal() * (percentage/100)
 
   @airportForId = (id)->
     _.find(@airports, {id: id})
