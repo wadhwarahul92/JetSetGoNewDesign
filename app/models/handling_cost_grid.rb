@@ -7,4 +7,6 @@ class HandlingCostGrid < ActiveRecord::Base
   validates_presence_of :airport_id
   validates_presence_of :cost
 
+  validates :cost, numericality: { greater_than: 0 }
+
 end
