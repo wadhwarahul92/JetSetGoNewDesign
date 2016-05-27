@@ -147,6 +147,9 @@
                         <li class="text-left"><b>Tax</b></li>
                       </ul>
                     </li>
+                    <li>
+                      <strong>Subtotal: {{ ctrl.subTotal() | currency:"" | indianCurrency }}</strong>
+                    </li>
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left">Service tax @ {{ctrl.taxDetail.service_tax}}%</li>
