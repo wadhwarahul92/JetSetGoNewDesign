@@ -165,9 +165,10 @@
                         <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
                     </li>
-                    <!--<li class="list-accomodation">-->
-                      <!--<a href="" class="custom-btn no-text-decoration " ng-click="ctrl.enquire(ctrl.detail)">Enquire</a>-->
-                    <!--</li>-->
+                    <li class="list-accomodation">
+                      <a href="" class="custom-btn no-text-decoration" ng-hide="ctrl.detail.enquired" ng-click="ctrl.enquire(ctrl.detail)">Enquire</a>
+                      <span ng-show="ctrl.detail.enquired">Enquired</span>
+                    </li>
                   </ul>
                 </div>
               </div>
