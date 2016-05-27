@@ -53,7 +53,7 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
     cost
 
   @taxValue = (tax)->
-    grandTotal = @grandTotal()
+    grandTotal = @subTotal()
     ( (tax / 100) * grandTotal )
 
   @grandTotal = ->
