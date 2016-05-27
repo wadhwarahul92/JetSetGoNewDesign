@@ -12,6 +12,7 @@
       <tr class="info">
         <th>Id</th>
         <th>Aircraft Name</th>
+        <th>Aircraft Type</th>
         <th>Airport Name</th>
         <th>Cost</th>
         <th></th>
@@ -21,8 +22,9 @@
       <% @handling_cost_grids.each do |handling_cost_grid| %>
           <tr>
             <td><%= handling_cost_grid.id %></td>
-            <td><%= handling_cost_grid.aircraft_id %></td>
-            <td><%= handling_cost_grid.airport_id %></td>
+            <td><%= handling_cost_grid.aircraft.tail_number %></td>
+            <td><%= handling_cost_grid.aircraft.aircraft_type.name %></td>
+            <td><%= handling_cost_grid.airport.name %></td>
             <td><%= handling_cost_grid.cost %></td>
             <td>
               <%= link_to edit_admin_handling_cost_grid_path(handling_cost_grid) do %>

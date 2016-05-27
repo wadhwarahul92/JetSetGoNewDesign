@@ -20,6 +20,8 @@ class Aircraft < ActiveRecord::Base
 
   has_many :activities
 
+  has_many :handling_cost_grids
+
   accepts_nested_attributes_for :aircraft_images
 
   before_validation :upcase_tail_number
