@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, @handling_cost_grid] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :aircraft_id %>
+    <%= f.input :airport_id %>
+    <%= f.input :cost %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>
