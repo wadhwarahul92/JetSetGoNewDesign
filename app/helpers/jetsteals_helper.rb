@@ -48,7 +48,7 @@ module JetstealsHelper
   def to_indian_format(number)
     number = number.to_i.to_s
     formatted_number = ''
-    number.split.reverse.each_with_index do |char, index|
+    number.split('').reverse.each_with_index do |char, index|
       if index < 3
         formatted_number.prepend(char)
         next
@@ -65,7 +65,7 @@ module JetstealsHelper
         formatted_number.prepend(char)
       end
     end
-    formatted_number.join
+    formatted_number
   end
 
 end

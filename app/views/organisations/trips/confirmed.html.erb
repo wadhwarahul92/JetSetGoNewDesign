@@ -27,11 +27,11 @@
                   <% trip.activities.each do |activity| %>
                       <p class="city-con">
                         <span class="city-name-con">
-                          <img class="city-img" src="<%= activity.departure_airport.city.image %>" alt=""> <%= activity.departure_airport.city.name %>
+                          <%= activity.departure_airport.city.name %>
                         </span>
                         <i class="fa fa-plane rotate-plain-icon"></i>
                         <span class="city-name-con">
-                          <img class="city-img" src="<%= activity.arrival_airport.city.image %>" alt=""> <%= activity.arrival_airport.city.name %>
+                          <%= activity.arrival_airport.city.name %>
                         </span>
 
                       </p>
@@ -46,7 +46,7 @@
                   </select>
                 </td>
                 <td>
-                  <span ng-hide="e_<%= trip.id %>"><%= trip.amount_paid %></span>
+                  <span ng-hide="e_<%= trip.id %>"><i class="fa fa-rupee"></i> <%= to_indian_format trip.amount_paid %></span>
                   <input ng-show="e_<%= trip.id %>" type="number" value="<%= trip.amount_paid %>">
                 </td>
                 <td>
