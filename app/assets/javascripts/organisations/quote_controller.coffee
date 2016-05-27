@@ -31,7 +31,7 @@ organisations_app.controller 'QuoteController', ['quote', '$http', 'notify', (qu
     ( (tax / 100) * subTotal )
 
   @totalTax = (tax)->
-    ( @grandTotal() * (tax / 100))
+    ( @subTotal() * (tax / 100))
 
   return undefined
 ]
