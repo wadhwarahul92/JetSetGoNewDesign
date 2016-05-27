@@ -2,7 +2,7 @@ jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'not
 
   @quotes = []
 
-  @tax_value = 14.5
+  @tax_value = 15
 
   $http.get('/trips/get_quotes.json').success(
     (data)=>
