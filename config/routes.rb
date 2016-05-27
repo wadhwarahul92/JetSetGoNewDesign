@@ -183,6 +183,8 @@ Rails.application.routes.draw do
 
     resources :taxes
 
+    resources :handling_cost_grids
+
   end
 
   resources :airports do
