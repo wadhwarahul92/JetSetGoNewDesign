@@ -61,10 +61,11 @@ module JetstealsHelper
       end
       if index % 2 == 0
         # noinspection RubyResolve
-        formatted_number.prepend ','
         formatted_number.prepend(char)
+        formatted_number.prepend ','
       end
     end
+    formatted_number[0] = '' if formatted_number[0] == ','
     formatted_number
   end
 

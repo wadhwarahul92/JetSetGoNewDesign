@@ -46,7 +46,7 @@
                   </select>
                 </td>
                 <td>
-                  <span ng-hide="e_<%= trip.id %>"><i class="fa fa-rupee"></i> <%= to_indian_format trip.amount_paid %></span>
+                  <span ng-hide="e_<%= trip.id %>"><i class="fa fa-rupee"></i> <%= NumberHelper.to_indian_format trip.amount_paid %></span>
                   <input ng-show="e_<%= trip.id %>" type="number" value="<%= trip.amount_paid %>">
                 </td>
                 <td>
