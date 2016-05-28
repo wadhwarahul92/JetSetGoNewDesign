@@ -74,5 +74,16 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
 
+
+  @checkNotam = (detail)->
+    for flight_plan in detail.flight_plan
+      if flight_plan.notam_at_arrival
+        @detail.is_notam = true
+
+  @checkWatchHour = (detail)->
+    for flight_plan in detail.flight_plan
+      if flight_plan.watch_hour_at_arrival
+        @detail.is_watch_hour = true
+
   return undefined
 ]

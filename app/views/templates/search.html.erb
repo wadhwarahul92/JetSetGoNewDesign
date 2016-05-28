@@ -51,6 +51,7 @@
   <div class="col-xs-12">
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12 search-result-box padding-none margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+        <p class="hidden" ng-init="ctrl.checkNotam(result)"></p>
         <div class="custom-shadow">
           <div class="col-sm-12 search-img-con" style="border: 1px solid lightgray; padding: 0">
             <div class="text-center" style="background-color: rgba(53, 53, 53, 0.1);">
@@ -76,13 +77,17 @@
             <div class="col-md-4 col-sm-4 col-xs-4 text-right">
               <h4 class="text-gray"><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <small>Estimated</small></h4>
             </div>
-            <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="col-md-8 col-sm-8 col-xs-8" ng-hide="result.is_notam">
               <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result, ctrl.tax, ctrl.taxDetail)">Details</a>
-              <a href="" class="custom-btn no-text-decoration" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
-              <span ng-show="result.enquired">Enquired</span>
+              <span ng-hide="result.is_notam">
+                <a href="" class="custom-btn no-text-decoration" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                <span ng-show="result.enquired">Enquired</span>
+              </span>
+              <span ng-show="result.is_notam" style="color:red;">Can't enquire, because of Notam</span>
+
               <!--<a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>-->
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+            <div class="col-md-4 col-sm-4 col-xs-4 ">
 
             </div>
             <div class="clearfix"></div>

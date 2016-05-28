@@ -63,8 +63,13 @@ class Airport < ActiveRecord::Base
   # Description: It calculates the handling cost at an airport
   # @return [Float]
   ######################################################################
-  def handling_cost
-    12400
+  def handling_cost(aircraft = nil)
+
+    return 12400 unless aircraft.present?
+
+    h = HandlingCostGrid.where(airport_id: self.id, aircraft_id: aircraft.id).first
+
+    h.present? ? h.cost : 12400
   end
 
   ######################################################################
