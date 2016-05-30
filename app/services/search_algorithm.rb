@@ -83,7 +83,9 @@ BEGIN
 
       next unless aircraft_ready_for_frontend?(aircraft)
 
-      next if aircraft_has_unavailability(aircraft) or aircraft_has_flying_range(aircraft)
+      next if aircraft_has_unavailability(aircraft)
+
+      next unless aircraft_has_flying_range(aircraft)
 
       @results << {
           aircraft_id: aircraft.id,
@@ -460,7 +462,7 @@ BEGIN
 
   ######################################################################
   # Description: It returns true if aircraft flying range is more then
-  #              or equal to total distance for all activities, else it returns false
+  #              or equal to total distance for each activities, else it returns false
   # @param [Aircraft] aircraft
   # @return [boolean]
   ######################################################################
@@ -470,7 +472,13 @@ BEGIN
     #   @total_distance += Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
     # end
     # @total_distance >= aircraft.flying_range_in_nm
-    false
+    # false
+    @distance = true
+    @search_activities.each do |f|
+     return @distance = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+    end
+    @distance
+
   end
 
 end
