@@ -14,6 +14,10 @@ class LatestJetstealImage
 
   def draw(cache = true)
 
+    unless @jetsteal.present?
+      return "#{Rails.root}/app/assets/images/jetsteal_adv.jpg"
+    end
+
     ##############################
     # Check if jetsteal is sold out
     ##############################
