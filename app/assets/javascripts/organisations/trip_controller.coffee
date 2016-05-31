@@ -1,6 +1,8 @@
-organisations_app.controller 'TripController', ['trip', '$http', 'notify', (trip, $http, notify)->
+organisations_app.controller 'TripController', ['trip', '$http', 'notify', 'activity_id', (trip, $http, notify, activity_id)->
 
   @trip = trip
+
+  @activity_id = activity_id
 
   @subTotal = ->
     cost = 0.0

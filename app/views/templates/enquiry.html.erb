@@ -35,14 +35,14 @@
         <div class="clearfix"></div>
       </div>
       <div class="row">
-        <div ng-init="efc = false" class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">Flight Cost:</h5>
+        <div ng-init="elc = false" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</h5>
           <p class="sub-result">
-            <span ng-hide="efc"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</span>
+            <span ng-hide="elc"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</span>
             <% if current_user.can_add_trip? %>
-                <input ng-show="efc" type="number" ng-model="activity.flight_cost">
-                <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
-                <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+                <input ng-show="elc" type="number" ng-model="activity.landing_cost_at_arrival">
+                <i class="fa fa-edit" ng-click="elc = !elc" ng-hide="elc"></i>
+                <i class="fa fa-check" ng-click="elc = !elc" ng-show="elc"></i>
             <% end %>
           </p>
         </div>
@@ -60,15 +60,15 @@
         <div class="clearfix"></div>
       </div>
       <div class="row">
-        <div ng-init="elc = false" class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</h5>
+        <div ng-init="efc = false" class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Flight Cost:</h5>
           <p class="sub-result">
-            <span ng-hide="elc"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</span>
+            <span ng-hide="efc"><i class="fa fa-rupee"></i> {{activity.flight_cost | currency:"" | indianCurrency}}</span>
             <% if current_user.can_add_trip? %>
-            <input ng-show="elc" type="number" ng-model="activity.landing_cost_at_arrival">
-            <i class="fa fa-edit" ng-click="elc = !elc" ng-hide="elc"></i>
-            <i class="fa fa-check" ng-click="elc = !elc" ng-show="elc"></i>
-                <% end %>
+                <input ng-show="efc" type="number" ng-model="activity.flight_cost">
+                <i class="fa fa-edit" ng-click="efc = !efc" ng-hide="efc"></i>
+                <i class="fa fa-check" ng-click="efc = !efc" ng-show="efc"></i>
+            <% end %>
           </p>
         </div>
         <div class="col-sm-6 col-xs-12 sub-border-con" ng-init="ewc = false" ng-show="activity.watch_hour_at_arrival">

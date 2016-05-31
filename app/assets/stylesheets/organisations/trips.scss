@@ -138,6 +138,10 @@ $main-blue-color:rgb(5, 81, 139);
   }
 }
 
+.activity-active{
+  background: rgba(93, 112, 154, 0.13);
+}
+
 @media(max-width:767px){
 	.trip-content-main{
 		h3.main-heading{
