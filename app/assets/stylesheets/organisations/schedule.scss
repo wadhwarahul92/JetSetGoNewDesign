@@ -230,6 +230,9 @@ $green-color: rgb(173, 194, 74);
 			margin-bottom:0;
 			font-weight:bold;
 		}
+      h4.without-border{
+        border:0px;
+      }
 		.sub-border-con{
 			padding:10px 15px;
 			.sub-heading{
