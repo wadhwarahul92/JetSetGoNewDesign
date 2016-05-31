@@ -473,11 +473,11 @@ BEGIN
     # end
     # @total_distance >= aircraft.flying_range_in_nm
     # false
-    @distance = true
+    @can_fly = true
     @search_activities.each do |f|
-     return @distance = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+     return @can_fly = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
     end
-    @distance
+    @can_fly
 
   end
 
