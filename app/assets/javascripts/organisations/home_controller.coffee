@@ -11,6 +11,7 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     record_id = null
     if id
       if id.match(/activity-(\d+)/)
+        activity_id = id.match(/activity-(\d+)/)[1]
         record_id = event.trip_id
         $uibModal.open(
           size: 'lg'
@@ -24,6 +25,8 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
                 (response)->
                   response.data
               )
+            activity_id: ->
+              activity_id: activity_id
           }
         )
       else if id.match(/aircraft_unavailability-(\d+)/)

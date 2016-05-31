@@ -3,7 +3,7 @@
 <div class="table table-main">
   <div class="col-sm-12 col-xs-12">
     <div class="text-center main_heading">
-        <h3 class="skyblue-color">Trip #{{ctrl.trip.id}}</h3>
+      <h3 class="skyblue-color">Trip #{{ctrl.trip.id}}</h3>
     </div>
   </div>
   <div class="col-sm-3 col-xs-12 img-con">
@@ -12,40 +12,72 @@
     </span>
   </div>
   <div class="col-sm-9 col-xs-12 img-content">
-    <div ng-repeat="activity in ctrl.trip.activities">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading">Aircraft:</h5>
+        <p class="sub-result">{{ctrl.trip.activities[0].aircraft.tail_number}}</p>
+      </div>
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading">Enquired By:</h5>
+        <p>{{ctrl.trip.user}}</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div style="width: 100%; height: 1px; background-color: #cccccc;"></div>
+    <div ng-repeat="activity in ctrl.trip.activities" ng-class=" activity.id == ctrl.activity_id.activity_id ? 'activity-active' : ''" >
       <div class="row">
         <div class="col-sm-12 col-xs-12">
           <h4 class="skyblue-color without-border">Itinerary {{$index + 1}} ({{activity.empty_leg ? 'Empty Leg' : 'Enquired by Client'}})</h4>
         </div>
         <div class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">Aircraft:</h5>
-          <p class="sub-result">{{ctrl.trip.activities[0].aircraft.tail_number}}</p>
-        </div>
-        <div class="col-sm-6 col-xs-12 sub-border-con">
           <h5 class="sub-heading">Departure:</h5>
           <p class="sub-result">{{activity.departure_airport.name}}</p>
+          <p class="sub-result">{{activity.start_at}}</p>
         </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="row">
         <div class="col-sm-6 col-xs-12 sub-border-con">
           <h5 class="sub-heading">Arrival:</h5>
           <p class="sub-result">{{activity.arrival_airport.name}}</p>
-        </div>
-        <div class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">Start at:</h5>
-          <p class="sub-result">{{activity.start_at}}</p>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-xs-12 sub-border-con">
-          <h5 class="sub-heading">End at:</h5>
           <p class="sub-result">{{activity.end_at}}</p>
         </div>
         <div class="clearfix"></div>
       </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Handling cost at "{{activity.departure_airport.name}}"</h5>
+          <p class="sub-result"><i class="fa fa-rupee"></i> {{activity.handling_cost_at_takeoff | currency:"" | indianCurrency}}</p>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Landing cost at "{{activity.arrival_airport.name}}"</h5>
+          <p class="sub-result"><i class="fa fa-rupee"></i> {{activity.landing_cost_at_arrival | currency:"" | indianCurrency}}</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 sub-border-con">
+          <h5 class="sub-heading">Flight Cost:</h5>
+          <p class="sub-result">{{activity.flight_cost | currency:"" | indianCurrency}}</p>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con" ng-show="activity.accommodation_plan">
+          <h5 class="sub-heading">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}</h5>
+          <p class="sub-result"><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"" | indianCurrency}}</p>
+        </div>
+        <div class="col-sm-6 col-xs-12 sub-border-con" ng-show="activity.watch_hour_at_arrival">
+          <h5 class="sub-heading">Watch hour</h5>
+          <p class="sub-result"><i class="fa fa-rupee"></i> {{activity.watch_hour_cost | currency:"":0 | indianCurrency}}</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
       <div style="width: 100%; height: 1px; background-color: #cccccc;"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 sub-border-con">
+        <h5 class="sub-heading"><b>Tax</b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.totalTax(ctrl.trip.tax_value) | currency:"" | indianCurrency}}</b></p>
+      </div>
+      <div class="col-xs-6 sub-border-con">
+        <h5 class="sub-heading"><b>GrandTotal</b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.grandTotal() | currency:"":0 | indianCurrency}}</b></p>
+      </div>
     </div>
   </div>
   <div class="clearfix"></div>
