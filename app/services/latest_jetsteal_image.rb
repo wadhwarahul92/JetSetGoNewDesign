@@ -13,9 +13,10 @@ class LatestJetstealImage
   end
 
   def draw(cache = true)
-
+    
     unless @jetsteal.present?
-      return "#{Rails.root}/app/assets/images/jetsteal_adv.jpg"
+      tmp = rand(1..5)
+      return "#{Rails.root}/app/assets/images/#{tmp}.jpg"
     end
 
     ##############################
@@ -44,6 +45,7 @@ class LatestJetstealImage
     #   return url
     # end
     #################################
+
 
     url = "#{Rails.root}/tmp/jetsteal_popularity_footer#{@jetsteal.id}.png"
 
