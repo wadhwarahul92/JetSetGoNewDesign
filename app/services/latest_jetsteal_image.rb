@@ -14,10 +14,10 @@ class LatestJetstealImage
 
   def draw(cache = true)
     
-    unless @jetsteal.present?
+    # unless @jetsteal.present?
       tmp = rand(1..5)
       return "#{Rails.root}/app/assets/images/#{tmp}.jpg"
-    end
+    # end
 
     ##############################
     # Check if jetsteal is sold out
