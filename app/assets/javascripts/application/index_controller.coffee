@@ -2,15 +2,15 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @activities = [{}]
   @currentUser = null
-
+  
   if $routeParams.search_id
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
       (data)=>
         @activities = data
         for activity in @activities
-          activity.start_at = new Date(activity.start_at)
+          activity.start_at = Date.parse(activity.start_at)
     )
-
+    
   @signIn = ->
     CurrentUserService.openSignInModal('md')
 

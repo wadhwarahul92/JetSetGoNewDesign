@@ -38,6 +38,7 @@
 //= require ./application/heli_set_go_controller
 //= require ./application/heli_set_go_enquiry_controller
 //= require ./application/profile_controller
+//= require ./vendors/date
 
 
 $(document).on('ready page:load', function(){
