@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', 'CostBreakUpsService', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService, CostBreakUpsService)->
 
   @detail = detail
 
@@ -81,6 +81,8 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         @detail.is_notam = true
 
   @checkWatchHour = (detail)->
+    # debugger
+    # CostBreakUpsService.checkWatchHour(detail, @detail)
     for flight_plan in detail.flight_plan
       if flight_plan.watch_hour_at_arrival
         @detail.is_watch_hour = true

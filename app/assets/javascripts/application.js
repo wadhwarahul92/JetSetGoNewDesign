@@ -39,6 +39,8 @@
 //= require ./application/heli_set_go_enquiry_controller
 //= require ./application/profile_controller
 //= require ./vendors/date
+//= require ./services/base
+//= require ./services/cost_break_ups_service
 
 
 $(document).on('ready page:load', function(){

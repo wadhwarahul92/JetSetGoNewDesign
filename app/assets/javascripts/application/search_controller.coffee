@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CostBreakUpsService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CostBreakUpsService)->
 
   @results = []
 

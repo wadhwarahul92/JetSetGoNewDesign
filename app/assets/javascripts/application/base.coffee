@@ -24,6 +24,7 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'CustomFilters'
   'noCAPTCHA'
   'easypiechart'
+  'Services_app'
 ]
 
 jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider', ($routeProvider, $locationProvider, noCaptchaProvider)->
