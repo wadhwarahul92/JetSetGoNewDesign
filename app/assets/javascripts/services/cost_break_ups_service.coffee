@@ -1,10 +1,40 @@
 Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)->
 
   costBreakUpInstance = {}
-  
-  tax = 15.0
 
-  serviceTaxCost = 0.0
+  taxes = [
+    {
+      name: 'Service Tax'
+      value: 14.0
+    }
+    {
+      name: 'Swachh Bharat Cess'
+      value: 0.5
+    }
+    {
+      name: 'Krishi Kalyan Cess'
+      value: 0.5
+    }
+  ]
+  
+  costBreakUpInstance.taxVal = ->
+    total_tax = 0.0
+    for t in taxes
+      total_tax += t.value
+    total_tax
+
+  costBreakUpInstance.taxCalculate = (cost, tax_percentage)->
+    cost * (tax_percentage/100)
+
+  costBreakUpInstance.taxDetails = (cost)->
+    taxInfo = []
+    for t in taxes
+      taxInfo.push({
+        name: t.name
+        value: t.value 
+        tax_in_rupees:  costBreakUpInstance.taxCalculate(cost, t.value)
+      })
+    taxInfo
 
   costBreakUpInstance.subTotal = (trip)->
     cost = 0.0
@@ -29,21 +59,12 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
 
   costBreakUpInstance.totalTripCost = (trip)->
     cost = costBreakUpInstance.subTotal(trip)
-    trip.totalCost = costBreakUpInstance.subTotal(trip)
-    cost + (((tax) / 100) * cost)
+    trip.totalCost = cost + (((costBreakUpInstance.taxVal) / 100) * cost)
+    trip.totalCost
 
-  costBreakUpInstance.serviceTaxCost = (percentage, trip)->
-    costBreakUpInstance.subTotal(trip) * (percentage/100)
-
-  # costBreakUpInstance.checkNotam = (activity)->
-  #   for flight_plan in activity.flight_plan
-  #     if flight_plan.notam_at_arrival
-  #       activity.is_notam = true
-
-  # costBreakUpInstance.checkWatchHour = (trip, activity_)->
-  #   for flight_plan in trip.flight_plan
-  #     if flight_plan.watch_hour_at_arrival
-  #       activity_.is_watch_hour = true
+  costBreakUpInstance.taxBreakUp = (trip)->
+    cost = costBreakUpInstance.subTotal(trip)
+    costBreakUpInstance.taxDetails(cost)
 
   return costBreakUpInstance
 ]

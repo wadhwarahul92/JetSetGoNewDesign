@@ -39,7 +39,6 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
     cost = @subTotal()
     cost + (((@tax) / 100) * cost)
 
-
   @serviceTaxCost = (percentage)->
     @subTotal() * (percentage/100)
 
@@ -74,15 +73,12 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
 
-
   @checkNotam = (detail)->
     for flight_plan in detail.flight_plan
       if flight_plan.notam_at_arrival
         @detail.is_notam = true
 
   @checkWatchHour = (detail)->
-    # debugger
-    # CostBreakUpsService.checkWatchHour(detail, @detail)
     for flight_plan in detail.flight_plan
       if flight_plan.watch_hour_at_arrival
         @detail.is_watch_hour = true
