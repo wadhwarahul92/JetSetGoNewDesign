@@ -22,6 +22,7 @@
         <th>Night parking</th>
         <th>Fuel availability</th>
         <th>Watch hour extension</th>
+        <th>Bias time in minutes</th>
         <th>Created By</th>
         <th>Updated By</th>
         <th>Action</th>
@@ -49,6 +50,7 @@
             <td><%= airport.night_parking %></td>
             <td><%= airport.fuel_availability %></td>
             <td><%= airport.watch_hour_extension %></td>
+            <td><%= airport.bias_time_in_minutes %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
             <td>

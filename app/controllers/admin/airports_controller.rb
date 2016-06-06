@@ -63,7 +63,8 @@ class Admin::AirportsController < Admin::BaseController
                                 :watch_hour_extension,
                                 :icao_code,
                                 :runway_field_length_in_feet,
-                                :landing_cost
+                                :landing_cost,
+                                :bias_time_in_minutes
     )
   end
 

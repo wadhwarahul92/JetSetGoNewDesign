@@ -34,6 +34,8 @@ class Airport < ActiveRecord::Base
   # validates :icao_code, uniqueness: true
   validates :runway_field_length_in_feet, presence: true
 
+  validates :bias_time_in_minutes, presence: true
+
   validates_numericality_of :runway_field_length_in_feet,
                             greater_than_or_equal_to: 0
 
