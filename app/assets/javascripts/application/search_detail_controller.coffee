@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', 'CostBreakUpsService', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService, CostBreakUpsService)->
 
   @detail = detail
 
@@ -39,7 +39,6 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
     cost = @subTotal()
     cost + (((@tax) / 100) * cost)
 
-
   @serviceTaxCost = (percentage)->
     @subTotal() * (percentage/100)
 
@@ -73,7 +72,6 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         message: 'Please sign-in or register before enquiring.'
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
-
 
   @checkNotam = (detail)->
     for flight_plan in detail.flight_plan
