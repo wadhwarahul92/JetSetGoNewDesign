@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526130153) do
+ActiveRecord::Schema.define(version: 20160606060600) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20160526130153) do
     t.float    "runway_field_length_in_feet", limit: 24
     t.float    "landing_cost",                limit: 24,  default: 0.0
     t.datetime "deleted_at"
+    t.integer  "bais_time_in_minutes",        limit: 4,   default: 0
   end
 
   create_table "cities", force: :cascade do |t|
@@ -255,6 +256,7 @@ ActiveRecord::Schema.define(version: 20160526130153) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
+    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
@@ -404,13 +406,6 @@ ActiveRecord::Schema.define(version: 20160526130153) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "terms_and_conditions", force: :cascade do |t|
-    t.text     "description",     limit: 65535
-    t.integer  "organisation_id", limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
   create_table "trips", force: :cascade do |t|
     t.integer  "organisation_id",        limit: 4
     t.string   "status",                 limit: 255
@@ -449,6 +444,10 @@ ActiveRecord::Schema.define(version: 20160526130153) do
     t.string   "ios_app_devise_token",     limit: 255
     t.string   "android_app_devise_token", limit: 255
     t.boolean  "send_app_notifications",                 default: true
+    t.string   "avatar_file_name",         limit: 255
+    t.string   "avatar_content_type",      limit: 255
+    t.integer  "avatar_file_size",         limit: 4
+    t.datetime "avatar_updated_at"
     t.string   "image_file_name",          limit: 255
     t.string   "image_content_type",       limit: 255
     t.integer  "image_file_size",          limit: 4
