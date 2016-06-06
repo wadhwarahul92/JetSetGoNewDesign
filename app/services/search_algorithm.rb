@@ -353,7 +353,7 @@ BEGIN
   def flight_time_in_hours(aircraft, departure_airport, arrival_airport)
     @flight_time_map ||= {}
     return @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] if @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"].present?
-    @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour ) + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
+    @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour ).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"]
   end
 
