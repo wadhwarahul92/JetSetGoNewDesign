@@ -478,16 +478,6 @@ BEGIN
 
   end
 
-  # def cruise_speed(aircraft, airport_distance_in_nm)
-  #   speed = 0.0
-  #   if 0 < airport_distance_in_nm and airport_distance_in_nm < 250
-  #     speed = aircraft.cruise_speed_in_nm_per_hour * (80/100)
-  #   else
-  #     speed = aircraft.cruise_speed_in_nm_per_hour
-  #   end
-  #   speed
-  # end
-
   def cruise_speed(aircraft, departure_airport, arrival_airport)
     speed = 0.0
     distance = airport_distance_in_nm(departure_airport, arrival_airport)
