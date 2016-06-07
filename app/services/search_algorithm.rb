@@ -353,7 +353,8 @@ BEGIN
   def flight_time_in_hours(aircraft, departure_airport, arrival_airport)
     @flight_time_map ||= {}
     return @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] if @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"].present?
-    @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour ).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
+    @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / cruise_speed(aircraft, departure_airport, arrival_airport)).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
+    # @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"]
   end
 
@@ -451,9 +452,9 @@ BEGIN
 
   def aircraft_has_unavailability(aircraft)
     AircraftUnavailability.where(
-                              aircraft_id: aircraft.id,
+        aircraft_id: aircraft.id,
     ).where(
-         'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
+        'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
     ).any?
   end
 
@@ -472,10 +473,31 @@ BEGIN
     # false
     @can_fly = true
     @search_activities.each do |f|
-     return @can_fly = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+      return @can_fly = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
     end
     @can_fly
 
+  end
+
+  # def cruise_speed(aircraft, airport_distance_in_nm)
+  #   speed = 0.0
+  #   if 0 < airport_distance_in_nm and airport_distance_in_nm < 250
+  #     speed = aircraft.cruise_speed_in_nm_per_hour * (80/100)
+  #   else
+  #     speed = aircraft.cruise_speed_in_nm_per_hour
+  #   end
+  #   speed
+  # end
+
+  def cruise_speed(aircraft, departure_airport, arrival_airport)
+    speed = 0.0
+    distance = airport_distance_in_nm(departure_airport, arrival_airport)
+    if 0 < distance and distance < 250
+      speed = aircraft.cruise_speed_in_nm_per_hour * (80/100)
+    else
+      speed = aircraft.cruise_speed_in_nm_per_hour
+    end
+    speed
   end
 
 end
