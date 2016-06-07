@@ -354,7 +354,6 @@ BEGIN
     @flight_time_map ||= {}
     return @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] if @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"].present?
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / cruise_speed(aircraft, departure_airport, arrival_airport)).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
-    # @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"] = ( airport_distance_in_nm(departure_airport, arrival_airport) / aircraft.cruise_speed_in_nm_per_hour).hours + departure_airport.bais_time_in_minutes.minutes + arrival_airport.bais_time_in_minutes.minutes
     @flight_time_map["#{aircraft.id}-#{departure_airport.id}-#{arrival_airport.id}"]
   end
 
@@ -492,8 +491,8 @@ BEGIN
   def cruise_speed(aircraft, departure_airport, arrival_airport)
     speed = 0.0
     distance = airport_distance_in_nm(departure_airport, arrival_airport)
-    if 0 < distance and distance < 250
-      speed = aircraft.cruise_speed_in_nm_per_hour * (80/100)
+    if 0 < distance and distance <= 250
+      speed = aircraft.cruise_speed_in_nm_per_hour * 0.8
     else
       speed = aircraft.cruise_speed_in_nm_per_hour
     end
