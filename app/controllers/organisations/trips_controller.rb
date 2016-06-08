@@ -40,7 +40,7 @@ class Organisations::TripsController < Organisations::BaseController
     @trip = Trip.find params[:id]
     @trip.destroy
     AdminMailer.delete_enquiry(current_user, @trip).deliver_later
-    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_later
+    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_now
     render status: :ok, nothing: true
   end
 
@@ -167,6 +167,8 @@ class Organisations::TripsController < Organisations::BaseController
       send_quote_service.trip.organisation.operators.each do |operator|
         NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
       end
+
+      CustomerNotificationService.quote_created(send_quote_service.trip.user, send_quote_service.trip).deliver_later
 
       render status: :ok, nothing: true
     rescue Exception => e

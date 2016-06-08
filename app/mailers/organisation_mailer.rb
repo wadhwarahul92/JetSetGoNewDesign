@@ -209,7 +209,7 @@ class OrganisationMailer < ApplicationMailer
     @emails = Organisation.get_all_emails(trip.organisation)
     mail(
         to: @emails,
-        subject: 'JetSetGo - New enquiry created'
+        subject: 'JetSetGo - quote created'
     )
   end
 

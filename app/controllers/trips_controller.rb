@@ -79,6 +79,8 @@ class TripsController < ApplicationController
           NotificationService.enquiry_added(operator, @trip).deliver_later
         end
 
+        CustomerNotificationService.enquiry_added(@trip.user, @trip).deliver_later
+
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: { errors: [@error] }
