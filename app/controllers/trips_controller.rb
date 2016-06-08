@@ -80,6 +80,7 @@ class TripsController < ApplicationController
         end
 
         CustomerNotificationService.enquiry_added(@trip.user, @trip).deliver_later
+        SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
 
         render status: :ok, nothing: true
       else
