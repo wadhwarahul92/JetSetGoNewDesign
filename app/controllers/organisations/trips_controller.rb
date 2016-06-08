@@ -40,7 +40,7 @@ class Organisations::TripsController < Organisations::BaseController
     @trip = Trip.find params[:id]
     @trip.destroy
     AdminMailer.delete_enquiry(current_user, @trip).deliver_later
-    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_now
+    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_later
     render status: :ok, nothing: true
   end
 
