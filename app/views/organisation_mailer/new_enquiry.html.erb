@@ -79,6 +79,12 @@
                           <%= activity.arrival_airport.name %>
                       <% elsif key == 'start_at' || key == 'end_at' %>
                           <%= value.strftime(time_format) %>
+                      <% elsif key == 'accommodation_plan'%>
+                          <% if value.present? %>
+                              <% value.each_pair do |key, val| %>
+                                  <%= key %>: <%= val %> <br>
+                              <% end %>
+                          <% end %>
                       <% else %>
                           <%=
                               case value

@@ -168,6 +168,8 @@ class Organisations::TripsController < Organisations::BaseController
         NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
       end
 
+      CustomerNotificationService.quote_created(send_quote_service.trip.user, send_quote_service.trip).deliver_later
+
       render status: :ok, nothing: true
     rescue Exception => e
       render status: :unprocessable_entity, json: { errors: [e.message] }
