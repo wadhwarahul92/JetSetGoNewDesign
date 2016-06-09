@@ -1,4 +1,4 @@
-organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', ($http, enquiry, notify, $timeout)->
+organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', 'CostBreakUpsService', ($http, enquiry, notify, $timeout, CostBreakUpsService)->
 
   @enquiry = enquiry
 
@@ -57,8 +57,10 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
     ( (tax / 100) * grandTotal )
 
   @grandTotal = ->
-    s = @subTotal()
-    s + ( (@enquiry.tax_value / 100) * s )
+    CostBreakUpsService.totalTripCost(@enquiry.activities)
+
+#    s = @subTotal()
+#    s + ( (@enquiry.tax_value / 100) * s )
 
   return undefined
 ]

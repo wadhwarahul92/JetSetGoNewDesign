@@ -157,22 +157,36 @@
                     <li>
                       <strong>Subtotal: {{ ctrl.subTotal() | currency:"" | indianCurrency }}</strong>
                     </li>
-                    <li class="list-accomodation">
+                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
+                    <!--{{ctrl.tax_array}}-->
+                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
+                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
+                    <!--{{ctrl.tax_array}}-->
+                    <!--<div ng-model="ctrl.serviceTaxCost(ctrl.detail)"></div>-->
+
+                    {{ctrl.serviceTaxCost(ctrl.detail)}}
+                    <!--{{ctrl.detail.flight_plan}}-->
+
+                    <li class="list-accomodation" ng-repeat="a in ctrl.tax_array">
+                      <!--[{'name':'Service Tax','value':14,'tax_in_rupees':66677.33333333336},{'name':'Swachh Bharat Cess','value':0.5,'tax_in_rupees':2381.333333333334},{'name':'Krishi Kalyan Cess','value':0.5,'tax_in_rupees':2381.333333333334}]-->
                       <ul>
-                        <li class="text-left">Service tax @ {{ctrl.taxDetail.service_tax}}%</li>
-                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.service_tax) | currency:"" | indianCurrency}}</li>
+                        <!--<li class="text-left">Service tax @ {{ctrl.taxDetail.service_tax}}%</li>-->
+                        <li class="text-left">{{a.name}} @ {{a.value}}%</li>
+                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.service_tax) | currency:"" | indianCurrency}}</li>-->
+                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.detail) | currency:"" | indianCurrency}}</li>-->
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{a.tax_in_rupees | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
-                    <li class="list-accomodation">
-                      <ul>
-                        <li class="text-left">Swachh bharat cess @ {{ctrl.taxDetail.swachh_bharat_cess}}%</li>
-                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.swachh_bharat_cess) | currency:"" | indianCurrency}}</li>
-                      </ul>
-                    </li>
+                    <!--<li class="list-accomodation">-->
+                      <!--<ul>-->
+                        <!--<li class="text-left">Swachh bharat cess @ {{ctrl.taxDetail.swachh_bharat_cess}}%</li>-->
+                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.swachh_bharat_cess) | currency:"" | indianCurrency}}</li>-->
+                      <!--</ul>-->
+                    <!--</li>-->
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left total_amount"><b>Grant Total</b></li>
-                        <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost() | currency:"":0 | indianCurrency}}</b></li>
+                        <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(ctrl.detail) | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
                     </li>
                     <li class="list-accomodation" ng-hide="ctrl.detail.is_notam">

@@ -17,7 +17,7 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
     }
   ]
   
-  costBreakUpInstance.taxVal = ->
+  costBreakUpInstance.taxVal = ()->
     total_tax = 0.0
     for t in taxes
       total_tax += t.value
@@ -59,7 +59,7 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
 
   costBreakUpInstance.totalTripCost = (trip)->
     cost = costBreakUpInstance.subTotal(trip)
-    trip.totalCost = cost + (((costBreakUpInstance.taxVal) / 100) * cost)
+    trip.totalCost = cost + (((costBreakUpInstance.taxVal()) / 100) * cost)
     trip.totalCost
 
   costBreakUpInstance.taxBreakUp = (trip)->
