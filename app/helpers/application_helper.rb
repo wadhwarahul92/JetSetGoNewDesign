@@ -39,5 +39,4 @@ BEGIN
     html += '</table>'
     html_safe ? html.html_safe : html
   end
-
 end

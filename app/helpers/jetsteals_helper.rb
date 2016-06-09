@@ -45,27 +45,58 @@ module JetstealsHelper
 
   # @param [Integer] number
   # @return [String]
+  # def to_indian_format(number)
+  #   number = number.to_i.to_s
+  #   formatted_number = ''
+  #   number.split('').reverse.each_with_index do |char, index|
+  #     if index < 3
+  #       formatted_number.prepend(char)
+  #       next
+  #     end
+  #     if index == 3
+  #       # noinspection RubyResolve
+  #       formatted_number.prepend ','
+  #       formatted_number.prepend(char)
+  #       next
+  #     end
+  #     if index % 2 == 0
+  #       # noinspection RubyResolve
+  #       formatted_number.prepend(char)
+  #       formatted_number.prepend ','
+  #     end
+  #   end
+  #   formatted_number[0] = '' if formatted_number[0] == ','
+  #   formatted_number
+  # end
+
   def to_indian_format(number)
-    number = number.to_i.to_s
+    number_part = number.to_s.split('.')[0]
+    decimal_part = number.to_s.split('.')[1]
     formatted_number = ''
-    number.split('').reverse.each_with_index do |char, index|
-      if index < 3
+    int = 0
+    one_added = true
+    two_added = true
+    number_part.reverse.each_char do |char|
+      if int < 3
         formatted_number.prepend(char)
-        next
+      else
+        if one_added and two_added
+          formatted_number.prepend(',')
+          formatted_number.prepend(char)
+          one_added = true
+          two_added = false
+        elsif one_added and !two_added
+          two_added = true
+          formatted_number.prepend(char)
+        elsif !one_added and !two_added
+          one_added = true
+          formatted_number.prepend(char)
+        end
       end
-      if index == 3
-        # noinspection RubyResolve
-        formatted_number.prepend ','
-        formatted_number.prepend(char)
-        next
-      end
-      if index % 2 == 0
-        # noinspection RubyResolve
-        formatted_number.prepend(char)
-        formatted_number.prepend ','
-      end
+      int += 1
     end
     formatted_number[0] = '' if formatted_number[0] == ','
+    formatted_number = formatted_number + '.' + decimal_part if decimal_part.present?
     formatted_number
   end
 
