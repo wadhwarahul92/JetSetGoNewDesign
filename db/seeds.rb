@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-[
-    :super_admin,
-    :admin,
-    :operator,
-    :tech
-].each do |admin_role|
-  AdminRole.create(
-               name: admin_role.to_s
-  )
-end
+# [
+#     :super_admin,
+#     :admin,
+#     :operator,
+#     :tech
+# ].each do |admin_role|
+#   AdminRole.create(
+#                name: admin_role.to_s
+#   )
+# end
