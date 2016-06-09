@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/surajpratap/number_helper.git
-  revision: 21f1cb4a02649ff8e962961c561b25d6b2c38abb
-  specs:
-    number_helper (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -297,7 +291,6 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   nokogiri
-  number_helper!
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)
   paranoia (~> 2.0)

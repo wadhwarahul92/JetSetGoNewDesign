@@ -109,5 +109,3 @@ gem 'httparty'
 gem 'rubyXL'
 
 gem 'rpush'
-
-gem 'number_helper', github: 'surajpratap/number_helper'
