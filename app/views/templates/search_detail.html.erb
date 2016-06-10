@@ -7,21 +7,21 @@
     <div class="custom-box-shadow">
       <div class="col-xs-12 aircraft-heading">
         <div class="row">
-          <div class="col-sm-6 ft-md-blue">{{ctrl.detail.aircraft.aircraft_type.name}}</div>
-          <div class="col-sm-6 text-right"><strong>Per hour cost: &nbsp;<i class="fa fa-rupee"></i> {{ctrl.detail.aircraft.per_hour_cost | currency:"":2 | indianCurrency}}</strong></div>
+          <div class="col-sm-6 ft-md-blue">{{ctrl.result.aircraft.aircraft_type.name}}</div>
+          <div class="col-sm-6 text-right"><strong>Per hour cost: &nbsp;<i class="fa fa-rupee"></i> {{ctrl.result.aircraft.per_hour_cost | currency:"":2 | indianCurrency}}</strong></div>
         </div>
       </div>
       <!--<div class="col-sm-6 col-xs-12 img-con">-->
-            <!--<span>-->
-              <!--<img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">-->
-            <!--</span>-->
+      <!--<span>-->
+      <!--<img class="img-responsive" style="width: 100%;" ng-src="{{ctrl.detail.aircraft.aircraft_images[0].url}}">-->
+      <!--</span>-->
       <!--</div>-->
-      <p class="hidden" ng-init="ctrl.checkWatchHour(ctrl.detail)"></p>
-      <p class="hidden" ng-init="ctrl.checkNotam(ctrl.detail)"></p>
+      <p class="hidden" ng-init="ctrl.checkWatchHour(ctrl.result)"></p>
+      <p class="hidden" ng-init="ctrl.checkNotam(ctrl.result)"></p>
 
       <div class="col-sm-12 col-xs-12">
         <ul class="list-unstyled">
-          <li class="accomodation-con" ng-repeat="flight_plan in ctrl.detail.flight_plan">
+          <li class="accomodation-con" ng-repeat="flight_plan in ctrl.result.flight_plan">
             <ul ng-class="flight_plan.flight_type == 'empty_leg' ? 'dotted-border' : ''">
               <li class="empty-leg-heading">
                 <span class="heading-text" ng-show="flight_plan.flight_type == 'empty_leg'" >Empty Leg</span>
@@ -50,8 +50,6 @@
               <li class="list-accomodation">
                 <ul>
                   <li class="text-left">Handling cost</li>
-                  <!--{{flight_plan}}-->
-                  <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>-->
                   <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":2 | indianCurrency}}</li>
                 </ul>
               </li>
@@ -65,17 +63,13 @@
               <li class="list-accomodation" ng-class="flight_plan.watch_hour_at_arrival ? 'no-bottom-border' : ''" ng-show="flight_plan.watch_hour_at_arrival">
                 <ul>
                   <li class="text-left">Watch hour cost</li>
-                  <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{flight_plan.watch_hour_cost | currency:"":2 | indianCurrency}} <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>-->
                   <li class="text-right pull-right"> On actual** <i class="fa fa-info-circle" style="font-size: 18px" uib-tooltip="The charges are payable by all operators/agencies operating outside the watch hours including Defence, NCC, BSF etc. even though any of them may be exempt from payment of normal landing RNF charges."></i> </li>
                 </ul>
               </li>
             </ul>
             <div class="row">
               <div class="" ng-class="flight_plan.empty_leg_plan ? 'col-sm-6' : 'col-sm-12'">
-                <!--<div class="accomodation-con unselect-color" ng-class="flight_plan.empty_leg_plan ? 'selected-color-con' : ''" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">-->
-                  <!--<div class="accomodation-con" ng-class="{flight_plan.chosen_intermediate_plan == 'accommodation_plan' ? 'select-color' : 'unselect-color', flight_plan.empty_leg_plan ? 'selected-color-con' : '' }" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">-->
-                <div class="accomodation-con unselect-color" ng-class="{'select-color': flight_plan.chosen_intermediate_plan == 'accommodation_plan', 'unselect-color': flight_plan.chosen_intermediate_plan == 'empty_leg_plan', 'selected-color-con': flight_plan.empty_leg_plan, '': !flight_plan.empty_leg_plan }" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'" ng-show="flight_plan.accommodation_plan">
-                  <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'" >Selected Accommodation plan</h3>-->
+                <div class="accomodation-con unselect-color" ng-class="{'select-color': flight_plan.chosen_intermediate_plan == 'accommodation_plan', 'unselect-color': flight_plan.chosen_intermediate_plan == 'empty_leg_plan', 'selected-color-con': flight_plan.empty_leg_plan, '': !flight_plan.empty_leg_plan }" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'accommodation_plan'; ctrl.calculateCost()" ng-show="flight_plan.accommodation_plan">
                   <h3 class="">
                     <span ng-class="flight_plan.accommodation_plan ? 'selected-border' : ''">Accommodation plan</span>
                   </h3>
@@ -102,7 +96,7 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="accomodation-con unselect-color selected-color-con" ng-class="{'select-color': flight_plan.chosen_intermediate_plan == 'empty_leg_plan', 'unselect-color': flight_plan.chosen_intermediate_plan == 'accommodation_plan'}" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'" ng-show="flight_plan.empty_leg_plan">
+                <div class="accomodation-con unselect-color selected-color-con" ng-class="{'select-color': flight_plan.chosen_intermediate_plan == 'empty_leg_plan', 'unselect-color': flight_plan.chosen_intermediate_plan == 'accommodation_plan'}" style="cursor: pointer" ng-click="flight_plan.chosen_intermediate_plan = 'empty_leg_plan'; ctrl.calculateCost()" ng-show="flight_plan.empty_leg_plan">
                   <!--<h3 ng-show="flight_plan.chosen_intermediate_plan == 'empty_leg_plan'" >Selected Empty leg plan</h3>-->
                   <h3>
                     <span ng-class="flight_plan.empty_leg_plan ? 'selected-border' : ''">Empty leg plan</span>
@@ -155,56 +149,35 @@
                       </ul>
                     </li>
                     <li>
-                      <strong>Subtotal: {{ ctrl.subTotal() | currency:"" | indianCurrency }}</strong>
+                      <strong>Subtotal: {{ ctrl.subTotal | currency:"" | indianCurrency }}</strong>
                     </li>
-                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
-                    <!--{{ctrl.tax_array}}-->
-                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
-                    <!--{{ctrl.serviceTaxCost(ctrl.detail)}}-->
-                    <!--{{ctrl.tax_array}}-->
-                    <!--<div ng-model="ctrl.serviceTaxCost(ctrl.detail)"></div>-->
-
-                    {{ctrl.serviceTaxCost(ctrl.detail)}}
-                    <!--{{ctrl.detail.flight_plan}}-->
-
-                    <li class="list-accomodation" ng-repeat="a in ctrl.tax_array">
-                      <!--[{'name':'Service Tax','value':14,'tax_in_rupees':66677.33333333336},{'name':'Swachh Bharat Cess','value':0.5,'tax_in_rupees':2381.333333333334},{'name':'Krishi Kalyan Cess','value':0.5,'tax_in_rupees':2381.333333333334}]-->
+                    <li class="list-accomodation" ng-repeat="tax in ctrl.taxBreakup">
                       <ul>
-                        <!--<li class="text-left">Service tax @ {{ctrl.taxDetail.service_tax}}%</li>-->
-                        <li class="text-left">{{a.name}} @ {{a.value}}%</li>
-                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.service_tax) | currency:"" | indianCurrency}}</li>-->
-                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.detail) | currency:"" | indianCurrency}}</li>-->
-                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{a.tax_in_rupees | currency:"" | indianCurrency}}</li>
+                        <li class="text-left">{{tax.name}} @ {{tax.value}}%</li>
+                        <li class="text-right pull-right"><i class="fa fa-rupee"></i> {{tax.amount | currency:"" | indianCurrency}}</li>
                       </ul>
                     </li>
-                    <!--<li class="list-accomodation">-->
-                      <!--<ul>-->
-                        <!--<li class="text-left">Swachh bharat cess @ {{ctrl.taxDetail.swachh_bharat_cess}}%</li>-->
-                        <!--<li class="text-right pull-right"><i class="fa fa-rupee"></i> {{ctrl.serviceTaxCost(ctrl.taxDetail.swachh_bharat_cess) | currency:"" | indianCurrency}}</li>-->
-                      <!--</ul>-->
-                    <!--</li>-->
                     <li class="list-accomodation">
                       <ul>
                         <li class="text-left total_amount"><b>Grant Total</b></li>
-                        <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(ctrl.detail) | currency:"":0 | indianCurrency}}</b></li>
+                        <li class="text-right pull-right total_amount"><b><i class="fa fa-rupee"></i> {{ctrl.grandTotal | currency:"":0 | indianCurrency}}</b></li>
                       </ul>
                     </li>
-                    <li class="list-accomodation" ng-hide="ctrl.detail.is_notam">
-                      <a href="" class="custom-btn no-text-decoration" ng-hide="ctrl.detail.enquired" ng-click="ctrl.enquire(ctrl.detail)">Enquire</a>
-                      <span ng-show="ctrl.detail.enquired">Enquired</span>
+                    <li class="list-accomodation" ng-hide="ctrl.result.is_notam">
+                      <a href="" class="custom-btn no-text-decoration" ng-hide="ctrl.result.enquired" ng-click="ctrl.enquire(ctrl.result)">Enquire</a>
+                      <span ng-show="ctrl.result.enquired">Enquired</span>
                     </li>
-                    <li class="list-accomodation" ng-show="ctrl.detail.is_notam">
+                    <li class="list-accomodation" ng-show="ctrl.result.is_notam">
                       <span style="color:red;">Can't enquire, because of Notam</span>
                     </li>
                     <li>
-                      <span ng-show="ctrl.detail.is_watch_hour">** as per terms and conditions</span>
+                      <span ng-show="ctrl.result.is_watch_hour">** as per terms and conditions</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-
         </ul>
       </div>
       <div class="clearfix"></div>

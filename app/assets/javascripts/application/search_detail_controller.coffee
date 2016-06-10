@@ -1,20 +1,19 @@
-#jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'tax', 'taxDetail', 'AirportsService', 'CurrentUserService', 'CostBreakUpsService', '$scope', ($http, notify, detail, tax, taxDetail, AirportsService, CurrentUserService, CostBreakUpsService, $scope)->
-jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 'AirportsService', 'CurrentUserService', 'CostBreakUpsService', '$scope', ($http, notify, detail, AirportsService, CurrentUserService, CostBreakUpsService, $scope)->
+jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'result', 'AirportsService', 'CurrentUserService', 'CostBreakUpsService', ($http, notify, result, AirportsService, CurrentUserService, CostBreakUpsService)->
 
-  @detail = detail
+  @result = result
 
   @airports = []
+
+  @calculateCost = ->
+    @subTotal = CostBreakUpsService.subTotal(@result)
+    @grandTotal = CostBreakUpsService.totalTripCost(@result)
+    @taxBreakup = CostBreakUpsService.taxBreakUp(@result)
 
   AirportsService.getAirports().then(
     =>
       @airports = AirportsService.airports
+      @calculateCost()
   )
-
-  @totalTripCost = (trip)->
-    CostBreakUpsService.totalTripCost(trip)
-
-  @serviceTaxCost = (trip)->
-    $scope.tax_array = CostBreakUpsService.taxBreakUp(trip)
 
   @airportForId = (id)->
     _.find(@airports, {id: id})
@@ -25,13 +24,13 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm A')
     data
 
-  @enquire = (detail)->
+  @enquire = (result)->
     if CurrentUserService.currentUser
-      $http.post('/trips/enquire.json', {enquiry: detail}).success(
+      $http.post('/trips/enquire.json', {enquiry: result}).success(
         ->
           notify
             message: 'Your enquiry has been registered. We shall contact you soon.'
-          detail.enquired = true
+          result.enquired = true
       ).error(
         (data)->
           error = 'Something went wrong.'
@@ -47,15 +46,15 @@ jetsetgo_app.controller 'SearchDetailController', ['$http', 'notify', 'detail', 
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
 
-  @checkNotam = (detail)->
-    for flight_plan in detail.flight_plan
+  @checkNotam = (result)->
+    for flight_plan in result.flight_plan
       if flight_plan.notam_at_arrival
-        @detail.is_notam = true
+        @result.is_notam = true
 
-  @checkWatchHour = (detail)->
-    for flight_plan in detail.flight_plan
+  @checkWatchHour = (result)->
+    for flight_plan in result.flight_plan
       if flight_plan.watch_hour_at_arrival
-        @detail.is_watch_hour = true
+        @result.is_watch_hour = true
 
   return undefined
 ]

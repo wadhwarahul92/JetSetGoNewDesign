@@ -2,7 +2,7 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
 
   costBreakUpInstance = {}
 
-  taxes = [
+  costBreakUpInstance.taxes = [
     {
       name: 'Service Tax'
       value: 14.0
@@ -16,25 +16,14 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
       value: 0.5
     }
   ]
-  
-  costBreakUpInstance.taxVal = ()->
-    total_tax = 0.0
-    for t in taxes
-      total_tax += t.value
-    total_tax
 
-  costBreakUpInstance.taxCalculate = (cost, tax_percentage)->
-    cost * (tax_percentage/100)
-
-  costBreakUpInstance.taxDetails = (cost)->
-    taxInfo = []
-    for t in taxes
-      taxInfo.push({
-        name: t.name
-        value: t.value 
-        tax_in_rupees:  costBreakUpInstance.taxCalculate(cost, t.value)
-      })
-    taxInfo
+  costBreakUpInstance.totalTax = ->
+    _.reduce(
+      costBreakUpInstance.taxes
+      (m,a)->
+        m+a.value
+      0
+    )
 
   costBreakUpInstance.subTotal = (trip)->
     cost = 0.0
@@ -59,12 +48,20 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
 
   costBreakUpInstance.totalTripCost = (trip)->
     cost = costBreakUpInstance.subTotal(trip)
-    trip.totalCost = cost + (((costBreakUpInstance.taxVal()) / 100) * cost)
-    trip.totalCost
+    cost + costBreakUpInstance.totalTax() / 100 * cost
 
   costBreakUpInstance.taxBreakUp = (trip)->
     cost = costBreakUpInstance.subTotal(trip)
-    costBreakUpInstance.taxDetails(cost)
+    array = []
+    for tax in costBreakUpInstance.taxes
+      array.push(
+        {
+          name: tax.name
+          value: tax.value
+          amount: tax.value / 100 * cost
+        }
+      )
+    array
 
   return costBreakUpInstance
 ]
