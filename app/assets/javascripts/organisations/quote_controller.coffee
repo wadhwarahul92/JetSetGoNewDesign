@@ -1,6 +1,10 @@
-organisations_app.controller 'QuoteController', ['quote', '$http', 'notify', (quote, $http, notify)->
+organisations_app.controller 'QuoteController', ['quote', '$http', 'notify', 'CostBreakUpsService', (quote, $http, notify, CostBreakUpsService)->
 
   @quote = quote
+
+  @taxBreakup = CostBreakUpsService.taxBreakUp(@quote)
+
+  @grandTotal = CostBreakUpsService.totalTripCost(@quote)
 
   @deleteQuote = ->
     bootbox.confirm 'Are you sure?', (result)=>
@@ -21,17 +25,17 @@ organisations_app.controller 'QuoteController', ['quote', '$http', 'notify', (qu
         cost += activity.accommodation_plan.cost
     cost
 
-  @grandTotal = ->
-    grandTotal = @subTotal()
-    grandTotal += @taxValue(@quote.tax_value)
-    grandTotal
-
-  @taxValue = (tax)->
-    subTotal = @subTotal()
-    ( (tax / 100) * subTotal )
-
-  @totalTax = (tax)->
-    ( @subTotal() * (tax / 100))
+#  @grandTotal = ->
+#    grandTotal = @subTotal()
+#    grandTotal += @taxValue(@quote.tax_value)
+#    grandTotal
+#
+#  @taxValue = (tax)->
+#    subTotal = @subTotal()
+#    ( (tax / 100) * subTotal )
+#
+#  @totalTax = (tax)->
+#    ( @subTotal() * (tax / 100))
 
   return undefined
 ]
