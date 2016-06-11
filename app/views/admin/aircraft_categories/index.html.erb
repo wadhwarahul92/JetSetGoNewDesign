@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'Add Aircraft category', new_admin_aircraft_category_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @aircraft_categories.each do |aircraft_category| %>
+          <tr>
+            <td><%= aircraft_category.id %></td>
+            <td><%= aircraft_category.name %></td>
+            <td>
+              <%= link_to edit_admin_aircraft_category_path(aircraft_category) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
