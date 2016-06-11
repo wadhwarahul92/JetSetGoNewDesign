@@ -183,6 +183,8 @@ Rails.application.routes.draw do
 
     resources :taxes
 
+    resources :aircraft_categories
+
     resources :handling_cost_grids
 
   end

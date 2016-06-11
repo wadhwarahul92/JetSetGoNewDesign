@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin, @aircraft_category] do |f| %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.error_notification %>
+        <%= f.input :name %>
+        <%= f.submit 'Save', class: 'btn btn-success ' %>
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+<%- end %>
