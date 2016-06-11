@@ -39,6 +39,8 @@
 //= require ./organisations/aircraft_unavailability_controller
 //= require ./organisations/trip_controller
 //= require ./organisations/profile_controller
+//= require ./services/base
+//= require ./services/cost_break_ups_service
 
 try {
     Turbolinks.enableProgressBar();

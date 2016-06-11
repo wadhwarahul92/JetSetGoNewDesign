@@ -1,6 +1,10 @@
-organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', ($http, enquiry, notify, $timeout)->
+organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', 'CostBreakUpsService', ($http, enquiry, notify, $timeout, CostBreakUpsService)->
 
   @enquiry = enquiry
+
+  @taxBreakup = CostBreakUpsService.taxBreakUp(@enquiry)
+
+  @grandTotal = CostBreakUpsService.totalTripCost(@enquiry)
 
   @deleteEnquiry = ->
     bootbox.confirm('Are you sure?', (result)=>
@@ -40,25 +44,6 @@ organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify',
           message: error
           classes: ['alert-danger']
     )
-
-  @subTotal = ->
-    cost = 0.0
-    for activity in @enquiry.activities
-      cost += activity.flight_cost
-      cost += activity.handling_cost_at_takeoff
-      cost += activity.landing_cost_at_arrival
-      cost += activity.watch_hour_cost
-      if activity.accommodation_plan and activity.accommodation_plan.cost
-        cost += activity.accommodation_plan.cost
-    cost
-
-  @taxValue = (tax)->
-    grandTotal = @subTotal()
-    ( (tax / 100) * grandTotal )
-
-  @grandTotal = ->
-    s = @subTotal()
-    s + ( (@enquiry.tax_value / 100) * s )
 
   return undefined
 ]

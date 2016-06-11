@@ -8,10 +8,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @aircrafts = []
 
-  @tax = null
-
-  @taxDetail = null
-
   @user = false
 
   @searchId = $routeParams.id
@@ -28,8 +24,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
-      @tax = data.tax
-      @taxDetail = data.taxDetail
       @results = data.results
       @search_activities = data.search_activities
 
@@ -56,32 +50,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @airportForId = (id)->
     _.find(@airports, {id: id})
 
-  @subTotal = (trip)->
-    cost = 0.0
-    for flight_plan in trip.flight_plan
-      cost += flight_plan.flight_cost
-      cost += flight_plan.handling_cost_at_takeoff
-      cost += flight_plan.landing_cost_at_arrival
-      if flight_plan.watch_hour_at_arrival
-        cost += flight_plan.watch_hour_cost
-      if flight_plan.chosen_intermediate_plan
-        chosen_plan = flight_plan[flight_plan.chosen_intermediate_plan]
-        if chosen_plan and flight_plan.chosen_intermediate_plan == 'empty_leg_plan'
-          for empty_leg in chosen_plan
-            cost += empty_leg.flight_cost
-            cost += empty_leg.handling_cost_at_takeoff
-            cost += empty_leg.landing_cost_at_arrival
-            if empty_leg.watch_hour_at_arrival
-              cost += empty_leg.watch_hour_cost
-        if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
-          cost += chosen_plan.cost
-    cost
-
   @totalTripCost = (trip)->
-#    return trip.totalCost if trip.totalCost
-    cost = @subTotal(trip)
-    trip.totalCost = @subTotal(trip)
-    cost + (((@tax) / 100) * cost)
+    CostBreakUpsService.totalTripCost(trip)
 
   @formatTime = (time)->
     data = null
@@ -146,7 +116,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         classes: ['alert-danger']
       CurrentUserService.openSignInModal('md')
 
-  @modalDetail = (result, tax, taxDetail)->
+  @modalDetail = (result)->
     $uibModal.open(
       size: 'lg'
       templateUrl: '/templates/search_detail'
@@ -154,12 +124,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       controllerAs: 'ctrl'
       backdrop: true
       resolve: {
-        detail: ->
+        result: ->
           return result
-        tax: ->
-          return tax
-        taxDetail: ->
-          return taxDetail
       }
     )
 

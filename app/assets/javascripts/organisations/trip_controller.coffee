@@ -1,8 +1,12 @@
-organisations_app.controller 'TripController', ['trip', '$http', 'notify', 'activity_id', (trip, $http, notify, activity_id)->
+organisations_app.controller 'TripController', ['trip', '$http', 'notify', 'activity_id', 'CostBreakUpsService', (trip, $http, notify, activity_id, CostBreakUpsService)->
 
   @trip = trip
 
   @activity_id = activity_id
+
+  @taxBreakup = CostBreakUpsService.taxBreakUp(@trip)
+
+  @grandTotal = CostBreakUpsService.totalTripCost(@trip)
 
   @subTotal = ->
     cost = 0.0
@@ -14,18 +18,6 @@ organisations_app.controller 'TripController', ['trip', '$http', 'notify', 'acti
       if activity.accommodation_plan and activity.accommodation_plan.cost
         cost += activity.accommodation_plan.cost
     cost
-
-  @grandTotal = ->
-    grandTotal = @subTotal()
-    grandTotal += @taxValue(@trip.tax_value)
-    grandTotal
-
-  @taxValue = (tax)->
-    subTotal = @subTotal()
-    ( (tax / 100) * subTotal )
-
-  @totalTax = (tax)->
-    ( @subTotal() * (tax / 100))
 
   return undefined
 ]

@@ -26,4 +26,5 @@ window.organisations_app = angular.module 'organisations_app', [
   'ui.bootstrap.datetimepicker'
   'ui.calendar'
   'CustomFilters'
+  'Services_app'
 ]
