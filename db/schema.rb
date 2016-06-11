@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611110821) do
+ActiveRecord::Schema.define(version: 20160611122922) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -111,6 +111,19 @@ ActiveRecord::Schema.define(version: 20160611110821) do
     t.integer  "organisation_id",              limit: 4
     t.integer  "base_airport_id",              limit: 4
     t.datetime "deleted_at"
+  end
+
+  create_table "airport_suppliers", force: :cascade do |t|
+    t.string   "halt_type",       limit: 255
+    t.integer  "minimum_mtow",    limit: 4,   default: 0
+    t.integer  "maximum_mtow",    limit: 4,   default: 0
+    t.float    "minimum_amount",  limit: 24,  default: 0.0
+    t.float    "offset_amount",   limit: 24,  default: 0.0
+    t.float    "rate_per_tonne",  limit: 24,  default: 0.0
+    t.float    "royalty",         limit: 24,  default: 0.0
+    t.float    "additional_rate", limit: 24,  default: 0.0
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "airports", force: :cascade do |t|
@@ -402,6 +415,15 @@ ActiveRecord::Schema.define(version: 20160611110821) do
     t.string   "file_content_type", limit: 255
     t.integer  "file_file_size",    limit: 4
     t.datetime "file_updated_at"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.text     "name",            limit: 65535
+    t.boolean  "fuel_supplier",                 default: false
+    t.boolean  "ground_handling",               default: false
+    t.boolean  "other_services",                default: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "taxes", force: :cascade do |t|
