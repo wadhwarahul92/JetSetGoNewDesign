@@ -1,4 +1,4 @@
-Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)->
+Services_app.factory 'CostBreakUpsService', ['$http', ($http)->
 
   costBreakUpInstance = {}
 
@@ -31,7 +31,7 @@ Services_app.factory 'CostBreakUpsService', ['$http', 'notify', ($http, notify)-
   costBreakUpInstance.subTotal = (trip)->
     cost = 0.0
 
-    if trip.flight_plan == 'undefined'
+    if trip.flight_plan
       for flight_plan in trip.flight_plan
         cost += flight_plan.flight_cost
         cost += flight_plan.handling_cost_at_takeoff
