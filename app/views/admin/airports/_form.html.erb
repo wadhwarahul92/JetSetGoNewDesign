@@ -5,6 +5,7 @@
       <%= f.input :code, label: 'IATA code' %>
       <%= f.input :icao_code %>
       <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select City' %>
+      <%= f.input :airport_category_id, collection: airport_categories_for_collection, prompt: 'Select airport category' %>
       <%= f.input :runway_field_length_in_feet %>
       <%= f.input :longitude %>
       <%= f.input :latitude %>

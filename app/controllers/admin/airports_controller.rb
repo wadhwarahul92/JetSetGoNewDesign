@@ -65,7 +65,8 @@ class Admin::AirportsController < Admin::BaseController
                                 :runway_field_length_in_feet,
                                 :landing_cost,
                                 :bais_time_in_minutes,
-                                :atc
+                                :atc,
+                                :airport_category_id
     )
   end
 
