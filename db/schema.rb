@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613085230) do
+ActiveRecord::Schema.define(version: 20160613092004) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -114,6 +114,12 @@ ActiveRecord::Schema.define(version: 20160613085230) do
     t.datetime "deleted_at"
   end
 
+  create_table "airport_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "airport_suppliers", force: :cascade do |t|
     t.string   "halt_type",          limit: 255
     t.integer  "minimum_mtow",       limit: 4,   default: 0
@@ -132,8 +138,8 @@ ActiveRecord::Schema.define(version: 20160613085230) do
   create_table "airports", force: :cascade do |t|
     t.string   "name",                        limit: 255
     t.integer  "city_id",                     limit: 4
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.float    "longitude",                   limit: 24
     t.float    "latitude",                    limit: 24
     t.string   "code",                        limit: 255
@@ -149,7 +155,7 @@ ActiveRecord::Schema.define(version: 20160613085230) do
     t.float    "landing_cost",                limit: 24,  default: 0.0
     t.datetime "deleted_at"
     t.integer  "bais_time_in_minutes",        limit: 4,   default: 0
-    t.boolean  "atc"
+    t.boolean  "atc",                                     default: false
     t.integer  "airport_category_id",         limit: 4
   end
 
