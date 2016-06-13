@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613085230) do
+ActiveRecord::Schema.define(version: 20160613092004) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -112,6 +112,12 @@ ActiveRecord::Schema.define(version: 20160613085230) do
     t.integer  "organisation_id",              limit: 4
     t.integer  "base_airport_id",              limit: 4
     t.datetime "deleted_at"
+  end
+
+  create_table "airport_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "airport_suppliers", force: :cascade do |t|
