@@ -137,6 +137,8 @@ Rails.application.routes.draw do
 
     resources :airport_categories
 
+    resources :airport_suppliers
+
     resources :operators
 
     resources :aircraft_types
