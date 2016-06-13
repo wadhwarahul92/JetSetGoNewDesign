@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @supplier] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :fuel_supplier %>
+    <%= f.input :ground_handling %>
+    <%= f.input :other_services %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>
