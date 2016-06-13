@@ -23,6 +23,7 @@
         <th>Fuel availability</th>
         <th>Watch hour extension</th>
         <th>Bais time in minutes</th>
+        <th>ATC</th>
         <th>Created By</th>
         <th>Updated By</th>
         <th>Action</th>
@@ -51,6 +52,7 @@
             <td><%= airport.fuel_availability %></td>
             <td><%= airport.watch_hour_extension %></td>
             <td><%= airport.bais_time_in_minutes %></td>
+            <td><%= airport.atc %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
             <td>
