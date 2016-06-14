@@ -21,6 +21,11 @@
                   <% case attr %>
                   <% when 'aircraft_type_id' %>
                       <%= best_in_place aircraft, attr.to_sym, url: admin_aircraft_path(aircraft), confirm: true, collection: AircraftType.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                  <% when 'organisation_id'%>
+                      <%= best_in_place aircraft, attr.to_sym, url: admin_aircraft_path(aircraft), confirm: true, collection: Organisation.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                      <% when 'base_airport_id'%>
+                      <%= best_in_place aircraft, attr.to_sym, url: admin_aircraft_path(aircraft), confirm: true, collection: Airport.all.collect{ |c| [c.id, c.name] }, as: :select %>
+
                   <%- else %>
                       <%= best_in_place aircraft, attr.to_sym, url: admin_aircraft_path(aircraft), confirm: true %>
                   <%- end %>
