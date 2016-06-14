@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'Add Supplier', new_admin_supplier_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Fuel supplier</th>
+        <th>Ground handling</th>
+        <th>Other services</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @suppliers.each do |supplier| %>
+          <tr>
+            <td><%= supplier.id %></td>
+            <td><%= supplier.name %></td>
+            <td><%= supplier.fuel_supplier %></td>
+            <td><%= supplier.ground_handling %></td>
+            <td><%= supplier.other_services %></td>
+            <td>
+              <%= link_to edit_admin_supplier_path(supplier) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>

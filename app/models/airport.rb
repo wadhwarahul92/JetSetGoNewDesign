@@ -8,6 +8,8 @@ class Airport < ActiveRecord::Base
 
   belongs_to :city
 
+  belongs_to :airport_category, class_name: 'AirportCategory', foreign_key: :airport_category_id
+
   has_many :watch_hours
 
   has_many :notams
@@ -33,6 +35,8 @@ class Airport < ActiveRecord::Base
   validates :ifr_or_vfr, inclusion: { in: %w(ifr vfr)}
   # validates :icao_code, uniqueness: true
   validates :runway_field_length_in_feet, presence: true
+
+  validates :airport_category_id, presence: true
 
   validates :bais_time_in_minutes, presence: true
 
