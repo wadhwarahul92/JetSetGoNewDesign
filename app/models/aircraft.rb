@@ -92,6 +92,10 @@ class Aircraft < ActiveRecord::Base
     departure_airport.distance_to(arrival_airport) / self.cruise_speed_in_nm_per_hour
   end
 
+  def mtow_useable
+    self.mtow || self.aircraft_type.mtow
+  end
+
   private
 
   def has_atleast_one_image?
