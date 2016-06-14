@@ -20,12 +20,34 @@ class Admin::AircraftsController < Admin::BaseController
 
   end
 
-  def update
-    if @aircraft.update_attributes(aircraft_params)
-      flash[:success] = 'Successfully updated'
-      redirect_to action: :index
+  def edit_all
+    if params[:field].present? and params[:value].present?
+      @aircrafts = Aircraft.where("#{params[:field]} like ?", "%#{params[:value]}%")
     else
-      render action: :edit
+      @aircrafts = Aircraft.all
+    end
+  end
+
+  def update
+    if @aircraft.update_attributes(params.require(:aircraft).permit!)
+      respond_to do |format|
+        format.html{
+          flash[:success] = 'Aircraft successfully updated'
+          redirect_to action: :index
+        }
+        format.json{
+          render status: :ok, nothing: true
+        }
+      end
+    else
+      respond_to do |format|
+        format.html{
+          render action: :edit
+        }
+        format.json{
+          render status: :unprocessable_entity, nothing: true
+        }
+      end
     end
   end
 

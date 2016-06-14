@@ -165,6 +165,9 @@ Rails.application.routes.draw do
       member do
         put :admin_approve
       end
+      collection do
+        get 'edit_all'
+      end
       resources :aircraft_images
     end
 
