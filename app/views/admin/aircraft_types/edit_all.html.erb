@@ -10,7 +10,7 @@
       <thead>
       <tr>
         <% attrs.each do |attr| %>
-            <% next if attr == 'svg' %>
+            <% next if attr == 'svg' or attr == 'description' %>
             <th><%= attr %></th>
         <%- end %>
       </tr>
@@ -18,7 +18,7 @@
       <% @aircraft_types.each do |aircraft_type| %>
           <tr>
             <% attrs.each do |attr| %>
-                <% next if attr == 'svg' %>
+                <% next if attr == 'svg' or attr == 'description' %>
                 <td>
                   <% case attr %>
                   <% when 'aircraft_category_id' %>
