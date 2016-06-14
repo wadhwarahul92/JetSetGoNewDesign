@@ -147,7 +147,11 @@ Rails.application.routes.draw do
 
     resources :operators
 
-    resources :aircraft_types
+    resources :aircraft_types do
+      collection do
+        get 'edit_all'
+      end
+    end
 
     resources :organisations
 

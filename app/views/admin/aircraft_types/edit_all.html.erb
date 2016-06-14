@@ -1,0 +1,36 @@
+<h3>Edit all aircraft types</h3>
+<% if @aircraft_types.any? %>
+    <% attrs = @aircraft_types.first.attributes.keys %>
+    <%= form_tag edit_all_admin_aircraft_types_path, method: :get do %>
+        <%= select_tag :field, options_for_select(attrs, params[:field]) %>
+        <%= text_field_tag :value, params[:value] %>
+        <%= submit_tag 'search' %>
+    <%- end %>
+    <table class="table table-stripped">
+      <thead>
+      <tr>
+        <% attrs.each do |attr| %>
+            <% next if attr == 'svg' %>
+            <th><%= attr %></th>
+        <%- end %>
+      </tr>
+      </thead>
+      <% @aircraft_types.each do |aircraft_type| %>
+          <tr>
+            <% attrs.each do |attr| %>
+                <% next if attr == 'svg' %>
+                <td>
+                  <% case attr %>
+                  <% when 'aircraft_category_id' %>
+                      <%= best_in_place aircraft_type, attr.to_sym, url: admin_aircraft_type_path(aircraft_type), confirm: true, collection: AircraftCategory.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                  <%- else %>
+                      <%= best_in_place aircraft_type, attr.to_sym, url: admin_aircraft_type_path(aircraft_type), confirm: true %>
+                  <%- end %>
+                </td>
+            <%- end %>
+          </tr>
+      <%- end %>
+      <tbody>
+      </tbody>
+    </table>
+<%- end %>
