@@ -61,7 +61,16 @@ class Airport < ActiveRecord::Base
     if d.present?
       d.distance_in_nm
     else
-      nil
+      # if we dont find distance then return the straight line distance on basis of lat/lng
+      airport_1 = self
+      airport_2 = airport
+      MathHelper.to_nm(
+          MathHelper.distance_between_lat_long(
+              airport_1.latitude,
+              airport_1.longitude,
+              airport_2.latitude,
+              airport_2.longitude)
+      )
     end
   end
 
