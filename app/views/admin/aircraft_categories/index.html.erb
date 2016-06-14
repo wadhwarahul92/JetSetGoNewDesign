@@ -12,6 +12,7 @@
       <tr class="info">
         <th>Id</th>
         <th>Name</th>
+        <th>Mtow</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -20,6 +21,7 @@
           <tr>
             <td><%= aircraft_category.id %></td>
             <td><%= aircraft_category.name %></td>
+            <td><%= aircraft_category.mtow %></td>
             <td>
               <%= link_to edit_admin_aircraft_category_path(aircraft_category) do %>
                   <i class="fa fa-edit"></i>

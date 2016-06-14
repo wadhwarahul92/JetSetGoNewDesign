@@ -38,7 +38,8 @@ class Admin::AircraftCategoriesController < Admin::BaseController
   private
 
   def aircraft_category_params
-    params.require(:aircraft_category).permit(:name)
+    params.require(:aircraft_category).permit(:name,
+                                              :mtow)
 
   end
 

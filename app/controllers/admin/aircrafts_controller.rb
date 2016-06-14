@@ -102,7 +102,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :organisation_id,
                                  :year_of_manufacture,
                                  :medical_evac,
-                                 :base_airport_id
+                                 :base_airport_id,
+                                 :mtow
     )
   end
 
