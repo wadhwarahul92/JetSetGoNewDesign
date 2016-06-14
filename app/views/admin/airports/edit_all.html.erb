@@ -1,0 +1,36 @@
+<h3>Edit all airports</h3>
+<% if @airports.any? %>
+    <% attrs = @airports.first.attributes.keys %>
+    <%= form_tag edit_all_admin_airports_path, method: :get do %>
+        <%= select_tag :field, options_for_select(attrs, params[:field]) %>
+        <%= text_field_tag :value, params[:value] %>
+        <%= submit_tag 'search' %>
+    <%- end %>
+    <table class="table table-stripped">
+      <thead>
+      <tr>
+        <% attrs.each do |attr| %>
+            <th><%= attr %></th>
+        <%- end %>
+      </tr>
+      </thead>
+      <% @airports.each do |airport| %>
+          <tr>
+            <% attrs.each do |attr| %>
+                <td>
+                  <% case attr %>
+                  <% when 'city_id' %>
+                      <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: City.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                  <% when 'airport_category_id' %>
+                      <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: AirportCategory.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                  <%- else %>
+                      <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true %>
+                  <%- end %>
+                </td>
+            <%- end %>
+          </tr>
+      <%- end %>
+      <tbody>
+      </tbody>
+    </table>
+<%- end %>

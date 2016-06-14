@@ -133,7 +133,11 @@ Rails.application.routes.draw do
 
     resources :cities
 
-    resources :airports
+    resources :airports do
+      collection do
+        get 'edit_all'
+      end
+    end
 
     resources :operators
 
