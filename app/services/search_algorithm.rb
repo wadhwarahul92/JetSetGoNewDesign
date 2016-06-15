@@ -339,7 +339,7 @@ BEGIN
   def airport_distance_in_nm(departure_airport, arrival_airport)
     @distance_map ||= {}
     return @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] if @distance_map["#{departure_airport.id}-#{arrival_airport.id}"].present?
-    @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] = @distances.detect{ |distance| distance.from_airport_id == departure_airport.id and distance.to_airport_id == arrival_airport.id }.distance_in_nm
+    @distance_map["#{departure_airport.id}-#{arrival_airport.id}"] = (@distances.detect{ |distance| distance.from_airport_id == departure_airport.id and distance.to_airport_id == arrival_airport.id }.distance_in_nm rescue MathHelper.to_nm(MathHelper.distance_between_lat_long(departure_airport.latitude, departure_airport.longitude, arrival_airport.latitude, arrival_airport.longitude)))
     @distance_map["#{departure_airport.id}-#{arrival_airport.id}"]
   end
 
