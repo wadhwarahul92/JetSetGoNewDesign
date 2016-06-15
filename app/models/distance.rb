@@ -2,7 +2,7 @@ class Distance < ActiveRecord::Base
 
   include VersionTracker
 
-  has_paper_trail
+  # has_paper_trail
 
   ####VALIDATIONS###
   validates :from_airport_id, uniqueness: {scope: :to_airport_id}
