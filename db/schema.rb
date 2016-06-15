@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614075840) do
+ActiveRecord::Schema.define(version: 20160615100457) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -301,6 +301,12 @@ ActiveRecord::Schema.define(version: 20160614075840) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "manufacturers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "notams", force: :cascade do |t|
     t.integer  "airport_id", limit: 4
     t.datetime "start_at"
@@ -505,6 +511,9 @@ ActiveRecord::Schema.define(version: 20160614075840) do
     t.integer  "image_file_size",          limit: 4
     t.datetime "image_updated_at"
     t.text     "address",                  limit: 65535
+    t.boolean  "nsop"
+    t.text     "business_detail",          limit: 65535
+    t.integer  "manufacturer_id",          limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

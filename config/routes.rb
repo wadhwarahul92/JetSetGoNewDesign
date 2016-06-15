@@ -175,6 +175,8 @@ Rails.application.routes.draw do
       resources :aircraft_images
     end
 
+    resources :manufacturers
+
     resources :distances
 
     resources :jetsteals do
@@ -203,6 +205,8 @@ Rails.application.routes.draw do
     resources :aircraft_categories
 
     resources :handling_cost_grids
+
+    resources :testimonials
 
   end
 

@@ -1,0 +1,11 @@
+<%= simple_form_for [:admin, @manufacturer] do |f| %>
+    <div class='col-xs-6'>
+      <%= f.error_notification %>
+      <%= f.input :name %>
+    </div>
+    <div class='col-xs-6'>
+    </div>
+    <div class='col-xs-12'>
+      <%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
+<%- end %>

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :trips
 
+  has_many :testimonials
+
   acts_as_paranoid
 
   # Include default devise modules. Others available are:

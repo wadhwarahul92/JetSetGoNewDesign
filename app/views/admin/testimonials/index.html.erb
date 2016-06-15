@@ -1,0 +1,26 @@
+<h3>Testimonials</h3>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+        <tr class="info">
+          <th>Id</th>
+          <th>Name</th>
+          <th>Text</th>
+          <th>User name</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @testimonials.each do |testimonial| %>
+          <tr>
+            <td><%= testimonial.id %></td>
+            <td><%= testimonial.name %></td>
+            <td><%= testimonial.text %></td>
+            <td><%= testimonial.user.full_name%></td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>

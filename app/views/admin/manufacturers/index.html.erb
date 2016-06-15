@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'New Manufacturer', new_admin_manufacturer_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @manufacturers.each do |manufacturer| %>
+          <tr>
+            <td><%= manufacturer.id %></td>
+            <td><%= manufacturer.name %></td>
+            <td>
+              <%= link_to edit_admin_manufacturer_path(manufacturer) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
