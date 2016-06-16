@@ -1,10 +1,21 @@
-organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', 'CostBreakUpsService', ($http, enquiry, notify, $timeout, CostBreakUpsService)->
+organisations_app.controller 'EnquiryController', ['$http', 'enquiry', 'notify', '$timeout', 'CostBreakUpsService', '$scope', ($http, enquiry, notify, $timeout, CostBreakUpsService, $scope)->
 
   @enquiry = enquiry
 
   @taxBreakup = CostBreakUpsService.taxBreakUp(@enquiry)
 
   @grandTotal = CostBreakUpsService.totalTripCost(@enquiry)
+
+  $scope.$watch(
+    =>
+      @enquiry
+    ,
+    =>
+      @taxBreakup = CostBreakUpsService.taxBreakUp(@enquiry)
+      @grandTotal = CostBreakUpsService.totalTripCost(@enquiry)
+    ,
+      true
+  )
 
   @deleteEnquiry = ->
     bootbox.confirm('Are you sure?', (result)=>
