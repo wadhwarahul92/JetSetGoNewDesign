@@ -321,6 +321,139 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
 }
+// changes Rahul 16-6-2016
+
+.bg-color{
+  background-color: #d9cb74;
+  .modify-search-con{
+    background-color: #ffffff;
+    border:1px solid #bb9f46;
+    padding: 15px;
+    margin-top: 90px;
+    .small-heading{
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      color: #bb9f46;
+    }
+    .city-con{
+      border-right: 1px solid #d9cb74;
+      min-height: 70px;
+      .city-name{
+        color: #3e3521;
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+    .departure-return-con{
+      border-right: 1px solid #d9cb74;
+      min-height: 70px;
+      .departure-con{
+        .date-con{
+          color: #3e3521;
+          font-size: 25px;
+          margin: 0;
+          display: inline-block;
+          float: left;
+        }
+        .month-con{
+          font-size: 14px;
+          display: inline-block;
+          float: left;
+          margin-left: 10px;
+        }
+      }
+    }
+    .pax-con{
+      .Pax-text{
+        color: #3e3521;
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+    .modify-btn-con{
+
+    }
+  }
+  .left-filter{
+    margin: 25px 0 15px 0;
+    h2{
+      background-color: #bb9f46;
+      padding: 15px 10px;
+      font-size: 16px;
+      margin: 0;
+      font-weight: bold;
+    }
+    .aircraft-type-con{
+      padding: 15px 10px;
+      background-color: #dbca65;
+      h3{
+        font-size: 16px;
+        color: #2c2219;
+        margin: 0;
+      }
+      ul{
+        padding: 0;
+        margin: 0;
+        li{
+          list-style: none;
+          color: #2c2219;
+          font-size: 16px;
+          padding: 10px 5px;
+        }
+      }
+    }
+  }
+  .right-search-images{
+    margin: 25px 0 15px 0;
+    .list-con{
+      width: 100%;
+      height: 300px;
+      position: relative;
+      .aircraft-name-con{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        .name-con{
+          background-color: rgba(255,255,255,0.6);
+          width: 400px;
+          padding: 15px 10px 15px 100px;
+          h3{
+            font-size: 35px;
+            color: #000;
+            margin: 0;
+            font-weight: bold;
+          }
+          .aircraft-type{
+            font-size: 18px;
+            color: #000;
+            font-style: italic;
+          }
+        }
+      }
+      .estimate-price-con{
+        width: 100%;
+        position: absolute;
+        bottom: 50px;
+        .price-con{
+          width: 300px;
+          padding: 10px;
+          background-color: rgba(69,27,6,0.6);
+          color: #ffffff;
+          font-size: 19px;
+        }
+      }
+      .bottom-strip-con{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        padding: 5px 0;
+        background-color: rgba(69,27,6,0.6);
+      }
+    }
+  }
+}
+
+// changes Rahul 16-6-2016
 
 @media (max-width: 1200px) and (min-width: 990px) {
   .search-result-box{
