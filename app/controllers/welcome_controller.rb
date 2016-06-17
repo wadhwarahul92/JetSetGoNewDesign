@@ -34,7 +34,6 @@ class WelcomeController < ApplicationController
 
   def sign_up_
 
-
     ######################################################################
     # Description: Verify captcha
     ######################################################################
@@ -42,7 +41,6 @@ class WelcomeController < ApplicationController
       render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
     end
     ######################################################################
-
 
     @user = User.new(user_params)
     if @user.save
