@@ -19,7 +19,7 @@
                   <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
                   <a ng-show="ctrl.currentUser" class="no-right-padding" href="/profile"> <img src="" style="max-height: 20px;max-width: 20px" ng-src="{{ctrl.currentUser.image}}" alt=""> {{ctrl.currentUser.full_name}} <i class="fa fa-caret-down"></i></a>
                   <ul class="sub-nav">
-                    <li ng-show="ctrl.currentUser" ><a class="no-right-padding" href="/quotes">Quotes</a></li>
+                    <li ng-show="ctrl.currentUser" ><a class="no-right-padding" href="/profile">Profile</a></li>
                     <li ng-show="ctrl.currentUser" ><a ng-click="ctrl.signOut()" class="no-right-padding" href="">Sign Out</a></li>
                   </ul>
                 </li>
