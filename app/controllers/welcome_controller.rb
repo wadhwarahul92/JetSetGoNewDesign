@@ -34,14 +34,19 @@ class WelcomeController < ApplicationController
 
   def sign_up_
 
+
     ######################################################################
     # Description: Verify captcha
     ######################################################################
-    render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
+    unless from_mobile?
+      render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
+    end
     ######################################################################
+
 
     @user = User.new(user_params)
     if @user.save
+      @user.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
       sign_in(@user)
       CustomerMailer.sign_up(@user).deliver_later
       AdminMailer.customer_sign_up(@user).deliver_later

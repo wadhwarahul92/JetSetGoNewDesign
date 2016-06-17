@@ -19,9 +19,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def api_user
+    @api_user ||= User.where(api_token: params[:api_token]).last
+  end
+
+  def current_user
+    params[:api_token].present? ? api_user : super
+  end
+
   # In Rails 4.2 and above
   def verified_request?
-    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN']) || from_mobile?
+  end
+
+  def from_mobile?
+    params[:from_mobile] == 'yes'
   end
 
 end

@@ -7,6 +7,7 @@ if current_user.present?
   json.phone current_user.phone if current_user.phone
   json.email current_user.email if current_user.email
   json.image current_user.image.url(:size_250x250)
+  json.api_token current_user.api_token
   if current_user.try(:organisation).present?
     json.organisation{
       json.id current_user.organisation.id
