@@ -43,10 +43,6 @@ class CustomersController < ApplicationController
     @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
   end
 
-  def empty_legs_offered
-
-  end
-
   private
 
   def set_customer
