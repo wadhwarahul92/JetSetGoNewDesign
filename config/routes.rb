@@ -33,7 +33,10 @@ Rails.application.routes.draw do
     collection do
       put 'update_image'
       put 'update_profile'
-      get 'booked_jets'
+      get 'get_booked_jets'
+      get 'get_upcoming_journeys'
+      get 'get_past_journeys'
+      get 'get_enquired_jets'
     end
   end
 

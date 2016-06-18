@@ -2,10 +2,10 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:update_image,
                                       :update_profile,
-                                      :booked_jets,
-                                      :upcoming_journeys,
-                                      :past_journeys,
-                                      :enquired_jets,
+                                      :get_booked_jets,
+                                      :get_upcoming_journeys,
+                                      :get_past_journeys,
+                                      :get_enquired_jets,
                                       :empty_legs_offered]
 
   def update_image
@@ -24,35 +24,23 @@ class CustomersController < ApplicationController
     end
   end
 
-  def booked_jets
+  def get_booked_jets
     @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
-    if @trips
-      render status: :ok, json: { trips: @trips }
-    else
-      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
+  end
+
+  def get_upcoming_journeys
+    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    if @trips.any?
+      @trips = get_upcoming_trips(@trips)
     end
   end
 
-  def upcoming_journeys
-    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
-    if @trips
-      if @trips.any?
-        @trips = get_upcoming_trips(@trips)
-      end
-      render status: :ok, json: { trips: @trips }
-    else
-      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
-    end
-  end
-
-  def past_journeys
+  def get_past_journeys
     @trips = get_past_trips(Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED))
-    render layout: false
   end
 
-  def enquired_jets
+  def get_enquired_jets
     @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
-    render layout: false
   end
 
   def empty_legs_offered
