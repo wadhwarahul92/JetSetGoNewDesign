@@ -90,6 +90,26 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/profile'
     controller: 'ProfileController'
     controllerAs: 'ctrl'
+  }).when('/book_jets', {
+    templateUrl: '/templates/book_jets'
+    controller: 'BookJetsController'
+    controllerAs: 'ctrl'
+  }).when('/upcoming_journeys', {
+    templateUrl: '/templates/upcoming_journeys'
+    controller: 'UpcomingJourneysController'
+    controllerAs: 'ctrl'
+  }).when('/past_journeys', {
+    templateUrl: '/templates/past_journeys'
+    controller: 'PastjourneysController'
+    controllerAs: 'ctrl'
+  }).when('/enquired_jets', {
+    templateUrl: '/templates/enquired_jets'
+    controller: 'EnquiredJetsController'
+    controllerAs: 'ctrl'
+  }).when('/empty_legs_offered', {
+    templateUrl: '/templates/empty_legs_offered'
+    controller: 'EmptyLegsOfferedController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)

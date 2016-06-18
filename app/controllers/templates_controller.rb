@@ -86,4 +86,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def book_jets
+
+  end
+
 end

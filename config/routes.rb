@@ -317,6 +317,11 @@ Rails.application.routes.draw do
       get 'forget_password'
       get 'enquiry_form_modal'
       get 'profile'
+      get 'book_jets'
+      get 'upcoming_journeys'
+      get 'past_journeys'
+      get 'enquired_jets'
+      get 'empty_legs_offered'
     end
   end
 
@@ -365,6 +370,11 @@ Rails.application.routes.draw do
   get 'jet_set_rescue' => 'route_overrides#welcome_index'
   get 'forget_password' => 'route_overrides#welcome_index'
   get 'profile' => 'route_overrides#welcome_index'
+  get 'book_jets' => 'route_overrides#welcome_index'
+  get 'upcoming_journeys' => 'route_overrides#welcome_index'
+  get 'past_journeys' => 'route_overrides#welcome_index'
+  get 'enquired_jets' => 'route_overrides#welcome_index'
+  get 'empty_legs_offered' => 'route_overrides#welcome_index'
 
 
   #TMP URL

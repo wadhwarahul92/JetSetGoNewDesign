@@ -38,6 +38,11 @@
 //= require ./application/heli_set_go_controller
 //= require ./application/heli_set_go_enquiry_controller
 //= require ./application/profile_controller
+//= require ./application/book_jets_controller
+//= require ./application/upcoming_journeys_controller
+//= require ./application/past_journeys_controller
+//= require ./application/enquired_jets_controller
+//= require ./application/empty_legs_offered_controller
 //= require ./vendors/date
 //= require ./services/base
 //= require ./services/cost_break_ups_service
