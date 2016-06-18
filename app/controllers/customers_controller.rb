@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
 
   def get_upcoming_journeys
     @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
-    if @trips.any?
+    if @trips.present?
       @trips = get_upcoming_trips(@trips)
     end
   end
