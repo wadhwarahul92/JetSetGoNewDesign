@@ -19,13 +19,53 @@ class CustomersController < ApplicationController
   end
 
   def booked_jets
-    1
+    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    render layout: false
+  end
+
+  def upcoming_journeys
+    @trips = []
+    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    if @trips.any?
+      @trips = get_upcoming_trips(@trips)
+    end
+    render layout: false
+  end
+
+  def past_journeys
+    @trips = get_past_trips(Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED))
+    render layout: false
+  end
+
+  def enquired_jets
+    @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
+    render layout: false
+  end
+
+  def empty_legs_offered
+
   end
 
   private
 
   def set_customer
     @customer = current_user
+  end
+
+  def get_past_trips(trips)
+    ids = []
+    trips.each do |trip|
+      trip.activities.where("end_at < ?", DateTime.now).map{ |t| ids << t.trip_id }
+    end
+    trips.where(id: ids.uniq)
+  end
+
+  def get_upcoming_trips(trips)
+    ids = []
+    trips.each do |trip|
+      trip.activities.where("start_at > ?", DateTime.now).map{ |t| ids << t.trip_id }
+    end
+    trips.where(id: ids.uniq)
   end
 
 end
