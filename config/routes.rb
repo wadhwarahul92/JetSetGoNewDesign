@@ -365,6 +365,8 @@ Rails.application.routes.draw do
   get 'profile' => 'route_overrides#welcome_index'
 
 
+  put 'update_device_token' => 'welcome#update_device_token'
+
   #TMP URL
   get 'tmp_url' => 'welcome#tmp_index'
   ########

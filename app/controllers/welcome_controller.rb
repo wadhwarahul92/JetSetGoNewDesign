@@ -87,6 +87,31 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def update_device_token
+
+    case params[:type]
+      when 'ios'
+
+        if current_user.update_attributes(ios_app_devise_token: params[:device_token], send_app_notifications: true)
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+        end
+
+      when 'android'
+
+        if current_user.update_attributes(android_app_devise_token: params[:device_token], send_app_notifications: true)
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+        end
+
+      else
+        render status: :unprocessable_entity, json: { errors: ['type is not specified'] }
+    end
+
+  end
+
   private
 
   def user_params
