@@ -26,16 +26,23 @@ class CustomersController < ApplicationController
 
   def booked_jets
     @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
-    render layout: false
+    if @trips
+      render status: :ok, json: { trips: @trips }
+    else
+      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
+    end
   end
 
   def upcoming_journeys
-    @trips = []
     @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
-    if @trips.any?
-      @trips = get_upcoming_trips(@trips)
+    if @trips
+      if @trips.any?
+        @trips = get_upcoming_trips(@trips)
+      end
+      render status: :ok, json: { trips: @trips }
+    else
+      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
     end
-    render layout: false
   end
 
   def past_journeys

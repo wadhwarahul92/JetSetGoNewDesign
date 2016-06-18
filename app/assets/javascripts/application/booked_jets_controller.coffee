@@ -13,7 +13,5 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify',($http, notif
       )
   )
 
-  debugger
-
   return undefined
 ]
