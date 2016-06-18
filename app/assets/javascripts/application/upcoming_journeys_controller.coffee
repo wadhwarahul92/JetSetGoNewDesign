@@ -8,7 +8,7 @@ jetsetgo_app.controller 'UpcomingJourneysController', ['$http', 'notify', ($http
   ).error(
     ->
       notify(
-        message: 'Error fetching booked jets'
+        message: 'Error fetching upcoming journeys'
         classes: ['alert-danger']
       )
   )

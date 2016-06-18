@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify',($http, notify)->
+jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', ($http, notify)->
 
   @booked_jets = {}
 
