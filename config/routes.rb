@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     collection do
       put 'update_image'
       put 'update_profile'
+      get 'booked_jets'
     end
   end
 
@@ -317,7 +318,7 @@ Rails.application.routes.draw do
       get 'forget_password'
       get 'enquiry_form_modal'
       get 'profile'
-      get 'book_jets'
+      get 'booked_jets'
       get 'upcoming_journeys'
       get 'past_journeys'
       get 'enquired_jets'
@@ -370,7 +371,7 @@ Rails.application.routes.draw do
   get 'jet_set_rescue' => 'route_overrides#welcome_index'
   get 'forget_password' => 'route_overrides#welcome_index'
   get 'profile' => 'route_overrides#welcome_index'
-  get 'book_jets' => 'route_overrides#welcome_index'
+  get 'booked_jets' => 'route_overrides#welcome_index'
   get 'upcoming_journeys' => 'route_overrides#welcome_index'
   get 'past_journeys' => 'route_overrides#welcome_index'
   get 'enquired_jets' => 'route_overrides#welcome_index'

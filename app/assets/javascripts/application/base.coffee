@@ -90,9 +90,9 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/profile'
     controller: 'ProfileController'
     controllerAs: 'ctrl'
-  }).when('/book_jets', {
-    templateUrl: '/templates/book_jets'
-    controller: 'BookJetsController'
+  }).when('/booked_jets', {
+    templateUrl: '/templates/booked_jets'
+    controller: 'BookedJetsController'
     controllerAs: 'ctrl'
   }).when('/upcoming_journeys', {
     templateUrl: '/templates/upcoming_journeys'

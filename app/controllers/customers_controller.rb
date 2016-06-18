@@ -18,6 +18,10 @@ class CustomersController < ApplicationController
     end
   end
 
+  def booked_jets
+    1
+  end
+
   private
 
   def set_customer

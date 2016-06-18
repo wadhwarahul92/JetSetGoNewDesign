@@ -38,7 +38,7 @@
 //= require ./application/heli_set_go_controller
 //= require ./application/heli_set_go_enquiry_controller
 //= require ./application/profile_controller
-//= require ./application/book_jets_controller
+//= require ./application/booked_jets_controller
 //= require ./application/upcoming_journeys_controller
 //= require ./application/past_journeys_controller
 //= require ./application/enquired_jets_controller
