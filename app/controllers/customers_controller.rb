@@ -1,6 +1,12 @@
 class CustomersController < ApplicationController
 
-  before_action :set_customer, only: [:update_image, :update_profile]
+  before_action :set_customer, only: [:update_image,
+                                      :update_profile,
+                                      :booked_jets,
+                                      :upcoming_journeys,
+                                      :past_journeys,
+                                      :enquired_jets,
+                                      :empty_legs_offered]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
