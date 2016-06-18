@@ -343,6 +343,8 @@ Rails.application.routes.draw do
   post 'aircrafts' => 'aircrafts#index'
   #################
 
+  get 'all_aircrafts' => 'aircrafts#all_aircrafts'
+
   ########
   #Overridden routes for angular js
   #########
