@@ -1,7 +1,22 @@
 <div class="bg-color">
     <div class="container search-container" ng-hide="ctrl.loading">
-      <div class="col-sm-12">
-        <div class="modify-search-con">
+      <div class="res-toogle-main hidden-lg">
+        <div class="col-xs-6 text-right">
+          <a href="javascript:void(0)" ng-click="trip =! trip; ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : trip = trip}">Trip</a>
+        </div>
+        <div class="col-xs-6">
+          <a href="javascript:void(0)" ng-click="refine_search =! refine_search" ng-class="{'active' : refine_search = refine_search}">Refine Your Search</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div class="col-sm-12"  ng-class="{'hidden-xs' : ctrl.active_xs_search_bar}">
+        <div class="modify-search-con" ng-class="{'search_active' : trip = trip}">
           <div class="row">
             <div class="col-sm-3 city-con">
               <h6 class="small-heading">One Way</h6>
@@ -37,7 +52,7 @@
       </div>
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-md-4 col-sm-4 left-filter">
+          <div class="col-md-4 col-sm-4 left-filter" ng-show="refine_search">
             <h2>+ Refine Your Search</h2>
             <div class="aircraft-type-con">
               <h3>Aircraft Type</h3>
@@ -48,12 +63,12 @@
                 <li><input type="checkbox" /> Single Engine Turboprop</li>
                 <li><input type="checkbox" /> Twin Engine Turboprop</li>
               </ul>
-              <h3>Flying Cost</h3>
-
             </div>
           </div>
           <div class="col-md-8 col-sm-8 right-search-images">
-            <div class="list-con" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+
+            <div class="list-main" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+            <div class="list-con" ng-click="custom =! custom">
               <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/298/original/2-780x320.jpg?1466073908" alt="">
               <div class="aircraft-name-con">
                 <div class="name-con pull-right">
@@ -73,12 +88,13 @@
                 </div>
               </div>
             </div>
-            <div class="search-detail-main">
+
+            <div class="search-detail-main" ng-show="custom">
               <div class="row" ng-init="show=0">
                 <div class="col-xs-12 top-heading">
                   <div class="heading-bg">
                     <div class="col-sm-7">
-                      <h4>Beechcraft King Air C90A</h4>
+                      <h4>{{result.aircraft.aircraft_type.name}}</h4>
                     </div>
                     <div class="col-sm-5">
                       <p class="cost-text">Cost per hour : <i class="fa fa-inr" aria-hidden="true"></i> 1,20,000</p>
@@ -93,105 +109,105 @@
                   </ul>
                 </div>
                 <div class="col-sm-9 right-tabs-content">
-                  <div class="tabs-bg" ng-show="show==0">
-                    <div class="top-destination-con">
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <p class="city-name">New Delhi</p>
-                          <p class="time-con">11 : 48 : AM</p>
-                          <p class="date-con">Wed 22 Jun 2016</p>
+                  <div class="tabs-bg">
+                    <div class="tab-content-main" ng-show="show==0">
+                      <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'user_search' }">
+                        <div class="top-destination-con">
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                              <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                              <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                              <p class="time-duration">{{flight_plan.flight_time}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                              <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                              <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                              <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-sm-4">
-                          <p class="time-duration">2Hrs 12Mins</p>
-                        </div>
-                        <div class="col-sm-4">
-                          <p class="city-name">New Delhi</p>
-                          <p class="time-con">02 : 00 : AM</p>
-                          <p class="date-con">Wed 22 Jun 2016</p>
+                        <div class="charges-main-con">
+                          <div class="col-xs-8">
+                            <h3>Flying Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.flight_cost | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Handling Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Landing Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="clearfix"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="charges-main-con">
+                    <div class="tab-content-main" ng-show="show==1">
+                      <div ng-repeat="flight_plan in result.flight_plan | filter: {flight_type: 'empty_leg'}">
+                        <div class="empty-leg-main">
+                          <div class="col-sm-6">
+                            <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                            <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                            <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                          </div>
+                          <div class="col-sm-6">
+                            <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                            <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                            <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="charges-main-con">
+                          <div class="col-xs-8">
+                            <h3>Flying Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.flight_cost | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Handling Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Landing Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="total-main-con light-border">
                       <div class="col-xs-8">
-                        <h3>Flying Charges</h3>
+                        <h3>TOTAL</h3>
                       </div>
                       <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 8,00,000</h3>
-                      </div>
-                      <div class="col-xs-8">
-                        <h3>Airport Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3>NA</h3>
-                      </div>
-                      <div class="col-xs-8">
-                        <h3>Handling Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 12,500</h3>
+                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 8,25,000</h3>
                       </div>
                       <div class="col-xs-8">
                         <h3>Taxes & Administrative Charges</h3>
                       </div>
                       <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 12,500</h3>
+                        <h3>{{flight_plan.handling_cost_at_takeoff}}</h3>
                       </div>
                       <div class="clearfix"></div>
                     </div>
                     <div class="total-main-con">
-                      <div class="col-xs-8 text-right">
-                        <h2>TOTAL</h2>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h2><i class="fa fa-inr" aria-hidden="true"></i> 8,25,000</h2>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="tabs-bg" ng-show="show==1">
-                    <div class="empty-leg-main">
-                      <div class="col-sm-6">
-                        <p class="city-name">New Delhi</p>
-                        <p class="time-con">11 : 48 : AM</p>
-                        <p class="date-con">Wed 22 Jun 2016</p>
-                      </div>
-                      <div class="col-sm-6">
-                        <p class="city-name">New Delhi</p>
-                        <p class="time-con">11 : 48 : AM</p>
-                        <p class="date-con">Wed 22 Jun 2016</p>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="charges-main-con">
                       <div class="col-xs-8">
-                        <h3>Flying Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 8,00,000</h3>
-                      </div>
-                      <div class="col-xs-8">
-                        <h3>Airport Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3>NA</h3>
-                      </div>
-                      <div class="col-xs-8">
-                        <h3>Handling Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 12,500</h3>
-                      </div>
-                      <div class="col-xs-8">
-                        <h3>Taxes & Administrative Charges</h3>
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 12,500</h3>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="total-main-con">
-                      <div class="col-xs-8 text-right">
-                        <h2>TOTAL</h2>
+                        <h2>GRAND TOTAL</h2>
                       </div>
                       <div class="col-xs-4 text-right">
                         <h2><i class="fa fa-inr" aria-hidden="true"></i> 8,25,000</h2>
@@ -202,6 +218,7 @@
                 </div>
               </div>
             </div>
+              </div>
           </div>
           <!--<div class="col-sm-12 search-main-con">-->
           <!--<div class="row">-->

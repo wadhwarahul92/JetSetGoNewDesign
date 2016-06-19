@@ -325,11 +325,26 @@ $main-skyblue-color : rgb(27,143,188);
 
 .bg-color{
   background-color: #fdf2ac;
+  .res-toogle-main{
+    margin: 90px 0 20px 0;
+    a{
+      min-width: 150px;
+      background-color: #c5a749;
+      display: inline-block;
+      padding: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+    }
+    a.active{
+      background-color: #b0842e;
+    }
+  }
   .modify-search-con{
     background-color: #ffffff;
     border:1px solid #bb9f46;
     padding: 15px;
-    margin-top: 90px;
+    display: block !important;
     .small-heading{
       text-transform: uppercase;
       margin: 0 0 10px 0;
@@ -376,6 +391,7 @@ $main-skyblue-color : rgb(27,143,188);
   }
   .left-filter{
     margin: 25px 0 15px 0;
+    display: block;
     h2{
       background-color: #d1b069;
       padding: 15px 10px;
@@ -405,12 +421,20 @@ $main-skyblue-color : rgb(27,143,188);
   }
   .right-search-images{
     margin: 25px 0 15px 0;
+    .list-main{
+      margin-bottom: 50px;
+    }
     .list-con{
       width: 100%;
       height: 300px;
-      margin-bottom: 50px;
       overflow: hidden;
       position: relative;
+      cursor: pointer;
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
       .aircraft-name-con{
         width: 100%;
         position: absolute;
@@ -451,6 +475,16 @@ $main-skyblue-color : rgb(27,143,188);
         padding: 5px 0;
         background-color: rgba(69,27,6,0.6);
       }
+    }
+    .list-con:hover{
+      -webkit-box-shadow: 0px 0px 15px 0px rgba(209, 176, 105, 0.7);
+      -moz-box-shadow:    0px 0px 15px 0px rgba(209, 176, 105, 0.7);
+      box-shadow:         0px 0px 15px 0px rgba(209, 176, 105, 0.7);
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
     }
     .search-detail-main{
       width: 100%;
@@ -508,37 +542,49 @@ $main-skyblue-color : rgb(27,143,188);
           background: linear-gradient(to bottom,  #965e10 0%,#f3d45c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
           filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#965e10', endColorstr='#f3d45c',GradientType=0 ); /* IE6-9 */
         }
-        .top-destination-con{
-          width: 100%;
-          padding: 20px 0 0 0;
-          p{
-            margin-bottom: 2px;
-            text-align: center;
+        .tab-content-main{
+          .top-destination-con{
+            width: 100%;
+            padding: 20px 0 0 0;
+            p{
+              margin-bottom: 2px;
+              text-align: center;
 
+            }
+          }
+          .charges-main-con{
+            padding: 20px 0;
+
+            h3{
+              font-size: 18px;
+              margin: 10px 0;
+            }
+          }
+          .empty-leg-main{
+            width: 100%;
+            padding: 20px 0 0 0;
+            p{
+              margin-bottom: 2px;
+              text-align: center;
+              color: #ffffff;
+            }
           }
         }
-        .charges-main-con{
+        .total-main-con{
+          border-top: 2px dotted #000000;
           padding: 20px 0;
-          border-bottom: 2px dotted #000000;
+          h2{
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+          }
           h3{
             font-size: 18px;
             margin: 10px 0;
           }
         }
-        .empty-leg-main{
-          width: 100%;
-          padding: 20px 0;
-          p{
-            margin-bottom: 2px;
-            text-align: center;
-            color: #ffffff;
-          }
-        }
-        .total-main-con{
-          h2{
-            font-size: 20px;
-            font-weight: bold;
-          }
+        .light-border{
+          border-top: 2px dotted #cacaca;
         }
       }
     }
@@ -607,6 +653,14 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
   .bg-color{
+    .modify-search-con{
+      display: none;
+    }
+    .left-filter{
+    }
+    .search_active{
+      display: block;
+    }
     .right-search-images {
       .list-con {
         .aircraft-name-con {
