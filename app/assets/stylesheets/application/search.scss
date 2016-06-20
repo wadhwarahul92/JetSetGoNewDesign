@@ -345,6 +345,7 @@ $main-skyblue-color : rgb(27,143,188);
     border:1px solid #bb9f46;
     padding: 15px;
     display: block !important;
+    margin-top: 90px;
     .small-heading{
       text-transform: uppercase;
       margin: 0 0 10px 0;
@@ -655,6 +656,7 @@ $main-skyblue-color : rgb(27,143,188);
   .bg-color{
     .modify-search-con{
       display: none;
+      margin: 0;
     }
     .left-filter{
     }

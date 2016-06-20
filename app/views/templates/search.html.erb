@@ -2,21 +2,15 @@
     <div class="container search-container" ng-hide="ctrl.loading">
       <div class="res-toogle-main hidden-lg">
         <div class="col-xs-6 text-right">
-          <a href="javascript:void(0)" ng-click="trip =! trip; ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : trip = trip}">Trip</a>
+          <a href="javascript:void(0)" ng-click="ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : ctrl.active_xs_search_bar}">Trip</a>
         </div>
         <div class="col-xs-6">
-          <a href="javascript:void(0)" ng-click="refine_search =! refine_search" ng-class="{'active' : refine_search = refine_search}">Refine Your Search</a>
+          <a href="javascript:void(0)" ng-click="ctrl.active_xs_refine_search =! ctrl.active_xs_refine_search" ng-class="{'active' : ctrl.active_xs_refine_search}">Refine Your Search</a>
         </div>
         <div class="clearfix"></div>
       </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <div class="col-sm-12"  ng-class="{'hidden-xs' : ctrl.active_xs_search_bar}">
-        <div class="modify-search-con" ng-class="{'search_active' : trip = trip}">
+      <div class="col-sm-12"  ng-class="{'hidden-xs' : !ctrl.active_xs_search_bar}">
+        <div class="modify-search-con">
           <div class="row">
             <div class="col-sm-3 city-con">
               <h6 class="small-heading">One Way</h6>
@@ -52,7 +46,7 @@
       </div>
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-md-4 col-sm-4 left-filter" ng-show="refine_search">
+          <div class="col-md-4 col-sm-4 left-filter" ng-class="{'hidden-xs' : !ctrl.active_xs_refine_search}">
             <h2>+ Refine Your Search</h2>
             <div class="aircraft-type-con">
               <h3>Aircraft Type</h3>
