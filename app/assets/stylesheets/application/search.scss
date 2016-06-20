@@ -328,13 +328,15 @@ $main-skyblue-color : rgb(27,143,188);
   .res-toogle-main{
     margin: 90px 0 20px 0;
     a{
-      min-width: 150px;
+      min-width: 140px;
       background-color: #c5a749;
       display: inline-block;
       padding: 10px;
+      font-size: 13px;
       color: #ffffff;
       text-decoration: none;
       text-align: center;
+      border-radius: 25px;
     }
     a.active{
       background-color: #b0842e;
@@ -517,7 +519,7 @@ $main-skyblue-color : rgb(27,143,188);
             text-align: center;
             list-style: none;
             a{
-              font-size: 12px;
+              font-size: 16px;
               padding: 15px 10px;
               width: 100%;
               color: #ffffff;
@@ -680,6 +682,55 @@ $main-skyblue-color : rgb(27,143,188);
           .price-con{
             font-size: 16px;
             width: 100%;
+          }
+        }
+      }
+      .search-detail-main {
+        .left-tabs{
+          padding-right: 15px;
+          ul{
+            width: 100%;
+            margin-bottom: 0;
+            li{
+              width: 50%;
+              float: left;
+            }
+          }
+        }
+        .right-tabs-content{
+          padding-left: 15px;
+          .tab-content-main {
+            .top-destination-con {
+              p{
+                font-size: 11px;
+              }
+            }
+            .charges-main-con {
+              h3{
+                font-size: 13px;
+              }
+            }
+          }
+          .total-main-con {
+            h3{
+              font-size: 13px;
+            }
+            h2{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .search-detail-main {
+        .top-heading {
+          h4{
+            font-size: 13px;
+            margin: 0;
+          }
+          p.cost-text{
+            font-size: 13px;
+            margin: 3px 0;
+            text-align: left;
           }
         }
       }
