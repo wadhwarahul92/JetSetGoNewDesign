@@ -212,6 +212,8 @@ Rails.application.routes.draw do
 
     resources :testimonials
 
+    resources :offers
+
   end
 
   resources :airports do

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li><%= link_to 'Add Offer', new_admin_offer_path, class: 'btn btn-primary' %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Id</th>
+        <th>Start date</th>
+        <th>End Date</th>
+        <th>Category</th>
+        <th></th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @offers.each do |offer| %>
+          <tr>
+            <td><%= offer.id %></td>
+            <td><%= offer.start_at.strftime(time_format) %></td>
+            <td><%= offer.end_at.strftime(time_format) %></td>
+            <td><%= offer.category %></td>
+            <td>
+              <%= image_tag offer.image.url(:small), style: "width:50px; height:50px" %>
+            </td>
+            <td>
+              <%= link_to edit_admin_offer_path(offer) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
