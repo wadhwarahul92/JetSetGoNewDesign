@@ -1,0 +1,63 @@
+<br><br><br><br><br><br>
+
+<div ng-controller="PastJourneysController as ctrl">
+  <div class="container">
+    <div class="col-sm-4">
+      <ul>
+        <li><a ng-href="profile">My Profile</a></li>
+        <li><a href="booked_jets">Booked jets</a></li>
+        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
+        <li><a href="past_journeys">Past journeys</a></li>
+        <li><a href="enquired_jets">Enquired jets</a></li>
+        <li><a href="empty_legs_offered">Empty legs Offered</a></li>
+        <li><a href="#">Alerts</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div class="heading text-center">
+        <h4><span class="heading">Past Journeys</span></h4>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Id</th>
+          <th>Aircraft name</th>
+          <th>Activities</th>
+          <th></th>
+          <!--<th>Total Cost</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="past_journey in ctrl.past_journeys">
+          <td>{{ past_journey.id }}</td>
+          <td>{{ past_journey.activities[0].aircraft.name }}</td>
+          <!--<td><%#= trip.activities.first.grand_total %></td>-->
+          <!--<td><%#= link_to 'Delete','#' %></td>-->
+          <td>
+            <table class="table table-striped" style="padding-left: 50px;">
+              <thead>
+              <tr class="info">
+                <th>departure</th>
+                <th>arrival</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="activity in past_journey.activities">
+                <td>{{ activity.departure_airport.name }}</td>
+                <td>{{ activity.arrival_airport.name }}</td>
+                <td>{{ activity.start_at }}</td>
+                <td>{{ activity.end_at }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td><a ng-href="#">View Details</a></td>
+        </tr>
+        <hr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
