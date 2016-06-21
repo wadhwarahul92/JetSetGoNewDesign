@@ -6,7 +6,9 @@ class CustomersController < ApplicationController
                                       :get_upcoming_journeys,
                                       :get_past_journeys,
                                       :get_enquired_jets,
-                                      :empty_legs_offered]
+                                      :empty_legs_offered,
+                                      :get_quoted_journeys,
+                                      :get_offers]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
@@ -41,6 +43,14 @@ class CustomersController < ApplicationController
 
   def get_enquired_jets
     @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
+  end
+
+  def get_quoted_journeys
+    @quotes = Trip.where(user_id: @customer.id, status: Trip::STATUS_QUOTED)
+  end
+
+  def get_offers
+    @offers = Offer.last(4)
   end
 
   private
