@@ -360,6 +360,9 @@ $main-skyblue-color : rgb(27,143,188);
         color: #3e3521;
         font-size: 20px;
         margin: 0;
+        .city-arrow-icon{
+          font-size: 22px;
+        }
       }
     }
     .departure-return-con{
@@ -415,7 +418,7 @@ $main-skyblue-color : rgb(27,143,188);
         margin: 0;
         li{
           list-style: none;
-          color: #2c2219;
+          color: #5d4b33;
           font-size: 16px;
           padding: 10px 5px;
         }
@@ -502,11 +505,13 @@ $main-skyblue-color : rgb(27,143,188);
         h4 {
           font-size: 16px;
           font-weight: bold;
+          color: #6f3700;
         }
         p.cost-text{
           font-size: 16px;
           text-align: right;
           margin: 7px 0;
+          color: #6f3700;
         }
       }
 
@@ -526,6 +531,9 @@ $main-skyblue-color : rgb(27,143,188);
               display: inline-block;
               background-color: #c5a749;
               text-decoration: none;
+              i.arrow-color{
+                color: #97671b;
+              }
             }
             a.active{
               background-color: #b0842e;
@@ -561,6 +569,38 @@ $main-skyblue-color : rgb(27,143,188);
             h3{
               font-size: 18px;
               margin: 10px 0;
+            }
+          }
+          .plans-main-con{
+            width: 100%;
+            .plan-option{
+              width: 100%;
+              ul{
+                padding: 0;
+                li{
+                  width: 50%;
+                  float: left;
+                  list-style: none;
+                  text-align: center;
+                  a{
+                    color: #ffffff;
+                    display: inline-block;
+                    padding: 10px;
+                  }
+                }
+              }
+            }
+            .plan-result-con{
+              .acomodation-con{
+                h3{
+                  font-size: 18px;
+                  margin: 10px 0;
+                }
+                p.airport-name{
+                  margin-bottom: 2px;
+                  text-align: center;
+                }
+              }
             }
           }
           .empty-leg-main{
@@ -621,6 +661,74 @@ $main-skyblue-color : rgb(27,143,188);
   }
 }
 
+@media (max-width: 990px) {
+  .bg-color {
+    .modify-search-con {
+      .city-con{
+        border-right: 0px;
+        border-bottom: 1px solid #d9cb74;
+        margin-bottom: 10px;
+      }
+      .departure-return-con{
+        border-right: 0px;
+        border-bottom: 1px solid #d9cb74;
+        margin-bottom: 10px;
+      }
+    }
+    .left-filter {
+      .aircraft-type-con {
+        ul {
+          li{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .right-search-images {
+      .search-detail-main {
+        .left-tabs{
+          ul{
+            li{
+              a{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+        .top-heading {
+          h4{
+            font-size: 14px;
+          }
+          p.cost-text{
+            font-size: 14px;
+          }
+        }
+        .right-tabs-content {
+          .tab-content-main {
+            .top-destination-con {
+              p{
+                font-size: 13px;
+              }
+            }
+            .charges-main-con {
+              h3{
+                font-size: 14px;
+              }
+            }
+          }
+          .total-main-con {
+            h3{
+              font-size: 14px;
+            }
+            h2{
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media (max-width: 767px) {
   .search-main-con{
     span.heading{
@@ -656,11 +764,28 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
   .bg-color{
+    .res-toogle-main{
+      a{
+        min-width: 130px;
+        font-size: 12px;
+      }
+    }
     .modify-search-con{
       display: none;
       margin: 0;
+      .departure-return-con {
+        .departure-con {
+          .date-con{
+            font-size: 22px;
+          }
+          .month-con{
+            font-size: 13px;
+          }
+        }
+      }
     }
     .left-filter{
+      margin: 0;
     }
     .search_active{
       display: block;
