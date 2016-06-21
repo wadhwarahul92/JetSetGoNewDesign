@@ -14,8 +14,6 @@
         <th>From Airport Id</th>
         <th>To Airport Id</th>
         <th>Distance In NM</th>
-        <th>Created By</th>
-        <th>Updated By</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -25,8 +23,6 @@
             <td><%= Airport.find(distance.from_airport_id).name %></td>
             <td><%= Airport.find(distance.to_airport_id).name  %></td>
             <td><%= distance.distance_in_nm %></td>
-            <td><%= distance.creator.full_name if distance.creator %></td>
-            <td><%= distance.last_updater.full_name if distance.last_updater %></td>
             <td>
               <%= link_to edit_admin_distance_path(distance) do %>
                   <i class="fa fa-edit"></i>
