@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615100457) do
+ActiveRecord::Schema.define(version: 20160620101223) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -141,8 +141,8 @@ ActiveRecord::Schema.define(version: 20160615100457) do
   create_table "airports", force: :cascade do |t|
     t.string   "name",                        limit: 255
     t.integer  "city_id",                     limit: 4
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.float    "longitude",                   limit: 24
     t.float    "latitude",                    limit: 24
     t.string   "code",                        limit: 255
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.float    "landing_cost",                limit: 24,  default: 0.0
     t.datetime "deleted_at"
     t.integer  "bais_time_in_minutes",        limit: 4,   default: 0
-    t.boolean  "atc"
+    t.boolean  "atc",                                     default: false
     t.integer  "airport_category_id",         limit: 4
   end
 
@@ -289,7 +289,6 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.text     "description", limit: 65535
     t.text     "source_url",  limit: 65535
     t.text     "image_url",   limit: 65535
-    t.date     "posted_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "deleted_at"
@@ -314,6 +313,18 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.datetime "end_at"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "category",           limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "organisation_documents", force: :cascade do |t|
@@ -454,6 +465,13 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.datetime "updated_at",                    null: false
   end
 
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text     "description",     limit: 65535
+    t.integer  "organisation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "testimonials", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "text",       limit: 65535
@@ -500,10 +518,6 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.string   "ios_app_devise_token",     limit: 255
     t.string   "android_app_devise_token", limit: 255
     t.boolean  "send_app_notifications",                 default: true
-    t.string   "avatar_file_name",         limit: 255
-    t.string   "avatar_content_type",      limit: 255
-    t.integer  "avatar_file_size",         limit: 4
-    t.datetime "avatar_updated_at"
     t.string   "image_file_name",          limit: 255
     t.string   "image_content_type",       limit: 255
     t.integer  "image_file_size",          limit: 4
@@ -512,6 +526,9 @@ ActiveRecord::Schema.define(version: 20160615100457) do
     t.boolean  "nsop"
     t.text     "business_detail",          limit: 65535
     t.integer  "manufacturer_id",          limit: 4
+    t.string   "gender",                   limit: 255
+    t.string   "nationality",              limit: 255
+    t.datetime "dob"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

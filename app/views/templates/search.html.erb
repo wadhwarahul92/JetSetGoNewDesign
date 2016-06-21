@@ -1,109 +1,320 @@
-<div class="container search-container" ng-hide="ctrl.loading">
-  <div class="col-sm-12 search-main-con">
-    <div class="row">
-      <div class="col-sm-8">
-        <span class="heading popup-heading tmp-after_" style="font-size: 45px; font-family: arial, sans-serif; color: #000000;">Choose Your Jet</span>
+<div class="bg-color">
+    <div class="container search-container" ng-hide="ctrl.loading">
+      <div class="res-toogle-main hidden-lg">
+        <div class="col-xs-6 text-right">
+          <a href="javascript:void(0)" ng-click="ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : ctrl.active_xs_search_bar}">Trip</a>
+        </div>
+        <div class="col-xs-6">
+          <a href="javascript:void(0)" ng-click="ctrl.active_xs_refine_search =! ctrl.active_xs_refine_search" ng-class="{'active' : ctrl.active_xs_refine_search}">Refine Your Search</a>
+        </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="col-sm-4">
-          <a class="search-btn pull-right" style="color: black; border: 2px solid black;padding: 10px 20px;margin-top: 15px;" href="/tmp_url?search_id={{ctrl.searchId}}">Modify Search</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12 search-input-box" style="border: none">
-    <div class="row" >
-      <!--<div class="col-md-10 col-sm-10 col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">-->
-      <div class="col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">
-        <div class="row">
-          <div class="col-md-3 col-sm-6 col-xs-12 c_disable">
-            <small ng-show="$index == 0" style="font-size: 70%">Departure</small>
-            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.departure_airport_id).name" type="text" id="departure_airport" placeholder="Departure Airport">
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12 c_disable">
-            <small ng-show="$index == 0" style="font-size: 70%">Arrival</small>
-            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.arrival_airport_id).name" type="text" id="arrival_airport" placeholder="Arrival Airport">
-          </div>
-          <div class="col-md-2 col-sm-6 col-xs-12 c_disable">
-            <small ng-show="$index == 0" style="font-size: 70%">Pax</small>
-            <input class="form-control search-input" style="border: 1px solid #000000;" ng-model="search_activity.pax" type="text" id="pax" placeholder="Pax">
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12 textfield-border c_disable" >
-            <small ng-show="$index == 0" style="font-size: 70%">Time</small>
-            <div class="form-control search-input custom-calander dropdown datetimepicker-holder" style="border: 1px solid #000000;">
-              <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)" style="color: #000000"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
-              <ul class="dropdown-menu" role="menu">
-                <datetimepicker
-                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
-                ng-model="activity.start_at">
-                </datetimepicker>
-              </ul>
+      <div class="col-sm-12"  ng-class="{'hidden-xs' : !ctrl.active_xs_search_bar}">
+        <div class="modify-search-con">
+          <div class="row">
+            <div class="col-sm-3 city-con">
+              <h6 class="small-heading">One Way</h6>
+              <h4 class="city-name">New Delhi to Mumbai</h4>
+            </div>
+            <div class="col-sm-4 departure-return-con">
+              <div class="row">
+                <div class="col-sm-6 departure-con">
+                  <h6 class="small-heading">Departure</h6>
+                  <span class="date-con">
+                    <i class="fa fa-calendar"></i> 23
+                  </span>
+                  <span class="month-con">JUN 16 <br/>THU</span>
+                </div>
+                <div class="col-sm-6 departure-con">
+                  <h6 class="small-heading">Return</h6>
+                  <span class="date-con">
+                    <i class="fa fa-calendar"></i> 23
+                  </span>
+                  <span class="month-con">JUN 16 <br/>THU</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 pax-con">
+              <h6 class="small-heading">Pax</h6>
+              <h4 class="Pax-text">01</h4>
+            </div>
+            <div class="col-sm-3 modify-btn-con text-right">
+              <input type="submit" value="+ Modify Search">
             </div>
           </div>
         </div>
       </div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-  <div class="col-xs-12">
-    <div class="row">
-      <div class="col-md-4 col-sm-6 col-xs-12 search-result-box padding-none margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
-        <p class="hidden" ng-init="ctrl.checkNotam(result)"></p>
-        <div class="custom-shadow">
-          <div class="col-sm-12 search-img-con" style="border: 1px solid lightgray; padding: 0">
-            <div class="text-center" style="background-color: rgba(53, 53, 53, 0.1);">
-              <img style="width: 250px; height: 250px;" ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">
-            </div>
-            <div class="black-layer-con">
-              <h4 class=""><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
-              <ul class="icon-box">
-                <li><span class="search-icon seat-icon" uib-tooltip="Seat - {{result.aircraft.seating_capacity}}"></span></li>
-                <li><span class="search-icon baggage-icon" uib-tooltip="Baggage - {{result.aircraft.baggage_capacity_in_kg}}kg"></span></li>
-                <!--<li><span class="search-icon watch-icon" uib-tooltip="{{ctrl.formateTime()}}"></span></li>-->
-                <li><span class="search-icon speed-icon" uib-tooltip="Speed - {{result.aircraft.cruise_speed_in_nm_per_hour}}kts"></span></li>
-                <li><span class="search-icon height-icon" uib-tooltip="Cabin Height - {{result.aircraft.cabin_height_in_meters}}meter"></span></li>
-                <li><span class="search-icon crew-icon" uib-tooltip="Crew - {{result.aircraft.crew}}"></span></li>
-                <div class="clearfix"></div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 left-filter" ng-class="{'hidden-xs' : !ctrl.active_xs_refine_search}">
+            <h2>+ Refine Your Search</h2>
+            <div class="aircraft-type-con">
+              <h3>Aircraft Type</h3>
+              <ul>
+                <li><input type="checkbox" /> Midsize Jet</li>
+                <li><input type="checkbox" /> Light Jet</li>
+                <li><input type="checkbox" /> Large Business Jet</li>
+                <li><input type="checkbox" /> Single Engine Turboprop</li>
+                <li><input type="checkbox" /> Twin Engine Turboprop</li>
               </ul>
             </div>
           </div>
-          <div class="col-sm-12" style="border: 1px solid lightgray; padding: 0">
-            <div class="col-md-8 col-sm-8 col-xs-8">
-              <h3>{{result.aircraft.aircraft_type.name}}</h3>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-              <h4 class="text-gray"><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <small>Estimated</small></h4>
-            </div>
-            <div class="col-md-8 col-sm-8 col-xs-8" ng-hide="result.is_notam">
-              <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result)">Details</a>
-              <span ng-hide="result.is_notam">
-                <a href="" class="custom-btn no-text-decoration" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
-                <span ng-show="result.enquired">Enquired</span>
-              </span>
-              <span ng-show="result.is_notam" style="color:red;">Can't enquire, because of Notam</span>
+          <div class="col-md-8 col-sm-8 right-search-images">
 
-              <!--<a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>-->
+            <div class="list-main" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+            <div class="list-con" ng-click="custom =! custom">
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/298/original/2-780x320.jpg?1466073908" alt="">
+              <div class="aircraft-name-con">
+                <div class="name-con pull-right">
+                  <h3>{{result.aircraft.aircraft_type.name}}</h3>
+                  <span class="aircraft-type">Single Engine Turboprop</span>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="estimate-price-con">
+                <p class="price-con pull-right">Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</p>
+                <div class="clearfix"></div>
+              </div>
+              <div class="bottom-strip-con">
+                <div class="col-sm-8"></div>
+                <div class="col-sm-4 text-right">
+                  <a href="" ng-click="ctrl.enquire(result)">Enquire</a>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 ">
 
+            <div class="search-detail-main" ng-show="custom">
+              <div class="row" ng-init="show=0">
+                <div class="col-xs-12 top-heading">
+                  <div class="heading-bg">
+                    <div class="col-sm-7">
+                      <h4>{{result.aircraft.aircraft_type.name}}</h4>
+                    </div>
+                    <div class="col-sm-5">
+                      <p class="cost-text">Cost per hour : <i class="fa fa-inr" aria-hidden="true"></i> 1,20,000</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="col-sm-3 left-tabs">
+                  <ul>
+                    <li><a ng-click="show=0" ng-class="{'active':show==0}" href="javascript:void(0)">Your Search <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+                    <li><a ng-click="show=1" ng-class="{'active':show==1}" href="javascript:void(0)">Empty Legs <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-9 right-tabs-content">
+                  <div class="tabs-bg">
+                    <div class="tab-content-main" ng-show="show==0">
+                      <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'user_search' }">
+                        <div class="top-destination-con">
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                              <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                              <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                              <p class="time-duration">{{flight_plan.flight_time}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                              <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                              <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                              <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="charges-main-con">
+                          <div class="col-xs-8">
+                            <h3>Flying Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.flight_cost | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Handling Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Landing Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-content-main" ng-show="show==1">
+                      <div ng-repeat="flight_plan in result.flight_plan | filter: {flight_type: 'empty_leg'}">
+                        <div class="empty-leg-main">
+                          <div class="col-sm-6">
+                            <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                            <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                            <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                          </div>
+                          <div class="col-sm-6">
+                            <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                            <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                            <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="charges-main-con">
+                          <div class="col-xs-8">
+                            <h3>Flying Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.flight_cost | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Handling Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="col-xs-8">
+                            <h3>Landing Charges</h3>
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="total-main-con light-border">
+                      <div class="col-xs-8">
+                        <h3>TOTAL</h3>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <h3><i class="fa fa-inr" aria-hidden="true"></i> 8,25,000</h3>
+                      </div>
+                      <div class="col-xs-8">
+                        <h3>Taxes & Administrative Charges</h3>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <h3>{{flight_plan.handling_cost_at_takeoff}}</h3>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="total-main-con">
+                      <div class="col-xs-8">
+                        <h2>GRAND TOTAL</h2>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <h2><i class="fa fa-inr" aria-hidden="true"></i> 8,25,000</h2>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="clearfix"></div>
+              </div>
           </div>
+          <!--<div class="col-sm-12 search-main-con">-->
+          <!--<div class="row">-->
+          <!--<div class="col-sm-8">-->
+          <!--<span class="heading popup-heading tmp-after_" style="font-size: 45px; font-family: arial, sans-serif; color: #000000;">Choose Your Jet</span>-->
+          <!--</div>-->
+          <!--<div class="col-sm-4">-->
+          <!--<a class="search-btn pull-right" style="color: black; border: 2px solid black;padding: 10px 20px;margin-top: 15px;" href="/tmp_url?search_id={{ctrl.searchId}}">Modify Search</a>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-xs-12 search-input-box" style="border: none">-->
+          <!--<div class="row" >-->
+          <!--&lt;!&ndash;<div class="col-md-10 col-sm-10 col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">&ndash;&gt;-->
+          <!--<div class="col-xs-12 modify-textfield-con" ng-repeat="search_activity in ctrl.search_activities">-->
+          <!--<div class="row">-->
+          <!--<div class="col-md-3 col-sm-6 col-xs-12 c_disable">-->
+          <!--<small ng-show="$index == 0" style="font-size: 70%">Departure</small>-->
+          <!--<input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.departure_airport_id).name" type="text" id="departure_airport" placeholder="Departure Airport">-->
+          <!--</div>-->
+          <!--<div class="col-md-3 col-sm-6 col-xs-12 c_disable">-->
+          <!--<small ng-show="$index == 0" style="font-size: 70%">Arrival</small>-->
+          <!--<input class="form-control search-input" style="border: 1px solid #000000;" ng-model="ctrl.airportForId(search_activity.arrival_airport_id).name" type="text" id="arrival_airport" placeholder="Arrival Airport">-->
+          <!--</div>-->
+          <!--<div class="col-md-2 col-sm-6 col-xs-12 c_disable">-->
+          <!--<small ng-show="$index == 0" style="font-size: 70%">Pax</small>-->
+          <!--<input class="form-control search-input" style="border: 1px solid #000000;" ng-model="search_activity.pax" type="text" id="pax" placeholder="Pax">-->
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-6 col-xs-12 textfield-border c_disable" >-->
+          <!--<small ng-show="$index == 0" style="font-size: 70%">Time</small>-->
+          <!--<div class="form-control search-input custom-calander dropdown datetimepicker-holder" style="border: 1px solid #000000;">-->
+          <!--<a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)" style="color: #000000"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>-->
+          <!--<ul class="dropdown-menu" role="menu">-->
+          <!--<datetimepicker-->
+          <!--data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"-->
+          <!--data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"-->
+          <!--datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"-->
+          <!--ng-model="activity.start_at">-->
+          <!--</datetimepicker>-->
+          <!--</ul>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="clearfix"></div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-6 col-xs-12 search-result-box padding-none margin-top" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">-->
+            <!--<p class="hidden" ng-init="ctrl.checkNotam(result)"></p>-->
+            <!--<div class="custom-shadow">-->
+              <!--<div class="col-sm-12 search-img-con" style="border: 1px solid lightgray; padding: 0">-->
+                <!--<div class="text-center" style="background-color: rgba(53, 53, 53, 0.1);">-->
+                  <!--<img style="width: 250px; height: 250px;" ng-src="{{result.aircraft.aircraft_images[0].url}}" src="" alt="">-->
+                <!--</div>-->
+                <!--<div class="black-layer-con">-->
+                  <!--<h4 class=""><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>-->
+                  <!--<ul class="icon-box">-->
+                    <!--<li><span class="search-icon seat-icon" uib-tooltip="Seat - {{result.aircraft.seating_capacity}}"></span></li>-->
+                    <!--<li><span class="search-icon baggage-icon" uib-tooltip="Baggage - {{result.aircraft.baggage_capacity_in_kg}}kg"></span></li>-->
+                    <!--&lt;!&ndash;<li><span class="search-icon watch-icon" uib-tooltip="{{ctrl.formateTime()}}"></span></li>&ndash;&gt;-->
+                    <!--<li><span class="search-icon speed-icon" uib-tooltip="Speed - {{result.aircraft.cruise_speed_in_nm_per_hour}}kts"></span></li>-->
+                    <!--<li><span class="search-icon height-icon" uib-tooltip="Cabin Height - {{result.aircraft.cabin_height_in_meters}}meter"></span></li>-->
+                    <!--<li><span class="search-icon crew-icon" uib-tooltip="Crew - {{result.aircraft.crew}}"></span></li>-->
+                    <!--<div class="clearfix"></div>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col-sm-12" style="border: 1px solid lightgray; padding: 0">-->
+                <!--<div class="col-md-8 col-sm-8 col-xs-8">-->
+                  <!--<h3>{{result.aircraft.aircraft_type.name}}</h3>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4 col-xs-4 text-right">-->
+                  <!--<h4 class="text-gray"><i class="fa fa-rupee"></i> {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <small>Estimated</small></h4>-->
+                <!--</div>-->
+                <!--<div class="col-md-8 col-sm-8 col-xs-8" ng-hide="result.is_notam">-->
+                  <!--<a href="" class="no-text-decoration custom-btn" ng-click="ctrl.modalDetail(result)">Details</a>-->
+                  <!--<span ng-hide="result.is_notam">-->
+                    <!--<a href="" class="custom-btn no-text-decoration" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>-->
+                    <!--<span ng-show="result.enquired">Enquired</span>-->
+                  <!--</span>-->
+                  <!--<span ng-show="result.is_notam" style="color:red;">Can't enquire, because of Notam</span>-->
+
+                  <!--&lt;!&ndash;<a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4 col-xs-4 ">-->
+
+                <!--</div>-->
+                <!--<div class="clearfix"></div>-->
+              <!--</div>-->
+              <!--<div class="clearfix"></div>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="clearfix"></div>
         </div>
+        <div ng-show="ctrl.results.length == 0">
+          <h3 class="text-center">Oops! we don't have any aircrafts available matching your query.</h3>
+        </div>
       </div>
-      <div class="clearfix"></div>
     </div>
-    <div ng-show="ctrl.results.length == 0">
-      <h3 class="text-center">Oops! we don't have any aircrafts available matching your query.</h3>
+    <div ng-show="ctrl.loading">
+      <h1 class="text-center" style="padding-top: 200px; padding-bottom: 200px">
+        <!--<i class="fa fa-gear fa-spin"></i> -->
+        Loading...</h1>
     </div>
-  </div>
-</div>
-<div ng-show="ctrl.loading">
-  <h1 class="text-center" style="padding-top: 200px; padding-bottom: 200px">
-    <!--<i class="fa fa-gear fa-spin"></i> -->
-    Loading...</h1>
 </div>

@@ -21,7 +21,7 @@
       <% @watch_hours.each do |watch_hour| %>
           <tr>
             <td><%= watch_hour.id %></td>
-            <td><%= watch_hour.airport.name %></td>
+            <td><%= watch_hour.airport.name if watch_hour.airport.present? %></td>
             <td><%= watch_hour.start_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td><%= watch_hour.end_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td>

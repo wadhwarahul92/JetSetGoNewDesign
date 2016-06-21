@@ -1,6 +1,14 @@
 class CustomersController < ApplicationController
 
-  before_action :set_customer, only: [:update_image, :update_profile]
+  before_action :set_customer, only: [:update_image,
+                                      :update_profile,
+                                      :get_booked_jets,
+                                      :get_upcoming_journeys,
+                                      :get_past_journeys,
+                                      :get_enquired_jets,
+                                      :empty_legs_offered,
+                                      :get_quoted_journeys,
+                                      :get_offers]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
@@ -18,10 +26,53 @@ class CustomersController < ApplicationController
     end
   end
 
+  def get_booked_jets
+    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+  end
+
+  def get_upcoming_journeys
+    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    if @trips.present?
+      @trips = get_upcoming_trips(@trips)
+    end
+  end
+
+  def get_past_journeys
+    @trips = get_past_trips(Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED))
+  end
+
+  def get_enquired_jets
+    @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
+  end
+
+  def get_quoted_journeys
+    @quotes = Trip.where(user_id: @customer.id, status: Trip::STATUS_QUOTED)
+  end
+
+  def get_offers
+    @offers = Offer.last(4)
+  end
+
   private
 
   def set_customer
     @customer = current_user
+  end
+
+  def get_past_trips(trips)
+    ids = []
+    trips.each do |trip|
+      trip.activities.where("end_at < ?", DateTime.now).map{ |t| ids << t.trip_id }
+    end
+    trips.where(id: ids.uniq)
+  end
+
+  def get_upcoming_trips(trips)
+    ids = []
+    trips.each do |trip|
+      trip.activities.where("start_at > ?", DateTime.now).map{ |t| ids << t.trip_id }
+    end
+    trips.where(id: ids.uniq)
   end
 
 end
