@@ -76,7 +76,15 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="bottom-strip-con">
-                  <div class="col-sm-8"></div>
+                  <div class="col-sm-8">
+                    <ul>
+                      <li><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/316/original/baggage.png?1466582622" alt=""></li>
+                      <li><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/318/original/speedometer.png?1466582662" alt=""></li>
+                      <li><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/320/original/seat2.png?1466582808" alt=""></li>
+                      <div class="clearfix"></div>
+                    </ul>
+
+                  </div>
                   <div class="col-sm-4 text-right">
                     <a href="" ng-click="ctrl.enquire(result)">Enquire</a>
                   </div>
@@ -87,6 +95,9 @@
                 <div class="row" ng-init="show=0">
                   <div class="col-xs-12 top-heading">
                     <div class="heading-bg">
+                      <div class="arrow-top">
+                        <img class="triengle-icon" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/315/original/triangle.png?1466574062" alt="">
+                      </div>
                       <div class="col-sm-7 col-xs-12">
                         <h4>{{result.aircraft.aircraft_type.name}}</h4>
                       </div>
@@ -153,70 +164,6 @@
                               <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
                             </div>
                             <div class="clearfix"></div>
-                          </div>
-                          <div class="plans-main-con" ng-init="show=1">
-                            <div class="plan-option">
-                              <ul>
-                                <li><a href="#" ng-click="show=0">Accommodation plan</a></li>
-                                <li><a href="#" ng-click="show=1">Empty leg plan</a></li>
-                                <div class="clearfix"></div>
-                              </ul>
-                            </div>
-                            <div class="plan-result-con">
-                              <div class="acomodation-con" ng-show="show==0">
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Accommodation At:</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3>sdsd</h3>
-                                </div>
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Cost:</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3><i class="fa fa-inr" aria-hidden="true"></i> 30,000.00</h3>
-                                </div>
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Night:</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3>1</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                              </div>
-                              <div class="acomodation-con" ng-show="show==1">
-                                <div class="col-xs-6">
-                                  <p class="airport-name">Mundra Airport</p>
-                                  <p class="airport-name">24th Jun 2016, 3:09 PM</p>
-                                </div>
-                                <div class="col-xs-6">
-                                  <p class="airport-name">Indira Gandhi International Airport</p>
-                                  <p class="airport-name">24th Jun 2016, 5:08 PM</p>
-                                </div>
-                                <div class="col-xs-12">
-                                  <p>01:58:44</p>
-                                </div>
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Flight cost</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3><i class="fa fa-inr" aria-hidden="true"></i> 2,55,666.67</h3>
-                                </div>
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Handling cost</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3><i class="fa fa-inr" aria-hidden="true"></i> 30,000.00</h3>
-                                </div>
-                                <div class="col-sm-8 col-xs-7">
-                                  <h3>Landing cost</h3>
-                                </div>
-                                <div class="col-sm-4 col-xs-5 text-right">
-                                  <h3><i class="fa fa-inr" aria-hidden="true"></i> 10,700.00</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
