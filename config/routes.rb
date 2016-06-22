@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get 'get_quoted_journeys'
       get 'get_offers'
       post 'create_passengers'
+      put 'catering'
     end
   end
 
@@ -391,7 +392,7 @@ Rails.application.routes.draw do
   get 'past_journeys' => 'route_overrides#welcome_index'
   get 'enquired_jets' => 'route_overrides#welcome_index'
   get 'empty_legs_offered' => 'route_overrides#welcome_index'
-  get 'passenger_details' => 'route_overrides#welcome_index'
+  get 'passenger_details/:id' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'

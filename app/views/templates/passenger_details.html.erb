@@ -10,7 +10,7 @@
         <li><a href="past_journeys">Past journeys</a></li>
         <li><a href="enquired_jets">Enquired jets</a></li>
         <li><a href="empty_legs_offered">Empty legs Offered</a></li>
-        <li><a href="#">Alerts</a></li>
+        <li><a href="">Alerts</a></li>
       </ul>
     </div>
     <div class="col-sm-8">
@@ -18,19 +18,21 @@
         <h4><span class="heading">Passenger Details</span></h4>
       </div>
 
-      <div class="col sm-12" ng-repeat="passenger_detail in ctrl.passenger_details_">
-        <div class="col-sm-6"><strong>name:</strong> <input type="text" ng-model="passenger_detail.name"></div>
-        <div class="col-sm-6"><strong>age:</strong> <input type="text" ng-model="passenger_detail.age"></div>
-        <div class="col-sm-6"><strong>email:</strong> <input type="text" ng-model="passenger_detail.email"></div>
-        <div class="col-sm-6"><strong>gender:</strong> <input type="text" ng-model="passenger_detail.gender"></div>
-        <div class="col-sm-6"><strong>contact:</strong> <input type="text" ng-model="passenger_detail.contact"></div>
-        <div class="col-sm-6"><span class="btn btn-primary" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-minus" aria-hidden="true"></i>Remove</span></div>
+      <div ng-show="bar_visible">
+        <div class="col sm-12" ng-repeat="passenger_detail in ctrl.passenger_details_">
+          <div class="col-sm-6"><strong>name:</strong> <input type="text" ng-model="passenger_detail.name"></div>
+          <div class="col-sm-6"><strong>age:</strong> <input type="text" ng-model="passenger_detail.age"></div>
+          <div class="col-sm-6"><strong>email:</strong> <input type="text" ng-model="passenger_detail.email"></div>
+          <div class="col-sm-6"><strong>gender:</strong>
+            <input type="radio" ng-model="passenger_detail.gender" value="male"> male
+            <input type="radio" ng-model="passenger_detail.gender" value="female"> female
+          </div>
+          <div class="col-sm-6"><strong>contact:</strong> <input type="text" ng-model="passenger_detail.contact"></div>
+          <div class="col-sm-6"><span class="btn btn-primary" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-minus" aria-hidden="true"></i> Remove</span></div>
+        </div>
+        <div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>
+        <div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>
       </div>
-      <span class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</span>
-      <span class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i>Add</span>
-
-
-
       <table class="table table-striped">
         <thead>
         <tr class="info">
@@ -39,7 +41,7 @@
           <th>Gender</th>
           <th>Email</th>
           <th>Contact</th>
-          <th><a ng-href="#">Add passenger</a></th>
+          <th><a ng-href="" ng-click="bar_visible = true">Add passenger details</a></th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +51,28 @@
           <td>{{ passenger_detail.gender }}</td>
           <td>{{ passenger_detail.email }}</td>
           <td>{{ passenger_detail.contact }}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+      <div ng-show="catering_visible">
+        <div class="col-sm-6">
+          Catering: <input type="text" ng-model="ctrl.catering">
+        </div>
+        <div class="col-sm-6">
+          <span class="btn btn-primary" ng-click="ctrl.create_catering()">save</span>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Catering</th>
+          <th><a ng-href="" ng-click="catering_visible = true">Add/Edit caterings</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ ctrl.trip.catering }}</td>
           <td></td>
         </tr>
         </tbody>

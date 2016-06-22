@@ -79,6 +79,15 @@ class CustomersController < ApplicationController
     end
   end
 
+  def catering
+    @trip = Trip.find params[:trip_id]
+    if @trip.update_attributes(catering: params[:catering])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages.first }
+    end
+  end
+
   private
 
   def set_customer

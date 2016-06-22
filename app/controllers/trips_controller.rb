@@ -99,6 +99,10 @@ class TripsController < ApplicationController
     ).order('updated_at DESC').includes(:activities)
   end
 
+  def show
+    @trip = Trip.find params[:id]
+  end
+
   private
 
   def set_aircraft_and_organisation
