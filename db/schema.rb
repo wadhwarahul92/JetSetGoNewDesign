@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620101223) do
+ActiveRecord::Schema.define(version: 20160622063805) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -349,6 +349,17 @@ ActiveRecord::Schema.define(version: 20160620101223) do
     t.datetime "image_updated_at"
   end
 
+  create_table "passenger_details", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "gender",     limit: 255
+    t.string   "contact",    limit: 255
+    t.string   "age",        limit: 255
+    t.string   "email",      limit: 255
+    t.integer  "trip_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "payment_transactions", force: :cascade do |t|
     t.integer  "contact_id",         limit: 4
     t.string   "status",             limit: 255,   default: "pending"
@@ -483,13 +494,14 @@ ActiveRecord::Schema.define(version: 20160620101223) do
   create_table "trips", force: :cascade do |t|
     t.integer  "organisation_id",        limit: 4
     t.string   "status",                 limit: 255
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.integer  "user_id",                limit: 4
     t.integer  "payment_transaction_id", limit: 4
     t.datetime "deleted_at"
-    t.string   "payment_status",         limit: 255, default: "unpaid"
-    t.float    "amount_paid",            limit: 24,  default: 0.0
+    t.string   "payment_status",         limit: 255,   default: "unpaid"
+    t.float    "amount_paid",            limit: 24,    default: 0.0
+    t.text     "catering",               limit: 65535
   end
 
   create_table "users", force: :cascade do |t|

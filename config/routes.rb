@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get 'get_enquired_jets'
       get 'get_quoted_journeys'
       get 'get_offers'
+      post 'create_passengers'
     end
   end
 
@@ -229,6 +230,9 @@ Rails.application.routes.draw do
       post 'enquire'
       get 'get_quotes'
     end
+    member do
+      get 'get_passenger_datails'
+    end
   end
 
   resources :cities
@@ -297,9 +301,12 @@ Rails.application.routes.draw do
   delete 'sign_out_' => 'welcome#sign_out_'
 
   post 'sign_up_' => 'welcome#sign_up_'
+
   post 'create_contact' => 'welcome#create_contact'
 
   post 'forgot_password_' => 'welcome#forgot_password_'
+
+  get 'get_passenger_datails/:id' => 'welcome#get_passenger_datails'
 
   resources :templates do
     collection do
@@ -330,6 +337,7 @@ Rails.application.routes.draw do
       get 'past_journeys'
       get 'enquired_jets'
       get 'empty_legs_offered'
+      get 'passenger_details'
     end
   end
 
@@ -383,6 +391,7 @@ Rails.application.routes.draw do
   get 'past_journeys' => 'route_overrides#welcome_index'
   get 'enquired_jets' => 'route_overrides#welcome_index'
   get 'empty_legs_offered' => 'route_overrides#welcome_index'
+  get 'passenger_details' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'

@@ -12,6 +12,8 @@ class Trip < ActiveRecord::Base
 
   has_many :activities
 
+  has_many :passenger_details
+
   STATUS_QUOTED = 'quoted'
 
   STATUS_ENQUIRY = 'enquiry'

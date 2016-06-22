@@ -110,6 +110,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/empty_legs_offered'
     controller: 'EmptyLegsOfferedController'
     controllerAs: 'ctrl'
+  }).when('/passenger_details', {
+    templateUrl: '/templates/passenger_details'
+    controller: 'PassengerDetailsController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)

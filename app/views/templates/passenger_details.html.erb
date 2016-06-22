@@ -1,0 +1,58 @@
+<br><br><br><br><br><br>
+
+<div ng-controller="PassengerDetailsController as ctrl">
+  <div class="container">
+    <div class="col-sm-4">
+      <ul>
+        <li><a ng-href="profile">My Profile</a></li>
+        <li><a href="booked_jets">Booked jets</a></li>
+        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
+        <li><a href="past_journeys">Past journeys</a></li>
+        <li><a href="enquired_jets">Enquired jets</a></li>
+        <li><a href="empty_legs_offered">Empty legs Offered</a></li>
+        <li><a href="#">Alerts</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div class="heading text-center">
+        <h4><span class="heading">Passenger Details</span></h4>
+      </div>
+
+      <div class="col sm-12" ng-repeat="passenger_detail in ctrl.passenger_details_">
+        <div class="col-sm-6"><strong>name:</strong> <input type="text" ng-model="passenger_detail.name"></div>
+        <div class="col-sm-6"><strong>age:</strong> <input type="text" ng-model="passenger_detail.age"></div>
+        <div class="col-sm-6"><strong>email:</strong> <input type="text" ng-model="passenger_detail.email"></div>
+        <div class="col-sm-6"><strong>gender:</strong> <input type="text" ng-model="passenger_detail.gender"></div>
+        <div class="col-sm-6"><strong>contact:</strong> <input type="text" ng-model="passenger_detail.contact"></div>
+        <div class="col-sm-6"><span class="btn btn-primary" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-minus" aria-hidden="true"></i>Remove</span></div>
+      </div>
+      <span class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</span>
+      <span class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i>Add</span>
+
+
+
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th><a ng-href="#">Add passenger</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="passenger_detail in ctrl.passenger_details">
+          <td>{{ passenger_detail.name }}</td>
+          <td>{{ passenger_detail.age }}</td>
+          <td>{{ passenger_detail.gender }}</td>
+          <td>{{ passenger_detail.email }}</td>
+          <td>{{ passenger_detail.contact }}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
