@@ -13,20 +13,5 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', ($http, noti
       )
   )
 
-  @set_sell_empty_leg = (booked_jet)->
-    $http.put('customers/set_sell_empty_leg.json',{trip_id: booked_jet.id, sell_empty_leg: booked_jet.sell_empty_leg}).success(
-      ->
-        notify(
-          message: 'successfully saved.'
-        )
-    ).error(
-      (data)=>
-        notify(
-          massege: data.errors[0]
-          classes: ['alert-danger']
-        )
-
-    )
-
   return undefined
 ]
