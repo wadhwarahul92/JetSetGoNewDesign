@@ -43,6 +43,7 @@
 //= require ./application/past_journeys_controller
 //= require ./application/enquired_jets_controller
 //= require ./application/empty_legs_offered_controller
+//= require ./application/passenger_details_controller
 //= require ./vendors/date
 //= require ./services/base
 //= require ./services/cost_break_ups_service
