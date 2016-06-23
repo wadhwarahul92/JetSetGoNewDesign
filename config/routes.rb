@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'get_offers'
       post 'create_passengers'
       put 'catering'
+      put 'set_sell_empty_leg'
     end
   end
 
