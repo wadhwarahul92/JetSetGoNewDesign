@@ -87,7 +87,7 @@ class CustomersController < ApplicationController
     if @trip.update_attributes(catering: params[:catering])
       render status: :ok, nothing: true
     else
-      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages.first }
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
     end
   end
 
@@ -96,7 +96,7 @@ class CustomersController < ApplicationController
     if @trip.update_attributes(sell_empty_leg: params[:sell_empty_leg])
       render status: :ok, nothing: true
     else
-      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages.first }
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
     end
   end
 
@@ -104,7 +104,7 @@ class CustomersController < ApplicationController
     if @customer.update_attributes(password: params[:password])
       render status: :ok, nothing: true
     else
-      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages.first }
+      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
     end
   end
 

@@ -75,8 +75,9 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
         location.replace('tmp_url')
     ).error(
       (data)=>
+        debugger
         notify(
-          massege: data.error[0]
+          message: data.errors[0]
           classes: ['alert-danger']
         )
     )
