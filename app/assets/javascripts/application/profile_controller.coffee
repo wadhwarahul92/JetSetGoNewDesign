@@ -6,6 +6,10 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
 
   @btn_show = false
 
+  @active_pwd = false
+
+  @password = ''
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -28,7 +32,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
     return unless files[0]
     $upload.upload(
       file: files[0]
-      url: "/customers/update_image.json"
+      url: 'customers/update_image.json'
       method: "put"
     ).success(
       (data)=>
@@ -46,7 +50,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
     return undefined
 
   @update_profile = ->
-    $http.put("/customers/update_profile.json", @currentUser).success(
+    $http.put('customers/update_profile.json', @currentUser).success(
       =>
         notify(
           message: 'Successfully saved.'
@@ -60,6 +64,21 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
         )
         @upd_profile = true
         @btn_show = true
+    )
+
+  @change_password = ->
+    $http.put('customers/change_password_', { password: @password }).success(
+      =>
+        notify(
+          message: 'Successfully saved. Please login again.'
+        )
+        location.replace('tmp_url')
+    ).error(
+      (data)=>
+        notify(
+          massege: data.error[0]
+          classes: ['alert-danger']
+        )
     )
 
   return undefined

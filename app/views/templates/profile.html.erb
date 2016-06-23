@@ -62,6 +62,15 @@
                     <p class="col-sm-8 profile-text-detail txt-capitalize">{{ctrl.currentUser.designation}}</p>
                   </div>
                 </div>
+                <a href="" ng-hide="ctrl.active_pwd" ng-click="ctrl.active_pwd = true">change password?</a>
+
+                <div class="text-main" ng-show="ctrl.active_pwd">
+                  <div class="row">
+                    <p class="col-sm-4 profile-text">New Password:</p>
+                    <p class="col-sm-8 profile-text-detail "><input type="text" ng-model="ctrl.password"><i class="fa fa-check" ng-click="ctrl.active_pwd = !ctrl.active_pwd; ctrl.change_password()"></i></p>
+                  </div>
+                </div>
+
                 <div class="text-main" ng-show="ctrl.upd_profile || ctrl.btn_show">
                   <div class="row">
                     <p class="col-sm-12 profile-text">

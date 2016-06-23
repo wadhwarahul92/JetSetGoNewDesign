@@ -8,7 +8,10 @@ class CustomersController < ApplicationController
                                       :get_enquired_jets,
                                       :empty_legs_offered,
                                       :get_quoted_journeys,
-                                      :get_offers]
+                                      :get_offers,
+                                      :catering,
+                                      :set_sell_empty_leg,
+                                      :change_password_]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
@@ -57,10 +60,10 @@ class CustomersController < ApplicationController
     @passenger_details = []
     params[:passenger_details].each do |passenger_detail|
       @passenger_details << PassengerDetail.new(passenger_detail.permit(:name,
-                                                          :email,
-                                                          :age,
-                                                          :contact,:trip_id,
-                                                          :gender))
+                                                                        :email,
+                                                                        :age,
+                                                                        :contact,:trip_id,
+                                                                        :gender))
     end
 
     @error = nil
@@ -80,7 +83,7 @@ class CustomersController < ApplicationController
   end
 
   def catering
-    @trip = Trip.find params[:trip_id]
+    @trip = @customer.trips.find params[:trip_id]
     if @trip.update_attributes(catering: params[:catering])
       render status: :ok, nothing: true
     else
@@ -89,11 +92,19 @@ class CustomersController < ApplicationController
   end
 
   def set_sell_empty_leg
-    @trip = current_user.trips.find params[:trip_id]
+    @trip = @customer.trips.find params[:trip_id]
     if @trip.update_attributes(sell_empty_leg: params[:sell_empty_leg])
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages.first }
+    end
+  end
+
+  def change_password_
+    if @customer.update_attributes(password: params[:password])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages.first }
     end
   end
 
