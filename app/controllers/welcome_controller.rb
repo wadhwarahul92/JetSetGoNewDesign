@@ -113,7 +113,7 @@ class WelcomeController < ApplicationController
   end
 
   def get_passenger_datails
-    @trip = Trip.find params[:id]
+    @trip = current_user.trips.find params[:id]
     @passenger_details = @trip.passenger_details
   end
 
