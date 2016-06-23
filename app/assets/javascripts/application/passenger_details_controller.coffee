@@ -32,7 +32,7 @@ jetsetgo_app.controller 'PassengerDetailsController', ['$http', 'notify', '$rout
   )
 
   @create_passenger_detail = ->
-#    return unless @validatedPassengerDetails()
+    return unless @validatedPassengerDetails()
     _passenger_details = []
     for passenger_detail in @passenger_details_
       _passenger_details.push({
@@ -66,7 +66,7 @@ jetsetgo_app.controller 'PassengerDetailsController', ['$http', 'notify', '$rout
       @passenger_details_.splice index, 1
 
   @validatedPassengerDetails = ->
-    for passenger_detail in @passenger_details
+    for passenger_detail in @passenger_details_
       unless passenger_detail.name
         notify
           message: 'Name cannot be blank.'
