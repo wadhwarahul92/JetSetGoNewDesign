@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'get_offers'
       post 'create_passengers'
       put 'catering'
+      put 'set_sell_empty_leg'
     end
   end
 
@@ -339,6 +340,7 @@ Rails.application.routes.draw do
       get 'enquired_jets'
       get 'empty_legs_offered'
       get 'passenger_details'
+      get 'detail'
     end
   end
 
@@ -393,6 +395,7 @@ Rails.application.routes.draw do
   get 'enquired_jets' => 'route_overrides#welcome_index'
   get 'empty_legs_offered' => 'route_overrides#welcome_index'
   get 'passenger_details/:id' => 'route_overrides#welcome_index'
+  get 'detail/:id' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'

@@ -1,0 +1,47 @@
+<br><br><br><br><br><br>
+
+<div ng-controller="DetailController as ctrl">
+  <div class="container">
+    <div class="col-sm-4">
+      <ul>
+        <li><a ng-href="profile">My Profile</a></li>
+        <li><a href="booked_jets">Booked jets</a></li>
+        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
+        <li><a href="past_journeys">Past journeys</a></li>
+        <li><a href="enquired_jets">Enquired jets</a></li>
+        <li><a href="empty_legs_offered">Empty legs Offered</a></li>
+        <li><a href="/quotes">Trip Quotes</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div class="heading text-center">
+        <h4><span class="heading">Trip #{{ctrl.trip.id}}</span></h4>
+      </div>
+      <p>Activities</p>
+      <div class="col-sm-12" ng-hide="ctrl.trip.sell_empty_leg">
+        <span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Departure Airport</th>
+          <th>Arrival Airport</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="activity in ctrl.trip.activities">
+          <td>{{ activity.departure_airport.name }}</td>
+          <td>{{ activity.arrival_airport.name }}</td>
+          <td>{{ activity.start_at }}</td>
+          <td>{{ activity.end_at }}</td>
+          <td></td>
+        </tr>
+        <hr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

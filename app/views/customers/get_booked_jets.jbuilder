@@ -4,6 +4,7 @@ json.array! @trips do |trip|
   json.status trip.status
   json.payment_status trip.payment_status
   json.amount_paid trip.amount_paid
+  json.sell_empty_leg trip.sell_empty_leg
 
   json.activities{
     json.array! trip.activities do |activity|

@@ -88,6 +88,15 @@ class CustomersController < ApplicationController
     end
   end
 
+  def set_sell_empty_leg
+    @trip = current_user.trips.find params[:trip_id]
+    if @trip.update_attributes(sell_empty_leg: params[:sell_empty_leg])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages.first }
+    end
+  end
+
   private
 
   def set_customer
