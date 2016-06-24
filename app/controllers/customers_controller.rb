@@ -53,7 +53,7 @@ class CustomersController < ApplicationController
   end
 
   def get_offers
-    @offers = Offer.last(4)
+    @offers = Offer.where("end_at > ?", DateTime.now).last(4)
   end
 
   def create_passengers
