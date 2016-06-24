@@ -324,7 +324,7 @@ $main-skyblue-color : rgb(27,143,188);
 //fdf2ac changes Rahul 16-6-2016
 
 .bg-color{
-  background-color: #d9cb74;
+  background-color: #dac39c;
   .res-toogle-main{
     margin: 90px 0 20px 0;
     a{
@@ -342,12 +342,15 @@ $main-skyblue-color : rgb(27,143,188);
       background-color: #b0842e;
     }
   }
+  .top-space{
+    margin-top: 90px;
+  }
   .modify-search-con{
-    background-color: #ffffff;
+    background-color: #ffeecf;
     border:1px solid #bb9f46;
     padding: 15px;
     display: block !important;
-    margin-top: 90px;
+    margin-bottom: 15px;
     .small-heading{
       text-transform: uppercase;
       margin: 0 0 10px 0;
@@ -355,9 +358,9 @@ $main-skyblue-color : rgb(27,143,188);
     }
     .city-con{
       border-right: 1px solid #d9cb74;
-      min-height: 70px;
+      min-height: 55px;
       .city-name{
-        color: #3e3521;
+        color: #68330f;
         font-size: 20px;
         margin: 0;
         .city-arrow-icon{
@@ -367,14 +370,17 @@ $main-skyblue-color : rgb(27,143,188);
     }
     .departure-return-con{
       border-right: 1px solid #d9cb74;
-      min-height: 70px;
+      min-height: 55px;
       .departure-con{
         .date-con{
-          color: #3e3521;
-          font-size: 25px;
+          color: #68330f;
+          font-size: 20px;
           margin: 0;
           display: inline-block;
           float: left;
+        }
+        .no-date{
+          color: #bfb096;
         }
         .month-con{
           font-size: 14px;
@@ -386,7 +392,7 @@ $main-skyblue-color : rgb(27,143,188);
     }
     .pax-con{
       .Pax-text{
-        color: #3e3521;
+        color: #68330f;
         font-size: 20px;
         margin: 0;
       }
@@ -399,18 +405,20 @@ $main-skyblue-color : rgb(27,143,188);
     margin: 25px 0 15px 0;
     display: block;
     h2{
-      background-color: #d1b069;
+      background-color: #b28733;
       padding: 15px 10px;
-      font-size: 16px;
+      font-size: 17px;
       margin: 0;
       font-weight: bold;
+      color: #ffffff;
+      border-bottom: 10px solid #9a6216;
     }
     .aircraft-type-con{
       padding: 15px 10px;
-      background-color: #e7c676;
+      background-color: #f9eedb;
       h3{
         font-size: 16px;
-        color: #2c2219;
+        color: #68330f;
         margin: 0;
       }
       ul{
@@ -418,7 +426,7 @@ $main-skyblue-color : rgb(27,143,188);
         margin: 0;
         li{
           list-style: none;
-          color: #5d4b33;
+          color: #68330f;
           font-size: 16px;
           padding: 10px 5px;
         }
@@ -427,6 +435,21 @@ $main-skyblue-color : rgb(27,143,188);
   }
   .right-search-images{
     margin: 25px 0 15px 0;
+    .result-main-con{
+      width: 100%;
+      .result-heading{
+        background-color: #b28733;
+        border-bottom: 10px solid #9a6216;
+        margin-bottom: 20px;
+        h2{
+          font-size: 17px;
+          font-weight: bold;
+          color: #ffffff;
+          margin: 0;
+          padding: 15px 0;
+        }
+      }
+    }
     .list-main{
       margin-bottom: 50px;
     }
@@ -447,10 +470,10 @@ $main-skyblue-color : rgb(27,143,188);
         top: 0;
         .name-con{
           background-color: rgba(255,255,255,0.6);
-          width: 400px;
+          width: 450px;
           padding: 15px 10px 15px 10px;
           h3{
-            font-size: 27px;
+            font-size: 25px;
             color: #000;
             margin: 0;
             font-weight: bold;
@@ -492,9 +515,9 @@ $main-skyblue-color : rgb(27,143,188);
       }
     }
     .list-con:hover{
-      -webkit-box-shadow: 0px 0px 15px 0px rgba(209, 176, 105, 0.7);
-      -moz-box-shadow:    0px 0px 15px 0px rgba(209, 176, 105, 0.7);
-      box-shadow:         0px 0px 15px 0px rgba(209, 176, 105, 0.7);
+      -webkit-box-shadow: 0px 0px 15px 0px rgba(154,98,22,1);
+      -moz-box-shadow: 0px 0px 15px 0px rgba(154,98,22,1);
+      box-shadow: 0px 0px 15px 0px rgba(154,98,22,1);
       -webkit-transition: all 0.6s ease-in-out;
       -moz-transition: all 0.6s ease-in-out;
       -ms-transition: all 0.6s ease-in-out;
@@ -503,14 +526,12 @@ $main-skyblue-color : rgb(27,143,188);
     }
     .search-detail-main{
       width: 100%;
-      background-color: #e7c676;
-      border: 2px solid #ffffff;
-      margin-top: 32px;
+      background-color: #ffeecf;
+      margin-top: 28px;
       .top-heading{
         .heading-bg{
-          background-color: #b59e50;
+          background-color: #b28733;
           padding: 10px 0;
-          border-bottom: 1px solid #441b06;
           position: relative;
         }
         .arrow-top{
@@ -520,17 +541,27 @@ $main-skyblue-color : rgb(27,143,188);
             position: absolute;
             top: -31px;
           }
+          .arrow-up{
+            width: 0;
+            height: 0;
+            border-right: 20px solid transparent;
+            border-left: 20px solid transparent;
+            border-bottom: 25px solid #b28733;
+            position: absolute;
+            top: -25px;
+            left: 30px;
+          }
         }
         h4 {
           font-size: 16px;
           font-weight: bold;
-          color: #6f3700;
+          color: #ffffff;
         }
         p.cost-text{
           font-size: 16px;
           text-align: right;
           margin: 7px 0;
-          color: #6f3700;
+          color: #ffffff;
         }
       }
 
@@ -565,12 +596,12 @@ $main-skyblue-color : rgb(27,143,188);
         color: #ffffff;
         .tabs-bg{
           min-height: 500px;
-          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#965e10+0,f3d45c+100 */
-          background: #965e10; /* Old browsers */
-          background: -moz-linear-gradient(top,  #965e10 0%, #f3d45c 100%); /* FF3.6-15 */
-          background: -webkit-linear-gradient(top,  #965e10 0%,#f3d45c 100%); /* Chrome10-25,Safari5.1-6 */
-          background: linear-gradient(to bottom,  #965e10 0%,#f3d45c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#965e10', endColorstr='#f3d45c',GradientType=0 ); /* IE6-9 */
+          background: #e1b069; /* Old browsers */
+          background: -moz-linear-gradient(top,  #e1b069 0%, #ffdaa3 100%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(top,  #e1b069 0%,#ffdaa3 100%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom,  #e1b069 0%,#ffdaa3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1b069', endColorstr='#ffdaa3',GradientType=0 ); /* IE6-9 */
+
         }
         .tab-content-main{
           .top-destination-con{
@@ -789,9 +820,12 @@ $main-skyblue-color : rgb(27,143,188);
         font-size: 12px;
       }
     }
+    .top-space{
+      margin-top: 15px;
+    }
     .modify-search-con{
       display: none;
-      margin: 0;
+      margin-bottom: 5px;
       .departure-return-con {
         .departure-con {
           .date-con{
