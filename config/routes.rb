@@ -339,7 +339,7 @@ Rails.application.routes.draw do
       get 'upcoming_journeys'
       get 'past_journeys'
       get 'enquired_jets'
-      get 'empty_legs_offered'
+      get 'offers'
       get 'passenger_details'
       get 'detail'
     end
@@ -394,7 +394,7 @@ Rails.application.routes.draw do
   get 'upcoming_journeys' => 'route_overrides#welcome_index'
   get 'past_journeys' => 'route_overrides#welcome_index'
   get 'enquired_jets' => 'route_overrides#welcome_index'
-  get 'empty_legs_offered' => 'route_overrides#welcome_index'
+  get 'offers' => 'route_overrides#welcome_index'
   get 'passenger_details/:id' => 'route_overrides#welcome_index'
   get 'detail/:id' => 'route_overrides#welcome_index'
 

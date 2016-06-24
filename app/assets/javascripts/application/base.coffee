@@ -106,9 +106,9 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/enquired_jets'
     controller: 'EnquiredJetsController'
     controllerAs: 'ctrl'
-  }).when('/empty_legs_offered', {
-    templateUrl: '/templates/empty_legs_offered'
-    controller: 'EmptyLegsOfferedController'
+  }).when('/offers', {
+    templateUrl: '/templates/offers'
+    controller: 'OffersController'
     controllerAs: 'ctrl'
   }).when('/passenger_details/:id', {
     templateUrl: '/templates/passenger_details'
