@@ -1,6 +1,6 @@
 <br><br><br><br><br><br>
 
-<div ng-controller="UpcomingJourneysController as ctrl">
+<div>
   <div class="container">
     <div class="col-sm-4">
       <ul>
@@ -22,7 +22,6 @@
         <tr class="info">
           <th>Id</th>
           <th>Aircraft name</th>
-          <th>Activities</th>
           <th></th>
           <!--<th>Total Cost</th>-->
         </tr>
@@ -34,26 +33,8 @@
           <!--<td><%#= trip.activities.first.grand_total %></td>-->
           <!--<td><%#= link_to 'Delete','#' %></td>-->
           <td>
-            <table class="table table-striped" style="padding-left: 50px;">
-              <thead>
-              <tr class="info">
-                <th>departure</th>
-                <th>arrival</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="activity in upcoming_journey.activities">
-                <td>{{ activity.departure_airport.name }}</td>
-                <td>{{ activity.arrival_airport.name }}</td>
-                <td>{{ activity.start_at }}</td>
-                <td>{{ activity.end_at }}</td>
-              </tr>
-              </tbody>
-            </table>
+            <a ng-href="/detail/{{upcoming_journey.id}}">View Details</a>
           </td>
-          <td><a ng-href="#">View Details</a></td>
         </tr>
         <hr>
         </tbody>

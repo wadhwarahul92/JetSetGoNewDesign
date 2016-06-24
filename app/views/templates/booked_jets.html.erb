@@ -22,7 +22,6 @@
         <tr class="info">
           <th>Id</th>
           <th>Aircraft name</th>
-          <th>Activities</th>
           <th></th>
           <!--<th>Total Cost</th>-->
         </tr>
@@ -33,26 +32,6 @@
           <td>{{ booked_jet.activities[0].aircraft.name }}</td>
           <!--<td><%#= trip.activities.first.grand_total %></td>-->
           <!--<td><%#= link_to 'Delete','#' %></td>-->
-          <td>
-            <table class="table table-striped" style="padding-left: 50px;">
-              <thead>
-              <tr class="info">
-                <th>departure</th>
-                <th>arrival</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="activity in booked_jet.activities">
-                <td>{{ activity.departure_airport.name }}</td>
-                <td>{{ activity.arrival_airport.name }}</td>
-                <td>{{ activity.start_at }}</td>
-                <td>{{ activity.end_at }}</td>
-              </tr>
-              </tbody>
-            </table>
-          </td>
           <td>
             <a ng-href="/detail/{{booked_jet.id}}">View Details</a>
             <a ng-href="/passenger_details/{{booked_jet.id}}">Passenger details</a>

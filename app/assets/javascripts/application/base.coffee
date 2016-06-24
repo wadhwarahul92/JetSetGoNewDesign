@@ -100,7 +100,7 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     controllerAs: 'ctrl'
   }).when('/past_journeys', {
     templateUrl: '/templates/past_journeys'
-    controller: 'PastjourneysController'
+    controller: 'PastJourneysController'
     controllerAs: 'ctrl'
   }).when('/enquired_jets', {
     templateUrl: '/templates/enquired_jets'
