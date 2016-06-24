@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       post 'create_passengers'
       put 'catering'
       put 'set_sell_empty_leg'
+      put 'change_password_'
     end
   end
 
