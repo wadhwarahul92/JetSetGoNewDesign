@@ -1,13 +1,28 @@
 #header{
   width:100%;
   //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/163/original/search_header_bg.jpg?1461045995) ;
-  background: #292929;
+  //background: #292929;
   background-size: cover;
   z-index: 2;
+  background: #965e10; /* Old browsers */
+  background: -moz-linear-gradient(top,  #965e10 0%, #f3d45c 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #965e10 0%,#f3d45c 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #965e10 0%,#f3d45c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#965e10', endColorstr='#f3d45c',GradientType=0 ); /* IE6-9 */
   .logo-main-con{
 
   }
   .right-nav{
+    .header-right-text{
+      color: #630;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+      a{
+        color: #630;
+        text-decoration: none;
+      }
+    }
     ul{
       padding: 0;
       li{

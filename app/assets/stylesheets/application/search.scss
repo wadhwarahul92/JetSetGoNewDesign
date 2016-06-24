@@ -321,20 +321,22 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
 }
-// changes Rahul 16-6-2016
+//fdf2ac changes Rahul 16-6-2016
 
 .bg-color{
-  background-color: #fdf2ac;
+  background-color: #d9cb74;
   .res-toogle-main{
     margin: 90px 0 20px 0;
     a{
-      min-width: 150px;
+      min-width: 140px;
       background-color: #c5a749;
       display: inline-block;
       padding: 10px;
+      font-size: 13px;
       color: #ffffff;
       text-decoration: none;
       text-align: center;
+      border-radius: 25px;
     }
     a.active{
       background-color: #b0842e;
@@ -358,6 +360,9 @@ $main-skyblue-color : rgb(27,143,188);
         color: #3e3521;
         font-size: 20px;
         margin: 0;
+        .city-arrow-icon{
+          font-size: 22px;
+        }
       }
     }
     .departure-return-con{
@@ -413,7 +418,7 @@ $main-skyblue-color : rgb(27,143,188);
         margin: 0;
         li{
           list-style: none;
-          color: #2c2219;
+          color: #5d4b33;
           font-size: 16px;
           padding: 10px 5px;
         }
@@ -475,6 +480,15 @@ $main-skyblue-color : rgb(27,143,188);
         bottom: 0;
         padding: 5px 0;
         background-color: rgba(69,27,6,0.6);
+        ul{
+          padding: 0;
+          margin: 0;
+          li{
+            list-style: none;
+            padding: 5px;
+            float: left;
+          }
+        }
       }
     }
     .list-con:hover{
@@ -491,20 +505,32 @@ $main-skyblue-color : rgb(27,143,188);
       width: 100%;
       background-color: #e7c676;
       border: 2px solid #ffffff;
+      margin-top: 32px;
       .top-heading{
         .heading-bg{
           background-color: #b59e50;
           padding: 10px 0;
           border-bottom: 1px solid #441b06;
+          position: relative;
+        }
+        .arrow-top{
+          width: 100%;
+          text-align: center;
+          .triengle-icon{
+            position: absolute;
+            top: -31px;
+          }
         }
         h4 {
           font-size: 16px;
           font-weight: bold;
+          color: #6f3700;
         }
         p.cost-text{
           font-size: 16px;
           text-align: right;
           margin: 7px 0;
+          color: #6f3700;
         }
       }
 
@@ -517,13 +543,16 @@ $main-skyblue-color : rgb(27,143,188);
             text-align: center;
             list-style: none;
             a{
-              font-size: 12px;
+              font-size: 16px;
               padding: 15px 10px;
               width: 100%;
               color: #ffffff;
               display: inline-block;
               background-color: #c5a749;
               text-decoration: none;
+              i.arrow-color{
+                color: #97671b;
+              }
             }
             a.active{
               background-color: #b0842e;
@@ -559,6 +588,38 @@ $main-skyblue-color : rgb(27,143,188);
             h3{
               font-size: 18px;
               margin: 10px 0;
+            }
+          }
+          .plans-main-con{
+            width: 100%;
+            .plan-option{
+              width: 100%;
+              ul{
+                padding: 0;
+                li{
+                  width: 50%;
+                  float: left;
+                  list-style: none;
+                  text-align: center;
+                  a{
+                    color: #ffffff;
+                    display: inline-block;
+                    padding: 10px;
+                  }
+                }
+              }
+            }
+            .plan-result-con{
+              .acomodation-con{
+                h3{
+                  font-size: 18px;
+                  margin: 10px 0;
+                }
+                p.airport-name{
+                  margin-bottom: 2px;
+                  text-align: center;
+                }
+              }
             }
           }
           .empty-leg-main{
@@ -619,6 +680,74 @@ $main-skyblue-color : rgb(27,143,188);
   }
 }
 
+@media (max-width: 990px) {
+  .bg-color {
+    .modify-search-con {
+      .city-con{
+        border-right: 0px;
+        border-bottom: 1px solid #d9cb74;
+        margin-bottom: 10px;
+      }
+      .departure-return-con{
+        border-right: 0px;
+        border-bottom: 1px solid #d9cb74;
+        margin-bottom: 10px;
+      }
+    }
+    .left-filter {
+      .aircraft-type-con {
+        ul {
+          li{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .right-search-images {
+      .search-detail-main {
+        .left-tabs{
+          ul{
+            li{
+              a{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+        .top-heading {
+          h4{
+            font-size: 14px;
+          }
+          p.cost-text{
+            font-size: 14px;
+          }
+        }
+        .right-tabs-content {
+          .tab-content-main {
+            .top-destination-con {
+              p{
+                font-size: 13px;
+              }
+            }
+            .charges-main-con {
+              h3{
+                font-size: 14px;
+              }
+            }
+          }
+          .total-main-con {
+            h3{
+              font-size: 14px;
+            }
+            h2{
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media (max-width: 767px) {
   .search-main-con{
     span.heading{
@@ -654,11 +783,28 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
   .bg-color{
+    .res-toogle-main{
+      a{
+        min-width: 130px;
+        font-size: 12px;
+      }
+    }
     .modify-search-con{
       display: none;
       margin: 0;
+      .departure-return-con {
+        .departure-con {
+          .date-con{
+            font-size: 22px;
+          }
+          .month-con{
+            font-size: 13px;
+          }
+        }
+      }
     }
     .left-filter{
+      margin: 0;
     }
     .search_active{
       display: block;
@@ -680,6 +826,55 @@ $main-skyblue-color : rgb(27,143,188);
           .price-con{
             font-size: 16px;
             width: 100%;
+          }
+        }
+      }
+      .search-detail-main {
+        .left-tabs{
+          padding-right: 15px;
+          ul{
+            width: 100%;
+            margin-bottom: 0;
+            li{
+              width: 50%;
+              float: left;
+            }
+          }
+        }
+        .right-tabs-content{
+          padding-left: 15px;
+          .tab-content-main {
+            .top-destination-con {
+              p{
+                font-size: 11px;
+              }
+            }
+            .charges-main-con {
+              h3{
+                font-size: 13px;
+              }
+            }
+          }
+          .total-main-con {
+            h3{
+              font-size: 13px;
+            }
+            h2{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .search-detail-main {
+        .top-heading {
+          h4{
+            font-size: 13px;
+            margin: 0;
+          }
+          p.cost-text{
+            font-size: 13px;
+            margin: 3px 0;
+            text-align: left;
           }
         }
       }
