@@ -88,8 +88,10 @@ class Admin::AirportsController < Admin::BaseController
                                 :landing_cost,
                                 :bais_time_in_minutes,
                                 :atc,
-                                :airport_category_id
-    )
+                                :airport_category_id,
+                                :landing_minimum_mtow,
+                                :landing_maximum_mtow,
+                                :landing_minimum_amount)
   end
 
   def set_airport
