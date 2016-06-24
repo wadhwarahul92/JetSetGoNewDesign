@@ -43,7 +43,7 @@ class Airport < ActiveRecord::Base
   validates_numericality_of :runway_field_length_in_feet,
                             :landing_minimum_mtow,
                             :landing_maximum_mtow,
-                            :landing_minimum_amount,
+                            :landing_rate_per_tonne,
                             greater_than_or_equal_to: 0
 
 

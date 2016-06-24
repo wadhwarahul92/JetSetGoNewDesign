@@ -27,7 +27,7 @@
         <th>ATC</th>
         <th>Landing minimum mtow</th>
         <th>Landing maximum mtow</th>
-        <th>Landing minimum amount</th>
+        <th>Landing rate per tonne</th>
         <th>Created By</th>
         <th>Updated By</th>
         <th>Action</th>
@@ -60,7 +60,7 @@
             <td><%= airport.atc %></td>
             <td><%= airport.landing_minimum_mtow %></td>
             <td><%= airport.landing_maximum_mtow %></td>
-            <td><%= airport.landing_minimum_amount %></td>
+            <td><%= airport.landing_rate_per_tonne %></td>
             <td><%= airport.creator.full_name if airport.creator %></td>
             <td><%= airport.last_updater.full_name if airport.last_updater %></td>
             <td>

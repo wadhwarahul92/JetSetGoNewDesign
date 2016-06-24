@@ -91,7 +91,7 @@ class Admin::AirportsController < Admin::BaseController
                                 :airport_category_id,
                                 :landing_minimum_mtow,
                                 :landing_maximum_mtow,
-                                :landing_minimum_amount)
+                                :landing_rate_per_tonne)
   end
 
   def set_airport
