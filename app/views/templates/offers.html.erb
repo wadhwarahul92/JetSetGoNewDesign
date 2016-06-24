@@ -28,7 +28,7 @@
         <tbody>
         <tr ng-repeat="offer in ctrl.offers">
           <td>{{ offer.category}}</td>
-          <td><image src="{{ offer.image}}"></image></td>
+          <td><image src ng-src="{{offer.image}}"></image></td>
           <!--<td>{{ empty_leg.activities[0].aircraft.name }}</td>-->
           <!--&lt;!&ndash;<td><%#= trip.activities.first.grand_total %></td>&ndash;&gt;-->
           <!--&lt;!&ndash;<td><%#= link_to 'Delete','#' %></td>&ndash;&gt;-->
