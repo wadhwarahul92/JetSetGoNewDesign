@@ -221,6 +221,9 @@ span.heading:after{
 	width:100%;
 	min-height:600px;
     background-size: cover;
+    .header#header{
+      border-bottom: 0px !important;
+    }
 	header{
 		width:100%;
 		display:inline-block;
