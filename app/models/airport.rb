@@ -82,12 +82,9 @@ class Airport < ActiveRecord::Base
   # @return [Float]
   ######################################################################
   def handling_cost(aircraft = nil)
-
-    return 12400 unless aircraft.present?
-
-    h = HandlingCostGrid.where(airport_id: self.id, aircraft_id: aircraft.id).first
-
-    h.present? ? h.cost : 12400
+    mtow = aircraft.mtow
+    mtow = 0.0 if mtow.nil?
+    self.landing_rate_per_tonne * mtow
   end
 
   ######################################################################
