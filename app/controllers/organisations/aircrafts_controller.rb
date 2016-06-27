@@ -72,8 +72,8 @@ class Organisations::AircraftsController < Organisations::BaseController
 	                # :catering_cost_per_pax,
 	                :phone,
 	                :flight_attendant,
-									:base_airport_id
-
+									:base_airport_id,
+									:mtow
 	  )
 	end
 
