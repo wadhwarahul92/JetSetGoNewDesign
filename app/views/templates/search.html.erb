@@ -1,5 +1,30 @@
 <div class="bg-color">
-    <div class="container search-container" ng-hide="ctrl.loading">
+  <div class="top_filter_nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <h4 class="places-con"> 
+            New Delhi >> Mumbai | 29 Jun - Thu, 30 Jun - Fri 
+          </h4>
+        </div>
+        <div class="col-sm-3 text-right"> 
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filter-toggle-main">
+    <div class="container">
+      <div class="search-form-con">
+        <div class="row">
+          <div class="col-sm-3">
+            <input type="text" class="search-textbox" ng-model="{{}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container search-container" ng-hide="ctrl.loading">
       <div class="res-toogle-main hidden-lg hidden-md hidden-sm">
         <div class="col-xs-6 text-right">
           <a href="javascript:void(0)" ng-click="ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : !ctrl.active_xs_search_bar}">Trip</a>
