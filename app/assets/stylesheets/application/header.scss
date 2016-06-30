@@ -4,11 +4,12 @@
   //background: #292929;
   background-size: cover;
   z-index: 2;
-  background: #965e10; /* Old browsers */
-  background: -moz-linear-gradient(top,  #965e10 0%, #f3d45c 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #965e10 0%,#f3d45c 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #965e10 0%,#f3d45c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#965e10', endColorstr='#f3d45c',GradientType=0 ); /* IE6-9 */
+  border-bottom: 2px solid #9a6216 !important;
+  background: #e1b069; /* Old browsers */
+  background: -moz-linear-gradient(top,  #e1b069 0%, #ffdaa3 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #e1b069 0%,#ffdaa3 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #e1b069 0%,#ffdaa3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1b069', endColorstr='#ffdaa3',GradientType=0 ); /* IE6-9 */
   .logo-main-con{
 
   }
