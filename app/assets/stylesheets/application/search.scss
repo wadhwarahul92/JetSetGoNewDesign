@@ -712,6 +712,42 @@ $main-skyblue-color : rgb(27,143,188);
         padding: 0 5px;
 
       }
+      .modify-btn{
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        color: #ffffff;
+        padding: 7px 20px;
+        background-color: #aa601f;
+        border: 1px solid #f0d06d;
+        border-radius: 5px;
+      }
+    }
+    .shadow-con{
+      width: 100%;
+      margin: 10px 0;
+    }
+    .filter-con{
+      width: 100%;
+      .filter{
+        h3{
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+      .aircraft_type{
+        ul{
+          padding: 0;
+          li{
+            width: 50%;
+            float: left;
+            padding: 5px 0;
+            list-style: none;
+            font-size: 16px;
+            color: #a0561c;
+          }
+        }
+      }
     }
   }
 

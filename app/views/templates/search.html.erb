@@ -1,10 +1,10 @@
-<div class="bg-color">
+<div class="bg-color" ng-hide="ctrl.loading">
   <div class="top_filter_nav">
     <div class="container">
       <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities">
           <h4 class="places-con"> 
-            New Delhi >> Mumbai | 29 Jun - Thu, 30 Jun - Fri 
+            {{ctrl.airportForId(search_activity.departure_airport_id).name}} >> {{ctrl.airportForId(search_activity.arrival_airport_id).name}} | 29 Jun - Thu {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}, 30 Jun - Fri 
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
@@ -16,15 +16,56 @@
   <div class="filter-toggle-main">
     <div class="container">
       <div class="search-form-con">
-        <div class="row">
-          <div class="col-sm-3">
-            <input type="text" class="search-textbox" ng-model="{{}}">
+        <div class="row" ng-repeat="search_activity in ctrl.search_activities">
+          <div class="col-md-3">
+            <input type="text" class="search-textbox" disabled ng-value="ctrl.airportForId(search_activity.departure_airport_id).city.name">
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="search-textbox" disabled ng-value="ctrl.airportForId(search_activity.arrival_airport_id).city.name">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="search-textbox" disabled ng-value="ctrl.formatTime(search_activity.start_at)">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="search-textbox" disabled ng-value="search_activity.pax">
+          </div>
+          <div class="col-md-2 text-right">
+            <a href="" class="modify-btn">modify</a>
+          </div>
+        </div>
+        <div class="shadow-con text-center">
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/321/original/line.png?1467267297" class="img-responsive" alt="seprator">
+        </div>
+        <div class="filter-con">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="filter seating-capacity">
+                <h3>Seating Capacity</h3>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">
+              </div>
+              <div class="filter flying-time">
+                <h3>Flying Time</h3>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="filter aircraft_type">
+                <h3>Aircraft Type</h3>
+                <ul class="">
+                  <li><input type="checkbox" /> Midsize Jet</li>
+                  <li><input type="checkbox" /> Single Engine Turboprop</li>
+                  <li><input type="checkbox" /> Light Jet</li>
+                  <li><input type="checkbox" /> Twin Engine Turboprop</li>
+                  <li><input type="checkbox" /> Large Business Jet</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container search-container" ng-hide="ctrl.loading">
+  <div class="container search-container">
       <div class="res-toogle-main hidden-lg hidden-md hidden-sm">
         <div class="col-xs-6 text-right">
           <a href="javascript:void(0)" ng-click="ctrl.active_xs_search_bar =! ctrl.active_xs_search_bar" ng-class="{'active' : !ctrl.active_xs_search_bar}">Trip</a>
