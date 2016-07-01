@@ -1,31 +1,46 @@
-<div class="container">
-  <div class="col-sm-12 search-main-con text-center">
-    <span class="heading popup-heading">Quotes</span>
-  </div>
-  <div class="col-sm-12">
-    <table class="quote-table">
-      <tr class="table-heading-con">
-        <th>Quote</th>
-        <th>Itinerary</th>
-        <th>Price</th>
-        <th></th>
-      </tr>
-      <tr ng-show="quote.activities && quote.activities.length > 0" ng-repeat="quote in ctrl.quotes">
-        <td>Quote #{{quote.id}}</td>
-        <td class="">
-          <p ng-repeat="activity in quote.activities">
-            <strong>Departure: {{activity.departure_airport.name}}</strong><br>
-            <strong>Arrival: {{activity.arrival_airport.name}}</strong><br>
-            <strong>Flight cost: <i class="fa fa-rupee"></i><small> {{activity.flight_cost | currency:"":0 | indianCurrency }}</small></strong><br>
-            <strong>Handling cost: <i class="fa fa-rupee"></i> <small> {{activity.handling_cost_at_takeoff | currency:"":0 | indianCurrency }}</small></strong><br>
-            <strong>Landing cost: <i class="fa fa-rupee"></i><small> {{activity.landing_cost_at_arrival | currency:"":0 | indianCurrency }}</small></strong><br>
-            <strong ng-show="activity.watch_hour_at_arrival">Watch hour cost:  <small>On actual</small> <br></strong>
-            <strong ng-show="activity.accommodation_plan">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}: <small><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"":0 | indianCurrency}}</small> </strong>
-          </p>
-        </td>
-        <td><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</td>
-        <td><a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>
-      </tr>
-    </table>
+<br><br><br><br><br><br>
+
+<div>
+  <div class="container">
+    <div class="col-sm-4">
+      <ul>
+        <li><a ng-href="profile">My Profile</a></li>
+        <li><a href="booked_jets">Booked jets</a></li>
+        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
+        <li><a href="past_journeys">Past journeys</a></li>
+        <li><a href="enquired_jets">Enquired jets</a></li>
+        <li><a href="offers">Offers</a></li>
+        <li><a href="quotes">Trip Quotes</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <div class="heading text-center">
+        <h4><span class="heading">Quotes</span></h4>
+      </div>
+      <table class="quote-table">
+        <tr class="table-heading-con">
+          <th>Quote</th>
+          <th>Itinerary</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+        <tr ng-show="quote.activities && quote.activities.length > 0" ng-repeat="quote in ctrl.quotes">
+          <td>Quote #{{quote.id}}</td>
+          <td class="">
+            <p ng-repeat="activity in quote.activities">
+              <strong>Departure: {{activity.departure_airport.name}}</strong><br>
+              <strong>Arrival: {{activity.arrival_airport.name}}</strong><br>
+              <strong>Flight cost: <i class="fa fa-rupee"></i><small> {{activity.flight_cost | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong>Handling cost: <i class="fa fa-rupee"></i> <small> {{activity.handling_cost_at_takeoff | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong>Landing cost: <i class="fa fa-rupee"></i><small> {{activity.landing_cost_at_arrival | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong ng-show="activity.watch_hour_at_arrival">Watch hour cost:  <small>On actual</small> <br></strong>
+              <strong ng-show="activity.accommodation_plan">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}: <small><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"":0 | indianCurrency}}</small> </strong>
+            </p>
+          </td>
+          <td><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</td>
+          <td><a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

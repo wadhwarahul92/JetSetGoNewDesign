@@ -90,4 +90,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def passenger_details
+
+  end
+
 end

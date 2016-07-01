@@ -100,15 +100,23 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     controllerAs: 'ctrl'
   }).when('/past_journeys', {
     templateUrl: '/templates/past_journeys'
-    controller: 'PastjourneysController'
+    controller: 'PastJourneysController'
     controllerAs: 'ctrl'
   }).when('/enquired_jets', {
     templateUrl: '/templates/enquired_jets'
     controller: 'EnquiredJetsController'
     controllerAs: 'ctrl'
-  }).when('/empty_legs_offered', {
-    templateUrl: '/templates/empty_legs_offered'
-    controller: 'EmptyLegsOfferedController'
+  }).when('/offers', {
+    templateUrl: '/templates/offers'
+    controller: 'OffersController'
+    controllerAs: 'ctrl'
+  }).when('/passenger_details/:id', {
+    templateUrl: '/templates/passenger_details'
+    controller: 'PassengerDetailsController'
+    controllerAs: 'ctrl'
+  }).when('/detail/:id', {
+    templateUrl: '/templates/detail'
+    controller: 'DetailController'
     controllerAs: 'ctrl'
   })
 

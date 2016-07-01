@@ -8,7 +8,10 @@ class CustomersController < ApplicationController
                                       :get_enquired_jets,
                                       :empty_legs_offered,
                                       :get_quoted_journeys,
-                                      :get_offers]
+                                      :get_offers,
+                                      :catering,
+                                      :set_sell_empty_leg,
+                                      :change_password_]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
@@ -27,30 +30,82 @@ class CustomersController < ApplicationController
   end
 
   def get_booked_jets
-    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED)
   end
 
   def get_upcoming_journeys
-    @trips = Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED)
+    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED)
     if @trips.present?
       @trips = get_upcoming_trips(@trips)
     end
   end
 
   def get_past_journeys
-    @trips = get_past_trips(Trip.where(user_id: @customer.id, status: Trip::STATUS_CONFIRMED))
+    @trips = get_past_trips(@customer.trips.where(status: Trip::STATUS_CONFIRMED))
   end
 
   def get_enquired_jets
-    @enquiries = Trip.where(user_id: @customer.id, status: Trip::STATUS_ENQUIRY)
+    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY)
   end
 
   def get_quoted_journeys
-    @quotes = Trip.where(user_id: @customer.id, status: Trip::STATUS_QUOTED)
+    @quotes = @customer.trips.where(status: Trip::STATUS_QUOTED)
   end
 
   def get_offers
-    @offers = Offer.last(4)
+    @offers = Offer.where("end_at > ?", DateTime.now).last(4)
+  end
+
+  def create_passengers
+    @passenger_details = []
+    params[:passenger_details].each do |passenger_detail|
+      @passenger_details << PassengerDetail.new(passenger_detail.permit(:name,
+                                                                        :email,
+                                                                        :age,
+                                                                        :contact,:trip_id,
+                                                                        :gender))
+    end
+
+    @error = nil
+    @passenger_details.each do |passenger_detail|
+      unless passenger_detail.valid?
+        @error = passenger_detail.errors.full_messages.first
+      end
+    end
+
+    # noinspection RubyResolve
+    if @error.present?
+      render status: :unprocessable_entity, json: { errors: [@error] }
+    else
+      @passenger_details.map(&:save)
+      render status: :ok, nothing: true
+    end
+  end
+
+  def catering
+    @trip = @customer.trips.find params[:trip_id]
+    if @trip.update_attributes(catering: params[:catering])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
+    end
+  end
+
+  def set_sell_empty_leg
+    @trip = @customer.trips.find params[:trip_id]
+    if @trip.update_attributes(sell_empty_leg: params[:sell_empty_leg])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
+    end
+  end
+
+  def change_password_
+    if @customer.update_attributes(password: params[:password])
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
+    end
   end
 
   private

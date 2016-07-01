@@ -16,8 +16,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @active_xs_search_bar = false
 
-  @active_xs_refine_search = false
-
   if CurrentUserService.currentUser != null
     @user = CurrentUserService.currentUser
 

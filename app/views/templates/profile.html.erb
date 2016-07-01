@@ -1,4 +1,4 @@
-<div ng-controller="ProfileController as ctrl">
+<div>
   <!-- Profile  page start -->
   <br><br><br><br><br><br>
   <div class="container">
@@ -10,8 +10,8 @@
         <li><a href="upcoming_journeys">Upcoming journeys</a></li>
         <li><a href="past_journeys">Past journeys</a></li>
         <li><a href="enquired_jets">Enquired jets</a></li>
-        <li><a href="empty_legs_offered">Empty legs Offered</a></li>
-        <li><a href="#">Alerts</a></li>
+        <li><a href="offers">Offers</a></li>
+        <li><a href="quotes">Trip Quotes</a></li>
       </ul>
     </div>
     <div class="col-sm-8">
@@ -62,6 +62,15 @@
                     <p class="col-sm-8 profile-text-detail txt-capitalize">{{ctrl.currentUser.designation}}</p>
                   </div>
                 </div>
+                <a href="" ng-hide="ctrl.active_pwd" ng-click="ctrl.active_pwd = true">change password?</a>
+
+                <div class="text-main" ng-show="ctrl.active_pwd">
+                  <div class="row">
+                    <p class="col-sm-4 profile-text">New Password:</p>
+                    <p class="col-sm-8 profile-text-detail "><input type="text" ng-model="ctrl.password"><i class="fa fa-check" ng-click="ctrl.active_pwd = !ctrl.active_pwd; ctrl.change_password()"></i></p>
+                  </div>
+                </div>
+
                 <div class="text-main" ng-show="ctrl.upd_profile || ctrl.btn_show">
                   <div class="row">
                     <p class="col-sm-12 profile-text">
