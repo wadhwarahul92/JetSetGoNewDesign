@@ -65,6 +65,85 @@
       </div>
     </div>
   </div>
+  <div class="search_result_main">
+    <div class="container">
+      <div class="search_result">
+        <h2>Search Result</h2>
+        <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+          <div class="result-search">
+            <div class="col-sm-8 search_img">
+              <div class="img-hide">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+              </div>
+              <div class="icon-con"></div>
+            </div>
+            <div class="col-sm-4 search-ryt-con">
+              <div class="img-bg">
+                <h3>{{result.aircraft.aircraft_type.name}}</h3>
+                <h5>Single Engine Turboprop </h5>
+                <h4>Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
+              </div>
+              <div class="detail-link-con">
+                <a href="#">Details</a> | <a href="#">Enquire</a>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="empty-leg-toogle-main">
+            <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'user_search' }">
+              <div class="top-destination-con">
+                <div class="row">
+                  <div class="col-col-sm-4 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                  </div>
+                  <div class="col-sm-4 hidden-xs">
+                    <p>
+                      <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
+                    </p>
+                    <p class="time-duration">{{flight_plan.flight_time}}</p>
+                  </div>
+                  <div class="col-sm-4 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="charges-main-con">
+                <div class="col-sm-8 col-xs-7">
+                  <h3>Flying Charges</h3>
+                </div>
+                <div class="col-sm-4 col-xs-5 text-right">
+                  <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.flight_cost | currency:"":0 | indianCurrency}}</h3>
+                </div>
+                <div class="col-sm-8 col-xs-7">
+                  <h3>Handling Charges</h3>
+                </div>
+                <div class="col-sm-4 col-xs-5 text-right">
+                  <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</h3>
+                </div>
+                <div class="col-sm-8 col-xs-7">
+                  <h3>Landing Charges</h3>
+                </div>
+                <div class="col-sm-4 col-xs-5 text-right">
+                  <h3><i class="fa fa-inr" aria-hidden="true"></i> {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</h3>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container search-container">
       <div class="res-toogle-main hidden-lg hidden-md hidden-sm">
         <div class="col-xs-6 text-right">
