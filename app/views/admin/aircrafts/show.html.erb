@@ -9,10 +9,10 @@
   </div>
   <div class="col-sm-6">
     <% if @aircraft.image.present? %>
+        <%= image_tag @aircraft.image.url(:original), style: 'width:100%' %>
         <fieldset>
           <legend><small>Aircraft image</small></legend>
         </fieldset>
-        <%= image_tag @aircraft.image.url(:original), style: 'width:100%' %>
     <%- end %>
 
     <div class="row">
