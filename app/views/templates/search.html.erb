@@ -8,12 +8,12 @@
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
+          <img ng-click="custom2 =! custom2" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
         </div>
       </div>
     </div>
   </div>
-  <div class="filter-toggle-main">
+  <div class="filter-toggle-main" ng-show="custom2">
     <div class="container">
       <div class="search-form-con">
         <div class="row" ng-repeat="search_activity in ctrl.search_activities">
@@ -102,7 +102,7 @@
                 <div class="col-sm-4 text-right">
                   empty leg
                 </div>
-                <div class="col-sm-offset-2 col-sm-3 col-xs-6">
+                <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
                   <p>
                     <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
                   </p>
@@ -110,13 +110,13 @@
                   <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
                 </div>
-                <div class="col-sm-2 hidden-xs">
+                <div class="destination-con col-sm-2 hidden-xs">
                   <p>
                     <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
                   </p>
                   <p class="time-duration">{{flight_plan.flight_time}}</p>
                 </div>
-                <div class="col-sm-3 col-xs-6">
+                <div class="destination-con col-sm-3 col-xs-6">
                   <p>
                     <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
                   </p>
@@ -134,8 +134,72 @@
                   <div class="col-sm-8">
                     <div class="flight-cost-con">
                       <h2>Cost Detail</h2>
-                      <div class="row">
-                        
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <p>Flight Time</p>
+                          </div>
+                          <div class="col-sm-4 text-right">
+                            <p>2 Hrs 21 Mins</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <p>Flying Charges</p>
+                          </div>
+                          <div class="col-sm-4 text-right">
+                            <p>₹ 10,20,000</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <p>Handling Charges</p>
+                          </div>
+                          <div class="col-sm-4 text-right">
+                            <p>₹ 0</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <p>Landing Charges</p>
+                          </div>
+                          <div class="col-sm-4">
+                            <p class="text-right">₹ 0</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h4>Sub Total</h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <p>Taxes & Administrative Charges</p>
+                          </div>
+                          <div class="col-sm-4">
+                            <p class="text-right">₹ 0</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-sm-8">
+                            <h5>Grand Total</h5>
+                          </div>
+                          <div class="col-sm-4">
+                            <h5 class="text-right">₹ 0</h5>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

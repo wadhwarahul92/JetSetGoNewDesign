@@ -837,10 +837,12 @@ $main-skyblue-color : rgb(27,143,188);
             text-align: left;
           }
         }
-        p{
-          margin-bottom: 2px;
-          text-align: center;
+        .destination-con{
+          p{
+            margin-bottom: 2px;
+            text-align: center;
 
+          }
         }
         .img-total-cost-con{
           margin: 30px 0;
@@ -870,6 +872,23 @@ $main-skyblue-color : rgb(27,143,188);
               height: 5px;
               left: 0;
               bottom: -5px;
+            }
+            .cost-con{
+              border-bottom: 1px solid #fbdc99;
+              padding: 10px 0;
+              p{
+                margin: 0;
+              }
+              h4{
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+              }
+              h5{
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+              }
             }
           }
         }
