@@ -710,6 +710,7 @@ $main-skyblue-color : rgb(27,143,188);
         background: transparent;
         border: 1px solid #9c651f;
         padding: 0 5px;
+        margin: 5px 0;
 
       }
       .modify-btn{
@@ -988,8 +989,65 @@ $main-skyblue-color : rgb(27,143,188);
       }
     }
   }
+  .search_result_main {
+    .empty-leg-toogle-main {
+      .top-destination-con {
+        .img-total-cost-con {
+          .flight-cost-con {
+            .cost-con {
+              p{
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media (max-width: 767px) {
+  .search_result_main {
+    .search_result {
+      .result-search {
+        .search_img {
+          .img-hide{
+            img{
+              width: 100%;
+            }
+          }
+        }
+        .search-ryt-con {
+          .img-bg{
+            height: 250px;
+          }
+        }
+      }
+    }
+    .empty-leg-toogle-main {
+      .top-destination-con {
+        p{
+          font-size: 11px;
+        }
+        .img-total-cost-con {
+          .aircraft-img{
+            border: 5px solid #efd077;
+            margin-bottom: 15px;
+            height: inherit;
+            img{
+              width: 100%;
+            }
+          }
+          .flight-cost-con {
+            .cost-con {
+              p{
+                font-size: 11px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   .search-main-con{
     span.heading{
       margin-bottom: 0;
@@ -1140,6 +1198,40 @@ $main-skyblue-color : rgb(27,143,188);
       font-size: 10px;
     }
   }
+
+  .top_filter_nav{
+
+    .places-con{
+
+    }
+  }
+  .filter-toggle-main{
+    .search-form-con{
+      .search-textbox{
+
+      }
+      .modify-btn{
+
+      }
+    }
+    .shadow-con{
+
+    }
+    .filter-con{
+      .filter{
+        h3{
+        }
+      }
+      .aircraft_type{
+        ul{
+          li{
+            float: none;
+          }
+        }
+      }
+    }
+  }
+
 }
 .tmp-after_:after{
   background-color: #000000 !important;

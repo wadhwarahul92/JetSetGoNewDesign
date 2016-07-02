@@ -17,19 +17,19 @@
     <div class="container">
       <div class="search-form-con">
         <div class="row" ng-repeat="search_activity in ctrl.search_activities">
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-6">
             <input type="text" class="search-textbox" disabled ng-value="ctrl.airportForId(search_activity.departure_airport_id).city.name">
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-6">
             <input type="text" class="search-textbox" disabled ng-value="ctrl.airportForId(search_activity.arrival_airport_id).city.name">
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 col-sm-6">
             <input type="text" class="search-textbox" disabled ng-value="ctrl.formatTime(search_activity.start_at)">
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 col-sm-3">
             <input type="text" class="search-textbox" disabled ng-value="search_activity.pax">
           </div>
-          <div class="col-md-2 text-right">
+          <div class="col-md-2 text-right col-sm-3">
             <a href="" class="modify-btn">modify</a>
           </div>
         </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="filter-con">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 col-xs-12">
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">
@@ -48,7 +48,7 @@
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">
               </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8 col-xs-12">
               <div class="filter aircraft_type">
                 <h3>Aircraft Type</h3>
                 <ul class="">
@@ -71,13 +71,13 @@
         <h2>Search Result</h2>
         <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
           <div class="result-search">
-            <div class="col-sm-8 search_img">
+            <div class="col-md-8 col-sm-7 col-xs-12 search_img">
               <div class="img-hide">
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
               </div>
               <div class="icon-con"></div>
             </div>
-            <div class="col-sm-4 search-ryt-con">
+            <div class="col-md-4 col-sm-5 col-xs-12                                                                                                                                                                                                                                             search-ryt-con">
               <div class="img-bg">
                 <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <h5>Single Engine Turboprop </h5>
@@ -90,113 +90,144 @@
             <div class="clearfix"></div>
           </div>
           <div class="empty-leg-toogle-main">
-            <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'user_search' }">
+            <div>
               <div class="top-destination-con">
-                <div class="col-sm-8">
+                <div class="col-sm-8 col-xs-12">
                   <div class="desination-name">
                     <p>
                       Delhi >> Mumbai | 29 Jun - Thu 5th Jul 2016 | 2 Passenger
                     </p>
                   </div>
                 </div>
-                <div class="col-sm-4 text-right">
-                  empty leg
+                <div class="col-sm-4 col-xs-12 text-right">
+                  <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/326/original/icon.png?1467374235" alt="">
                 </div>
-                <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
-                  <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
-                  </p>
-                  <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
-                  <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
-                  <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+
+                <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'user_search' }">
+                  <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                  </div>
+                  <div class="destination-con col-sm-2 hidden-xs">
+                    <p>
+                      <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
+                    </p>
+                    <p class="time-duration">{{flight_plan.flight_time}}</p>
+                  </div>
+                  <div class="destination-con col-sm-3 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                  </div>
+                  <div class="clearfix"></div>
                 </div>
-                <div class="destination-con col-sm-2 hidden-xs">
-                  <p>
-                    <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
-                  </p>
-                  <p class="time-duration">{{flight_plan.flight_time}}</p>
+
+                <div ng-repeat="flight_plan in result.flight_plan | filter: { flight_type:'empty_leg' }" ng-show="custom3">
+                  <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+                  </div>
+                  <div class="destination-con col-sm-2 hidden-xs">
+                    <p>
+                      <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
+                    </p>
+                    <p class="time-duration">{{flight_plan.flight_time}}</p>
+                  </div>
+                  <div class="destination-con col-sm-3 col-xs-6">
+                    <p>
+                      <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
+                    </p>
+                    <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+                    <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
+                    <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+                  </div>
+                  <div class="clearfix"></div>
                 </div>
-                <div class="destination-con col-sm-3 col-xs-6">
-                  <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
-                  </p>
-                  <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
-                  <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
-                  <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
-                </div>
-                <div class="clearfix"></div>
                 <div class="img-total-cost-con">
-                  <div class="col-sm-4">
+                  <div class="col-md-4 col-sm-6">
                     <div class="aircraft-img">
                       <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
                     </div>
                   </div>
-                  <div class="col-sm-8">
+                  <div class="col-md-8 col-sm-6">
                     <div class="flight-cost-con">
                       <h2>Cost Detail</h2>
-                      <div class="cost-con">
-                        <div class="row">
-                          <div class="col-sm-8">
-                            <p>Flight Time</p>
+                      <div ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">
+                          <div class="cost-con">
+                            <div class="row">
+                              <div class="col-xs-7">
+                                <p>Flight Time</p>
+                              </div>
+                              <div class="col-xs-5 text-right">
+                                <p>2 Hrs 21 Mins {{flight_plan.flight_time}}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-sm-4 text-right">
-                            <p>2 Hrs 21 Mins</p>
+                          <div class="cost-con">
+                            <div class="row">
+                              <div class="col-xs-7">
+                                <p>Flying Charges</p>
+                              </div>
+                              <div class="col-xs-5 text-right">
+                                <p>₹ 10,20,000</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                          <div class="cost-con">
+                            <div class="row">
+                              <div class="col-xs-7">
+                                <p>Handling Charges</p>
+                              </div>
+                              <div class="col-xs-5 text-right">
+                                <p>₹ 0</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="cost-con">
+                            <div class="row">
+                              <div class="col-xs-7">
+                                <p>Landing Charges</p>
+                              </div>
+                              <div class="col-xs-5">
+                                <p class="text-right">₹ 0</p>
+                              </div>
+                            </div>
+                          </div>
                       </div>
                       <div class="cost-con">
                         <div class="row">
-                          <div class="col-sm-8">
-                            <p>Flying Charges</p>
-                          </div>
-                          <div class="col-sm-4 text-right">
-                            <p>₹ 10,20,000</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="cost-con">
-                        <div class="row">
-                          <div class="col-sm-8">
-                            <p>Handling Charges</p>
-                          </div>
-                          <div class="col-sm-4 text-right">
-                            <p>₹ 0</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="cost-con">
-                        <div class="row">
-                          <div class="col-sm-8">
-                            <p>Landing Charges</p>
-                          </div>
-                          <div class="col-sm-4">
-                            <p class="text-right">₹ 0</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="cost-con">
-                        <div class="row">
-                          <div class="col-sm-12">
+                          <div class="col-xs-12">
                             <h4>Sub Total</h4>
                           </div>
                         </div>
                       </div>
                       <div class="cost-con">
                         <div class="row">
-                          <div class="col-sm-8">
+                          <div class="col-xs-7">
                             <p>Taxes & Administrative Charges</p>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-xs-5">
                             <p class="text-right">₹ 0</p>
                           </div>
                         </div>
                       </div>
                       <div class="cost-con">
                         <div class="row">
-                          <div class="col-sm-8">
+                          <div class="col-xs-7">
                             <h5>Grand Total</h5>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-xs-5">
                             <h5 class="text-right">₹ 0</h5>
                           </div>
                         </div>
@@ -212,6 +243,13 @@
       </div>
     </div>
   </div>
+
+
+  <!--========================================================================================-->
+  <!--========================================================================================-->
+  <!--========================================================================================-->
+
+
   <div class="container search-container">
       <div class="res-toogle-main hidden-lg hidden-md hidden-sm">
         <div class="col-xs-6 text-right">
