@@ -170,7 +170,7 @@
                                 <p>Flight Time</p>
                               </div>
                               <div class="col-xs-5 text-right">
-                                <p>2 Hrs 21 Mins {{flight_plan.flight_time}}</p>
+                                <p>{{flight_plan.flight_time}}</p>
                               </div>
                             </div>
                           </div>
@@ -180,7 +180,7 @@
                                 <p>Flying Charges</p>
                               </div>
                               <div class="col-xs-5 text-right">
-                                <p>₹ 10,20,000</p>
+                                <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
                               </div>
                             </div>
                           </div>
@@ -190,7 +190,7 @@
                                 <p>Handling Charges</p>
                               </div>
                               <div class="col-xs-5 text-right">
-                                <p>₹ 0</p>
+                                <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
                               </div>
                             </div>
                           </div>
@@ -200,10 +200,59 @@
                                 <p>Landing Charges</p>
                               </div>
                               <div class="col-xs-5">
-                                <p class="text-right">₹ 0</p>
+                                <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
                               </div>
                             </div>
                           </div>
+                      </div>
+                      <div ng-show="custom3" ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'empty_leg' }">
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <h4>Empty Leg</h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Flight Time</p>
+                            </div>
+                            <div class="col-xs-5 text-right">
+                              <p>{{flight_plan.flight_time}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Flying Charges</p>
+                            </div>
+                            <div class="col-xs-5 text-right">
+                              <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Handling Charges</p>
+                            </div>
+                            <div class="col-xs-5 text-right">
+                              <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Landing Charges</p>
+                            </div>
+                            <div class="col-xs-5">
+                              <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="cost-con">
                         <div class="row">
