@@ -103,7 +103,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :year_of_manufacture,
                                  :medical_evac,
                                  :base_airport_id,
-                                 :mtow
+                                 :mtow,
+                                 :image
     )
   end
 

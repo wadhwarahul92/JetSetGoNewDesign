@@ -68,6 +68,8 @@ class Aircraft < ActiveRecord::Base
                             # only_integer: true,
                             greater_than_or_equal_to: 0
   ##################
+  has_attached_file :image
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def upcase_tail_number
     self.tail_number = self.tail_number.upcase if self.tail_number.present?

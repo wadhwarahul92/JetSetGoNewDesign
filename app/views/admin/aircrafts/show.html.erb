@@ -8,6 +8,13 @@
     </dl>
   </div>
   <div class="col-sm-6">
+    <% if @aircraft.image.present? %>
+        <%= image_tag @aircraft.image.url(:original), style: 'width:100%' %>
+        <fieldset>
+          <legend><small>Aircraft image</small></legend>
+        </fieldset>
+    <%- end %>
+
     <div class="row">
       <% @aircraft.aircraft_images.each do |aircraft_image| %>
       <div class="col-sm-12">
@@ -21,7 +28,7 @@
       <%- end %>
     </div>
     <fieldset>
-      <legend><small>Add new image</small></legend>
+      <legend><small>Add new images</small></legend>
       <%= render partial: 'admin/aircraft_images/form', locals: { aircraft: @aircraft, aircraft_image: @aircraft.aircraft_images.new } %>
     </fieldset>
   </div>
