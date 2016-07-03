@@ -84,13 +84,13 @@
                 <h4>Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
               </div>
               <div class="detail-link-con">
-                <a href="#">Details</a> | <a href="#">Enquire</a>
+                <a href="#" ng-click="custom =! custom">Details</a> | <a href="#" ng-click="ctrl.enquire(result)">Enquire</a>
               </div>
             </div>
             <div class="clearfix"></div>
           </div>
-          <div class="empty-leg-toogle-main">
-            <div>
+          <div class="empty-leg-toogle-main" ng-show="custom">
+            <div class="arrow-up"></div>
               <div class="top-destination-con">
                 <div class="col-sm-8 col-xs-12">
                   <div class="desination-name">
@@ -286,7 +286,6 @@
                   <div class="clearfix"></div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
