@@ -29,7 +29,7 @@ class TripCreator
   def create_activity(activity)
     created_activity = @aircraft.activities.create!(activity)
     created_activity.flight_cost = created_activity.aircraft.per_hour_cost * no_of_hours(created_activity.start_at, created_activity.end_at)
-    created_activity.handling_cost_at_takeoff = created_activity.departure_airport.handling_cost
+    created_activity.handling_cost_at_takeoff = created_activity.departure_airport.handling_cost(@aircraft)
     created_activity.landing_cost_at_arrival = created_activity.departure_airport.landing_cost
     w = WatchHour.where(
         airport_id: created_activity.arrival_airport_id
