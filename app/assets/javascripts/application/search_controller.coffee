@@ -2,7 +2,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @results = []
 
-  @result_activities = []
+#  @result_activities = []
 
   @airports = []
 
@@ -15,6 +15,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @loading = true
 
   @active_xs_search_bar = false
+
+  @disable_ = true
 
   if CurrentUserService.currentUser != null
     @user = CurrentUserService.currentUser
@@ -135,6 +137,48 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     for flight_plan in result.flight_plan
        if flight_plan.notam_at_arrival
          result.is_notam = true
+
+
+  @addActivity = ->
+    return unless @validatedActivities()
+    @search_activities.push {}
+
+  @addRoundTrip = ->
+    return unless @validatedActivities()
+    @search_activities.push {arrival_airport: @search_activities[0].departure_airport}
+
+  @removeActivity = (index)->
+    if index > 0
+      @search_activities.splice index, 1
+
+  @validatedActivities = ->
+    for activity in @search_activities
+      unless activity.departure_airport
+        notify
+          message: 'Departure cannot be blank.'
+          classes: ['alert-danger']
+        return false
+      unless activity.arrival_airport
+        notify
+          message: 'Arrival cannot be blank'
+          classes: ['alert-danger']
+        return false
+      if activity.departure_airport == activity.arrival_airport
+        notify
+          message: 'Departure cannot be same as Arrival.'
+          classes: ['alert-danger']
+        return false
+      unless activity.start_at
+        notify
+          message: 'Time cannot be blank.'
+          classes: ['alert-danger']
+        return false
+      unless activity.pax
+        notify
+          message: 'Pax cannot be blank.'
+          classes: ['alert-danger']
+        return false
+    true
 
   return undefined
 ]
