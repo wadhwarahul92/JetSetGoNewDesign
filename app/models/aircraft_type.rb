@@ -6,6 +6,9 @@ class AircraftType < ActiveRecord::Base
 
   has_many :aircrafts
 
+  belongs_to :aircraft_category
+
+
   #####VALIDATIONS###
   validates :name, presence: true
   validates :svg, presence: true

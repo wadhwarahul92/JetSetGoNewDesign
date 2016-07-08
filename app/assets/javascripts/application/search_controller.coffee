@@ -20,6 +20,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_activities_static = []
 
+  @subTotal = 0.0
+  @grandTotal = 0.0
+  @taxBreakup = []
+
   $scope.$watch(
     =>
       @search_activities
@@ -260,6 +264,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       for _date in dates
         if _date.localDateValue() <= activeDate.valueOf()
           _date.selectable = false
+
+  @calculateCost = (result)->
+    @subTotal = CostBreakUpsService.subTotal(result)
+    @grandTotal = CostBreakUpsService.totalTripCost(result)
+    @taxBreakup = CostBreakUpsService.taxBreakUp(result)
 
   return undefined
 ]
