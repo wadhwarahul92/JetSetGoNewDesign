@@ -11,6 +11,7 @@
       <div class="row">
         <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities">
           <h4 class="places-con"> 
+            <br>
             {{ctrl.airportForId(search_activity.departure_airport_id).name}} >> {{ctrl.airportForId(search_activity.arrival_airport_id).name}} | 29 Jun - Thu {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
           </h4>
         </div>

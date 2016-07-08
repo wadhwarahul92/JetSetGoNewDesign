@@ -41,6 +41,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
           @loading = false
       )
+      for search_activity in @search_activities
+        search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
+        search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
   ).error(
     (data)->
       error = 'Something went wrong.'
