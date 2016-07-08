@@ -1,8 +1,6 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CostBreakUpsService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CostBreakUpsService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CostBreakUpsService, $location, $scope)->
 
   @results = []
-
-#  @result_activities = []
 
   @airports = []
 
@@ -18,6 +16,27 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @disable_ = true
 
+  @search_activities = []
+
+  @search_activities_static = []
+
+  $scope.$watch(
+    =>
+      @search_activities
+  ,
+    =>
+      @formatActivities()
+  ,
+    true
+  )
+
+  @onSetTime = (newDate, oldDate, index)->
+    if index + 1 == @search_activities.length
+#do nothing
+    else
+      alert 'cannot change date'
+      @search_activities[index].start_at  = oldDate
+
   if CurrentUserService.currentUser != null
     @user = CurrentUserService.currentUser
 
@@ -29,6 +48,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
       @results = data.results
+
       @search_activities = data.search_activities
 
       for result in @results
@@ -44,6 +64,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
         search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
+        search_activity.start_at = new Date(search_activity.start_at)
+
+
+      @search_activities_static = JSON.parse(JSON.stringify @search_activities)
+
   ).error(
     (data)->
       error = 'Something went wrong.'
@@ -182,6 +207,59 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           classes: ['alert-danger']
         return false
     true
+
+  @create = ->
+    return unless @validatedActivities()
+    _activities = []
+    for activity in @search_activities
+      _activities.push({
+        departure_airport_id: activity.departure_airport.id
+        arrival_airport_id: activity.arrival_airport.id
+        start_at: activity.start_at
+        pax: activity.pax
+      })
+    $http.post('/searches.json', { activities: _activities }).success(
+      (data)->
+        $location.path("/searches/#{data.search_id}")
+    ).error(
+      (data)->
+        error = 'Something went wrong.'
+        try
+          error = data.errors[0]
+        notify
+          message: error
+          classes: ['alert-danger']
+    )
+
+  @formatActivities = ->
+    previous = null
+    for search_activity in @search_activities
+      if previous
+        search_activity.departure_airport = previous.arrival_airport
+      previous = search_activity
+
+  @beforeRenderDate = (view, dates, leftDate, upDate, rightDate, index)->
+    activeDate = null
+    if index > 0
+      previous_activity = @search_activities[index-1]
+      time = previous_activity.start_at
+      previous_date = time.getDate()
+      previous_month = time.getMonth()
+      if view == 'day'
+        for __date in dates
+          if parseInt(__date.display) < previous_date and (new Date(__date.localDateValue())).getMonth() == previous_month
+            __date.selectable = false
+      else
+        if time
+          activeDate = moment(time)
+          for date in dates
+            if date.localDateValue() <= activeDate.valueOf()
+              date.selectable = false
+    else
+      activeDate = moment(new Date())
+      for _date in dates
+        if _date.localDateValue() <= activeDate.valueOf()
+          _date.selectable = false
 
   return undefined
 ]
