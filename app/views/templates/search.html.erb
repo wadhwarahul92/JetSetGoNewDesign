@@ -25,7 +25,7 @@
       <div class="search-form-con">
 
         <!-- search con start -->
-        <div>
+        <div ng-hide="ctrl.disable_">
           <h2 class="col-xs-12">
             <span>Your</span>Private Jet
           </h2>
@@ -91,26 +91,33 @@
             <a class="add-trip-btn" style="background-color: rgba(0,0,0,1)" href=""  ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
             <a class="add-trip-btn" style="background-color: rgba(0,0,0,1)" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()"><i class="fa fa-plus" aria-hidden="true"></i> Round Trip</a>
           </div>
+
+          <div>
+            <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">cancle</a>
+          </div>
         </div>
         <!-- search con finish -->
 
-        <!--<div class="row" ng-repeat="search_activity in ctrl.search_activities">-->
-        <!--<div class="col-md-3 col-sm-6" >-->
-        <!--<input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.departure_airport_id).city.name" ng-disabled="ctrl.disable_">-->
-        <!--</div>-->
-        <!--<div class="col-md-3 col-sm-6">-->
-        <!--<input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.arrival_airport_id).city.name" ng-disabled="ctrl.disable_">-->
-        <!--</div>-->
-        <!--<div class="col-md-2 col-sm-6">-->
-        <!--<input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">-->
-        <!--</div>-->
-        <!--<div class="col-md-2 col-sm-3">-->
-        <!--<input type="text" class="search-textbox" ng-value="search_activity.pax" ng-disabled="ctrl.disable_">-->
-        <!--</div>-->
-        <!--<div class="col-md-2 text-right col-sm-3">-->
-        <!--<a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">modify</a>-->
-        <!--</div>-->
-        <!--</div>-->
+        <div ng-show="ctrl.disable_">
+          <div class="row" ng-repeat="search_activity in ctrl.search_activities">
+            <div class="col-md-3 col-sm-6" >
+              <input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.departure_airport_id).city.name" ng-disabled="ctrl.disable_">
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.arrival_airport_id).city.name" ng-disabled="ctrl.disable_">
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">
+            </div>
+            <div class="col-md-2 col-sm-3">
+              <input type="text" class="search-textbox" ng-value="search_activity.pax" ng-disabled="ctrl.disable_">
+            </div>
+            <div class="col-md-2 text-right col-sm-3">
+              <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">modify</a>
+            </div>
+          </div>
+        </div>
+
         <div class="shadow-con text-center">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/321/original/line.png?1467267297" class="img-responsive" alt="seprator">
         </div>
