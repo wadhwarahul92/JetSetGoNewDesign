@@ -20,6 +20,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_activities_static = []
 
+  @c_filter = []
+
   @subTotal = 0.0
   @grandTotal = 0.0
   @taxBreakup = []
@@ -47,6 +49,19 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   AirportsService.getAirports().then(
     =>
       @airports = AirportsService.airports
+  )
+
+  $http.get("/aircraft_categories.json").success(
+    (data)=>
+      @aircraft_categories = data
+  ).error(
+    (data)->
+      error = 'Something went wrong.'
+      try
+        error = data.errors[0]
+      notify
+        message: error
+        classes: ['alert-danger']
   )
 
   $http.get("/searches/#{$routeParams.id}.json").success(
@@ -269,6 +284,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @subTotal = CostBreakUpsService.subTotal(result)
     @grandTotal = CostBreakUpsService.totalTripCost(result)
     @taxBreakup = CostBreakUpsService.taxBreakUp(result)
+
 
   return undefined
 ]

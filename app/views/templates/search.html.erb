@@ -94,7 +94,7 @@
               <div>
                 <a class="modify-btn" href=""  ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
                 <a class="modify-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()"><i class="fa fa-plus" aria-hidden="true"></i> Round Trip</a>
-                <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">cancle</a>
+                <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">cancel</a>
               </div>
 
             </div>
@@ -143,11 +143,11 @@
               <div class="filter aircraft_type">
                 <h3>Aircraft Type</h3>
                 <ul class="">
-                  <li><input type="checkbox" /> Midsize Jet</li>
-                  <li><input type="checkbox" /> Single Engine Turboprop</li>
-                  <li><input type="checkbox" /> Light Jet</li>
-                  <li><input type="checkbox" /> Twin Engine Turboprop</li>
-                  <li><input type="checkbox" /> Large Business Jet</li>
+                  <li> <input type="checkbox" data-ng-model="c_filter1" data-ng-true-value="'Twin Engine Turboprop'" data-ng-false-value=""> Twin Engine Turboprop</li>
+                  <li><input type="checkbox" data-ng-model="c_filter2" data-ng-true-value="'Large Business Jet'" data-ng-false-value=""> Large Business Jet</li>
+                  <li><input type="checkbox" data-ng-model="c_filter3" data-ng-true-value="'Light Jet'" data-ng-false-value=""> Light Jet</li>
+                  <li><input type="checkbox" data-ng-model="c_filter4" data-ng-true-value="'Midsize Jet'" data-ng-false-value=""> Midsize Jet</li>
+                  <li><input type="checkbox" data-ng-model="c_filter5" data-ng-true-value="'Single Engine Turboprop'" data-ng-false-value=""> Single Engine Turboprop</li>
                 </ul>
               </div>
             </div>
@@ -160,7 +160,7 @@
     <div class="container">
       <div class="search_result">
         <h2>Search Result</h2>
-        <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost'">
+        <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:(c_filter1 || '') | filter:(c_filter2 || '') | filter:c_filter3 | filter:c_filter4 | filter:(c_filter5 || '') ">
           <div class="result-search">
             <div class="col-md-8 col-sm-7 col-xs-12 search_img">
               <div class="img-hide">
@@ -171,7 +171,7 @@
             <div class="col-md-4 col-sm-5 col-xs-12 search-ryt-con">
               <div class="img-bg">
                 <h3>{{result.aircraft.aircraft_type.name}}</h3>
-                <h5>Single Engine Turboprop </h5>
+                <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
               </div>
               <div class="detail-link-con">
