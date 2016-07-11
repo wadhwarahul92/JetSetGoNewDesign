@@ -285,6 +285,5 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @grandTotal = CostBreakUpsService.totalTripCost(result)
     @taxBreakup = CostBreakUpsService.taxBreakUp(result)
 
-
   return undefined
 ]
