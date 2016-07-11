@@ -218,7 +218,7 @@ BEGIN
 
           if stay_time > 4
 
-            nights = ( stay_time.to_i / 24 ) > 0 ? ( stay_time.to_i / 24 ) : 1
+            nights =  (stay_time.to_i / 24) + 1
 
             previous_plan[:accommodation_plan] = {
                 nights: nights,

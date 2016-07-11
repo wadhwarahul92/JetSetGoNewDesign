@@ -1,4 +1,6 @@
+$main-sepia-color : rgb(170,96,31);
 $main-skyblue-color : rgb(27,143,188);
+$main-blue-color:rgb(5, 81, 139);
 
 .custom-img{
   width: 75px;
@@ -324,7 +326,7 @@ $main-skyblue-color : rgb(27,143,188);
 //fdf2ac changes Rahul 16-6-2016
 
 .bg-color{
-  background-color: #dac39c;
+  //background-color: #dac39c;
   .res-toogle-main{
     margin: 90px 0 20px 0;
     a{
@@ -715,7 +717,6 @@ $main-skyblue-color : rgb(27,143,188);
       }
       .modify-btn{
         display: inline-block;
-        width: 100px;
         text-align: center;
         color: #ffffff;
         padding: 7px 20px;
@@ -909,6 +910,117 @@ $main-skyblue-color : rgb(27,143,188);
     }
   }
 
+// changes Rahul 9-7-2016
+  .search-edit-form{
+    .search-main-container{
+      position: relative;
+      width:100%;
+      display:inline-block;
+      h2{
+        font-size:120px;
+        color:#ffffff;
+        margin:0 0 20px 0;
+        span{
+          display:block;
+          font-size:70px;
+        }
+      }
+      .search-main-form{
+        position: relative;
+        display: inline-block;
+        width: 85%;
+        float: left;
+      }
+      .search-form{
+        position: relative;
+        width: 24.6%;
+        display: inline-block;
+      }
+      .search-textfield{
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid $main-sepia-color;
+        padding:9px 5px 9px 43px;
+        a{
+          color: #dddddd;
+        }
+        .white-color{
+          color: #ffffff;
+        }
+        .black-color{
+          color: #000000;
+        }
+      }
+      .date-textfield{
+        padding:9px 5px;
+      }
+      .pax-textfield{
+        padding:9px 5px 9px 33px;
+      }
+      .text-white{
+        color: #ffffff;
+      }
+      .search-icon{
+        background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/180/original/Home_search_icon-123.png?1462255952);
+      }
+      .departure-icon{
+        width: 37px;
+        height: 20px;
+        display: inline-block;
+        background-position: -9px -11px;
+        position: absolute;
+        top: 10px;
+        left: 5px;
+      }
+      .arrival-icon{
+        width: 37px;
+        height: 20px;
+        display: inline-block;
+        background-position: -59px -11px;
+        position: absolute;
+        top: 10px;
+        left: 5px;
+      }
+      .pax-icon{
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-position: -246px -9px;
+        position: absolute;
+        top: 7px;
+        left: 5px;
+      }
+      .cross-icon{
+        position: absolute;
+        top: -10px;
+        right: -3px;
+        color: #cc0000;
+        font-size: 16px;
+      }
+      .search-btn{
+        width: 14.5%;
+        background-color: $main-sepia-color;
+        display: inline-block;
+        padding:10px 0;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .add-trip-btn{
+        color: #ffffff;
+        display: inline-block;
+        padding: 9px 30px;
+        border: 1px solid #ffffff;
+        //-webkit-border-radius: 10px;
+        //-moz-border-radius: 10px;
+        //border-radius: 10px;
+      }
+      ::-webkit-input-placeholder { color:#dddddd; }
+      ::-moz-placeholder { color:#dddddd; } /* firefox 19+ */
+      :-ms-input-placeholder { color:#dddddd; } /* ie */
+      input:-moz-placeholder { color:#dddddd; }
+    }
+  }
 @media (max-width: 1200px) and (min-width: 990px) {
   .search-result-box{
     h3{
@@ -920,6 +1032,20 @@ $main-skyblue-color : rgb(27,143,188);
     .custom-btn{
       padding: 3px;
       font-size: 10px;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .search-edit-form {
+    .search-main-container {
+      .search-main-form {
+        width: 100%;
+        float: none;
+      }
+      .search-btn{
+        width: 100%;
+        margin-bottom: 15px;
+      }
     }
   }
 }
@@ -1001,6 +1127,14 @@ $main-skyblue-color : rgb(27,143,188);
       }
     }
   }
+  .search-edit-form {
+    .search-main-container {
+      .search-form{
+        width: 49.7%;
+        margin-bottom: 5px;
+      }
+    }
+  }
   .search_result_main {
     .empty-leg-toogle-main {
       .top-destination-con {
@@ -1018,6 +1152,14 @@ $main-skyblue-color : rgb(27,143,188);
   }
 }
 @media (max-width: 767px) {
+  .search-edit-form {
+    .search-main-container {
+      .search-form{
+        width: 100%;
+        margin-bottom: 5px;
+      }
+    }
+  }
   .search_result_main {
     .search_result {
       .result-search {
