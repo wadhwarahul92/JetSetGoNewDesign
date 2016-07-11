@@ -242,6 +242,8 @@ Rails.application.routes.draw do
 
   resources :aircraft_types
 
+  resources :aircraft_categories
+
   resources :jetsteal_subscriptions do
     member do
       get 'unsubscribe'

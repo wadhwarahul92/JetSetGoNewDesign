@@ -4,5 +4,6 @@
     <%= f.input :svg %>
     <%= f.input :speed_in_kts %>
     <%= f.input :description %>
+    <%= f.input :aircraft_category_id, collection: aircraft_categories_collection, prompt: 'Select aircraft category' %>
     <%= f.submit 'Save', class: 'btn btn-success' %>
 <%- end %>
