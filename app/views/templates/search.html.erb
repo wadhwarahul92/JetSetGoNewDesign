@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
-            {{ctrl.airportForId(search_activity.departure_airport_id).name}} >> {{ctrl.airportForId(search_activity.arrival_airport_id).name}} | 29 Jun - Thu {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
+            {{ctrl.airportForId(search_activity.departure_airport_id).name}} >> {{ctrl.airportForId(search_activity.arrival_airport_id).name}} | {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
@@ -183,14 +183,7 @@
           <div class="empty-leg-toogle-main" ng-show="custom">
             <div class="arrow-up"></div>
             <div class="top-destination-con">
-              <div class="col-sm-8 col-xs-12">
-                <div class="desination-name">
-                  <p>
-                    Delhi >> Mumbai | 29 Jun - Thu 5th Jul 2016 | 2 Passenger
-                  </p>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-12 text-right">
+              <div class="col-xs-12 text-right">
                 <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/326/original/icon.png?1467374235" alt="">
               </div>
               <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
