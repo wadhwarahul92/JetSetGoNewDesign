@@ -26,6 +26,7 @@
         <!-- search con start -->
         <div class="search-edit-form" ng-hide="ctrl.disable_">
           <div class="row">
+
             <div class="col-xs-12 search-main-container">
               <div class="search-con">
                 <span class="search-main-form autocomplete-height" ng-repeat="search_activity in ctrl.search_activities">
@@ -70,7 +71,7 @@
                   </span>
                   <span class="search-form">
                     <div class="dropdown datetimepicker-holder search-textfield date-textfield">
-                      <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(search_activity.start_at) != 'Click to choose time' ? 'black-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
+                      <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(search_activity.start_at) != 'Click to choose time' ? 'black-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar white-color"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
                       <ul class="dropdown-menu" role="menu">
                         <datetimepicker
                         data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
@@ -101,23 +102,62 @@
 
         <div ng-show="ctrl.disable_">
           <div class="row">
-            <span  ng-repeat="search_activity in ctrl.search_activities">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.departure_airport_id).city.name" ng-disabled="ctrl.disable_">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <input type="text" class="search-textbox" ng-value="ctrl.airportForId(search_activity.arrival_airport_id).city.name" ng-disabled="ctrl.disable_">
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <input type="text" class="search-textbox" ng-value="search_activity.pax" ng-disabled="ctrl.disable_">
-            </div>
-              </span>
-            <div class="col-md-2 col-xs-12">
-              <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
-            </div>
+            <span class="search-edit-form">
+              <div class="col-xs-12 search-main-container">
+                <div class="search-con">
+                <span class="search-main-form autocomplete-height" ng-repeat="search_activity in ctrl.search_activities">
+                  <span class="search-form">
+                    <span class="search-icon departure-icon"></span>
+                    <input class="search-textfield" title="Departure Airport"
+                           disabled
+                           placeholder="Departure"
+                           autocomplete="off"
+                           typeahead-editable="false"
+                           typeahead-select-on-exact="true"
+                           typeahead-template-url="airportsTypeAhead.html"
+                           ng-model="search_activity.departure_airport"
+                           uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                           type="text"
+                           typeahead-min-length="0">
+                  </span>
+                  <span class="search-form">
+                    <span class="search-icon arrival-icon"></span>
+                    <input class="search-textfield" title="Arrival Airport"
+                           disabled
+                           placeholder="Arrival"
+                           autocomplete="off"
+                           typeahead-editable="false"
+                           typeahead-select-on-exact="true"
+                           typeahead-template-url="airportsTypeAhead.html"
+                           ng-model="search_activity.arrival_airport"
+                           uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                           type="text"
+                           typeahead-min-length="0">
+                  </span>
+                  <span class="search-form">
+                    <span class="search-icon pax-icon"></span>
+                    <input class="search-textfield pax-textfield" type="text"
+                           disabled
+                           ng-model="search_activity.pax"
+                           autocomplete="off"
+                           typeahead-editable="false"
+                           typeahead-select-on-exact="true"
+                           uib-typeahead="pax for pax in ['1','2','3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']"
+                           typeahead-min-length="0"
+                           placeholder="Pax">
+                  </span>
+                  <span class="search-form">
+                    <i class="fa fa-calendar celender-icon white-color"></i>
+                    <input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">
+                  </span>
+
+                  <br/> <br/>
+                </span>
+                  <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </span>
           </div>
         </div>
 
@@ -173,7 +213,7 @@
                 <h4>Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
               </div>
               <div class="detail-link-con">
-                <a href="#" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a> | <a href="#" ng-click="ctrl.enquire(result)">Enquire</a>
+                <a href="#" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a> | <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -217,7 +257,7 @@
                 </div>
                 <div class="col-md-8 col-sm-6">
                   <div class="flight-cost-con">
-                    <h2>Cost Detail</h2>
+                    <h2>Cost Details</h2>
                     <div ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">
                       <div class="cost-con">
                         <div class="row">
