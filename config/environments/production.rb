@@ -110,8 +110,8 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :email => {
                                               :email_prefix => 'JetSetGo new ERROR OCCURRED',
-                                              :sender_address => %{'notifier' <suraj.pratap@jetsetgo.in>},
-                                              :exception_recipients => %w{suraj.pratap@jetsetgo.in mayur.singh@jetsetgo.in pulkit.bhatia@jetsetgo.in}
+                                              :sender_address => %{'notifier' <mayur.singh@jetsetgo.in>},
+                                              :exception_recipients => %w{mayur.singh@jetsetgo.in pulkit.bhatia@jetsetgo.in}
                                           }
 
 end

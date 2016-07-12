@@ -4,7 +4,7 @@ class ExceptionToDevMailer < ApplicationMailer
     @job = job
     @error = error
     mail(
-        to: 'suraj.pratap@jetstego.in',
+        to: 'mayur.singh@jetsetgo.in',
         subject: 'Exception in background processing, JETSETGO'
     )
   end
