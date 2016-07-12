@@ -4,7 +4,7 @@ class TestMailer < ApplicationMailer
 
   def test_layout
     mail(
-        to: 'suraj.pratap@jetsetgo.in',
+        to: 'mayur.singh@jetsetgo.in',
         subject: 'Testing mail'
     )
   end

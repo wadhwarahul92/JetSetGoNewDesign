@@ -35,7 +35,7 @@ Delayed::Worker.class_eval do
   def handle_failed_job(job, error)
     PREVIOUS_DEF.bind(self).call(job, error)
     ActionMailer::Base.mail(
-                          to: 'suraj.pratap@jetsetgo.in',
+                          to: 'mayur.singh@jetsetgo.in',
                           from: 'monika@jetsetgo.in',
                           subject: 'JetSetGo: Failure in background job',
                           body: <<BEGIN
