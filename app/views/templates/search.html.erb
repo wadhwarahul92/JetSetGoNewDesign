@@ -1772,13 +1772,13 @@
                 <!--<input id="ex1" ng-init="filterSeatingCapacity = 0" ng-model="filterSeatingCapacity" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="35" data-slider-step="1" data-slider-value="0"/>-->
                 <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">-->
 
-                 <b> 0 &nbsp;&nbsp;</b> <input id="ex1" type="text"  ng-model="ctrl.filterSeatingCapacity" class="span2" data-slider-min="0" data-slider-max="35" data-slider-step="1" data-slider-value="[0,35]"/> <b> &nbsp;&nbsp; 35 </b>
-                {{ctrl.filterSeatingCapacity.split(',')}}
+                 <b> 1 &nbsp;&nbsp;</b> <input id="ex1" type="text" ng-init="filterSeatingCapacity = '0,35'" ng-model="filterSeatingCapacity" class="span2" data-slider-min="1" data-slider-max="35" data-slider-step="1" data-slider-value="[1,35]"/> <b> &nbsp;&nbsp; 35 </b>
+                {{filterSeatingCapacity.split(',')}}
               </div>
               <div class="filter flying-time">
                 <h3>Flying Time</h3>
                 <!--<input id="ex2"  data-slider-id='ex2Slider' type="text" data-slider-min="0.5" data-slider-max="6.0" data-slider-value="0"/>-->
-                <b> 1 Hrs &nbsp;&nbsp;</b> <input id="ex2" type="text" ng-model="" class="span2" value="" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="[0,6]"/> <b> &nbsp;&nbsp; 6 Hrs </b>
+                <!--<b> 1 Hrs &nbsp;&nbsp;</b> <input id="ex2" type="text" ng-model="" class="span2" value="" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="[0,6]"/> <b> &nbsp;&nbsp; 6 Hrs </b>-->
               </div>
               {{abc}}
             </div>
@@ -1805,7 +1805,7 @@
       <div class="search_result">
         <h2>Search Result</h2>
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="result.aircraft.seating_capacity > filterSeatingCapacity || result.aircraft.seating_capacity == filterSeatingCapacity ">-->
-        <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="result.aircraft.seating_capacity > ctrl.filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < ctrl.filterSeatingCapacity.split(',')[1]">
+        <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] ">
           {{result}}
           <div class="result-search">
             <div class="col-md-8 col-sm-7 col-xs-12 search_img">

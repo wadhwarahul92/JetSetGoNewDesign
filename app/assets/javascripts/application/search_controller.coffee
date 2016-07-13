@@ -26,9 +26,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @grandTotal = 0.0
   @taxBreakup = []
 
-  @filterSeatingCapacity = []
-  @filterSeatingCapacity = ['0','35']
-
   $scope.$watch(
     =>
       @search_activities
