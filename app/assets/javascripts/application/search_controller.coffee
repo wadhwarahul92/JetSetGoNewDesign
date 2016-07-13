@@ -26,6 +26,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @grandTotal = 0.0
   @taxBreakup = []
 
+  @filterSeatingCapacity = []
+  @filterSeatingCapacity = ['0','35']
+
   $scope.$watch(
     =>
       @search_activities
@@ -284,6 +287,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @subTotal = CostBreakUpsService.subTotal(result)
     @grandTotal = CostBreakUpsService.totalTripCost(result)
     @taxBreakup = CostBreakUpsService.taxBreakUp(result)
+
+  @lessThan = (prop, val)->
+    item = []
+    item.push
 
   return undefined
 ]
