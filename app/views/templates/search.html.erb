@@ -1907,20 +1907,20 @@
                           </div>
                         </div>
                       </div>
+                      <!--<div class="cost-con">-->
+                        <!--<div class="row">-->
+                          <!--<div class="col-xs-7">-->
+                            <!--<p>Flight Time</p>-->
+                          <!--</div>-->
+                          <!--<div class="col-xs-5 text-right">-->
+                            <!--<p>{{flight_plan.flight_time}}</p>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Flight Time</p>
-                          </div>
-                          <div class="col-xs-5 text-right">
-                            <p>{{flight_plan.flight_time}}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="cost-con">
-                        <div class="row">
-                          <div class="col-xs-7">
-                            <p>Flying Charges</p>
+                            <p>Flight Cost</p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
@@ -1930,7 +1930,7 @@
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Handling Charges</p>
+                            <p>Ground Handling Charges</p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
@@ -1944,6 +1944,16 @@
                           </div>
                           <div class="col-xs-5">
                             <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cost-con" ng-show="flight_plan.watch_hour_at_arrival">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <p>Watch Hours</p>
+                          </div>
+                          <div class="col-xs-5">
+                            <p class="text-right">As per Actual</p>
                           </div>
                         </div>
                       </div>
@@ -1970,20 +1980,20 @@
                             </div>
                           </div>
                         </div>
+                        <!--<div class="cost-con">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-7">-->
+                              <!--<p>Flight Time</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-5 text-right">-->
+                              <!--<p>{{flight_plan.flight_time}}</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Flight Time</p>
-                            </div>
-                            <div class="col-xs-5 text-right">
-                              <p>{{flight_plan.flight_time}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cost-con">
-                          <div class="row">
-                            <div class="col-xs-7">
-                              <p>Flying Charges</p>
+                              <p>Flight Cost (₹ 75,000 per hour)</p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
@@ -1993,7 +2003,7 @@
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Handling Charges</p>
+                              <p>Ground Handling Charges</p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
@@ -2007,6 +2017,16 @@
                             </div>
                             <div class="col-xs-5">
                               <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cost-con" ng-show="flight_plan.watch_hour_at_arrival">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Watch Hours</p>
+                            </div>
+                            <div class="col-xs-5">
+                              <p class="text-right">As per Actual</p>
                             </div>
                           </div>
                         </div>
