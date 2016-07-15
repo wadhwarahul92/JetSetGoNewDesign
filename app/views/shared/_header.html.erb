@@ -15,7 +15,14 @@
           <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse res-header navbar-hidden">
             <div class="col-sm-10 col-xs-12 right-nav pull-right">
               <!--<p class="header-right-text text-right">+91-11-39585858 <a href="#">Login</a> | <a href="#">Signup</a></p>-->
-              <ul class="nav navbar-nav navbar-right main-nav">
+              <ul class="top-login-nav">
+                <li class="menu-list-toogle"><a ng-click="custom = !custom" href=""><i class="fa fa-bars"></i> Menu</a></li>
+                <li><a href=""><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/355/original/login.png?1468494171" alt=""> Sign Up</a></li>
+                <li><a href=""><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/359/original/signin.png?1468494272" alt=""> Login</a></li>
+                <li><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/347/original/phone.png?1468482937" alt=""> <span>+91-11-39585858</span></li>
+                <div class="clearfix"></div>
+              </ul>
+              <ul class="nav navbar-nav pull-right main-nav" ng-show="custom">
                 <li>
                   <a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>
                   <a ng-show="ctrl.currentUser" class="no-right-padding" href="/profile"> <img src="" style="max-height: 20px;max-width: 20px" ng-src="{{ctrl.currentUser.image}}" alt=""> {{ctrl.currentUser.full_name}} <i class="fa fa-caret-down"></i></a>
