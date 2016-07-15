@@ -2045,7 +2045,11 @@
                           <h5>Grand Total</h5>
                         </div>
                         <div class="col-xs-5">
-                          <h5 class="text-right">₹ {{ctrl.grandTotal | currency:"":0 | indianCurrency}}</h5>
+                          <h5 class="text-right">
+                            ₹ {{ctrl.grandTotal | currency:"":0 | indianCurrency}}
+                            <br>
+                            <span style="font-size: 14px; font-weight: 100">(All inclusive)</span>
+                          </h5>
                         </div>
                       </div>
                     </div>
