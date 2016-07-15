@@ -1754,32 +1754,22 @@
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
                 <script type="text/javascript">
-//                    $('#ex1').slider({
-//                        formatter: function(value) {
-//                            return 'Current value: ' + value;
-//                        }
-//                    });
-//                    $('#ex2').slider({
-//                        formatter: function(value) {
-//                            return 'Current value: ' + value;
-//                        }
-//                    });
                     // With JQuery
-                    $("#ex1").slider({});
-                    $("#ex2").slider({});
+                    $("#seating_capacity_slider").slider({});
+                    $("#flight_cost_slider").slider({});
 
                 </script>
                 <!--<input id="ex1" ng-init="filterSeatingCapacity = 0" ng-model="filterSeatingCapacity" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="35" data-slider-step="1" data-slider-value="0"/>-->
                 <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/322/original/price_bar.png?1467267312" class="img-responsive" alt="">-->
 
-                 <b> 1 &nbsp;&nbsp;</b> <input id="ex1" type="text" ng-init="filterSeatingCapacity = '0,35'" ng-model="filterSeatingCapacity" class="span2" data-slider-min="1" data-slider-max="35" data-slider-step="1" data-slider-value="[1,35]"/> <b> &nbsp;&nbsp; 35 </b>
+                 <b> 1 &nbsp;&nbsp;</b> <input id="seating_capacity_slider" type="text" ng-init="filterSeatingCapacity = '0,35'" ng-model="filterSeatingCapacity" class="span2" data-slider-min="1" data-slider-max="35" data-slider-step="1" data-slider-value="[1,35]"/> <b> &nbsp;&nbsp; 35 </b>
               </div>
               <div class="filter flying-time">
-                <h3>Flying cost</h3>
+                <h3>Flight cost</h3>
                 <!--<input id="ex2"  data-slider-id='ex2Slider' type="text" data-slider-min="0.5" data-slider-max="6.0" data-slider-value="0"/>-->
                 <!--<b> {{ctrl.min_cost}} &nbsp;&nbsp;</b> -->
                 <b> 0 &nbsp;&nbsp;</b>
-                <input id="ex2" type="text" ng-init="filterFlyingTime = '0,5000000'" ng-model="filterFlyingTime" class="span2" data-slider-min="0" data-slider-max="5000000" data-slider-step="1" data-slider-value="[0,5000000]"/>
+                <input id="flight_cost_slider" type="text" ng-init="filterFlyingTime = '0,5000000'" ng-model="filterFlyingTime" class="span2" data-slider-min="0" data-slider-max="5000000" data-slider-step="1" data-slider-value="[0,5000000]"/>
                 <b> &nbsp;&nbsp; 5000000</b>
                 <!--<b> &nbsp;&nbsp; {{ctrl.max_cost}}</b>-->
               </div>
@@ -1907,16 +1897,16 @@
                           </div>
                         </div>
                       </div>
-                      <!--<div class="cost-con">-->
-                        <!--<div class="row">-->
-                          <!--<div class="col-xs-7">-->
-                            <!--<p>Flight Time</p>-->
-                          <!--</div>-->
-                          <!--<div class="col-xs-5 text-right">-->
-                            <!--<p>{{flight_plan.flight_time}}</p>-->
-                          <!--</div>-->
-                        <!--</div>-->
-                      <!--</div>-->
+                      <div class="cost-con">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <p>Flight Time</p>
+                          </div>
+                          <div class="col-xs-5 text-right">
+                            <p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>
+                          </div>
+                        </div>
+                      </div>
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
@@ -1980,16 +1970,16 @@
                             </div>
                           </div>
                         </div>
-                        <!--<div class="cost-con">-->
-                          <!--<div class="row">-->
-                            <!--<div class="col-xs-7">-->
-                              <!--<p>Flight Time</p>-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-5 text-right">-->
-                              <!--<p>{{flight_plan.flight_time}}</p>-->
-                            <!--</div>-->
-                          <!--</div>-->
-                        <!--</div>-->
+                        <div class="cost-con">
+                          <div class="row">
+                            <div class="col-xs-7">
+                              <p>Flight Time</p>
+                            </div>
+                            <div class="col-xs-5 text-right">
+                              <p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>
+                            </div>
+                          </div>
+                        </div>
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
