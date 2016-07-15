@@ -689,11 +689,10 @@ $main-blue-color:rgb(5, 81, 139);
 // changes Rahul 16-6-2016
 
   .top_filter_nav{
-    background-color: #cc9345;
-    border-top: 2px solid #9c6128;
-    border-bottom: 2px solid #9c6128;
+    background-color: #998776;
+    border-top: 2px solid #ffffff;
     padding: 10px 0;
-    margin-top: 70px;
+    margin-top: 72px;
     .ss{
       padding: 10px 0;
     }
@@ -703,7 +702,7 @@ $main-blue-color:rgb(5, 81, 139);
     }
   }
   .filter-toggle-main{
-    background-color: #fbdc99;
+    background-color: #d6cab9;
     padding: 10px 0;
     .search-form-con{
       .celender-icon{
@@ -728,8 +727,8 @@ $main-blue-color:rgb(5, 81, 139);
         text-align: center;
         color: #ffffff;
         padding: 7px 20px;
-        background-color: #aa601f;
-        border: 1px solid #f0d06d;
+        background-color: #720000;
+        border: 1px solid #ffffff;
         width: 15%;
         margin-top: 5px;
       }
@@ -795,9 +794,13 @@ $main-blue-color:rgb(5, 81, 139);
           .icon-con{
             position: absolute;
             bottom: 0;
-            background-color: rgba(144,64,0,0.5);
+            background-color: rgba(131,107,84, 0.8);
             padding: 5px;
             width: 100%;
+            img{
+              cursor: pointer;
+              margin-right: 10px;
+            }
           }
         }
         .search-ryt-con{

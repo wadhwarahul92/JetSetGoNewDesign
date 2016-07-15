@@ -22,6 +22,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @c_filter = []
 
+  @min_cost = ''
+
+  @max_cost = ''
+
+  @filter_cost = ''
+
   @subTotal = 0.0
   @grandTotal = 0.0
   @taxBreakup = []
@@ -72,6 +78,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       for result in @results
         result.totalCost = @totalTripCost(result)
+#        result.totalFlyingTime = @calculateFlyingTime(result)
 
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
         =>
@@ -87,7 +94,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
 
       @search_activities_static = JSON.parse(JSON.stringify @search_activities)
-
+      @min_cost = parseInt(_.first(@results).totalCost - 1).toString()
+      @max_cost = parseInt(_.last(@results).totalCost + 1).toString()
+      @filter_cost = "'"+@min_cost+','+ @max_cost+"'"
   ).error(
     (data)->
       error = 'Something went wrong.'
@@ -284,6 +293,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @subTotal = CostBreakUpsService.subTotal(result)
     @grandTotal = CostBreakUpsService.totalTripCost(result)
     @taxBreakup = CostBreakUpsService.taxBreakUp(result)
+
+  @customSplit = (string)->
+    string.split(',')
 
   return undefined
 ]
