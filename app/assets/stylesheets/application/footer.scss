@@ -1,16 +1,14 @@
 footer{
   width:100%;
-  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/157/original/footer_bg.jpg?1460972598);
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/399/original/footer-bg.png?1468581518);
   background-size: cover;
+  background-position: center;
   padding: 30px 0;
   h4{
     font-size: 20px;
     color: #ffffff;
-    text-decoration: underline;
-    text-transform: uppercase;
   }
   .member-con{
-    border-right:1px solid rgba(0,0,0,0.5);
     min-height: 250px;
     .newsletter-form-con{
       margin-top: 20px;
@@ -46,7 +44,6 @@ footer{
   }
   .logo-con{
     text-align: center;
-    border-right: 1px solid rgba(0,0,0,0.5);
     min-height: 250px;
     .footer-logo-con{
       margin: 70px 0 30px 0;
@@ -55,15 +52,14 @@ footer{
       color: #ffffff;
     }
   }
-  .services-con{
+  .followus-con{
     ul{
       padding: 0;
       li{
         list-style: none;
-        width: 40%;
         margin-right: 20px;
         padding: 5px 0;
-        border-bottom: 1px dotted #888888;
+        float: left;
         a{
           color:#ffffff;
           font-size: 16px;
@@ -74,26 +70,25 @@ footer{
       }
     }
   }
-  .social-media-con{
-    text-align: center;
+  .services-con{
     margin-top: 20px;
-    p{
-      font-size: 18px;
-      color: #ffffff;
-      span{
-        margin-right: 20px;
-      }
-      a{
-        color:#ffffff;
-        margin: 2px;
-        padding: 5px;
+    ul{
+      padding: 0;
+      margin: 0;
+      li{
+        list-style: none;
+        float: left;
+        margin-right: 10px;
+        a{
+          color: #000000;
+          font-size: 14px;
+        }
       }
     }
   }
   .copytext-con{
-    text-align: center;
     margin-top: 20px;
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     a{
       color:#ffffff;
