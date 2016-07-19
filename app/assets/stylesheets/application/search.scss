@@ -800,7 +800,7 @@ $main-blue-color:rgb(5, 81, 139);
             position: absolute;
             bottom: 0;
             background-color: rgba(131,107,84, 0.3);
-            padding: 9px 5px;
+            padding: 2px 5px;
             width: 100%;
             img{
               cursor: pointer;
@@ -816,29 +816,46 @@ $main-blue-color:rgb(5, 81, 139);
             *background-color: #fbdc99;
             background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
             background-size: cover;
-            padding: 15px;
+            padding: 15px 0;
             height: 320px;
             h3{
-              font-size: 22px;
+              font-size: 25px;
+              color: #000000;
+              margin: 10px 0;
+              padding: 0 15px;
               font-weight: bold;
-              margin: 0;
             }
             h5{
-              font-size: 14px;
-              font-style: italic;
+              font-size: 18px;
+              color: #000000;
+              margin: 10px 0;
+              padding: 0 15px;
             }
             h4{
-              font-weight: bold;
+              margin: 0;
+              margin-top: 50px;
+              padding: 5px 15px;
+              font-size: 30px;
+              color: #ffffff;
+              background-color: #856b58;
+              span{
+                font-size: 14px;
+              }
             }
           }
           .detail-link-con{
             padding: 10px 15px;
-            position: absolute;
             bottom: 0;
             width: 100%;
             color: #ffffff;
+            margin-top: 50px;
             a{
+              background-color: #750005;
+              display: inline-block;
+              padding: 10px 30px;
+              text-align: center;
               color: #ffffff;
+              text-decoration: none;
             }
           }
         }
