@@ -791,12 +791,16 @@ $main-blue-color:rgb(5, 81, 139);
           .img-hide{
             width: 100%;
             overflow: hidden;
+            img{
+              width: 100%;
+              height: 320px;
+            }
           }
           .icon-con{
             position: absolute;
             bottom: 0;
-            background-color: rgba(131,107,84, 0.8);
-            padding: 5px;
+            background-color: rgba(131,107,84, 0.3);
+            padding: 9px 5px;
             width: 100%;
             img{
               cursor: pointer;
@@ -810,7 +814,7 @@ $main-blue-color:rgb(5, 81, 139);
           .img-bg{
             width: 100%;
             *background-color: #fbdc99;
-            background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/324/original/clouds.png?1467356499");
+            background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
             background-size: cover;
             padding: 15px;
             height: 320px;
@@ -829,7 +833,6 @@ $main-blue-color:rgb(5, 81, 139);
           }
           .detail-link-con{
             padding: 10px 15px;
-            background-color: rgba(131, 107, 84, 0.8);
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -845,26 +848,27 @@ $main-blue-color:rgb(5, 81, 139);
       width: 100%;
       border: 1px solid #998776;
       position: relative;
+      box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
       margin-top: 11px;
       .arrow-up{
         width: 0;
         height: 0;
-        border-right: 20px solid transparent;
-        border-left: 20px solid transparent;
-        border-bottom: 25px solid #998776;
+        border-right: 13px solid transparent;
+        border-left: 13px solid transparent;
+        border-bottom: 17px solid #998776;
         position: absolute;
-        top: -25px;
-        left: 10px;
+        top: -17px;
+        left: 20px;
       }
       .white-arrow-up{
         width: 0;
         height: 0;
-        border-right: 19px solid transparent;
-        border-left: 19px solid transparent;
-        border-bottom: 25px solid #ffffff;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        border-bottom: 17px solid #ffffff;
         position: absolute;
-        top: -23px;
-        left: 11px;
+        top: -16px;
+        left: 21px;
       }
       .top-destination-con{
         width: 100%;
