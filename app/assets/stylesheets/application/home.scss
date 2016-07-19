@@ -465,6 +465,40 @@ span.heading:after{
 
       }
     }
+    .helisetgo_detail{
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');
+      background-size: cover;
+      min-height: 800px;
+      background-position: center;
+    }
+    .jetsetyatra_detail{
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');
+      background-size: cover;
+      min-height: 800px;
+      background-position: center;
+    }
+    .widget-detail{
+      h2{
+        margin: 0;
+        padding: 30px 15px;
+        color: #750005;
+        font-size: 25px;
+      }
+      p{
+        font-size: 16px;
+        color: #ffffff;
+        margin: 15px 0;
+        padding: 0 15px 0 15px;
+      }
+      ol{
+        margin-top: 20px;
+        li{
+          font-size: 16px;
+          color: #ffffff;
+          margin: 10px 0;
+        }
+      }
+    }
   }
 }
 
@@ -473,6 +507,41 @@ span.heading:after{
   width: 100%;
   .media-slider-con{
     margin: 60px 0;
+    .media-con{
+      text-align: left;
+      h3.media-heading{
+        font-size: 12px;
+        font-weight: bold;
+        margin: 5px 0;
+      }
+      p.media-content{
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+//jetsteel app
+.jetsteel-app{
+  width: 100%;
+  .app-main{
+    width: 100%;
+    background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/392/original/jetstealapp-bg.png?1468579421");
+    background-size: cover;
+    min-height: 320px;
+    .app-content{
+      padding: 50px 0;
+      p{
+        font-size: 16px;
+      }
+    }
+  }
+  .app-img-con{
+    position: relative;
+    img{
+      position: absolute;
+      top: -100px;
+    }
   }
 }
 
