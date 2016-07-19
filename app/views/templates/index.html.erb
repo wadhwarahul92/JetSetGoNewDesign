@@ -121,7 +121,7 @@
           </a>
         </span>
         <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
-        <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="22"></a>
         <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/348/original/round_trip.png?1468482949" alt=""></a>
       </div>
@@ -157,46 +157,29 @@
             <div class="carousel-inner" role="listbox">
               <div class="item active">
                 <div class="col-md-8 emptyleg_image">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
                 </div>
                 <div class="col-md-4 emptyleg_detail">
                   <h2 class="aircraft_name">Pilatus PC 12/47</h2>
                   <h5 class="engine_type">Single Turbo Jet</h5>
                   <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
-
+                  <div class="detail-link-con">
+                    <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                </div>
                 </div>
                 <div class="col-xs-12 emptyleg_content">
                   <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                   <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
                 </div>
                 <div class="enquire-con">
-                  <a href="#" class="ennquire-btn">Enquire</a>
+                  <a href="#" class="ennquire-btn">Signin</a>
                 </div>
                 <div class="clearfix"></div>
               </div>
 
               <div class="item">
                 <div class="col-md-8 emptyleg_image">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
-                </div>
-                <div class="col-md-4 emptyleg_detail">
-                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
-                  <h5 class="engine_type">Single Turbo Jet</h5>
-                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
-                </div>
-                <div class="col-xs-12 emptyleg_content">
-                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
-                </div>
-                <div class="enquire-con">
-                  <a href="#" class="ennquire-btn">Enquire</a>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-
-              <div class="item">
-                <div class="col-md-8 emptyleg_image">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
                 </div>
                 <div class="col-md-4 emptyleg_detail">
                   <h2 class="aircraft_name">Pilatus PC 12/47</h2>
@@ -215,7 +198,26 @@
 
               <div class="item">
                 <div class="col-md-8 emptyleg_image">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
+                </div>
+                <div class="col-md-4 emptyleg_detail">
+                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
+                  <h5 class="engine_type">Single Turbo Jet</h5>
+                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
+                </div>
+                <div class="col-xs-12 emptyleg_content">
+                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
+                </div>
+                <div class="enquire-con">
+                  <a href="#" class="ennquire-btn">Enquire</a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="item">
+                <div class="col-md-8 emptyleg_image">
+                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
                 </div>
                 <div class="col-md-4 emptyleg_detail">
                   <h2 class="aircraft_name">Pilatus PC 12/47</h2>
@@ -309,11 +311,11 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-5">
           <div class="widget">
-            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/371/original/helijet.png?1468575306" alt="" class="img-responsive">
-            <h2>HeliSetGo&trade;</h2>
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/374/original/jersetwed.png?1468575375" alt="" class="img-responsive">
+            <h2>JetSetWed&trade;</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
             <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="helisego.open = !helisego.open">Detail</a>
+            <a href="#" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -328,20 +330,20 @@
           </div>
         </div>
         <div class="col-md-offset-1 col-md-10">
-          <div class="widget-detail helisetgo_detail"  ng-show="helisego.open">
-            <h2>HeliSetGo&trade;</h2>
-            <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
-            <p>Be it to get an aerial view of the city you love or of localesnever explored, HeliSetGo
-              enables this in a jiffy. Going out on a long drive is now so-Yesterday!</p>
-            <ol>
-              <li>Surveys Aerial Filming and Photography</li>
-              <li>City Tours and Joy Rides</li>
-              <li>Business Travel and Corporate Events</li>
-              <li>Airport Transfers</li>
-              <li>Emergency medical flights and Evacuations</li>
-              <li>Special Occasions</li>
-            </ol>
-          </div>
+            <div class="widget-detail jetsetwed_detail"  ng-show="jetsetwed.open">
+              <h2>JetSetWed&trade;</h2>
+              <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
+              <p>Your wish to deliver the never before seen experience is our command. Think of anything with
+                jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
+              <ol>
+                <li>Engagement</li>
+                <li>Wedding</li>
+                <li>Conference</li>
+                <li>Group Gateways</li>
+                <li>Celebrity</li>
+                <li>Sports</li>
+              </ol>
+            </div>
           <div class="widget-detail jetsetyatra_detail"  ng-show="jetsetyatra.open">
             <h2>JetSetYatra&trade;</h2>
             <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise. We offer both customized packages and specially designed pilgrimages as per your requirements.</p>
@@ -368,11 +370,11 @@
         </div>
         <div class="col-md-5">
           <div class="widget">
-            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/374/original/jersetwed.png?1468575375" alt="" class="img-responsive">
-            <h2>JetSetWed&trade;</h2>
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/371/original/helijet.png?1468575306" alt="" class="img-responsive">
+            <h2>HeliSetGo&trade;</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
             <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open">Detail</a>
+            <a href="#" class="enquire-btn" ng-click="helisego.open = !helisego.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -386,20 +388,20 @@
                 <li>Quick Reliable Transfers</li>
               </ol>
             </div>
-            <div class="widget-detail jetsetwed_detail"  ng-show="jetsetwed.open">
-              <h2>JetSetWed&trade;</h2>
-              <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
-              <p>Your wish to deliver the never before seen experience is our command. Think of anything with
-                jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
-              <ol>
-                <li>Engagement</li>
-                <li>Wedding</li>
-                <li>Conference</li>
-                <li>Group Gateways</li>
-                <li>Celebrity</li>
-                <li>Sports</li>
-              </ol>
-            </div>
+            <div class="widget-detail helisetgo_detail"  ng-show="helisego.open">
+            <h2>HeliSetGo&trade;</h2>
+            <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
+            <p>Be it to get an aerial view of the city you love or of localesnever explored, HeliSetGo
+              enables this in a jiffy. Going out on a long drive is now so-Yesterday!</p>
+            <ol>
+              <li>Surveys Aerial Filming and Photography</li>
+              <li>City Tours and Joy Rides</li>
+              <li>Business Travel and Corporate Events</li>
+              <li>Airport Transfers</li>
+              <li>Emergency medical flights and Evacuations</li>
+              <li>Special Occasions</li>
+            </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -418,10 +420,10 @@
     <div class="container">
       <div class="media-con">
         <div class="well-none">
-          <div id="myCarousel" class="carousel slide">
+          <div id="myCarousel2" class="carousel slide">
             <div class="row">
               <div class="col-sm-1 col-xs-2">
-                <a class="left carousel-control controller-arrow" href="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+                <a class="right carousel-control controller-arrow" href="#myCarousel2" data-slide="next"><i class="fa fa-chevron-left fa-4"></i></a>
               </div>
               <div class="col-sm-10 col-xs-8">
                 <!-- Carousel items -->
@@ -508,7 +510,7 @@
                 <!--/carousel-inner-->
               </div>
               <div class="col-sm-1 col-xs-2">
-                <a class="right carousel-control controller-arrow" href="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+                <a class="left carousel-control controller-arrow" href="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-right fa-4"></i></a>
               </div>
             </div>
           </div>

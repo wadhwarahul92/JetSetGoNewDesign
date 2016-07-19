@@ -217,12 +217,16 @@ span.heading:after{
 //top header section
 .top-header-search-con{
 	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/360/original/homepageplane.png?1468494836);
-    background-attachment: fixed;
-    background-position: 0px 41px;
+  background-attachment: fixed;
+  background-position: 0px 41px;
 	width:100%;
 	min-height: 100vh;
-    background-size: cover;
+  background-size: cover;
   position: relative;
+  .header-container{
+      position: relative;
+      height: 100vh;
+    }
     .header#header{
       border-bottom: 0px !important;
     }
@@ -298,7 +302,7 @@ span.heading:after{
           color: #ffffff;
         }
         .search-icon {
-          background-color: rgba(201, 180, 156, 0.5);
+          background-color: rgba(201, 180, 156, 0.85);
           position: absolute;
           display: inline-block;
           width: 40px;
@@ -369,7 +373,7 @@ span.heading:after{
       height: 320px;
     }
     .emptyleg_detail{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/324/original/clouds.png?1467356499");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
       height: 320px;
       background-size: cover;
       padding: 0;
@@ -399,6 +403,21 @@ span.heading:after{
           margin-top: 10px;
         }
       }
+      .detail-link-con{
+        padding: 10px 15px;
+        bottom: 0;
+        width: 100%;
+        color: #ffffff;
+        margin-top: 50px;
+        a{
+          background-color: #750005;
+          display: inline-block;
+          padding: 5px 20px;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
     }
     .emptyleg_content{
       border-left: 1px solid #750005;
@@ -419,7 +438,7 @@ span.heading:after{
         border: 1px solid #f2f2f2;
         color: #ffffff;
         text-decoration: none;
-        padding: 10px 30px;
+        padding: 5px 20px;
         display: inline-block;
         margin: 10px 0 0 40px;
 
@@ -458,7 +477,7 @@ span.heading:after{
         border: 1px solid #f2f2f2;
         color: #ffffff;
         text-decoration: none;
-        padding: 10px 30px;
+        padding: 5px 20px;
         display: inline-block;
         margin: 10px;
         float: right;
@@ -528,6 +547,9 @@ span.heading:after{
       }
       p.media-content{
         font-size: 12px;
+      }
+      .controller-arrow{
+        margin-top: 80%;
       }
     }
   }
@@ -990,9 +1012,6 @@ span.heading:after{
 
   //jetsteel section
   .jetsteel-main-con{
-    background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/146/original/jetsteals_bg.jpg?1460637416);
-    min-height: 400px;
-    background-size: cover;
     padding: 20px 0 30px 0;
     span.heading{
       margin:0 0 0 6px;
@@ -1017,6 +1036,15 @@ span.heading:after{
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
+      }
+    }
+  }
+  //jetsteel app
+  .jetsteel-app{
+    .app-img-con{
+      img{
+        position: inherit;
+        top:0;
       }
     }
   }
