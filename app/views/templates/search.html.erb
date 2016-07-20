@@ -1848,12 +1848,12 @@
             <div class="white-arrow-up"></div>
             <div class="top-destination-con">
               <div class="col-xs-12 text-right">
-                <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/326/original/icon.png?1467374235" alt="">
+                <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/405/original/emptylegs-on.png?1468581744" alt="">
               </div>
               <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
                 <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
                   <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
+                    <img width="45" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/401/original/base.png?1468581641'}}" alt="">
                   </p>
                   <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
                   <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
@@ -1861,13 +1861,13 @@
                 </div>
                 <div class="destination-con col-sm-2 hidden-xs">
                   <p>
-                    <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
+                    <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
                   </p>
                   <p class="time-duration">{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</p>
                 </div>
                 <div class="destination-con col-sm-3 col-xs-6">
                   <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
+                    <img width="45" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/402/original/destination.png?1468581660'}}" alt="">
                   </p>
                   <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
                   <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
@@ -1878,7 +1878,7 @@
               <div class="img-total-cost-con">
                 <div class="col-md-4 col-sm-6">
                   <div class="aircraft-img">
-                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
                   </div>
                 </div>
                 <div class="col-md-8 col-sm-6">
@@ -1891,7 +1891,7 @@
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
                           </div>
                           <div class="col-sm-2 hidden-xs text-center">
-                            <p style="font-weight: bold">>></p>
+                            <p style="font-weight: bold"> >> </p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>

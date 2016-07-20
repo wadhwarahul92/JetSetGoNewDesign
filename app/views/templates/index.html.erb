@@ -106,12 +106,12 @@
               <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
             </span>
             <div class="dropdown datetimepicker-holder search-textfield">
-              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(activity.start_at) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(activity.start_at) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa"></i> {{ctrl.formatTime(activity.start_at)}}</a>
               <ul class="dropdown-menu" role="menu">
                 <datetimepicker
                 data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                 data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+                datetimepicker-config="{ dropdownSelector: '.fa' }"
                 ng-model="activity.start_at"></datetimepicker>
               </ul>
             </div>
@@ -309,28 +309,44 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
           <div class="widget">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/374/original/jersetwed.png?1468575375" alt="" class="img-responsive">
             <h2>JetSetWed&trade;</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
             <a href="#" class="enquire-btn">Enquire</a>
             <a href="#" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-lg hidden-md hidden-sm" ng-show="jetsetwed.open">
+          <div class="widget-detail jetsetwed_detail">
+            <h2>JetSetWed&trade;</h2>
+            <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
+            <p>Your wish to deliver the never before seen experience is our command. Think of anything with
+              jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
+            <ol>
+              <li>Engagement</li>
+              <li>Wedding</li>
+              <li>Conference</li>
+              <li>Group Gateways</li>
+              <li>Celebrity</li>
+              <li>Sports</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-12">
           <div class="widget">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/373/original/jetyatra.png?1468575349" alt="" class="img-responsive">
             <h2>JetSetYatra&trade;</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise.</p>
             <a href="#" class="enquire-btn">Enquire</a>
             <a href="#" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-offset-1 col-md-10">
-            <div class="widget-detail jetsetwed_detail"  ng-show="jetsetwed.open">
+          <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-xs" ng-show="jetsetwed.open">
+            <div class="widget-detail jetsetwed_detail">
               <h2>JetSetWed&trade;</h2>
               <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
               <p>Your wish to deliver the never before seen experience is our command. Think of anything with
@@ -344,51 +360,66 @@
                 <li>Sports</li>
               </ol>
             </div>
-          <div class="widget-detail jetsetyatra_detail"  ng-show="jetsetyatra.open">
-            <h2>JetSetYatra&trade;</h2>
-            <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise. We offer both customized packages and specially designed pilgrimages as per your requirements.</p>
-            <p>We Offer both customized packages and specially designed JetSetYatra™ as per your requirements.</p>
-            <ol>
+          </div>
+          <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="jetsetyatra.open">
+            <div class="widget-detail jetsetyatra_detail">
+              <h2>JetSetYatra&trade;</h2>
+              <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise. We offer both customized packages and specially designed pilgrimages as per your requirements.</p>
+              <p>We Offer both customized packages and specially designed JetSetYatra™ as per your requirements.</p>
+              <ol>
               <li>1 Night Chardham Yatra</li>
               <li>Dodham Yatra (2 Nights)</li>
               <li>Hemkundsahib yatra</li>
               <li>Kedarnath Yatra</li>
               <li>Kailash and Mansarovar Yatra - Nepal</li>
               <li>Muktiath Darshan - Nepal</li>
-            </ol>
+              </ol>
+            </div>
           </div>
-        </div>
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
           <div class="widget">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/372/original/medrescue.png?1468575326" alt="" class="img-responsive">
             <h2>JetSetRescue&trade;</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
             <a href="#" class="enquire-btn">Enquire</a>
             <a href="#" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-lg hidden-md hidden-sm" ng-show="jetsetrescue.open">
+          <div class="widget-detail jetsetrescue_detail">
+            <h2>JetSetRescue&trade;</h2>
+            <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
+            <ol>
+              <li>Bed to Bed Services</li>
+              <li>Emergency Medical Retrieval Service</li>
+              <li>Quick Reliable Transfers</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-12">
           <div class="widget">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/371/original/helijet.png?1468575306" alt="" class="img-responsive">
             <h2>HeliSetGo&trade;</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
             <a href="#" class="enquire-btn">Enquire</a>
             <a href="#" class="enquire-btn" ng-click="helisego.open = !helisego.open">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-offset-1 col-md-10">
-            <div class="widget-detail jetsetrescue_detail"  ng-show="jetsetrescue.open">
-              <h2>JetSetRescue&trade;</h2>
-              <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
-              <ol>
-                <li>Bed to Bed Services</li>
-                <li>Emergency Medical Retrieval Service</li>
-                <li>Quick Reliable Transfers</li>
-              </ol>
-            </div>
-            <div class="widget-detail helisetgo_detail"  ng-show="helisego.open">
+        <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-xs" ng-show="jetsetrescue.open">
+          <div class="widget-detail jetsetrescue_detail">
+            <h2>JetSetRescue&trade;</h2>
+            <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
+            <ol>
+              <li>Bed to Bed Services</li>
+              <li>Emergency Medical Retrieval Service</li>
+              <li>Quick Reliable Transfers</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="helisego.open">
+          <div class="widget-detail helisetgo_detail">
             <h2>HeliSetGo&trade;</h2>
             <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
             <p>Be it to get an aerial view of the city you love or of localesnever explored, HeliSetGo
@@ -402,6 +433,7 @@
               <li>Special Occasions</li>
             </ol>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -423,7 +455,7 @@
           <div id="myCarousel2" class="carousel slide">
             <div class="row">
               <div class="col-sm-1 col-xs-2">
-                <a class="right carousel-control controller-arrow" href="#myCarousel2" data-slide="next"><i class="fa fa-chevron-left fa-4"></i></a>
+                <a class="right carousel-control controller-arrow" href="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
               </div>
               <div class="col-sm-10 col-xs-8">
                 <!-- Carousel items -->
@@ -432,23 +464,23 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/385/original/forbes.png?1468579303" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">JetSetGo: The Uber of Indian skies</h3>
+                        <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet, flew into New Delhi from the US. </p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/378/original/bbc.png?1468579208" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/381/original/em.png?1468579250" alt="">
+                        <h3 class="media-heading">4 min read Dark confessions straight from an entrepreneur's heart</h3>
+                        <p class="media-content">The three of us had just about settled in cross legged position for late-night dinner</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/384/original/fe.png?1468579288" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">JetSetGo can now mobilise an air ambulance in any part of the country</h3>
+                        <p class="media-content">JetSetGo recently introduced air ambulance services to offer better emergency services and help improve healthcare access,</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/390/original/toi.png?1468579378" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">Startups with a flavour of bollywood and cricket</h3>
+                        <p class="media-content">As soon as we got Yuvaj onboard we saw a paradigm shift in customer outlook towards us. The number of queries we serviced per day increased</p>
                       </div>
                     </div>
                     <!--/row-->
@@ -458,23 +490,23 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/379/original/bt.png?1468579221" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">Luxury in their stride</h3>
+                        <p class="media-content">A decade ago, Kanika Tekriwal worked for the private aviation vertical of investment giant IndiaBulls. The experience emboldened her to set up in April 2014</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/383/original/express.png?1468579276" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/382/original/et.png?1468579260" alt="">
+                        <h3 class="media-heading">Taking to the skies: YouWeCan Ventures invests in JetSetGo</h3>
+                        <p class="media-content">NEW DELHI: YouWeCan Ventures, the investment firm founded by cricketer Yuvraj Singh</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/389/original/ndtv.png?1468579367" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">After Beauty, Education, Yuvraj Singh Looks Towards The Sky</h3>
+                        <p class="media-content">Yuvraj Singh's YouWeCan Ventures latest investment is an undisclosed sum in online marketplace for private jets and helicopters - JetSetGo.</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/380/original/business.png?1468579235" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">Mile-High Service</h3>
+                        <p class="media-content">Kanika Tekriwal, co-founder, JetSetGo, onboard the Cessna Citation XL, which costs approximately ₹190,000 per hour to charter</p>
                       </div>
                     </div>
                     <!--/row-->
@@ -483,24 +515,14 @@
                   <div class="item">
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/381/original/em.png?1468579250" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/382/original/et.png?1468579260" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/386/original/ht.png?1468579322" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">Private jets at the click of a mouse, touch of a button</h3>
+                        <p class="media-content">Mumbai : If you have to reach an important meeting in a different part of the country and flights are unavailable</p>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/387/original/iifl.png?1468579336" alt="">
-                        <h3 class="media-heading">Lorem Ipsum is simply printing and typesetting industry.</h3>
-                        <p class="media-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s,</p>
+                        <h3 class="media-heading">Yuvraj Singh's YouWeCan Ventures invests in JetSetGo</h3>
+                        <p class="media-content">Yuvraj Singh funded YouWeCan Ventures has made an undisclosed investment in JetSetGo</p>
                       </div>
                     </div>
                     <!--/row-->
@@ -510,7 +532,7 @@
                 <!--/carousel-inner-->
               </div>
               <div class="col-sm-1 col-xs-2">
-                <a class="left carousel-control controller-arrow" href="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-right fa-4"></i></a>
+                <a class="left carousel-control controller-arrow" href="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
               </div>
             </div>
           </div>

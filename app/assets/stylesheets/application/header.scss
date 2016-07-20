@@ -25,22 +25,24 @@
         a{
           color: #000000;
         }
+        ul.main-nav{
+          margin: 10px 0;
+          position: absolute;
+          right: 0;
+          li{
+            float: right;
+            a{
+              font-size: 16px;
+              color: #000000;
+            }
+            a.no-right-padding{
+              padding-right: 0;
+            }
+          }
+        }
       }
       li.menu-list-toogle{
         padding: 0 0 0 40px;
-      }
-    }
-    ul.main-nav{
-      padding: 0;
-      li{
-        float: right;
-        a{
-          font-size: 16px;
-          color: #000000;
-        }
-        a.no-right-padding{
-          padding-right: 0;
-        }
       }
     }
   }
@@ -62,5 +64,47 @@
 @media (max-width: 767px){
   .header_row{
     margin: 0;
+  }
+  #header{
+    .logo-main-con{
+
+    }
+    .right-nav{
+      .header-right-text{
+        a{
+
+        }
+      }
+      ul.top-login-nav{
+        margin: 10px 0;
+        li{
+          float: none;
+          padding:10px;
+          border-bottom: 1px solid #ffffff;
+          width: 100%;
+          text-align: center;
+          ul.main-nav{
+            position: absolute;
+            padding: 0;
+            width: 100%;
+            background-color: #f9ecd0;
+            li{
+              float: none;
+              width: 100%;
+              a{
+                font-size: 16px;
+                color: #000000;
+              }
+              a.no-right-padding{
+                padding-right: 0;
+              }
+            }
+          }
+        }
+        li.menu-list-toogle{
+          padding: 10px 0 10px 0;
+        }
+      }
+    }
   }
 }
