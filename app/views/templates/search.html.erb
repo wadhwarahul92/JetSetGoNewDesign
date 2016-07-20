@@ -1814,16 +1814,16 @@
           <div class="result-search">
             <div class="col-md-8 col-sm-7 col-xs-12 search_img">
               <div class="img-hide">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
               </div>
               <div class="icon-con">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/329/original/crew.png?1468315756" data-toggle="tooltip" title="City" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/336/original/height-1.png?1468389478" data-toggle="tooltip" title="Height" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/332/original/seats.png?1468315794" data-toggle="tooltip" title="Seats" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/334/original/wifi.png?1468315820" data-toggle="tooltip" title="Wifi" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/328/original/baggage.png?1468315730" data-toggle="tooltip" title="Baggage" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/331/original/phone.png?1468315780" data-toggle="tooltip" title="Phone" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/335/original/speed-1.png?1468389449" data-toggle="tooltip" title="Speed" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" data-toggle="tooltip" title="Height" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/420/original/seats-1.png?1468910886" data-toggle="tooltip" title="Seats" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930" data-toggle="tooltip" title="Wifi" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/416/original/baggage-1.png?1468910820" data-toggle="tooltip" title="Baggage" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872" data-toggle="tooltip" title="Phone" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/421/original/speed-1.png?1468910919" data-toggle="tooltip" title="Speed" alt="">
                 <script>
                     $(document).ready(function(){
                         $('[data-toggle="tooltip"]').tooltip();
@@ -1835,10 +1835,10 @@
               <div class="img-bg">
                 <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
-                <h4>Estimated Price ₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}}</h4>
-              </div>
-              <div class="detail-link-con">
-                <a href="#" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a> | <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                <div class="detail-link-con">
+                  <a href="#" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                </div>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -1848,37 +1848,37 @@
             <div class="white-arrow-up"></div>
             <div class="top-destination-con">
               <div class="col-xs-12 text-right">
-                <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/326/original/icon.png?1467374235" alt="">
+                <img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/405/original/emptylegs-on.png?1468581744" alt="">
               </div>
               <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
                 <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
                   <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/309/original/departure.png?1466494177" alt="">
+                    <img width="45" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/401/original/base.png?1468581641'}}" alt="">
                   </p>
                   <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
                   <p class="time-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
                 </div>
+                <div class="destination-con col-sm-2 hidden-xs">
+                  <p>
+                    <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+                  </p>
+                  <p class="time-duration">{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</p>
+                </div>
                 <div class="destination-con col-sm-3 col-xs-6">
                   <p>
-                    <img width="45" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/307/original/arrival.png?1466494148" alt="">
+                    <img width="45" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/402/original/destination.png?1468581660'}}" alt="">
                   </p>
                   <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
                   <p class="time-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
-                </div>
-                <div class="destination-con col-sm-2 hidden-xs">
-                  <p>
-                    <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/305/original/time.png?1466424527" alt="">
-                  </p>
-                  <p class="time-duration">{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</p>
                 </div>
                 <div class="clearfix"></div>
               </div>
               <div class="img-total-cost-con">
                 <div class="col-md-4 col-sm-6">
                   <div class="aircraft-img">
-                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/325/original/Untitled-1.png?1467356517" alt="">
+                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
                   </div>
                 </div>
                 <div class="col-md-8 col-sm-6">
@@ -1891,7 +1891,7 @@
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
                           </div>
                           <div class="col-sm-2 hidden-xs text-center">
-                            <p style="font-weight: bold">>></p>
+                            <p style="font-weight: bold"> >> </p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>

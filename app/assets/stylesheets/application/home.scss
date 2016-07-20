@@ -99,7 +99,6 @@ $main-blue-color:rgb(5, 81, 139);
     margin:0;
     padding:15px;
     //background-color:$main-blue-color;
-    color: $main-blue-color;
     text-align: center;
     position: relative;
     .user-icon-top{
@@ -156,7 +155,7 @@ $main-blue-color:rgb(5, 81, 139);
         width: 100%;
         padding:15px 0 !important;
         font-size:16px;
-        background-color: $main-blue-color;
+        background-color: #750005;
         margin-top: 30px;
       }
       .register-click{
@@ -217,12 +216,16 @@ span.heading:after{
 //top header section
 .top-header-search-con{
 	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/360/original/homepageplane.png?1468494836);
-    background-attachment: fixed;
-    background-position: 0px 41px;
+  background-attachment: fixed;
+  background-position: 0px 41px;
 	width:100%;
 	min-height: 100vh;
-    background-size: cover;
+  background-size: cover;
   position: relative;
+  .header-container{
+      position: relative;
+      height: 100vh;
+    }
     .header#header{
       border-bottom: 0px !important;
     }
@@ -291,14 +294,14 @@ span.heading:after{
             color: #dddddd;
           }
           .white-color{
-            color: #ffffff;
+            color: #b39e84;
           }
         }
         .text-white{
-          color: #ffffff;
+          color: #b39e84;
         }
         .search-icon {
-          background-color: rgba(201, 180, 156, 0.5);
+          background-color: rgba(201, 180, 156, 0.85);
           position: absolute;
           display: inline-block;
           width: 40px;
@@ -335,10 +338,11 @@ span.heading:after{
           //-moz-border-radius: 10px;
           //border-radius: 10px;
         }
-      ::-webkit-input-placeholder { color:#dddddd; }
-      ::-moz-placeholder { color:#dddddd; } /* firefox 19+ */
-      :-ms-input-placeholder { color:#dddddd; } /* ie */
-      input:-moz-placeholder { color:#dddddd; }
+      ::-webkit-input-placeholder { color:#b39e84; }
+      ::-moz-placeholder { color:#b39e84; } /* firefox 19+ */
+      :-ms-input-placeholder { color:#b39e84; } /* ie */
+      input:-moz-placeholder { color:#b39e84; }
+
 	}
 }
 
@@ -369,7 +373,7 @@ span.heading:after{
       height: 320px;
     }
     .emptyleg_detail{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/324/original/clouds.png?1467356499");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
       height: 320px;
       background-size: cover;
       padding: 0;
@@ -399,6 +403,21 @@ span.heading:after{
           margin-top: 10px;
         }
       }
+      .detail-link-con{
+        padding: 10px 15px;
+        bottom: 0;
+        width: 100%;
+        color: #ffffff;
+        margin-top: 50px;
+        a{
+          background-color: #750005;
+          display: inline-block;
+          padding: 5px 20px;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
     }
     .emptyleg_content{
       border-left: 1px solid #750005;
@@ -419,7 +438,7 @@ span.heading:after{
         border: 1px solid #f2f2f2;
         color: #ffffff;
         text-decoration: none;
-        padding: 10px 30px;
+        padding: 5px 20px;
         display: inline-block;
         margin: 10px 0 0 40px;
 
@@ -442,6 +461,7 @@ span.heading:after{
       border: 1px solid #9d867a;
       margin: 20px 0;
       background-color: #ffffff;
+      min-height: 550px;
       h2{
         text-align: center;
         color: #750005;
@@ -458,7 +478,7 @@ span.heading:after{
         border: 1px solid #f2f2f2;
         color: #ffffff;
         text-decoration: none;
-        padding: 10px 30px;
+        padding: 5px 20px;
         display: inline-block;
         margin: 10px;
         float: right;
@@ -472,7 +492,19 @@ span.heading:after{
       background-position: center;
     }
     .jetsetyatra_detail{
-      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/410/original/yatra-services.png?1468832528');
+      background-size: cover;
+      min-height: 800px;
+      background-position: center;
+    }
+    .jetsetrescue_detail{
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/409/original/medres-services.png?1468832395');
+      background-size: cover;
+      min-height: 800px;
+      background-position: center;
+    }
+    .jetsetwed_detail{
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/411/original/wedding-services.png?1468832736');
       background-size: cover;
       min-height: 800px;
       background-position: center;
@@ -516,6 +548,9 @@ span.heading:after{
       }
       p.media-content{
         font-size: 12px;
+      }
+      .controller-arrow{
+        margin-top: 80%;
       }
     }
   }
@@ -887,6 +922,20 @@ span.heading:after{
     text-align: left;
     padding: 10px 14px;
   }
+  .jetsteel-main-con {
+    .jetsteal-slider-con {
+      .emptyleg_detail {
+        height: 250px;
+        h2.aircraft_name{
+          margin: 0;
+          padding: 10px 15px;
+        }
+        h4.estimated-price{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
   //top header section
   .top-header-search-con{
     //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
@@ -978,9 +1027,6 @@ span.heading:after{
 
   //jetsteel section
   .jetsteel-main-con{
-    background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/146/original/jetsteals_bg.jpg?1460637416);
-    min-height: 400px;
-    background-size: cover;
     padding: 20px 0 30px 0;
     span.heading{
       margin:0 0 0 6px;
@@ -1005,6 +1051,15 @@ span.heading:after{
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
+      }
+    }
+  }
+  //jetsteel app
+  .jetsteel-app{
+    .app-img-con{
+      img{
+        position: inherit;
+        top:0;
       }
     }
   }
