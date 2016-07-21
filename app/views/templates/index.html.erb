@@ -161,7 +161,7 @@
                 </div>
               </div>
               <div class="col-xs-12 emptyleg_content">
-              <p class="content">Through our JetSteal</p>
+              <p class="content">Through our JetSteal&trade; platform you can experience the joy of flying private and networking with like minded people like never before at 30,000 feet! Simply pick an aircraft or sector of your choice, choose between having the whole aircraft to yourself or just a seat and pay in 3 simple steps.</p>
               <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
               </div>
               <div class="clearfix"></div>
@@ -291,7 +291,7 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/374/original/jersetwed.png?1468575375" alt="" class="img-responsive">
             <h2>JetSetWed&trade;</h2>
             <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
-            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" ng-click="ctrl.wed_enquiry()" class="enquire-btn">Enquire</a>
             <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
@@ -319,7 +319,7 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/373/original/jetyatra.png?1468575349" alt="" class="img-responsive">
             <h2>JetSetYatra&trade;</h2>
             <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise.</p>
-            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" ng-click="ctrl.yatra_enquiry()" class="enquire-btn">Enquire</a>
             <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
@@ -344,7 +344,6 @@
         </div>
         <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="jetsetyatra.open">
           <div class="widget-detail jetsetyatra_detail">
-              {{jetsetyatra.open}}
               <h2>JetSetYatra&trade;</h2>
               <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise. We offer both customized packages and specially designed pilgrimages as per your requirements.</p>
               <p>We Offer both customized packages and specially designed JetSetYatra™ as per your requirements.</p>
@@ -353,8 +352,8 @@
               <li>Dodham Yatra (2 Nights)</li>
               <li>Hemkundsahib yatra</li>
               <li>Kedarnath Yatra</li>
-              <li>Kailash and Mansarovar Yatra - Nepal</li>
               <li>Muktiath Darshan - Nepal</li>
+              <li>Kailash and Mansarovar Yatra - Nepal</li>
               </ol>
             </div>
         </div>
@@ -363,7 +362,7 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/372/original/medrescue.png?1468575326" alt="" class="img-responsive">
             <h2>JetSetRescue&trade;</h2>
             <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
-            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" ng-click="ctrl.rescue_enquiry()" class="enquire-btn">Enquire</a>
             <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
@@ -386,7 +385,7 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/371/original/helijet.png?1468575306" alt="" class="img-responsive">
             <h2>HeliSetGo&trade;</h2>
             <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
-            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" ng-click="ctrl.heli_set_go_enquiry()" class="enquire-btn">Enquire</a>
             <a href="javascript:void(0)" class="enquire-btn" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
