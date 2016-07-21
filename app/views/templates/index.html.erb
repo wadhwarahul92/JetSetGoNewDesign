@@ -8,6 +8,17 @@
         interval: 3000
     });
 </script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        setTimeout(function(){
+            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4' );
+            $('span.fa').css('display', 'inline-block')
+        },3000);
+//        $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
+
+    });
+</script>
 <!-- top header search con start -->
 <div class="top-header-search-con">
   <div class="container header-container">
@@ -144,7 +155,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-10 col-xs-12">
-          <div uib-carousel active="active" interval="3000" no-wrap="false" id="courcel_slider">
+          <div uib-carousel active="active" interval="3000" no-wrap="false" id="carousel_slider">
             <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
               <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
                 <img ng-src="{{jetsteal.aircraft.image}}" style="margin:auto;">
@@ -292,7 +303,7 @@
             <h2>JetSetWed&trade;</h2>
             <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
             <a href="javascript:void(0)" ng-click="ctrl.wed_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -320,7 +331,7 @@
             <h2>JetSetYatra&trade;</h2>
             <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise.</p>
             <a href="javascript:void(0)" ng-click="ctrl.yatra_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -363,7 +374,7 @@
             <h2>JetSetRescue&trade;</h2>
             <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
             <a href="javascript:void(0)" ng-click="ctrl.rescue_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false;">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -386,7 +397,7 @@
             <h2>HeliSetGo&trade;</h2>
             <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
             <a href="javascript:void(0)" ng-click="ctrl.heli_set_go_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
