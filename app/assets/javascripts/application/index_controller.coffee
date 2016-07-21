@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService)->
+jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', '$uibModal', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService, $uibModal)->
 
   @activities = [{}]
   @currentUser = null
@@ -189,6 +189,42 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
         notify
           message: error
           classes: ['alert-danger']
+    )
+
+  @wed_enquiry = ->
+    $uibModal.open(
+      size: 'md'
+      templateUrl: '/templates/enquiry_form_modal'
+      controller: 'JetSetWedEnquiryController'
+      controllerAs: 'ctrl'
+      backdrop: true
+    )
+
+  @heli_set_go_enquiry = ->
+    $uibModal.open(
+      size: 'md'
+      templateUrl: '/templates/enquiry_form_modal'
+      controller: 'HeliSetGoEnquiryController'
+      controllerAs: 'ctrl'
+      backdrop: true
+    )
+
+  @yatra_enquiry = ->
+    $uibModal.open(
+      size: 'md'
+      templateUrl: '/templates/enquiry_form_modal'
+      controller: 'JetSetYatraEnquiryController'
+      controllerAs: 'ctrl'
+      backdrop: true
+    )
+
+  @rescue_enquiry = ->
+    $uibModal.open(
+      size: 'md'
+      templateUrl: '/templates/enquiry_form_modal'
+      controller: 'JetSetRescueEnquiryController'
+      controllerAs: 'ctrl'
+      backdrop: true
     )
 
   return undefined
