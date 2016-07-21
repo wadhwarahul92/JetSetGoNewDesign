@@ -8,6 +8,17 @@
         interval: 3000
     });
 </script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        setTimeout(function(){
+            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4' );
+            $('span.fa').css('display', 'inline-block')
+        },3000);
+//        $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
+
+    });
+</script>
 <!-- top header search con start -->
 <div class="top-header-search-con">
   <div class="container header-container">
@@ -144,7 +155,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-10 col-xs-12">
-          <div uib-carousel active="active" interval="3000" no-wrap="false" id="courcel_slider">
+          <div uib-carousel active="active" interval="3000" no-wrap="false" id="carousel_slider">
             <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
               <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
                 <img ng-src="{{jetsteal.aircraft.image}}" style="margin:auto;">

@@ -359,10 +359,14 @@ span.heading:after{
     width: 100%;
     background-attachment: fixed;
     padding: 80px 0;
-    #courcel_slider{
+    #carousel_slider{
       .left{
         position: absolute;
         left: -110px;
+      }
+      .right{
+        position: absolute;
+        right: -110px;
       }
     }
     #courcel_slider{
