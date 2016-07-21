@@ -64,6 +64,7 @@ json.array! @jetsteals do |jetsteal|
       json.speed_in_kts aircraft_type.speed_in_kts
       json.description aircraft_type.description
       json.aircraft_category{
+        next unless aircraft_type.aircraft_category.present?
         json.id aircraft_type.aircraft_category.id
         json.name aircraft_type.aircraft_category.name
       }
