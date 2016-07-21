@@ -50,6 +50,7 @@ json.array! @jetsteals do |jetsteal|
     json.cabin_width_in_meters aircraft.cabin_width_in_meters
     json.cabin_height_in_meters aircraft.cabin_height_in_meters
     json.cabin_length_in_meters aircraft.cabin_length_in_meters
+    json.image aircraft.image.url(:original)
     json.aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:size_250x250) }
     json.original_aircraft_images aircraft.aircraft_images.map{ |aircraft_image| aircraft_image.image.url(:original) }
     json.crew aircraft.crew
@@ -62,6 +63,10 @@ json.array! @jetsteals do |jetsteal|
       json.name aircraft_type.name
       json.speed_in_kts aircraft_type.speed_in_kts
       json.description aircraft_type.description
+      json.aircraft_category{
+        json.id aircraft_type.aircraft_category.id
+        json.name aircraft_type.aircraft_category.name
+      }
     end
   end
   json.jetsteal_seats{

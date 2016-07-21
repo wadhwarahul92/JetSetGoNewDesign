@@ -359,6 +359,18 @@ span.heading:after{
     width: 100%;
     background-attachment: fixed;
     padding: 80px 0;
+    #courcel_slider{
+      .left{
+        position: absolute;
+        left: -110px;
+      }
+    }
+    #courcel_slider{
+      .right{
+        position: absolute;
+        right: -110px;
+      }
+    }
     .custom-indicator{
       li.active{
         background-color: #000000;
@@ -393,13 +405,12 @@ span.heading:after{
       h4.estimated-price{
         margin: 0;
         margin-top: 50px;
-        padding: 5px 15px;
-        font-size: 30px;
+        padding: 8px 15px;
+        font-size: 25px;
         color: #ffffff;
         background-color: #856b58;
         .text{
           font-size: 15px;
-          float: right;
           margin-top: 10px;
         }
       }
@@ -412,10 +423,11 @@ span.heading:after{
         a{
           background-color: #750005;
           display: inline-block;
-          padding: 5px 20px;
+          padding: 8px 20px;
           text-align: center;
           color: #ffffff;
           text-decoration: none;
+          width: 100%;
         }
       }
     }
@@ -510,6 +522,15 @@ span.heading:after{
       background-position: center;
     }
     .widget-detail{
+      position: relative;
+      .bg-overlay{
+        background-color: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
       h2{
         margin: 0;
         padding: 30px 15px;
@@ -541,6 +562,9 @@ span.heading:after{
     margin: 60px 0;
     .media-con{
       text-align: left;
+      .media-widget{
+        min-height: 240px;
+      }
       h3.media-heading{
         font-size: 12px;
         font-weight: bold;
@@ -579,7 +603,7 @@ span.heading:after{
     position: relative;
     img{
       position: absolute;
-      top: -100px;
+      top: -64px;
     }
   }
 }

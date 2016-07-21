@@ -132,8 +132,7 @@
 <!-- top header search con finish -->
 
 <!-- jetsteal con start -->
-
-<div class="jetsteel-main-con">
+<div class="jetsteel-main-con" >
   <div class="section-heading">
     <div class="container">
       <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/350/original/jet_steals_text.png?1468482973" alt="">
@@ -142,106 +141,88 @@
   <div class="jetsteal-slider-con">
     <div class="container">
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators custom-indicator">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-              <li data-target="#myCarousel" data-slide-to="3"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <div class="col-md-8 emptyleg_image">
-                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
-                </div>
-                <div class="col-md-4 emptyleg_detail">
-                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
-                  <h5 class="engine_type">Single Turbo Jet</h5>
-                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
-                  <div class="detail-link-con">
-                    <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
-                </div>
-                </div>
-                <div class="col-xs-12 emptyleg_content">
-                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
-                </div>
-                <div class="clearfix"></div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10 col-xs-12">
+          <div uib-carousel active="active" interval="3000" no-wrap="false" id="courcel_slider">
+            <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
+              <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
+                <img ng-src="{{jetsteal.aircraft.image}}" style="margin:auto;">
               </div>
-
-              <div class="item">
-                <div class="col-md-8 emptyleg_image">
-                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
-                </div>
-                <div class="col-md-4 emptyleg_detail">
-                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
-                  <h5 class="engine_type">Single Turbo Jet</h5>
-                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
+              <div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">
+                <div class="">
+                  <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
+                  <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
+                  <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
+                  <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
                   <div class="detail-link-con">
-                    <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                  <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
                   </div>
                 </div>
-                <div class="col-xs-12 emptyleg_content">
-                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
-                </div>
-                <div class="clearfix"></div>
               </div>
-
-              <div class="item">
-                <div class="col-md-8 emptyleg_image">
-                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
-                </div>
-                <div class="col-md-4 emptyleg_detail">
-                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
-                  <h5 class="engine_type">Single Turbo Jet</h5>
-                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
-                  <div class="detail-link-con">
-                    <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
-                  </div>
-                </div>
-                <div class="col-xs-12 emptyleg_content">
-                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
-                </div>
-                <div class="clearfix"></div>
+              <div class="col-xs-12 emptyleg_content">
+              <p class="content">Through our JetSteal</p>
+              <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
               </div>
-
-              <div class="item">
-                <div class="col-md-8 emptyleg_image">
-                  <img height="320" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
-                </div>
-                <div class="col-md-4 emptyleg_detail">
-                  <h2 class="aircraft_name">Pilatus PC 12/47</h2>
-                  <h5 class="engine_type">Single Turbo Jet</h5>
-                  <h4 class="estimated-price"><i class="fa fa-inr"></i> 3,00,000 <span class="text">estimated price</span></h4>
-                  <div class="detail-link-con">
-                    <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
-                  </div>
-                </div>
-                <div class="col-xs-12 emptyleg_content">
-                  <p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
-                </div>
-                <div class="clearfix"></div>
-              </div>
+              <div class="clearfix"></div>
             </div>
-
-            <!-- Left and right controls -->
-            <!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a> -->
           </div>
+
+
+          <!--===================================================================================================================-->
+          <!--===================================================================================================================-->
+
+          <!--===================================================================================================================-->
+          <!--===================================================================================================================-->
+
+
+          <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
+            <!--&lt;!&ndash; Indicators &ndash;&gt;-->
+            <!--<ol class="carousel-indicators custom-indicator">-->
+              <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+              <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
+              <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+              <!--<li data-target="#myCarousel" data-slide-to="3"></li>-->
+            <!--</ol>-->
+
+            <!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+
+            <!--<div class="carousel-inner" role="listbox">-->
+              <!--<span ng-repeat="jetsteal in ctrl.jetsteals">-->
+                <!--<div class="item">-->
+                  <!--<div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">-->
+                    <!--<img height="320" width="100%" ng-src="{{jetsteal.aircraft.image}}" alt="">-->
+                  <!--</div>-->
+                  <!--<div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">-->
+                    <!--<h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>-->
+                    <!--<h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>-->
+                    <!--<h4 class="estimated-price"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text">estimated price</span></h4>-->
+                    <!--<div class="detail-link-con">-->
+                      <!--<a href="/jetsteals/list" target="_self">Enquire</a>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="col-xs-12 emptyleg_content">-->
+                    <!--<p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>-->
+                    <!--<p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>-->
+                  <!--</div>-->
+                  <!--<div class="clearfix"></div>-->
+                <!--</div>-->
+              <!--</span>-->
+
+
+
+            <!--</div>-->
+
+            <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
+            <!--&lt;!&ndash; <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">-->
+              <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+              <!--<span class="sr-only">Previous</span>-->
+            <!--</a>-->
+            <!--<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">-->
+              <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+              <!--<span class="sr-only">Next</span>-->
+            <!--</a> &ndash;&gt;-->
+          <!--</div>-->
         </div>
         <div class="col-md-1"></div>
       </div>
@@ -303,7 +284,6 @@
     </div>
   </div>
   <div class="services-widget">
-
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
@@ -311,25 +291,27 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/374/original/jersetwed.png?1468575375" alt="" class="img-responsive">
             <h2>JetSetWed&trade;</h2>
             <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
-            <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-lg hidden-md hidden-sm" ng-show="jetsetwed.open">
           <div class="widget-detail jetsetwed_detail">
-            <h2>JetSetWed&trade;</h2>
-            <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
-            <p>Your wish to deliver the never before seen experience is our command. Think of anything with
-              jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
-            <ol>
-              <li>Engagement</li>
-              <li>Wedding</li>
-              <li>Conference</li>
-              <li>Group Gateways</li>
-              <li>Celebrity</li>
-              <li>Sports</li>
-            </ol>
+            <div class="bg-overlay">
+                <h2>JetSetWed&trade;</h2>
+                <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
+                <p>Your wish to deliver the never before seen experience is our command. Think of anything with
+                  jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
+                <ol>
+                  <li>Engagement</li>
+                  <li>Wedding</li>
+                  <li>Conference</li>
+                  <li>Group Gateways</li>
+                  <li>Celebrity</li>
+                  <li>Sports</li>
+                </ol>
+            </div>
           </div>
         </div>
         <div class="col-md-5 col-sm-6 col-xs-12">
@@ -337,29 +319,32 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/373/original/jetyatra.png?1468575349" alt="" class="img-responsive">
             <h2>JetSetYatra&trade;</h2>
             <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise.</p>
-            <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
-          <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-xs" ng-show="jetsetwed.open">
-            <div class="widget-detail jetsetwed_detail">
-              <h2>JetSetWed&trade;</h2>
-              <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
-              <p>Your wish to deliver the never before seen experience is our command. Think of anything with
-                jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
-              <ol>
-                <li>Engagement</li>
-                <li>Wedding</li>
-                <li>Conference</li>
-                <li>Group Gateways</li>
-                <li>Celebrity</li>
-                <li>Sports</li>
-              </ol>
+        <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-xs" ng-show="jetsetwed.open">
+          <div class="widget-detail jetsetwed_detail">
+              <div class="bg-overlay">
+                  <h2>JetSetWed&trade;</h2>
+                  <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
+                  <p>Your wish to deliver the never before seen experience is our command. Think of anything with
+                    jets or helicopters and we will deliver whether it is to shower flowers from the sky or arranging joy rides.</p>
+                  <ol>
+                    <li>Engagement</li>
+                    <li>Wedding</li>
+                    <li>Conference</li>
+                    <li>Group Gateways</li>
+                    <li>Celebrity</li>
+                    <li>Sports</li>
+                  </ol>
+              </div>
             </div>
-          </div>
-          <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="jetsetyatra.open">
-            <div class="widget-detail jetsetyatra_detail">
+        </div>
+        <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="jetsetyatra.open">
+          <div class="widget-detail jetsetyatra_detail">
+              {{jetsetyatra.open}}
               <h2>JetSetYatra&trade;</h2>
               <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise. We offer both customized packages and specially designed pilgrimages as per your requirements.</p>
               <p>We Offer both customized packages and specially designed JetSetYatra™ as per your requirements.</p>
@@ -372,26 +357,28 @@
               <li>Muktiath Darshan - Nepal</li>
               </ol>
             </div>
-          </div>
+        </div>
         <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
           <div class="widget">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/372/original/medrescue.png?1468575326" alt="" class="img-responsive">
             <h2>JetSetRescue&trade;</h2>
             <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
-            <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-lg hidden-md hidden-sm" ng-show="jetsetrescue.open">
           <div class="widget-detail jetsetrescue_detail">
-            <h2>JetSetRescue&trade;</h2>
-            <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
-            <ol>
-              <li>Bed to Bed Services</li>
-              <li>Emergency Medical Retrieval Service</li>
-              <li>Quick Reliable Transfers</li>
-            </ol>
+            <div class="bg-overlay">
+                <h2>JetSetRescue&trade;</h2>
+                <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
+                <ol>
+                  <li>Bed to Bed Services</li>
+                  <li>Emergency Medical Retrieval Service</li>
+                  <li>Quick Reliable Transfers</li>
+                </ol>
+            </div>
           </div>
         </div>
         <div class="col-md-5 col-sm-6 col-xs-12">
@@ -399,38 +386,41 @@
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/371/original/helijet.png?1468575306" alt="" class="img-responsive">
             <h2>HeliSetGo&trade;</h2>
             <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
-            <a href="#" class="enquire-btn">Enquire</a>
-            <a href="#" class="enquire-btn" ng-click="helisego.open = !helisego.open">Detail</a>
+            <a href="javascript:void(0)" class="enquire-btn">Enquire</a>
+            <a href="javascript:void(0)" class="enquire-btn" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-offset-1 col-md-10 col-xs-12 hidden-xs" ng-show="jetsetrescue.open">
           <div class="widget-detail jetsetrescue_detail">
-            <h2>JetSetRescue&trade;</h2>
-            <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
-            <ol>
-              <li>Bed to Bed Services</li>
-              <li>Emergency Medical Retrieval Service</li>
-              <li>Quick Reliable Transfers</li>
-            </ol>
+            <div class="bg-overlay">
+                <h2>JetSetRescue&trade;</h2>
+                <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
+                <ol>
+                  <li>Bed to Bed Services</li>
+                  <li>Emergency Medical Retrieval Service</li>
+                  <li>Quick Reliable Transfers</li>
+                </ol>
+            </div>
           </div>
         </div>
         <div class="col-md-offset-1 col-md-10 col-xs-12" ng-show="helisego.open">
           <div class="widget-detail helisetgo_detail">
-            <h2>HeliSetGo&trade;</h2>
-            <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
-            <p>Be it to get an aerial view of the city you love or of localesnever explored, HeliSetGo
-              enables this in a jiffy. Going out on a long drive is now so-Yesterday!</p>
-            <ol>
-              <li>Surveys Aerial Filming and Photography</li>
-              <li>City Tours and Joy Rides</li>
-              <li>Business Travel and Corporate Events</li>
-              <li>Airport Transfers</li>
-              <li>Emergency medical flights and Evacuations</li>
-              <li>Special Occasions</li>
-            </ol>
+            <div class="bg-overlay">
+                <h2>HeliSetGo&trade;</h2>
+                <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
+                <p>Be it to get an aerial view of the city you love or of localesnever explored, HeliSetGo
+                  enables this in a jiffy. Going out on a long drive is now so-Yesterday!</p>
+                <ol>
+                  <li>Surveys Aerial Filming and Photography</li>
+                  <li>City Tours and Joy Rides</li>
+                  <li>Business Travel and Corporate Events</li>
+                  <li>Airport Transfers</li>
+                  <li>Emergency medical flights and Evacuations</li>
+                  <li>Special Occasions</li>
+                </ol>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
@@ -459,25 +449,25 @@
                 <div class="carousel-inner">
                   <div class="item active">
                     <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/385/original/forbes.png?1468579303" alt="">
                         <h3 class="media-heading">JetSetGo: The Uber of Indian skies</h3>
                         <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet, flew into New Delhi from the US. </p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/381/original/em.png?1468579250" alt="">
                         <h3 class="media-heading">4 min read Dark confessions straight from an entrepreneur's heart</h3>
                         <p class="media-content">The three of us had just about settled in cross legged position for late-night dinner</p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/384/original/fe.png?1468579288" alt="">
                         <h3 class="media-heading">JetSetGo can now mobilise an air ambulance in any part of the country</h3>
                         <p class="media-content">JetSetGo recently introduced air ambulance services to offer better emergency services and help improve healthcare access,</p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/390/original/toi.png?1468579378" alt="">
                         <h3 class="media-heading">Startups with a flavour of bollywood and cricket</h3>
                         <p class="media-content">As soon as we got Yuvaj onboard we saw a paradigm shift in customer outlook towards us. The number of queries we serviced per day increased</p>
@@ -489,25 +479,25 @@
                   <!--/item-->
                   <div class="item">
                     <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/379/original/bt.png?1468579221" alt="">
                         <h3 class="media-heading">Luxury in their stride</h3>
                         <p class="media-content">A decade ago, Kanika Tekriwal worked for the private aviation vertical of investment giant IndiaBulls. The experience emboldened her to set up in April 2014</p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/382/original/et.png?1468579260" alt="">
                         <h3 class="media-heading">Taking to the skies: YouWeCan Ventures invests in JetSetGo</h3>
                         <p class="media-content">NEW DELHI: YouWeCan Ventures, the investment firm founded by cricketer Yuvraj Singh</p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/389/original/ndtv.png?1468579367" alt="">
                         <h3 class="media-heading">After Beauty, Education, Yuvraj Singh Looks Towards The Sky</h3>
                         <p class="media-content">Yuvraj Singh's YouWeCan Ventures latest investment is an undisclosed sum in online marketplace for private jets and helicopters - JetSetGo.</p>
                         <a class="media-readmore" href="/media">Read More</a>
                       </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/380/original/business.png?1468579235" alt="">
                         <h3 class="media-heading">Mile-High Service</h3>
                         <p class="media-content">Kanika Tekriwal, co-founder, JetSetGo, onboard the Cessna Citation XL, which costs approximately ₹190,000 per hour to charter</p>
@@ -519,7 +509,7 @@
                   <!--/item-->
                   <div class="item">
                     <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/386/original/ht.png?1468579322" alt="">
                         <h3 class="media-heading">Private jets at the click of a mouse, touch of a button</h3>
                         <p class="media-content">Mumbai : If you have to reach an important meeting in a different part of the country and flights are unavailable</p>
@@ -565,14 +555,12 @@
         <div class="col-sm-7">
           <div class="app-content">
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-            <a href="#"><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/393/original/appstorebutton.png?1468579444" alt=""></a>
+            <a href="https://itunes.apple.com/us/app/jetsteals/id1078158963?ls=1&mt=8"><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/393/original/appstorebutton.png?1468579444" alt=""></a>
           </div>
         </div>
         <div class="col-sm-5">
           <div class="app-img-con">
-            <a href="https://itunes.apple.com/us/app/jetsteals/id1078158963?ls=1&mt=8">
-              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/407/original/jetapp.png?1468831578" class="img-responsive" alt="" border="0">
-            </a>
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/407/original/jetapp.png?1468831578" class="img-responsive" alt="" border="0">
           </div>
         </div>
       </div>
