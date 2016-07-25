@@ -818,6 +818,7 @@ $main-blue-color:rgb(5, 81, 139);
             background-size: cover;
             padding: 15px 0;
             height: 320px;
+            position: relative;
             h3{
               font-size: 25px;
               color: #000000;
@@ -833,11 +834,12 @@ $main-blue-color:rgb(5, 81, 139);
             }
             h4{
               margin: 0;
-              margin-top: 50px;
+              margin-top: 80px;
               padding: 5px 15px;
               font-size: 30px;
               color: #ffffff;
               background-color: #856b58;
+              text-align: center;
               span{
                 font-size: 14px;
               }
@@ -849,6 +851,8 @@ $main-blue-color:rgb(5, 81, 139);
             width: 100%;
             color: #ffffff;
             margin-top: 50px;
+            position: absolute;
+            bottom: 0;
             a{
               background-color: #750005;
               display: inline-block;
@@ -914,7 +918,7 @@ $main-blue-color:rgb(5, 81, 139);
           .flight-cost-con{
             width: 100%;
             h2{
-              color: #000000;
+              color: #750005;
               font-size: 17px;
               border-bottom: 5px solid #998776;
               padding: 0 0 5px 0;
@@ -943,7 +947,7 @@ $main-blue-color:rgb(5, 81, 139);
                 margin: 0;
               }
               h5{
-                font-size: 18px;
+                font-size: 22px;
                 font-weight: bold;
                 margin: 0;
               }
