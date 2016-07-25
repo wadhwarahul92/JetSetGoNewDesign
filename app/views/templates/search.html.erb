@@ -1814,7 +1814,11 @@
           <div class="result-search">
             <div class="col-md-8 col-sm-7 col-xs-12 search_img">
               <div class="img-hide">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
+               <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
+                <img ng-src="{{result.aircraft.image}}" alt="">
+
+
+
               </div>
               <div class="icon-con">
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew" alt="">
@@ -1911,7 +1915,7 @@
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Flight Cost</p>
+                            <p>Flight Cost (₹ {{result.aircraft.per_hour_cost | currency:"":0 | indianCurrency}} per hour)</p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
@@ -1984,7 +1988,8 @@
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Flight Cost (₹ 75,000 per hour)</p>
+                              <p>Flight Cost (₹ {{result.aircraft.per_hour_cost | currency:"":0 | indianCurrency}} per hour)
+                              </p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
