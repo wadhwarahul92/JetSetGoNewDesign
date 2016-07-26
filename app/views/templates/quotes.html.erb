@@ -30,14 +30,14 @@
             <p ng-repeat="activity in quote.activities">
               <strong>Departure: {{activity.departure_airport.name}}</strong><br>
               <strong>Arrival: {{activity.arrival_airport.name}}</strong><br>
-              <strong>Flight cost: <i class="fa fa-rupee"></i><small> {{activity.flight_cost | currency:"":0 | indianCurrency }}</small></strong><br>
-              <strong>Handling cost: <i class="fa fa-rupee"></i> <small> {{activity.handling_cost_at_takeoff | currency:"":0 | indianCurrency }}</small></strong><br>
-              <strong>Landing cost: <i class="fa fa-rupee"></i><small> {{activity.landing_cost_at_arrival | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong>Flight cost: <i class="fa fa-rupee"></i><small> {{ctrl.include_commission(activity.flight_cost) | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong>Handling cost: <i class="fa fa-rupee"></i> <small> {{ctrl.include_commission(activity.handling_cost_at_takeoff) | currency:"":0 | indianCurrency }}</small></strong><br>
+              <strong>Landing cost: <i class="fa fa-rupee"></i><small> {{ctrl.include_commission(activity.landing_cost_at_arrival) | currency:"":0 | indianCurrency }}</small></strong><br>
               <strong ng-show="activity.watch_hour_at_arrival">Watch hour cost:  <small>On actual</small> <br></strong>
-              <strong ng-show="activity.accommodation_plan">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}: <small><i class="fa fa-rupee"></i> {{activity.accommodation_plan.cost | currency:"":0 | indianCurrency}}</small> </strong>
+              <strong ng-show="activity.accommodation_plan">HOTAC at "{{activity.arrival_airport.name}}" for {{activity.accommodation_plan.nights}} {{activity.accommodation_plan.nights > 1 ? 'nights' : 'night'}}: <small><i class="fa fa-rupee"></i> {{ctrl.include_commission(activity.accommodation_plan.cost) | currency:"":0 | indianCurrency}}</small> </strong>
             </p>
           </td>
-          <td><i class="fa fa-rupee"></i> {{ ctrl.grandTotal(quote) | currency:"":0 | indianCurrency }}</td>
+          <td><i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.grandTotal(quote)) | currency:"":0 | indianCurrency }}</td>
           <td><a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>
         </tr>
       </table>

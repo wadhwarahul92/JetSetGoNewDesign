@@ -1,4 +1,6 @@
-jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'notify', (CurentUserService, $http, notify)->
+jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'notify', 'CustomerCostBreakUpsService', (CurentUserService, $http, notify, CustomerCostBreakUpsService)->
+
+  @jsg_commision = CustomerCostBreakUpsService.commission
 
   @quotes = []
 
@@ -55,6 +57,9 @@ jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'not
     grandTotal = @subTotal(quote)
     grandTotal += @taxValue(@tax_value, quote)
     grandTotal
+
+  @include_commission = (cost)->
+    cost + @jsg_commision/100 * cost
 
   return undefined
 ]
