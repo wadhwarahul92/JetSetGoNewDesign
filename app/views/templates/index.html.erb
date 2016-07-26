@@ -166,6 +166,17 @@
                   <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
                   <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
                   <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
+                  <div class="jetsteal-location">
+                    <div class="col-xs-6 data">
+                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680">
+                      <p>{{jetsteal.departure_airport.city.name}}</p>
+                    </div>
+                    <div class="col-xs-6 data">
+                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622">
+                      <p>{{jetsteal.arrival_airport.city.name}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
                   <div class="detail-link-con">
                   <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
                   </div>

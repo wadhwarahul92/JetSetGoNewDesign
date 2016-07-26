@@ -397,6 +397,7 @@ span.heading:after{
       height: 320px;
       background-size: cover;
       padding: 0;
+      position: relative;
       h2.aircraft_name{
         font-size: 22px;
         color: #000000;
@@ -422,12 +423,23 @@ span.heading:after{
           margin-top: 10px;
         }
       }
+      .jetsteal-location{
+        margin: 10px 0;
+        .data{
+          p{
+            color: #856b58;
+            font-size: 13px;
+          }
+        }
+      }
       .detail-link-con{
         padding: 10px 15px;
         bottom: 0;
         width: 100%;
         color: #ffffff;
-        margin-top: 50px;
+        margin-top: 30px;
+        position: absolute;
+        bottom: 0;
         a{
           background-color: #750005;
           display: inline-block;
@@ -477,7 +489,7 @@ span.heading:after{
 //jetsetgo services section
 .searvices_main_con{
   width: 100%;
-  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/430/original/services--bg2.png?1469441583");
+  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/431/original/services--bg2.png?1469445086");
   background-repeat: repeat;
   background-attachment: fixed;
   .services-widget{
@@ -891,9 +903,6 @@ span.heading:after{
         display: inline-block;
         padding: 9px 30px;
         border: 1px solid #ffffff;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
       }
     }
   }
@@ -951,6 +960,13 @@ span.heading:after{
   }
 }
 @media(max-width: 767px){
+  .searvices_main_con {
+    .services-widget {
+      .widget{
+        min-height: inherit;
+      }
+    }
+  }
   span.heading{
     font-size: 35px;
   }
@@ -1141,6 +1157,7 @@ span.heading:after{
         margin-bottom: 10px;
       }
       .add-trip-btn{
+        padding: 7px 10px;
       }
     }
   }
