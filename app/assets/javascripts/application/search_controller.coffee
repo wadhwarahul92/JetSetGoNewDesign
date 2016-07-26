@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CostBreakUpsService, $location, $scope)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
 
   @results = []
 
@@ -111,7 +111,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     _.find(@airports, {id: id})
 
   @totalTripCost = (trip)->
-    CostBreakUpsService.totalTripCost(trip)
+    CustomerCostBreakUpsService.totalTripCost(trip)
 
   @formatTime = (time)->
     data = null
@@ -290,9 +290,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           _date.selectable = false
 
   @calculateCost = (result)->
-    @subTotal = CostBreakUpsService.subTotal(result)
-    @grandTotal = CostBreakUpsService.totalTripCost(result)
-    @taxBreakup = CostBreakUpsService.taxBreakUp(result)
+    @subTotal = CustomerCostBreakUpsService.subTotal(result)
+    @grandTotal = CustomerCostBreakUpsService.totalTripCost(result)
+    @taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
 
   @customSplit = (string)->
     string.split(',')
