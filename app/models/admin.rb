@@ -6,7 +6,7 @@ class Admin < User
 
   has_many :admin_roleships
 
-  JSG_COMMISSION_IN_PERCENTAGE = 10
+  JSG_COMMISSION_IN_PERCENTAGE = 10.0
 
   class <<self
 
