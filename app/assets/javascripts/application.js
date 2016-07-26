@@ -48,7 +48,7 @@
 //= require ./vendors/date
 //= require ./services/base
 //= require ./services/cost_break_ups_service
-//= require ./services/customer_cost_break_up_service
+//= require ./services/customer_cost_break_ups_service
 
 
 $(document).on('ready page:load', function(){

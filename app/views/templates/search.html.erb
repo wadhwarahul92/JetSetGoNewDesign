@@ -1918,7 +1918,7 @@
                             <p>Flight Cost (₹ {{result.aircraft.per_hour_cost | currency:"":0 | indianCurrency}} per hour)</p>
                           </div>
                           <div class="col-xs-5 text-right">
-                            <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
+                            <p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>
                           </div>
                         </div>
                       </div>
@@ -1928,7 +1928,7 @@
                             <p>Ground Handling Charges</p>
                           </div>
                           <div class="col-xs-5 text-right">
-                            <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
+                            <p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>
                           </div>
                         </div>
                       </div>
@@ -1938,7 +1938,7 @@
                             <p>Landing Charges</p>
                           </div>
                           <div class="col-xs-5">
-                            <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
+                            <p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>
                           </div>
                         </div>
                       </div>
@@ -1992,7 +1992,7 @@
                               </p>
                             </div>
                             <div class="col-xs-5 text-right">
-                              <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
+                              <p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>
                             </div>
                           </div>
                         </div>
@@ -2002,7 +2002,7 @@
                               <p>Ground Handling Charges</p>
                             </div>
                             <div class="col-xs-5 text-right">
-                              <p>₹ {{flight_plan.handling_cost_at_takeoff | currency:"":0 | indianCurrency}}</p>
+                              <p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>
                             </div>
                           </div>
                         </div>
@@ -2012,7 +2012,7 @@
                               <p>Landing Charges</p>
                             </div>
                             <div class="col-xs-5">
-                              <p class="text-right">₹ {{flight_plan.landing_cost_at_arrival | currency:"":0 | indianCurrency}}</p>
+                              <p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>
                             </div>
                           </div>
                         </div>
