@@ -1,5 +1,7 @@
 jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
 
+  @jsg_commision = CustomerCostBreakUpsService.commission
+
   @results = []
 
   @airports = []
@@ -296,6 +298,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @customSplit = (string)->
     string.split(',')
+
+  @include_commission = (cost)->
+    cost + @jsg_commision/100 * cost
 
   return undefined
 ]
