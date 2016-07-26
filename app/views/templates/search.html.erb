@@ -1598,7 +1598,7 @@
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
-          <img ng-click="custom2 =! custom2" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
+          <img ng-click="custom2 =! custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
         </div>
       </div>
     </div>
@@ -1676,7 +1676,7 @@
               <div>
                 <a class="modify-btn" href=""  ng-click="ctrl.addActivity()"><i class="fa fa-plus" aria-hidden="true"></i> Add Trip</a>
                 <a class="modify-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()"><i class="fa fa-plus" aria-hidden="true"></i> Round Trip</a>
-                <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
+                <a href="javascript:void(0)" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
               </div>
 
             </div>
@@ -1737,7 +1737,7 @@
 
                   <br/> <br/>
                 </span>
-                  <a href="#" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
+                  <a href="javascript:void(0)" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
                   <div class="clearfix"></div>
                 </div>
               </div>
@@ -1746,7 +1746,7 @@
         </div>
 
         <div class="shadow-con text-center">
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/321/original/line.png?1467267297" class="img-responsive" alt="seprator">
+          <!-- <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/321/original/line.png?1467267297" class="img-responsive" alt="seprator"> -->
         </div>
         <div class="filter-con">
           <div class="row">
@@ -1814,7 +1814,11 @@
           <div class="result-search">
             <div class="col-md-8 col-sm-7 col-xs-12 search_img">
               <div class="img-hide">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
+               <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
+                <img ng-src="{{result.aircraft.image}}" alt="">
+
+
+
               </div>
               <div class="icon-con">
                 <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew" alt="">
@@ -1837,13 +1841,13 @@
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con">
-                  <a href="#" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                  <a href="javascript:void(0)" ng-click="custom =! custom; ctrl.calculateCost(result)" data-target="abc{{$index+1}}">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
                 </div>
               </div>
             </div>
             <div class="clearfix"></div>
           </div>
-          <div class="empty-leg-toogle-main" ng-show="custom">
+          <div class="empty-leg-toogle-main" id="abc1" ng-show="custom">
             <div class="arrow-up"></div>
             <div class="white-arrow-up"></div>
             <div class="top-destination-con">
@@ -1911,7 +1915,7 @@
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Flight Cost</p>
+                            <p>Flight Cost (₹ {{result.aircraft.per_hour_cost | currency:"":0 | indianCurrency}} per hour)</p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>
@@ -1984,7 +1988,8 @@
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Flight Cost (₹ 75,000 per hour)</p>
+                              <p>Flight Cost (₹ {{result.aircraft.per_hour_cost | currency:"":0 | indianCurrency}} per hour)
+                              </p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <p>₹ {{flight_plan.flight_cost | currency:"":0 | indianCurrency }}</p>

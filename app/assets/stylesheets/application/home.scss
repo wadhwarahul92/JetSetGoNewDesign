@@ -301,7 +301,7 @@ span.heading:after{
           color: #b39e84;
         }
         .search-icon {
-          background-color: rgba(201, 180, 156, 0.85);
+          background-color: rgba(165, 128, 91, 0.85);
           position: absolute;
           display: inline-block;
           width: 40px;
@@ -325,15 +325,19 @@ span.heading:after{
           padding:10px 0;
           text-align: center;
           color: #ffffff;
+          font-size: 15px;
+          font-weight: bold;
           border: 1px solid #ffffff;
           text-decoration: none;
         }
         .add-trip-btn{
           color: #ffffff;
           display: inline-block;
-          padding: 9px 30px;
+          padding: 7px 15px;
           border: 1px solid #ffffff;
           background-color: #750005;
+          font-size: 15px;
+          font-weight: bold;
           //-webkit-border-radius: 10px;
           //-moz-border-radius: 10px;
           //border-radius: 10px;
@@ -393,8 +397,9 @@ span.heading:after{
       height: 320px;
       background-size: cover;
       padding: 0;
+      position: relative;
       h2.aircraft_name{
-        font-size: 25px;
+        font-size: 22px;
         color: #000000;
         margin: 10px 0;
         padding: 0 15px;
@@ -418,12 +423,23 @@ span.heading:after{
           margin-top: 10px;
         }
       }
+      .jetsteal-location{
+        margin: 10px 0;
+        .data{
+          p{
+            color: #856b58;
+            font-size: 13px;
+          }
+        }
+      }
       .detail-link-con{
         padding: 10px 15px;
         bottom: 0;
         width: 100%;
         color: #ffffff;
-        margin-top: 50px;
+        margin-top: 30px;
+        position: absolute;
+        bottom: 0;
         a{
           background-color: #750005;
           display: inline-block;
@@ -441,6 +457,7 @@ span.heading:after{
       padding: 10px 15px 10px 15px;
       p.content{
         font-size: 15px;
+        font-weight: bold;
       }
       p.member-content{
         color: #750005;
@@ -461,12 +478,18 @@ span.heading:after{
       }
     }
   }
+  .fa-chevron-right:before{
+    color: #750005;
+  }
+  .fa-chevron-left:before{
+    color: #750005;
+  }
 }
 
 //jetsetgo services section
 .searvices_main_con{
   width: 100%;
-  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/375/original/services--bg.png?1468575520");
+  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/431/original/services--bg2.png?1469445086");
   background-repeat: repeat;
   background-attachment: fixed;
   .services-widget{
@@ -540,6 +563,7 @@ span.heading:after{
         padding: 30px 15px;
         color: #750005;
         font-size: 25px;
+        font-weight: bold;
       }
       p{
         font-size: 16px;
@@ -547,7 +571,7 @@ span.heading:after{
         margin: 15px 0;
         padding: 0 15px 0 15px;
       }
-      ol{
+      ul{
         margin-top: 20px;
         li{
           font-size: 16px;
@@ -570,7 +594,7 @@ span.heading:after{
         min-height: 240px;
       }
       h3.media-heading{
-        font-size: 12px;
+        font-size: 13px;
         font-weight: bold;
         margin: 5px 0;
       }
@@ -578,13 +602,19 @@ span.heading:after{
         font-size: 12px;
       }
       .media-readmore{
-        color: #d4bda4;
+        color: #750005;
         text-decoration: none;
       }
       .controller-arrow{
         margin-top: 80%;
       }
     }
+  }
+  .fa-chevron-right:before{
+    color: #750005;
+  }
+  .fa-chevron-left:before{
+    color: #750005;
   }
 }
 
@@ -841,8 +871,6 @@ span.heading:after{
 @media(max-width: 1200px){
   //top header section
   .top-header-search-con{
-    width:100%;
-    min-height:600px;
     .search-main-con{
       h2{
         font-size:110px;
@@ -875,9 +903,6 @@ span.heading:after{
         display: inline-block;
         padding: 9px 30px;
         border: 1px solid #ffffff;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
       }
     }
   }
@@ -890,9 +915,6 @@ span.heading:after{
 
   //top header section
   .top-header-search-con{
-    //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
-    width:100%;
-    min-height:600px;
     .search-main-con{
       h2{
         font-size:100px;
@@ -938,6 +960,14 @@ span.heading:after{
   }
 }
 @media(max-width: 767px){
+  .searvices_main_con {
+    .services-widget {
+      .widget{
+        min-height: inherit;
+        text-align: center;
+      }
+    }
+  }
   span.heading{
     font-size: 35px;
   }
@@ -964,15 +994,13 @@ span.heading:after{
         }
         h4.estimated-price{
           margin-top: 10px;
+          font-weight: bold;
         }
       }
     }
   }
   //top header section
   .top-header-search-con{
-    //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
-    width:100%;
-    min-height:600px;
     .search-main-con{
       h2{
         font-size:110px;
@@ -1100,9 +1128,6 @@ span.heading:after{
 @media(max-width: 650px){
   //top header section
   .top-header-search-con{
-    //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/135/original/home_header_bg.jpg?1460529613);
-    width:100%;
-    min-height:600px;
     .search-main-con{
       h2{
         font-size:50px;
@@ -1133,6 +1158,7 @@ span.heading:after{
         margin-bottom: 10px;
       }
       .add-trip-btn{
+        padding: 7px 10px;
       }
     }
   }
