@@ -132,9 +132,9 @@
           </a>
         </span>
         <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
-        <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="22"></a>
+        <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
         <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/348/original/round_trip.png?1468482949" alt=""></a>
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
       </div>
     </div>
     <!-- search con finish -->
@@ -167,12 +167,12 @@
                   <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
                   <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
                   <div class="jetsteal-location">
-                    <div class="col-xs-6 data">
-                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680">
+                    <div class="col-xs-6 data text-center">
+                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/434/original/depature_b.png?1469619572">
                       <p>{{jetsteal.departure_airport.city.name}}</p>
                     </div>
-                    <div class="col-xs-6 data">
-                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622">
+                    <div class="col-xs-6 data text-center">
+                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/433/original/arrival_b.png?1469619553">
                       <p>{{jetsteal.arrival_airport.city.name}}</p>
                     </div>
                     <div class="clearfix"></div>
