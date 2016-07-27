@@ -894,6 +894,14 @@ $main-blue-color:rgb(5, 81, 139);
       .top-destination-con{
         width: 100%;
         padding: 10px 0;
+        .cross-icon{
+          font-size: 20px;
+          color: #920000;
+          cursor: pointer;
+          position: absolute;
+          top: -21px;
+          right: -8px;
+        }
         .desination-name{
           p{
             text-align: left;

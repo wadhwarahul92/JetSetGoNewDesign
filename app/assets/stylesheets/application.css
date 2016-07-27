@@ -7,4 +7,5 @@
  *= require ./vendors/animate
  *= require_tree ./application
  *= require_self
+ *= require ./vendors/filter_slider
  */
