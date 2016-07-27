@@ -1837,7 +1837,7 @@
             </div>
             <div class="col-md-4 col-sm-5 col-xs-12 search-ryt-con">
               <div class="img-bg">
-                <h3>{{result.aircraft.aircraft_type.name}}</h3>
+                <h3>{{result.aircraft.aircraft_type.name}} {{result.aircraft.id}}</h3>
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con">
@@ -1882,7 +1882,8 @@
               <div class="img-total-cost-con">
                 <div class="col-md-4 col-sm-6">
                   <div class="aircraft-img">
-                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">
+                    <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">-->
+                    <img ng-src="{{result.aircraft.interior_image_size_400}}" alt="">
                   </div>
                 </div>
                 <div class="col-md-8 col-sm-6">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702051520) do
+ActiveRecord::Schema.define(version: 20160727093009) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -119,6 +119,10 @@ ActiveRecord::Schema.define(version: 20160702051520) do
     t.string   "image_content_type",           limit: 255
     t.integer  "image_file_size",              limit: 4
     t.datetime "image_updated_at"
+    t.string   "interior_file_name",           limit: 255
+    t.string   "interior_content_type",        limit: 255
+    t.integer  "interior_file_size",           limit: 4
+    t.datetime "interior_updated_at"
   end
 
   create_table "airport_categories", force: :cascade do |t|
