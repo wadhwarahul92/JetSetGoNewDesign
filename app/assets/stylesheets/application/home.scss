@@ -549,6 +549,13 @@ span.heading:after{
     }
     .widget-detail{
       position: relative;
+      .cross-icon{
+        position: absolute;
+        top: -7px;
+        right: -6px;
+        color: #920000;
+        cursor: pointer;
+      }
       .bg-overlay{
         background-color: rgba(0,0,0,0.3);
         position: absolute;
