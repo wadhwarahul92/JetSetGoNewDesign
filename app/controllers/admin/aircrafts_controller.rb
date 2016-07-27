@@ -104,7 +104,8 @@ class Admin::AircraftsController < Admin::BaseController
                                  :medical_evac,
                                  :base_airport_id,
                                  :mtow,
-                                 :image
+                                 :image,
+                                 :interior
     )
   end
 

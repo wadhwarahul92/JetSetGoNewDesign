@@ -18,6 +18,8 @@ json.array! @aircrafts do |aircraft|
   json.flying_range_in_nm aircraft.flying_range_in_nm
   json.per_hour_cost aircraft.per_hour_cost
   json.image aircraft.image.url(:original)
+  json.interior_image_original aircraft.interior.url(:original)
+  json.interior_image_size_400 aircraft.interior.url(:size_400x400)
   # json.catering_cost_per_pax aircraft.catering_cost_per_pax
   json.aircraft_type{
     json.id aircraft.aircraft_type.id

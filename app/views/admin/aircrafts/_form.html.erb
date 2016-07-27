@@ -9,10 +9,22 @@
         <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
         <%= f.input :base_airport_id, collection: airports_for_collection, prompt: 'Select Aircraft type' %>
         <%= f.input :organisation_id, collection: organisations_for_collection, prompt: 'Select Organisation' %>
-        <% if f.object.image.present? %>
-            <%= image_tag f.object.image.url(:original), style: 'width:100%' %>
-        <%- end %>
-        <%= f.input :image, :label => "Aircraft image"%>
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <% if f.object.image.present? %>
+                <%= image_tag f.object.image.url(:original), style: 'width:100%' %>
+            <%- end %>
+            <%= f.input :image, :label => "Exterior image"%>
+          </div>
+
+          <div class="col-sm-6">
+            <% if f.object.interior.present? %>
+                <%= image_tag f.object.interior.url(:size_400x400), style: 'width:100%' %>
+            <%- end %>
+            <%= f.input :interior, :label => "Interior image"%>
+          </div>
+        </div>
+
         <% [:wifi, :phone, :flight_attendant, :medical_evac].each do |attr| %>
             <div class="col-sm-4">
               <%= f.input(attr, :value => true) %>
