@@ -177,6 +177,13 @@
                     </div>
                     <div class="clearfix"></div>
                   </div>
+                  <div class="time-seat">
+                    <div class="col-xs-12">
+                      <p><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/438/original/b_clock.png?1469700946" alt="" />{{jetsteal.flight_start_time}}</p>
+                      <p><img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/439/original/b_pax.png?1469700988" alt="" /> {{jetsteal.jetsteal_seats.length}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
                   <div class="detail-link-con">
                   <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
                   </div>
@@ -314,7 +321,7 @@
             <h2>JetSetWed&trade;</h2>
             <p>With families leaving no stone unturned for the Big Fat Indian Wedding Experience, JetSetWed™ makes this a tad bit easier by providing superior travel planning and guest logistics services.</p>
             <a href="javascript:void(0)" ng-click="ctrl.wed_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
+            <a href="javascript:void(0)" class="" ng-class="jetsetwed.open ? 'active-btn' : 'enquire-btn'" ng-click="jetsetwed.open = !jetsetwed.open; jetsetyatra.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -343,7 +350,7 @@
             <h2>JetSetYatra&trade;</h2>
             <p>At JetSetGo we believe in making your darshan and yatra as comfortable as possible. We understand that you only undertake the experience once in your lifetime hence we endeavor to deliver beyond what we promise.</p>
             <a href="javascript:void(0)" ng-click="ctrl.yatra_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
+            <a href="javascript:void(0)" class="" ng-class="jetsetyatra.open ? 'active-btn' : 'enquire-btn'" ng-click="jetsetyatra.open = !jetsetyatra.open; jetsetwed.open = false; jetsetrescue.open = false; helisego.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -388,7 +395,7 @@
             <h2>JetSetRescue&trade;</h2>
             <p>With access to the widest range of specialized aircraft or helicopters with Advanced Life Support (ALS) systems JetSetGo fills in this gap to provide quality air ambulance services doing its part in saving lives.</p>
             <a href="javascript:void(0)" ng-click="ctrl.rescue_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
+            <a href="javascript:void(0)" class="" ng-class="jetsetrescue.open ? 'active-btn' : 'enquire-btn'" ng-click="jetsetrescue.open = !jetsetrescue.open; helisego.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -412,7 +419,7 @@
             <h2>HeliSetGo&trade;</h2>
             <p>We offer both single and twin engine helicopters for VIP, Corporate and other charters. Simply call +91-11-39585858. or enquire below to book a helicopter with us</p>
             <a href="javascript:void(0)" ng-click="ctrl.heli_set_go_enquiry()" class="enquire-btn">Enquire</a>
-            <a href="javascript:void(0)" class="enquire-btn" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
+            <a href="javascript:void(0)" class="" ng-class="helisego.open ? 'active-btn' : 'enquire-btn'" ng-click="helisego.open = !helisego.open; jetsetrescue.open = false; jetsetwed.open = false; jetsetyatra.open = false;">Detail</a>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -469,7 +476,7 @@
           <div id="myCarousel2" class="carousel slide">
             <div class="row">
               <div class="col-sm-1 col-xs-2">
-                <a class="right carousel-control controller-arrow" href="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+                <a class="right carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
               </div>
               <div class="col-sm-10 col-xs-8">
                 <!-- Carousel items -->
@@ -478,26 +485,34 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/385/original/forbes.png?1468579303" alt="">
-                        <h3 class="media-heading">JetSetGo: The Uber of Indian skies</h3>
-                        <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet, flew into New Delhi from the US. </p>
+                        <div class="media-content">
+                          <h3 class="media-heading">JetSetGo: The Uber of Indian skies</h3>
+                          <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet, flew into New Delhi from the US. </p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/381/original/em.png?1468579250" alt="">
-                        <h3 class="media-heading">4 min read Dark confessions straight from an entrepreneur's heart</h3>
-                        <p class="media-content">The three of us had just about settled in cross legged position for late-night dinner</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">4 min read Dark confessions straight from an entrepreneur's heart</h3>
+                          <p class="media-content">The three of us had just about settled in cross legged position for late-night dinner</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/384/original/fe.png?1468579288" alt="">
-                        <h3 class="media-heading">JetSetGo can now mobilise an air ambulance in any part of the country</h3>
-                        <p class="media-content">JetSetGo recently introduced air ambulance services to offer better emergency services and help improve healthcare access,</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">JetSetGo can now mobilise an air ambulance in any part of the country</h3>
+                          <p class="media-content">JetSetGo recently introduced air ambulance services to offer better emergency services and help improve healthcare access,</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/390/original/toi.png?1468579378" alt="">
-                        <h3 class="media-heading">Startups with a flavour of bollywood and cricket</h3>
-                        <p class="media-content">As soon as we got Yuvaj onboard we saw a paradigm shift in customer outlook towards us. The number of queries we serviced per day increased</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Startups with a flavour of bollywood and cricket</h3>
+                          <p class="media-content">As soon as we got Yuvaj onboard we saw a paradigm shift in customer outlook towards us. The number of queries we serviced per day increased</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                     </div>
@@ -508,26 +523,34 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/379/original/bt.png?1468579221" alt="">
-                        <h3 class="media-heading">Luxury in their stride</h3>
-                        <p class="media-content">A decade ago, Kanika Tekriwal worked for the private aviation vertical of investment giant IndiaBulls. The experience emboldened her to set up in April 2014</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Luxury in their stride</h3>
+                          <p class="media-content">A decade ago, Kanika Tekriwal worked for the private aviation vertical of investment giant IndiaBulls. The experience emboldened her to set up in April 2014</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/382/original/et.png?1468579260" alt="">
-                        <h3 class="media-heading">Taking to the skies: YouWeCan Ventures invests in JetSetGo</h3>
-                        <p class="media-content">NEW DELHI: YouWeCan Ventures, the investment firm founded by cricketer Yuvraj Singh</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Taking to the skies: YouWeCan Ventures invests in JetSetGo</h3>
+                          <p class="media-content">NEW DELHI: YouWeCan Ventures, the investment firm founded by cricketer Yuvraj Singh</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/389/original/ndtv.png?1468579367" alt="">
-                        <h3 class="media-heading">After Beauty, Education, Yuvraj Singh Looks Towards The Sky</h3>
-                        <p class="media-content">Yuvraj Singh's YouWeCan Ventures latest investment is an undisclosed sum in online marketplace for private jets and helicopters - JetSetGo.</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">After Beauty, Education, Yuvraj Singh Looks Towards The Sky</h3>
+                          <p class="media-content">Yuvraj Singh's YouWeCan Ventures latest investment is an undisclosed sum in online marketplace for private jets and helicopters - JetSetGo.</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/380/original/business.png?1468579235" alt="">
-                        <h3 class="media-heading">Mile-High Service</h3>
-                        <p class="media-content">Kanika Tekriwal, co-founder, JetSetGo, onboard the Cessna Citation XL, which costs approximately ₹190,000 per hour to charter</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Mile-High Service</h3>
+                          <p class="media-content">Kanika Tekriwal, co-founder, JetSetGo, onboard the Cessna Citation XL, which costs approximately ₹190,000 per hour to charter</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                     </div>
@@ -538,14 +561,34 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/386/original/ht.png?1468579322" alt="">
-                        <h3 class="media-heading">Private jets at the click of a mouse, touch of a button</h3>
-                        <p class="media-content">Mumbai : If you have to reach an important meeting in a different part of the country and flights are unavailable</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Private jets at the click of a mouse, touch of a button</h3>
+                          <p class="media-content">Mumbai : If you have to reach an important meeting in a different part of the country and flights are unavailable</p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/387/original/iifl.png?1468579336" alt="">
-                        <h3 class="media-heading">Yuvraj Singh's YouWeCan Ventures invests in JetSetGo</h3>
-                        <p class="media-content">Yuvraj Singh funded YouWeCan Ventures has made an undisclosed investment in JetSetGo</p>
+                        <div class="media-content">
+                          <h3 class="media-heading">Yuvraj Singh's YouWeCan Ventures invests in JetSetGo</h3>
+                          <p class="media-content">Yuvraj Singh funded YouWeCan Ventures has made an undisclosed investment in JetSetGo</p>
+                        </div>
+                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-12">
+                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/388/original/iwl.png?1468579352" alt="">
+                        <div class="media-content">
+                          <h3 class="media-heading"> Kanika Tekriwal, CEO, JetSetGo Aviation Services Private Limited</h3>
+                          <p class="media-content">Kanika Tekriwal, young dynamic business women, who by her sheer grit & determination carved a niche for her in the aviation industry.</p>
+                        </div>
+                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-12">
+                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/391/original/verve.png?1468579391" alt="">
+                        <div class="media-content">
+                          <h3 class="media-heading">WINGED GUARDIAN</h3>
+                          <p class="media-content">When it comes to bridal shindigs, she takes the phrase 'sky's the limit' to new heights. </p>
+                        </div>
                         <a class="media-readmore" href="javascript:void(0)">Read More</a>
                       </div>
                     </div>
@@ -556,7 +599,7 @@
                 <!--/carousel-inner-->
               </div>
               <div class="col-sm-1 col-xs-2">
-                <a class="left carousel-control controller-arrow" href="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+                <a class="left carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
               </div>
             </div>
           </div>
