@@ -949,6 +949,23 @@ span.heading:after{
     }
   }
   //jetsteel App section
+  .jetsteel-main-con{
+    .jetsteal-slider-con{
+      #carousel_slider{
+        .left{
+          left: 0;
+        }
+        .right{
+          right: 0;
+        }
+      }
+      #courcel_slider{
+        .right{
+          right: 0;
+        }
+      }
+    }
+  }
   .jetsteal-app-con{
     h2{
       font-size: 30px;
@@ -1117,6 +1134,24 @@ span.heading:after{
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
+      }
+    }
+    .jetsteal-slider-con{
+      #carousel_slider{
+        .left{
+          left: 0;
+          display: none;
+        }
+        .right{
+          right: 0;
+          display: none;
+        }
+      }
+      #courcel_slider{
+        .right{
+          right: 0;
+          display: none;
+        }
       }
     }
   }
