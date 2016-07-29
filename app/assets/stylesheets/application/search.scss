@@ -720,8 +720,7 @@ $main-blue-color:rgb(5, 81, 139);
         width: 100%;
         background: transparent;
         border: 1px solid #9c651f;
-        padding: 9px 5px 9px 33px;
-        margin: 5px 0;
+        padding: 9px 5px 9px 43px;
 
       }
       .modify-btn{
@@ -732,7 +731,6 @@ $main-blue-color:rgb(5, 81, 139);
         background-color: #720000;
         border: 1px solid #ffffff;
         width: 15%;
-        margin-top: 5px;
       }
     }
     .shadow-con{
@@ -1010,43 +1008,24 @@ $main-blue-color:rgb(5, 81, 139);
         }
       }
       .date-textfield{
-        padding:9px 5px;
+        // padding:9px 5px;
       }
       .pax-textfield{
-        padding:9px 5px 9px 33px;
+        // padding:9px 5px 9px 33px;
       }
       .text-white{
         color: #ffffff;
       }
       .search-icon{
-        background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/180/original/Home_search_icon-123.png?1462255952);
-      }
-      .departure-icon{
-        width: 37px;
-        height: 20px;
-        display: inline-block;
-        background-position: -9px -11px;
-        position: absolute;
-        top: 10px;
-        left: 5px;
-      }
-      .arrival-icon{
-        width: 37px;
-        height: 20px;
-        display: inline-block;
-        background-position: -59px -11px;
-        position: absolute;
-        top: 10px;
-        left: 5px;
-      }
-      .pax-icon{
-        width: 24px;
-        height: 24px;
-        display: inline-block;
-        background-position: -246px -9px;
-        position: absolute;
-        top: 7px;
-        left: 5px;
+        background-color: rgba(165, 128, 91, 0.85);
+          position: absolute;
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          padding: 2px 0;
+          text-align: center;
+          top: 0;
+          left: 0;
       }
       .cross-icon{
         position: absolute;

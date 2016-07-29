@@ -36,7 +36,9 @@
               <div class="search-con">
                 <span class="search-main-form autocomplete-height" ng-repeat="search_activity in ctrl.search_activities">
                   <span class="search-form">
-                    <span class="search-icon departure-icon"></span>
+                    <span class="search-icon departure-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153" alt="">
+                    </span>
                     <input class="search-textfield" title="Departure Airport"
                            ng-disabled="$index+1 < ctrl.search_activities.length"
                            placeholder="Departure"
@@ -50,7 +52,9 @@
                            typeahead-min-length="0">
                   </span>
                   <span class="search-form">
-                    <span class="search-icon arrival-icon"></span>
+                    <span class="search-icon arrival-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122" alt="">
+                    </span>
                     <input class="search-textfield" title="Arrival Airport"
                            ng-disabled="$index+1 < ctrl.search_activities.length"
                            placeholder="Arrival"
@@ -64,7 +68,9 @@
                            typeahead-min-length="0">
                   </span>
                   <span class="search-form">
-                    <span class="search-icon pax-icon"></span>
+                    <span class="search-icon pax-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/356/original/pax.png?1468494207" alt="">
+                    </span>
                     <input class="search-textfield pax-textfield" type="text"
                            ng-model="search_activity.pax"
                            autocomplete="off"
@@ -75,8 +81,11 @@
                            placeholder="Pax">
                   </span>
                   <span class="search-form">
+                    <span class="search-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
+                    </span>
                     <div class="dropdown datetimepicker-holder search-textfield date-textfield">
-                      <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(search_activity.start_at) != 'Click to choose time' ? 'black-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa fa-calendar white-color"></i> {{ctrl.formatTime(search_activity.start_at)}}</a>
+                      <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(search_activity.start_at) != 'Click to choose time' ? 'black-color' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(search_activity.start_at)}}</a>
                       <ul class="dropdown-menu" role="menu">
                         <datetimepicker
                         data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
@@ -112,7 +121,9 @@
                 <div class="search-con">
                 <span class="search-main-form autocomplete-height" ng-repeat="search_activity in ctrl.search_activities">
                   <span class="search-form">
-                    <span class="search-icon departure-icon"></span>
+                    <span class="search-icon departure-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153" alt="">
+                    </span>
                     <input class="search-textfield" title="Departure Airport"
                            disabled
                            placeholder="Departure"
@@ -126,7 +137,9 @@
                            typeahead-min-length="0">
                   </span>
                   <span class="search-form">
-                    <span class="search-icon arrival-icon"></span>
+                    <span class="search-icon arrival-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122" alt="">
+                    </span>
                     <input class="search-textfield" title="Arrival Airport"
                            disabled
                            placeholder="Arrival"
@@ -140,7 +153,9 @@
                            typeahead-min-length="0">
                   </span>
                   <span class="search-form">
-                    <span class="search-icon pax-icon"></span>
+                    <span class="search-icon pax-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/356/original/pax.png?1468494207" alt="">
+                    </span>
                     <input class="search-textfield pax-textfield" type="text"
                            disabled
                            ng-model="search_activity.pax"
@@ -152,7 +167,9 @@
                            placeholder="Pax">
                   </span>
                   <span class="search-form">
-                    <i class="fa fa-calendar celender-icon white-color"></i>
+                    <span class="search-icon">
+                      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
+                    </span>
                     <input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">
                   </span>
 
@@ -255,7 +272,7 @@
             </div>
             <div class="col-md-4 col-sm-5 col-xs-12 search-ryt-con">
               <div class="img-bg">
-                <h3>{{result.aircraft.aircraft_type.name}} {{result.aircraft.id}}</h3>
+                <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con">
