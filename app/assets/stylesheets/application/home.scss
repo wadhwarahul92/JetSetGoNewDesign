@@ -367,16 +367,16 @@ span.heading:after{
       .left{
         position: absolute;
         left: -110px;
+        .glyphicon-chevron-left{
+          font-size: 20px;
+        }
       }
       .right{
         position: absolute;
         right: -110px;
-      }
-    }
-    #courcel_slider{
-      .right{
-        position: absolute;
-        right: -110px;
+        .glyphicon-chevron-right{
+          font-size: 20px;
+        }
       }
     }
     .custom-indicator{
@@ -413,7 +413,7 @@ span.heading:after{
       }
       h4.estimated-price{
         margin: 0;
-        margin-top: 50px;
+        margin-top: 30px;
         padding: 8px 15px;
         font-size: 25px;
         color: #ffffff;
@@ -427,9 +427,13 @@ span.heading:after{
         margin: 10px 0;
         .data{
           p{
-            color: #856b58;
             font-size: 13px;
           }
+        }
+      }
+      .time-seat{
+        p{
+          margin-bottom: 5px;
         }
       }
       .detail-link-con{
@@ -521,7 +525,31 @@ span.heading:after{
         display: inline-block;
         margin: 10px;
         float: right;
-
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      a.active-btn{
+        background-color: #DABB9C;
+        color: #000000;
+        border: 1px solid #000000;
+        text-decoration: none;
+        padding: 5px 20px;
+        display: inline-block;
+        margin: 10px;
+        float: right;
+      }
+      a.enquire-btn:hover{
+        background-color: #DABB9C;
+        color: #000000;
+        border: 1px solid #000000;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
       }
     }
     .helisetgo_detail{
@@ -550,6 +578,13 @@ span.heading:after{
     }
     .widget-detail{
       position: relative;
+      .cross-icon{
+        position: absolute;
+        top: 0;
+        right: 4px;
+        color: #920000;
+        cursor: pointer;
+      }
       .bg-overlay{
         background-color: rgba(0,0,0,0.3);
         position: absolute;
@@ -592,6 +627,9 @@ span.heading:after{
       text-align: left;
       .media-widget{
         min-height: 240px;
+      }
+      div.media-content{
+        min-height: 110px;
       }
       h3.media-heading{
         font-size: 13px;
@@ -943,6 +981,23 @@ span.heading:after{
     }
   }
   //jetsteel App section
+  .jetsteel-main-con{
+    .jetsteal-slider-con{
+      #carousel_slider{
+        .left{
+          left: 0;
+        }
+        .right{
+          right: 0;
+        }
+      }
+      #courcel_slider{
+        .right{
+          right: 0;
+        }
+      }
+    }
+  }
   .jetsteal-app-con{
     h2{
       font-size: 30px;
@@ -987,7 +1042,6 @@ span.heading:after{
   .jetsteel-main-con {
     .jetsteal-slider-con {
       .emptyleg_detail {
-        height: 250px;
         h2.aircraft_name{
           margin: 0;
           padding: 10px 15px;
@@ -1111,6 +1165,24 @@ span.heading:after{
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
+      }
+    }
+    .jetsteal-slider-con{
+      #carousel_slider{
+        .left{
+          left: 0;
+          display: none;
+        }
+        .right{
+          right: 0;
+          display: none;
+        }
+      }
+      #courcel_slider{
+        .right{
+          right: 0;
+          display: none;
+        }
       }
     }
   }

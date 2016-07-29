@@ -7,6 +7,9 @@ $main-blue-color:rgb(5, 81, 139);
   height: 75px;
   border-radius: 50%;
 }
+.search_heading{
+  margin-top: 82px;
+}
 .c_disable{
   pointer-events: none;
 }
@@ -692,7 +695,6 @@ $main-blue-color:rgb(5, 81, 139);
     background-color: #998776;
     border-top: 2px solid #ffffff;
     padding: 10px 0;
-    margin-top: 72px;
     .ss{
       padding: 10px 0;
     }
@@ -894,6 +896,14 @@ $main-blue-color:rgb(5, 81, 139);
       .top-destination-con{
         width: 100%;
         padding: 10px 0;
+        .cross-icon{
+          font-size: 20px;
+          color: #920000;
+          cursor: pointer;
+          position: absolute;
+          top: -21px;
+          right: -8px;
+        }
         .desination-name{
           p{
             text-align: left;
@@ -1386,6 +1396,19 @@ $main-blue-color:rgb(5, 81, 139);
             font-size: 13px;
             margin: 3px 0;
             text-align: left;
+          }
+        }
+      }
+    }
+  }
+  .search_result_main {
+    .search_result {
+      .result-search {
+        .search-ryt-con {
+          .img-bg {
+            h4{
+              margin-top: 0;
+            }
           }
         }
       }
