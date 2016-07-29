@@ -10,12 +10,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def organisation_and_operator_created(operator)
-    # @operator = operator
-    # @organisation = operator.organisation
-    # mail(
-    #     to: @operator.email,
-    #     subject: 'Welcome to JetSetGo'
-    # )
+    @operator = operator
+    @organisation = operator.organisation
+    mail(
+        to: @operator.email,
+        subject: 'Welcome to JetSetGo'
+    )
   end
 
   ######################################################################
@@ -26,12 +26,12 @@ class OrganisationMailer < ApplicationMailer
   ######################################################################
 
   def new_aircraft(aircraft)
-    # @aircraft = aircraft
-    # @emails = Organisation.get_all_emails(aircraft.organisation)
-    # mail(
-    #     to: (@emails),
-    #     subject: 'JetSetGo - New aircraft created'
-    # )
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: (@emails),
+        subject: 'JetSetGo - New aircraft created'
+    )
   end
 
   ######################################################################
@@ -41,12 +41,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def edit_aircraft(aircraft)
-    # @aircraft = aircraft
-    # @emails = Organisation.get_all_emails(aircraft.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Aircraft Edit'
-    # )
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft Edit'
+    )
   end
 
   ######################################################################
@@ -56,21 +56,21 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def aircraft_approved_by_super_admin(aircraft)
-    # @aircraft = aircraft
-    # @emails = Organisation.get_all_emails(aircraft.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Aircraft approved by Admin'
-    # )
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft approved by Admin'
+    )
   end
 
   def aircraft_disapproved_by_super_admin(aircraft)
-    # @aircraft = aircraft
-    # @emails = Organisation.get_all_emails(aircraft.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Aircraft approved by Admin'
-    # )
+    @aircraft = aircraft
+    @emails = Organisation.get_all_emails(aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft approved by Admin'
+    )
   end
 
 
@@ -80,12 +80,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_forum_topic(forum_topic)
-    # @forum_topic = forum_topic
-    # @emails = Organisation.get_all_emails(forum_topic.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - New forum topic created'
-    # )
+    @forum_topic = forum_topic
+    @emails = Organisation.get_all_emails(forum_topic.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - New forum topic created'
+    )
   end
 
   ######################################################################
@@ -94,12 +94,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_comment_forum_topic(forum_topic_comment)
-    # @forum_topic_comment = forum_topic_comment
-    # @emails = Organisation.get_all_emails(forum_topic_comment.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - New comment on Forum topic'
-    # )
+    @forum_topic_comment = forum_topic_comment
+    @emails = Organisation.get_all_emails(forum_topic_comment.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - New comment on Forum topic'
+    )
   end
 
   ######################################################################
@@ -108,13 +108,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_aircraft_unavailability(operator, aircraft_unavailability)
-    # @aircraft_unavailability = aircraft_unavailability
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - New aircraft unavailability created'
-    # )
+    @aircraft_unavailability = aircraft_unavailability
+    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - New aircraft unavailability created'
+    )
   end
 
 
@@ -124,13 +124,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def delete_aircraft_unavailability(operator, aircraft_unavailability)
-    # @aircraft_unavailability = aircraft_unavailability
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Aircraft unavailability deleted'
-    # )
+    @aircraft_unavailability = aircraft_unavailability
+    @operator = operator
+    @emails = Organisation.get_all_emails(aircraft_unavailability.aircraft.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Aircraft unavailability deleted'
+    )
   end
 
   ######################################################################
@@ -140,13 +140,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_trip(operator, trip)
-    # @trip = trip
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - New Trip created'
-    # )
+    @trip = trip
+    @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - New Trip created'
+    )
   end
 
   ######################################################################
@@ -156,13 +156,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def delete_single_trip(operator, activity)
-    # @activity = activity
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(activity.trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Trip deleted'
-    # )
+    @activity = activity
+    @operator = operator
+    @emails = Organisation.get_all_emails(activity.trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Trip deleted'
+    )
   end
 
   ######################################################################
@@ -172,13 +172,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_enquiry(operator, trip)
-    # @trip = trip
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - New enquiry created'
-    # )
+    @trip = trip
+    @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - New enquiry created'
+    )
   end
 
   ######################################################################
@@ -188,13 +188,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def delete_enquiry(operator, trip)
-    # @trip = trip
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Delete Enquiry'
-    # )
+    @trip = trip
+    @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Delete Enquiry'
+    )
   end
 
   ######################################################################
@@ -204,13 +204,13 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def send_quote(operator, trip)
-    # @trip = trip
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - quote created'
-    # )
+    @trip = trip
+    @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - quote created'
+    )
   end
 
   ######################################################################
@@ -221,13 +221,13 @@ class OrganisationMailer < ApplicationMailer
   # ######################################################################
   # todo email send when quote deleted
   def delete_quote(trip, operator)
-    # @trip = trip
-    # @operator = operator
-    # @emails = Organisation.get_all_emails(trip.organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Delete quote'
-    # )
+    @trip = trip
+    @operator = operator
+    @emails = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Delete quote'
+    )
   end
 
   ######################################################################
@@ -236,12 +236,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def approved_organisation(organisation)
-    # @organisation = organisation
-    # @emails = Organisation.get_all_emails(organisation)
-    # mail(
-    #     to: @emails,
-    #     subject: 'JetSetGo - Approved organisation by Admin'
-    # )
+    @organisation = organisation
+    @emails = Organisation.get_all_emails(organisation)
+    mail(
+        to: @emails,
+        subject: 'JetSetGo - Approved organisation by Admin'
+    )
   end
 
   ######################################################################
@@ -250,11 +250,11 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def approved_operator_by_admin(operator)
-    # @operator = operator
-    # mail(
-    #     to: @operator.email,
-    #     subject: 'JetSetGo - Approve operator by Admin'
-    # )
+    @operator = operator
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - Approve operator by Admin'
+    )
   end
 
   ######################################################################
@@ -264,11 +264,11 @@ class OrganisationMailer < ApplicationMailer
   ######################################################################
   # todo set roles of operator
   def set_roles_of_operator(operator)
-    # @operator = operator
-    # mail(
-    #     to: @operator.email,
-    #     subject: 'JetSetGo - Admin set your role'
-    # )
+    @operator = operator
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - Admin set your role'
+    )
   end
 
   ######################################################################
@@ -278,12 +278,12 @@ class OrganisationMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def create_yatra_enquiry(yatra_enquiry, operator)
-    # @yatra_enquiry = yatra_enquiry
-    # @operator = operator
-    # mail(
-    #     to: @operator.email,
-    #     subject: 'JetSetGo - New Yatra Enquiry Received.'
-    # )
+    @yatra_enquiry = yatra_enquiry
+    @operator = operator
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - New Yatra Enquiry Received.'
+    )
   end
 
 end
