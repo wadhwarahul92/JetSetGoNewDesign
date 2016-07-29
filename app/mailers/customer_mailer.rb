@@ -10,12 +10,12 @@ class CustomerMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def new_enquiry(customer, trip)
-    @trip = trip
-    @customer = customer
-    mail(
-        to: @customer.email,
-        subject: 'JetSetGo - Your Private Jet Enquiry has been Received.'
-    )
+    # @trip = trip
+    # @customer = customer
+    # mail(
+    #     to: @customer.email,
+    #     subject: 'JetSetGo - Your Private Jet Enquiry has been Received.'
+    # )
   end
 
   ######################################################################
@@ -24,11 +24,11 @@ class CustomerMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def sign_up(customer)
-    @customer = customer
-    mail(
-        to: @customer.email,
-        subject: 'Welcome to JetSetGo'
-    )
+    # @customer = customer
+    # mail(
+    #     to: @customer.email,
+    #     subject: 'Welcome to JetSetGo'
+    # )
   end
 
   ######################################################################
@@ -38,12 +38,12 @@ class CustomerMailer < ApplicationMailer
   # @return [ActionMailer::Base]
   ######################################################################
   def send_quote(customer, trip)
-    @trip = trip
-    @customer = customer
-    mail(
-        to: @customer.email,
-        subject: 'JetSetGo - Quotation For Your Private Jet.'
-    )
+    # @trip = trip
+    # @customer = customer
+    # mail(
+    #     to: @customer.email,
+    #     subject: 'JetSetGo - Quotation For Your Private Jet.'
+    # )
   end
 
 end
