@@ -20,8 +20,8 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
       # Description: Notifications
       ######################################################################
       AdminMailer.operator_added_unavailability(current_user, @aircraft_unavailability).deliver_later
-      OrganisationMailer.new_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
-      current_organisation.operators.each{ |operator| NotificationService.aircraft_unavailability_added(operator, @aircraft_unavailability).deliver_later }
+      # OrganisationMailer.new_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
+      # current_organisation.operators.each{ |operator| NotificationService.aircraft_unavailability_added(operator, @aircraft_unavailability).deliver_later }
       ######################################################################
 
       render status: :ok, nothing: true
@@ -51,8 +51,8 @@ class Organisations::AircraftUnavailabilitiesController < Organisations::BaseCon
       # Description: Notifications
       ######################################################################
       AdminMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
-      OrganisationMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
-      current_organisation.operators.each { |operator| NotificationService.aircraft_unavailability_deleted(operator, @aircraft_unavailability).deliver_later }
+      # OrganisationMailer.delete_aircraft_unavailability(current_user, @aircraft_unavailability).deliver_later
+      # current_organisation.operators.each { |operator| NotificationService.aircraft_unavailability_deleted(operator, @aircraft_unavailability).deliver_later }
       ######################################################################
 
       render status: :ok, nothing: true

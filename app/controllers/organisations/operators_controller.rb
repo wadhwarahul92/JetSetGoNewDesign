@@ -135,7 +135,7 @@ class Organisations::OperatorsController < Organisations::BaseController
       if @operator.save
         sign_in(@operator)
         AdminMailer.new_organisation_and_admin_created(@organisation, @operator).deliver_later
-        OrganisationMailer.organisation_and_operator_created(@operator).deliver_later
+        # OrganisationMailer.organisation_and_operator_created(@operator).deliver_later
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: { errors: @operator.errors.full_messages }
@@ -175,7 +175,7 @@ class Organisations::OperatorsController < Organisations::BaseController
       if @operator.deleted_at.present?
         @operator.update_attribute(:deleted_at, nil)
         AdminMailer.approved_operator_by_admin(@operator).deliver_later
-        OrganisationMailer.approved_operator_by_admin(@operator).deliver_later
+        # OrganisationMailer.approved_operator_by_admin(@operator).deliver_later
       else
         @operator.destroy
       end
