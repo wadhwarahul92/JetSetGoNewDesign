@@ -19,7 +19,7 @@ class Admin::OrganisationsController < Admin::BaseController
     @organisation.update_attribute(:admin_verified, params[:admin_verified])
     if params[:admin_verified] == 'true'
       AdminMailer.approved_organisation(@organisation).deliver_later
-      OrganisationMailer.approved_organisation(@organisation).deliver_later
+      # OrganisationMailer.approved_organisation(@organisation).deliver_later
     end
     redirect_to action: :index
   end

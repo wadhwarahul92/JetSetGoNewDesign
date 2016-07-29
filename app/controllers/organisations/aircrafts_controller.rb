@@ -20,8 +20,8 @@ class Organisations::AircraftsController < Organisations::BaseController
 			# Description: Notifications
 			######################################################################
 			AdminMailer.new_aircraft(@aircraft).deliver_later
-			OrganisationMailer.new_aircraft(@aircraft).deliver_later
-			current_organisation.operators.each { |operator| NotificationService.aircraft_added(operator, @aircraft).deliver_later }
+			# OrganisationMailer.new_aircraft(@aircraft).deliver_later
+			# current_organisation.operators.each { |operator| NotificationService.aircraft_added(operator, @aircraft).deliver_later }
 			######################################################################
 
 			render status: :ok, nothing: true
@@ -41,8 +41,8 @@ class Organisations::AircraftsController < Organisations::BaseController
       # Description: Notifications
       ######################################################################
       AdminMailer.edit_aircraft(@aircraft).deliver_later
-      OrganisationMailer.edit_aircraft(@aircraft).deliver_later
-			current_organisation.operators.each { |operator| NotificationService.aircraft_edit(operator, @aircraft).deliver_later }
+   #    OrganisationMailer.edit_aircraft(@aircraft).deliver_later
+			# current_organisation.operators.each { |operator| NotificationService.aircraft_edit(operator, @aircraft).deliver_later }
       ######################################################################
 
       render status: :ok, nothing: true

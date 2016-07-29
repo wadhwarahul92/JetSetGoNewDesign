@@ -24,8 +24,8 @@ class Organisations::ForumTopicsController < Organisations::BaseController
       # Description: Notifications
       ######################################################################
       AdminMailer.new_forum_topic(@forum_topic).deliver_later
-      OrganisationMailer.new_forum_topic(@forum_topic).deliver_later
-      current_organisation.operators.each { |operator| NotificationService.new_forum_topic_added(operator, @forum_topic).deliver_later }
+      # OrganisationMailer.new_forum_topic(@forum_topic).deliver_later
+      # current_organisation.operators.each { |operator| NotificationService.new_forum_topic_added(operator, @forum_topic).deliver_later }
       ######################################################################
 
       render status: :ok, nothing: true

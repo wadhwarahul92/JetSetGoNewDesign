@@ -40,7 +40,7 @@ class Organisations::TripsController < Organisations::BaseController
     @trip = Trip.find params[:id]
     @trip.destroy
     AdminMailer.delete_enquiry(current_user, @trip).deliver_later
-    OrganisationMailer.delete_enquiry(current_user, @trip).deliver_later
+    # OrganisationMailer.delete_enquiry(current_user, @trip).deliver_later
     render status: :ok, nothing: true
   end
 
@@ -48,7 +48,7 @@ class Organisations::TripsController < Organisations::BaseController
     @activity = Activity.find params[:id]
     @activity.destroy
     AdminMailer.delete_single_trip(current_user, @activity).deliver_later
-    OrganisationMailer.delete_single_trip(current_user, @activity).deliver_later
+    # OrganisationMailer.delete_single_trip(current_user, @activity).deliver_later
     render status: :ok, nothing: true
   end
 
@@ -110,11 +110,11 @@ class Organisations::TripsController < Organisations::BaseController
       trip_creator = TripCreator.new(params[:aircraft_id], activities_params, current_organisation)
       if trip_creator.create!
         AdminMailer.operator_adds_new_trip(current_user, trip_creator.trip).deliver_later
-        OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
+        # OrganisationMailer.new_trip(current_user, trip_creator.trip).deliver_later
 
-        current_organisation.operators.each do |operator|
-          NotificationService.trip_added(operator, trip_creator.trip).deliver_later
-        end
+        # current_organisation.operators.each do |operator|
+        #   NotificationService.trip_added(operator, trip_creator.trip).deliver_later
+        # end
         render status: :ok, json: { trip_id: trip_creator.trip.id }
       end
     rescue Exception => e
@@ -161,13 +161,13 @@ class Organisations::TripsController < Organisations::BaseController
     begin
       send_quote_service.process!
       AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
-      OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
-      CustomerMailer.send_quote(send_quote_service.trip.user, send_quote_service.trip.user).deliver_later
-      send_quote_service.trip.organisation.operators.each do |operator|
-        NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
-      end
-      CustomerNotificationService.quote_created(send_quote_service.trip.user, send_quote_service.trip).deliver_later
-      SmsDelivery.new(send_quote_service.trip.user.phone.to_s, SmsTemplates.generate_quote).delay.deliver
+      # OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
+      # CustomerMailer.send_quote(send_quote_service.trip.user, send_quote_service.trip.user).deliver_later
+      # send_quote_service.trip.organisation.operators.each do |operator|
+      #   NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
+      # end
+      # CustomerNotificationService.quote_created(send_quote_service.trip.user, send_quote_service.trip).deliver_later
+      # SmsDelivery.new(send_quote_service.trip.user.phone.to_s, SmsTemplates.generate_quote).delay.deliver
 
       render status: :ok, nothing: true
     rescue Exception => e

@@ -72,15 +72,15 @@ class TripsController < ApplicationController
         @activities.map(&:save)
 
         AdminMailer.new_enquiry(current_user, @trip).deliver_later
-        OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
-        CustomerMailer.new_enquiry(current_user, @trip).deliver_later
+        # OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
+        # CustomerMailer.new_enquiry(current_user, @trip).deliver_later
 
-        @trip.organisation.operators.each do |operator|
-          NotificationService.enquiry_added(operator, @trip).deliver_later
-        end
+        # @trip.organisation.operators.each do |operator|
+        #   NotificationService.enquiry_added(operator, @trip).deliver_later
+        # end
 
-        CustomerNotificationService.enquiry_added(@trip.user, @trip).deliver_later
-        SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
+        # CustomerNotificationService.enquiry_added(@trip.user, @trip).deliver_later
+        # SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
 
         render status: :ok, nothing: true
       else

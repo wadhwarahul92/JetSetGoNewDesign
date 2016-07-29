@@ -46,7 +46,7 @@ class WelcomeController < ApplicationController
     if @user.save
       @user.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
       sign_in(@user)
-      CustomerMailer.sign_up(@user).deliver_later
+      # CustomerMailer.sign_up(@user).deliver_later
       AdminMailer.customer_sign_up(@user).deliver_later
       render action: :current_user_
     else
