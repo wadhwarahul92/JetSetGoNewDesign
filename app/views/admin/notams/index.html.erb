@@ -19,6 +19,7 @@
       </thead>
       <tbody>
       <% @notams.each do |notam| %>
+      <% next unless notam.airport.present? %>
           <tr>
             <td><%= notam.id %></td>
             <td><%= notam.airport.name %></td>
