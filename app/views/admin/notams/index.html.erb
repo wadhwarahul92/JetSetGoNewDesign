@@ -19,10 +19,10 @@
       </thead>
       <tbody>
       <% @notams.each do |notam| %>
-      <% next unless notam.airport.present? %>
+      <%# next unless notam.airport.present? %>
           <tr>
             <td><%= notam.id %></td>
-            <td><%= notam.airport.name %></td>
+            <td><%= notam.airport.present? ? notam.airport.name : "Airport deactivated"%></td>
             <td><%= notam.start_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td><%= notam.end_at.strftime('%d-%b-%Y %H:%M') %></td>
             <td>
