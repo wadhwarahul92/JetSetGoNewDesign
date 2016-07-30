@@ -784,7 +784,8 @@ $main-blue-color:rgb(5, 81, 139);
       }
       .result-search{
         width: 100%;
-        padding: 15px 0;
+        margin: 15px 0;
+        border: 1px solid #998776;
         position: relative;
         .search_img{
           padding: 0;
