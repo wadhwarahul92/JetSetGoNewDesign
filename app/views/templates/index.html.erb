@@ -157,39 +157,42 @@
         <div class="col-md-10 col-xs-12">
           <div uib-carousel active="active" interval="3000" no-wrap="false" id="carousel_slider">
             <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
-              <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
-                <img ng-src="{{jetsteal.aircraft.interior_image_original}}" style="margin:auto;">
-              </div>
-              <div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">
-                <div class="">
-                  <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
-                  <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
-                  <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
-                  <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
-                  <div class="jetsteal-location">
-                    <div class="col-xs-6 data text-center">
-                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/434/original/depature_b.png?1469619572">
-                      <p>{{jetsteal.departure_airport.city.name}}</p>
-                    </div>
-                    <div class="col-xs-6 data text-center">
-                      <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/433/original/arrival_b.png?1469619553">
-                      <p>{{jetsteal.arrival_airport.city.name}}</p>
-                    </div>
-                    <div class="clearfix"></div>
+              <div class="border-con">
+                <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
+                    <img ng-src="{{jetsteal.aircraft.interior_image_original}}" style="margin:auto;">
                   </div>
-                  <div class="time-seat">
-                    <div class="col-md-9 col-sm-6 col-xs-9">
-                      <p><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/438/original/b_clock.png?1469700946" alt="" />{{jetsteal.flight_start_time}}</p>
+                <div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">
+                    <div class="">
+                      <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
+                      <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
+                      <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
+                      <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
+                      <div class="jetsteal-location">
+                        <div class="col-xs-6 data text-center">
+                          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/434/original/depature_b.png?1469619572">
+                          <p>{{jetsteal.departure_airport.city.name}}</p>
+                        </div>
+                        <div class="col-xs-6 data text-center">
+                          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/433/original/arrival_b.png?1469619553">
+                          <p>{{jetsteal.arrival_airport.city.name}}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="time-seat">
+                        <div class="col-md-9 col-sm-6 col-xs-9">
+                          <p><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/438/original/b_clock.png?1469700946" alt="" />{{jetsteal.flight_start_time}}</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-3">
+                          <p><img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/439/original/b_pax.png?1469700988" alt="" /> {{jetsteal.jetsteal_seats.length}}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="detail-link-con">
+                      <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-3">
-                      <p><img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/439/original/b_pax.png?1469700988" alt="" /> {{jetsteal.jetsteal_seats.length}}</p>
-                    </div>
-                    <div class="clearfix"></div>
                   </div>
-                  <div class="detail-link-con">
-                  <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
-                  </div>
-                </div>
+                <div class="clearfix"></div>
               </div>
               <div class="col-xs-12 emptyleg_content">
               <p class="content">Through our JetSteal&trade; platform you can experience the joy of flying private and networking with like minded people like never before at 30,000 feet! Simply pick an aircraft or sector of your choice, choose between having the whole aircraft to yourself or just a seat and pay in 3 simple steps.</p>
