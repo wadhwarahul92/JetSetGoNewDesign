@@ -99,7 +99,8 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   $http.get('/jetsteals/get_list.json').success(
     (data)=>
       $.each(data, (i, v)=>
-        if !v.sold_out && arr.length < 2
+#        if !v.sold_out && arr.length < 2
+        if arr.length < 2
           arr.push(v)
           @jetsteals = arr
       )
