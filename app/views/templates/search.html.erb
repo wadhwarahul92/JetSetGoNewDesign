@@ -256,13 +256,13 @@
                 <img ng-src="{{result.aircraft.image}}" alt="">
               </div>
               <div class="icon-con">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" data-toggle="tooltip" title="Height" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/420/original/seats-1.png?1468910886" data-toggle="tooltip" title="Seats" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930" data-toggle="tooltip" title="Wifi" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/416/original/baggage-1.png?1468910820" data-toggle="tooltip" title="Baggage" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872" data-toggle="tooltip" title="Phone" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/421/original/speed-1.png?1468910919" data-toggle="tooltip" title="Speed" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew: {{result.aircraft.crew}}" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" data-toggle="tooltip" title="Height: {{result.aircraft.cabin_height_in_meters}}" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/420/original/seats-1.png?1468910886" data-toggle="tooltip" title="Seats: {{result.aircraft.seating_capacity}}" alt="">
+                <img src="" ng-src="{{result.aircraft.wifi == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/452/original/wifi.png?1470046412'}}" data-toggle="tooltip" title="Wifi: {{result.aircraft.wifi == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/416/original/baggage-1.png?1468910820" data-toggle="tooltip" title="Baggage: {{result.aircraft.baggage_capacity_in_kg}}" alt="">
+                <img src="" ng-src="{{result.aircraft.phone == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/448/original/phone.png?1470046361'}}" data-toggle="tooltip" title="Phone: {{result.aircraft.phone == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/421/original/speed-1.png?1468910919" data-toggle="tooltip" title="Speed: {{result.aircraft.cruise_speed_in_nm_per_hour}}" alt="">
                 <script>
                     $(document).ready(function(){
                         $('[data-toggle="tooltip"]').tooltip();
@@ -276,7 +276,7 @@
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con">
-                  <a href="javascript:void(0)" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Enquire</a>
+                  <a href="javascript:void(0)" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                 </div>
               </div>
             </div>
@@ -495,6 +495,9 @@
                           </h5>
                         </div>
                       </div>
+                    </div>
+                    <div class="detail-link-con"> 
+                      <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                     </div>
                   </div>
                 </div>

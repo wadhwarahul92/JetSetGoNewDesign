@@ -1,0 +1,147 @@
+.profile-detail-main{
+  width: 100%;
+  background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/441/original/bg.png?1470035237');
+  padding: 15px 0;
+  .profile-main{
+    width: 100%;
+    background-color: #f9f3e6;
+    .profile-image{
+      width: 100%;
+      position: relative;
+      .p_img{
+        width: 100%;
+      }
+      .add-img-icon{
+        width:100%;
+        display: inline-block;
+        background-color: rgba(0,0,0,0.5);
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 0;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+    .user-info{
+      .logout-text{
+        font-style: italic;
+        font-size: 13px;
+        color: #920000;
+        margin-right: 10px;
+      }
+      .name-text{
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+      }
+      ul.user-detail{
+        padding: 0;
+        margin: 15px 0;
+        color: #A76F4D;
+        width: 100%;
+        li{
+          float: left;
+          width: 15%;
+          list-style: none;
+          border-right: 1px solid #D9C3A4;
+          text-align: right;
+          padding: 0 15px;
+          min-height: 88px;
+          position: relative;
+          .notication-icon{
+            color: #920000;
+            position: absolute;
+            right: 40px;
+            top: 7px;
+          }
+          h4{
+            font-size: 35px;
+            font-weight: bold;
+            margin: 0;
+          }
+          p{
+            font-size: 18px;
+            margin: 0;
+          }
+        }
+      }
+      .edit-icon{
+        display: inline-block;
+        padding: 8px 20px;
+        border-radius: 5px;
+        background-color: #920000;
+        color: #ffffff;
+        font-size: 18px;
+      }
+    }
+  }
+}
+.enquired-booking-main{
+  width: 100%;
+  h2.heading{
+    font-size: 24px;
+    color: #920000;
+  }
+  .table{
+    .info{
+      th{
+        background-color: #F0E7DB;
+      }
+    }
+    td.info-detail{
+      background-color: #F9ECE0;
+    }
+    .booking-detail{
+      width: 100%;
+      .no-padding-right{
+        padding-right: 0;
+      }
+      .no-padding-left{
+        padding-left: 0;
+      }
+      .booking-img{
+        width: 100%;
+        overflow: hidden;
+        height: 320px;
+        background-color: #eee;
+        padding-right:0;
+      }
+      .img-bg{
+        width: 100%;
+        height: 320px;
+        background-color: #ccc;
+        padding-left:0;
+        position: relative;
+        .gap{
+          height: 80px;
+        }
+        h4{
+            margin: 0;
+            padding: 5px 15px;
+            font-size: 30px;
+            color: #ffffff;
+            background-color: #856b58;
+            text-align: center;
+            span{
+              font-size: 14px;
+            }
+        }
+        .detail-link-con{
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          a{
+            background-color: #920000;
+            display: inline-block;
+            padding: 10px 30px;
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
