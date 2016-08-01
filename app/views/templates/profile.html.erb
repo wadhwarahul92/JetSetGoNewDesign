@@ -43,7 +43,8 @@
               </li>
               <div class="clearfix"></div>
             </ul>
-            <a class="edit-icon" href="javascript:void(0)">
+            {{edit_active}}
+            <a class="edit-icon" href="javascript:void(0)" ng-click="ctrl.edit_active =! ctrl.edit_active" ng-model="ctrl.edit_active" ng-hide="ctrl.edit_active" >
               <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
             </a>
           </div>

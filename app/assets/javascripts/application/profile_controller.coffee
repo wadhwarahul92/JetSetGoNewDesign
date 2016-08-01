@@ -8,6 +8,8 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
 
   @active_pwd = false
 
+  @edit_active = false
+
   @password = ''
 
   $scope.$watch(

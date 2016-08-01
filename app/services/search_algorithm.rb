@@ -89,6 +89,8 @@ BEGIN
 
       @results << {
           aircraft_id: aircraft.id,
+          aircraft_type_category: aircraft.aircraft_type.aircraft_category.name,
+          aircraft_type_name: aircraft.aircraft_type.name,
           aircraft_tail_number: aircraft.tail_number,
           aircraft_image: aircraft.image.url(:original),
           aircraft_interior_image: aircraft.interior.url(:original),
