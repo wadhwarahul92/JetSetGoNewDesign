@@ -11,6 +11,7 @@ class CustomersController < ApplicationController
                                       :get_offers,
                                       :catering,
                                       :set_sell_empty_leg,
+                                      :get_user_trips,
                                       :change_password_]
 
   def update_image
@@ -22,7 +23,7 @@ class CustomersController < ApplicationController
   end
 
   def update_profile
-    if @customer.update_attributes(phone: params[:phone])
+    if @customer.update_attributes(phone: params[:phone], dob: params[:dob], sms_active: params[:sms_active])
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
@@ -106,6 +107,10 @@ class CustomersController < ApplicationController
     else
       render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
     end
+  end
+
+  def get_user_trips
+    @trips = @customer.trips
   end
 
   private
