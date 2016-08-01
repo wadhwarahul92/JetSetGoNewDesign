@@ -157,11 +157,15 @@
         <div class="col-md-10 col-xs-12">
           <div uib-carousel active="active" interval="3000" no-wrap="false" id="carousel_slider">
             <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
-              <div class="border-con">
-                <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
+
+                <div class="border-con" style="position:relative;">
+                  <div class="bg sold_out" ng-show="jetsteal.sold_out">
+                    <p style="margin-top: 125px; color: #f9f3e6; font-size: 50px;">Sold Out</p>
+                  </div>
+                  <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
                     <img ng-src="{{jetsteal.aircraft.interior_image_original}}" style="margin:auto;">
                   </div>
-                <div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">
+                  <div class="col-md-4 col-sm-12 col-xs-12 emptyleg_detail">
                     <div class="">
                       <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
                       <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
@@ -188,12 +192,15 @@
                         <div class="clearfix"></div>
                       </div>
                       <div class="detail-link-con">
-                      <a href="/jetsteals/list" target="_self">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
+                        <a href="javascript:void(0)" target="_self" ng-if="jetsteal.sold_out"> <i class="fa fa-hourglass-o"></i> Sold out </a>
+                        <a href="/jetsteals/list" target="_self" ng-if="!jetsteal.sold_out">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
                       </div>
                     </div>
                   </div>
-                <div class="clearfix"></div>
-              </div>
+                  <div class="clearfix"></div>
+                </div>
+
+
               <div class="col-xs-12 emptyleg_content">
               <p class="content">Through our JetSteal&trade; platform you can experience the joy of flying private and networking with like minded people like never before at 30,000 feet! Simply pick an aircraft or sector of your choice, choose between having the whole aircraft to yourself or just a seat and pay in 3 simple steps.</p>
               <p class="member-content">Fly free, choose your own seat <b>Become a Member</b></p>
