@@ -10,6 +10,14 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
 
   @password = ''
 
+  @enquired_jets = {}
+
+  @booked_jets = {}
+
+  @quotes = {}
+
+  @trips = {}
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -26,6 +34,51 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
         location.replace('tmp_url')
     ,
     1500
+  )
+
+
+  $http.get('customers/get_enquired_jets.json').success(
+    (data)=>
+      @enquired_jets = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching enquired jets'
+        classes: ['alert-danger']
+      )
+  )
+
+  $http.get('customers/get_booked_jets.json').success(
+    (data)=>
+      @booked_jets = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching booked jets'
+        classes: ['alert-danger']
+      )
+  )
+
+  $http.get('customers/get_user_trips.json').success(
+    (data)=>
+      @trips = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching booked jets'
+        classes: ['alert-danger']
+      )
+  )
+
+
+  $http.get('/trips/get_quotes.json').success(
+    (data)=>
+      @quotes = data
+  ).error(
+    ->
+      notify
+        message: 'Error fetching quotes'
+        classes: ['alert-danger']
   )
 
   @uploadUserImage = (files, operator)->
@@ -98,6 +151,14 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
       return 'Date of birth'
     else
       return data
+
+  @count_empty_legs = (trips)->
+    count = 0
+    for trip in trips
+      for activity in trip.activities
+        if activity.empty_leg == true
+          count = count+1
+    return count
 
   return undefined
 ]

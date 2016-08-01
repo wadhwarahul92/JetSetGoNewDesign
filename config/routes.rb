@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       put 'catering'
       put 'set_sell_empty_leg'
       put 'change_password_'
+      get 'get_user_trips'
     end
   end
 
