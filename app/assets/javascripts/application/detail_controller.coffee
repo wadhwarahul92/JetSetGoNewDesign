@@ -1,8 +1,18 @@
-jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', ($http, notify, $routeParams)->
+jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 'CurrentUserService', '$scope', ($http, notify, $routeParams, CurrentUserService, $scope)->
 
   @trip_id = $routeParams.id
 
   @trip = {}
+
+  @currentUser = null
+
+  $scope.$watch(
+    =>
+      CurrentUserService.currentUser
+    ,
+    =>
+      @currentUser = CurrentUserService.currentUser
+  )
 
   $http.get("trips/#{@trip_id}.json").success(
     (data)=>

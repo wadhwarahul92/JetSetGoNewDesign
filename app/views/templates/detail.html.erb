@@ -1,4 +1,404 @@
-<br><br><br><br><br><br>
+<div class="section-heading search_heading">
+  <div class="container">
+    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/456/original/customerprofile.png?1470053679" alt="">
+  </div>
+</div>
+
+<div class="profile-detail-main">
+  <div class="container">
+    <div class="profile-main">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-image">
+            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="user-info">
+            <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
+            <ul class="user-detail">
+              <!-- <li>
+                <i class="fa fa-bell 
+                notication-icon" aria-hidden="true"></i>
+                <h4>2</h4>
+                <p>Notication</p>
+              </li> -->
+              <li>
+                <h4>3</h4>
+                <p>Enquired Bookings</p>
+              </li>
+              <li>
+                <h4>1</h4>
+                <p>Confirmed Bookings</p>
+              </li>
+              <li>
+                <h4>2</h4>
+                <p>Quoted Bookings</p>
+              </li>
+              <li>
+                <h4>0</h4>
+                <p>EmptyLegs</p>
+              </li>
+              <div class="clearfix"></div>
+            </ul>
+            <a class="edit-icon" href="javascript:void(0)">
+              <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-info-main detail-profile">
+  <div class="container">
+    <h2 class="heading">Edit Profile</h2>
+    <div class="booking-detail">
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <p><b>Booking ID.</b> 123456789</p>
+        </div>
+        <div class="col-md-3 col-sm-4">
+          <p><b>Status:</b> <span>Pending</span></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="customer-detail journey-detail">
+      <h3>Journey Details</h3>
+      <div class="location-main row">
+        <div class="col-md-offset-1 col-md-5">
+          <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
+          <p>BOM 10:00 AM</p>
+          <p>22 Jul 2016</p>
+          <p>Chhatrapati Shivaji International Airport</p>
+          <p>Mumbai</p>
+        </div>
+        <div class="col-md-offset-1 col-md-5">
+          <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
+          <p>DEL 11:53 AM</p>
+          <p>22 Jul 2016</p>
+          <p>Indira Gandhi International Airport</p>
+          <p>New Delhi</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="lb-detail">
+          <div class="col-md-offset-1 col-md-3">
+            <h5>Trip Type</h5>
+            <h6>One Way</h6>
+          </div>
+          <div class="col-md-3">
+            <h5>Passengers</h5>
+            <h6>3</h6>
+          </div>
+          <div class="col-md-3">
+            <h5>Flying Time</h5>
+            <h6>1 Hrs 59 Mins</h6>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="customer-detail flight-detail">
+      <h3>Flight Details</h3>
+      <div class="jetdetail-col">
+        <div class="row">
+        <div class="col-md-8 no-right-padding">
+          <div class="img-con"></div>
+          <img src="">
+        </div>
+        <div class="col-md-4 no-left-padding">
+          <div class="jet-detail">
+            <h2>Dassault Falcon 2000</h2>
+            <h4>Multi Engine</h4>
+            <ul class="jet-list">
+              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/467/original/crew.jpg?1470058204" /> 2</li>
+              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> 10</li>
+              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/472/original/pax.jpg?1470058683" /> 300 kts</li>
+              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/471/original/speed.jpg?1470058280" /> 768 kg</li>
+              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/468/original/laboratory.jpg?1470058221" /> 1</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer-detail cost-detail">
+      <h3>Cost Details</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Flight Time</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>2 Hrs 21 Mins</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Flight Cost(<i class="fa fa-rupee"></i> 75,000 per hour)</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> 10,76,250</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Ground Handling Charges</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> 2,30,000</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Crew Accommodation Charges</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>NA</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Watch Hours(As per actuals)</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>NA</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Sub Total</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Service Tax(14%)</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> 1,82,000</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Swachh Bharat Cess(0.5%)</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> 6,531</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Krishi Kalyan Cess(0.5%)</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> 6,531</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <h5>Total</h5>
+            </div>
+            <div class="col-xs-6 text-right">
+              <h5><i class="fa fa-rupee"></i> 15,02,187</h5>
+              <p>(All Inclusive)</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="top-gap"></div>
+          <div class="row">
+            <div class="col-xs-6">
+              <h5>Booking Deposit</h5>
+            </div>
+            <div class="col-xs-6 text-right">
+              <h5><i class="fa fa-rupee"></i> 15,021</h5>
+              <p>(Pay 10% for book flight)</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 text-right">
+              <a class="pay-cancel-btn" href="javascript:void(0)">Pay Now</a>
+              <a class="pay-cancel-btn" href="javascript:void(0)">Cancel Booking</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer-detail bank-detail">
+      <h3>Bank Details</h3>
+      <h4>Bank Transfer Information</h4>
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="row">
+            <div class="col-sm-6">
+              <p><b>Bank Name:</b> ICICI</p>
+            </div>
+            <div class="col-sm-6">
+              <p><b>MICR CODE:</b> 110229009</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p><b>Account Payee:</b> Jetsetgo Aviation Services Pvt Ltd</p>
+            </div>
+            <div class="col-sm-6">
+              <p><b>IFCS CODE:</b> ICICI0000071</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p><b>Branch:</b> H2, Green Park Extention, New Delhi-110016</p>
+            </div>
+            <div class="col-sm-6">
+              <p><b>Account Number:</b> 007105006854</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <p><b>Thank you for choosing to pay via bank transfer.</b> Once your payment is received we will send you another email with the confirmation, along with all the details of your flight.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <table class="amount-table">
+            <tr>
+              <td colspan="2">
+                <h5>Payment Summary</h5>
+              </td>
+            </tr>
+            <tr class="border">
+              <td>
+                <p>Total Amount</p>
+              </td>
+              <td>
+                <p class="text-right"><i class="fa fa-rupee"></i> 20</p>
+              </td>
+            </tr>
+            <tr class="border">
+              <td>
+                <p>Tax</p>
+              </td>
+              <td>
+                <p class="text-right"><i class="fa fa-rupee"></i> 0</p>
+              </td>
+            </tr>
+            <tr class="border">
+              <td>
+                <p>You have paid</p>
+              </td>
+              <td>
+                <p class="text-right"><i class="fa fa-rupee"></i> 1</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><b>Balance Payable</b></p>
+              </td>
+              <td>
+                <p class="text-right"><b><i class="fa fa-rupee"></i> 19</b></p>
+              </td>
+            </tr>
+          </table>
+          <table class="amount-table" style="margin: 20px 0;">
+            <tr>
+              <td colspan="2">
+                <h5>Any Queries?</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img width="18" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/453/original/call.png?1470047219" /> Call on
+              </td>
+              <td>
+                <p class="text-right">+91-11-39585858</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img width="18" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/455/original/email.png?1470047251" /> Email
+              </td>
+              <td>
+                <p class="text-right">wadhwarahul92@gmail.com</p>
+              </td>
+            </tr>
+          </table>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer-detail add-passenger">
+      <h3>Add Passenger</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
+          <input type="text" class="txt-forward-email" />
+          <input type="submit" class="btn-send" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h4>Email Id</h4>
+          <input type="text" class="txt-email" />
+        </div>
+        <div class="col-md-3">
+          <h4>Phone</h4>
+          <input type="text" class="txt-phn" />
+        </div>
+        <div class="col-xs-12">
+          <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h4>Title</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-2">
+          <h4>First Name</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-2">
+          <h4>Last Name</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-2">
+          <h4>Gender</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-2">
+          <h4>Nationality</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-1">
+          <h4>Age</h4>
+          <input type="text" class="txt-textfield" />
+        </div>
+        <div class="col-md-4">
+          <h4>Upload Passport</h4>
+          <input type="file" name="pic" class="txt-upload" accept="image/*">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <a href="javascipt:void(0)" class="btn-detail">Add Traveller Details + </a>
+        </div>
+        <div class="col-sm-6">
+          <a href="javascipt:void(0)" class="btn-detail">Save & Continue Booking</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- <br><br><br><br><br><br>
 
 <div>
   <div class="container">
@@ -44,4 +444,4 @@
       </table>
     </div>
   </div>
-</div>
+</div> -->
