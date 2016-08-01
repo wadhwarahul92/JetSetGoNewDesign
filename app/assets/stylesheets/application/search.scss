@@ -854,6 +854,7 @@ $main-blue-color:rgb(5, 81, 139);
             margin-top: 50px;
             position: absolute;
             bottom: 0;
+            text-align: right;
             a{
               background-color: #750005;
               display: inline-block;
@@ -861,6 +862,8 @@ $main-blue-color:rgb(5, 81, 139);
               text-align: center;
               color: #ffffff;
               text-decoration: none;
+              border-radius: 8px;
+              margin-left: 10px;
             }
           }
         }
@@ -959,6 +962,19 @@ $main-blue-color:rgb(5, 81, 139);
                 font-size: 22px;
                 font-weight: bold;
                 margin: 0;
+              }
+            }
+            .detail-link-con{
+              text-align: right;
+              margin-top: 15px;
+              a{
+                background-color: #750005;
+                display: inline-block;
+                padding: 10px 30px;
+                text-align: center;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 8px;
               }
             }
           }

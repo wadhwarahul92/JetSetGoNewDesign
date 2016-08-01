@@ -1,6 +1,107 @@
-<br><br><br><br><br><br>
+<div class="section-heading search_heading">
+  <div class="container">
+    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/432/original/search-results.png?1469619526" alt="">
+  </div>
+</div>
+<div class="profile-detail-main">
+  <div class="container">
+    <div class="profile-main">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-image">
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/443/original/puneet.png?1470035280" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="user-info">
+            <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
+            <ul class="user-detail">
+              <!-- <li>
+                <i class="fa fa-bell 
+                notication-icon" aria-hidden="true"></i>
+                <h4>2</h4>
+                <p>Notication</p>
+              </li> -->
+              <li>
+                <h4>3</h4>
+                <p>Enquired Bookings</p>
+              </li>
+              <li>
+                <h4>1</h4>
+                <p>Confirmed Bookings</p>
+              </li>
+              <li>
+                <h4>2</h4>
+                <p>Quoted Bookings</p>
+              </li>
+              <li>
+                <h4>0</h4>
+                <p>EmptyLegs</p>
+              </li>
+              <div class="clearfix"></div>
+            </ul>
+            <a class="edit-icon" href="javascript:void(0)">
+              <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="enquired-booking-main">
+  <div class="container">
+  <h2 class="heading">Enquired Booking</h2>
+  <table class="table" border="0">
+    <tr class="info">
+      <th>Booking No</th>
+      <th>Aircraft Name</th>
+      <th>Departure Date</th>
+    </tr>
+    <tr>
+      <td class="info-detail">146882502533662</td>
+      <td class="info-detail">Dassault Falcon 2000</td>
+      <td class="info-detail">27 July, 2016</td>
+    </tr>
+    <tr>
+      <td colspan="3" style="padding: 0">
+        <table class="booking-detail">
+        <tr>
+          <td>
+            <div class="row">
+            <div class="col-sm-8 no-padding-right">
+              <div class="booking-img">
+                <img src="">
+              </div>
+            </div>
+            <div class="col-sm-4 no-padding-left">
+              <div class="img-bg">
+                <div class="gap"></div>
+                <h4>₹ 3000<!-- {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} --> <span>Estimated Price</span></h4>
+                <div class="detail-link-con">
+                  <a href="javascript:void(0)" ng-click="custom =! custom; ctrl.calculateCost(result)">Details</a>  
+                  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      
+    </tr>
+  </table>
+  </div>
+</div>
 
 <div>
+
+
+<!-- <br><br><br><br><br><br> -->
+
+<!-- <div>
   <div class="container">
     <div class="col-sm-4">
       <ul>
@@ -12,8 +113,8 @@
         <li><a href="offers">Offers</a></li>
         <li><a href="quotes">Trip Quotes</a></li>
       </ul>
-    </div>
-    <div class="col-sm-8">
+    </div> -->
+    <!-- <div class="col-sm-8">
       <div class="heading text-center">
         <h4><span class="heading">Enquired Jets</span></h4>
       </div>
@@ -24,7 +125,7 @@
           <th>Aircraft name</th>
           <th></th>
           <!--<th>Total Cost</th>-->
-        </tr>
+        <!-- </tr>
         </thead>
         <tbody>
         <tr ng-repeat="enquired_jet in ctrl.enquired_jets">
@@ -32,11 +133,11 @@
           <td>{{ enquired_jet.activities[0].aircraft.name }}</td>
           <!--<td><%#= trip.activities.first.grand_total %></td>-->
           <!--<td><%#= link_to 'Delete','#' %></td>-->
-          <td><a ng-href="/detail/{{enquired_jet.id}}">View Details</a></td>
+          <!-- <td><a ng-href="/detail/{{enquired_jet.id}}">View Details</a></td>
         </tr>
         <hr>
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+    </div> -->
+  <!-- </div>
+</div> -->

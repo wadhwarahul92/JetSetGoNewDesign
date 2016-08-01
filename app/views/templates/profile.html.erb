@@ -1,6 +1,103 @@
-<div>
+<div class="section-heading search_heading">
+  <div class="container">
+    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/432/original/search-results.png?1469619526" alt="">
+  </div>
+</div>
+<div class="profile-detail-main">
+  <div class="container">
+    <div class="profile-main">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-image">
+            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+            <a class="add-img-icon" href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
+                    <i class="fa fa-picture-o"></i> Add/Edit Image
+            </a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="user-info">
+            <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
+            <ul class="user-detail">
+              <!-- <li>
+                <i class="fa fa-bell 
+                notication-icon" aria-hidden="true"></i>
+                <h4>2</h4>
+                <p>Notication</p>
+              </li> -->
+              <li>
+                <h4>3</h4>
+                <p>Enquired Bookings</p>
+              </li>
+              <li>
+                <h4>1</h4>
+                <p>Confirmed Bookings</p>
+              </li>
+              <li>
+                <h4>2</h4>
+                <p>Quoted Bookings</p>
+              </li>
+              <li>
+                <h4>0</h4>
+                <p>EmptyLegs</p>
+              </li>
+              <div class="clearfix"></div>
+            </ul>
+            <a class="edit-icon" href="javascript:void(0)">
+              <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-info-main">
+  <div class="container">
+    <h2 class="heading">Edit Profile</h2>
+    <div class="row">
+      <div class="col-md-5 col-sm-6">
+        <div class="data-coloum">
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/453/original/call.png?1470047219" class="icons">
+          <input type="text" value="+91 - 9999999999" disabled="disabled" class="text-field" />
+        </div>
+      </div>
+      <div class="col-md-offset-2 col-md-5 col-sm-6">
+        <div class="data-coloum">
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/455/original/email.png?1470047251" class="icons">
+          <input type="text" value="wadhwarahul92@gmail.com" class="text-field" />
+        </div>
+      </div>
+      <div class="col-md-5 col-sm-6">
+        <div class="data-coloum">
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">  
+          <input type="text" value="19June,2016" class="text-field" />
+        </div>
+      </div>
+      <div class="col-md-offset-2 col-md-5 col-sm-6">
+        <div class="data-coloum">
+          <div class="notify-btn-con">
+            <span class="false">
+              <span class="option"></span>
+            </span>
+          </div>
+          <label> Notification via SMS</label>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="submit-con text-center">
+          <a href="#" class="save-btn">Save</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div> -->
   <!-- Profile  page start -->
-  <br><br><br><br><br><br>
+  <!-- <br><br><br><br><br><br>
   <div class="container">
 
     <div class="col-sm-4">
@@ -13,25 +110,25 @@
         <li><a href="offers">Offers</a></li>
         <li><a href="quotes">Trip Quotes</a></li>
       </ul>
-    </div>
-    <div class="col-sm-8">
+    </div> -->
+<!--     <div class="col-sm-8">
       <div class="col-sm-12">
         <div class="profile-main-con">
           <div class="row">
             <div class="col-md-3">
               <div class="profile-img-con">
-                <div class="img-con">
+                <div class="img-con"> -->
                   <!--ng-show="ctrl.currentUser"-->
-                  <img src="" ng-src="{{ctrl.currentUser.image}}" alt="" />
-                </div>
-                <div class="change-pic-con">
+                  <!-- <img src="" ng-src="{{ctrl.currentUser.image}}" alt="" /> -->
+                <!-- </div> -->
+                <!-- <div class="change-pic-con">
                   <a href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
                     <i class="fa fa-picture-o"></i> Add/Edit Image
                   </a>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-9">
+              </div> -->
+            <!-- </div> -->
+            <!-- <div class="col-md-9">
               <div class="profile-content">
                 <h2 class="name">{{ctrl.currentUser.full_name}}</h2>
                 <div class="text-main">
@@ -49,8 +146,8 @@
                       <i class="fa fa-check" ng-click="ctrl.upd_profile = !ctrl.upd_profile; ctrl.btn_show = true" ng-show="ctrl.upd_profile"></i>
                     </p>
                   </div>
-                </div>
-                <div class="text-main" ng-show="ctrl.currentUser.organisation.name">
+                </div> -->
+                <!-- <div class="text-main" ng-show="ctrl.currentUser.organisation.name">
                   <div class="row">
                     <p class="col-sm-4 profile-text">Organisation :</p>
                     <p class="col-sm-8 profile-text-detail">{{ctrl.currentUser.organisation.name}}</p>
@@ -87,4 +184,4 @@
     </div>
   </div>
   <!-- Profile  page finish -->
-</div>
+<!-- </div> -->
