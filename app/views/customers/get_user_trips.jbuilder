@@ -1,12 +1,12 @@
-json.array! @trips do |enquiry|
+json.array! @trips do |trip|
 
-  json.id enquiry.id
-  json.status enquiry.status
-  json.payment_status enquiry.payment_status
-  json.amount_paid enquiry.amount_paid
+  json.id trip.id
+  json.status trip.status
+  json.payment_status trip.payment_status
+  json.amount_paid trip.amount_paid
 
   json.activities{
-    json.array! enquiry.activities do |activity|
+    json.array! trip.activities do |activity|
       json.id activity.id
 
       aircraft = activity.aircraft
@@ -79,12 +79,12 @@ json.array! @trips do |enquiry|
   }
 
   json.user{
-    json.id enquiry.user.id
-    json.first_name enquiry.user.first_name
-    json.email enquiry.user.email
-    json.phone enquiry.user.phone
-    json.address enquiry.user.address
+    json.id trip.user.id
+    json.first_name trip.user.first_name
+    json.email trip.user.email
+    json.phone trip.user.phone
+    json.address trip.user.address
 
-    json.image enquiry.user.image.url(:size_250x250) if enquiry.user.image.present?
+    json.image trip.user.image.url(:size_250x250) if trip.user.image.present?
   }
 end
