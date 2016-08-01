@@ -10,7 +10,7 @@
         <div class="col-md-3">
           <div class="profile-image">
             <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
-            <a class="add-img-icon" href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
+            <a class="add-img-icon"  ng-show="ctrl.upd_profile" href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
                     <i class="fa fa-picture-o"></i> Add/Edit Image
             </a>
           </div>
@@ -43,7 +43,7 @@
               </li>
               <div class="clearfix"></div>
             </ul>
-            <a class="edit-icon" href="javascript:void(0)" ng-click="ctrl.edit_active =! ctrl.edit_active" ng-model="ctrl.edit_active" ng-hide="ctrl.edit_active" >
+            <a class="edit-icon" href="javascript:void(0)" ng-click="ctrl.upd_profile =! ctrl.upd_profile" ng-hide="ctrl.upd_profile" >
               <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
             </a>
           </div>
@@ -60,34 +60,59 @@
       <div class="col-md-5 col-sm-6">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/453/original/call.png?1470047219" class="icons">
-          <input type="text" ng-model="ctrl.currentUser.phone" disabled="disabled" class="text-field" />
+          <input type="text" ng-model="ctrl.currentUser.phone" class="text-field" />
         </div>
       </div>
       <div class="col-md-offset-2 col-md-5 col-sm-6">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/455/original/email.png?1470047251" class="icons">
-          <input type="text" value="wadhwarahul92@gmail.com" class="text-field" />
+          <!--<input type="text" value="wadhwarahul92@gmail.com" class="text-field" />-->
+          <label class="text-field"> {{ctrl.currentUser.email}}</label>
         </div>
       </div>
       <div class="col-md-5 col-sm-6">
+        <!--<div class="data-coloum">-->
+          <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">  -->
+          <!--<input type="text" ng-modal="ctrl.currentUser.dob" class="text-field" />-->
+        <!--</div>-->
+
+
+
         <div class="data-coloum">
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">  
-          <input type="text" value="19June,2016" class="text-field" />
+        <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">
+        <span class="search-form">
+            <!--<span class="search-icon">-->
+              <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">-->
+            <!--</span>-->
+            <div class="dropdown datetimepicker-holder search-textfield text-field">
+              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.currentUser.dob) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa"></i> {{ctrl.formatTime(ctrl.currentUser.dob)}}</a>
+              <ul class="dropdown-menu" role="menu">
+                <datetimepicker
+                data-on-set-time="ctrl.onSetTime(newDate, oldDate)"
+                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate)"
+                datetimepicker-config="{ dropdownSelector: '.fa' }"
+                ng-model="ctrl.currentUser.dob"></datetimepicker>
+              </ul>
+            </div>
+        </span>
         </div>
+
+
+
       </div>
       <div class="col-md-offset-2 col-md-5 col-sm-6">
         <div class="data-coloum">
           <div class="notify-btn-con">
-            <span class="false">
+            <span ng-model="ctrl.currentUser.sms_active" ng-class="ctrl.currentUser.sms_active ? 'true' : 'false'" ng-click="ctrl.currentUser.sms_active = !ctrl.currentUser.sms_active">
               <span class="option"></span>
             </span>
           </div>
           <label> Notification via SMS</label>
         </div>
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-12" ng-model="ctrl.upd_profile" ng-show="ctrl.upd_profile">
         <div class="submit-con text-center">
-          <a href="#" class="save-btn">Save</a>
+          <a href="javascript:void(0)" ng-click="ctrl.upd_profile =! ctrl.upd_profile; ctrl.update_profile()" class="save-btn">Save</a>
         </div>
       </div>
     </div>

@@ -8,8 +8,6 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
 
   @active_pwd = false
 
-  @edit_active = false
-
   @password = ''
 
   $scope.$watch(
@@ -82,6 +80,24 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
           classes: ['alert-danger']
         )
     )
+
+  @onSetTime = (newDate, oldDate)->
+    #do nothing
+
+  @beforeRenderDate = (view, dates, leftDate, upDate, rightDate)->
+    activeDate = null
+    activeDate = moment(new Date())
+    if @currentUser.dob != null
+      activeDate = moment(new Date(@currentUser.dob))
+
+  @formatTime = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY')
+    if data and data == 'Invalid date'
+      return 'Date of birth'
+    else
+      return data
 
   return undefined
 ]

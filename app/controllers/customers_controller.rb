@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
   end
 
   def update_profile
-    if @customer.update_attributes(phone: params[:phone])
+    if @customer.update_attributes(phone: params[:phone], dob: params[:dob], sms_active: params[:sms_active])
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }

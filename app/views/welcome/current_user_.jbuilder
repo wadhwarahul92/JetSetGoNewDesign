@@ -4,8 +4,10 @@ if current_user.present?
   json.last_name current_user.last_name
   json.full_name current_user.full_name
   json.designation current_user.designation if current_user.designation.present?
-  json.phone current_user.phone if current_user.phone
-  json.email current_user.email if current_user.email
+  json.phone current_user.phone
+  json.email current_user.email
+  json.dob current_user.dob
+  json.sms_active current_user.sms_active
   json.image current_user.image.url(:size_250x250)
   json.api_token current_user.api_token
   if current_user.try(:organisation).present?
