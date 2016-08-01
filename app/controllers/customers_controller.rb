@@ -116,7 +116,12 @@ class CustomersController < ApplicationController
   private
 
   def set_customer
-    @customer = current_user
+    if current_user.present?
+      @customer = current_user
+    else
+      redirect_to root_path
+    end
+
   end
 
   def get_past_trips(trips)
