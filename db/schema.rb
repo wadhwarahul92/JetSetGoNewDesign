@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727093009) do
+ActiveRecord::Schema.define(version: 20160801130521) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -553,6 +553,7 @@ ActiveRecord::Schema.define(version: 20160727093009) do
     t.string   "gender",                   limit: 255
     t.string   "nationality",              limit: 255
     t.datetime "dob"
+    t.boolean  "sms_active",                             default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
