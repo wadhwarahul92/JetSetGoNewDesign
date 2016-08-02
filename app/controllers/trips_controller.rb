@@ -2,7 +2,8 @@ class TripsController < ApplicationController
 
   before_action :set_aircraft_and_organisation, only: [:enquire]
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :authenticate_user_api
 
   def enquire
     @trip = @organisation.trips.new(

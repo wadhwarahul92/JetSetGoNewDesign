@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
+  def authenticate_user_api
+    unless current_user.present?
+      render status: :unprocessable_entity, json: {errors: ['Not signed in']}
+    end
+  end
+
   private
 
   def after_sign_out_path_for(resource_or_scope)

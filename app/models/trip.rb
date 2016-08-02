@@ -45,4 +45,8 @@ class Trip < ActiveRecord::Base
 
   end
 
+  def payment_transaction
+    @payment_transaction = PaymentTransaction.where(id: self.payment_transaction_id)
+  end
+
 end
