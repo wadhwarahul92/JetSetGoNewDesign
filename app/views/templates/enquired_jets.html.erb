@@ -82,7 +82,7 @@
                       <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}}<!-- {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} --> <span>Estimated Price</span></h4>
                       <div class="detail-link-con">
                         <a href="/detail/{{enquiry.id}}">Details</a>
-                        <a href="javascript:void(0)" ng-click="ctrl.enquire(result)">Book Now</a>
+                        <a href="javascript:void(0)" target="_self" ng-href="/payment_transactions/create/{{enquiry.id}}/for_quote"  ng-click="ctrl.enquire(result)">Book Now</a>
                       </div>
                     </div>
                   </div>

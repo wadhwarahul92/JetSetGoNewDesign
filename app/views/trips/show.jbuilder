@@ -5,6 +5,7 @@ json.sell_empty_leg @trip.sell_empty_leg
 json.user @trip.user.try(:full_name)
 
 json.payment_transaction{
+  next unless @trip.payment_transaction.present?
   json.id @trip.payment_transaction.first.id
   json.status @trip.payment_transaction.first.status
   json.processor_response eval(@trip.payment_transaction.first.processor_response)
