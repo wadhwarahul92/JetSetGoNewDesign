@@ -17,6 +17,7 @@ json.array! @jetsteals do |jetsteal|
     json.name departure_airport.name
     json.longitude departure_airport.longitude
     json.latitude departure_airport.latitude
+    json.code departure_airport.code
     json.city {
       json.id departure_airport.city.id
       json.name departure_airport.city.name
@@ -30,6 +31,7 @@ json.array! @jetsteals do |jetsteal|
     json.name arrival_airport.name
     json.longitude arrival_airport.longitude
     json.latitude arrival_airport.latitude
+    json.code arrival_airport.code
     json.city {
       json.id arrival_airport.city.id
       json.name arrival_airport.city.name

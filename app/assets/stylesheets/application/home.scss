@@ -5,13 +5,19 @@ $main-blue-color:rgb(5, 81, 139);
 
 .sold_out{
   position:absolute;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(217, 195, 164, 0.4);
   z-index: 1;
   top:0;
   bottom: 0;
   left: 0;
   right:0;
   text-align: center;
+  p{
+    margin-top: 125px; 
+    color: #ffffff; 
+    font-size: 50px;
+    background-color: rgba(67, 50, 31, 0.8);
+  }
 }
 
 .modal-content{
@@ -364,7 +370,7 @@ span.heading:after{
 }
 
 .section-heading{
-  background-color: #d4bda4;
+  background-color: #d9c3a4;
   padding-bottom: 10px;
   border-top: 10px solid #301d0c;
 }
@@ -417,14 +423,14 @@ span.heading:after{
       h2.aircraft_name{
         font-size: 22px;
         color: #000000;
-        margin: 10px 0;
+        margin: 10px 0 0 0;
         padding: 0 15px;
         font-weight: bold;
       }
       h5.engine_type{
-        font-size: 18px;
+        font-size: 14px;
         color: #000000;
-        margin: 10px 0;
+        margin: 0 0 10px 0;
         padding: 0 15px;
       }
       h4.estimated-price{
@@ -435,15 +441,26 @@ span.heading:after{
         color: #ffffff;
         background-color: #856b58;
         .text{
-          font-size: 15px;
+          font-size: 14px;
           margin-top: 10px;
         }
       }
       .jetsteal-location{
         margin: 10px 0;
         .data{
+          position: relative;
+          h4{
+            font-size: 18px;
+            font-weight: bold;
+            margin:0;
+          }
           p{
             font-size: 13px;
+            margin:0;
+          }
+          .jet-img{
+            
+
           }
         }
       }
@@ -560,6 +577,7 @@ span.heading:after{
         display: inline-block;
         margin: 10px;
         float: right;
+        border-radius: 5px;
       }
       a.enquire-btn:hover{
         background-color: #DABB9C;
