@@ -25,33 +25,33 @@
               </li> -->
               <li>
                 <a href="/enquired_jets">
-                <h4>3</h4>
-                <p>Enquired Bookings</p>
+                  <h4>{{ctrl.enquired_jets.length}}</h4>
+                  <p>Enquired Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="/booked_jets">
-                  <h4>1</h4>
+                  <h4>{{ctrl.booked_jets.length}}</h4>
                   <p>Confirmed Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="/quotes">
-                  <h4>2</h4>
+                  <h4>{{ctrl.quotes.length}}</h4>
                   <p>Quoted Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)">
-                  <h4>0</h4>
+                  <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
                   <p>EmptyLegs</p>
                 </a>
               </li>
               <div class="clearfix"></div>
             </ul>
-            <a class="edit-icon" href="javascript:void(0)">
-              <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
-            </a>
+            <!--<a class="edit-icon" href="javascript:void(0)">-->
+              <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+            <!--</a>-->
           </div>
         </div>
       </div>
@@ -61,34 +61,47 @@
 
 <div class="profile-info-main detail-profile">
   <div class="container">
-    <h2 class="heading">Edit Profile</h2>
+    <h2 class="heading">
+      Enquired Booking
+    </h2>
     <div class="booking-detail">
       <div class="row">
         <div class="col-md-3 col-sm-4">
-          <p><b>Booking ID.</b> 123456789</p>
+          <p>
+            <b>Booking ID:</b>
+            {{ctrl.trip.status == 'enquiry' ? 'Enquiry#'+ctrl.trip.id:''}}
+            {{ctrl.trip.status == 'quoted' ? 'Quote#'+ctrl.trip.id:''}}
+            {{ctrl.trip.status == 'confirmed' ? 'Trip#'+ctrl.trip.id:''}}
+          </p>
+
         </div>
         <div class="col-md-3 col-sm-4">
-          <p><b>Status:</b> <span>Pending</span></p>
+          <p><b>Status:</b> <span>
+            {{ctrl.trip.status == 'enquiry' ? 'Pending':''}}
+            {{ctrl.trip.status == 'quoted' ? 'Quoted':''}}
+            {{ctrl.trip.status == 'confirmed' ? 'Confirmed':''}}
+          </span></p>
         </div>
         <div class="clearfix"></div>
       </div>
     </div>
     <div class="customer-detail journey-detail">
       <h3>Journey Details</h3>
-      <div class="location-main row">
+      <div class="location-main row" ng-repeat="activity in ctrl.trip.activities">
         <div class="col-md-offset-1 col-md-5">
           <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
-          <p>BOM 10:00 AM</p>
-          <p>22 Jul 2016</p>
-          <p>Chhatrapati Shivaji International Airport</p>
-          <p>Mumbai</p>
+          <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
+          <p>{{activity.start_at.split(',')[0]}}</p>
+          <p>{{activity.departure_airport.name}}</p>
+          <p>{{activity.departure_airport.city.state}}</p>
         </div>
+        {{activity.flight_time}}
         <div class="col-md-offset-1 col-md-5">
           <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
-          <p>DEL 11:53 AM</p>
-          <p>22 Jul 2016</p>
-          <p>Indira Gandhi International Airport</p>
-          <p>New Delhi</p>
+          <p>{{activity.arrival_airport.code}} {{activity.end_at.split(',')[1]}}</p>
+          <p>{{activity.end_at.split(',')[0]}}</p>
+          <p>{{activity.arrival_airport.name}}</p>
+          <p>{{activity.arrival_airport.city.state}}</p>
         </div>
         <div class="clearfix"></div>
       </div>
@@ -102,8 +115,8 @@
             <h6>3</h6>
           </div>
           <div class="col-md-3">
-            <h5>Flying Time</h5>
-            <h6>1 Hrs 59 Mins</h6>
+            <h5>Flight Time</h5>
+            <h6>{{ctrl.trip.total_flight_time}}</h6>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -118,8 +131,8 @@
         </div>
         <div class="col-md-4 no-left-padding">
           <div class="jet-detail">
-            <h2>Dassault Falcon 2000</h2>
-            <h4>Multi Engine</h4>
+            <h2>{{ctrl.trip.activities[0].aircraft.aircraft_type.name}}</h2>
+            <h4>{{ctrl.trip.activities[0].aircraft.aircraft_type.aircraft_category_name}}</h4>
             <ul class="jet-list">
               <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/467/original/crew.jpg?1470058204" /> 2</li>
               <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> 10</li>
@@ -142,15 +155,23 @@
               <p>Flight Time</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p>2 Hrs 21 Mins</p>
+              <p>{{ctrl.trip.total_flight_time}}</p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <p>Flight Cost(<i class="fa fa-rupee"></i> 75,000 per hour)</p>
+              <p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.trip.activities[0].aircraft.per_hour_cost) | currency:"":0 | indianCurrency }} per hour)</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> 10,76,250</p>
+              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.total_flight_cost) | currency:"":2 | indianCurrency}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Landing Charges</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_landing_cost)) | currency:"":2 | indianCurrency}}</p>
             </div>
           </div>
           <div class="row">
@@ -158,23 +179,23 @@
               <p>Ground Handling Charges</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> 2,30,000</p>
+              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>
             </div>
           </div>
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Crew Accommodation Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p>NA</p>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="row">
             <div class="col-sm-6">
-              <p>Crew Accommodation Charges</p>
+              <p>Watch Hours</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p>NA</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <p>Watch Hours(As per actuals)</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <p>NA</p>
+              <p> {{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
             </div>
           </div>
           <div class="row">
@@ -182,36 +203,36 @@
               <h4>Sub Total</h4>
             </div>
           </div>
-          <div class="row">
+          <div class="row" ng-repeat="tax in ctrl.trip.taxBreakup">
             <div class="col-sm-6">
-              <p>Service Tax(14%)</p>
+              <p>{{tax.name}}({{tax.value}}%)</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> 1,82,000</p>
+              <p><i class="fa fa-rupee"></i> {{tax.amount | currency:"":2 | indianCurrency}}</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <p>Swachh Bharat Cess(0.5%)</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> 6,531</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <p>Krishi Kalyan Cess(0.5%)</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> 6,531</p>
-            </div>
-          </div>
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Swachh Bharat Cess(0.5%)</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Krishi Kalyan Cess(0.5%)</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="row">
             <div class="col-xs-6">
               <h5>Total</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h5><i class="fa fa-rupee"></i> 15,02,187</h5>
+              <h5><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost) | currency:"":0 | indianCurrency }}</h5>
               <p>(All Inclusive)</p>
             </div>
           </div>
@@ -223,14 +244,15 @@
               <h5>Booking Deposit</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h5><i class="fa fa-rupee"></i> 15,021</h5>
+              <h5><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost)* 0.10 | currency:"":0 | indianCurrency }}</h5>
               <p>(Pay 10% for book flight)</p>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12 text-right">
-              <a class="pay-cancel-btn" href="javascript:void(0)">Pay Now</a>
-              <a class="pay-cancel-btn" href="javascript:void(0)">Cancel Booking</a>
+              <a ng-if="ctrl.trip.status == 'quoted'" ng-href="/payment_transactions/create/{{ctrl.trip.id}}/for_quote" target="_self" class="pay-cancel-btn">Pay Now</a>
+              <!--<a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>-->
+              <!--<a class="pay-cancel-btn" href="javascript:void(0)">Cancel Booking</a>-->
             </div>
           </div>
         </div>
@@ -238,6 +260,7 @@
     </div>
 
     <div class="customer-detail bank-detail">
+      <!--{{ctrl.trip.payment_transaction.processor_response}}-->
       <h3>Bank Details</h3>
       <h4>Bank Transfer Information</h4>
       <div class="row">
@@ -284,7 +307,7 @@
                 <p>Total Amount</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i> 20</p>
+                <p class="text-right"><i class="fa fa-rupee"></i>{{ctrl.include_commission(ctrl.trip.totalCost) | currency:"":0 | indianCurrency }}</p>
               </td>
             </tr>
             <tr class="border">
@@ -292,7 +315,7 @@
                 <p>Tax</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i> 0</p>
+                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.trip.total_tax | currency:"":2 | indianCurrency}}</p>
               </td>
             </tr>
             <tr class="border">
@@ -300,7 +323,7 @@
                 <p>You have paid</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i> 1</p>
+                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost) * 0.10 | currency:"":0 | indianCurrency }}</p>
               </td>
             </tr>
             <tr>
@@ -308,7 +331,7 @@
                 <p><b>Balance Payable</b></p>
               </td>
               <td>
-                <p class="text-right"><b><i class="fa fa-rupee"></i> 19</b></p>
+                <p class="text-right"><b><i class="fa fa-rupee"></i>{{ctrl.balance_payable(ctrl.trip.totalCost, ctrl.include_commission(ctrl.trip.totalCost) * 0.10) | currency:"":0 | indianCurrency}}</b></p>
               </td>
             </tr>
           </table>
@@ -331,7 +354,7 @@
                 <img width="18" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/455/original/email.png?1470047251" /> Email
               </td>
               <td>
-                <p class="text-right">wadhwarahul92@gmail.com</p>
+                <p class="text-right">info@jetsetgo.in</p>
               </td>
             </tr>
           </table>
@@ -406,50 +429,50 @@
   </div>
 </div>
 
-<br><br><br><br><br><br>
+<!--<br><br><br><br><br><br>-->
 
-<div>
-  <div class="container">
-    <div class="col-sm-4">
-      <ul>
-        <li><a ng-href="profile">My Profile</a></li>
-        <li><a href="booked_jets">Booked jets</a></li>
-        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
-        <li><a href="past_journeys">Past journeys</a></li>
-        <li><a href="enquired_jets">Enquired jets</a></li>
-        <li><a href="offers">Offers</a></li>
-        <li><a href="quotes">Trip Quotes</a></li>
-      </ul>
-    </div>
-    <div class="col-sm-8">
-      <div class="heading text-center">
-        <h4><span class="heading">Trip #{{ctrl.trip.id}}</span></h4>
-      </div>
-      <p>Activities</p>
-      <div class="col-sm-12" ng-hide="ctrl.trip.sell_empty_leg">
-        <span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>
-      </div>
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Departure Airport</th>
-          <th>Arrival Airport</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="activity in ctrl.trip.activities">
-          <td>{{ activity.departure_airport.name }}</td>
-          <td>{{ activity.arrival_airport.name }}</td>
-          <td>{{ activity.start_at }}</td>
-          <td>{{ activity.end_at }}</td>
-          <td></td>
-        </tr>
-        <hr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<!--<div>-->
+  <!--<div class="container">-->
+    <!--<div class="col-sm-4">-->
+      <!--<ul>-->
+        <!--<li><a ng-href="profile">My Profile</a></li>-->
+        <!--<li><a href="booked_jets">Booked jets</a></li>-->
+        <!--<li><a href="upcoming_journeys">Upcoming journeys</a></li>-->
+        <!--<li><a href="past_journeys">Past journeys</a></li>-->
+        <!--<li><a href="enquired_jets">Enquired jets</a></li>-->
+        <!--<li><a href="offers">Offers</a></li>-->
+        <!--<li><a href="quotes">Trip Quotes</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="col-sm-8">-->
+      <!--<div class="heading text-center">-->
+        <!--<h4><span class="heading">Trip #{{ctrl.trip.id}}</span></h4>-->
+      <!--</div>-->
+      <!--<p>Activities</p>-->
+      <!--<div class="col-sm-12" ng-hide="ctrl.trip.sell_empty_leg">-->
+        <!--<span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>-->
+      <!--</div>-->
+      <!--<table class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr class="info">-->
+          <!--<th>Departure Airport</th>-->
+          <!--<th>Arrival Airport</th>-->
+          <!--<th>Start Date</th>-->
+          <!--<th>End Date</th>-->
+          <!--<th></th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr ng-repeat="activity in ctrl.trip.activities">-->
+          <!--<td>{{ activity.departure_airport.name }}</td>-->
+          <!--<td>{{ activity.arrival_airport.name }}</td>-->
+          <!--<td>{{ activity.start_at }}</td>-->
+          <!--<td>{{ activity.end_at }}</td>-->
+          <!--<td></td>-->
+        <!--</tr>-->
+        <!--<hr>-->
+        <!--</tbody>-->
+      <!--</table>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
