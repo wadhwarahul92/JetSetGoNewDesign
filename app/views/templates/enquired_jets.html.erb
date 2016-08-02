@@ -17,25 +17,25 @@
             <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
             <ul class="user-detail">
               <!-- <li>
-                <i class="fa fa-bell 
+                <i class="fa fa-bell
                 notication-icon" aria-hidden="true"></i>
                 <h4>2</h4>
                 <p>Notication</p>
               </li> -->
               <li>
-                <h4>3</h4>
+                <h4>{{ctrl.enquired_jets.length}}</h4>
                 <p>Enquired Bookings</p>
               </li>
               <li>
-                <h4>1</h4>
+                <h4>{{ctrl.booked_jets.length}}</h4>
                 <p>Confirmed Bookings</p>
               </li>
               <li>
-                <h4>2</h4>
+                <h4>{{ctrl.quotes.length}}</h4>
                 <p>Quoted Bookings</p>
               </li>
               <li>
-                <h4>0</h4>
+                <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
                 <p>EmptyLegs</p>
               </li>
               <div class="clearfix"></div>
@@ -52,92 +52,93 @@
 
 <div class="enquired-booking-main">
   <div class="container">
-  <h2 class="heading">Enquired Booking</h2>
-  <table class="table" border="0">
-    <tr class="info">
-      <th>Booking No</th>
-      <th>Aircraft Name</th>
-      <th>Departure Date</th>
-    </tr>
-    <tr>
-      <td class="info-detail">146882502533662</td>
-      <td class="info-detail">Dassault Falcon 2000</td>
-      <td class="info-detail">27 July, 2016</td>
-    </tr>
-    <tr>
-      <td colspan="3" style="padding: 0">
-        <table class="booking-detail">
-        <tr>
-          <td>
-            <div class="row">
-            <div class="col-sm-8 no-padding-right">
-              <div class="booking-img">
-                <img src="">
-              </div>
-            </div>
-            <div class="col-sm-4 no-padding-left">
-              <div class="img-bg">
-                <div class="gap"></div>
-                <h4>₹ 3000<!-- {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} --> <span>Estimated Price</span></h4>
-                <div class="detail-link-con">
-                  <a href="/detail/{{enquired_jet.id}}">Details</a>  
-                  <a href="javascript:void(0)" ng-click="ctrl.enquire(result)">Book Now</a>
+    <h2 class="heading">Enquired Booking</h2>
+
+    <table class="table" border="0" ng-repeat="enquiry in ctrl.enquiries">
+      <tr class="info">
+        <th>Booking No</th>
+        <th>Aircraft Name</th>
+        <th>Departure Date</th>
+      </tr>
+      <tr>
+        <td class="info-detail">Enquiry#{{enquiry.id}}</td>
+        <td class="info-detail">{{enquiry.activities[0].aircraft.name}}</td>
+        <td class="info-detail">{{ctrl.get_departure_date(enquiry)}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding: 0">
+          <table class="booking-detail">
+            <tr>
+              <td>
+                <div class="row">
+                  <div class="col-sm-8 no-padding-right">
+                    <div class="booking-img">
+                      <img src="">
+                    </div>
+                  </div>
+                  <div class="col-sm-4 no-padding-left">
+                    <div class="img-bg">
+                      <div class="gap"></div>
+                      <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}}<!-- {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} --> <span>Estimated Price</span></h4>
+                      <div class="detail-link-con">
+                        <a href="/detail/{{enquiry.id}}">Details</a>
+                        <a href="javascript:void(0)" ng-click="ctrl.enquire(result)">Book Now</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          </td>
-        </tr>
-      </table>
-      </td>
-      
-    </tr>
-  </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+    </table>
   </div>
 </div>
 
-<div>
+<!--<div>-->
 
 
-<!-- <br><br><br><br><br><br> -->
+  <!-- <br><br><br><br><br><br> -->
 
-<!-- <div>
-  <div class="container">
-    <div class="col-sm-4">
-      <ul>
-        <li><a ng-href="profile">My Profile</a></li>
-        <li><a href="booked_jets">Booked jets</a></li>
-        <li><a href="upcoming_journeys">Upcoming journeys</a></li>
-        <li><a href="past_journeys">Past journeys</a></li>
-        <li><a href="enquired_jets">Enquired jets</a></li>
-        <li><a href="offers">Offers</a></li>
-        <li><a href="quotes">Trip Quotes</a></li>
-      </ul>
-    </div> -->
-    <!-- <div class="col-sm-8">
-      <div class="heading text-center">
-        <h4><span class="heading">Enquired Jets</span></h4>
-      </div>
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Id</th>
-          <th>Aircraft name</th>
-          <th></th>
-          <!--<th>Total Cost</th>-->
-        <!-- </tr>
+  <!-- <div>
+    <div class="container">
+      <div class="col-sm-4">
+        <ul>
+          <li><a ng-href="profile">My Profile</a></li>
+          <li><a href="booked_jets">Booked jets</a></li>
+          <li><a href="upcoming_journeys">Upcoming journeys</a></li>
+          <li><a href="past_journeys">Past journeys</a></li>
+          <li><a href="enquired_jets">Enquired jets</a></li>
+          <li><a href="offers">Offers</a></li>
+          <li><a href="quotes">Trip Quotes</a></li>
+        </ul>
+      </div> -->
+  <!-- <div class="col-sm-8">
+    <div class="heading text-center">
+      <h4><span class="heading">Enquired Jets</span></h4>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Id</th>
+        <th>Aircraft name</th>
+        <th></th>
+        <!--<th>Total Cost</th>-->
+  <!-- </tr>
         </thead>
         <tbody>
         <tr ng-repeat="enquired_jet in ctrl.enquired_jets">
           <td>{{ enquired_jet.id }}</td>
           <td>{{ enquired_jet.activities[0].aircraft.name }}</td>
           <!--<td><%#= trip.activities.first.grand_total %></td>-->
-          <!--<td><%#= link_to 'Delete','#' %></td>-->
-          <!-- <td><a ng-href="/detail/{{enquired_jet.id}}">View Details</a></td>
-        </tr>
-        <hr>
-        </tbody>
-      </table>
-    </div> -->
+  <!--<td><%#= link_to 'Delete','#' %></td>-->
+  <!-- <td><a ng-href="/detail/{{enquired_jet.id}}">View Details</a></td>
+</tr>
+<hr>
+</tbody>
+</table>
+</div> -->
   <!-- </div>
 </div> -->

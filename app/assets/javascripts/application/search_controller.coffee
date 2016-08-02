@@ -80,6 +80,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       for result in @results
         result.totalCost = @totalTripCost(result)
+        result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+        result.subTotal = CustomerCostBreakUpsService.subTotal(result)
 #        result.totalFlyingTime = @calculateFlyingTime(result)
 
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
@@ -292,9 +294,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           _date.selectable = false
 
   @calculateCost = (result)->
-    @subTotal = CustomerCostBreakUpsService.subTotal(result)
-    @grandTotal = CustomerCostBreakUpsService.totalTripCost(result)
-    @taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+#    @subTotal = CustomerCostBreakUpsService.subTotal(result)
+#    @grandTotal = CustomerCostBreakUpsService.totalTripCost(result)
+#    @taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
 
   @customSplit = (string)->
     string.split(',')
