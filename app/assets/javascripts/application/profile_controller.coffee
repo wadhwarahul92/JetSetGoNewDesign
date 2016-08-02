@@ -65,7 +65,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
   ).error(
     ->
       notify(
-        message: 'Error fetching booked jets'
+        message: 'Error fetching trips'
         classes: ['alert-danger']
       )
   )

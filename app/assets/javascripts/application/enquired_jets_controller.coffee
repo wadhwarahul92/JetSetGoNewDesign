@@ -6,9 +6,6 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 
   @currentUser = null
 
-  #  @subTotal = 0.0
-  @grandTotal = 0.0
-
   @enquired_jets = {}
 
   @booked_jets = {}
@@ -45,7 +42,7 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
   ).error(
     ->
       notify(
-        message: 'Error fetching booked jets'
+        message: 'Error fetching user trips'
         classes: ['alert-danger']
       )
   )
@@ -92,11 +89,6 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
-
-  @calculateCost = (result)->
-##    @subTotal = CustomerCostBreakUpsService.subTotal(result)
-#    result.grandTotal = 0.0
-#    result.grandTotal = CustomerCostBreakUpsService.totalTripCost(result)
 
   @count_empty_legs = (trips)->
     count = 0
