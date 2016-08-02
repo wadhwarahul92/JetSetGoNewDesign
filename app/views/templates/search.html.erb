@@ -15,11 +15,22 @@
       <div class="row">
         <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
-            {{ctrl.airportForId(search_activity.departure_airport_id).name}} >> {{ctrl.airportForId(search_activity.arrival_airport_id).name}} | {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
+            <span class="data">
+              <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153"> {{ctrl.airportForId(search_activity.departure_airport_id).name}}
+            </span> 
+            <span class="data">
+              <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122"> {{ctrl.airportForId(search_activity.arrival_airport_id).name}}  
+            </span>
+             <span class="data">
+               <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135"> {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
+             </span>
+             <span class="data">
+               <img  width="20" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/346/original/pax.png?1468482925"> {{search_activity.pax}}
+             </span>
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
-          <img ng-click="custom2 =! custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/323/original/filter.png?1467267999" class="filter-icon" alt="filter"> 
+          <img ng-click="custom2 =! custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943" class="filter-icon" alt="filter"> 
         </div>
       </div>
     </div>
