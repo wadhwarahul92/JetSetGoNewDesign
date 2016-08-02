@@ -256,18 +256,29 @@
                 <img ng-src="{{result.aircraft.image}}" alt="">
               </div>
               <div class="icon-con">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" data-toggle="tooltip" title="Crew: {{result.aircraft.crew}}" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" data-toggle="tooltip" title="Height: {{result.aircraft.cabin_height_in_meters}}" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/420/original/seats-1.png?1468910886" data-toggle="tooltip" title="Seats: {{result.aircraft.seating_capacity}}" alt="">
-                <img src="" ng-src="{{result.aircraft.wifi == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/452/original/wifi.png?1470046412'}}" data-toggle="tooltip" title="Wifi: {{result.aircraft.wifi == 'true' ? 'Available' : 'Not-Available'}}" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/416/original/baggage-1.png?1468910820" data-toggle="tooltip" title="Baggage: {{result.aircraft.baggage_capacity_in_kg}}" alt="">
-                <img src="" ng-src="{{result.aircraft.phone == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/448/original/phone.png?1470046361'}}" data-toggle="tooltip" title="Phone: {{result.aircraft.phone == 'true' ? 'Available' : 'Not-Available'}}" alt="">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/421/original/speed-1.png?1468910919" data-toggle="tooltip" title="Speed: {{result.aircraft.cruise_speed_in_nm_per_hour}}" alt="">
-                <script>
-                    $(document).ready(function(){
-                        $('[data-toggle="tooltip"]').tooltip();
-                    });
-                </script>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/417/original/crew-1.png?1468910842" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{result.aircraft.crew}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
+                   <span class="icon-detail">{{result.aircraft.cabin_height_in_meters}} ft</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/420/original/seats-1.png?1468910886" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{result.aircraft.seating_capacity}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.wifi == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/486/original/wifi.png?1470132279'}}" uib-tooltip="Wifi: {{result.aircraft.wifi == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/416/original/baggage-1.png?1468910820" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">{{result.aircraft.baggage_capacity_in_kg}} kgs</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.phone == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/448/original/phone.png?1470046361'}}" uib-tooltip="Phone: {{result.aircraft.phone == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/421/original/speed-1.png?1468910919" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm</span>
+                </span>
               </div>
             </div>
             <div class="col-md-4 col-sm-5 col-xs-12 search-ryt-con">
@@ -878,5 +889,3 @@
       Loading...</h1>
   </div>
 </div>
-
-
