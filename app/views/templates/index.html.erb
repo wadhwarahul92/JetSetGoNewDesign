@@ -160,7 +160,9 @@
 
                 <div class="border-con" style="position:relative;">
                   <div class="bg sold_out" ng-show="jetsteal.sold_out">
-                    <p style="margin-top: 125px; color: #f9f3e6; font-size: 50px;">Sold Out</p>
+                    <div class="col-md-8 col-sm-12 col-xs-12" style="padding: 0;">
+                      <p>Sold Out</p>
+                    </div>
                   </div>
                   <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
                     <img ng-src="{{jetsteal.aircraft.interior_image_original}}" style="margin:auto;">
@@ -170,27 +172,23 @@
                       <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
                       <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
                       <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
-                      <h4 class="estimated-price" ng-show="jetsteal.sell_by_seats"><span class="text">Starting @ </span> <i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}}</h4>
                       <div class="jetsteal-location">
-                        <div class="col-xs-6 data text-center">
-                          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/434/original/depature_b.png?1469619572">
-                          <p>{{jetsteal.departure_airport.city.name}}</p>
+                        <div class="col-sm-4 col-xs-6 data">
+                          <h4>{{jetsteal.departure_airport.code}}</h4>
+                          <p>{{jetsteal.flight_start_time.split(',')[1]}}</p>
+                          <p>{{jetsteal.flight_start_time.split(',')[0]}}</p>
                         </div>
-                        <div class="col-xs-6 data text-center">
-                          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/433/original/arrival_b.png?1469619553">
-                          <p>{{jetsteal.arrival_airport.city.name}}</p>
+                        <div class="col-sm-4 hidden-xs data text-center">
+                          <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/513/original/jet.png?1470140475" class="jet-img">
                         </div>
-                        <div class="clearfix"></div>
-                      </div>
-                      <div class="time-seat">
-                        <div class="col-md-9 col-sm-6 col-xs-9">
-                          <p><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/438/original/b_clock.png?1469700946" alt="" />{{jetsteal.flight_start_time}}</p>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-3">
-                          <p><img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/439/original/b_pax.png?1469700988" alt="" /> {{jetsteal.jetsteal_seats.length}}</p>
+                        <div class="col-sm-4 col-xs-6 data text-right">
+                          <h4>{{jetsteal.arrival_airport.code}}</h4>
+                          <p>{{jetsteal.flight_end_time.split(',')[1]}}</p>
+                          <p><b>Pax:</b> {{jetsteal.aircraft.seating_capacity}}</p>
                         </div>
                         <div class="clearfix"></div>
                       </div>
+                      <h4 class="estimated-price text-center" ng-show="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}} <span class="text">Estimated Price</span></h4>
                       <div class="detail-link-con">
                         <a href="javascript:void(0)" target="_self" ng-if="jetsteal.sold_out"> <i class="fa fa-hourglass-o"></i> Sold out </a>
                         <a href="/jetsteals/list" target="_self" ng-if="!jetsteal.sold_out">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
@@ -636,13 +634,13 @@
       <div class="row">
         <div class="col-sm-7">
           <div class="app-content">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Through our JetSteals™ platform you can experience the joy of flying private and networking with like minded people like never before- at 30,000 feet! Simply pick an aircraft or sector of your choice, choose between having the whole aircraft to yourself or just a seat and pay in 3 simple steps. The new ordinary in flying!</p>
             <a href="https://itunes.apple.com/us/app/jetsteals/id1078158963?ls=1&mt=8"><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/393/original/appstorebutton.png?1468579444" alt=""></a>
           </div>
         </div>
         <div class="col-sm-5">
           <div class="app-img-con">
-            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/407/original/jetapp.png?1468831578" class="img-responsive" alt="" border="0">
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/484/original/app_image.png?1470129818" class="img-responsive" alt="" border="0">
           </div>
         </div>
       </div>
