@@ -293,11 +293,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         if _date.localDateValue() <= activeDate.valueOf()
           _date.selectable = false
 
-  @calculateCost = (result)->
-#    @subTotal = CustomerCostBreakUpsService.subTotal(result)
-#    @grandTotal = CustomerCostBreakUpsService.totalTripCost(result)
-#    @taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
-
   @customSplit = (string)->
     string.split(',')
 

@@ -2,8 +2,6 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 
-  @enquired_jets = {}
-
   @currentUser = null
 
   @enquired_jets = {}
