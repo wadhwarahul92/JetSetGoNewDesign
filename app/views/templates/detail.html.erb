@@ -18,7 +18,7 @@
             <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
             <ul class="user-detail">
               <!-- <li>
-                <i class="fa fa-bell 
+                <i class="fa fa-bell
                 notication-icon" aria-hidden="true"></i>
                 <h4>2</h4>
                 <p>Notication</p>
@@ -50,7 +50,7 @@
               <div class="clearfix"></div>
             </ul>
             <!--<a class="edit-icon" href="javascript:void(0)">-->
-              <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+            <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
             <!--</a>-->
           </div>
         </div>
@@ -88,15 +88,19 @@
     <div class="customer-detail journey-detail">
       <h3>Journey Details</h3>
       <div class="location-main row" ng-repeat="activity in ctrl.trip.activities">
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-offset-1 col-md-3">
           <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
           <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
           <p>{{activity.start_at.split(',')[0]}}</p>
           <p>{{activity.departure_airport.name}}</p>
           <p>{{activity.departure_airport.city.state}}</p>
         </div>
-        {{activity.flight_time}}
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-3 text-center">
+          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+          <p>{{activity.flight_time}}</p>
+          <p>Pax: {{activity.pax}}</p>
+        </div>
+        <div class="col-md-offset-1 col-md-3">
           <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
           <p>{{activity.arrival_airport.code}} {{activity.end_at.split(',')[1]}}</p>
           <p>{{activity.end_at.split(',')[0]}}</p>
@@ -106,48 +110,49 @@
         <div class="clearfix"></div>
       </div>
       <div class="lb-detail">
-          <div class="col-md-offset-1 col-md-3">
-            <h5>Trip Type</h5>
-            <!--<h6>One Way</h6>-->
-            <h6>
-              {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
-              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
-              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
-              {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
-            </h6>
-          </div>
-          <!--<div class="col-md-3">-->
-            <!--<h5>Passengers</h5>-->
-            <!--<h6>3</h6>-->
-          <!--</div>-->
-          <div class="col-md-3">
-            <h5>Flight Time</h5>
-            <h6>{{ctrl.trip.total_flight_time}}</h6>
-          </div>
-          <div class="clearfix"></div>
+        <div class="col-md-offset-1 col-md-5 text-center">
+          <h5>Trip Type</h5>
+          <!--<h6>One Way</h6>-->
+          <h6>
+            {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
+            {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
+            {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
+            {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
+          </h6>
         </div>
+        <!--<div class="col-md-3">-->
+        <!--<h5>Passengers</h5>-->
+        <!--<h6>3</h6>-->
+        <!--</div>-->
+        <div class="col-md-5 text-center">
+          <h5>Flight Time</h5>
+          <h6>{{ctrl.trip.total_flight_time}}</h6>
+        </div>
+        <div class="clearfix"></div>
+      </div>
     </div>
     <div class="customer-detail flight-detail">
       <h3>Flight Details</h3>
       <div class="jetdetail-col">
         <div class="row">
-        <div class="col-md-8 no-right-padding">
-          <div class="img-con"></div>
-          <img src="">
-        </div>
-        <div class="col-md-4 no-left-padding">
-          <div class="jet-detail">
-            <h2>{{ctrl.trip.activities[0].aircraft.aircraft_type.name}}</h2>
-            <h4>{{ctrl.trip.activities[0].aircraft.aircraft_type.aircraft_category_name}}</h4>
-            <ul class="jet-list">
-              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/467/original/crew.jpg?1470058204" /> 2</li>
-              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> 10</li>
-              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/472/original/pax.jpg?1470058683" /> 300 kts</li>
-              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/471/original/speed.jpg?1470058280" /> 768 kg</li>
-              <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/468/original/laboratory.jpg?1470058221" /> 1</li>
-            </ul>
+          <div class="col-md-8 no-right-padding">
+            <div class="img-con">
+              <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.exterior_image}}">
+            </div>
           </div>
-        </div>
+          <div class="col-md-4 no-left-padding">
+            <div class="jet-detail">
+              <h2>{{ctrl.trip.activities[0].aircraft.aircraft_type.name}}</h2>
+              <h4>{{ctrl.trip.activities[0].aircraft.aircraft_type.aircraft_category_name}}</h4>
+              <ul class="jet-list">
+                <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/467/original/crew.jpg?1470058204" /> {{ctrl.trip.activities[0].aircraft.crew}}</li>
+                <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/498/original/wifi.JPG?1470137359" /> {{ctrl.trip.activities[0].aircraft.wifi ? 'Available' : 'Not-Available'}}</li>
+                <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> {{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kg</li>
+                <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/496/original/pax.jpg?1470137326" /> {{ctrl.trip.activities[0].aircraft.seating_capacity}}</li>
+                <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/497/original/speed.jpg?1470137344" /> {{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -189,12 +194,12 @@
             </div>
           </div>
           <!--<div class="row">-->
-            <!--<div class="col-sm-6">-->
-              <!--<p>Crew Accommodation Charges</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-6 text-right">-->
-              <!--<p>NA</p>-->
-            <!--</div>-->
+          <!--<div class="col-sm-6">-->
+          <!--<p>Crew Accommodation Charges</p>-->
+          <!--</div>-->
+          <!--<div class="col-sm-6 text-right">-->
+          <!--<p>NA</p>-->
+          <!--</div>-->
           <!--</div>-->
           <div class="row">
             <div class="col-sm-6">
@@ -218,27 +223,27 @@
             </div>
           </div>
           <!--<div class="row">-->
-            <!--<div class="col-sm-6">-->
-              <!--<p>Swachh Bharat Cess(0.5%)</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-6 text-right">-->
-              <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
-            <!--</div>-->
+          <!--<div class="col-sm-6">-->
+          <!--<p>Swachh Bharat Cess(0.5%)</p>-->
+          <!--</div>-->
+          <!--<div class="col-sm-6 text-right">-->
+          <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
+          <!--</div>-->
           <!--</div>-->
           <!--<div class="row">-->
-            <!--<div class="col-sm-6">-->
-              <!--<p>Krishi Kalyan Cess(0.5%)</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-6 text-right">-->
-              <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
-            <!--</div>-->
+          <!--<div class="col-sm-6">-->
+          <!--<p>Krishi Kalyan Cess(0.5%)</p>-->
+          <!--</div>-->
+          <!--<div class="col-sm-6 text-right">-->
+          <!--<p><i class="fa fa-rupee"></i> 6,531</p>-->
+          <!--</div>-->
           <!--</div>-->
           <div class="row">
             <div class="col-xs-6">
               <h5>Total</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h5><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost) | currency:"":0 | indianCurrency }}</h5>
+              <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost | currency:"":0 | indianCurrency }}</h5>
               <p>(All Inclusive)</p>
             </div>
           </div>
@@ -250,13 +255,13 @@
               <h5>Booking Deposit</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h5><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost)* 0.10 | currency:"":0 | indianCurrency }}</h5>
+              <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</h5>
               <p>(Pay 10% for book flight)</p>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12 text-right">
-              <a ng-if="ctrl.trip.status == 'quoted'" ng-href="/payment_transactions/create/{{ctrl.trip.id}}/for_quote" target="_self" class="pay-cancel-btn">Pay Now</a>
+              <a href="javascript:void(0)" ng-if="ctrl.trip.status == 'quoted'" ng-href="/payment_transactions/create/{{ctrl.trip.id}}/for_quote" target="_self" class="pay-cancel-btn">Pay Now</a>
               <!--<a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>-->
               <!--<a class="pay-cancel-btn" href="javascript:void(0)">Cancel Booking</a>-->
             </div>
@@ -382,51 +387,53 @@
         <!-- -->
         <!--</div>-->
         <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
-          <div class="col-md-3">
-            <h4>Email Id</h4>
-            <input type="text" ng-model="passenger_detail.email" class="txt-email" />
+          <div class="passenger-repeat">
+            <div class="col-md-3">
+              <h4>Email Id</h4>
+              <input type="text" ng-model="passenger_detail.email" class="txt-email" />
+            </div>
+            <div class="col-md-3">
+              <h4>Phone</h4>
+              <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
+            </div>
+            <div class="col-xs-12">
+              <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+            </div>
+            <div class="col-md-2">
+              <h4>Title</h4>
+              <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
+            </div>
+            <div class="col-md-2">
+              <h4>Name</h4>
+              <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
+            </div>
+            <!--<div class="col-md-2">-->
+            <!--<h4>Last Name</h4>-->
+            <!--<input type="text" class="txt-textfield" />-->
+            <!--</div>-->
+            <div class="col-md-2">
+              <h4>Gender</h4>
+              <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
+            </div>
+            <div class="col-md-2">
+              <h4>Nationality</h4>
+              <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
+            </div>
+            <div class="col-md-1">
+              <h4>Age</h4>
+              <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
+            </div>
+            <div class="col-md-3">
+              <h4>Upload Passport</h4>
+              <input type="file" name="pic" class="txt-upload" accept="image/*">
+            </div>
+            <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <div class="clearfix"></div>
           </div>
-          <div class="col-md-3">
-            <h4>Phone</h4>
-            <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
-          </div>
-          <div class="col-xs-12">
-            <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
-          </div>
-          <div class="col-md-2">
-            <h4>Title</h4>
-            <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
-          </div>
-          <div class="col-md-2">
-            <h4>Name</h4>
-            <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
-          </div>
-          <!--<div class="col-md-2">-->
-          <!--<h4>Last Name</h4>-->
-          <!--<input type="text" class="txt-textfield" />-->
-          <!--</div>-->
-          <div class="col-md-2">
-            <h4>Gender</h4>
-            <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
-          </div>
-          <div class="col-md-2">
-            <h4>Nationality</h4>
-            <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
-          </div>
-          <div class="col-md-1">
-            <h4>Age</h4>
-            <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
-          </div>
-          <div class="col-md-3">
-            <h4>Upload Passport</h4>
-            <input type="file" name="pic" class="txt-upload" accept="image/*">
-            <div class="col-sm-6"><span class="btn btn-primary" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-minus" aria-hidden="true"></i> Remove</span></div>
-          </div>
-          <div class="clearfix"></div>
         </div>
         <div class="row">
           <div class="col-sm-5">
-            <a ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
+            <a href="javascript:void(0)" ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
           </div>
           <div class="col-sm-6">
             <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
@@ -435,52 +442,59 @@
           </div>
         </div>
       </div>
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Name</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Email</th>
-          <th>Contact</th>
-          <th><a ng-href="" ng-click="bar_visible = true">Add passenger details</a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="passenger_detail in ctrl.passenger_details">
-          <td>{{ passenger_detail.name }}</td>
-          <td>{{ passenger_detail.age }}</td>
-          <td>{{ passenger_detail.gender }}</td>
-          <td>{{ passenger_detail.email }}</td>
-          <td>{{ passenger_detail.contact }}</td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+
+      <div class="add-passenger-record">
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th><a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="body-row" ng-repeat="passenger_detail in ctrl.passenger_details">
+            <td>{{ passenger_detail.name }}</td>
+            <td>{{ passenger_detail.age }}</td>
+            <td>{{ passenger_detail.gender }}</td>
+            <td>{{ passenger_detail.email }}</td>
+            <td>{{ passenger_detail.contact }}</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div ng-if="ctrl.trip.status == 'confirmed'" >
-      <div ng-show="catering_visible">
-        <div class="col-sm-6">
-          Catering: <input type="text" ng-model="ctrl.catering">
-        </div>
-        <div class="col-sm-6">
-          <span class="btn btn-primary" ng-click="ctrl.create_catering()">save</span>
+      <div ng-show="catering_visible" class="customer-detail add-passenger">
+        <h3>Add Passenger</h3>
+        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
+          <div class="col-sm-12">
+            <h4>Catering:</h4>
+            <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
+            <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
+          </div>
         </div>
       </div>
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Catering</th>
-          <th><a ng-href="" ng-click="catering_visible = true">Add/Edit caterings</a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>{{ ctrl.catering }}</td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="add-passenger-record">
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Catering</th>
+            <th><a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="body-row">
+            <td>{{ ctrl.catering }}</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
 
@@ -490,47 +504,47 @@
 <!--<br><br><br><br><br><br>-->
 
 <!--<div>-->
-  <!--<div class="container">-->
-    <!--<div class="col-sm-4">-->
-      <!--<ul>-->
-        <!--<li><a ng-href="profile">My Profile</a></li>-->
-        <!--<li><a href="booked_jets">Booked jets</a></li>-->
-        <!--<li><a href="upcoming_journeys">Upcoming journeys</a></li>-->
-        <!--<li><a href="past_journeys">Past journeys</a></li>-->
-        <!--<li><a href="enquired_jets">Enquired jets</a></li>-->
-        <!--<li><a href="offers">Offers</a></li>-->
-        <!--<li><a href="quotes">Trip Quotes</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
-    <!--<div class="col-sm-8">-->
-      <!--<div class="heading text-center">-->
-        <!--<h4><span class="heading">Trip #{{ctrl.trip.id}}</span></h4>-->
-      <!--</div>-->
-      <!--<p>Activities</p>-->
-      <!--<div class="col-sm-12" ng-hide="ctrl.trip.sell_empty_leg">-->
-        <!--<span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>-->
-      <!--</div>-->
-      <!--<table class="table table-striped">-->
-        <!--<thead>-->
-        <!--<tr class="info">-->
-          <!--<th>Departure Airport</th>-->
-          <!--<th>Arrival Airport</th>-->
-          <!--<th>Start Date</th>-->
-          <!--<th>End Date</th>-->
-          <!--<th></th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr ng-repeat="activity in ctrl.trip.activities">-->
-          <!--<td>{{ activity.departure_airport.name }}</td>-->
-          <!--<td>{{ activity.arrival_airport.name }}</td>-->
-          <!--<td>{{ activity.start_at }}</td>-->
-          <!--<td>{{ activity.end_at }}</td>-->
-          <!--<td></td>-->
-        <!--</tr>-->
-        <!--<hr>-->
-        <!--</tbody>-->
-      <!--</table>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="container">-->
+<!--<div class="col-sm-4">-->
+<!--<ul>-->
+<!--<li><a ng-href="profile">My Profile</a></li>-->
+<!--<li><a href="booked_jets">Booked jets</a></li>-->
+<!--<li><a href="upcoming_journeys">Upcoming journeys</a></li>-->
+<!--<li><a href="past_journeys">Past journeys</a></li>-->
+<!--<li><a href="enquired_jets">Enquired jets</a></li>-->
+<!--<li><a href="offers">Offers</a></li>-->
+<!--<li><a href="quotes">Trip Quotes</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="col-sm-8">-->
+<!--<div class="heading text-center">-->
+<!--<h4><span class="heading">Trip #{{ctrl.trip.id}}</span></h4>-->
+<!--</div>-->
+<!--<p>Activities</p>-->
+<!--<div class="col-sm-12" ng-hide="ctrl.trip.sell_empty_leg">-->
+<!--<span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>-->
+<!--</div>-->
+<!--<table class="table table-striped">-->
+<!--<thead>-->
+<!--<tr class="info">-->
+<!--<th>Departure Airport</th>-->
+<!--<th>Arrival Airport</th>-->
+<!--<th>Start Date</th>-->
+<!--<th>End Date</th>-->
+<!--<th></th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr ng-repeat="activity in ctrl.trip.activities">-->
+<!--<td>{{ activity.departure_airport.name }}</td>-->
+<!--<td>{{ activity.arrival_airport.name }}</td>-->
+<!--<td>{{ activity.start_at }}</td>-->
+<!--<td>{{ activity.end_at }}</td>-->
+<!--<td></td>-->
+<!--</tr>-->
+<!--<hr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->

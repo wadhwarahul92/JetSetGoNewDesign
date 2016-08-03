@@ -81,13 +81,13 @@
                 <div class="row">
                   <div class="col-sm-8 no-padding-right">
                     <div class="booking-img">
-                      <img src="">
+                      <img src="" ng-src="{{enquiry.activities[0].aircraft.exterior_image}}">
                     </div>
                   </div>
                   <div class="col-sm-4 no-padding-left">
                     <div class="img-bg">
                       <div class="gap"></div>
-                      <h4>₹ {{ctrl.include_commission(enquiry.grandTotal) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                      <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                       <div class="detail-link-con">
                         <a href="/detail/{{enquiry.id}}">Details</a>
                         <a href="javascript:void(0)" target="_self" ng-href="/payment_transactions/create/{{enquiry.id}}/for_quote"  ng-click="ctrl.enquire(result)">Book Now</a>

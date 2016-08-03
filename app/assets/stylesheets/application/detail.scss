@@ -62,7 +62,8 @@
 			}
 			.jet-detail{
 				width: 100%;
-				background-color: #ccc;
+                background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350');
+                background-size: cover;
 				height: 320px;
 				padding: 10px;
 				h2{
@@ -142,6 +143,19 @@
 		}
 	}
 	.add-passenger{
+        .passenger-repeat{
+          position: relative;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+          border-bottom: 1px solid #eeeeee;
+        }
+        .cross-btn{
+          font-size: 20px;
+          color: #920000;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
 		h4{
 			font-size: 16px;
 			font-weight: bold;
@@ -156,12 +170,15 @@
 			background-color: #F5F5F5;
 			border: none;
 			height: 40px;
+            padding: 5px;
+            text-decoration: none;
 		}
 		.txt-email{
 			width: 100%;
 			background-color: #F5F5F5;
 			border: none;
 			height: 40px;
+            padding: 5px;
 		}
 		.txt-phn{
 			width: 100%;
@@ -179,6 +196,7 @@
 			margin-left: 10px;
 			border: none;
 			color: #ffffff;
+            border-radius: 5px;
 		}
 		.txt-textfield{
 			width: 100%;
@@ -199,6 +217,32 @@
 			color: #ffffff;
 			display: inline-block;
 			margin: 30px 0;
+            border-radius: 5px;
 		}
 	}
+}
+
+.add-passenger-record{
+  width: 100%;
+  margin-top: 30px;
+  .table{
+    .info{
+      th{
+        background-color: #F0E7DB;
+        padding: 15px 10px;
+        border-bottom: none;
+      }
+      a{
+        color: #000000;
+        text-decoration: underline;
+      }
+    }
+    tr.body-row{
+      border-bottom: 1px solid #eeeeee;
+      td{
+        background: #ffffff;
+        padding: 15px 10px;
+      }
+    }
+  }
 }

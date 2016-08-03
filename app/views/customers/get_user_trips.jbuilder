@@ -15,6 +15,8 @@ json.array! @trips do |trip|
         json.id aircraft.id
         json.tail_number aircraft.tail_number
         json.name aircraft.aircraft_type.name
+        json.exterior_image aircraft.image.url(:original)
+        json.interior_image aircraft.interior.url(:original)
         json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
       }
 

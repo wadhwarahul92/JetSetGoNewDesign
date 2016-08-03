@@ -27,6 +27,13 @@ json.activities{
       json.id aircraft.id
       json.tail_number aircraft.tail_number
       json.per_hour_cost aircraft.per_hour_cost
+      json.exterior_image aircraft.image.url(:original)
+      json.interior_image aircraft.interior.url(:original)
+      json.crew aircraft.crew
+      json.wifi aircraft.wifi
+      json.baggage_capacity_in_kg aircraft.baggage_capacity_in_kg
+      json.seating_capacity aircraft.seating_capacity
+      json.cruise_speed_in_nm_per_hour aircraft.cruise_speed_in_nm_per_hour
       json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
 
       json.aircraft_type{
