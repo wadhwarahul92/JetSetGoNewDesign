@@ -894,6 +894,15 @@ $main-blue-color:rgb(5, 81, 139);
       position: relative;
       box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
       margin-top: 11px;
+      .empty-leg-btn{
+        background-color: #750005;
+        display: inline-block;
+        padding: 10px 30px;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 8px;
+      }
       .arrow-up{
         width: 0;
         height: 0;
