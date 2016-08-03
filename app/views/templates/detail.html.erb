@@ -86,54 +86,63 @@
       </div>
     </div>
     <div class="customer-detail journey-detail">
-      <h3>Journey Details</h3>
-      <div class="location-main row" ng-repeat="activity in ctrl.trip.activities">
-        <div class="col-md-offset-1 col-md-3">
-          <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
-          <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
-          <p>{{activity.start_at.split(',')[0]}}</p>
-          <p>{{activity.departure_airport.name}}</p>
-          <p>{{activity.departure_airport.city.state}}</p>
-        </div>
-        <div class="col-md-3 text-center">
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
-          <p>{{activity.flight_time}}</p>
-          <p>Pax: {{activity.pax}}</p>
-        </div>
-        <div class="col-md-offset-1 col-md-3">
-          <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
-          <p>{{activity.arrival_airport.code}} {{activity.end_at.split(',')[1]}}</p>
-          <p>{{activity.end_at.split(',')[0]}}</p>
-          <p>{{activity.arrival_airport.name}}</p>
-          <p>{{activity.arrival_airport.city.state}}</p>
-        </div>
+      <h3>Journey Details
+        <a href="javascript:void(0)" ng-click="journey.open =! journey.open" class="pull-right toogle-btn">Detail</a>
         <div class="clearfix"></div>
-      </div>
-      <div class="lb-detail">
-        <div class="col-md-offset-1 col-md-5 text-center">
-          <h5>Trip Type</h5>
-          <!--<h6>One Way</h6>-->
-          <h6>
-            {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
-            {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
-            {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
-            {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
-          </h6>
+      </h3>
+      <div ng-show="journey.open">
+        <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-show="journey.open">
+          <div class="col-md-offset-1 col-md-3">
+            <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
+            <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
+            <p>{{activity.start_at.split(',')[0]}}</p>
+            <p>{{activity.departure_airport.name}}</p>
+            <p>{{activity.departure_airport.city.state}}</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+            <p>{{activity.flight_time}}</p>
+            <p>Pax: {{activity.pax}}</p>
+          </div>
+          <div class="col-md-offset-1 col-md-3">
+            <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
+            <p>{{activity.arrival_airport.code}} {{activity.end_at.split(',')[1]}}</p>
+            <p>{{activity.end_at.split(',')[0]}}</p>
+            <p>{{activity.arrival_airport.name}}</p>
+            <p>{{activity.arrival_airport.city.state}}</p>
+          </div>
+          <div class="clearfix"></div>
         </div>
-        <!--<div class="col-md-3">-->
-        <!--<h5>Passengers</h5>-->
-        <!--<h6>3</h6>-->
-        <!--</div>-->
-        <div class="col-md-5 text-center">
-          <h5>Flight Time</h5>
-          <h6>{{ctrl.trip.total_flight_time}}</h6>
+        <div class="lb-detail">
+          <div class="col-md-offset-1 col-md-5 text-center">
+            <h5>Trip Type</h5>
+            <!--<h6>One Way</h6>-->
+            <h6>
+              {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
+              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
+              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
+              {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
+            </h6>
+          </div>
+          <!--<div class="col-md-3">-->
+          <!--<h5>Passengers</h5>-->
+          <!--<h6>3</h6>-->
+          <!--</div>-->
+          <div class="col-md-5 text-center">
+            <h5>Flight Time</h5>
+            <h6>{{ctrl.trip.total_flight_time}}</h6>
+          </div>
+          <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
       </div>
     </div>
     <div class="customer-detail flight-detail">
-      <h3>Flight Details</h3>
-      <div class="jetdetail-col">
+      <h3>
+        Flight Details
+        <a href="javascript:void(0)" ng-click="flight.open =! flight.open" class="pull-right toogle-btn">Detail</a>
+        <div class="clearfix"></div>
+      </h3>
+      <div class="jetdetail-col" ng-show="flight.open">
         <div class="row">
           <div class="col-md-8 no-right-padding">
             <div class="img-con">
