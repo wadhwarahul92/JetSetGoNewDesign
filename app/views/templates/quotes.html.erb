@@ -62,44 +62,49 @@
   <div class="container">
     <h2 class="heading">Quoted Booking</h2>
 
-    <table class="table" border="0" ng-repeat="quote in ctrl.quotes">
-      <tr class="info">
-        <th>Booking No</th>
-        <th>Aircraft Name</th>
-        <th>Departure Date</th>
-      </tr>
-      <tr>
-        <td class="info-detail">Quote#{{quote.id}}</td>
-        <td class="info-detail">{{quote.activities[0].aircraft.aircraft_type.name}}</td>
-        <td class="info-detail">{{ctrl.get_departure_date(quote)}}</td>
-      </tr>
-      <tr>
-        <td colspan="3" style="padding: 0">
-          <table class="booking-detail">
-            <tr>
-              <td>
-                <div class="row">
-                  <div class="col-sm-8 no-padding-right">
-                    <div class="booking-img">
-                      <img src="">
-                    </div>
-                  </div>
-                  <div class="col-sm-4 no-padding-left">
-                    <div class="img-bg">
-                      <div class="gap"></div>
-                      <h4>₹ {{quote.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
-                      <div class="detail-link-con">
-                        <a href="/detail/{{quote.id}}">Details</a>
-                        <a href="javascript:void(0)" target="_self" ng-href="/payment_transactions/create/{{quote.id}}/for_quote" >Book Now</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
+    <table border="0" width="100%">
+      <tr ng-repeat="quote in ctrl.quotes">
+        <td>
+          <table class="table">
+            <tr class="info" width="100%">
+              <th>Booking No</th>
+              <th>Aircraft Name</th>
+              <th>Departure Date</th>
             </tr>
+            <tr>
+              <td class="info-detail">Quote#{{quote.id}}</td>
+              <td class="info-detail">{{quote.activities[0].aircraft.aircraft_type.name}}</td>
+              <td class="info-detail">{{ctrl.get_departure_date(quote)}}</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 0">
+                <table class="booking-detail">
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-8 no-padding-right">
+                          <div class="booking-img">
+                            <img src="">
+                          </div>
+                        </div>
+                        <div class="col-sm-4 no-padding-left">
+                          <div class="img-bg">
+                            <div class="gap"></div>
+                            <h4>₹ {{quote.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                            <div class="detail-link-con">
+                              <a href="/detail/{{quote.id}}">Details</a>
+                              <a href="javascript:void(0)" target="_self" ng-href="/payment_transactions/create/{{quote.id}}/for_quote" >Book Now</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr> 
           </table>
         </td>
-
       </tr>
     </table>
   </div>

@@ -62,43 +62,48 @@
   <div class="container">
     <h2 class="heading">Enquired Booking</h2>
 
-    <table class="table" border="0" ng-repeat="enquiry in ctrl.enquiries">
-      <tr class="info">
-        <th>Booking No</th>
-        <th>Aircraft Name</th>
-        <th>Departure Date</th>
-      </tr>
-      <tr>
-        <td class="info-detail">Enquiry#{{enquiry.id}}</td>
-        <td class="info-detail">{{enquiry.activities[0].aircraft.name}}</td>
-        <td class="info-detail">{{ctrl.get_departure_date(enquiry)}}</td>
-      </tr>
-      <tr>
-        <td colspan="3" style="padding: 0">
-          <table class="booking-detail">
-            <tr>
-              <td>
-                <div class="row">
-                  <div class="col-sm-8 no-padding-right">
-                    <div class="booking-img">
-                      <img src="" ng-src="{{enquiry.activities[0].aircraft.exterior_image}}">
-                    </div>
-                  </div>
-                  <div class="col-sm-4 no-padding-left">
-                    <div class="img-bg">
-                      <div class="gap"></div>
-                      <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
-                      <div class="detail-link-con">
-                        <a href="/detail/{{enquiry.id}}">Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
+    <table border="0" width="100%">
+      <tr ng-repeat="enquiry in ctrl.enquiries">
+        <td>
+          <table class="table" width="100%">
+            <tr class="info">
+              <th>Booking No</th>
+              <th>Aircraft Name</th>
+              <th>Departure Date</th>
             </tr>
+            <tr>
+              <td class="info-detail">Enquiry#{{enquiry.id}}</td>
+              <td class="info-detail">{{enquiry.activities[0].aircraft.name}}</td>
+              <td class="info-detail">{{ctrl.get_departure_date(enquiry)}}</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 0">
+                <table class="booking-detail">
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-8 no-padding-right">
+                          <div class="booking-img">
+                            <img src="" class="img-responsive" ng-src="{{enquiry.activities[0].aircraft.exterior_image}}">
+                          </div>
+                        </div>
+                        <div class="col-sm-4 no-padding-left">
+                          <div class="img-bg">
+                            <div class="gap"></div>
+                            <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                            <div class="detail-link-con">
+                              <a href="/detail/{{enquiry.id}}">Details</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr> 
           </table>
         </td>
-
       </tr>
     </table>
   </div>
