@@ -86,12 +86,12 @@
       </div>
     </div>
     <div class="customer-detail journey-detail">
-      <h3>Journey Details
-        <a href="javascript:void(0)" ng-click="journey.open =! journey.open" class="pull-right toogle-btn">Detail</a>
+      <h3 ng-click="journey.open =! journey.open" style="cursor: pointer;">Journey Details
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
       <div ng-show="journey.open">
-        <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-show="journey.open">
+        <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
           <div class="col-md-offset-1 col-md-3">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
             <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
