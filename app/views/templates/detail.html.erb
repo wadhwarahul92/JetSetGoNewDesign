@@ -108,12 +108,18 @@
       <div class="lb-detail">
           <div class="col-md-offset-1 col-md-3">
             <h5>Trip Type</h5>
-            <h6>One Way</h6>
+            <!--<h6>One Way</h6>-->
+            <h6>
+              {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
+              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
+              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
+              {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
+            </h6>
           </div>
-          <div class="col-md-3">
-            <h5>Passengers</h5>
-            <h6>3</h6>
-          </div>
+          <!--<div class="col-md-3">-->
+            <!--<h5>Passengers</h5>-->
+            <!--<h6>3</h6>-->
+          <!--</div>-->
           <div class="col-md-3">
             <h5>Flight Time</h5>
             <h6>{{ctrl.trip.total_flight_time}}</h6>
@@ -259,8 +265,7 @@
       </div>
     </div>
 
-    <div class="customer-detail bank-detail">
-      <!--{{ctrl.trip.payment_transaction.processor_response}}-->
+    <div class="customer-detail bank-detail" ng-if="ctrl.trip.status == 'confirmed'">
       <h3>Bank Details</h3>
       <h4>Bank Transfer Information</h4>
       <div class="row">
@@ -363,67 +368,120 @@
       </div>
     </div>
 
-    <div class="customer-detail add-passenger">
-      <h3>Add Passenger</h3>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
-          <input type="text" class="txt-forward-email" />
-          <input type="submit" class="btn-send" />
+    <div ng-if="ctrl.trip.status == 'confirmed'">
+      <div ng-show="bar_visible" class="customer-detail add-passenger">
+        <h3>Add Passenger</h3>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
+            <input type="text" class="txt-forward-email" />
+            <input type="submit" class="btn-send" />
+          </div>
+        </div>
+        <!--<div class="row">-->
+        <!-- -->
+        <!--</div>-->
+        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
+          <div class="col-md-3">
+            <h4>Email Id</h4>
+            <input type="text" ng-model="passenger_detail.email" class="txt-email" />
+          </div>
+          <div class="col-md-3">
+            <h4>Phone</h4>
+            <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
+          </div>
+          <div class="col-xs-12">
+            <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+          </div>
+          <div class="col-md-2">
+            <h4>Title</h4>
+            <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
+          </div>
+          <div class="col-md-2">
+            <h4>Name</h4>
+            <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
+          </div>
+          <!--<div class="col-md-2">-->
+          <!--<h4>Last Name</h4>-->
+          <!--<input type="text" class="txt-textfield" />-->
+          <!--</div>-->
+          <div class="col-md-2">
+            <h4>Gender</h4>
+            <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
+          </div>
+          <div class="col-md-2">
+            <h4>Nationality</h4>
+            <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
+          </div>
+          <div class="col-md-1">
+            <h4>Age</h4>
+            <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
+          </div>
+          <div class="col-md-3">
+            <h4>Upload Passport</h4>
+            <input type="file" name="pic" class="txt-upload" accept="image/*">
+            <div class="col-sm-6"><span class="btn btn-primary" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-minus" aria-hidden="true"></i> Remove</span></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <a ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
+          </div>
+          <div class="col-sm-6">
+            <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
+            <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
+            <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h4>Email Id</h4>
-          <input type="text" class="txt-email" />
-        </div>
-        <div class="col-md-3">
-          <h4>Phone</h4>
-          <input type="text" class="txt-phn" />
-        </div>
-        <div class="col-xs-12">
-          <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <h4>Title</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-2">
-          <h4>First Name</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-2">
-          <h4>Last Name</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-2">
-          <h4>Gender</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-2">
-          <h4>Nationality</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-1">
-          <h4>Age</h4>
-          <input type="text" class="txt-textfield" />
-        </div>
-        <div class="col-md-4">
-          <h4>Upload Passport</h4>
-          <input type="file" name="pic" class="txt-upload" accept="image/*">
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="row">
-        <div class="col-sm-5">
-          <a href="javascipt:void(0)" class="btn-detail">Add Traveller Details + </a>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th><a ng-href="" ng-click="bar_visible = true">Add passenger details</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="passenger_detail in ctrl.passenger_details">
+          <td>{{ passenger_detail.name }}</td>
+          <td>{{ passenger_detail.age }}</td>
+          <td>{{ passenger_detail.gender }}</td>
+          <td>{{ passenger_detail.email }}</td>
+          <td>{{ passenger_detail.contact }}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-if="ctrl.trip.status == 'confirmed'" >
+      <div ng-show="catering_visible">
+        <div class="col-sm-6">
+          Catering: <input type="text" ng-model="ctrl.catering">
         </div>
         <div class="col-sm-6">
-          <a href="javascipt:void(0)" class="btn-detail">Save & Continue Booking</a>
+          <span class="btn btn-primary" ng-click="ctrl.create_catering()">save</span>
         </div>
       </div>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Catering</th>
+          <th><a ng-href="" ng-click="catering_visible = true">Add/Edit caterings</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ ctrl.catering }}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
 
   </div>

@@ -1,14 +1,73 @@
-jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'notify', 'CustomerCostBreakUpsService', (CurentUserService, $http, notify, CustomerCostBreakUpsService)->
+jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$location', 'CurrentUserService', 'CustomerCostBreakUpsService', ($http, notify, $scope, $location, CurrentUserService, CustomerCostBreakUpsService)->
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 
-  @quotes = []
+  @currentUser = null
 
-  @tax_value = 15
+  @enquired_jets = {}
+
+  @booked_jets = {}
+
+  @quotes = {}
+
+  @trips = {}
+
+  $scope.$watch(
+    =>
+      CurrentUserService.currentUser
+  ,
+    =>
+      @currentUser = CurrentUserService.currentUser
+  )
+
+  scope = this
+
+  setTimeout(
+    ->
+      unless scope.currentUser
+        location.replace('tmp_url')
+  ,
+    1500
+  )
+
+  $http.get('customers/get_enquired_jets.json').success(
+    (data)=>
+      @enquired_jets = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching enquired jets'
+        classes: ['alert-danger']
+      )
+  )
+
+  $http.get('customers/get_booked_jets.json').success(
+    (data)=>
+      @booked_jets = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching booked jets'
+        classes: ['alert-danger']
+      )
+  )
+
+  $http.get('customers/get_user_trips.json').success(
+    (data)=>
+      @trips = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching trips'
+        classes: ['alert-danger']
+      )
+  )
 
   $http.get('/trips/get_quotes.json').success(
     (data)=>
       @quotes = data
+      for quote in @quotes
+        quote.grandTotal = CustomerCostBreakUpsService.totalTripCost(quote)
   ).error(
     ->
       notify
@@ -16,47 +75,18 @@ jetsetgo_app.controller 'QuotesController', ['CurrentUserService', '$http', 'not
         classes: ['alert-danger']
   )
 
-#  @subTotal = (quote)->
-#    cost = 0.0
-#    for activity in quote.activities
-#      cost += activity.flight_cost
-#      cost += activity.handling_cost_at_takeoff
-#      cost += activity.landing_cost_at_arrival
-#      if activity.accommodation_plan and activity.accommodation_plan.cost
-#        cost += activity.accommodation_plan.cost
-#    cost
-#    cost + ( ( quote.jsg_commission/100 ) * cost )
-#
-#  @taxValue = (tax, quote)->
-#    subTotal = @subTotal(quote)
-#    ( (tax / 100) * subTotal )
-#
-#  @grandTotal = (quote)->
-#    grandTotal = @subTotal(quote)
-#    for tax, value in quote.tax
-#      grandTotal += @taxValue(value, quote)
-#    grandTotal
+  @count_empty_legs = (trips)->
+    count = 0
+    for trip in trips
+      for activity in trip.activities
+        if activity.empty_leg == true
+          count = count+1
+    return count
 
-  ######
-  @subTotal = (quote)->
-    cost = 0.0
-    for activity in quote.activities
-      cost += activity.flight_cost
-      cost += activity.handling_cost_at_takeoff
-      cost += activity.landing_cost_at_arrival
-      cost += activity.watch_hour_cost
-      if activity.accommodation_plan and activity.accommodation_plan.cost
-        cost += activity.accommodation_plan.cost
-    cost
-
-  @taxValue = (tax, quote)->
-    subTotal = @subTotal(quote)
-    ( (tax / 100) * subTotal )
-
-  @grandTotal = (quote)->
-    grandTotal = @subTotal(quote)
-    grandTotal += @taxValue(@tax_value, quote)
-    grandTotal
+  @get_departure_date = (trip)->
+    for activity in trip.activities
+      if !activity.empty_leg
+        return activity.start_at
 
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost

@@ -15,6 +15,13 @@ json.array! @quotes do |quote|
         json.id aircraft.id
         json.tail_number aircraft.tail_number
         json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+
+        json.aircraft_type{
+          json.id aircraft.aircraft_type.id
+          json.name aircraft.aircraft_type.name
+          json.aircraft_category_name aircraft.aircraft_type.aircraft_category.name
+          json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+        }
       }
 
       json.departure_airport{
