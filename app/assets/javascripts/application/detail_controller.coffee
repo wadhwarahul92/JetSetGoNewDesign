@@ -16,14 +16,11 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @currentUser = null
 
-
-#  ==================
   @passenger_details = []
 
   @passenger_details_ = [{}]
 
   @catering = ''
-#  ==================
 
   $scope.$watch(
     =>

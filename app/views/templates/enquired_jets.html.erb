@@ -23,26 +23,34 @@
                 <p>Notication</p>
               </li> -->
               <li>
-                <h4>{{ctrl.enquired_jets.length}}</h4>
-                <p>Enquired Bookings</p>
+                <a href="/enquired_jets">
+                  <h4>{{ctrl.enquired_jets.length}}</h4>
+                  <p>Enquired Bookings</p>
+                </a>
               </li>
               <li>
-                <h4>{{ctrl.booked_jets.length}}</h4>
-                <p>Confirmed Bookings</p>
+                <a href="/booked_jets">
+                  <h4>{{ctrl.booked_jets.length}}</h4>
+                  <p>Confirmed Bookings</p>
+                </a>
               </li>
               <li>
-                <h4>{{ctrl.quotes.length}}</h4>
-                <p>Quoted Bookings</p>
+                <a href="/quotes">
+                  <h4>{{ctrl.quotes.length}}</h4>
+                  <p>Quoted Bookings</p>
+                </a>
               </li>
               <li>
-                <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
-                <p>EmptyLegs</p>
+                <a href="javascript:void(0)">
+                  <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
+                  <p>EmptyLegs</p>
+                </a>
               </li>
               <div class="clearfix"></div>
             </ul>
-            <a class="edit-icon" href="javascript:void(0)">
-              <img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT
-            </a>
+            <!--<a class="edit-icon" href="javascript:void(0)">-->
+              <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+            <!--</a>-->
           </div>
         </div>
       </div>
@@ -79,7 +87,7 @@
                   <div class="col-sm-4 no-padding-left">
                     <div class="img-bg">
                       <div class="gap"></div>
-                      <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}}<!-- {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} --> <span>Estimated Price</span></h4>
+                      <h4>₹ {{ctrl.include_commission(enquiry.grandTotal) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                       <div class="detail-link-con">
                         <a href="/detail/{{enquiry.id}}">Details</a>
                         <a href="javascript:void(0)" target="_self" ng-href="/payment_transactions/create/{{enquiry.id}}/for_quote"  ng-click="ctrl.enquire(result)">Book Now</a>
