@@ -22,6 +22,12 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @catering = ''
 
+  @journey = true
+
+  @flight = true
+
+  @cost = true
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -44,6 +50,10 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
   $http.get("trips/#{@trip_id}.json").success(
     (data)=>
       @trip = data
+      if @trip.status == 'confirmed'
+        @journey = false
+        @flight = false
+        @cost = false
       @catering =  @trip.catering
       @trip.total_flight_cost = 0.0
       @trip.total_landing_cost = 0.0

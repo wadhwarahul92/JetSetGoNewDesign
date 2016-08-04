@@ -24,19 +24,19 @@
                 <p>Notication</p>
               </li> -->
               <li>
-                <a href="/enquired_jets">
+                <a href="enquired_jets">
                   <h4>{{ctrl.enquired_jets.length}}</h4>
                   <p>Enquired Bookings</p>
                 </a>
               </li>
               <li>
-                <a href="/booked_jets">
+                <a href="booked_jets">
                   <h4>{{ctrl.booked_jets.length}}</h4>
                   <p>Confirmed Bookings</p>
                 </a>
               </li>
               <li>
-                <a href="/quotes">
+                <a href="quotes">
                   <h4>{{ctrl.quotes.length}}</h4>
                   <p>Quoted Bookings</p>
                 </a>
@@ -86,12 +86,13 @@
       </div>
     </div>
     <div class="customer-detail journey-detail">
-      <h3 ng-click="journey.open =! journey.open">
+      <h3 ng-click="ctrl.journey = !ctrl.journey">
         Journey Details
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.journey ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
-      <div ng-hide="!journey.open && ctrl.trip.status == 'confirmed'">
+      <!-- && (ctrl.trip.status == 'confirmed' || journey.open) -->
+      <div ng-show="ctrl.journey">
         <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
           <div class="col-md-offset-1 col-md-3">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
@@ -115,7 +116,7 @@
           <div class="clearfix"></div>
         </div>
         <div class="lb-detail">
-          <div class="col-md-offset-1 col-md-5 text-center">
+          <div class="col-md-offset-1 col-md-5">
             <h5>Trip Type</h5>
             <!--<h6>One Way</h6>-->
             <h6>
@@ -129,7 +130,7 @@
           <!--<h5>Passengers</h5>-->
           <!--<h6>3</h6>-->
           <!--</div>-->
-          <div class="col-md-5 text-center">
+          <div class="col-md-offset-2 col-md-3">
             <h5>Flight Time</h5>
             <h6>{{ctrl.trip.total_flight_time}}</h6>
           </div>
@@ -138,12 +139,12 @@
       </div>
     </div>
     <div class="customer-detail flight-detail">
-      <h3 ng-click="flight.open =! flight.open">
+      <h3 ng-click="ctrl.flight = !ctrl.flight">
         Flight Details
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.flight ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
-      <div class="jetdetail-col" ng-hide="!flight.open && ctrl.trip.status == 'confirmed'">
+      <div class="jetdetail-col" ng-show="ctrl.flight">
         <div class="row">
           <div class="col-md-8 no-right-padding">
             <div class="img-con">
@@ -168,12 +169,12 @@
     </div>
 
     <div class="customer-detail cost-detail">
-      <h3 ng-click="customer.open =! customer.open">
+      <h3 ng-click="ctrl.cost =! ctrl.cost">
         Cost Details
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.cost ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
-      <div class="row" ng-hide="!customer.open && ctrl.trip.status == 'confirmed'">
+      <div class="row" ng-show="ctrl.cost">
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-6">
@@ -285,12 +286,12 @@
     </div>
 
     <div class="customer-detail bank-detail" ng-if="ctrl.trip.status == 'confirmed'">
-      <h3 ng-click="bank.open =! bank.open">
+      <h3 ng-click="ctrl.bank = !ctrl.bank">
         Bank Details
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.bank ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
         </h3>
-      <div ng-show="!bank.open && ctrl.trip.status == 'confirmed'">
+      <div ng-show="!ctrl.bank && ctrl.trip.status == 'confirmed'">
         <h4>Bank Transfer Information</h4>
       <div class="row">
         <div class="col-sm-7">
@@ -403,81 +404,93 @@
           <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a>
         </div>
       </div>
-      <div ng-show="bar_visible" class="customer-detail add-passenger">
-        <h3>Add Passenger</h3>
-        <div class="row">
-          <div class="col-xs-12">
-            <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
-            <input type="text" class="txt-forward-email" />
-            <input type="submit" class="btn-send" />
-          </div>
-        </div>
-        <!--<div class="row">-->
-        <!-- -->
-        <!--</div>-->
-        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
-          <div class="passenger-repeat">
-            <div class="col-md-3">
-              <h4>Email Id</h4>
-              <input type="text" ng-model="passenger_detail.email" class="txt-email" />
-            </div>
-            <div class="col-md-3">
-              <h4>Phone</h4>
-              <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
-            </div>
-            <div class="col-xs-12">
-              <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
-            </div>
-            <div class="col-md-2">
-              <h4>Title</h4>
-              <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
-            </div>
-            <div class="col-md-2">
-              <h4>Name</h4>
-              <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
-            </div>
-            <!--<div class="col-md-2">-->
-            <!--<h4>Last Name</h4>-->
-            <!--<input type="text" class="txt-textfield" />-->
-            <!--</div>-->
-            <div class="col-md-2">
-              <h4>Gender</h4>
-              <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
-            </div>
-            <div class="col-md-2">
-              <h4>Nationality</h4>
-              <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
-            </div>
-            <div class="col-md-1">
-              <h4>Age</h4>
-              <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
-            </div>
-            <div class="col-md-3">
-              <h4>Upload Passport</h4>
-              <input type="file" name="pic" class="txt-upload" accept="image/*">
-            </div>
-            <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times" aria-hidden="true"></i></a>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-5">
-            <a href="javascript:void(0)" ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
-          </div>
-          <div class="col-sm-6">
-            <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
-            <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
-            <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>
-          </div>
-        </div>
-      </div>
       <div ng-show="catering_visible" class="customer-detail add-passenger">
-        <h3>Add Category</h3>
-        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
+        <h3 ng-click="ctrl.category = !ctrl.category">
+        Add Category
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
+        </a>
+        </h3>
+        <div class="row" ng-show="!ctrl.category">
           <div class="col-sm-12">
             <h4>Catering:</h4>
             <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
             <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
+          </div>
+        </div>
+      </div>
+      <div ng-show="bar_visible" class="customer-detail add-passenger">
+        <h3 ng-click="ctrl.pax_active = !ctrl.pax_active">
+        Add Passenger
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.pax_active ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        </h3>
+        <div ng-show="!ctrl.pax_active">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
+              <input type="text" class="txt-forward-email" />
+              <input type="submit" class="btn-send" />
+            </div>
+          </div>
+          <div class="seprator-con">
+            <div class="col-sm-offset-2 col-sm-8">
+              <h4><span>OR</span></h4>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
+            <div class="passenger-repeat">
+              <div class="col-md-3">
+                <h4>Email Id</h4>
+                <input type="text" ng-model="passenger_detail.email" class="txt-email" />
+              </div>
+              <div class="col-md-3">
+                <h4>Phone</h4>
+                <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
+              </div>
+              <div class="col-xs-12">
+                <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+              </div>
+              <div class="col-md-2">
+                <h4>Title</h4>
+                <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
+              </div>
+              <div class="col-md-2">
+                <h4>Name</h4>
+                <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
+              </div>
+              <!--<div class="col-md-2">-->
+              <!--<h4>Last Name</h4>-->
+              <!--<input type="text" class="txt-textfield" />-->
+              <!--</div>-->
+              <div class="col-md-2">
+                <h4>Gender</h4>
+                <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
+              </div>
+              <div class="col-md-2">
+                <h4>Nationality</h4>
+                <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
+              </div>
+              <div class="col-md-1">
+                <h4>Age</h4>
+                <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
+              </div>
+              <div class="col-md-3">
+                <h4>Upload Passport</h4>
+                <input type="file" name="pic" class="txt-upload" accept="image/*">
+              </div>
+              <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <a href="javascript:void(0)" ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
+            </div>
+            <div class="col-sm-6">
+              <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
+              <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
+              <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>
+            </div>
           </div>
         </div>
       </div>
