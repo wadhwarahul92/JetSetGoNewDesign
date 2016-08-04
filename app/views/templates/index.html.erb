@@ -155,13 +155,13 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-10 col-xs-12">
-          <div uib-carousel active="active" interval="3000" no-wrap="false" id="carousel_slider">
+          <div uib-carousel active="active" no-wrap="false" id="carousel_slider">
             <div uib-slide ng-repeat="jetsteal in ctrl.jetsteals track by jetsteal.id" style="text-align: left;">
 
                 <div class="border-con" style="position:relative;">
                   <div class="bg sold_out" ng-show="jetsteal.sold_out">
                     <div class="col-md-8 col-sm-12 col-xs-12" style="padding: 0;">
-                      <p>Sold Out</p>
+                      <p>SOLD OUT</p>
                     </div>
                   </div>
                   <div class="col-md-8 col-sm-12 col-xs-12 emptyleg_image">
@@ -171,24 +171,27 @@
                     <div class="">
                       <h2 class="aircraft_name">{{jetsteal.aircraft.aircraft_type.name}}</h2>
                       <h5 class="engine_type">{{jetsteal.aircraft.aircraft_type.aircraft_category.name}}</h5>
-                      <h4 class="estimated-price" ng-hide="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text pull-right">Estimated Price</span></h4>
+
                       <div class="jetsteal-location">
-                        <div class="col-sm-4 col-xs-6 data">
-                          <h4>{{jetsteal.departure_airport.code}}</h4>
+                        <div class="col-sm-6 col-xs-6 data">
+                          <h4>{{jetsteal.departure_airport.city.name}}</h4>
                           <p>{{jetsteal.flight_start_time.split(',')[1]}}</p>
                           <p>{{jetsteal.flight_start_time.split(',')[0]}}</p>
                         </div>
-                        <div class="col-sm-4 hidden-xs data text-center">
+                        <!-- <div class="col-sm-2 hidden-xs data text-center">
                           <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/516/original/jet.png?1470204638" class="jet-img">
-                        </div>
-                        <div class="col-sm-4 col-xs-6 data text-right">
-                          <h4>{{jetsteal.arrival_airport.code}}</h4>
+                        </div> -->
+                        <div class="col-sm-6 col-xs-6 data text-right">
+                          <h4>{{jetsteal.arrival_airport.city.name}}</h4>
                           <p>{{jetsteal.flight_end_time.split(',')[1]}}</p>
                           <p><b>Pax:</b> {{jetsteal.aircraft.seating_capacity}}</p>
                         </div>
                         <div class="clearfix"></div>
                       </div>
-                      <h4 class="estimated-price text-center" ng-show="jetsteal.sell_by_seats"><i class="fa fa-inr"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency}} <span class="text">Estimated Price</span></h4>
+                      <h4 class="estimated-price text-center"><i class="fa fa-inr"></i> {{jetsteal.sell_by_seats ? jetsteal.min_seat_cost : jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text">
+                      {{ jetsteal.sell_by_seats ? 'Starting Price' : 'Estimated Price' }}
+                      </span></h4>
+
                       <div class="detail-link-con">
                         <a href="javascript:void(0)" target="_self" ng-if="jetsteal.sold_out"> <i class="fa fa-hourglass-o"></i> Sold out </a>
                         <a href="/jetsteals/list" target="_self" ng-if="!jetsteal.sold_out">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a>
@@ -499,7 +502,7 @@
                           <h3 class="media-heading">JetSetGo: The Uber of Indian skies</h3>
                           <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet, flew into New Delhi from the US. </p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.forbes.com/forbes/welcome/">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/381/original/em.png?1468579250" alt="">
@@ -507,7 +510,7 @@
                           <h3 class="media-heading">4 min read Dark confessions straight from an entrepreneur's heart</h3>
                           <p class="media-content">The three of us had just about settled in cross legged position for late-night dinner</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="https://www.entrepreneur.com/article/250346">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/384/original/fe.png?1468579288" alt="">
@@ -515,7 +518,9 @@
                           <h3 class="media-heading">JetSetGo can now mobilise an air ambulance in any part of the country</h3>
                           <p class="media-content">JetSetGo recently introduced air ambulance services to offer better emergency services and help improve healthcare access,</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.financialexpress.com/healthcare/hospiinfra/jetsetgo-can- now-mobilise-
+
+an-air- ambulance-in- any-part- of-the- country-in- as-little- as-two- hours/163360/">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/390/original/toi.png?1468579378" alt="">
@@ -537,7 +542,9 @@
                           <h3 class="media-heading">Luxury in their stride</h3>
                           <p class="media-content">A decade ago, Kanika Tekriwal worked for the private aviation vertical of investment giant IndiaBulls. The experience emboldened her to set up in April 2014</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.businesstoday.in/magazine/cover-story/recent- clutch-of- start-ups- caters-
+
+exclusively-to- luxury-market/story/223000.html">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/382/original/et.png?1468579260" alt="">
@@ -545,7 +552,7 @@
                           <h3 class="media-heading">Taking to the skies: YouWeCan Ventures invests in JetSetGo</h3>
                           <p class="media-content">NEW DELHI: YouWeCan Ventures, the investment firm founded by cricketer Yuvraj Singh</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://economictimes.indiatimes.com/topic/Kanika-Tekriwal">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/389/original/ndtv.png?1468579367" alt="">
@@ -553,7 +560,9 @@
                           <h3 class="media-heading">After Beauty, Education, Yuvraj Singh Looks Towards The Sky</h3>
                           <p class="media-content">Yuvraj Singh's YouWeCan Ventures latest investment is an undisclosed sum in online marketplace for private jets and helicopters - JetSetGo.</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://profit.ndtv.com/news/corporates/article-after- beauty-education- yuvraj-singh-
+
+looks-towards- the-sky- 1201749">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/380/original/business.png?1468579235" alt="">
@@ -561,7 +570,7 @@
                           <h3 class="media-heading">Mile-High Service</h3>
                           <p class="media-content">Kanika Tekriwal, co-founder, JetSetGo, onboard the Cessna Citation XL, which costs approximately ₹190,000 per hour to charter</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.outlookbusiness.com/cest-la- vie/the-good- life/mile-high- service-1898">Read More</a>
                       </div>
                     </div>
                     <!--/row-->
@@ -575,7 +584,9 @@
                           <h3 class="media-heading">Private jets at the click of a mouse, touch of a button</h3>
                           <p class="media-content">Mumbai : If you have to reach an important meeting in a different part of the country and flights are unavailable</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.pressreader.com/india/hindustan-times-
+
+lucknow/20151120/281500750154619/TextView">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/387/original/iifl.png?1468579336" alt="">
@@ -583,7 +594,9 @@
                           <h3 class="media-heading">Yuvraj Singh's YouWeCan Ventures invests in JetSetGo</h3>
                           <p class="media-content">Yuvraj Singh funded YouWeCan Ventures has made an undisclosed investment in JetSetGo</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.indiainfoline.com/article/print/news-top- story/yuvraj-singh- s-youwecan- ventures-
+
+invests-in- jetsetgo-115072300390_1.html">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/388/original/iwl.png?1468579352" alt="">
@@ -591,7 +604,7 @@
                           <h3 class="media-heading"> Kanika Tekriwal, CEO, JetSetGo Aviation Services Private Limited</h3>
                           <p class="media-content">Kanika Tekriwal, young dynamic business women, who by her sheer grit & determination carved a niche for her in the aviation industry.</p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://iwilindia.com/success-story/kanika- tekriwal-ceo- jetsetgo-aviation- services-private- limited/">Read More</a>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12">
                         <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/391/original/verve.png?1468579391" alt="">
@@ -599,7 +612,9 @@
                           <h3 class="media-heading">WINGED GUARDIAN</h3>
                           <p class="media-content">When it comes to bridal shindigs, she takes the phrase 'sky's the limit' to new heights. </p>
                         </div>
-                        <a class="media-readmore" href="javascript:void(0)">Read More</a>
+                        <a class="media-readmore" target="_blank" href="http://www.vervemagazine.in/people/jet-set- go-kanika- tekriwal-private- air-travel- destination-
+
+weddings">Read More</a>
                       </div>
                     </div>
                     <!--/row-->
@@ -635,7 +650,7 @@
         <div class="col-sm-7">
           <div class="app-content">
             <p>Through our JetSteals™ platform you can experience the joy of flying private and networking with like minded people like never before- at 30,000 feet! Simply pick an aircraft or sector of your choice, choose between having the whole aircraft to yourself or just a seat and pay in 3 simple steps. The new ordinary in flying!</p>
-            <a href="https://itunes.apple.com/us/app/jetsteals/id1078158963?ls=1&mt=8"><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/393/original/appstorebutton.png?1468579444" alt=""></a>
+            <a target="_blank" href="https://itunes.apple.com/us/app/jetsteals/id1078158963?ls=1&mt=8"><img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/393/original/appstorebutton.png?1468579444" alt=""></a>
           </div>
         </div>
         <div class="col-sm-5">

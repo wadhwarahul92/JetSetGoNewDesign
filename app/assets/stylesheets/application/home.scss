@@ -5,7 +5,7 @@ $main-blue-color:rgb(5, 81, 139);
 
 .sold_out{
   position:absolute;
-  background-color: rgba(217, 195, 164, 0.4);
+  background-color: rgba(138, 123, 109, 0.5);
   z-index: 1;
   top:0;
   bottom: 0;
@@ -15,7 +15,8 @@ $main-blue-color:rgb(5, 81, 139);
   p{
     margin-top: 125px; 
     color: #ffffff; 
-    font-size: 50px;
+    font-weight: bold;
+    font-size: 45px;
     background-color: rgba(67, 50, 31, 0.8);
   }
 }
@@ -66,17 +67,22 @@ $main-blue-color:rgb(5, 81, 139);
   }
 }
 .login-black-bg{
-  padding: 8px;
-  background-color:rgba(0,0,0,0.3);
+  background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/523/original/log-signin_bg.png?1470296964');
+  background-size: cover;
+  background-position: center;
   margin-top:20px;
-  border-radius:10px;
   position: relative;
+  .middle-heading{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
   .closs-btn{
-    color: #cc0000;
+    color: #7E6356;
     font-size: 25px;
     position: absolute;
-    right: -10px;
-    top: -16px;
+    right: 0;
+    top: 3px;
     z-index: 1;
     -webkit-transition: all 0.6s ease-in-out;
     -moz-transition: all 0.6s ease-in-out;
@@ -98,7 +104,9 @@ $main-blue-color:rgb(5, 81, 139);
   }
 }
 .login-register-main{
-  background-color:rgba(256,256,256,1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   padding-bottom:30px;
   min-height:400px;
   border-radius:6px;
@@ -142,6 +150,12 @@ $main-blue-color:rgb(5, 81, 139);
     color:#555;
   }
   form{
+    .height{
+      min-height: 50px;
+    }
+    .forget-text{
+      color: #920000;
+    }
     .field{
       position:relative;
       label{
@@ -157,11 +171,11 @@ $main-blue-color:rgb(5, 81, 139);
         left:8px;
       }
       .text-field{
-        height:50px;
+        height:40px;
         background-color:transparent !important;
         box-shadow:none;
         border:0px;
-        border-bottom:1px solid #888888;
+        border:1px solid #CFC2B8;
         position:relative;
         text-align:center;
       }
@@ -170,20 +184,37 @@ $main-blue-color:rgb(5, 81, 139);
       }
       .proceed-btn{
         width: 100%;
-        padding:15px 0 !important;
+        padding:12px 0 !important;
         font-size:16px;
-        background-color: #750005;
+        background-color: #920000;
+        border-radius: 8px;
         margin-top: 30px;
+        border: none
       }
       .register-click{
         *margin-top:10px;
         font-size:17px;
         display:inline-block;
         width:100%;
-        padding:15px 0;
-        background-color: #888888;
+        padding:12px 0;
+        background-color: #7E6156;
+        border-radius: 8px;
+        text-decoration: none;
         text-align:center;
         color:#ffffff;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      .register-click:hover{
+        background-color: #920000;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
       }
       .or-text{
         font-size:20px;
@@ -194,7 +225,7 @@ $main-blue-color:rgb(5, 81, 139);
       }
       .form-icon{
         position:absolute;
-        top: 18px;
+        top: 12px;
         left: 10px;
       }
       .form-control{

@@ -100,7 +100,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     (data)=>
       $.each(data, (i, v)=>
 #        if !v.sold_out && arr.length < 2
-        if arr.length < 2
+        if arr.length < 4
           arr.push(v)
           @jetsteals = arr
       )
