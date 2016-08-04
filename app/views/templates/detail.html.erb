@@ -86,11 +86,12 @@
       </div>
     </div>
     <div class="customer-detail journey-detail">
-      <h3 ng-click="journey.open =! journey.open" style="cursor: pointer;">Journey Details
+      <h3 ng-click="journey.open =! journey.open">
+        Journey Details
         <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
-      <div ng-show="journey.open">
+      <div ng-hide="!journey.open && ctrl.trip.status == 'confirmed'">
         <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
           <div class="col-md-offset-1 col-md-3">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
@@ -137,12 +138,12 @@
       </div>
     </div>
     <div class="customer-detail flight-detail">
-      <h3>
+      <h3 ng-click="flight.open =! flight.open">
         Flight Details
-        <a href="javascript:void(0)" ng-click="flight.open =! flight.open" class="pull-right toogle-btn">Detail</a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
       </h3>
-      <div class="jetdetail-col" ng-show="flight.open">
+      <div class="jetdetail-col" ng-hide="!flight.open && ctrl.trip.status == 'confirmed'">
         <div class="row">
           <div class="col-md-8 no-right-padding">
             <div class="img-con">
@@ -167,8 +168,12 @@
     </div>
 
     <div class="customer-detail cost-detail">
-      <h3>Cost Details</h3>
-      <div class="row">
+      <h3 ng-click="customer.open =! customer.open">
+        Cost Details
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <div class="clearfix"></div>
+      </h3>
+      <div class="row" ng-hide="!customer.open && ctrl.trip.status == 'confirmed'">
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-6">
@@ -280,8 +285,13 @@
     </div>
 
     <div class="customer-detail bank-detail" ng-if="ctrl.trip.status == 'confirmed'">
-      <h3>Bank Details</h3>
-      <h4>Bank Transfer Information</h4>
+      <h3 ng-click="bank.open =! bank.open">
+        Bank Details
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="journey.open ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <div class="clearfix"></div>
+        </h3>
+      <div ng-show="!bank.open && ctrl.trip.status == 'confirmed'">
+        <h4>Bank Transfer Information</h4>
       <div class="row">
         <div class="col-sm-7">
           <div class="row">
@@ -326,7 +336,7 @@
                 <p>Total Amount</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i>{{ctrl.include_commission(ctrl.trip.totalCost) | currency:"":0 | indianCurrency }}</p>
+                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost | currency:"":0 | indianCurrency }}</p>
               </td>
             </tr>
             <tr class="border">
@@ -342,7 +352,7 @@
                 <p>You have paid</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.totalCost) * 0.10 | currency:"":0 | indianCurrency }}</p>
+                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</p>
               </td>
             </tr>
             <tr>
@@ -350,7 +360,7 @@
                 <p><b>Balance Payable</b></p>
               </td>
               <td>
-                <p class="text-right"><b><i class="fa fa-rupee"></i>{{ctrl.balance_payable(ctrl.trip.totalCost, ctrl.include_commission(ctrl.trip.totalCost) * 0.10) | currency:"":0 | indianCurrency}}</b></p>
+                <p class="text-right"><b><i class="fa fa-rupee"></i> {{ctrl.balance_payable(ctrl.trip.totalCost, ctrl.trip.totalCost * 0.10) | currency:"":0 | indianCurrency}}</b></p>
               </td>
             </tr>
           </table>
@@ -380,9 +390,19 @@
           <div class="clearfix"></div>
         </div>
       </div>
+      </div>
     </div>
 
+    
     <div ng-if="ctrl.trip.status == 'confirmed'">
+      <div class="row psng-cate-btns">
+        <div class="col-sm-6 text-right">
+          <a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a>
+        </div>
+        <div class="col-sm-6">
+          <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a>
+        </div>
+      </div>
       <div ng-show="bar_visible" class="customer-detail add-passenger">
         <h3>Add Passenger</h3>
         <div class="row">
@@ -451,8 +471,17 @@
           </div>
         </div>
       </div>
-
-      <div class="add-passenger-record">
+      <div ng-show="catering_visible" class="customer-detail add-passenger">
+        <h3>Add Category</h3>
+        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
+          <div class="col-sm-12">
+            <h4>Catering:</h4>
+            <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
+            <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
+          </div>
+        </div>
+      </div>
+      <div class="add-passenger-record" ng-show="ctrl.passenger_details.length > 0">
         <table class="table table-striped">
           <thead>
           <tr class="info">
@@ -461,7 +490,6 @@
             <th>Gender</th>
             <th>Email</th>
             <th>Contact</th>
-            <th><a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a></th>
           </tr>
           </thead>
           <tbody>
@@ -471,42 +499,25 @@
             <td>{{ passenger_detail.gender }}</td>
             <td>{{ passenger_detail.email }}</td>
             <td>{{ passenger_detail.contact }}</td>
-            <td></td>
           </tr>
           </tbody>
         </table>
       </div>
-    </div>
-    <div ng-if="ctrl.trip.status == 'confirmed'" >
-      <div ng-show="catering_visible" class="customer-detail add-passenger">
-        <h3>Add Passenger</h3>
-        <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
-          <div class="col-sm-12">
-            <h4>Catering:</h4>
-            <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
-            <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
-          </div>
-        </div>
-      </div>
-      <div class="add-passenger-record">
+      <div class="add-passenger-record" ng-show="ctrl.catering.length > 0">
         <table class="table table-striped">
           <thead>
           <tr class="info">
             <th>Catering</th>
-            <th><a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a></th>
           </tr>
           </thead>
           <tbody>
           <tr class="body-row">
             <td>{{ ctrl.catering }}</td>
-            <td></td>
           </tr>
           </tbody>
         </table>
       </div>
-
     </div>
-
   </div>
 </div>
 
