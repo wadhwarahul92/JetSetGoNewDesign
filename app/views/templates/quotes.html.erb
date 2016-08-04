@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="profile-image">
-            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/443/original/puneet.png?1470035280" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
           </div>
         </div>
         <div class="col-md-9">
@@ -61,7 +61,6 @@
 <div class="enquired-booking-main">
   <div class="container">
     <h2 class="heading">Quoted Booking</h2>
-
     <table border="0" width="100%">
       <tr ng-repeat="quote in ctrl.quotes">
         <td>
@@ -84,7 +83,7 @@
                       <div class="row">
                         <div class="col-sm-8 no-padding-right">
                           <div class="booking-img">
-                            <img src="">
+                            <img src="" class="img-responsive" ng-src="{{quote.activities[0].aircraft.exterior_image}}" />
                           </div>
                         </div>
                         <div class="col-sm-4 no-padding-left">

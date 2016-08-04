@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="profile-image">
-            <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/443/original/puneet.png?1470035280" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
           </div>
         </div>
         <div class="col-md-9">
@@ -23,19 +23,19 @@
                 <p>Notication</p>
               </li> -->
               <li>
-                <a ng-href="/enquired_jets">
+                <a ng-href="enquired_jets">
                   <h4>{{ctrl.enquired_jets.length}}</h4>
                   <p>Enquired Bookings</p>
                 </a>
               </li>
               <li>
-                <a ng-href="/booked_jets">
+                <a ng-href="booked_jets">
                   <h4>{{ctrl.booked_jets.length}}</h4>
                   <p>Confirmed Bookings</p>
                 </a>
               </li>
               <li>
-                <a ng-href="/quotes">
+                <a ng-href="quotes">
                   <h4>{{ctrl.quotes.length}}</h4>
                   <p>Quoted Bookings</p>
                 </a>
@@ -84,7 +84,7 @@
                       <div class="row">
                         <div class="col-sm-8 no-padding-right">
                           <div class="booking-img">
-                            <img src="" class="img-responsive" ng-src="{{trip.activities[0].aircraft.exterior_image}}">
+                            <img src="" class="img-responsive" ng-src="{{trip.activities[0].aircraft.exterior_image}}" />
                           </div>
                         </div>
                         <div class="col-sm-4 no-padding-left">
