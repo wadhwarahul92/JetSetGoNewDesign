@@ -494,6 +494,20 @@
           </div>
         </div>
       </div>
+      <div class="add-passenger-record" ng-show="ctrl.catering.length > 0">
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Catering</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="body-row">
+            <td>{{ ctrl.catering }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="add-passenger-record" ng-show="ctrl.passenger_details.length > 0">
         <table class="table table-striped">
           <thead>
@@ -514,20 +528,6 @@
             <td>{{ passenger_detail.gender }}</td>
             <td>{{ passenger_detail.email }}</td>
             <td>{{ passenger_detail.contact }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="add-passenger-record" ng-show="ctrl.catering.length > 0">
-        <table class="table table-striped">
-          <thead>
-          <tr class="info">
-            <th>Catering</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="body-row">
-            <td>{{ ctrl.catering }}</td>
           </tr>
           </tbody>
         </table>
