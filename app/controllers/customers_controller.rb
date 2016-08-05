@@ -31,7 +31,7 @@ class CustomersController < ApplicationController
   end
 
   def get_booked_jets
-    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED)
+    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED).order(id: :desc)
   end
 
   def get_upcoming_journeys
@@ -46,7 +46,7 @@ class CustomersController < ApplicationController
   end
 
   def get_enquired_jets
-    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY)
+    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY).order(id: :desc)
   end
 
   def get_quoted_journeys
