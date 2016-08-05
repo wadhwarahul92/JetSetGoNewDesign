@@ -81,8 +81,8 @@ $main-blue-color:rgb(5, 81, 139);
     color: #7E6356;
     font-size: 25px;
     position: absolute;
-    right: 0;
-    top: 3px;
+    right: 6px;
+    top: 9px;
     z-index: 1;
     -webkit-transition: all 0.6s ease-in-out;
     -moz-transition: all 0.6s ease-in-out;
@@ -342,11 +342,11 @@ span.heading:after{
             color: #dddddd;
           }
           .white-color{
-            color: #b39e84;
+            color: #4a3e30;
           }
         }
         .text-white{
-          color: #b39e84;
+          color: #4a3e30;
         }
         .search-icon {
           background-color: rgba(165, 128, 91, 0.85);
@@ -392,10 +392,10 @@ span.heading:after{
           //-moz-border-radius: 10px;
           //border-radius: 10px;
         }
-      ::-webkit-input-placeholder { color:#b39e84; }
-      ::-moz-placeholder { color:#b39e84; } /* firefox 19+ */
-      :-ms-input-placeholder { color:#b39e84; } /* ie */
-      input:-moz-placeholder { color:#b39e84; }
+      ::-webkit-input-placeholder { color:#4a3e30; }
+      ::-moz-placeholder { color:#4a3e30; } /* firefox 19+ */
+      :-ms-input-placeholder { color:#4a3e30; } /* ie */
+      input:-moz-placeholder { color:#4a3e30; }
 
 	}
 }
@@ -481,13 +481,16 @@ span.heading:after{
         .data{
           position: relative;
           h4{
-            font-size: 18px;
+            font-size: 15px;
             font-weight: bold;
             margin:0;
           }
           p{
-            font-size: 13px;
+            font-size: 12px;
             margin:0;
+          }
+          p.pax-txt{
+            font-size: 15px;
           }
           .jet-img{
             
@@ -518,6 +521,7 @@ span.heading:after{
           text-decoration: none;
           width: 100%;
           border-radius: 8px;
+          font-size: 18px;
         }
       }
     }
@@ -585,7 +589,7 @@ span.heading:after{
       }
       a.enquire-btn{
         background-color: #750005;
-        border: 1px solid #f2f2f2;
+        border: 1px solid #000000;
         color: #ffffff;
         text-decoration: none;
         padding: 5px 20px;
@@ -649,8 +653,9 @@ span.heading:after{
       position: relative;
       .cross-icon{
         position: absolute;
-        top: 0;
-        right: 4px;
+        top: 6px;
+        font-size: 23px;
+        right: 6px;
         color: #920000;
         cursor: pointer;
       }
