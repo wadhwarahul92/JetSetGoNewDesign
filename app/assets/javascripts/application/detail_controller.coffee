@@ -36,6 +36,16 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       @currentUser = CurrentUserService.currentUser
   )
 
+  scope = this
+
+  setTimeout(
+    ->
+      unless scope.currentUser
+        location.path('tmp_url')
+  ,
+    1500
+  )
+
   $http.get("get_passenger_datails/#{@trip_id}.json").success(
     (data)=>
       @passenger_details = data

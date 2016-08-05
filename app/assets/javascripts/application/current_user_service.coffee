@@ -1,4 +1,4 @@
-jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal', ($http, $q, notify, $uibModal)->
+jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal', '$location', ($http, $q, notify, $uibModal, $location)->
 
   serviceInstance = {}
 
@@ -9,6 +9,7 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
       $http.delete('/sign_out_.json').success(
         =>
           serviceInstance.currentUser = null
+          $location.path('tmp_url')
           notify
             message: 'Successfully signed out.'
       )

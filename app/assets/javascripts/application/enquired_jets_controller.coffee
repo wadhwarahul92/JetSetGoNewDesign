@@ -12,6 +12,24 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 
   @trips = {}
 
+  $scope.$watch(
+    =>
+      CurrentUserService.currentUser
+  ,
+    =>
+      @currentUser = CurrentUserService.currentUser
+  )
+
+  scope = this
+
+  setTimeout(
+    ->
+      unless scope.currentUser
+        location.replace('tmp_url')
+  ,
+    1500
+  )
+
   $http.get('customers/get_enquired_jets.json').success(
     (data)=>
       @enquired_jets = data
@@ -54,15 +72,6 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
       notify
         message: 'Error fetching quotes'
         classes: ['alert-danger']
-  )
-
-
-  $scope.$watch(
-    =>
-      CurrentUserService.currentUser
-  ,
-    =>
-      @currentUser = CurrentUserService.currentUser
   )
 
   $http.get('customers/get_enquired_jets.json').success(
