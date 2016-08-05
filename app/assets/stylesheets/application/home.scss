@@ -110,6 +110,9 @@ $main-blue-color:rgb(5, 81, 139);
   padding-bottom:30px;
   min-height:400px;
   border-radius:6px;
+  .height{
+    min-height: 50px;
+  }
   //-webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
   //-moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
   //box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
@@ -150,9 +153,6 @@ $main-blue-color:rgb(5, 81, 139);
     color:#555;
   }
   form{
-    .height{
-      min-height: 50px;
-    }
     .forget-text{
       color: #920000;
     }
