@@ -126,6 +126,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     else
       return data
 
+  @formatTime2 = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm A')
+    if data and data == 'Invalid date'
+      return 'Departure time'
+    else
+      return data
+
   @enquire = (result)->
     if CurrentUserService.currentUser
       $http.post('/trips/enquire.json', {enquiry: result}).success(
