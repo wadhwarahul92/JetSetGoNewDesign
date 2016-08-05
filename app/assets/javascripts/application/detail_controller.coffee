@@ -182,6 +182,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
     _passenger_details = []
     for passenger_detail in @passenger_details_
       _passenger_details.push({
+        title: passenger_detail.title
         name: passenger_detail.name
         email: passenger_detail.email
         age: passenger_detail.age
@@ -213,6 +214,11 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @validatedPassengerDetails = ->
     for passenger_detail in @passenger_details_
+      unless passenger_detail.title
+        notify
+          message: 'Title cannot be blank.'
+          classes: ['alert-danger']
+        return false
       unless passenger_detail.name
         notify
           message: 'Name cannot be blank.'

@@ -498,6 +498,7 @@
         <table class="table table-striped">
           <thead>
           <tr class="info">
+            <th>Title</th>
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
@@ -507,6 +508,7 @@
           </thead>
           <tbody>
           <tr class="body-row" ng-repeat="passenger_detail in ctrl.passenger_details">
+            <td>{{ passenger_detail.title }}</td>
             <td>{{ passenger_detail.name }}</td>
             <td>{{ passenger_detail.age }}</td>
             <td>{{ passenger_detail.gender }}</td>

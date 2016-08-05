@@ -60,7 +60,8 @@ class CustomersController < ApplicationController
   def create_passengers
     @passenger_details = []
     params[:passenger_details].each do |passenger_detail|
-      @passenger_details << PassengerDetail.new(passenger_detail.permit(:name,
+      @passenger_details << PassengerDetail.new(passenger_detail.permit(:title,
+                                                                        :name,
                                                                         :email,
                                                                         :age,
                                                                         :contact,:trip_id,
