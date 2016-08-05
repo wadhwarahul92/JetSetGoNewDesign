@@ -305,6 +305,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @customSplit = (string)->
     string.split(',')
 
+  @checknotum = (string) ->
+
+
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
 

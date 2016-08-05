@@ -115,27 +115,27 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div class="lb-detail">
-          <div class="col-md-offset-1 col-md-5">
-            <h5>Trip Type</h5>
-            <!--<h6>One Way</h6>-->
-            <h6>
-              {{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}
-              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}
-              {{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}
-              {{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}
-            </h6>
-          </div>
-          <!--<div class="col-md-3">-->
-          <!--<h5>Passengers</h5>-->
-          <!--<h6>3</h6>-->
+        <!--<div class="lb-detail">-->
+          <!--<div class="col-md-offset-1 col-md-5">-->
+            <!--<h5>Trip Type</h5>-->
+            <!--&lt;!&ndash;<h6>One Way</h6>&ndash;&gt;-->
+            <!--<h6>-->
+              <!--{{ctrl.trip.activities.length == 1 ? 'One Way' : ''}}-->
+              <!--{{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id == ctrl.trip.activities[1].arrival_airport_id ? 'Round Trip' : ''}}-->
+              <!--{{ctrl.trip.activities.length == 2 && ctrl.trip.activities[0].departure_airport_id != ctrl.trip.activities[1].arrival_airport_id ? 'Two Way' : ''}}-->
+              <!--{{ctrl.trip.activities.length > 2 ? 'Multicity' : ''}}-->
+            <!--</h6>-->
           <!--</div>-->
-          <div class="col-md-offset-2 col-md-3">
-            <h5>Flight Time</h5>
-            <h6>{{ctrl.trip.total_flight_time}}</h6>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+          <!--&lt;!&ndash;<div class="col-md-3">&ndash;&gt;-->
+          <!--&lt;!&ndash;<h5>Passengers</h5>&ndash;&gt;-->
+          <!--&lt;!&ndash;<h6>3</h6>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--<div class="col-md-offset-2 col-md-3">-->
+            <!--<h5>Flight Time</h5>-->
+            <!--<h6>{{ctrl.trip.total_flight_time}}</h6>-->
+          <!--</div>-->
+          <!--<div class="clearfix"></div>-->
+        <!--</div>-->
       </div>
     </div>
     <div class="customer-detail flight-detail">
