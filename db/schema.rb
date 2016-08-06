@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802213547) do
+ActiveRecord::Schema.define(version: 20160806105609) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -88,41 +88,44 @@ ActiveRecord::Schema.define(version: 20160802213547) do
   end
 
   create_table "aircrafts", force: :cascade do |t|
-    t.string   "tail_number",                  limit: 255
-    t.integer  "aircraft_type_id",             limit: 4
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.integer  "seating_capacity",             limit: 4
-    t.integer  "baggage_capacity_in_kg",       limit: 4
-    t.integer  "landing_field_length_in_feet", limit: 4
-    t.integer  "runway_field_length_in_feet",  limit: 4
-    t.integer  "number_of_toilets",            limit: 4
-    t.float    "cabin_width_in_meters",        limit: 24
-    t.float    "cabin_height_in_meters",       limit: 24
-    t.float    "cabin_length_in_meters",       limit: 24
-    t.string   "memorable_name",               limit: 255
-    t.integer  "crew",                         limit: 4
+    t.string   "tail_number",                                limit: 255
+    t.integer  "aircraft_type_id",                           limit: 4
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
+    t.integer  "seating_capacity",                           limit: 4
+    t.integer  "baggage_capacity_in_kg",                     limit: 4
+    t.integer  "landing_field_length_in_feet",               limit: 4
+    t.integer  "runway_field_length_in_feet",                limit: 4
+    t.integer  "number_of_toilets",                          limit: 4
+    t.float    "cabin_width_in_meters",                      limit: 24
+    t.float    "cabin_height_in_meters",                     limit: 24
+    t.float    "cabin_length_in_meters",                     limit: 24
+    t.string   "memorable_name",                             limit: 255
+    t.integer  "crew",                                       limit: 4
     t.boolean  "wifi"
     t.boolean  "phone"
-    t.boolean  "flight_attendant",                         default: false
-    t.string   "year_of_manufacture",          limit: 255
-    t.boolean  "medical_evac",                             default: false
-    t.float    "cruise_speed_in_nm_per_hour",  limit: 24
-    t.float    "flying_range_in_nm",           limit: 24
-    t.float    "per_hour_cost",                limit: 24
-    t.boolean  "admin_verified",                           default: false
-    t.integer  "organisation_id",              limit: 4
-    t.integer  "base_airport_id",              limit: 4
+    t.boolean  "flight_attendant",                                       default: false
+    t.string   "year_of_manufacture",                        limit: 255
+    t.boolean  "medical_evac",                                           default: false
+    t.float    "cruise_speed_in_nm_per_hour",                limit: 24
+    t.float    "flying_range_in_nm",                         limit: 24
+    t.float    "per_hour_cost",                              limit: 24
+    t.boolean  "admin_verified",                                         default: false
+    t.integer  "organisation_id",                            limit: 4
+    t.integer  "base_airport_id",                            limit: 4
     t.datetime "deleted_at"
-    t.float    "mtow",                         limit: 24
-    t.string   "image_file_name",              limit: 255
-    t.string   "image_content_type",           limit: 255
-    t.integer  "image_file_size",              limit: 4
+    t.float    "mtow",                                       limit: 24
+    t.string   "image_file_name",                            limit: 255
+    t.string   "image_content_type",                         limit: 255
+    t.integer  "image_file_size",                            limit: 4
     t.datetime "image_updated_at"
-    t.string   "interior_file_name",           limit: 255
-    t.string   "interior_content_type",        limit: 255
-    t.integer  "interior_file_size",           limit: 4
+    t.string   "interior_file_name",                         limit: 255
+    t.string   "interior_content_type",                      limit: 255
+    t.integer  "interior_file_size",                         limit: 4
     t.datetime "interior_updated_at"
+    t.integer  "flight_cost_commission_in_percentage",       limit: 4,   default: 10
+    t.integer  "handling_cost_commission_in_percentage",     limit: 4,   default: 10
+    t.integer  "accomodation_cost_commission_in_percentage", limit: 4,   default: 10
   end
 
   create_table "airport_categories", force: :cascade do |t|
