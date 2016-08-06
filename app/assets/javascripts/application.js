@@ -45,6 +45,7 @@
 //= require ./application/offers_controller
 //= require ./application/passenger_details_controller
 //= require ./application/detail_controller
+//= require ./application/sell_empty_leg_controller
 //= require ./vendors/date
 //= require ./vendors/filter_slider
 //= require ./services/base
