@@ -1,34 +1,69 @@
 <h1 class="text-center refresh-text">Please don't refresh or exit.</br> This will just take few seconds.</h1>
-<%
-   amount = (@quote.amount_to_pay * 10)/100
 
-   working_key = CC_WORKING_KEY
+<% if params[:is_from_customer] == 'yes'%>
+    <%
+       amount = (@quote.amount_to_pay * 10)/100
 
-   merchant_data = ''
+       working_key = CC_WORKING_KEY
 
-   {
-       'merchant_id' => CC_MERCHANT_ID,
-       'order_id' => "Quote##{@quote.id}",
-       'amount' => sprintf('%.2f', amount),
-       'currency' => 'INR',
-       'redirect_url' => "#{request.base_url}/payment_transactions/success_for_quote",
-       'cancel_url' => "#{request.base_url}/payment_transactions/cancel_for_quote",
-       'language' => 'EN',
-       'billing_name' => @quote.user.full_name,
-       'billing_email' => @quote.user.email,
-       'billing_tel' => @quote.user.phone,
-       'merchant_param1' => "JetSetGo Quote #{@quote.id}",
-       'merchant_param2' => "#{current_user.id}",
-       'merchant_param3' => "#{@quote.id}"
-   }.each_pair do |key, value|
-     merchant_data += key.to_s+'='+value.to_s+'&'
-   end
+       merchant_data = ''
 
-   crypto = CcCrypto.new
+       {
+               'merchant_id' => CC_MERCHANT_ID,
+               'order_id' => "Quote##{@quote.id}",
+               'amount' => sprintf('%.2f', amount),
+               'currency' => 'INR',
+               'redirect_url' => "#{request.base_url}/details/#{@quote.id}",
+               'cancel_url' => "#{request.base_url}/details/#{@quote.id}",
+               'language' => 'EN',
+               'billing_name' => @quote.user.full_name,
+               'billing_email' => @quote.user.email,
+               'billing_tel' => @quote.user.phone,
+               'merchant_param1' => "JetSetGo Quote #{@quote.id}",
+               'merchant_param2' => "#{current_user.id}",
+               'merchant_param3' => "#{@quote.id}"
+       }.each_pair do |key, value|
+         merchant_data += key.to_s+'='+value.to_s+'&'
+       end
 
-   encrypted_data = crypto.encrypt(merchant_data,working_key)
+       crypto = CcCrypto.new
 
-%>
+       encrypted_data = crypto.encrypt(merchant_data,working_key)
+
+    %>
+<% else %>
+    <%
+       amount = (@quote.amount_to_pay * 10)/100
+
+       working_key = CC_WORKING_KEY
+
+       merchant_data = ''
+
+       {
+               'merchant_id' => CC_MERCHANT_ID,
+               'order_id' => "Quote##{@quote.id}",
+               'amount' => sprintf('%.2f', amount),
+               'currency' => 'INR',
+               'redirect_url' => "#{request.base_url}/payment_transactions/success_for_quote",
+               'cancel_url' => "#{request.base_url}/payment_transactions/cancel_for_quote",
+               'language' => 'EN',
+               'billing_name' => @quote.user.full_name,
+               'billing_email' => @quote.user.email,
+               'billing_tel' => @quote.user.phone,
+               'merchant_param1' => "JetSetGo Quote #{@quote.id}",
+               'merchant_param2' => "#{current_user.id}",
+               'merchant_param3' => "#{@quote.id}"
+       }.each_pair do |key, value|
+         merchant_data += key.to_s+'='+value.to_s+'&'
+       end
+
+       crypto = CcCrypto.new
+
+       encrypted_data = crypto.encrypt(merchant_data,working_key)
+
+    %>
+<% end %>
+
 <form action='<%= CC_URL %>/transaction/transaction.do?command=initiateTransaction' name="payuform" method='post' style="display: none">
 
   <input type="hidden" name="encRequest" value="<%= encrypted_data %>" />
@@ -37,11 +72,11 @@
   <input type= "submit" value="submit">
 </form>
 <script>
-  <% if params[:platform] == 'ios' %>
-  document.payuform.submit();
-  <%- else %>
-  $(document).on('ready page:load', function(){
-    setTimeout(function(){document.payuform.submit();},500);
-  });
-  <%- end %>
+    <% if params[:platform] == 'ios' %>
+    document.payuform.submit();
+    <%- else %>
+    $(document).on('ready page:load', function(){
+        setTimeout(function(){document.payuform.submit();},500);
+    });
+    <%- end %>
 </script>
