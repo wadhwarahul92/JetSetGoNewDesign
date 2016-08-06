@@ -402,6 +402,28 @@
                           </div>
                         </div>
                       </div>
+                      <!--<div ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'">-->
+                        <!--<div class="cost-con">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-12">-->
+                              <!--<p class="text-capitalize">Accommodation</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="cost-con" ng-repeat="(key, value) in flight_plan.accommodation_plan">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-7">-->
+                              <!--<p class="text-capitalize">{{key}}</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-5">-->
+                              <!--<p class="text-right" ng-show="key == 'nights'">{{value}}</p>-->
+                              <!--<p class="text-right" ng-hide="key == 'nights'">₹ {{value | currency:"":0 | indianCurrency}}</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+
                       <div class="cost-con" ng-show="flight_plan.watch_hour_at_arrival">
                         <div class="row">
                           <div class="col-xs-7">
