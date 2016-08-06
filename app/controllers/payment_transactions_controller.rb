@@ -16,14 +16,14 @@ class PaymentTransactionsController < ApplicationController
     @quote_purchaser = QuotePurchaser.new(@response_data)
     @quote_purchaser.process_purchase
     if @quote_purchaser.status == 'success'
-      redirect_to action: :_success_for_quote
+      redirect_to action: :_success_for_quote, json: {trip_id: @response_data['merchant_param3']}
     else
-      redirect_to action: :failure_for_quote
+      redirect_to action: :failure_for_quote, json: {trip_id: @response_data['merchant_param3']}
     end
   end
 
   def _success_for_quote
-
+    redirect_to "detail/#{params[:trip_id]}"
   end
 
   def cancel_for_quote
@@ -31,7 +31,7 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def failure_for_quote
-
+    redirect_to "detail/#{params[:trip_id]}"
   end
 
   def create
