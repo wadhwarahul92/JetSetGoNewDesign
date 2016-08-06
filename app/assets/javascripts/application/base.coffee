@@ -118,6 +118,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/detail'
     controller: 'DetailController'
     controllerAs: 'ctrl'
+  }).when('/sell_empty_leg', {
+    templateUrl: '/templates/sell_empty_leg'
+    controller: 'SellEmptyLegController'
+    controllerAs: 'ctrl'
   })
 
   $locationProvider.html5Mode(true)

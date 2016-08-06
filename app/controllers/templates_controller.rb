@@ -94,4 +94,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def sell_empty_leg
+
+  end
+
 end

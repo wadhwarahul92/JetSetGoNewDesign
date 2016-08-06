@@ -345,6 +345,7 @@ Rails.application.routes.draw do
       get 'offers'
       get 'passenger_details'
       get 'detail'
+      get 'sell_empty_leg'
     end
   end
 
@@ -400,6 +401,7 @@ Rails.application.routes.draw do
   get 'offers' => 'route_overrides#welcome_index'
   get 'passenger_details/:id' => 'route_overrides#welcome_index'
   get 'detail/:id' => 'route_overrides#welcome_index'
+  get 'sell_empty_leg' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'
