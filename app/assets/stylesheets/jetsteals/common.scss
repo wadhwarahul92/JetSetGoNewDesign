@@ -76,8 +76,6 @@ label.error{
 .select2-dropdown{
   width: 250px!important;
   font-size: 13px!important;
-  color: white!important;
-  background-color: $dark-blue-color!important;
 }
 
 .select2-search__field{
@@ -151,7 +149,7 @@ label.error{
 
 #filter_bar{
   padding: 5px 30px 5px 30px;
-  background-color: $dark-blue-color;
+  background-color: #998776;
   i{
     color: white!important;
     font-size: 40px!important;
@@ -174,10 +172,9 @@ label.error{
       box-shadow: none;
     }
     option{
-      //color: $dark-blue-color!important;
-      //-moz-color: $dark-blue-color!important;
-      //-webkit-color: $dark-blue-color!important;
-      background-color: $dark-blue-color!important;
+      color: #000000;
+      -moz-color: #000000;
+      -webkit-color: #000000;
     }
   }
   input{
@@ -197,13 +194,19 @@ label.error{
 }
 
 #header{
-  background-color: $main-green-color;
+  background-color: #f9f3e6;
   padding: 10px;
   .logo{
     height: 50px;
   }
+  .brown-icon{
+    color: #A08263;
+  }
+  .red-text{
+    color: #920000;
+  }
   a{
-    color: white!important;
+    color: #920000;
   }
   ul{
     margin: 7px 0 0;
@@ -216,7 +219,7 @@ label.error{
       width: 40px;
       height: 35px;
       display: inline-block;
-      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/022/original/nav-icons-img.png?1453106758);
+      background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/530/original/black-nav-icons-img.png?1470482063);
     }
     #jetsteal_link{
       background-position: -74px -35px;
@@ -249,8 +252,8 @@ label.error{
 }
 
 .aircraft_image{
-  height: 250px!important;
   width: 100%!important;
+  height: 320px;
 }
 
 .list_box{
@@ -413,6 +416,150 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+
+
+footer{
+  width:100%;
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/399/original/footer-bg.png?1468581518);
+  background-size: cover;
+  background-position: center;
+  border-top: 10px solid #301d0c;
+  padding: 15px 0;
+  h4{
+    font-size: 16px;
+    color: #000000;
+  }
+  .member-con{
+    min-height: 150px;
+    .newsletter-form-con{
+      margin-top: 20px;
+      position: relative;
+      p{
+        color: #ffffff;
+        font-size: 16px;
+      }
+      .newsletter-textfield{
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+        border: 1px solid #888888;
+        padding: 8px 37px 8px 3px;
+        color: #ffffff;
+      }
+      .newsletter-btn{
+        background-color: #cccccc;
+        width:25px;
+        height: 25px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        text-align: center;
+        border: 0;
+        top: 6px;
+        right: 22px;
+        i{
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  .logo-con{
+    text-align: center;
+    min-height: 150px;
+    .footer-logo-con{
+      margin: 30px 0 20px 0;
+      img{
+        height: 80px;
+      }
+    }
+    p{
+      color: #ffffff;
+    }
+  }
+  .followus-con{
+    ul{
+      padding: 0;
+      li{
+        list-style: none;
+        margin-right: 8px;
+        padding: 5px 0;
+        float: left;
+        a{
+          color:#ffffff;
+          font-size: 16px;
+          img{
+            height:30px;
+          }
+        }
+      }
+      li.no-margin{
+        margin: 0;
+      }
+    }
+  }
+  .services-con{
+    margin-top: 20px;
+    ul{
+      padding: 0;
+      margin: 0;
+      li{
+        list-style: none;
+        float: left;
+        margin-right: 10px;
+        a{
+          color: #000000;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .copytext-con{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ffffff;
+    a{
+      color:#ffffff;
+    }
+  }
+}
+
+@media(max-width: 1000px){
+  footer{
+    .member-con{
+      min-height: inherit;
+      border: none;
+    }
+    .logo-con{
+      min-height: inherit;
+      border: none;
+      .footer-logo-con{
+        margin-top: 0;
+      }
+    }
+  }
+}
+@media(max-width: 767px){
+  footer{
+    .member-con{
+      border-right: 0px;
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+      min-height: inherit;
+      padding-bottom: 20px;
+    }
+    .logo-con{
+      border-right: 0px;
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+      min-height: inherit;
+      text-align: left;
+      margin: 20px 0;
+      .footer-logo-con{
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+
 /*================================Media Query===================================*/
 
 
@@ -536,6 +683,186 @@ input[type=number]::-webkit-outer-spin-button {
   
   .list_box .row{
     margin:0 !important;
+  }
+}
+
+
+
+//jetsteel section
+
+.sold_out{
+  position:absolute;
+  background-color: rgba(138, 123, 109, 0.5);
+  z-index: 1;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right:0;
+  text-align: center;
+  p{
+    margin-top: 125px; 
+    color: #ffffff; 
+    font-weight: bold;
+    font-size: 45px;
+    background-color: rgba(67, 50, 31, 0.8);
+  }
+}
+
+.jetsteel-main-con{
+  width: 100%;
+  .jetsteal-slider-con{
+    width: 100%;
+    background-attachment: fixed;
+    padding: 20px 0;
+    .repeat-container{
+      margin-top: 15px;
+      margin-bottom: 15px;
+      float: none !important;
+    }
+    #carousel_slider{
+      .left{
+        position: absolute;
+        left: -110px;
+        .glyphicon-chevron-left{
+          font-size: 20px;
+        }
+      }
+      .right{
+        position: absolute;
+        right: -110px;
+        .glyphicon-chevron-right{
+          font-size: 20px;
+        }
+      }
+    }
+    .custom-indicator{
+      li.active{
+        background-color: #000000;
+      }
+      li{
+        border-color: #000000;
+      }
+    }
+    .border-con{
+      border: 1px solid #998776;
+    }
+    .emptyleg_image{
+      padding: 0;
+      overflow: hidden;
+      height: 320px;
+    }
+    .emptyleg_detail{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
+      height: 320px;
+      background-size: cover;
+      padding: 0;
+      position: relative;
+      h2.aircraft_name{
+        font-size: 22px;
+        color: #000000;
+        margin: 10px 0 0 0;
+        padding: 0 15px;
+        font-weight: bold;
+      }
+      h5.engine_type{
+        font-size: 14px;
+        color: #000000;
+        margin: 0 0 10px 0;
+        padding: 0 15px;
+      }
+      h4.estimated-price{
+        margin: 0;
+        margin-top: 10px;
+        padding: 8px 15px;
+        font-size: 25px;
+        color: #ffffff;
+        background-color: #856b58;
+        .text{
+          font-size: 14px;
+          margin-top: 10px;
+        }
+      }
+      .jetsteal-location{
+        margin: 10px 0;
+        .data{
+          position: relative;
+          h4{
+            font-size: 15px;
+            font-weight: bold;
+            margin:0;
+          }
+          p{
+            font-size: 12px;
+            margin:0;
+          }
+          p.pax-txt{
+            font-size: 15px;
+          }
+          .jet-img{
+            
+
+          }
+        }
+      }
+      .time-seat{
+        p{
+          margin-bottom: 5px;
+          font-size: 13px;
+        }
+      }
+      .detail-link-con{
+        padding: 10px 15px;
+        bottom: 0;
+        width: 100%;
+        color: #ffffff;
+        margin-top: 30px;
+        position: absolute;
+        bottom: 0;
+        a{
+          background-color: #750005;
+          display: inline-block;
+          padding: 8px 20px;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+          width: 100%;
+          border-radius: 8px;
+          font-size: 18px;
+        }
+      }
+    }
+    .emptyleg_content{
+      border-left: 1px solid #750005;
+      margin-top: 50px;
+      padding: 10px 15px 10px 15px;
+      p.content{
+        font-size: 15px;
+        font-weight: bold;
+      }
+      p.member-content{
+        color: #750005;
+        font-size: 17px;
+        margin-top: 20px;
+      }
+    }
+    .enquire-con{
+      .ennquire-btn{
+        background-color: #750005;
+        border: 1px solid #f2f2f2;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 5px 20px;
+        display: inline-block;
+        margin: 10px 0 0 40px;
+
+      }
+    }
+  }
+  .fa-chevron-right:before{
+    color: #750005;
+  }
+  .fa-chevron-left:before{
+    color: #750005;
   }
 }
 
