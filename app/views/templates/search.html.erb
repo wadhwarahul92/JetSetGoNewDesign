@@ -15,20 +15,33 @@
       <div class="row">
 
         <!--===========-->
-        <div class="breakups_main_con">
-          <div class="col-md-2" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
+        <div class="breakups_main_con" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">
+          <div class="col-md-2">
+           {{ watch_hour.airport.name}}
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-2">Night landing: {{watch_hour.airport.night_landing ? 'Yes' : 'No'}}</div>
+              <div class="col-md-2">Night Parking: {{watch_hour.airport.night_parking ? 'Yes' : 'No'}}</div>
+              <div class="col-md-6">Watch Hour: {{ctrl.formatTime(watch_hour.start_at)}} - {{ctrl.formatTime(watch_hour.end_at)}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="breakups_main_con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
+          <div class="col-md-2">
            {{ notam.airport.name}}
           </div>
           <div class="col-md-10">
             <div class="row">
               <div class="col-md-2">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>
               <div class="col-md-2">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>
-              <div class="col-md-4"></div>
+              <div class="col-md-6">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>
             </div>
           </div>
         </div>
 
-        {{ctrl.airport_break_ups.notam_details.length > 0 }}<br>
+        <!-- {{ctrl.airport_break_ups.notam_details.length > 0 }}<br>
         {{ctrl.airport_break_ups.airport_break_ups }}<br>
 
         NOTAM <br/>
@@ -44,7 +57,7 @@
           Airport : {{ watch_hour.airport_name}} |
           start_at : {{ctrl.formatTime(watch_hour.start_at)}} |
           end_at : {{ctrl.formatTime(watch_hour.end_at)}} |
-        </div>
+        </div> -->
 
 
         <!--=============-->

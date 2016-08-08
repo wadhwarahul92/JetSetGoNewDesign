@@ -192,6 +192,9 @@ label.error{
       -moz-color: #000000;
       -webkit-color: #000000;
     }
+    option:hover{
+      background: #000000;
+    }
   }
   input{
     display: inline-block;
@@ -207,6 +210,13 @@ label.error{
       box-shadow: none;
     }
   }
+}
+
+.red-bg{
+  background: #920000;
+}
+.red-bg:hover{
+  background: #920000;
 }
 
 #header{
