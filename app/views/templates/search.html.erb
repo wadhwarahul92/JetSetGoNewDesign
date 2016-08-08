@@ -15,26 +15,40 @@
       <div class="row">
 
         <!--===========-->
-        <!--{{ctrl.airport_break_ups.notam_details.length > 0 }}<br>-->
-        <!--{{ctrl.airport_break_ups.airport_break_ups }}<br>-->
+        <div class="breakups_main_con">
+          <div class="col-md-2" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
+           {{ notam.airport.name}}
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-2">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>
+              <div class="col-md-2">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>
+              <div class="col-md-4"></div>
+            </div>
+          </div>
+        </div>
 
-        <!--NOTAM-->
-        <!--<div class="col-sm-12" ng-repeat="notam in ctrl.airport_break_ups.notam_details">-->
-          <!--Airport : {{ notam.airport_name}} |-->
-          <!--start_at : {{ctrl.formatTime(notam.start_at)}} |-->
-          <!--end_at : {{ctrl.formatTime(notam.end_at)}} |-->
-        <!--</div>-->
-        <!--<br>-->
+        {{ctrl.airport_break_ups.notam_details.length > 0 }}<br>
+        {{ctrl.airport_break_ups.airport_break_ups }}<br>
 
-        <!--WATCH HOUR-->
-        <!--<div class="col-sm-12" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">-->
-          <!--Airport : {{ watch_hour.airport_name}} |-->
-          <!--start_at : {{ctrl.formatTime(watch_hour.start_at)}} |-->
-          <!--end_at : {{ctrl.formatTime(watch_hour.end_at)}} |-->
-        <!--</div>-->
+        NOTAM <br/>
+        <div class="col-sm-12" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
+          Airport : {{ notam.airport.name}} |
+          start_at : {{ctrl.formatTime(notam.start_at)}} |
+          end_at : {{ctrl.formatTime(notam.end_at)}} |
+        </div>
+        <br>
+
+        WATCH HOUR <br/>
+        <div class="col-sm-12" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">
+          Airport : {{ watch_hour.airport_name}} |
+          start_at : {{ctrl.formatTime(watch_hour.start_at)}} |
+          end_at : {{ctrl.formatTime(watch_hour.end_at)}} |
+        </div>
 
 
         <!--=============-->
+
         <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
             <span class="data">

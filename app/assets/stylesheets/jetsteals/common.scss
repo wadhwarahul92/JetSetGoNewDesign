@@ -9,6 +9,20 @@ no-captcha:first-child{
   display: inline-block!important;
 }
 
+.section-heading{
+  background-color: #d9c3a4;
+  padding-bottom: 10px;
+  border-top: 10px solid #301d0c;
+  .container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    img{
+    padding: 0 20px;
+    }
+  }
+}
+
 .close-button,.lb-close{
   -webkit-transition: -webkit-transform .3s ease-in-out!important;
   -moz-transition: -moz-transform .3s ease-in-out!important;
