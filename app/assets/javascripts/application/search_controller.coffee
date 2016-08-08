@@ -20,6 +20,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_activities = []
 
+  @airport_break_ups= []
+
   @search_activities_static = []
 
   @c_filter = []
@@ -76,6 +78,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     (data)=>
       @results = data.results
 
+      @airport_break_ups = data.airport_break_ups
+
       @search_activities = data.search_activities
 
       for result in @results
@@ -130,6 +134,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     data = null
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, h:mm A')
+    if data and data == 'Invalid date'
+      return 'Departure time'
+    else
+      return data
+
+  @formatTime3 = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('Do MMM YYYY')
     if data and data == 'Invalid date'
       return 'Departure time'
     else

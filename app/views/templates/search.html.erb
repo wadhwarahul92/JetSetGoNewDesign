@@ -13,6 +13,28 @@
   <div class="top_filter_nav">
     <div class="container modify-container">
       <div class="row">
+
+        <!--===========-->
+        <!--{{ctrl.airport_break_ups.notam_details.length > 0 }}<br>-->
+        <!--{{ctrl.airport_break_ups.airport_break_ups }}<br>-->
+
+        <!--NOTAM-->
+        <!--<div class="col-sm-12" ng-repeat="notam in ctrl.airport_break_ups.notam_details">-->
+          <!--Airport : {{ notam.airport_name}} |-->
+          <!--start_at : {{ctrl.formatTime(notam.start_at)}} |-->
+          <!--end_at : {{ctrl.formatTime(notam.end_at)}} |-->
+        <!--</div>-->
+        <!--<br>-->
+
+        <!--WATCH HOUR-->
+        <!--<div class="col-sm-12" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">-->
+          <!--Airport : {{ watch_hour.airport_name}} |-->
+          <!--start_at : {{ctrl.formatTime(watch_hour.start_at)}} |-->
+          <!--end_at : {{ctrl.formatTime(watch_hour.end_at)}} |-->
+        <!--</div>-->
+
+
+        <!--=============-->
         <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
             <span class="data">
@@ -248,7 +270,7 @@
       </div>
     </div>
   </div>
-  <div class="search_result_main">
+  <div ng-if="ctrl.airport_break_ups.notam_details.length < 1" class="search_result_main">
     
     <div class="container">
       <div class="search_result">
@@ -402,6 +424,28 @@
                           </div>
                         </div>
                       </div>
+                      <!--<div ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'">-->
+                        <!--<div class="cost-con">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-12">-->
+                              <!--<p class="text-capitalize">Accommodation</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="cost-con" ng-repeat="(key, value) in flight_plan.accommodation_plan">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-7">-->
+                              <!--<p class="text-capitalize">{{key}}</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-5">-->
+                              <!--<p class="text-right" ng-show="key == 'nights'">{{value}}</p>-->
+                              <!--<p class="text-right" ng-hide="key == 'nights'">₹ {{value | currency:"":0 | indianCurrency}}</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+
                       <div class="cost-con" ng-show="flight_plan.watch_hour_at_arrival">
                         <div class="row">
                           <div class="col-xs-7">

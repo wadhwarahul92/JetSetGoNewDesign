@@ -5,7 +5,7 @@ class Admin::WatchHoursController < Admin::BaseController
 	before_filter :set_watch_hour, only: [:edit, :update]
 
 	def index
-		@watch_hours = WatchHour.includes(:airport)
+		@watch_hours = WatchHour.includes(:airport).paginate(page: params[:page], per_page: 50)
 	end
 
 	def new
