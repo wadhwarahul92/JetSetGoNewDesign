@@ -698,6 +698,12 @@ $main-blue-color:rgb(5, 81, 139);
     .breakups_main_con{
       font-size: 12px;
       color: #ffffff;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #ffffff;
+      .repeat-con{
+      margin-top: 5px;
+      }
     }
     .ss{
       padding: 10px 0;
@@ -748,6 +754,11 @@ $main-blue-color:rgb(5, 81, 139);
     }
     .filter-con{
       width: 100%;
+      .notum-text{
+        font-size: 20px;
+        font-weight: bold;
+        color: #920000;
+      }
       .filter{
         h3{
           font-size: 16px;
@@ -985,6 +996,11 @@ $main-blue-color:rgb(5, 81, 139);
               padding: 10px 0;
               p{
                 margin: 0;
+              }
+              p.watch-hour{
+                font-weight: bold;
+                font-size: 12px;
+                color: #856b58;
               }
               h4{
                 font-size: 18px;

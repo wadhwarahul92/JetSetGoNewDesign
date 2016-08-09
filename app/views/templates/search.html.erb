@@ -13,31 +13,34 @@
   <div class="top_filter_nav">
     <div class="container modify-container">
       <div class="row">
-
         <!--===========-->
-        <div class="breakups_main_con" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">
-          <div class="col-md-2">
-           {{ watch_hour.airport.name}}
-          </div>
-          <div class="col-md-10">
-            <div class="row">
-              <div class="col-md-2">Night landing: {{watch_hour.airport.night_landing ? 'Yes' : 'No'}}</div>
-              <div class="col-md-2">Night Parking: {{watch_hour.airport.night_parking ? 'Yes' : 'No'}}</div>
-              <div class="col-md-6">Watch Hour: {{ctrl.formatTime(watch_hour.start_at)}} - {{ctrl.formatTime(watch_hour.end_at)}}</div>
+        <div class="breakups_main_con" ng-hide="ctrl.airport_break_ups.watch_hour_details.length == 0 
+        && ctrl.airport_break_ups.notam_details.length == 0">
+          <div class="repeat-con" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">
+            <div class="col-md-2">
+             {{ watch_hour.airport.name}}
             </div>
-          </div>
-        </div>
-
-        <div class="breakups_main_con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
-          <div class="col-md-2">
-           {{ notam.airport.name}}
-          </div>
-          <div class="col-md-10">
-            <div class="row">
-              <div class="col-md-2">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>
-              <div class="col-md-2">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>
-              <div class="col-md-6">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-2">Night landing: {{watch_hour.airport.night_landing ? 'Yes' : 'No'}}</div>
+                <div class="col-md-2">Night Parking: {{watch_hour.airport.night_parking ? 'Yes' : 'No'}}</div>
+                <div class="col-md-6">Watch Hour: {{ctrl.formatTime(watch_hour.start_at)}} - {{ctrl.formatTime(watch_hour.end_at)}}</div>
+              </div>
             </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="repeat-con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
+            <div class="col-md-2">
+             {{ notam.airport.name}}
+            </div>  
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-2">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>
+                <div class="col-md-2">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>
+                <div class="col-md-6">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
           </div>
         </div>
 
@@ -79,12 +82,14 @@
           </h4>
         </div>
         <div class="col-sm-3 text-right"> 
-          <img ng-click="custom2 =! custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943" class="filter-icon" alt="filter"> 
+          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943" class="filter-icon" alt="filter"> 
         </div>
       </div>
     </div>
   </div>
-  <div class="filter-toggle-main" ng-show="custom2">
+  {{ctrl.custom2}}
+  <!-- {{ctrl.airport_break_ups.notam_details.length > 0}} -->
+  <div class="filter-toggle-main" ng-show="ctrl.custom2">
     <div class="container">
       <div class="search-form-con">
 
@@ -246,8 +251,12 @@
         <div class="shadow-con text-center">
           <!-- <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/321/original/line.png?1467267297" class="img-responsive" alt="seprator"> -->
         </div>
+         <!-- ng-if="ctrl.airport_break_ups.notam_details.length < 1" -->
         <div class="filter-con">
-          <div class="row">
+          <h3 class="text-center notum-text" ng-show="ctrl.airport_break_ups.notam_details.length > 0">
+            Please change the search as there is NOTUM on this Airport.
+          </h3>
+          <div class="row" ng-hide="ctrl.airport_break_ups.notam_details.length > 0">
             <div class="col-sm-4 col-xs-12">
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
@@ -587,6 +596,11 @@
                             <br>
                             <span style="font-size: 14px; font-weight: 100">(All inclusive)</span>
                           </h5>
+                        </div>
+                        <div class="col-xs-12">
+                          <p class="text-right watch-hour" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0">
+                            *Applicable airport watch hour extension charges, TBC by operator. 
+                          </p>
                         </div>
                       </div>
                     </div>
