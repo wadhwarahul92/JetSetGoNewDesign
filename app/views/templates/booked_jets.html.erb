@@ -59,7 +59,8 @@
 </div>
 
 <div class="enquired-booking-main">
-  <div class="container">
+  <h2 class="no-result-heading" ng-if="ctrl.booked_jets.length < 1">You have not Confirmed any booking for Now</h2>
+  <div class="container" ng-if="ctrl.booked_jets.length > 0">
     <h2 class="heading">Confirmed Booking</h2>
 
     <table border="0" width="100%">

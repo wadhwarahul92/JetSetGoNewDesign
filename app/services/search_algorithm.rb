@@ -522,7 +522,7 @@ BEGIN
 
       if airport_has_notam(activity.departure_airport_id, expected_time)
         notam_detail << {
-            airport_name:  @airports.detect{|x| x.id == activity.departure_airport_id }.name,
+            airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
             start_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
             end_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
         }
@@ -530,7 +530,7 @@ BEGIN
 
       if airport_has_notam(activity.arrival_airport_id, expected_time)
         notam_detail << {
-            airport_name:  @airports.detect{|x| x.id == activity.arrival_airport_id }.name,
+            airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
             start_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
             end_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
         }
@@ -538,7 +538,7 @@ BEGIN
 
       if airport_has_watch_hour(activity.departure_airport_id, expected_time).first
         watch_hour_detail << {
-            airport_name:  @airports.detect{|x| x.id == activity.departure_airport_id }.name,
+            airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
             start_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
             end_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
         }
@@ -546,7 +546,7 @@ BEGIN
 
       if airport_has_watch_hour(activity.arrival_airport_id, expected_time).first
         watch_hour_detail << {
-            airport_name:  @airports.detect{|x| x.id == activity.arrival_airport_id }.name,
+            airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
             start_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
             end_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
         }

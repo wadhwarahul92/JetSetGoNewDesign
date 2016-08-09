@@ -10,6 +10,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @user = false
 
+  @custom2 = false
+
   @searchId = $routeParams.id
 
   @loading = true
@@ -79,6 +81,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       @results = data.results
 
       @airport_break_ups = data.airport_break_ups
+      if @airport_break_ups.notam_details.length > 0
+        @custom2 = true
+      else
+        @custom2 = false
 
       @search_activities = data.search_activities
 

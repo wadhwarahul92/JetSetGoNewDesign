@@ -59,8 +59,11 @@
 </div>
 
 <div class="enquired-booking-main">
-  <div class="container">
-    <h2 class="heading">Quoted Booking</h2>
+  <h2 class="no-result-heading" ng-if="ctrl.quotes.length < 1">You have not Enquired for any Flight</h2>
+  <div class="container" ng-if="ctrl.quotes.length > 0">
+    <h2 class="heading">
+      Quoted Booking
+    </h2>
     <table border="0" width="100%">
       <tr ng-repeat="quote in ctrl.quotes">
         <td>

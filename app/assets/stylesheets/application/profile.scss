@@ -23,9 +23,10 @@
       }
     }
     .user-info{
+      position: relative;
       .logout-text{
         font-style: italic;
-        font-size: 13px;
+        font-size: 12px;
         color: #920000;
         margin-right: 10px;
       }
@@ -34,6 +35,13 @@
         font-weight: bold;
         margin: 0;
         padding-top: 20px;
+      }
+      .total-booking-text{
+        font-size: 13px;
+        color: #920000;
+        position: absolute;
+        right: 6px;
+        top: 6px;
       }
       ul.user-detail{
         padding: 0;

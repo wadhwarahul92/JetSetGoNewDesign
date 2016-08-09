@@ -40,11 +40,18 @@ list_app.config ['noCAPTCHAProvider', (noCaptchaProvider)->
 
 list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $scope, $window)->
 
+#  @colors = [
+#    'rgb(5, 81, 139)',
+#    'rgb(249, 243, 230)',
+#    'rgb(242, 208, 59)',
+#    'rgb(241, 92, 92)'
+#  ]
+
   @colors = [
-    'rgb(5, 81, 139)',
     'rgb(249, 243, 230)',
-    'rgb(242, 208, 59)',
-    'rgb(241, 92, 92)'
+    'rgb(249, 243, 230)',
+    'rgb(249, 243, 230)',
+    'rgb(249, 243, 230)'
   ]
 
   @checkFilters = ->

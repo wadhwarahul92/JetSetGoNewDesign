@@ -2,7 +2,7 @@
   <div class="jetsteal-slider-con">
     <div class="container columns">
       <div class="row">
-        <div class="medium-offset-1 medium-10 small-12 repeat-container columns" 
+        <div class="medium-offset-1 medium-10 small-12 repeat-container count_this columns" 
         ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)"
          ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out']">
           <div class="row" style="position: relative;">
@@ -154,7 +154,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="2"><%= f.submit 'Subscribe for JetSteals alerts', class: 'button' %></td>
+                    <td colspan="2"><%= f.submit 'Subscribe for JetSteals alerts', class: 'button red-bg' %></td>
                   </tr>
                 </table>
                 <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
@@ -163,7 +163,7 @@
           </div>
         </div>
       </fieldset>
-      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button alert">Remove filters</a></p>
+      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button dark-gray-bg alert">Remove filters</a></p>
     </div>
   </div>
 </div>
