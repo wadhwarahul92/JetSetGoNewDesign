@@ -1,7 +1,9 @@
 <%= simple_form_for [:admin, @handling_cost_grid] do |f| %>
     <%= f.error_notification %>
-    <%= f.input :aircraft_id, collection: aircrafts_for_collection, prompt: 'Select an aircraft'  %>
-    <%= f.input :airport_id, collection: airports_for_collection, prompt: 'Select an airport' %>
+    <%#= f.input :aircraft_id, collection: aircrafts_for_collection, prompt: 'Select an aircraft'  %>
+    <%#= f.input :airport_id, collection: airports_for_collection, prompt: 'Select an airport' %>
+    <%= f.input :city_id, collection: cities_for_collection, prompt: 'Select an city' %>
+    <%= f.input :aircraft_category_id, collection: aircraft_categories_collection, prompt: 'Select an aircraft category' %>
     <%= f.input :cost %>
     <%= f.submit 'Save', class: 'btn btn-success' %>
 <%- end %>

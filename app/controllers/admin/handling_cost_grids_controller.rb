@@ -37,8 +37,10 @@ class Admin::HandlingCostGridsController < Admin::BaseController
 
   def handling_cost_grid_params
     params.require(:handling_cost_grid).permit(
-        :airport_id,
-        :aircraft_id,
+        # :airport_id,
+        # :aircraft_id,
+        :city_id,
+        :aircraft_category_id,
         :cost
     )
   end

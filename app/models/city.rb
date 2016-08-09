@@ -5,6 +5,9 @@ class City < ActiveRecord::Base
   has_paper_trail
 
   has_many :airports
+  # =============
+  has_many :handling_cost_grids
+  # =============
 
   has_attached_file :image, styles: {small: '50x50!'}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
