@@ -69,6 +69,62 @@ $main-blue-color:rgb(5, 81, 139);
   }
 }
 
+/*media section 10-8-2016 start*/
+
+.media-big-logo{
+  
+}
+
+.media-content-main{
+  width: 100%;
+  h2{
+    font-size: 24px;
+    color: #920000;
+    border-bottom: 3px solid #998675;
+    position: relative;
+    .year-browse{
+      display: inline-block;
+      margin-top: -6px;
+      .year-select{
+        width: 100px;
+        height: 30px;
+        color: #000000;
+        font-size: 15px;
+        background: transparent;
+      }
+    }
+  }
+  h2:after{
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: #D6CBB9;
+  }
+  .media-content{
+    width: 100%;
+    .section{
+      margin: 10px 0;
+      p{
+        font-size: 14px;
+        color: #000;
+        text-align: justify;
+      }
+      p.read-more{
+        text-align: right;
+      }
+      a{
+        color: #920000;
+        text-decoration: none;
+      }
+    }
+  }
+}
+/*media section 10-8-2016 finish*/
+
+
 @media(max-width: 1150px){
   .media-content-main {
     .media-content{

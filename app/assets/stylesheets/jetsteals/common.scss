@@ -850,6 +850,7 @@ footer{
         margin-top: 30px;
         position: absolute;
         bottom: 0;
+        text-align: center;
         a{
           background-color: #750005;
           display: inline-block;
@@ -859,7 +860,11 @@ footer{
           text-decoration: none;
           width: 100%;
           border-radius: 8px;
-          font-size: 18px;
+          font-size: 15px;
+        }
+        a.half-btn{
+          width:45%;
+          margin:0 2px;
         }
       }
     }
