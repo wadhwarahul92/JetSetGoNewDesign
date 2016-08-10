@@ -48,16 +48,16 @@ class JetstealListCreator
     list.each do |l|
       if l.sell_by_seats?
         a = l.jetsteal_seats.map{ |s|  s.locked? or s.disabled? or s.booked? }
-        # unless a.index(false)
+        unless a.index(false)
           # final << l
           l.sold_out = true
-        # end
+        end
       else
         a = l.jetsteal_seats.map{ |s| s.booked? }
-        # if a.index(true)
+        if a.index(true)
           # final << l
           l.sold_out = true
-        # end
+        end
       end
     end
     list
