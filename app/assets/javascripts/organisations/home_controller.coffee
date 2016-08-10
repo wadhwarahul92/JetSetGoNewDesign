@@ -82,8 +82,8 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
     start = null
     end = null
     try
-      start = view.start_for_web.toString()
-      end = view.end_for_web.toString()
+      start = view.start.toString()
+      end = view.end.toString()
     url = '/organisations/trips/all_events.json'
     if start and end
       url = "#{url}?start_at=#{start}&end_at=#{end}"
