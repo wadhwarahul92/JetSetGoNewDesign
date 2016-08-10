@@ -24,14 +24,14 @@
 
 /*contact us content section start*/
 .contact-us-content{
-	width: 100%;
-	.map-con{
-		width:100%;
-		background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/087/original/google_map_img.jpg?1457341003) 100% no-repeat;
-		background-size:cover;
-		height:300px;
-	}
-	.contact-info-main{
+  width: 100%;
+  .map-con{
+    width:100%;
+    background:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/087/original/google_map_img.jpg?1457341003) 100% no-repeat;
+    background-size:cover;
+    height:300px;
+  }
+  .contact-info-main{
       width: 100%;
       margin: 30px 0;
       .address-detail{
@@ -95,36 +95,107 @@
             width: 100%;
             height: 40px;
             padding: 0 5px;
-					border: 0;
-					margin-bottom: 15px;
-					margin-top: 5px;
-				}
-				.contact-area{
-					width: 100%;
-					height: 80px;
-					padding: 0 5px;
-					border: 0;
-					margin-bottom: 5px;
-					margin-top: 5px;
-				}
-				.submit-btn{
-					background-color: rgb(5, 81, 139);
-					padding: 10px;
-					text-align: center;
-					//width:150px;
-					width: 100%;
-					border: none;
-					color: #ffffff;
-					margin: 25px 0;
-				}
-				.submit-btn:before{
-					background-color:#46d9bf;
-				}
-			}
-		}
-	}
+          border: 0;
+          margin-bottom: 15px;
+          margin-top: 5px;
+        }
+        .contact-area{
+          width: 100%;
+          height: 80px;
+          padding: 0 5px;
+          border: 0;
+          margin-bottom: 5px;
+          margin-top: 5px;
+        }
+        .submit-btn{
+          background-color: rgb(5, 81, 139);
+          padding: 10px;
+          text-align: center;
+          //width:150px;
+          width: 100%;
+          border: none;
+          color: #ffffff;
+          margin: 25px 0;
+        }
+        .submit-btn:before{
+          background-color:#46d9bf;
+        }
+      }
+    }
+  }
 }
 /*contact us content section finish*/
+
+/*new page 9-8-2016 start*/
+  .contact-main-con{
+    width: 100%;
+    padding: 20px 0;
+    .google-map-con{
+      width: 100%;
+    }
+    .address-detail-con{
+      width: 100%;
+      color: #000;
+      h3{
+        font-size: 14px;
+        font-weight: bold;
+      }
+      ul{
+        padding: 0;
+        li{
+          list-style: none;
+          font-size: 14px;
+          padding-left: 40px;
+          margin-bottom: 20px;
+          min-height: 30px;
+          background-repeat: no-repeat;
+        }
+        li.location-icon{
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/556/original/address.png?1470735292');
+          background-position: 0 0;
+        }
+        li.phn-icon{
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/558/original/call.png?1470735317');
+          background-position: 0 0;
+        }
+        li.email-icon{
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/559/original/mail.png?1470735331');
+          background-position: 0 0;
+        }
+      }
+    }
+    .contact-main-form{
+      form{
+        label{
+          width: 100%;
+          font-weight: normal;
+        }
+        .contact-text{
+          width: 100%;
+          background-color: #ffffff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          height: 30px;
+          margin-bottom: 10px;
+        }
+        .contact-area{
+          width: 100%;
+          background-color: #ffffff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+        .submit-btn{
+          padding: 8px 20px;
+          background-color: #920000;
+          border-radius: 8px;
+          color: #ffffff;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+/*new page 9-8-2016 finish*/
 
 @media(max-width:1024px) {
   .contactus-banner {
@@ -149,34 +220,34 @@
       }
     }
   }
-	.contact-us-content{
-		.contact-info-main{
-			.address-detail{
-				h2{
-					font-size:15px;
-					padding:5px;
-					height:inherit;
-				}
-				p{
-					font-size:13px;
-					padding:5px 0;
-				}
-			}
-		}
-		.contact-main-form{
-			margin-top:20px;
-			.contact-form{
-				width:100% !important;
-				top:0 !important;
-				margin-bottom:20px !important;
-			}
-		}
-	}
-	.contactus-banner{
-		.heading {
-			h1{font-size:45px !important;}
-		}
-	}
+  .contact-us-content{
+    .contact-info-main{
+      .address-detail{
+        h2{
+          font-size:15px;
+          padding:5px;
+          height:inherit;
+        }
+        p{
+          font-size:13px;
+          padding:5px 0;
+        }
+      }
+    }
+    .contact-main-form{
+      margin-top:20px;
+      .contact-form{
+        width:100% !important;
+        top:0 !important;
+        margin-bottom:20px !important;
+      }
+    }
+  }
+  .contactus-banner{
+    .heading {
+      h1{font-size:45px !important;}
+    }
+  }
 }
 
 .gray-color{
