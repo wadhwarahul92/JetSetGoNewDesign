@@ -204,6 +204,7 @@ label.error{
     background: none;
     border-bottom: 1px solid white;
     color: white;
+    box-shadow: none;
     &:focus{
       outline: none;
       border: none;
@@ -218,7 +219,7 @@ label.error{
 .red-bg:hover{
   background: #920000;
 }
-.red-bg{
+.red-bg:focus{
   background: #920000;
 }
 .dark-gray-bg{
@@ -346,7 +347,6 @@ path[id^=seat]{
 }
 
 footer{
-  background-color: rgb(5, 81, 139);
   padding:10px;
   margin-top: 20px;
   color: #ffffff;
@@ -456,6 +456,7 @@ footer{
   background-position: center;
   border-top: 10px solid #301d0c;
   padding: 15px 0;
+  background-color: tranparent;
   h4{
     font-size: 16px;
     color: #000000;
