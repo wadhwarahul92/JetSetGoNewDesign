@@ -81,9 +81,9 @@ organisations_app.controller 'HomeController', ['$http', 'notify', '$scope', '$c
   @refreshEvents = (view)->
     start = null
     end = null
-#    try
-    start = view.start.toString()
-    end = view.end.toString()
+    try
+      start = view.start.toString()
+      end = view.end.toString()
     url = '/organisations/trips/all_events.json'
     if start and end
       url = "#{url}?start_at=#{start}&end_at=#{end}"
