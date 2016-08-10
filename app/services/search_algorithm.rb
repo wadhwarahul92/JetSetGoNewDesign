@@ -96,6 +96,9 @@ BEGIN
 
       @results << {
           aircraft_id: aircraft.id,
+          aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
+          aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
+          aircraft_accomodation_cost_commission_in_percentage: aircraft.accomodation_cost_commission_in_percentage,
           aircraft_type_category: aircraft.aircraft_type.aircraft_category.name,
           aircraft_seating_capacity: aircraft.seating_capacity,
           aircraft_type_name: aircraft.aircraft_type.name,
