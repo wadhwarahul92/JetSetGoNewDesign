@@ -327,5 +327,14 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
 
+  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
+    cost + percentage/100 * cost
+
+  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
+    cost + percentage/100 * cost
+
+  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
+    cost + percentage/100 * cost
+
   return undefined
 ]
