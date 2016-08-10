@@ -39,16 +39,22 @@
                   </div>
                   <div style="clear: both;"></div>
                 </div>
-                <h4 class="estimated-price text-center">
+                <!-- <h4 class="estimated-price text-center">
                   <i class="fa fa-inr"></i> {{jetsteal.sell_by_seats ? jetsteal.min_seat_cost : jetsteal.cost | currency:'':0 | indianCurrency}} 
                   <span class="text">
                     {{ jetsteal.sell_by_seats ? 'Starting Price' : 'Estimated Price' }}
                   </span>
-                </h4>
+                </h4> -->
                 <div class="detail-link-con">
-                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat</a>
+                  <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat, Starting @ <i class="fa fa-rupee"></i> {{jetsteal.min_seat_cost | currency:'':0 | indianCurrency }}</a>
+                  
+                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="jetsteal.can_be_sold_as_whole" class="button button_jsg">Book a Jet, Starting @ <i class="fa fa-rupee"></i> {{jetsteal.cost | currency:'':0 | indianCurrency}}</a>
+                
+                  <a style="margin-top: 8px" href="Javascript:void(0)" class="button button_jsg_danger" ng-show="jetsteal.sold_out"><i class="fa fa-hourglass-o"></i> Sold Out</a>
 
-                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="!jetsteal.sell_by_seats" class="button button_jsg">Book a Jet</a>
+                  <!-- <a ng-click="ctrl.bookSeatClicked(jetsteal)" ng-show="jetsteal.sell_by_seats && !jetsteal.sold_out" class="button button_jsg">Book a Seat</a>
+
+                  <a ng-click="ctrl.bookJetClicked(jetsteal)" data-toggle="book_jet" ng-show="!jetsteal.sell_by_seats" class="button button_jsg">Book a Jet</a> -->
 
                   <!-- <a ng-click="jetsteal.sell_by_seats ? 'ctrl.bookSeatClicked(jetsteal)' : 'ctrl.bookJetClicked(jetsteal)'" href="javascript:void(0)" target="_self" ng-if="!jetsteal.sold_out">{{jetsteal.sell_by_seats ? 'Book a Seat' : 'Book a Jet'}}</a> -->
 
