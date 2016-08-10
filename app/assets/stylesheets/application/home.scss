@@ -534,6 +534,16 @@ span.heading:after{
         font-size: 15px;
         font-weight: bold;
       }
+      a.view-more-btn{
+        background-color: #750005;
+        display: inline-block;
+        padding: 8px 20px;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 14px;
+      }
       p.member-content{
         color: #750005;
         font-size: 17px;
@@ -696,8 +706,21 @@ span.heading:after{
 //media section
 .news-media-main-con{
   width: 100%;
+  margin-bottom: 60px;
+  .view_more_btn{
+    background-color: #750005;
+    display: inline-block;
+    padding: 8px 20px;
+    min-width: 300px;
+    margin-top: 15px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+  }
   .media-slider-con{
-    margin: 60px 0;
+    margin-top: 60px;
     .media-con{
       text-align: left;
       .media-widget{
