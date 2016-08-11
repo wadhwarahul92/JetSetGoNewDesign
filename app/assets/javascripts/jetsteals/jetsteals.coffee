@@ -145,7 +145,7 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @detailsClicked = (jetsteal)->
     @detailsJetsteal = jetsteal
-    $('.rahul .reveal-overlay').css('background-color', jetsteal.color)
+    $('.reveal-overlay').css('background-color', jetsteal.color)
     null
 
   @setColorsForJetsteals = ->
@@ -155,7 +155,7 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @bookJetClicked = (jetsteal)->
     @bookJetJetsteal = jetsteal
-    $('.rahul .reveal-overlay').css('background-color', jetsteal.color)
+    $('.reveal-overlay').css('background-color', jetsteal.color)
     null
 
   @initLightBox = ->
