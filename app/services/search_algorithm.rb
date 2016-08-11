@@ -94,6 +94,8 @@ BEGIN
 
       next unless aircraft_has_flying_range(aircraft)
 
+      # next if aircraft_has_trip(aircraft)
+
       @results << {
           aircraft: aircraft,
           aircraft_id: aircraft.id,
@@ -546,6 +548,10 @@ BEGIN
         'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
     ).any?
   end
+
+  # def aircraft_has_trip(aircraft)
+  #   aircraft.activities.where('start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability).any?
+  # end
 
   ######################################################################
   # Description: It returns true if aircraft flying range is more then
