@@ -432,30 +432,53 @@
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>
+                            <!--<p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>-->
+                            <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)</p>
                           </div>
                           <div class="col-xs-5 text-right">
-                            <p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>
+                            <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
+                            <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
                           </div>
                         </div>
                       </div>
-                      <div class="cost-con">
+                      <div class="cost-con" ng-if="flight_plan.accommodation_leg">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Ground Handling Charges</p>
+                            <p>Accommodation</p>
                           </div>
-                          <div class="col-xs-5 text-right">
-                            <p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>
+                          <div class="col-xs-5 text-right" >
+                            Night-{{flight_plan.accommodation_leg.night}}
+                            <p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>
                           </div>
                         </div>
                       </div>
+                      <!--<div class="cost-con">-->
+                        <!--<div class="row">-->
+                          <!--<div class="col-xs-7">-->
+                            <!--<p>Ground Handling Charges</p>-->
+                          <!--</div>-->
+                          <!--<div class="col-xs-5 text-right">-->
+                            <!--<p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <!--<div class="cost-con">-->
+                        <!--<div class="row">-->
+                          <!--<div class="col-xs-7">-->
+                            <!--<p>Landing Charges</p>-->
+                          <!--</div>-->
+                          <!--<div class="col-xs-5">-->
+                            <!--<p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
                       <div class="cost-con">
                         <div class="row">
                           <div class="col-xs-7">
-                            <p>Landing Charges</p>
+                            <p>Handling Charges</p>
                           </div>
                           <div class="col-xs-5">
-                            <p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>
+                            <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft_handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
                           </div>
                         </div>
                       </div>
@@ -517,7 +540,7 @@
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Flight Time</p>
+                              <p>Flight Time </p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>
@@ -527,34 +550,48 @@
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)
+                              <!--<p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)-->
+                              <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)
                               </p>
                             </div>
                             <div class="col-xs-5 text-right">
-                              <p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>
+                              <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
+                              <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
                             </div>
                           </div>
                         </div>
+                        <!--<div class="cost-con">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-7">-->
+                              <!--<p>Ground Handling Charges</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-5 text-right">-->
+                              <!--<p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="cost-con">-->
+                          <!--<div class="row">-->
+                            <!--<div class="col-xs-7">-->
+                              <!--<p>Landing Charges</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-5">-->
+                              <!--<p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <!--==============-->
                         <div class="cost-con">
                           <div class="row">
                             <div class="col-xs-7">
-                              <p>Ground Handling Charges</p>
-                            </div>
-                            <div class="col-xs-5 text-right">
-                              <p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cost-con">
-                          <div class="row">
-                            <div class="col-xs-7">
-                              <p>Landing Charges</p>
+                              <p>Handling Charges</p>
                             </div>
                             <div class="col-xs-5">
-                              <p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>
+                              <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft_handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
                             </div>
                           </div>
                         </div>
+                        <!--==============-->
                         <div class="cost-con" ng-show="flight_plan.watch_hour_at_arrival">
                           <div class="row">
                             <div class="col-xs-7">

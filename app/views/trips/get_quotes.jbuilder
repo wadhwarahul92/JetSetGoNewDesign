@@ -14,6 +14,9 @@ json.array! @quotes do |quote|
       json.aircraft{
         json.id aircraft.id
         json.tail_number aircraft.tail_number
+        json.aircraft_flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+        json.aircraft_handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+        json.aircraft_accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
         json.exterior_image aircraft.image.url(:original)
         json.interior_image aircraft.interior.url(:original)
         json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }

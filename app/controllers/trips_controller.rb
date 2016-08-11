@@ -26,37 +26,40 @@ class TripsController < ApplicationController
             handling_cost_at_takeoff: plan[:handling_cost_at_takeoff],
             pax: plan[:pax],
             watch_hour_at_arrival: plan[:watch_hour_at_arrival],
-            watch_hour_cost: plan[:watch_hour_cost]
+            watch_hour_cost: plan[:watch_hour_cost],
 
         )
-
-        if plan[:chosen_intermediate_plan] == 'empty_leg_plan' and plan[:empty_leg_plan].present? and plan[:empty_leg_plan].length > 0
-
-          plan[:empty_leg_plan].each do |empty_leg|
-
-            @activities << @trip.activities.new(
-                aircraft_id: @aircraft.id,
-                departure_airport_id: empty_leg[:departure_airport_id],
-                arrival_airport_id: empty_leg[:arrival_airport_id],
-                start_at: empty_leg[:start_at],
-                end_at: empty_leg[:end_at],
-                empty_leg: true,
-                flight_cost: empty_leg[:flight_cost],
-                landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
-                handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
-                pax: 0,
-                watch_hour_at_arrival: plan[:watch_hour_at_arrival],
-                watch_hour_cost: plan[:watch_hour_cost]
-            )
-
-          end
-
-        elsif plan[:chosen_intermediate_plan] == 'accommodation_plan' and plan[:accommodation_plan].present?
-
-          # noinspection RubyResolve
-          @activities.last.accommodation_plan = { nights: plan[:accommodation_plan][:nights], cost: plan[:accommodation_plan][:cost] }
-
+        if plan[:accommodation_leg].present?
+          @activities.last.accommodation_plan = { nights: plan[:accommodation_leg][:nights], cost: plan[:accommodation_leg][:cost] }
         end
+
+        # if plan[:chosen_intermediate_plan] == 'empty_leg_plan' and plan[:empty_leg_plan].present? and plan[:empty_leg_plan].length > 0
+        #
+        #   plan[:empty_leg_plan].each do |empty_leg|
+        #
+        #     @activities << @trip.activities.new(
+        #         aircraft_id: @aircraft.id,
+        #         departure_airport_id: empty_leg[:departure_airport_id],
+        #         arrival_airport_id: empty_leg[:arrival_airport_id],
+        #         start_at: empty_leg[:start_at],
+        #         end_at: empty_leg[:end_at],
+        #         empty_leg: true,
+        #         flight_cost: empty_leg[:flight_cost],
+        #         landing_cost_at_arrival: empty_leg[:landing_cost_at_arrival],
+        #         handling_cost_at_takeoff: empty_leg[:handling_cost_at_takeoff],
+        #         pax: 0,
+        #         watch_hour_at_arrival: plan[:watch_hour_at_arrival],
+        #         watch_hour_cost: plan[:watch_hour_cost]
+        #     )
+        #
+        #   end
+        #
+        # elsif plan[:chosen_intermediate_plan] == 'accommodation_plan' and plan[:accommodation_plan].present?
+        #
+        #   # noinspection RubyResolve
+        #   @activities.last.accommodation_plan = { nights: plan[:accommodation_plan][:nights], cost: plan[:accommodation_plan][:cost] }
+        #
+        # end
 
       end
 

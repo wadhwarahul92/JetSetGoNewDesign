@@ -71,10 +71,15 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       @trip.total_accomodation_charge = 0.0
       @trip.set_watch_hour = false
       @trip.total_flight_time = ''
+      @trip.total_accommodation_cost = 0.0
+      @trip.total_accommodation_nights = 0
       for activity in @trip.activities
         @trip.total_flight_cost += activity.flight_cost
         @trip.total_landing_cost += activity.landing_cost_at_arrival
         @trip.total_ground_handling_cost += activity.handling_cost_at_takeoff
+        if activity.accommodation_plan
+          @trip.total_accommodation_nights += activity.accommodation_plan.nights
+          @trip.total_accommodation_cost += activity.accommodation_plan.cost * activity.accommodation_plan.nights
         if activity.watch_hour_at_arrival
           @trip.set_watch_hour = true
         activity.flight_time = moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).hours().toString()+ ' Hrs ' + moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).minutes().toString() + ' Mins'
@@ -272,6 +277,14 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
     )
 
+  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
+    cost + (percentage/100 * cost)
+
+  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
+    cost + (percentage/100 * cost)
+
+  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
+    cost + (percentage/100 * cost)
 
   return undefined
 
