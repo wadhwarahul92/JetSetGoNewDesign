@@ -95,6 +95,7 @@ BEGIN
       next unless aircraft_has_flying_range(aircraft)
 
       @results << {
+          aircraft: aircraft,
           aircraft_id: aircraft.id,
           aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
           aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
