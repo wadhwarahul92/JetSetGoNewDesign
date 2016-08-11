@@ -131,45 +131,48 @@
     </div> -->
 
 
-    <div id="no_jetsteal" style="height: 600px;padding-top: 50px; display: none" class="small-12 columns">
-      <h4 class="text-center">We are sorry we have no flights on this sector at the moment. Would you like to be notified if there are any in future?</h4>
-      <fieldset class="text-center">
-        <div class="row">
-          <div class="small-12 medium-4 small-centered">
-            <%= simple_form_for JetstealSubscription.new do |f| %>
-                <%= f.input :date, input_html: {value: '{{ctrl.date}}'}, as: :hidden %>
-                <%= f.input :departure_airport, input_html: {value: '{{ctrl.departure_airport_id}}'}, as: :hidden %>
-                <%= f.input :arrival_airport, input_html: {value: '{{ctrl.arrival_airport_id}}'}, as: :hidden %>
-                <%= f.input :pax, input_html: {value: '{{ctrl.pax}}'}, as: :hidden %>
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <td><%= f.input :name, label: false %></td>
-                  </tr>
-                  <tr>
-                    <th>Contact Number</th>
-                    <td><%= f.input :phone, label: false %></td>
-                  </tr>
-                  <tr>
-                    <th>E-mail</th>
-                    <td><%= f.input :email, label: false %></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <no-captcha g-recaptcha-response="gRecaptchaResponse"></no-captcha>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><%= f.submit 'Subscribe for JetSteals alerts', class: 'button red-bg' %></td>
-                  </tr>
-                </table>
-                <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
-                <%= hidden_field_tag :from_web, 'yes' %>
-            <%- end %>
+    <div id="no_jetsteal" style="display: none" class="small-12 columns">
+      <div class="middle-colm">
+        <h4 class="text-center">We are sorry we have no flights on this sector at the moment.
+        Would you like to be notified if there are any in future?</h4>
+        <fieldset class="text-center">
+          <div class="row">
+            <div class="small-12 medium-4 small-centered">
+              <%= simple_form_for JetstealSubscription.new do |f| %>
+                  <%= f.input :date, input_html: {value: '{{ctrl.date}}'}, as: :hidden %>
+                  <%= f.input :departure_airport, input_html: {value: '{{ctrl.departure_airport_id}}'}, as: :hidden %>
+                  <%= f.input :arrival_airport, input_html: {value: '{{ctrl.arrival_airport_id}}'}, as: :hidden %>
+                  <%= f.input :pax, input_html: {value: '{{ctrl.pax}}'}, as: :hidden %>
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <td><%= f.input :name, label: false %></td>
+                    </tr>
+                    <tr>
+                      <th>Contact Number</th>
+                      <td><%= f.input :phone, label: false %></td>
+                    </tr>
+                    <tr>
+                      <th>E-mail</th>
+                      <td><%= f.input :email, label: false %></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <no-captcha g-recaptcha-response="gRecaptchaResponse"></no-captcha>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><%= f.submit 'Subscribe for JetSteals alerts', class: 'button red-bg' %></td>
+                    </tr>
+                  </table>
+                  <%= hidden_field_tag :redirect_to, '/jetsteals/list' %>
+                  <%= hidden_field_tag :from_web, 'yes' %>
+              <%- end %>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button dark-gray-bg alert">Remove filters</a></p>
+        </fieldset>
+        <p class="text-center"><a href="" ng-click="ctrl.date=null;ctrl.departure_airport_id=null;ctrl.arrival_airport_id=null;ctrl.pax=null;ctrl.checkFilters()" class="button dark-gray-bg alert">Remove filters</a></p>
+      </div>
     </div>
   </div>
 </div>
