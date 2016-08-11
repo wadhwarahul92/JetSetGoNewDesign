@@ -103,9 +103,11 @@ label.error{
 }
 
 .select2-container{
-  font-size: 17px;
+  font-size: 15px;
 }
-
+*:focus {
+    outline: none;
+}
 .select2-selection__arrow{
   display: none!important;
 }
@@ -182,6 +184,7 @@ label.error{
     background: none;
     border-bottom: 1px solid white;
     color: white;
+    font-size: 15px;
     &:focus{
       outline: none;
       border: none;
@@ -205,6 +208,7 @@ label.error{
     border-bottom: 1px solid white;
     color: white;
     box-shadow: none;
+    font-size: 15px;
     &:focus{
       outline: none;
       border: none;
@@ -590,7 +594,16 @@ footer{
     }
   }
 }
-
+tbody.sapia_color tr:nth-child(odd) {background: #f9f3e6 !important}
+tbody.sapia_color tr:nth-child(even) {background: #FFF !important}
+.reveal-overlay{
+  background-color: rgba(10, 10, 10, 0.7);
+}
+.middle-colm{
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
 
 /*================================Media Query===================================*/
 
