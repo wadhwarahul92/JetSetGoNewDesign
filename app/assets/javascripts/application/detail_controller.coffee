@@ -272,6 +272,15 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
     )
 
+  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
+    debugger
+    cost + (percentage/100 * cost)
+
+  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
+    cost + (percentage/100 * cost)
+
+  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
+    cost + (percentage/100 * cost)
 
   return undefined
 

@@ -34,6 +34,9 @@ json.activities{
       json.baggage_capacity_in_kg aircraft.baggage_capacity_in_kg
       json.seating_capacity aircraft.seating_capacity
       json.cruise_speed_in_nm_per_hour aircraft.cruise_speed_in_nm_per_hour
+      json.aircraft_flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+      json.aircraft_handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+      json.aircraft_accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
       json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
 
       json.aircraft_type{

@@ -149,11 +149,28 @@ BEGIN
 
       if previous_leg.present?
 
-        if search_activity.departure_airport == airport_for_id(previous_leg.last[:arrival_airport_id])
+        # if search_activity.departure_airport == airport_for_id(previous_leg.last[:arrival_airport_id])
+        unless search_activity.departure_airport_id == aircraft.base_airport_id
+
+          accommodation_plan = nil
+
           stay_time = TimeDifference.between(
               previous_leg.last[:end_at],
               search_activity[:start_at]
           ).in_hours.to_f
+
+          if stay_time > 4 && stay_time < 24
+
+            nights =  (stay_time.to_i / 24) + 1
+
+            accommodation_plan = {
+                nights:  (stay_time.to_i/24) + 1,
+                cost: accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
+            }
+
+            plan.last.merge!(accommodation_leg: accommodation_plan)
+
+          end
 
           if stay_time > 24
             plan << {
@@ -181,17 +198,18 @@ BEGIN
                 departure_airport_id: aircraft.base_airport_id,
                 arrival_airport_id: search_activity.departure_airport.id,
                 flight_type: 'empty_leg',
-                start_at: previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(previous_leg.last[:arrival_airport_id])),
-                end_at: previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
-                landing_cost_at_arrival: departure_airport.landing_cost,
-                handling_cost_at_takeoff: arrival_airport.handling_cost(aircraft),
-                watch_hour_at_arrival: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
-                watch_hour_cost: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
-                notam_at_arrival: airport_has_notam(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
-                flight_cost: flight_cost_for_aircraft(aircraft, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport), plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+                start_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), search_activity.departure_airport),
+                end_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
+                landing_cost_at_arrival: search_activity.departure_airport.landing_cost,
+                handling_cost_at_takeoff: search_activity.arrival_airport.handling_cost(aircraft),
+                watch_hour_at_arrival: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
+                watch_hour_cost: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
+                notam_at_arrival: airport_has_notam(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+                flight_cost: flight_cost_for_aircraft(aircraft,
+                                                      previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])), previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
                 flight_time: Time.diff(
-                    plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
-                    plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+                    previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])),
+                    previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
                 )[:diff]
             }
           end

@@ -441,6 +441,18 @@
                           </div>
                         </div>
                       </div>
+                      {}
+                      <div class="cost-con" ng-if="flight_plan.accommodation_leg">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <p>Accommodation</p>
+                          </div>
+                          <div class="col-xs-5 text-right" >
+                            Night-{{flight_plan.accommodation_leg.night}}
+                            <p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>
+                          </div>
+                        </div>
+                      </div>
                       <!--<div class="cost-con">-->
                         <!--<div class="row">-->
                           <!--<div class="col-xs-7">-->

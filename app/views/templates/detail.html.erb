@@ -186,10 +186,14 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.trip.activities[0].aircraft.per_hour_cost) | currency:"":0 | indianCurrency }} per hour)</p>
+              <!--aircraft_handling_cost_commission_in_percentage-->
+              <!--aircraft_accomodation_cost_commission_in_percentage-->
+              <!--<p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.trip.activities[0].aircraft.per_hour_cost) | currency:"":0 | indianCurrency }} per hour)</p>-->
+              <p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.activities[0].aircraft.per_hour_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }} per hour)</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission(ctrl.trip.total_flight_cost) | currency:"":2 | indianCurrency}}</p>
+              <!--<p><i class="fa fa-rupee"></i> {{ctrl.trip.total_flight_cost | currency:"":2 | indianCurrency}}</p>-->
+              <p><i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.total_flight_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }}</p>
             </div>
           </div>
           <div class="row">
