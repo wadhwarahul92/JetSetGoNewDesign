@@ -196,22 +196,40 @@
               <p><i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.total_flight_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }}</p>
             </div>
           </div>
+          <!--(ctrl.trip.total_landing_cost + ctrl.trip.total_ground_handling_cost)-->
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Landing Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_landing_cost)) | currency:"":2 | indianCurrency}}</p>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Ground Handling Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="row">
             <div class="col-sm-6">
-              <p>Landing Charges</p>
+              <p>Handling Charges</p>
             </div>
             <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_landing_cost)) | currency:"":2 | indianCurrency}}</p>
+              <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>-->
+              <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_handling_cost_commission_in_percentage((ctrl.trip.total_landing_cost + ctrl.trip.total_ground_handling_cost), ctrl.trip.activities[0].aircraft.aircraft_handling_cost_commission_in_percentage) | currency:"":2 | indianCurrency}}</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <p>Ground Handling Charges</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>
-            </div>
-          </div>
+          <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+              <!--<p>Ground Handling Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-6 text-right">-->
+              <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>-->
+            <!--</div>-->
+          <!--</div>-->
           <!--<div class="row">-->
           <!--<div class="col-sm-6">-->
           <!--<p>Crew Accommodation Charges</p>-->
@@ -220,6 +238,21 @@
           <!--<p>NA</p>-->
           <!--</div>-->
           <!--</div>-->
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Accommodation</p>
+              </div>
+              <!--{{ctrl.trip}}-->
+              <div class="col-xs-5 text-right" >
+                Total nights-{{ctrl.trip.total_accommodation_nights}},
+                Total Accommodation Charges-{{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage)}}
+                <!--Night-{{flight_plan.accommodation_leg.night}}-->
+                <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-sm-6">
               <p>Watch Hours</p>
