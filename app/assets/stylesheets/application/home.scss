@@ -263,11 +263,11 @@ span.heading:after{
 }
 //top header section
 .top-header-search-con{
-	background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/360/original/homepageplane.png?1468494836);
+  background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/360/original/homepageplane.png?1468494836);
   background-attachment: fixed;
   background-position: 0px 41px;
-	width:100%;
-	min-height: 100vh;
+  width:100%;
+  min-height: 100vh;
   background-size: cover;
   position: relative;
   .header-container{
@@ -277,51 +277,51 @@ span.heading:after{
     .header#header{
       border-bottom: 0px !important;
     }
-	header{
-		width:100%;
-		display:inline-block;
-		margin:10px 0;
-		.logo-con{
-			.logo-img{
-				max-width:120px;
-			}
-		}
+  header{
+    width:100%;
+    display:inline-block;
+    margin:10px 0;
+    .logo-con{
+      .logo-img{
+        max-width:120px;
+      }
+    }
 
-		.right-header-con{
-			ul{
-				padding:0;
-				margin:0;
-				li{
-					float:right;
-					list-style:none;
-					padding:12px;
-					font-size:16px;
-					a{
-						color:#ffffff;
-						text-decoration:none;
-					}
+    .right-header-con{
+      ul{
+        padding:0;
+        margin:0;
+        li{
+          float:right;
+          list-style:none;
+          padding:12px;
+          font-size:16px;
+          a{
+            color:#ffffff;
+            text-decoration:none;
+          }
                   ul.sub-nav{
                     li{
                       list-style: none;
                       background-color: #002a80;
                     }
                   }
-				}
-			}
-		}
-	}
-	.search-main-con{
+        }
+      }
+    }
+  }
+  .search-main-con{
       position: absolute;
       bottom: 50px;
-		h2{
-			font-size:120px;
-			color:#ffffff;
-			margin:0 0 20px 0;
-			span{
-				display:block;
-				font-size:70px;
-			}
-		}
+    h2{
+      font-size:120px;
+      color:#ffffff;
+      margin:0 0 20px 0;
+      span{
+        display:block;
+        font-size:70px;
+      }
+    }
         .search-main-form{
           position: relative;
           margin-bottom: 15px;
@@ -397,7 +397,7 @@ span.heading:after{
       :-ms-input-placeholder { color:#4a3e30; } /* ie */
       input:-moz-placeholder { color:#4a3e30; }
 
-	}
+  }
 }
 
 .section-heading{
@@ -742,7 +742,7 @@ span.heading:after{
         text-decoration: none;
       }
       .controller-arrow{
-        margin-top: 80%;
+        margin-top: 100px;
       }
     }
   }
@@ -1043,7 +1043,11 @@ span.heading:after{
     }
   }
 }
-
+@media(max-width: 1024px){
+  .top-header-search-con{
+    background-attachment: inherit;
+  }
+}
 @media(max-width: 1023px){
   span.heading{
     font-size: 40px;
@@ -1112,7 +1116,53 @@ span.heading:after{
     }
   }
 }
+
+@media(max-width: 990px){
+  .jetsteel-main-con {
+    .jetsteal-slider-con {
+      .emptyleg_image{
+        height: 200px;
+        text-align: center;
+      }
+      .emptyleg_detail {
+        height: 260px;
+        h5.engine_type{
+          margin-bottom: 0;
+        }
+        h4.estimated-price{
+        margin-top: 0px;
+        }
+      }
+    }
+  }
+  .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev{
+    top: 20%;
+  }
+  .news-media-main-con{
+    .media-slider-con{
+      .media-con{
+        div.media-content{
+          min-height: 80px;
+        }
+        .controller-arrow{
+          margin-top: 200px;
+        }
+      }
+    }
+  }
+}
+
 @media(max-width: 767px){
+  .jetsteel-app {
+    .app-img-con{
+      text-align:center;
+    }
+    .app-main {
+      .app-content{
+        padding: 10px 0;
+      }
+    }
+  }
   .searvices_main_con {
     .services-widget {
       .widget{
@@ -1143,10 +1193,30 @@ span.heading:after{
         h2.aircraft_name{
           margin: 0;
           padding: 10px 15px;
+          font-size: 17px;
+        }
+        h5.engine_type{
+          font-size: 12px;
         }
         h4.estimated-price{
           margin-top: 10px;
           font-weight: bold;
+        }
+        .jetsteal-location{
+          .data{
+            h4{
+              font-size: 13px;
+            }
+            p{
+              font-size: 11px; 
+            }
+          }
+        }
+      }
+      .emptyleg_content{
+        margin-top: 10px;
+        p.content{
+          font-size: 12px;
         }
       }
     }
@@ -1269,11 +1339,9 @@ span.heading:after{
       #carousel_slider{
         .left{
           left: 0;
-          display: none;
         }
         .right{
           right: 0;
-          display: none;
         }
       }
       #courcel_slider{
@@ -1290,6 +1358,23 @@ span.heading:after{
       img{
         position: inherit;
         top:0;
+      }
+    }
+  }
+  .searvices_main_con{
+    .services-widget{
+      padding: 0;
+      .widget{
+        margin: 10px 0;
+      }
+    }
+  }
+  .news-media-main-con{
+    .media-slider-con{
+      .media-con{
+        .controller-arrow{
+          margin-top: 400px;
+        }
       }
     }
   }
