@@ -6,6 +6,8 @@ json.array! @airports do |airport|
   json.code airport.code
   json.longitude airport.longitude
   json.latitude airport.latitude
+  json.night_landing airport.night_landing
+  json.night_parking airport.night_parking
   json.label "#{airport.name}, #{airport.city.name}"
   json.city {
     json.id airport.city.id
