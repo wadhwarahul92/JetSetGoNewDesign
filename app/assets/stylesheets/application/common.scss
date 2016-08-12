@@ -90,11 +90,11 @@
   }
 }
 .text-select{
-  text-align: center;
+  text-align: left !important;
   option{
-    display: inline-block;
+    display: block;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 }
 
