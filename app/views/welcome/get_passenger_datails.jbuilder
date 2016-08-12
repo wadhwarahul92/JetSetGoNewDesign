@@ -6,6 +6,7 @@ json.array! @passenger_details do |passenger_detail|
   json.gender passenger_detail.gender
   json.contact passenger_detail.contact
   json.age passenger_detail.age
+  json.nationality passenger_detail.nationality
   json.email passenger_detail.email
 
 end

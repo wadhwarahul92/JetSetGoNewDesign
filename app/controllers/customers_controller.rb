@@ -64,6 +64,7 @@ class CustomersController < ApplicationController
                                                                         :name,
                                                                         :email,
                                                                         :age,
+                                                                        :nationality,
                                                                         :contact,:trip_id,
                                                                         :gender))
     end

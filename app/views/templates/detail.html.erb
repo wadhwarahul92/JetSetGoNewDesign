@@ -461,19 +461,19 @@
         <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.pax_active ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         </h3>
         <div ng-show="!ctrl.pax_active">
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-xs-12">
               <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
               <input type="text" class="txt-forward-email" />
               <input type="submit" class="btn-send" />
             </div>
-          </div>
-          <div class="seprator-con">
+          </div> -->
+          <!-- <div class="seprator-con">
             <div class="col-sm-offset-2 col-sm-8">
               <h4><span>OR</span></h4>
             </div>
             <div class="clearfix"></div>
-          </div>
+          </div> -->
           <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
             <div class="passenger-repeat">
               <div class="col-md-3">
@@ -489,9 +489,17 @@
               </div>
               <div class="col-md-2">
                 <h4>Title</h4>
-                <input type="text" ng-model="passenger_detail.title" class="txt-textfield" />
+                <select ng-model="passenger_detail.title" class="txt-textfield">
+                  <option>Mr.</option>
+                  <option>Ms.</option>
+                  <option>Mrs.</option>
+                  <option>Miss.</option>
+                  <option>Dr.</option>
+                  <option>Capt.</option>
+                </select>
+                <!-- <input type="text" ng-model="passenger_detail.title" class="txt-textfield" /> -->
               </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <h4>Name</h4>
                 <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
               </div>
@@ -501,20 +509,25 @@
               <!--</div>-->
               <div class="col-md-2">
                 <h4>Gender</h4>
-                <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" />
+                <select ng-model="passenger_detail.gender" class="txt-textfield">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                <!-- <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> -->
               </div>
               <div class="col-md-2">
                 <h4>Nationality</h4>
                 <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
               </div>
-              <div class="col-md-1">
+              <div class="col-md-2">
                 <h4>Age</h4>
                 <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
               </div>
-              <div class="col-md-3">
+              <!-- <div class="col-md-3">
                 <h4>Upload Passport</h4>
                 <input type="file" name="pic" class="txt-upload" accept="image/*">
-              </div>
+                <span class="mandatory-txt">Mandatory for Foreign Passengers</span>
+              </div> -->
               <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
               <div class="clearfix"></div>
             </div>
@@ -552,6 +565,7 @@
             <th>Title</th>
             <th>Name</th>
             <th>Age</th>
+            <th>Nationality</th>
             <th>Gender</th>
             <th>Email</th>
             <th>Contact</th>
@@ -562,6 +576,7 @@
             <td>{{ passenger_detail.title }}</td>
             <td>{{ passenger_detail.name }}</td>
             <td>{{ passenger_detail.age }}</td>
+            <td>{{ passenger_detail.nationality }}</td>
             <td>{{ passenger_detail.gender }}</td>
             <td>{{ passenger_detail.email }}</td>
             <td>{{ passenger_detail.contact }}</td>

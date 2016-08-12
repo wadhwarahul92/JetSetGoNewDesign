@@ -201,6 +201,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
         name: passenger_detail.name
         email: passenger_detail.email
         age: passenger_detail.age
+        nationality: passenger_detail.nationality
         contact: passenger_detail.contact
         gender: passenger_detail.gender
         trip_id: @trip_id
@@ -242,6 +243,11 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       unless passenger_detail.age
         notify
           message: 'Age cannot be blank'
+          classes: ['alert-danger']
+        return false
+      unless passenger_detail.nationality
+        notify
+          message: 'Nationality cannot be blank'
           classes: ['alert-danger']
         return false
       unless passenger_detail.gender
