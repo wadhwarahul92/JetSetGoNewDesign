@@ -67,6 +67,7 @@ class TripsController < ApplicationController
       @activities.each do |activity|
         unless activity.valid?
           save_able = false
+          activity.trip.destroy
           @error = activity.errors.full_messages.first
           break
         end

@@ -56,7 +56,6 @@ class Activity < ActiveRecord::Base
   def overlapping_activity
 
     if self.aircraft.activities.joins('INNER JOIN trips ON activities.trip_id = trips.id').where('trips.status = ?', Trip::STATUS_CONFIRMED).where('activities.start_at BETWEEN ? AND ? OR activities.end_at BETWEEN ? AND ? OR ? BETWEEN activities.start_at AND activities.end_at OR ? BETWEEN activities.start_at AND activities.end_at', self.start_at, self.end_at, self.start_at, self.end_at, self.start_at, self.end_at).any?
-      self.trip.destroy
       self.errors.add(:base, "There's already a confirmed trip/empty-leg in given time frame")
     end
   end
