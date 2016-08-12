@@ -49,13 +49,13 @@
         <!--MAYUR-->
         <div class="breakups_main_con">
           <div class="repeat-con" ng-repeat="search_activity in ctrl.search_activities">
-            <div class="col-md-2">
+            <div class="col-md-3">
               {{ctrl.airportForId(search_activity.departure_airport_id).name}}
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="row">
-                <div class="col-md-2">Night landing: {{ctrl.airportForId(search_activity.departure_airport_id).night_landing ? 'Yes' : 'No'}}</div>
-                <div class="col-md-2">Night Parking: {{ctrl.airportForId(search_activity.departure_airport_id).night_parking ? 'Yes' : 'No'}}</div>
+                <div class="col-md-3">Night landing: {{ctrl.airportForId(search_activity.departure_airport_id).night_landing ? 'Yes' : 'No'}}</div>
+                <div class="col-md-3">Night Parking: {{ctrl.airportForId(search_activity.departure_airport_id).night_parking ? 'Yes' : 'No'}}</div>
                 <!--<div class="col-md-2">Private Landing: {{ctrl.airportForId(search_activity.departure_airport_id).private_landing ? 'Yes' : 'No'}}</div>-->
               </div>
             </div>
@@ -108,7 +108,7 @@
 
 
         <!--=============-->
-        <div class="col-sm-9" ng-repeat="search_activity in ctrl.search_activities_static">
+        <div class="col-sm-10 col-xs-12" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
             <span class="data">
               <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153"> {{ctrl.airportForId(search_activity.departure_airport_id).name}}
@@ -124,8 +124,8 @@
              </span>
           </h4>
         </div>
-        <div class="col-sm-3 text-right"> 
-          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943" class="filter-icon" alt="filter"> 
+        <div class="col-sm-2 col-xs-12 text-right"> 
+          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943" class="img-responsive filter-icon" alt="filter"> 
         </div>
       </div>
     </div>
@@ -361,7 +361,7 @@
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >-->
         <div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
           <div class="result-search">
-            <div class="col-md-8 col-sm-7 col-xs-12 search_img">
+            <div class="col-md-8 col-sm-8 col-xs-12 search_img">
               <div class="img-hide">
                <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
                 <img ng-src="{{result.aircraft.image}}" alt="">
@@ -392,7 +392,7 @@
                 </span>
               </div>
             </div>
-            <div class="col-md-4 col-sm-5 col-xs-12 search-ryt-con">
+            <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
               <div class="img-bg">
                 <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
@@ -442,7 +442,7 @@
                 <div class="col-md-4 col-sm-6">
                   <div class="aircraft-img">
                     <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">-->
-                    <img class="" width="400" height="400" ng-src="{{result.aircraft.interior_image_size_400}}" alt="">
+                    <img class="" ng-src="{{result.aircraft.interior_image_size_400}}" alt="">
                   </div>
                 </div>
                 <div class="col-md-8 col-sm-6">
@@ -451,13 +451,13 @@
                     <div ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">
                       <div class="cost-con">
                         <div class="row">
-                          <div class="col-xs-5">
+                          <div class="col-sm-5 col-xs-6">
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
                           </div>
                           <div class="col-sm-2 hidden-xs text-center">
                             <p style="font-weight: bold"> >> </p>
                           </div>
-                          <div class="col-xs-5 text-right">
+                          <div class="col-sm-5 col-xs-6 text-right">
                             <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
                           </div>
                         </div>
@@ -490,8 +490,8 @@
                             <p>Accommodation</p>
                           </div>
                           <div class="col-xs-5 text-right" >
-                            Night-{{flight_plan.accommodation_leg.night}}
                             <p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>
+                            <p>Night-{{flight_plan.accommodation_leg.nights}}</p>
                           </div>
                         </div>
                       </div>
