@@ -916,6 +916,7 @@ $main-blue-color:rgb(5, 81, 139);
         color: #ffffff;
         text-decoration: none;
         border-radius: 8px;
+        margin-bottom: 5px;
       }
       .arrow-up{
         width: 0;
@@ -1300,6 +1301,10 @@ $main-blue-color:rgb(5, 81, 139);
             }
             h4{
               margin-top: 30px;
+              font-size: 22px;
+              span{
+                font-size: 12px;
+              }
             }
           }
           .detail-link-con{
@@ -1371,7 +1376,7 @@ $main-blue-color:rgb(5, 81, 139);
         }
         .search-ryt-con {
           .img-bg{
-            height: 250px;
+            height: 200px;
           }
         }
       }
@@ -1546,6 +1551,20 @@ $main-blue-color:rgb(5, 81, 139);
             }
           }
         }
+      }
+    }
+  }
+  .top_filter_nav{
+    .breakups_main_con{
+      .repeat-con{
+        font-size: 10px;
+      }
+    }
+  }
+  .search_result_main{
+    .empty-leg-toogle-main{
+      .empty-leg-btn{
+            padding: 5px 10px;
       }
     }
   }
