@@ -1,5 +1,7 @@
 $main-blue-color:rgb(5, 81, 139);
-
+*:focus{
+  outline:none;
+}
 /*media banner section start*/
 .media-banner{
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/214/original/1.jpg?1462519033) 100% no-repeat;
@@ -90,6 +92,7 @@ $main-blue-color:rgb(5, 81, 139);
         width: 100px;
         height: 30px;
         color: #000000;
+        border: 1px solid #A08263;
         font-size: 15px;
         background: transparent;
       }
