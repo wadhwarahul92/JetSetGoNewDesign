@@ -42,12 +42,12 @@ class Trip < ActiveRecord::Base
 
     self.activities.each do |activity|
       total_handling_cost = 0.0
-      amount += (activity.flight_cost * (activity.aircraft.flight_cost_commission_in_percentage/100.to_f)).round(2)
+      amount += (activity.flight_cost + (activity.flight_cost * (activity.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
       total_handling_cost = (activity.handling_cost_at_takeoff + activity.landing_cost_at_arrival)
-      amount += (total_handling_cost * (activity.aircraft.handling_cost_commission_in_percentage/100.to_f)).round(2)
+      amount += (total_handling_cost + (total_handling_cost * (activity.aircraft.handling_cost_commission_in_percentage/100.to_f))).round(2)
 
       if activity.accommodation_plan.present?
-        amount += (activity.accommodation_plan[:cost] * (activity.aircraft.accomodation_cost_commission_in_percentage/100.to_f)).round(2)
+        amount += (activity.accommodation_plan[:cost] + (activity.accommodation_plan[:cost] * (activity.aircraft.accomodation_cost_commission_in_percentage/100.to_f))).round(2)
       end
     end
 
