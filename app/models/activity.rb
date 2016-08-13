@@ -14,7 +14,7 @@ class Activity < ActiveRecord::Base
 
   belongs_to :trip
 
-  validates_presence_of :aircraft, :departure_airport, :arrival_airport, :start_at, :end_at, :trip
+  validates_presence_of :aircraft, :departure_airport, :arrival_airport, :start_at, :end_at, :trip, :handling_cost_at_takeoff, :landing_cost_at_arrival, :flight_cost
 
   ######################################################################
   # Description: An activity can have an accommodation plan, accommodation plan kicks in as soon as activity ends
@@ -99,6 +99,12 @@ class Activity < ActiveRecord::Base
 
   validate def no_pax_if_empty_leg
     self.errors.add(:pax, 'for empty leg must be zero.') if self.empty_leg? and self.pax and self.pax > 0
+  end
+
+  validate def accommodation_plan_cost
+    # this error will come if manually set accommmodation cost 'Attribute was supposed to be a Hash, but was a String. -- "" '
+    # want to check type self.accommodation_plan.to_yaml
+    self.errors.add(:accommodation_plan, "/HOTAC can't blank.") unless self.accommodation_plan[:cost].present? if self.accommodation_plan.present?
   end
 
   def activity_duration
