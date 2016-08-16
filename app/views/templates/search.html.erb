@@ -7,7 +7,7 @@
 <div class="bg-color" ng-hide="ctrl.loading">
   <div class="section-heading search_heading">
     <div class="container">
-      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/529/original/search-results.png?1470392428" alt="">
+      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/625/original/search_results.png?1471353032" alt="">
     </div>
   </div>
   <div class="top_filter_nav">
@@ -111,16 +111,16 @@
         <!--=============-->
         <div class="col-sm-10 col-xs-12" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
-            <span class="col-md-3 col-sm-4 col-xs-12 data">
+            <span class="col-md-4 col-sm-4 col-xs-12 data">
               <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153"> {{ctrl.airportForId(search_activity.departure_airport_id).name}}
             </span>
-            <span class="col-md-3 col-sm-4 col-xs-12 data">
+            <span class="col-md-4 col-sm-4 col-xs-12 data">
               <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122"> {{ctrl.airportForId(search_activity.arrival_airport_id).name}}
             </span>
              <span class="col-md-3 col-sm-3 col-xs-12 data">
                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135"> {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
              </span>
-             <span class="col-md-3 col-sm-1 col-xs-12 data">
+             <span class="col-md-1 col-sm-1 col-xs-12 data">
                <img  width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/609/original/pax50.png?1471342973"> {{search_activity.pax}}
              </span>
           </h4>
