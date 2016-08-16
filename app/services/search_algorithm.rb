@@ -41,6 +41,8 @@ class SearchAlgorithm
 
     max_pax = @search_activities.map(&:pax).max
 
+    max_runway_length = airport_max_field_for_landing(@search_activities)
+
     #find search start_time and search end_time
     #all find a time duration during which if aircraft is unavailable, it can be safely removed from search algorithm
     @start_time_for_unavailability = @search_activities.first.start_at - 3.hours
@@ -51,7 +53,7 @@ class SearchAlgorithm
         organisation_id: verified_organisations.map(&:id),
         admin_verified: true
     ).where(
-        'seating_capacity >= ?', max_pax
+        'seating_capacity >= ? AND landing_field_length_in_feet <= ? AND runway_field_length_in_feet <= ?', max_pax, max_runway_length, max_runway_length
     )
 
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
@@ -643,6 +645,12 @@ BEGIN
         watch_hour_details: watch_hour_detail
     }
 
+  end
+
+
+  def airport_max_field_for_landing(search_activities)
+    airport_ids = search_activities.map(&:departure_airport_id) + search_activities.map(&:arrival_airport_id)
+    Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
   end
 
 end
