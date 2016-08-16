@@ -103,12 +103,13 @@
             <span class="search-icon">
               <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/356/original/pax.png?1468494207" alt="">
             </span>
-            <input class="search-textfield text-white" type="text"
-                   ng-model="activity.pax"
+            <input class="search-textfield text-white"
                    autocomplete="off"
                    typeahead-editable="false"
                    typeahead-select-on-exact="true"
+                   ng-model="activity.pax"
                    uib-typeahead="pax for pax in ['1','2','3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']"
+                   type="number"
                    typeahead-min-length="0"
                    placeholder="Pax">
           </span>
