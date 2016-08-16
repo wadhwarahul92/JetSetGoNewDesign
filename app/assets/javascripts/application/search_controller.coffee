@@ -343,7 +343,5 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
          flag = true
     flag
 
-  @xxx = ->
-    debugger
   return undefined
 ]
