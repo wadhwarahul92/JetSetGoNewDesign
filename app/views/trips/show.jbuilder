@@ -31,6 +31,8 @@ json.activities{
       json.interior_image aircraft.interior.url(:original)
       json.crew aircraft.crew
       json.wifi aircraft.wifi
+      json.number_of_toilets aircraft.number_of_toilets
+      json.flight_attendant aircraft.flight_attendant
       json.baggage_capacity_in_kg aircraft.baggage_capacity_in_kg
       json.seating_capacity aircraft.seating_capacity
       json.cruise_speed_in_nm_per_hour aircraft.cruise_speed_in_nm_per_hour
