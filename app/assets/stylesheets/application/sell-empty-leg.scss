@@ -1,0 +1,83 @@
+.sell_empty_main_con{
+	width: 100%;
+	h2.heading{
+	    font-size: 24px;
+	    color: #920000;
+	    font-weight: bold;
+  	}
+  	h2.subheading{
+  		font-size: 22px;
+  		margin: 0;
+  	}
+  	.trip-main-con{
+  		width: 100%;
+  		padding: 20px 0;
+  		h3.trip-heading{
+  			font-size: 22px;
+  			font-weight: bold;
+  			span.trip{
+  				display: inline-block;
+  				margin-right: 10px;
+  			}
+  		}
+  		.location-con{
+  			width: 100%;
+  			padding: 15px 0;
+  			p{
+  				margin: 0;
+  			}
+  		}
+  		.emptyleg_sell{
+  			width: 100%;
+  			padding: 15px 0;
+  			.search_img{
+  				padding: 0;
+  				.img-hide{
+  				    width: 100%;
+  				    overflow: hidden;
+  				}
+  			}
+  			.search-ryt-con{
+  			    padding: 0;
+    			position: relative;
+    			.img-bg{
+    			    width: 100%;
+				    background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
+				    background-size: cover;
+				    padding: 15px 0;
+				    height: 320px;
+				    position: relative;
+				    label{
+				    	font-size: 14px;
+				    	margin-bottom: 0;
+				    }
+				    .txt-minmax{
+				    	width: 100%;
+				    	border: none;
+				    	height: 35px;
+				    }
+				    .sell-text{
+				    	font-size: 18px;
+				    	margin-top: 100px;
+				    	font-weight: bold;
+					    .radio-btn{
+					    	position: relative;
+					    	top: 1px;
+					    }
+				    }
+				    .sell-btn-con{
+				    	position: absolute;
+				    	bottom: 10px;
+					    .sell-btn{
+					    	width: 100%;
+					    	background-color: #920000;
+					    	border: 0;
+					    	padding: 10px;
+					    	color: #ffffff;
+					    }
+				    }
+    			}
+  			}
+  		}
+  	}
+}
