@@ -38,6 +38,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @grandTotal = 0.0
   @taxBreakup = []
 
+  @enquireBeforeLogin = {}
+
+  @current_user_present = false
+
   $scope.$watch(
     =>
       @search_activities
@@ -46,6 +50,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       @formatActivities()
   ,
     true
+  )
+
+  $scope.$watch(
+    =>
+      if CurrentUserService.currentUser
+        @current_user_present = true
+#        @enquireBeforeLogin
+#        @enquire(@enquirBeforeLogin)
+#        @enquirBeforeLogin = {}
   )
 
   @onSetTime = (newDate, oldDate, index)->
@@ -174,7 +187,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       notify
         message: 'Please sign-in or register before enquiring.'
         classes: ['alert-danger']
+      @enquireBeforeLogin = result
       CurrentUserService.openSignInModal('md')
+
 
   @previewProForma = (result)->
     if CurrentUserService.currentUser
@@ -342,6 +357,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       if plan.flight_type == 'empty_leg'
          flag = true
     flag
+
+  @enquireOnLogin = (result)->
+    @enquire(result)
+    @enquireBeforeLogin = {}
+
 
   return undefined
 ]
