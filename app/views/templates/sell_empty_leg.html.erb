@@ -1,2 +1,143 @@
-<br><br><br><br><br><br><br><br><br><br>
-sdvsdvsdv
+<div class="section-heading search_heading">
+  <div class="container">
+    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/614/original/Your_Cockpit.png?1471346420" alt="">
+  </div>
+</div>
+<div class="profile-detail-main">
+  <div class="container">
+    <div class="profile-main">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-image">
+            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="user-info">
+            <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
+            <ul class="user-detail">
+              <!-- <li>
+                <i class="fa fa-bell
+                notication-icon" aria-hidden="true"></i>
+                <h4>2</h4>
+                <p>Notication</p>
+              </li> -->
+              <li>
+                <a ng-href="enquired_jets">
+                  <h4>{{ctrl.enquired_jets.length}}</h4>
+                  <p>Enquired Bookings</p>
+                </a>
+              </li>
+              <li>
+                <a ng-href="booked_jets">
+                  <h4>{{ctrl.booked_jets.length}}</h4>
+                  <p>Confirmed Bookings</p>
+                </a>
+              </li>
+              <li>
+                <a ng-href="quotes">
+                  <h4>{{ctrl.quotes.length}}</h4>
+                  <p>Quoted Bookings</p>
+                </a>
+              </li>
+              <li>
+                <a ng-href="javascript:void(0)">
+                  <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
+                  <p>EmptyLegs</p>
+                </a>
+              </li>
+              <div class="clearfix"></div>
+            </ul>
+            <!--<a class="edit-icon" href="javascript:void(0)">-->
+            <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+            <!--</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- sell emptyleg start -->
+<div class="sell_empty_main_con">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h2 class="heading">Confirmed Booking</h2>
+				<h2 class="subheading">Following Empty Legs are generated during your trip. Would you like to sell it?</h2>
+			</div>
+			<div class="col-xs-12">
+				<div class="trip-main-con">
+					<h3 class="trip-heading"><span class="trip">Trip 1</span> starting @22july, 2016</h3>
+					<div class="location-con">
+						<div class="row">
+							<div class="departure-con col-sm-3 col-xs-6 text-center">
+								<p>
+				                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
+				                </p>
+				                <p class="city-name">Indira Gandhi International Airport</p>
+				                <p class="time-con">10:25 AM</p>
+				                <p class="date-con">20th Aug 2016</p>
+							</div>
+							<div class="arrival-con col-sm-3 col-xs-6 text-center">
+								<p>
+				                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
+				                </p>
+				                <p class="city-name">Aizawl Airport</p>
+				                <p class="time-con">11:10 AM</p>
+				                <p class="date-con">20th Aug 2016</p>
+							</div>
+						</div>
+					</div>
+					<div class="emptyleg_sell">
+						<div class="col-md-8 col-sm-8 col-xs-12 search_img">
+							<div class="img-hide">
+								<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/414/original/3-.jpg?1468909133" alt="" />
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
+							<div class="img-bg">
+								<div class="col-sm-6 col-xs-12">
+									<label>Min Cost</label>
+									<input type="text" class="txt-minmax" />
+								</div>
+								<div class="col-sm-6 col-xs-12">
+									<label>Max Cost</label>
+									<input type="text" class="txt-minmax" />
+								</div>
+								<div class="col-xs-12">
+									<p class="sell-text">
+									<input type="radio" name="sell" class="radio-btn" /> Do not want to 
+									sell
+									</p>
+								</div>
+								<div class="col-xs-12 sell-btn-con">
+									<input type="submit" value="Sell your empty legs" class="sell-btn" />
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="sell_emptyleg_con">
+					<h3>Why sell your Empty legs?</h3>
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/489/original/sellemptylegs.png?1470136884" class="img-responsive" alt="">
+						</div>
+						<div class="col-sm-4">
+							<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/488/original/getbenifits.png?1470136858" class="img-responsive" alt="">
+						</div>
+						<div class="col-sm-4">
+							<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/488/original/getbenifits.png?1470136858" class="img-responsive" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- sell emptyleg finish -->
