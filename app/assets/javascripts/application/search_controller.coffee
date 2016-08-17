@@ -56,9 +56,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     =>
       if CurrentUserService.currentUser
         @current_user_present = true
-#        @enquireBeforeLogin
-#        @enquire(@enquirBeforeLogin)
-#        @enquirBeforeLogin = {}
   )
 
   @onSetTime = (newDate, oldDate, index)->
