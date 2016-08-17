@@ -49,20 +49,12 @@ class SearchAlgorithm
     @end_time_for_unavailability = @search_activities.last.start_at + 5.hours
 
     # puts '== Loading Aircrafts'
-
     @aircrafts = Aircraft.where(
         organisation_id: verified_organisations.map(&:id),
         admin_verified: true
     ).where(
         'seating_capacity >= ? AND landing_field_length_in_feet <= ? AND runway_field_length_in_feet <= ?', max_pax, max_runway_length, max_runway_length
     )
-
-    # @aircrafts = Aircraft.where(
-    #     organisation_id: verified_organisations.map(&:id),
-    #     admin_verified: true
-    # ).where(
-    #     'seating_capacity >= ? ', max_pax
-    # )
 
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
 
