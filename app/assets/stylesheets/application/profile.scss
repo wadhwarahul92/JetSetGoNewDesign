@@ -18,6 +18,7 @@
         padding: 5px 10px;
         position: absolute;
         bottom: 0;
+        left: 0;
         color: #ffffff;
         text-decoration: none;
       }
@@ -184,6 +185,117 @@
     }
   }
 }
+
+@media(max-width: 1200px){
+  .profile-detail-main{
+    .profile-main{
+      .user-info{
+        ul.user-detail{
+          li{
+            width: 18%;   
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 990px){
+  .profile-detail-main{
+    .profile-main{
+      .user-info{
+        .name-text{
+          font-size:18px;
+          padding-top: 5px;
+        }
+        ul.user-detail{
+          li{
+            width: 24%;
+            min-height: 67px;
+            h4{
+              font-size: 25px;
+            }
+            p{
+              font-size: 14px; 
+            }
+          }
+        }
+        .edit-icon{
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .profile-detail-main{
+    .profile-main{
+      .user-info{
+        padding: 15px;
+      }
+    }
+  }
+  .profile-info-main{
+    .data-coloum{
+      margin: 6px 0;
+    }
+    .submit-con{
+      margin: 10px 0;
+      .save-btn{
+        padding: 5px 10px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media(max-width: 480px){
+  .profile-detail-main{
+    .profile-main{
+      .user-info{
+        .name-text{
+          font-size:16px;
+          padding-top: 5px;
+        }
+        ul.user-detail{
+          li{
+            width: 24%;
+            min-height: 67px;
+            h4{
+              font-size: 20px;
+            }
+            p{
+              font-size: 11px; 
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 380px){
+  .profile-detail-main{
+    .profile-main{
+      .user-info{
+        .name-text{
+          font-size:16px;
+          padding-top: 5px;
+        }
+        ul.user-detail{
+          li{
+            width: 48%;
+            margin: 5px 0;
+            min-height: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 // $main-blue-color:rgb(5, 81, 139);
 
