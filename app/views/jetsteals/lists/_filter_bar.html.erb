@@ -1,13 +1,14 @@
 <div id="sticky-anchor"></div>
+
 <div class="row hide-for-small-only hide-for-medium-only" id="filter_bar">
   <div class="columns small-11">
     <div class="row">
-      <div class="small-3 columns text-center">
+      <div class="large-3 medium-6 small-12 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/533/original/date-1.png?1470651697' %>
         <input ng-change="ctrl.checkFilters()" type="text" ng-model="ctrl.date" class="hide-for-small-only hide-for-medium-only dp datepicker-text" placeholder="Date" title="Date of travel">
         <i ng-click="ctrl.date=null;ctrl.checkFilters()" ng-show="ctrl.date" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
-      <div class="small-3 columns text-center">
+      <div class="large-3 medium-6 small-12 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/535/original/departure-1.png?1470651817' %>
         <select id="departure_airport_filter" ng-change="ctrl.checkFilters()" ng-model="ctrl.departure_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Departure airport">
           <option value="">Departure Airport</option>
@@ -17,7 +18,7 @@
         </select>
         <i ng-click="ctrl.checkFilters()" onclick="$('#departure_airport_filter').val('').change()" ng-show="ctrl.departure_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
-      <div class="small-3 columns text-center">
+      <div class="large-3 medium-6 small-12 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/536/original/arrival-1.png?1470651953' %>
         <select id="arrival_airport_filter" ng-change="ctrl.checkFilters()" ng-model="ctrl.arrival_airport_id" class="hide-for-small-only hide-for-medium-only airports" title="Arrival airport">
           <option value="">Arrival Airport</option>
@@ -27,7 +28,7 @@
         </select>
         <i ng-click="ctrl.checkFilters()" onclick="$('#arrival_airport_filter').val('').change()" ng-show="ctrl.arrival_airport_id" style="cursor: pointer;position: absolute;font-size: 20px!important;margin-top: 24px;margin-left: -16px;" class="fa fa-times"></i>
       </div>
-      <div class="small-3 columns text-center">
+      <div class="large-3 medium-6 small-12 columns text-center">
         <%= image_tag 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/534/original/pax-1.png?1470651767' %>
         <select ng-change="ctrl.checkFilters()" title="Pax" ng-model="ctrl.pax" class="hide-for-small-only hide-for-medium-only">
           <option value="">Pax</option>
