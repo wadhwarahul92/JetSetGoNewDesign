@@ -10,6 +10,12 @@ if current_user.present?
   json.sms_active current_user.sms_active
   json.image current_user.image.url(:size_250x250)
   json.api_token current_user.api_token
+
+  json.number_of_enquiries current_user.trips.where(status: Trip::STATUS_ENQUIRY).count
+  json.number_of_confirmed current_user.trips.where(status: Trip::STATUS_CONFIRMED).count
+  json.number_of_quoted current_user.trips.where(status: Trip::STATUS_QUOTED).count
+  json.number_of_empty_legs @count_empty_legs
+
   if current_user.try(:organisation).present?
     json.organisation{
       json.id current_user.organisation.id

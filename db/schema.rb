@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809094310) do
+ActiveRecord::Schema.define(version: 20160817113003) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -388,6 +388,8 @@ ActiveRecord::Schema.define(version: 20160809094310) do
     t.string   "billing_state",      limit: 255
     t.string   "billing_zip",        limit: 255
     t.string   "billing_country",    limit: 255
+    t.boolean  "is_jetsteal",                      default: false
+    t.integer  "jetsteal_id",        limit: 4
   end
 
   create_table "rpush_apps", force: :cascade do |t|
@@ -488,6 +490,13 @@ ActiveRecord::Schema.define(version: 20160809094310) do
   create_table "taxes", force: :cascade do |t|
     t.float    "service_tax",        limit: 24
     t.float    "swachh_bharat_cess", limit: 24
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text     "description",     limit: 65535
+    t.integer  "organisation_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
