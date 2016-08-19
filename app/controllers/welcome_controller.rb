@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
 
   def current_user_
     if current_user.present?
-      count_empty_legs
+      @count_empty_legs = count_empty_legs
       render status: :ok
     else
       render status: :unprocessable_entity, nothing: true

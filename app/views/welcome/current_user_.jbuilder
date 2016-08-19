@@ -14,6 +14,7 @@ if current_user.present?
   json.number_of_enquiries current_user.trips.where(status: Trip::STATUS_ENQUIRY).count
   json.number_of_confirmed current_user.trips.where(status: Trip::STATUS_CONFIRMED).count
   json.number_of_quoted current_user.trips.where(status: Trip::STATUS_QUOTED).count
+  json.number_of_empty_legs @count_empty_legs
 
   if current_user.try(:organisation).present?
     json.organisation{
