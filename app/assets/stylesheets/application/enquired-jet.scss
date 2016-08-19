@@ -114,7 +114,7 @@
         background-color: #eee;
         padding-right:0;
         img{
-          height: 320px;
+
         }
       }
       .img-bg{
@@ -154,6 +154,67 @@
             border-radius: 8px;
             margin-left: 10px;
           }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 991px){
+  .enquired-booking-main{
+    .table{
+      .info{
+        th{
+          font-size: 12px;
+        }
+      }
+      td.info-detail{
+        font-size: 12px;
+      }
+      .booking-detail{
+        .booking-img{
+          height: 250px;
+        }
+        .img-bg{
+          height: 250px;
+          h4{
+            font-size: 20px;
+            span{
+              font-size: 12px;
+            }
+          } 
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .enquired-booking-main{
+    .table{
+      .info{
+        th{
+          font-size: 10px;
+        }
+      }
+      td.info-detail{
+        font-size: 10px;
+      }
+      .booking-detail{
+        .booking-img{
+          height: inherit;
+        }
+        .img-bg{
+          height: 180px;
+          .gap{
+            height: 50px;
+          }
+        }
+        .no-padding-right{
+          padding-right: 15px;
+        }
+        .no-padding-left{
+          padding-left: 15px;
         }
       }
     }
