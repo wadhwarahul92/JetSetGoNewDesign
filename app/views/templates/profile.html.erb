@@ -20,7 +20,7 @@
           <div class="user-info">
             <h2 class="name-text">
               {{ctrl.currentUser.full_name}}
-              <span class="pull-right total-booking-text">Total Booking: {{ctrl.booked_jets.length}}</span>
+              <!--<span class="pull-right total-booking-text">Total Booking: {{ctrl.booked_jets.length}}</span>-->
               <div class="clearfix"></div>
             </h2>
             <ul class="user-detail">
@@ -33,25 +33,29 @@
 
               <li>
                 <a href="enquired_jets">
-                  <h4>{{ctrl.enquired_jets.length}}</h4>
-                  <p>Enquired Bookings</p>  
+                  <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
+                  <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
+                  <p>Enquired Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="booked_jets">
-                  <h4>{{ctrl.booked_jets.length}}</h4>
+                  <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
+                  <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
                   <p>Confirmed Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="quotes">
-                  <h4>{{ctrl.quotes.length}}</h4>
+                  <!--<h4>{{ctrl.quotes.length}}</h4>-->
+                  <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
                   <p>Quoted Bookings</p>
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)">
-                  <h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>
+                  <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
+                  <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
                   <p>EmptyLegs</p>
                 </a>
               </li>

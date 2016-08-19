@@ -4,13 +4,13 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
 
   @currentUser = null
 
-  @enquired_jets = {}
+#  @enquired_jets = {}
 
   @booked_jets = {}
 
-  @quotes = {}
-
-  @trips = {}
+#  @quotes = {}
+#
+#  @trips = {}
 
   $scope.$watch(
     =>
@@ -30,16 +30,16 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
     1500
   )
 
-  $http.get('customers/get_enquired_jets.json').success(
-    (data)=>
-      @enquired_jets = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching enquired jets'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('customers/get_enquired_jets.json').success(
+#    (data)=>
+#      @enquired_jets = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching enquired jets'
+#        classes: ['alert-danger']
+#      )
+#  )
 
   $http.get('customers/get_booked_jets.json').success(
     (data)=>
@@ -54,26 +54,26 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
       )
   )
 
-  $http.get('customers/get_user_trips.json').success(
-    (data)=>
-      @trips = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching trips'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('customers/get_user_trips.json').success(
+#    (data)=>
+#      @trips = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching trips'
+#        classes: ['alert-danger']
+#      )
+#  )
 
-  $http.get('/trips/get_quotes.json').success(
-    (data)=>
-      @quotes = data
-  ).error(
-    ->
-      notify
-        message: 'Error fetching quotes'
-        classes: ['alert-danger']
-  )
+#  $http.get('/trips/get_quotes.json').success(
+#    (data)=>
+#      @quotes = data
+#  ).error(
+#    ->
+#      notify
+#        message: 'Error fetching quotes'
+#        classes: ['alert-danger']
+#  )
 
   @count_empty_legs = (trips)->
     count = 0
