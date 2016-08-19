@@ -7,15 +7,16 @@
   <div class="container">
     <div class="profile-main">
       <div class="row">
-        <div class="col-md-3">
-          <div class="profile-image">
-            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+        <div class="col-md-3 col-sm-3">
+          <div class="profile-image text-center">
+            <!-- p_img  -->
+            <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
             <a class="add-img-icon"  ng-show="ctrl.upd_profile" href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
                     <i class="fa fa-picture-o"></i> Add/Edit Image
             </a>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-9">
           <div class="user-info">
             <h2 class="name-text">
               {{ctrl.currentUser.full_name}}
@@ -71,26 +72,24 @@
   <div class="container">
     <h2 class="heading">{{ctrl.upd_profile ? 'Edit Profile' : 'Profile'}}</h2>
     <div class="row">
-      <div class="col-md-5 col-sm-6">
+      <div class="col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/571/original/call.png?1470739658" class="icons">
           <input type="text" ng-model="ctrl.currentUser.phone" class="text-field" />
         </div>
       </div>
-      <div class="col-md-offset-2 col-md-5 col-sm-6">
+      <div class="col-md-offset-2 col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/572/original/mail.png?1470739677" class="icons">
           <!--<input type="text" value="wadhwarahul92@gmail.com" class="text-field" />-->
           <label class="text-field"> {{ctrl.currentUser.email}}</label>
         </div>
       </div>
-      <div class="col-md-5 col-sm-6">
+      <div class="col-md-5 col-sm-6 col-xs-12">
         <!--<div class="data-coloum">-->
           <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">  -->
           <!--<input type="text" ng-modal="ctrl.currentUser.dob" class="text-field" />-->
         <!--</div>-->
-
-
 
         <div class="data-coloum">
         <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/570/original/calender.png?1470739644" class="icons">
@@ -110,11 +109,8 @@
             </div>
         </span>
         </div>
-
-
-
       </div>
-      <div class="col-md-offset-2 col-md-5 col-sm-6">
+      <div class="col-md-offset-2 col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <div class="notify-btn-con">
             <span ng-model="ctrl.currentUser.sms_active" ng-class="ctrl.currentUser.sms_active ? 'true' : 'false'" ng-click="ctrl.currentUser.sms_active = !ctrl.currentUser.sms_active">
