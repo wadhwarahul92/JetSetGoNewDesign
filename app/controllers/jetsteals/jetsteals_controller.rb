@@ -10,8 +10,8 @@ class Jetsteals::JetstealsController < Jetsteals::BaseController
   end
 
   def latest_image
-    render nothing: true
-    # send_file LatestJetstealImage.new.draw
+    # render nothing: true
+    send_file LatestJetstealImage.new.draw
   end
 
   private
