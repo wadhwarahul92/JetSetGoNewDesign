@@ -42,4 +42,31 @@ class User < ActiveRecord::Base
     self.image.present?
   end
 
+  def number_of_enquiries
+    self.trips.where(status: Trip::STATUS_ENQUIRY).count
+  end
+
+  def number_of_confirmed
+    count = 0
+    count = self.trips.where(status: Trip::STATUS_CONFIRMED).count
+
+    jetsteals = nil
+    contact = Contact.where(email: self.email).first
+    if contact.present?
+      jetsteal_ids = contact.payment_transactions.where(status: 'success', is_jetsteal: true).map(&:jetsteal_id)
+      jetsteals = Jetsteal.where(id: jetsteal_ids)
+      count = count + jetsteals.count
+    end
+
+    count
+  end
+
+  def number_of_quoted
+    self.trips.where(status: Trip::STATUS_QUOTED).count
+  end
+
+  def number_of_empty_legs
+    Activity.where(trip_id: self.trips.where(status: Trip::STATUS_CONFIRMED).map(&:id), empty_leg: true).count
+  end
+
 end

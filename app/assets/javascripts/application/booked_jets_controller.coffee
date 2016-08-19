@@ -8,6 +8,8 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
 
   @booked_jets = {}
 
+  @active_jetsteal = false
+
 #  @quotes = {}
 #
 #  @trips = {}
@@ -41,10 +43,23 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
 #      )
 #  )
 
-  $http.get('customers/get_booked_jets.json').success(
+#  $http.get('customers/get_booked_jets.json').success(
+#    (data)=>
+#      @booked_jets = data
+#      for confirmed_jets in @booked_jets
+#        confirmed_jets.grandTotal = CustomerCostBreakUpsService.totalTripCost(confirmed_jets)
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching booked jets'
+#        classes: ['alert-danger']
+#      )
+#  )
+
+  $http.get('customers/get_confirmed_jetsteals.json').success(
     (data)=>
       @booked_jets = data
-      for confirmed_jets in @booked_jets
+      for confirmed_jets in @booked_jets.trips
         confirmed_jets.grandTotal = CustomerCostBreakUpsService.totalTripCost(confirmed_jets)
   ).error(
     ->
@@ -87,6 +102,9 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
     for activity in trip.activities
       if !activity.empty_leg
         return activity.start_at
+
+  @get_jetsteal_departure_date = (trip)->
+    moment(trip.start_at).format('DD MMM YYYY, h:mm a');
 
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost

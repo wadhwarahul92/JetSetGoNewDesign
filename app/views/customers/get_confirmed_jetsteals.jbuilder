@@ -7,6 +7,7 @@ json.jetsteals{
     json.start_at jetsteal.start_at
     json.end_at jetsteal.end_at
     json.cost jetsteal.cost
+    json.amount_for_seats jetsteal.payment_transaction.amount
     json.launched jetsteal.launched?
     json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
     json.email_sent jetsteal.email_sent?
@@ -71,6 +72,8 @@ json.jetsteals{
 
     }
 
+
+
   end
 }
 
@@ -86,6 +89,7 @@ json.trips{
     json.activities{
       json.array! trip.activities do |activity|
         json.id activity.id
+        json.grandTotal activity.grand_total
 
         aircraft = activity.aircraft
 

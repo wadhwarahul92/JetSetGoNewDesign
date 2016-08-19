@@ -73,4 +73,8 @@ class Jetsteal < ActiveRecord::Base
     min
   end
 
+  def payment_transaction
+    PaymentTransaction.find self.id
+  end
+
 end

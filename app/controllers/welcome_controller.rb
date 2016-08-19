@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
 
   def current_user_
     if current_user.present?
-      @count_empty_legs = count_empty_legs
+      # @count_empty_legs = count_empty_legs
       render status: :ok
     else
       render status: :unprocessable_entity, nothing: true
@@ -139,20 +139,19 @@ class WelcomeController < ApplicationController
     )
   end
 
-  def count_empty_legs
-    count = 0
-    trip_ids = current_user.trips.map(&:id)
-    count = Activity.where(trip_id: trip_ids, empty_leg: true).count
-
-    jetsteals = nil
-    confirmed_jetsteals = nil
-    contact = Contact.where(email: current_user.email).first
-    if contact.present?
-      jetsteal_ids = contact.payment_transactions.where(status: 'success', is_jetsteal: true).map(&:jetsteal_id)
-      jetsteals = Jetsteal.where(id: jetsteal_ids)
-      count = count + jetsteals.count
-    end
-    count
-  end
+  # def count_empty_legs
+  #   count = 0
+  #   trip_ids = current_user.trips.map(&:id)
+  #   count = Activity.where(trip_id: trip_ids, empty_leg: true).count
+  #
+  #   jetsteals = nil
+  #   contact = Contact.where(email: current_user.email).first
+  #   if contact.present?
+  #     jetsteal_ids = contact.payment_transactions.where(status: 'success', is_jetsteal: true).map(&:jetsteal_id)
+  #     jetsteals = Jetsteal.where(id: jetsteal_ids)
+  #     count = count + jetsteals.count
+  #   end
+  #   count
+  # end
 
 end
