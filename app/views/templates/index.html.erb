@@ -8,6 +8,7 @@
         interval: false
     });
 </script>
+
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         setTimeout(function(){
@@ -18,8 +19,40 @@
     //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
     });
 </script>
+
+<script type="text/javascript">
+  function cycleImages(){
+      var $active = $('#background_cycler .active');
+      var $next = ($('#background_cycler .active').next().length > 0) ? $('#background_cycler .active').next() : $('#background_cycler .img:first');
+      $next.css('z-index',2);//move the next image up the pile
+      $active.fadeOut(1000,function(){//fade out the top image
+        $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+        $next.css('z-index',3).addClass('active');//make the next image the top one
+      });
+    }
+
+    $(window).load(function(){
+      $('#background_cycler').fadeIn(1000);//fade the background back in once all the images are loaded
+      // run every 5s
+      setInterval('cycleImages()', 5000);
+    })
+</script>
+
 <!-- top header search con start -->
 <div class="top-header-search-con">
+  <div id="background_cycler" >
+    <script type="text/javascript">
+      $('#background_cycler').hide(); //hide the background while the images load, ready to fade in later
+    </script>
+
+    <div class="img active" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/656/original/slider1.jpg?1471607474') top left no-repeat; background-size:cover; height: 100vh; "></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/657/original/slider2.jpg?1471607491') top left no-repeat; background-size:cover; height: 100vh;"></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/658/original/slider3.jpg?1471607511') top left no-repeat; background-size:cover; height: 100vh;"></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/659/original/slider4.jpg?1471607529') top left no-repeat; background-size:cover; height: 100vh;"></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/661/original/slider5.jpg?1471607556') top left no-repeat; background-size:cover; height: 100vh;"></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/662/original/slider6.jpg?1471607577') top left no-repeat; background-size:cover; height: 100vh;"></div>
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/663/original/slider7.jpg?1471607602') top left no-repeat; background-size:cover; height: 100vh;"></div>
+  </div>
   <div class="container header-container">
     <!-- header start -->
     <!--<div>-->
