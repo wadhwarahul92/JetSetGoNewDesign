@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def number_of_empty_legs
-    Activity.where(trip_id: self.trips.map(&:id), empty_leg: true).count
+    Activity.where(trip_id: self.trips.where(status: Trip::STATUS_CONFIRMED).map(&:id), empty_leg: true).count
   end
 
 end
