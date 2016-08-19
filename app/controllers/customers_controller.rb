@@ -12,6 +12,7 @@ class CustomersController < ApplicationController
                                       :catering,
                                       :set_sell_empty_leg,
                                       :get_user_trips,
+                                      :get_confirmed_jetsteals,
                                       :change_password_]
 
   def update_image
@@ -115,6 +116,10 @@ class CustomersController < ApplicationController
     @trips = @customer.trips
   end
 
+  def get_confirmed_jetsteals
+    @jetsteals = get_jet_steals
+  end
+
   private
 
   def set_customer
@@ -140,6 +145,22 @@ class CustomersController < ApplicationController
       trip.activities.where("start_at > ?", DateTime.now).map{ |t| ids << t.trip_id }
     end
     trips.where(id: ids.uniq)
+  end
+
+  def get_jet_steals
+    jetsteals = nil
+    confirmed_jetsteals = nil
+    contact = Contact.where(email: current_user.email).first
+    if contact.present?
+      jetsteal_ids = contact.payment_transactions.where(status: 'success', is_jetsteal: true).map(&:jetsteal_id)
+      jetsteals = Jetsteal.where(id: jetsteal_ids)
+    end
+    # jetsteals
+
+    confirmed_jetsteals = {
+        trips: @customer.trips.where(status: Trip::STATUS_CONFIRMED).order(id: :desc),
+        jetsteals: jetsteals
+    }
   end
 
 end

@@ -80,6 +80,8 @@ class PaymentTransactionsController < ApplicationController
           billing_state: @response_data['billing_state'],
           billing_zip: @response_data['billing_zip'],
           billing_country: @response_data['billing_country'],
+          is_jetsteal: true,
+          jetsteal_id: @response_data['merchant_param3']
       )
       #adding transaction id to jetsteal seat books it
       @jetsteal_seats.each{ |s| s.update_attribute(:payment_transaction_id, transaction.id) }
