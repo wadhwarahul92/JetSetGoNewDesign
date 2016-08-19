@@ -62,13 +62,18 @@
   </div>
 </div>
 
-<div class="enquired-booking-main">
-  <h2 class="no-result-heading" ng-if="ctrl.booked_jets.length < 1">You have not Confirmed any booking for Now</h2>
-  <div class="container" ng-if="ctrl.booked_jets.length > 0">
+
+<!--==============Start================-->
+
+<span class="btn btn-primary" ng-click="ctrl.active_jetsteal =! ctrl.active_jetsteal">Trips</span>
+<span class="btn btn-primary"  ng-click="ctrl.active_jetsteal =! ctrl.active_jetsteal">Jetsteals</span>
+<div class="enquired-booking-main" ng-hide="ctrl.active_jetsteal">
+  <h2 class="no-result-heading" ng-if="ctrl.booked_jets.trips.length < 1">You have not Confirmed any booking for Now</h2>
+  <div class="container" ng-if="ctrl.booked_jets.trips.length > 0">
     <h2 class="heading">Confirmed Booking</h2>
 
     <table border="0" width="100%">
-      <tr ng-repeat="trip in ctrl.booked_jets">
+      <tr ng-repeat="trip in ctrl.booked_jets.trips">
         <td>
           <table class="table" width="100%">
             <tr class="info">
@@ -113,6 +118,117 @@
     </table>
   </div>
 </div>
+
+
+
+<div class="enquired-booking-main" ng-show="ctrl.active_jetsteal">
+  <h2 class="no-result-heading" ng-if="ctrl.booked_jets.jetsteals.length < 1">You have not Confirmed any booking for Now</h2>
+  <div class="container" ng-if="ctrl.booked_jets.jetsteals.length > 0">
+    <h2 class="heading">JetSteals</h2>
+
+    <table border="0" width="100%">
+      <tr ng-repeat="jetsteal in ctrl.booked_jets.jetsteals">
+        <td>
+          <table class="table" width="100%">
+            <tr class="info">
+              <th>Booking No</th>
+              <th>Aircraft Name</th>
+              <th>Departure Date</th>
+            </tr>
+            <tr>
+              <td class="info-detail">Jetsteal#{{jetsteal.id}}</td>
+              <td class="info-detail">{{jetsteal.aircraft.aircraft_type.name}}</td>
+              <td class="info-detail">{{ctrl.get_jetsteal_departure_date(jetsteal)}}</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 0">
+                <table class="booking-detail">
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-8 no-padding-right">
+                          <div class="booking-img">
+                            <img src="" class="img-responsive" ng-src="{{jetsteal.aircraft.image}}" />
+                          </div>
+                        </div>
+                        <div class="col-sm-4 no-padding-left">
+                          <div class="img-bg">
+                            <div class="gap"></div>
+                            <h4>₹ {{jetsteal.sell_by_seat ? jetsteal.amount_for_seats : jetsteal.cost | currency:"":0 | indianCurrency}}</h4>
+                            <!--<div class="detail-link-con">-->
+                              <!--<a href="/detail/{{trip.id}}">Details</a>-->
+                            <!--</div>-->
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!--=============End=================-->
+
+
+<!--===============Start========================-->
+<!--<div class="enquired-booking-main">-->
+  <!--<h2 class="no-result-heading" ng-if="ctrl.booked_jets.length < 1">You have not Confirmed any booking for Now</h2>-->
+  <!--<div class="container" ng-if="ctrl.booked_jets.length > 0">-->
+    <!--<h2 class="heading">Confirmed Booking</h2>-->
+
+    <!--<table border="0" width="100%">-->
+      <!--<tr ng-repeat="trip in ctrl.booked_jets">-->
+        <!--<td>-->
+          <!--<table class="table" width="100%">-->
+            <!--<tr class="info">-->
+              <!--<th>Booking No</th>-->
+              <!--<th>Aircraft Name</th>-->
+              <!--<th>Departure Date</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td class="info-detail">Trip#{{trip.id}}</td>-->
+              <!--<td class="info-detail">{{trip.activities[0].aircraft.name}}</td>-->
+              <!--<td class="info-detail">{{ctrl.get_departure_date(trip)}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="3" style="padding: 0">-->
+                <!--<table class="booking-detail">-->
+                  <!--<tr>-->
+                    <!--<td>-->
+                      <!--<div class="row">-->
+                        <!--<div class="col-sm-8 no-padding-right">-->
+                          <!--<div class="booking-img">-->
+                            <!--<img src="" class="img-responsive" ng-src="{{trip.activities[0].aircraft.exterior_image}}" />-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-4 no-padding-left">-->
+                          <!--<div class="img-bg">-->
+                            <!--<div class="gap"></div>-->
+                            <!--<h4>₹ {{trip.grandTotal | currency:"":0 | indianCurrency}}</h4>-->
+                            <!--<div class="detail-link-con">-->
+                              <!--<a href="/detail/{{trip.id}}">Details</a>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+                <!--</table>-->
+              <!--</td>-->
+            <!--</tr>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+    <!--</table>-->
+  <!--</div>-->
+<!--</div>-->
+<!--==============END=========================-->
+
 
 
 
