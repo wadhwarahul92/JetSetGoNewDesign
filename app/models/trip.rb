@@ -29,10 +29,13 @@ class Trip < ActiveRecord::Base
   def amount_to_pay
 
     amount = 0.0
-
+    min_mins = 0
     miscellaneous_expenses = 0.0
 
     a = []
+    total_flight_time = 0
+    hours = 0
+    minutes = 0
 
     # self.activities.each do |activity|
     #   amount += activity.flight_cost
@@ -54,11 +57,23 @@ class Trip < ActiveRecord::Base
         amount += (activity.accommodation_plan[:cost] + (activity.accommodation_plan[:cost] * (activity.aircraft.accomodation_cost_commission_in_percentage/100.to_f))).round(2)
       end
       a << activity.start_at.strftime("%d")
+      a << activity.end_at.strftime("%d")
+      hours = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[0].to_i
+      minutes = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[1].to_i
     end
-    miscellaneous_expenses
+
+    min_mins = ((a.uniq.count * 2)*60)
+
+    total_flight_mins =  (((hours*60) + minutes))
+
+    if total_flight_mins < min_mins
+      miscellaneous_expenses = ((min_mins - total_flight_mins) * (((self.activities.first.aircraft.per_hour_cost)/60) + (self.activities.first.aircraft.per_hour_cost/60 * self.activities.first.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
+      amount + miscellaneous_expenses
+    end
+
     # amount += ( ( Admin::JSG_COMMISSION_IN_PERCENTAGE / 100 ) * amount )
 
-    (amount + ( (Tax.total_tax_value / 100) * amount )).to_i
+    (amount + ( (Tax.total_tax_value / 100) * amount ) + miscellaneous_expenses).to_i
   end
 
   def payment_transaction
