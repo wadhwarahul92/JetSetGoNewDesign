@@ -1,7 +1,7 @@
 # noinspection RubyTooManyInstanceVariablesInspection
 class SearchAlgorithm
 
-  CONTINUOUS_FLIGHT_DELTA_TIME = 45.minutes
+  CONTINUOUS_FLIGHT_DELTA_TIME = 60.minutes
 
   def initialize(search_id)
 

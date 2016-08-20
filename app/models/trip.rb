@@ -30,6 +30,10 @@ class Trip < ActiveRecord::Base
 
     amount = 0.0
 
+    miscellaneous_expenses = 0.0
+
+    a = []
+
     # self.activities.each do |activity|
     #   amount += activity.flight_cost
     #   amount += activity.handling_cost_at_takeoff
@@ -49,13 +53,12 @@ class Trip < ActiveRecord::Base
       if activity.accommodation_plan.present?
         amount += (activity.accommodation_plan[:cost] + (activity.accommodation_plan[:cost] * (activity.aircraft.accomodation_cost_commission_in_percentage/100.to_f))).round(2)
       end
+      a << activity.start_at.strftime("%d")
     end
-
-
+    miscellaneous_expenses
     # amount += ( ( Admin::JSG_COMMISSION_IN_PERCENTAGE / 100 ) * amount )
 
     (amount + ( (Tax.total_tax_value / 100) * amount )).to_i
-
   end
 
   def payment_transaction
