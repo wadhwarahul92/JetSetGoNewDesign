@@ -29,8 +29,9 @@ class Trip < ActiveRecord::Base
   def amount_to_pay
 
     amount = 0.0
-    min_mins = 0
     miscellaneous_expenses = 0.0
+
+    min_mins = 0
 
     a = []
     total_flight_time = 0

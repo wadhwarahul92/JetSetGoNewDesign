@@ -34,6 +34,17 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
   #  Calculate subTotal of a single search result
   costBreakUpInstance.subTotal = (trip)->
     cost = 0.0
+
+    miscellaneous_expenses = 0.0
+
+    min_mins = 0
+
+    a = []
+    total_flight_time = 0
+    hours = 0
+    minutes = 0
+
+
     if trip.flight_plan
       for flight_plan in trip.flight_plan
         cost += flight_plan.flight_cost + (trip.aircraft_flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
@@ -55,6 +66,14 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 #                cost += empty_leg.watch_hour_cost + (costBreakUpInstance.commission/100 * empty_leg.watch_hour_cost)
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
 #            cost += chosen_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage * chosen_plan.cost)
+        debugger
+
+        moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours').format('DD')
+        moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[1],'minutes').format('DD')
+
+
+        hours += flight_plan.flight_time.split(':')[0]
+        minutes += flight_plan.flight_time.split(':')[1]
     else
       for activity in trip.activities
         cost += activity.flight_cost + (activity.aircraft.aircraft_flight_cost_commission_in_percentage/100 * activity.flight_cost)
@@ -65,6 +84,9 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
           cost = cost + (activity.accommodation_plan.cost * activity.accommodation_plan.nights) + (activity.aircraft.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 #        if activity.accommodation_plan and activity.accommodation_plan.cost
 #          cost += activity.accommodation_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
+
+
+
     cost
 
   #  Calculate Grand Total price of a single search result
