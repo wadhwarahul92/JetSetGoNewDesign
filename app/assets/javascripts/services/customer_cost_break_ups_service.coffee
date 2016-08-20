@@ -39,8 +39,8 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
     min_mins = 0
 
-    a = []
-    total_flight_time = 0
+    date_list = []
+    total_flight_mins = 0
     hours = 0
     minutes = 0
 
@@ -66,14 +66,15 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 #                cost += empty_leg.watch_hour_cost + (costBreakUpInstance.commission/100 * empty_leg.watch_hour_cost)
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
 #            cost += chosen_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage * chosen_plan.cost)
-        debugger
 
-        moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours').format('DD')
-        moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[1],'minutes').format('DD')
+        if flight_plan.flight_type == 'user_search'
+          end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
+          end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
+          date_list.push(moment(end_at).format('DD'))
 
 
-        hours += flight_plan.flight_time.split(':')[0]
-        minutes += flight_plan.flight_time.split(':')[1]
+          hours += parseInt(flight_plan.flight_time.split(':')[0])
+          minutes += parseInt(flight_plan.flight_time.split(':')[1])
     else
       for activity in trip.activities
         cost += activity.flight_cost + (activity.aircraft.aircraft_flight_cost_commission_in_percentage/100 * activity.flight_cost)
@@ -85,7 +86,16 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 #        if activity.accommodation_plan and activity.accommodation_plan.cost
 #          cost += activity.accommodation_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 
+    min_mins = ((_.uniq(date_list).length * 2)*60)
+    total_flight_mins =  (((hours*60) + minutes))
 
+    if total_flight_mins < min_mins
+      debugger
+
+#      miscellaneous_expenses = ((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
+#      amount + miscellaneous_expenses
+#    end
+#    (amount + ( (Tax.total_tax_value / 100) * amount ) + miscellaneous_expenses).to_i
 
     cost
 

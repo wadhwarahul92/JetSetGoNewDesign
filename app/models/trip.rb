@@ -33,8 +33,8 @@ class Trip < ActiveRecord::Base
 
     min_mins = 0
 
-    a = []
-    total_flight_time = 0
+    date_list = []
+    total_flight_mins = 0
     hours = 0
     minutes = 0
 
@@ -57,13 +57,13 @@ class Trip < ActiveRecord::Base
       if activity.accommodation_plan.present?
         amount += (activity.accommodation_plan[:cost] + (activity.accommodation_plan[:cost] * (activity.aircraft.accomodation_cost_commission_in_percentage/100.to_f))).round(2)
       end
-      a << activity.start_at.strftime("%d")
-      a << activity.end_at.strftime("%d")
+      date_list << activity.start_at.strftime("%d")
+      date_list << activity.end_at.strftime("%d")
       hours = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[0].to_i
       minutes = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[1].to_i
     end
 
-    min_mins = ((a.uniq.count * 2)*60)
+    min_mins = ((date_list.uniq.count * 2)*60)
 
     total_flight_mins =  (((hours*60) + minutes))
 
