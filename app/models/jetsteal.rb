@@ -74,7 +74,8 @@ class Jetsteal < ActiveRecord::Base
   end
 
   def payment_transaction
-    PaymentTransaction.find self.id
+    PaymentTransaction.where(jetsteal_id: self.id).first
+    # PaymentTransaction.find self.id
   end
 
 end
