@@ -7,6 +7,7 @@ json.jetsteals{
     json.start_at jetsteal.start_at
     json.end_at jetsteal.end_at
     json.cost jetsteal.cost
+    json.processor_response eval(jetsteal.payment_transaction.processor_response) if jetsteal.payment_transaction.processor_response.present?
     json.amount_for_seats jetsteal.payment_transaction.amount
     json.launched jetsteal.launched?
     json.flight_duration_in_minutes jetsteal.flight_duration_in_minutes
