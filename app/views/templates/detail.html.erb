@@ -213,21 +213,21 @@
       <div class="row" ng-show="ctrl.cost">
         <div class="col-sm-6">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-7">
               <p>Flight Time</p>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6 col-xs-5 text-right">
               <p>{{ctrl.trip.total_flight_time}}</p>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-7">
               <!--aircraft_handling_cost_commission_in_percentage-->
               <!--aircraft_accomodation_cost_commission_in_percentage-->
               <!--<p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.trip.activities[0].aircraft.per_hour_cost) | currency:"":0 | indianCurrency }} per hour)</p>-->
               <p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.activities[0].aircraft.per_hour_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }} per hour)</p>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6 col-xs-5 text-right">
               <!--<p><i class="fa fa-rupee"></i> {{ctrl.trip.total_flight_cost | currency:"":2 | indianCurrency}}</p>-->
               <p><i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.total_flight_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }}</p>
             </div>
@@ -250,10 +250,10 @@
             <!--</div>-->
           <!--</div>-->
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-7">
               <p>Handling Charges</p>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6 col-xs-5 text-right">
               <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>-->
               <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_handling_cost_commission_in_percentage((ctrl.trip.total_landing_cost + ctrl.trip.total_ground_handling_cost), ctrl.trip.activities[0].aircraft.aircraft_handling_cost_commission_in_percentage) | currency:"":2 | indianCurrency}}</p>
             </div>
@@ -276,13 +276,13 @@
           <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-xs-7">
+              <div class="col-sm-6 col-xs-7">
                 <p>Accommodation</p>
               </div>
               <!--{{ctrl.trip}}-->
-              <div class="col-xs-5 text-right" >
-                <p>Total nights-{{ctrl.trip.total_accommodation_nights}}</p>
-                <p>Total Accommodation Charges-{{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage)}}</p>
+              <div class="col-sm-6 col-xs-5 text-right" >
+                <p class="t-ac-charge">Total nights-{{ctrl.trip.total_accommodation_nights}}</p>
+                <p class="t-ac-charge">Total Accommodation Charges-{{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage)}}</p>
                 <!--Night-{{flight_plan.accommodation_leg.night}}-->
                 <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
               </div>
@@ -290,10 +290,10 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-7">
               <p>Watch Hours</p>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6 col-xs-5 text-right">
               <p> {{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
             </div>
           </div>
@@ -303,10 +303,10 @@
             </div>
           </div>
           <div class="row" ng-repeat="tax in ctrl.trip.taxBreakup">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-7">
               <p>{{tax.name}}({{tax.value}}%)</p>
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6 col-xs-5 text-right">
               <p><i class="fa fa-rupee"></i> {{tax.amount | currency:"":2 | indianCurrency}}</p>
             </div>
           </div>
@@ -337,7 +337,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="top-gap"></div>
+          <div class="top-gap hidden-xs"></div>
           <div class="row">
             <div class="col-xs-6">
               <h5>Booking Deposit</h5>
@@ -361,7 +361,7 @@
     <div class="customer-detail bank-detail" ng-if="ctrl.trip.status == 'confirmed'">
       <h3 ng-click="ctrl.bank = !ctrl.bank">
         Bank Details
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.bank ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.bank ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
         <div class="clearfix"></div>
         </h3>
       <div ng-show="!ctrl.bank && ctrl.trip.status == 'confirmed'">
@@ -470,10 +470,10 @@
     
     <div ng-if="ctrl.trip.status == 'confirmed'">
       <div class="row psng-cate-btns">
-        <div class="col-sm-6 text-right">
+        <div class="col-xs-6 text-right">
           <a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a>
         </div>
-        <div class="col-sm-6">
+        <div class="col-xs-6">
           <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a>
         </div>
       </div>
@@ -512,18 +512,18 @@
           </div> -->
           <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
             <div class="passenger-repeat">
-              <div class="col-md-3">
+              <div class="col-md-3 col-sm-4 col-xs-12">
                 <h4>Email Id</h4>
                 <input type="text" ng-model="passenger_detail.email" class="txt-email" />
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 col-sm-4 col-xs-12">
                 <h4>Phone</h4>
                 <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
               </div>
               <div class="col-xs-12">
                 <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-3 col-xs-12">
                 <h4>Title</h4>
                 <select ng-model="passenger_detail.title" class="txt-textfield">
                   <option>Mr.</option>
@@ -535,7 +535,7 @@
                 </select>
                 <!-- <input type="text" ng-model="passenger_detail.title" class="txt-textfield" /> -->
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-sm-3 col-xs-12">
                 <h4>Name</h4>
                 <input type="text" ng-model="passenger_detail.name" class="txt-textfield" />
               </div>
@@ -543,7 +543,7 @@
               <!--<h4>Last Name</h4>-->
               <!--<input type="text" class="txt-textfield" />-->
               <!--</div>-->
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-3 col-xs-12">
                 <h4>Gender</h4>
                 <select ng-model="passenger_detail.gender" class="txt-textfield">
                   <option>Male</option>
@@ -551,11 +551,11 @@
                 </select>
                 <!-- <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> -->
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-3 col-xs-12">
                 <h4>Nationality</h4>
                 <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-3 col-xs-12">
                 <h4>Age</h4>
                 <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
               </div>
@@ -569,10 +569,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6 text-right">
+            <div class="col-xs-6 text-right">
               <a href="javascript:void(0)" ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
             </div>
-            <div class="col-sm-6">
+            <div class="col-xs-6">
               <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
               <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
               <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>

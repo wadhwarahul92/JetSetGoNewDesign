@@ -127,6 +127,9 @@
 		p{
 			font-size: 14px;
 		}
+		p.t-ac-charge{
+			margin: 0;
+		}
 		h4{
 			font-size: 20px;
 			font-weight: bold;
@@ -157,7 +160,7 @@
 		}
 		.amount-table{
 			border-collapse: collapse;
-			width: 300px;
+			width: 290px;
 			float: right;
 			border: 1px solid #ccc;
 			tr{
@@ -251,6 +254,7 @@
 			border: none;
 			color: #ffffff;
             border-radius: 5px;
+            display: inline-block;
 		}
 		.txt-textfield{
 			width: 100%;
@@ -283,7 +287,6 @@
 }
 
 .psng-cate-btns{
-	width: 100%;
 	a{
 		padding: 10px 30px;
 	    background-color: #820000;
@@ -348,6 +351,9 @@
 			p{
 				font-size: 12px;
 			}
+			h5{
+				font-size: 18px;
+			}
 		}
 	}
 }
@@ -364,6 +370,27 @@
 						font-size: 11px;
 					}
 				}
+			}
+		}
+		.cost-detail{
+			p{
+				font-size: 10px;
+			}
+			h4{
+				font-size: 16px;
+			}
+		}
+		.bank-detail{
+			h4{
+				font-size: 14px;
+			}
+			p{
+				font-size: 12px;
+			}
+		}
+		.add-passenger{
+			h4{
+				font-size: 13px;
 			}
 		}
 	}
@@ -406,6 +433,60 @@
 					height: 180px;
 				}
 			}
+		}
+		.cost-detail{
+
+		}
+
+		.bank-detail{
+			h4{
+				font-size: 13px;
+			}
+			p{
+				font-size: 10px;
+			}
+			.amount-table{
+				width: 100%;
+			}
+		}
+		.add-passenger{
+			h4{
+				font-size: 12px;
+			}
+			.txt-email{
+				height: 30px;
+			}
+			.txt-phn{
+				height: 30px;
+			}
+			.txt-textfield{
+				height: 30px;
+			}
+			.txt-forward-email{
+				height: 30px;
+				max-width: 100%;
+			}
+			.btn-send{
+				padding:5px 10px;
+				min-width: 120px;
+				margin: 10px 0 0 0;
+				text-align: center;
+				font-size: 10px;
+			}
+			.btn-detail{
+				padding:5px 10px;
+				text-align: center;
+				font-size: 10px;
+				width: 100%;
+			}
+		}
+	}
+	.psng-cate-btns{
+		a{
+			padding:5px 10px;
+			text-align: center;
+			font-size: 10px;
+			width: 100%;
 		}
 	}
 }
