@@ -7,12 +7,12 @@
   <div class="container">
     <div class="profile-main">
       <div class="row">
-        <div class="col-md-3">
-          <div class="profile-image">
-            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+        <div class="col-md-3 col-sm-3">
+          <div class="profile-image text-center">
+            <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-9">
           <div class="user-info">
             <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
             <ul class="user-detail">
@@ -65,11 +65,22 @@
 
 <!--==============Start================-->
 
-<span class="btn btn-primary" ng-click="ctrl.active_jetsteal =! ctrl.active_jetsteal">Trips</span>
-<span class="btn btn-primary"  ng-click="ctrl.active_jetsteal =! ctrl.active_jetsteal">Jetsteals</span>
+  <div class="col-md-8 col-md-offset-2" >
+    <div class="trip_jetsteal_con" ng-init="!ctrl.active_jetsteal">
+      <span class="" ng-class="ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
+        Trips
+      </span>
+      <span class="" ng-class="!ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="!ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
+        Jetsteals
+      </span>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
 <div class="enquired-booking-main" ng-hide="ctrl.active_jetsteal">
   <h2 class="no-result-heading" ng-if="ctrl.booked_jets.trips.length < 1">You have not Confirmed any booking for Now</h2>
   <div class="container" ng-if="ctrl.booked_jets.trips.length > 0">
+    <div class="clearfix"></div>
     <h2 class="heading">Confirmed Booking</h2>
 
     <table border="0" width="100%">
@@ -118,8 +129,6 @@
     </table>
   </div>
 </div>
-
-
 
 <div class="enquired-booking-main" ng-show="ctrl.active_jetsteal">
   <h2 class="no-result-heading" ng-if="ctrl.booked_jets.jetsteals.length < 1">You have not Confirmed any booking for Now</h2>
