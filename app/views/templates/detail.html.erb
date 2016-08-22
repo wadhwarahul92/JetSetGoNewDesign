@@ -8,12 +8,12 @@
   <div class="container">
     <div class="profile-main">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3">
           <div class="profile-image">
-            <img src="" class="p_img" ng-src="{{ctrl.currentUser.image}}" alt="" />
+            <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-9">
           <div class="user-info">
             <h2 class="name-text">{{ctrl.currentUser.full_name}}</h2>
             <ul class="user-detail">
@@ -66,7 +66,7 @@
     </h2>
     <div class="booking-detail">
       <div class="row">
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 col-xs-6">
           <p>
             <b>Booking ID:</b>
             {{ctrl.trip.status == 'enquiry' ? 'Enquiry#'+ctrl.trip.id:''}}
@@ -75,7 +75,7 @@
           </p>
 
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 col-xs-6">
           <p><b>Status:</b> <span>
             {{ctrl.trip.status == 'enquiry' ? 'Pending':''}}
             {{ctrl.trip.status == 'quoted' ? 'Quoted':''}}
@@ -94,19 +94,19 @@
       <!-- && (ctrl.trip.status == 'confirmed' || journey.open) -->
       <div ng-show="ctrl.journey">
         <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
-          <div class="col-md-offset-1 col-md-3">
+          <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
             <p>{{activity.departure_airport.code}} {{activity.start_at.split(',')[1]}}</p>
             <p>{{activity.start_at.split(',')[0]}}</p>
             <p>{{activity.departure_airport.name}}</p>
             <p>{{activity.departure_airport.city.state}}</p>
           </div>
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 text-center col-sm-4 hidden-xs">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
             <p>{{activity.flight_time}}</p>
             <p>Pax: {{activity.pax}}</p>
           </div>
-          <div class="col-md-offset-1 col-md-3">
+          <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
             <p>{{activity.arrival_airport.code}} {{activity.end_at.split(',')[1]}}</p>
             <p>{{activity.end_at.split(',')[0]}}</p>
@@ -146,16 +146,50 @@
       </h3>
       <div class="jetdetail-col" ng-show="ctrl.flight">
         <div class="row">
-          <div class="col-md-8 no-right-padding">
-            <div class="img-con">
-              <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.exterior_image}}">
+          <div class="col-md-8 col-sm-8 no-right-padding">
+            <div class="icon-img-main">
+              <div class="img-con">
+                <img src="" class="img-responsive aircraft-img" ng-src="{{ctrl.trip.activities[0].aircraft.exterior_image}}">
+              </div>
+              <div class="icon-con">
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.crew}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.cabin_height_in_meters}} ft</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.seating_capacity}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kgs</span>
+                </span>
+                <span class="icons-main">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.wifi == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/608/original/wifi.png?1471342954'}}" uib-tooltip="Wifi: {{ctrl.trip.activities[0].aircraft.wifi == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.phone == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/606/original/call.png?1471342903'}}" uib-tooltip="Phone: {{ctrl.trip.activities[0].aircraft.phone == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/623/original/labotry.png?1471351162'}}" uib-tooltip="Lavatory" alt="">
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.number_of_toilets}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.flight_attendant == 'true' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{result.aircraft.phone == 'true' ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+              </div>
             </div>
           </div>
-          <div class="col-md-4 no-left-padding">
+          <div class="col-md-4 col-sm-4 no-left-padding">
             <div class="jet-detail">
               <h2>{{ctrl.trip.activities[0].aircraft.aircraft_type.name}}</h2>
               <h4>{{ctrl.trip.activities[0].aircraft.aircraft_type.aircraft_category_name}}</h4>
-              <ul class="jet-list">
+              <!-- <ul class="jet-list">
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/615/original/crew.jpg?1471346779  " /> {{ctrl.trip.activities[0].aircraft.crew}}</li>
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/498/original/wifi.JPG?1470137359" /> {{ctrl.trip.activities[0].aircraft.wifi ? 'Available' : 'Not-Available'}}</li>
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> {{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kg</li>
@@ -163,7 +197,7 @@
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/497/original/speed.jpg?1470137344" /> {{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm</li>
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/622/original/laboratory.jpg?1471351143" /> {{ctrl.trip.activities[0].aircraft.number_of_toilets ? 'Available' : 'Not-Available'}}</li>
                 <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/620/original/cabincrew.JPG?1471348407" /> {{ctrl.trip.activities[0].aircraft.flight_attendant ? 'Available' : 'Not-Available'}}</li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>
@@ -247,8 +281,8 @@
               </div>
               <!--{{ctrl.trip}}-->
               <div class="col-xs-5 text-right" >
-                Total nights-{{ctrl.trip.total_accommodation_nights}},
-                Total Accommodation Charges-{{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage)}}
+                <p>Total nights-{{ctrl.trip.total_accommodation_nights}}</p>
+                <p>Total Accommodation Charges-{{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage)}}</p>
                 <!--Night-{{flight_plan.accommodation_leg.night}}-->
                 <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
               </div>

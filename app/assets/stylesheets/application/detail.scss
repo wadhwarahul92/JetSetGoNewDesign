@@ -62,11 +62,39 @@
 			.no-left-padding{
 				padding-left: 0;
 			}
+			.icon-img-main{
+				position: relative
+			}
 			.img-con{
 				width:100%;
 				background-color: #eee;
 				height: 320px;
 				overflow: hidden;
+				img{
+					min-height: 320px;
+				}
+			}
+			.icon-con{
+				position: absolute;
+			    bottom: 0;
+			    background-color: rgba(131, 107, 84, 0.6);
+			    padding: 2px 5px;
+			    width: 100%;
+			    .icons-main{
+			    	border-right: 1px solid #ffffff;
+				    display: inline-block;
+				    min-height: 23px;
+				    text-align: center;
+				    min-width: 60px;
+			    }
+			    .icon-detail{
+			    	color: #ffffff;
+				    display: inline-block;
+				    padding-right: 5px;
+				    position: relative;
+				    top: 5px;
+				    font-size: 12px;
+			    }
 			}
 			.jet-detail{
 				width: 100%;
@@ -77,7 +105,7 @@
 				h2{
 					font-size: 24px;
 					font-weight: bold;
-					margin: 0;
+					margin: 0 0 5px 0;
 				}
 				h4{
 					font-size: 16px;
@@ -291,4 +319,93 @@
       }
     }
   }
+}
+
+@media(max-width: 1200px){
+	.detail-profile{
+		.flight-detail{
+			.jetdetail-col{
+				.img-con{
+					height: 250px;
+				}
+				.icon-con{
+					.icons-main{
+						min-width: 40px;
+						img{
+							width: 22px;
+						}
+					}
+					.icon-detail{
+						font-size: 10px;
+					}
+				}
+				.jet-detail{
+					height: 250px;
+				}
+			}
+		}
+		.cost-detail{
+			p{
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+@media(max-width: 991px){
+	.detail-profile{
+		.flight-detail{
+			.jetdetail-col{
+				.jet-detail{
+					h2{
+						font-size: 15px;
+					}
+					h4{
+						font-size: 11px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.detail-profile{
+		.booking-detail{
+			p{
+				font-size: 11px;
+			}
+		}
+		.customer-detail{
+			h3{
+				font-size: 15px;
+			}
+			h3:before{
+				width: 120px;
+			}
+		}
+		.journey-detail{
+			.location-main{
+				p{
+					font-size: 11px;
+				}
+			}
+		}
+		.flight-detail{
+			.jetdetail-col{
+				.no-right-padding{
+					padding-right: 15px;
+				}
+				.no-left-padding{
+					padding-left: 15px;
+				}
+				.img-con{
+					height: 180px;
+				}
+				.jet-detail{
+					height: 180px;
+				}
+			}
+		}
+	}
 }
