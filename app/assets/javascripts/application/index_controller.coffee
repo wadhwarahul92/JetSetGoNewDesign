@@ -59,27 +59,29 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @activities[index].start_at  = oldDate
 
   @beforeRenderDate = (view, dates, leftDate, upDate, rightDate, index)->
-    activeDate = null
-    if index > 0
-      previous_activity = @activities[index-1]
-      time = previous_activity.start_at
-      previous_date = time.getDate()
-      previous_month = time.getMonth()
-      if view == 'day'
-        for __date in dates
-          if parseInt(__date.display) < previous_date and (new Date(__date.localDateValue())).getMonth() == previous_month
-            __date.selectable = false
-      else
-        if time
-          activeDate = moment(time)
-          for date in dates
-            if date.localDateValue() <= activeDate.valueOf()
-              date.selectable = false
-    else
-      activeDate = moment(new Date())
-      for _date in dates
-        if _date.localDateValue() <= activeDate.valueOf()
-          _date.selectable = false
+#    Temp comment for create past trip
+
+#    activeDate = null
+#    if index > 0
+#      previous_activity = @activities[index-1]
+#      time = previous_activity.start_at
+#      previous_date = time.getDate()
+#      previous_month = time.getMonth()
+#      if view == 'day'
+#        for __date in dates
+#          if parseInt(__date.display) < previous_date and (new Date(__date.localDateValue())).getMonth() == previous_month
+#            __date.selectable = false
+#      else
+#        if time
+#          activeDate = moment(time)
+#          for date in dates
+#            if date.localDateValue() <= activeDate.valueOf()
+#              date.selectable = false
+#    else
+#      activeDate = moment(new Date())
+#      for _date in dates
+#        if _date.localDateValue() <= activeDate.valueOf()
+#          _date.selectable = false
 
 
   @formatActivities = ->
