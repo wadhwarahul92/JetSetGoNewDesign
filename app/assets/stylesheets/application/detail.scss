@@ -62,11 +62,39 @@
 			.no-left-padding{
 				padding-left: 0;
 			}
+			.icon-img-main{
+				position: relative
+			}
 			.img-con{
 				width:100%;
 				background-color: #eee;
 				height: 320px;
 				overflow: hidden;
+				img{
+					min-height: 320px;
+				}
+			}
+			.icon-con{
+				position: absolute;
+			    bottom: 0;
+			    background-color: rgba(131, 107, 84, 0.6);
+			    padding: 2px 5px;
+			    width: 100%;
+			    .icons-main{
+			    	border-right: 1px solid #ffffff;
+				    display: inline-block;
+				    min-height: 23px;
+				    text-align: center;
+				    min-width: 60px;
+			    }
+			    .icon-detail{
+			    	color: #ffffff;
+				    display: inline-block;
+				    padding-right: 5px;
+				    position: relative;
+				    top: 5px;
+				    font-size: 12px;
+			    }
 			}
 			.jet-detail{
 				width: 100%;
@@ -77,7 +105,7 @@
 				h2{
 					font-size: 24px;
 					font-weight: bold;
-					margin: 0;
+					margin: 0 0 5px 0;
 				}
 				h4{
 					font-size: 16px;
@@ -98,6 +126,9 @@
 	.cost-detail{
 		p{
 			font-size: 14px;
+		}
+		p.t-ac-charge{
+			margin: 0;
 		}
 		h4{
 			font-size: 20px;
@@ -129,7 +160,7 @@
 		}
 		.amount-table{
 			border-collapse: collapse;
-			width: 300px;
+			width: 290px;
 			float: right;
 			border: 1px solid #ccc;
 			tr{
@@ -223,6 +254,7 @@
 			border: none;
 			color: #ffffff;
             border-radius: 5px;
+            display: inline-block;
 		}
 		.txt-textfield{
 			width: 100%;
@@ -255,7 +287,6 @@
 }
 
 .psng-cate-btns{
-	width: 100%;
 	a{
 		padding: 10px 30px;
 	    background-color: #820000;
@@ -291,4 +322,171 @@
       }
     }
   }
+}
+
+@media(max-width: 1200px){
+	.detail-profile{
+		.flight-detail{
+			.jetdetail-col{
+				.img-con{
+					height: 250px;
+				}
+				.icon-con{
+					.icons-main{
+						min-width: 40px;
+						img{
+							width: 22px;
+						}
+					}
+					.icon-detail{
+						font-size: 10px;
+					}
+				}
+				.jet-detail{
+					height: 250px;
+				}
+			}
+		}
+		.cost-detail{
+			p{
+				font-size: 12px;
+			}
+			h5{
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+@media(max-width: 991px){
+	.detail-profile{
+		.flight-detail{
+			.jetdetail-col{
+				.jet-detail{
+					h2{
+						font-size: 15px;
+					}
+					h4{
+						font-size: 11px;
+					}
+				}
+			}
+		}
+		.cost-detail{
+			p{
+				font-size: 10px;
+			}
+			h4{
+				font-size: 16px;
+			}
+		}
+		.bank-detail{
+			h4{
+				font-size: 14px;
+			}
+			p{
+				font-size: 12px;
+			}
+		}
+		.add-passenger{
+			h4{
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.detail-profile{
+		.booking-detail{
+			p{
+				font-size: 11px;
+			}
+		}
+		.customer-detail{
+			h3{
+				font-size: 15px;
+			}
+			h3:before{
+				width: 120px;
+			}
+		}
+		.journey-detail{
+			.location-main{
+				p{
+					font-size: 11px;
+				}
+			}
+		}
+		.flight-detail{
+			.jetdetail-col{
+				.no-right-padding{
+					padding-right: 15px;
+				}
+				.no-left-padding{
+					padding-left: 15px;
+				}
+				.img-con{
+					height: 180px;
+				}
+				.jet-detail{
+					height: 180px;
+				}
+			}
+		}
+		.cost-detail{
+
+		}
+
+		.bank-detail{
+			h4{
+				font-size: 13px;
+			}
+			p{
+				font-size: 10px;
+			}
+			.amount-table{
+				width: 100%;
+			}
+		}
+		.add-passenger{
+			h4{
+				font-size: 12px;
+			}
+			.txt-email{
+				height: 30px;
+			}
+			.txt-phn{
+				height: 30px;
+			}
+			.txt-textfield{
+				height: 30px;
+			}
+			.txt-forward-email{
+				height: 30px;
+				max-width: 100%;
+			}
+			.btn-send{
+				padding:5px 10px;
+				min-width: 120px;
+				margin: 10px 0 0 0;
+				text-align: center;
+				font-size: 10px;
+			}
+			.btn-detail{
+				padding:5px 10px;
+				text-align: center;
+				font-size: 10px;
+				width: 100%;
+			}
+		}
+	}
+	.psng-cate-btns{
+		a{
+			padding:5px 10px;
+			text-align: center;
+			font-size: 10px;
+			width: 100%;
+		}
+	}
 }

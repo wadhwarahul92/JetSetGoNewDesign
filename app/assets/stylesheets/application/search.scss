@@ -1393,7 +1393,7 @@ $main-blue-color:rgb(5, 81, 139);
               min-height: inherit;
               margin: 2px 0;
               img{
-                width: 18px;
+                width: 22px;
               }
               .icon-detail{
                 font-size: 10px;
@@ -1639,6 +1639,7 @@ $main-blue-color:rgb(5, 81, 139);
         ul{
           li{
             float: none;
+            width: 100%;
           }
         }
       }
