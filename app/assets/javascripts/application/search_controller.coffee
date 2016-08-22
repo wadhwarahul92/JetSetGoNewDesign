@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', '$anchorScroll', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, $anchorScroll)->
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 
@@ -51,6 +51,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   ,
     true
   )
+
+  #$scope.gotoCost = () ->
+  #  $location.hash('cost_text');
+
+   # $anchorScroll();
 
   $scope.$watch(
     =>
@@ -361,6 +366,19 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @enquire(result)
     @enquireBeforeLogin = {}
 
+  @gotoCost = ($index)->
+
+    setTimeout(
+      ->
+        $anchorScroll.yOffset = 150;
+        if $location.hash() != 'cost_text' + $index
+          $location.hash('cost_text' + $index);
+        else
+          $anchorScroll();
+      ,
+      500
+    )
+    
 
   return undefined
 ]
