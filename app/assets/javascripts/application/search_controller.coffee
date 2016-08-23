@@ -41,6 +41,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @enquireBeforeLogin = {}
 
   @current_user_present = false
+  @count_night_flight = 0
 
   $scope.$watch(
     =>
@@ -90,6 +91,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     (data)=>
       @results = data.results
 
+#      @check_night_landing(@results)
+
       @airport_break_ups = data.airport_break_ups
       if @airport_break_ups.notam_details.length > 0
         @custom2 = true
@@ -102,6 +105,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         result.totalCost = @totalTripCost(result)
         result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
         result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+        result.night_flight = @check_night_landing(result)
 #        result.totalFlyingTime = @calculateFlyingTime(result)
 
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
@@ -361,6 +365,39 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @enquire(result)
     @enquireBeforeLogin = {}
 
+#  @check_night_landing = (result)->
+#    night = false
+#    for flight_plan in result.flight_plan
+#
+#      end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
+#      end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
+#
+#      if @is_night_time(moment(flight_plan.start_at).format("HH")) or @is_night_time(moment(end_at).format("HH"))
+#        night = true
+#    night
+
+  @check_night_landing = (result)->
+    can_night_land = true
+    for flight_plan in result.flight_plan
+      end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
+      end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
+      if @is_night_time(moment(flight_plan.start_at).format("HH")) or @is_night_time(moment(end_at).format("HH"))
+        if @airportForId(flight_plan.departure_airport_id).night_landing and @airportForId(flight_plan.arrival_airport_id).night_landing
+          # do nothing
+        else
+          can_night_land = false
+    can_night_land
+
+  @is_night_time = (time_hour)->
+    night = false
+#    if 6 < parseInt(time_hour) and parseInt(time_hour) < 18
+    if 6 > parseInt(time_hour) or parseInt(time_hour) > 18
+      night = true
+    night
+
+  @has_all_night_landing_airport = (is_night_flight)->
+    if is_night_flight
+      @count_night_flight = @count_night_flight + 1
 
   return undefined
 ]

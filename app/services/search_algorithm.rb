@@ -92,6 +92,8 @@ BEGIN
 
       next unless aircraft_ready_for_frontend?(aircraft)
 
+      # next unless aircraft_has_night_landing?(aircraft)
+
       next if aircraft_has_unavailability(aircraft)
 
       next unless aircraft_has_flying_range(aircraft)
@@ -652,5 +654,22 @@ BEGIN
     airport_ids = search_activities.map(&:departure_airport_id) + search_activities.map(&:arrival_airport_id)
     Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
   end
+
+  # def flight_in_night(time)
+  #   time
+  # end
+  #
+  # def aircraft_has_night_landing?(aircraft)
+  #   # aircraft
+  #   # activity_time_list = []
+  #
+  #   @search_activities.each do |search_activity|
+  #     return true if flight_in_night(search_activity.start_at)
+  #     return false if flight_in_night(search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)))
+  #   end
+  #
+  #   # @search_activities.first.start_at + flight_time_in_hours(aircraft, airport_for_id(@search_activities.first.departure_airport_id), airport_for_id(@search_activities.first.arrival_airport_id))
+  #   # search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)),
+  # end
 
 end
