@@ -366,11 +366,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     @enquire(result)
     @enquireBeforeLogin = {}
 
-  @gotoCost = ($index)->
+  $scope.gotoCost = ($index)->
 
     setTimeout(
       ->
         $anchorScroll.yOffset = 150;
+        $location.hash('cost_text' + $index);
         if $location.hash() != 'cost_text' + $index
           $location.hash('cost_text' + $index);
         else
