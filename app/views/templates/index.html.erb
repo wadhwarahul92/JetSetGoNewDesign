@@ -13,7 +13,7 @@
     $(document).ready(function(){
         setTimeout(function(){
             $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
-            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
             $('span.fa').css('display', 'inline-block')
         },3000);
     //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
@@ -34,7 +34,7 @@
     $(window).load(function(){
       $('#background_cycler').fadeIn(1000);//fade the background back in once all the images are loaded
       // run every 5s
-      setInterval('cycleImages()', 5000);
+      setInterval('cycleImages()', 3000);
     })
 </script>
 
