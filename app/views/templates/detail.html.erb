@@ -62,7 +62,10 @@
 <div class="profile-info-main detail-profile">
   <div class="container">
     <h2 class="heading">
-      Enquired Booking
+
+{{ctrl.trip.status == 'enquiry' ? 'Enquired Booking' : ''}}
+{{ctrl.trip.status == 'quoted' ? 'Quoted Booking' : ''}}
+{{ctrl.trip.status == 'confirmed' ? 'Confirmed Booking' : ''}}
     </h2>
     <div class="booking-detail">
       <div class="row">
