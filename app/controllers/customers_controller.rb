@@ -126,7 +126,7 @@ class CustomersController < ApplicationController
     if @trip.present?
       @activity = @trip.activities.find params[:activity_id]
       if @activity.present?
-        if @activity.update_attributes(in_sale: params[:in_sale], minimum_sale_price: params[:minimum_sale_price], maximum_sale_price: params[:maximum_sale_price])
+        if @activity.update_attributes(in_sale: params[:in_sale], minimum_sale_price: params[:minimum_sale_price], maximum_sale_price: params[:maximum_sale_price], sell_button_clicked: true)
           render status: :ok, nothing: true
         else
           render status: :unprocessable_entity, json: { errors: @activity.errors.full_messages }
