@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', '$anchorScroll', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, $anchorScroll)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 
@@ -398,19 +398,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @has_all_night_landing_airport = (is_night_flight)->
     if is_night_flight
       @count_night_flight = @count_night_flight + 1
-
-  $scope.gotoCost = ($index)->
-    setTimeout(
-      ->
-        $anchorScroll.yOffset = 150
-        $location.hash('cost_text' + $index)
-        if $location.hash() != 'cost_text' + $index
-          $location.hash('cost_text' + $index)
-        else
-          $anchorScroll()
-      ,
-      500
-    )
 
   return undefined
 ]
