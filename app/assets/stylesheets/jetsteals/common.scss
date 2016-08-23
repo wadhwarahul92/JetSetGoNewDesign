@@ -8,6 +8,9 @@ $main-yellow-color: rgb(237, 202, 0);
 no-captcha:first-child{
   display: inline-block!important;
 }
+.ms-text-capitalize{
+  text-transform: capitalize;
+}
 
 .section-heading{
   background-color: #d9c3a4;

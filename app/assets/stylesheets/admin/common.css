@@ -1,3 +1,6 @@
+.ms-text-capitalize{
+    text-transform: capitalize;
+}
 .form-control{
     border-radius: 0!important;
 }
