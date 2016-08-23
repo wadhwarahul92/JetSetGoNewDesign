@@ -6,14 +6,15 @@ class CustomersController < ApplicationController
                                       :get_upcoming_journeys,
                                       :get_past_journeys,
                                       :get_enquired_jets,
-                                      :empty_legs_offered,
+                                      # :empty_legs_offered,
                                       :get_quoted_journeys,
                                       :get_offers,
                                       :catering,
                                       :set_sell_empty_leg,
                                       :get_user_trips,
                                       :get_confirmed_jetsteals,
-                                      :change_password_]
+                                      :change_password_,
+                                      :activity_sell_empty_leg]
 
   def update_image
     if @customer.update_attributes(image: params[:file])
@@ -118,6 +119,30 @@ class CustomersController < ApplicationController
 
   def get_confirmed_jetsteals
     @jetsteals = get_jet_steals
+  end
+
+  def activity_sell_empty_leg
+    @trip = @customer.trips.find params[:trip_id]
+    if @trip.present?
+      @activity = @trip.activities.find params[:activity_id]
+      if @activity.present?
+        if @activity.update_attributes(in_sale: params[:in_sale], minimum_sale_price: params[:minimum_sale_price], maximum_sale_price: params[:maximum_sale_price])
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: @activity.errors.full_messages }
+        end
+      else
+        render status: :unprocessable_entity, json: { errors: 'Activity not present' }
+      end
+    else
+      render status: :unprocessable_entity, json: { errors: 'Trip not present' }
+    end
+
+    # if @trip.update_attributes(sell_empty_leg: params[:sell_empty_leg])
+    #   render status: :ok, nothing: true
+    # else
+    #   render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
+    # end
   end
 
   private

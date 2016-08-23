@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817113003) do
+ActiveRecord::Schema.define(version: 20160823113635) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20160817113003) do
     t.float    "empty_leg_whole_price",    limit: 24,    default: 0.0
     t.float    "empty_leg_seat_price",     limit: 24,    default: 0.0
     t.float    "grand_total",              limit: 24,    default: 0.0
+    t.boolean  "in_sale",                                default: false
+    t.float    "minimum_sale_price",       limit: 24,    default: 0.0
+    t.float    "maximum_sale_price",       limit: 24,    default: 0.0
+    t.boolean  "sell_button_clicked",                    default: false
   end
 
   create_table "admin_roles", force: :cascade do |t|

@@ -70,7 +70,7 @@
       <span class="" ng-class="ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
         Trips
       </span>
-      <span class="" ng-class="!ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="!ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
+      <span class="" ng-show="ctrl.booked_jets.jetsteals.length > 0" ng-class="!ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="!ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
         Jetsteals
       </span>
     </div>
