@@ -41,6 +41,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @enquireBeforeLogin = {}
 
   @current_user_present = false
+  @count_night_flight = 0
 
   $scope.$watch(
     =>
@@ -393,6 +394,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     if 6 > parseInt(time_hour) or parseInt(time_hour) > 18
       night = true
     night
+
+  @has_all_night_landing_airport = (is_night_flight)->
+    if is_night_flight
+      @count_night_flight = @count_night_flight + 1
 
   return undefined
 ]
