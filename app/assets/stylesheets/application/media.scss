@@ -148,8 +148,22 @@ $main-blue-color:rgb(5, 81, 139);
 
 @media(max-width: 767px) {
   .media-content-main {
+    h2{
+      font-size: 17px;
+    }
+    h2:before{
+      width: 170px;
+    }
     .media-content{
       min-height: inherit;
+      .section{
+        p{
+          font-size: 12px;
+        }
+        a{
+          font-size: 12px;
+        }
+      }
     }
   }
   .res-center-con{

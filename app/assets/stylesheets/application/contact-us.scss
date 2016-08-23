@@ -126,6 +126,7 @@
 }
 /*contact us content section finish*/
 
+
 /*new page 9-8-2016 start*/
   .contact-main-con{
     width: 100%;
@@ -139,6 +140,7 @@
       h3{
         font-size: 14px;
         font-weight: bold;
+        margin-top: 0;
       }
       ul{
         padding: 0;
@@ -195,6 +197,32 @@
       }
     }
   }
+  @media(max-width: 767px){
+  .contact-main-con{
+    .address-detail-con{
+      ul{
+        li{
+          font-size: 11px;
+        }
+      }
+    }
+    .contact-main-form{
+      font-size: 11px;
+    }
+    .contact-main-form{
+      form{
+        .contact-text{
+          height: 25px;
+        }
+        .submit-btn{
+          font-size: 12px;
+          padding: 5px 10px;
+          min-width: 200px;
+        }
+      }
+    }
+  }
+}
 /*new page 9-8-2016 finish*/
 
 @media(max-width:1024px) {
