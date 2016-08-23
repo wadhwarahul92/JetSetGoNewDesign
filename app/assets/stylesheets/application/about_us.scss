@@ -13,6 +13,7 @@
 	h2{
 		font-size: 24px;
 	    color: #920000;
+	    font-weight: bold;
 	}
 	.about-text{
 		width: 100%;
@@ -72,56 +73,61 @@
 
 
 
-@media(max-width:1100px){
-	.aboutus-banner{
-		h1{
-			font-size:40px;
-		}
+@media(max-width:1200px){
+	.about-banner-con{
+		background-position: center;
 	}
-	.investor-heading{
-		margin-top:30px;
-		h3{
-			font-size:22px;
-		}
-		p{
-			
-		}
-	}
-	
 }
 
 @media(max-width:1023px){
-	.about-content{
-			padding:10px 0;
-			.about-img{
-				text-align:center;	
-			}
-			p{
-				font-size:12px;
-			}
-		}
+
 }
 
 @media(max-width:767px){
-	.investor-heading{
-		margin-top:10px;
-		h3{
-			font-size:16px;
-		}
-		p{
-			
+	.about-banner-con{
+		padding: 10px 0;
+		.redefine-con{
+			padding: 0 0 0 10px;
+			h4{
+				font-size: 15px;
+			}
+			p{
+				font-size: 12px;
+			}
 		}
 	}
-	.ceo-section{
-		padding:10px 0;
-		.ceo{
-			margin-bottom:20px;
+	.about-content-con{
+		.about-text{
+			padding-bottom: 0;
+			p{
+				font-size: 12px;
+			}
 		}
-		h3{
-			font-size:20px;
+		.ceo-main-con{
+			.ceo-detail{
+				h5{
+					font-size: 14px;
+				}
+				h6{
+					font-size: 11px;
+				}
+				p{
+					font-size: 12px;
+				}
+			}
 		}
-		p{
-			font-size:12px;
+		.invester-main-con{
+			.investor-con{
+				.invester{
+					h5{
+						font-size: 14px;
+					}
+					h6{
+						font-size: 11px;
+						margin-bottom: 5px;
+					}
+				}
+			}
 		}
 	}
 }
