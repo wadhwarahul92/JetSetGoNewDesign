@@ -113,10 +113,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           @aircrafts = AircraftsService.aircrafts
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
-            result.totalCost = @totalTripCost(result)
-            result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
-            result.subTotal = CustomerCostBreakUpsService.subTotal(result)
-            result.night_flight = @check_night_landing(result)
+            @set_costs(result)
           @loading = false
       )
       for search_activity in @search_activities
@@ -411,6 +408,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @has_all_night_landing_airport = (is_night_flight)->
     if is_night_flight
       @count_night_flight = @count_night_flight + 1
+
+  @set_costs = (result)->
+    result.totalCost = @totalTripCost(result)
+    result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+    result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+    result.night_flight = @check_night_landing(result)
 
   return undefined
 ]
