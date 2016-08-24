@@ -35,10 +35,12 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
 
   @starting_date = (trip)->
     for activity in trip.activities
-      return moment(activity.start_at).format('Do MMMM YYYY');
+#      return moment(activity.start_at).format('Do MMMM YYYY');
+      return moment(new Date(activity.start_at)).format('Do MMMM YYYY')
 
   @date_format = (time)->
-    moment(time).format('Do MMMM YYYY, HH:MM A');
+#    moment(time).format('Do MMMM YYYY, HH:MM A');
+    moment(new Date(time)).format('Do MMMM YYYY, HH:MM A')
 
   @sell_empty_leg = (activity, trip)->
     $http.put('customers/activity_sell_empty_leg.json',{trip_id: trip.id, activity_id: activity.id, in_sale: activity.in_sale, minimum_sale_price: activity.minimum_sale_price, maximum_sale_price: activity.maximum_sale_price, sell_button_clicked: true}).success(
