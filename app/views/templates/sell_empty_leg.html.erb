@@ -70,58 +70,79 @@
         <h2 class="subheading">Following Empty Legs are generated during your trip. Would you like to sell it?</h2>
       </div>
       <div class="col-xs-12">
-        <div class="trip-main-con">
-          <h3 class="trip-heading"><span class="trip">Trip 1</span> starting @22july, 2016</h3>
-          <div class="location-con">
-            <div class="row">
-              <div class="departure-con col-sm-3 col-xs-6 text-center">
-                <p>
-                  <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
-                </p>
-                <p class="city-name">Indira Gandhi International Airport</p>
-                <p class="time-con">10:25 AM</p>
-                <p class="date-con">20th Aug 2016</p>
-              </div>
-              <div class="arrival-con col-sm-3 col-xs-6 text-center">
-                <p>
-                  <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
-                </p>
-                <p class="city-name">Aizawl Airport</p>
-                <p class="time-con">11:10 AM</p>
-                <p class="date-con">20th Aug 2016</p>
-              </div>
-            </div>
-          </div>
-          <div class="emptyleg_sell">
-            <div class="col-md-8 col-sm-8 col-xs-12 search_img">
-              <div class="img-hide">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/414/original/3-.jpg?1468909133" alt="" />
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
-              <div class="img-bg">
-                <div class="col-sm-6 col-xs-12">
-                  <label>Min Cost</label>
-                  <input type="text" class="txt-minmax" />
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                  <label>Max Cost</label>
-                  <input type="text" class="txt-minmax" />
-                </div>
-                <div class="col-xs-12">
-                  <p class="sell-text">
-                    <input type="radio" name="sell" class="radio-btn" /> Do not want to
-                    sell
+        <div class="trip-main-con" ng-repeat="trip in ctrl.confirmed_trips">
+          <h3 class="trip-heading"><span class="trip">Trip#{{trip.id}}</span> starting @ {{ctrl.starting_date(trip)}}</h3>
+
+          <div ng-if="activity.empty_leg" ng-repeat="activity in trip.activities">
+            <div class="location-con" >
+              <div class="row">
+                <div class="departure-con col-sm-3 col-xs-6 text-center">
+                  <p>
+                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
                   </p>
+                  <p class="city-name">{{activity.departure_airport.name}}</p>
+                  <p class="time-con">{{ctrl.date_format(activity.start_at).split(',')[1]}}</p>
+                  <p class="date-con">{{ctrl.date_format(activity.start_at).split(',')[0]}}</p>
                 </div>
-                <div class="col-xs-12 sell-btn-con">
-                  <input type="submit" value="Sell your empty legs" class="sell-btn" />
+                <div class="arrival-con col-sm-3 col-xs-6 text-center">
+                  <p>
+                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
+                  </p>
+                  <p class="city-name">{{activity.arrival_airport.name}}</p>
+                  <p class="time-con">{{ctrl.date_format(activity.end_at).split(',')[1]}}</p>
+                  <p class="date-con">{{ctrl.date_format(activity.end_at).split(',')[0]}}</p>
+
+                  <!--<p class="city-name">Aizawl Airport</p>-->
+                  <!--<p class="time-con">11:10 AM</p>-->
+                  <!--<p class="date-con">20th Aug 2016</p>-->
                 </div>
-                <div class="clearfix"></div>
               </div>
             </div>
-            <div class="clearfix"></div>
+            <div class="emptyleg_sell">
+              <div class="col-md-8 col-sm-8 col-xs-12 search_img">
+                <div class="img-hide">
+                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/414/original/3-.jpg?1468909133" alt="" />-->
+                  <img ng-src="{{activity.aircraft.exterior_image}}" alt="" />
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con" ng-hide="activity.sell_button_clicked" >
+                <div class="img-bg">
+                  <div class="col-sm-6 col-xs-12">
+                    <label>Min Cost</label>
+                    <input type="number" ng-model="activity.minimum_sale_price" class="txt-minmax" />
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <label>Max Cost</label>
+                    <input type="number" ng-model="activity.maximum_sale_price" class="txt-minmax" />
+                  </div>
+                  <div class="col-xs-12">
+                    <p class="sell-text">
+                      <!--<span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>-->
+
+                      <span ng-hide="activity.in_sale"><input type="checkbox" ng-click="activity.in_sale = true" ng-model="activity.in_sale"> Sell Empty leg? </span>
+                      <span ng-show="activity.in_sale"><input type="checkbox" ng-click="activity.in_sale = false" ng-model="activity.in_sale"> Sell Empty leg? </span>
+
+                      <!--<span ng-hide="activity.in_sale" ><input type="radio" name="sell" ng-model="activity.in_sale" class="radio-btn" value="false" ng-click="ctrl.uncheck(activity, activity.in_sale)" > Do not want to sell</span>-->
+                      <!--<span ng-show="activity.in_sale" > <input type="radio" name="sell" ng-model="activity.in_sale" class="radio-btn" value="true" ng-click="ctrl.uncheck(activity, activity.in_sale)" > want to sell</span>-->
+                      <!--<input type="radio"-->
+                             <!--ng-model="string"-->
+                             <!--value="string"-->
+                             <!--[name="string"]-->
+                             <!--[ng-change="string"]-->
+                             <!--ng-value="string">-->
+                    </p>
+                  </div>
+                  <div class="col-xs-12 sell-btn-con">
+                    <!--<input type="submit" value="Sell your empty legs" class="sell-btn" />-->
+                    <span class="sell-btn" ng-click="ctrl.sell_empty_leg(activity, trip)">Sell your empty legs</span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
           </div>
+
         </div>
       </div>
       <div class="col-xs-12">

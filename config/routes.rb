@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       put 'change_password_'
       get 'get_user_trips'
       get 'get_confirmed_jetsteals'
+      put 'activity_sell_empty_leg'
     end
   end
 

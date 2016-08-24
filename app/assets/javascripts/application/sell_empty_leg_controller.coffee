@@ -2,7 +2,7 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
 
   @currentUser = null
 
-  @jetsteals = {}
+  @confirmed_trips = {}
 
   $scope.$watch(
     =>
@@ -22,18 +22,43 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
     1500
   )
 
-#  $http.get('customers/get_confirmed_jetsteals.json').success(
-#    (data)=>
-#      @jetsteals = data
-#  ).error(
-#    ->
-#      notify(
-#        message: 'Error fetching booked jets'
-#        classes: ['alert-danger']
-#      )
-#  )
+  $http.get('customers/get_booked_jets.json').success(
+    (data)=>
+      @confirmed_trips = data
+  ).error(
+    ->
+      notify(
+        message: 'Error fetching booked jets'
+        classes: ['alert-danger']
+      )
+  )
 
+  @starting_date = (trip)->
+    for activity in trip.activities
+#      return moment(activity.start_at).format('Do MMMM YYYY');
+      return moment(new Date(activity.start_at)).format('Do MMMM YYYY')
 
+  @date_format = (time)->
+#    moment(time).format('Do MMMM YYYY, HH:MM A');
+    moment(new Date(time)).format('Do MMMM YYYY, HH:MM A')
+
+  @sell_empty_leg = (activity, trip)->
+    $http.put('customers/activity_sell_empty_leg.json',{trip_id: trip.id, activity_id: activity.id, in_sale: activity.in_sale, minimum_sale_price: activity.minimum_sale_price, maximum_sale_price: activity.maximum_sale_price, sell_button_clicked: true}).success(
+      ->
+        notify(
+          message: 'successfully saved.'
+        )
+        activity.sell_button_clicked = true
+    ).error(
+      (data)=>
+        notify(
+          massege: data.errors[0]
+          classes: ['alert-danger']
+        )
+    )
+
+#  @uncheck = (activity, bool)->
+#    debugger
 
   return undefined
 ]

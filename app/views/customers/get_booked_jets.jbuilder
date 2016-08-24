@@ -9,6 +9,10 @@ json.array! @trips do |trip|
   json.activities{
     json.array! trip.activities do |activity|
       json.id activity.id
+      json.in_sale activity.in_sale?
+      json.minimum_sale_price activity.minimum_sale_price
+      json.maximum_sale_price activity.maximum_sale_price
+      json.sell_button_clicked activity.sell_button_clicked
 
         aircraft = activity.aircraft
 
