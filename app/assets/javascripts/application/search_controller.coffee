@@ -59,6 +59,18 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         @current_user_present = true
   )
 
+  setTimeout(
+    ->
+      for result in @results
+        result.totalCost = @totalTripCost(result)
+        result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+        result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+        result.night_flight = @check_night_landing(result)
+#        result.totalFlyingTime = @calculateFlyingTime(result)
+  ,
+    1500
+  )
+
   @onSetTime = (newDate, oldDate, index)->
     if index + 1 == @search_activities.length
 #do nothing
@@ -101,19 +113,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       @search_activities = data.search_activities
 
-#      for result in @results
-#        result.totalCost = @totalTripCost(result)
-#        result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
-#        result.subTotal = CustomerCostBreakUpsService.subTotal(result)
-#        result.night_flight = @check_night_landing(result)
-##        result.totalFlyingTime = @calculateFlyingTime(result)
-
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
         =>
           @aircrafts = AircraftsService.aircrafts
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
-            @set_costs(result)
+#            @set_costs(result)
           @loading = false
       )
       for search_activity in @search_activities
@@ -409,11 +414,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     if is_night_flight
       @count_night_flight = @count_night_flight + 1
 
-  @set_costs = (result)->
-    result.totalCost = @totalTripCost(result)
-    result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
-    result.subTotal = CustomerCostBreakUpsService.subTotal(result)
-    result.night_flight = @check_night_landing(result)
+#  @set_costs = (result)->
+#    result.totalCost = @totalTripCost(result)
+#    result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+#    result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+#    result.night_flight = @check_night_landing(result)
 
   return undefined
 ]
