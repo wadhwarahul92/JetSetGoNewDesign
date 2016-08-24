@@ -33,3 +33,4 @@ function applyJayBar(a) {
         var o = document.querySelector(".jaybar-name span");
         o && i(), "function" == typeof callback && callback(n)
     }
+}
