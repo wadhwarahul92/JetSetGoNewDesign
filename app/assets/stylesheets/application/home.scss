@@ -398,7 +398,7 @@ span.heading:after{
         }
         .search-btn{
           width: 14.5%;
-          background-color: #750005;
+          background-color: #920000;
           display: inline-block;
           padding:10px 0;
           text-align: center;
@@ -414,7 +414,7 @@ span.heading:after{
           display: inline-block;
           padding: 7px 15px;
           border: 1px solid #ffffff;
-          background-color: #750005;
+          background-color: #920000;
           font-size: 15px;
           border-radius: 7px;
           //font-weight: bold;
@@ -586,7 +586,7 @@ span.heading:after{
         font-size: 14px;
       }
       p.member-content{
-        color: #750005;
+        color: #920000;
         font-size: 17px;
         margin-top: 20px;
       }
@@ -645,7 +645,7 @@ span.heading:after{
       min-height: 550px;
       h2{
         text-align: center;
-        color: #750005;
+        color: #920000;
         font-size: 25px;
         font-weight: bold;
       }
@@ -656,7 +656,7 @@ span.heading:after{
         min-height: 85px;
       }
       a.enquire-btn{
-        background-color: #750005;
+        background-color: #920000;
         border: 1px solid #000000;
         color: #ffffff;
         text-decoration: none;
@@ -692,29 +692,26 @@ span.heading:after{
     .helisetgo_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');
       background-size: cover;
-      min-height: 800px;
       background-position: center;
     }
     .jetsetyatra_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/410/original/yatra-services.png?1468832528');
       background-size: cover;
-      min-height: 800px;
       background-position: center;
     }
     .jetsetrescue_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/409/original/medres-services.png?1468832395');
       background-size: cover;
-      min-height: 800px;
       background-position: center;
     }
     .jetsetwed_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/532/original/JetSetWed.jpg?1470648361');
       background-size: cover;
-      min-height: 800px;
       background-position: center;
     }
     .widget-detail{
       position: relative;
+      min-height: 800px;
       .cross-icon{
         position: absolute;
         top: 6px;
@@ -751,7 +748,7 @@ span.heading:after{
       h2{
         margin: 0;
         padding: 30px 15px;
-        color: #750005;
+        color: #920000;
         font-size: 25px;
         font-weight: bold;
       }
@@ -778,7 +775,7 @@ span.heading:after{
   width: 100%;
   margin-bottom: 60px;
   .view_more_btn{
-    background-color: #750005;
+    background-color: #920000;
     display: inline-block;
     padding: 8px 20px;
     min-width: 300px;
@@ -808,7 +805,7 @@ span.heading:after{
         font-size: 12px;
       }
       .media-readmore{
-        color: #750005;
+        color: #920000;
         text-decoration: none;
       }
       .controller-arrow{
@@ -817,10 +814,26 @@ span.heading:after{
     }
   }
   .fa-chevron-right:before{
-    color: #750005;
+    color: #920000;
   }
   .fa-chevron-left:before{
-    color: #750005;
+    color: #920000;
+  }
+  .carousel-control{
+    opacity: 1;
+  }
+  .carousel-indicators{
+    bottom: -35px;
+    z-index: 1;
+  }
+  .carousel-indicators li{
+    border: 1px solid #998776;
+    margin: 2px;
+  }
+  .carousel-indicators .active{
+    background-color: #998776;
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -1234,10 +1247,51 @@ span.heading:after{
     }
   }
   .searvices_main_con {
+    padding-bottom: 10px;
     .services-widget {
       .widget{
         min-height: inherit;
         text-align: center;
+        h2{
+          font-size: 16px;
+          text-align: left;
+          padding: 0 5px;
+        }
+        p{
+          font-size: 12px;
+          text-align: left;
+          padding: 0 5px;
+        }
+        a.enquire-btn{
+          padding: 5px 10px;
+          font-size: 12px;
+        }
+        a.active-btn{
+          padding: 5px 10px;
+          font-size: 12px;
+        }
+      }
+      .widget-detail{
+        min-height: inherit;
+        .bg-overlay{
+          position: inherit;
+        }
+        h2{
+          font-size: 16px;
+          padding: 10px 5px 0 5px;
+        }
+        p{
+          font-size: 12px;
+          padding: 0 5px;
+        }
+        ul{
+          padding-left: 25px;
+          margin-bottom: 0;
+          li{
+            font-size: 13px;
+            margin: 5px 0;
+          }
+        }
       }
     }
   }
