@@ -97,63 +97,63 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       )
   )
 
-  @set_sell_empty_leg = ->
-    $http.put('customers/set_sell_empty_leg.json',{trip_id: @trip.id, sell_empty_leg: @trip.sell_empty_leg}).success(
-      ->
-        notify(
-          message: 'successfully saved.'
-        )
-    ).error(
-      (data)=>
-        notify(
-          massege: data.errors[0]
-          classes: ['alert-danger']
-        )
-    )
+#  @set_sell_empty_leg = ->
+#    $http.put('customers/set_sell_empty_leg.json',{trip_id: @trip.id, sell_empty_leg: @trip.sell_empty_leg}).success(
+#      ->
+#        notify(
+#          message: 'successfully saved.'
+#        )
+#    ).error(
+#      (data)=>
+#        notify(
+#          massege: data.errors[0]
+#          classes: ['alert-danger']
+#        )
+#    )
 
-  $http.get('customers/get_enquired_jets.json').success(
-    (data)=>
-      @enquired_jets = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching enquired jets'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('customers/get_enquired_jets.json').success(
+#    (data)=>
+#      @enquired_jets = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching enquired jets'
+#        classes: ['alert-danger']
+#      )
+#  )
 
-  $http.get('customers/get_booked_jets.json').success(
-    (data)=>
-      @booked_jets = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching booked jets'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('customers/get_booked_jets.json').success(
+#    (data)=>
+#      @booked_jets = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching booked jets'
+#        classes: ['alert-danger']
+#      )
+#  )
 
-  $http.get('customers/get_user_trips.json').success(
-    (data)=>
-      @trips = data
-  ).error(
-    ->
-      notify(
-        message: 'Error fetching trips'
-        classes: ['alert-danger']
-      )
-  )
+#  $http.get('customers/get_user_trips.json').success(
+#    (data)=>
+#      @trips = data
+#  ).error(
+#    ->
+#      notify(
+#        message: 'Error fetching trips'
+#        classes: ['alert-danger']
+#      )
+#  )
 
 
-  $http.get('/trips/get_quotes.json').success(
-    (data)=>
-      @quotes = data
-  ).error(
-    ->
-      notify
-        message: 'Error fetching quotes'
-        classes: ['alert-danger']
-  )
+#  $http.get('/trips/get_quotes.json').success(
+#    (data)=>
+#      @quotes = data
+#  ).error(
+#    ->
+#      notify
+#        message: 'Error fetching quotes'
+#        classes: ['alert-danger']
+#  )
 
   @count_empty_legs = (trips)->
     count = 0
