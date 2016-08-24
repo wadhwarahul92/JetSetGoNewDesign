@@ -13,10 +13,11 @@
             <a class="logo-img" href="/tmp_url"><img width="120" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/423/original/jsg_logo_blk.png?1468922803" /></a>
           </div>
           <div id="bs-example-navbar-collapse-1" style="overflow: inherit;" class="collapse navbar-collapse res-header navbar-hidden">
-            <div class="col-sm-10 col-xs-12 right-nav pull-right">
+            <div class="col-sm-10 col-xs-12 right-nav no-padding-right pull-right">
               <!--<p class="header-right-text text-right">+91-11-39585858 <a href="#">Login</a> | <a href="#">Signup</a></p>-->
               <ul class="top-login-nav">
-                <li class="menu-list-toogle"><a ng-click="custom = !custom" href=""><i class="fa fa-bars"></i> Menu</a>
+
+                <li class="menu-list-toogle"><a ng-click="custom = !custom" href="javascript:void(0)" ng-class="custom ? 'underline' : 'non-underline'"><i class="fa fa-bars"></i> Menu</a>
                   <ul class="dropdown main-nav" ng-show="custom">
                     <li><a href="/contact_us">Contact</a></li>
                     <li><a href="/media">Media</a></li>

@@ -1,9 +1,18 @@
+a:hover{
+  text-decoration: none;
+}
+a:focus{
+  text-decoration: none;
+}
 #header{
   width:100%;
   background: #f9f3e6;
   z-index: 2;
   .logo-main-con{
 
+  }
+  .no-padding-right{
+    padding-right: 0;
   }
   .right-nav{
     .header-right-text{
@@ -25,6 +34,12 @@
         color: #920000;
         a{
           color: #920000;
+        }
+        .underline{
+          text-decoration: underline;
+        }
+        .non-underline{
+          text-decoration: none;
         }
         ul.main-nav{
           margin: 10px 0;
