@@ -14,6 +14,9 @@
 //= require ./vendors/angular-full-calendar
 //= require ./vendors/angular-no-captcha
 //= require ./vendors/easy_pie_chart
+//= require ./vendors/bg-slider/bar.js
+//= require ./vendors/bg-slider/vegas.min.js
+//= require ./vendors/bg-slider/bgslider.min.js
 //= require ./application/base
 //= require ./application/current_user_service
 //= require ./application/header_controller
