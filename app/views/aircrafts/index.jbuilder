@@ -17,6 +17,11 @@ json.array! @aircrafts do |aircraft|
   json.cruise_speed_in_nm_per_hour aircraft.cruise_speed_in_nm_per_hour
   json.flying_range_in_nm aircraft.flying_range_in_nm
   json.per_hour_cost aircraft.per_hour_cost
+
+  json.flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+  json.handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+  json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
+
   json.image aircraft.image.url(:original)
   json.interior_image_original aircraft.interior.url(:original)
   json.interior_image_size_400 aircraft.interior.url(:size_400x400)

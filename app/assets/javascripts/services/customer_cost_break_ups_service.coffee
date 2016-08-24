@@ -35,7 +35,6 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
   costBreakUpInstance.subTotal = (trip)->
     trip.is_miscellaneous_expenses = false
     trip.miscellaneous_expenses_amount = 0.0
-    trip.extra_time = 0
     cost = 0.0
 
     miscellaneous_expenses = 0.0
@@ -50,14 +49,14 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
     if trip.flight_plan
       for flight_plan in trip.flight_plan
-        cost += flight_plan.flight_cost + (trip.aircraft_flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
-        cost += flight_plan.handling_cost_at_takeoff + (trip.aircraft_handling_cost_commission_in_percentage/100 * flight_plan.handling_cost_at_takeoff)
+        cost += flight_plan.flight_cost + (trip.aircraft.flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
+        cost += flight_plan.handling_cost_at_takeoff + (trip.aircraft.handling_cost_commission_in_percentage/100 * flight_plan.handling_cost_at_takeoff)
         # aircraft_handling_cost_commission_in_percentage is same for landing_cost
-        cost += flight_plan.landing_cost_at_arrival + (trip.aircraft_handling_cost_commission_in_percentage/100 * flight_plan.landing_cost_at_arrival)
+        cost += flight_plan.landing_cost_at_arrival + (trip.aircraft.handling_cost_commission_in_percentage/100 * flight_plan.landing_cost_at_arrival)
         if flight_plan.watch_hour_at_arrival
           cost += flight_plan.watch_hour_cost + (costBreakUpInstance.commission/100 * flight_plan.watch_hour_cost)
         if flight_plan.accommodation_leg
-          cost = cost + (flight_plan.accommodation_leg.cost * flight_plan.accommodation_leg.nights) + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * flight_plan.accommodation_leg.cost)
+          cost = cost + (flight_plan.accommodation_leg.cost * flight_plan.accommodation_leg.nights) + (trip.aircraft.accomodation_cost_commission_in_percentage/100 * flight_plan.accommodation_leg.cost)
 #        if flight_plan.chosen_intermediate_plan
 #          chosen_plan = flight_plan[flight_plan.chosen_intermediate_plan]
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'empty_leg_plan'

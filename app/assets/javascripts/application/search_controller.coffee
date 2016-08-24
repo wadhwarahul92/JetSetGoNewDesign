@@ -101,18 +101,22 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       @search_activities = data.search_activities
 
-      for result in @results
-        result.totalCost = @totalTripCost(result)
-        result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
-        result.subTotal = CustomerCostBreakUpsService.subTotal(result)
-        result.night_flight = @check_night_landing(result)
-#        result.totalFlyingTime = @calculateFlyingTime(result)
+#      for result in @results
+#        result.totalCost = @totalTripCost(result)
+#        result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+#        result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+#        result.night_flight = @check_night_landing(result)
+##        result.totalFlyingTime = @calculateFlyingTime(result)
 
       AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
         =>
           @aircrafts = AircraftsService.aircrafts
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
+            result.totalCost = @totalTripCost(result)
+            result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
+            result.subTotal = CustomerCostBreakUpsService.subTotal(result)
+            result.night_flight = @check_night_landing(result)
           @loading = false
       )
       for search_activity in @search_activities
@@ -344,6 +348,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
+
+#  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
+#
+#  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
+#
+#  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
 
   @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
     cost + percentage/100 * cost
