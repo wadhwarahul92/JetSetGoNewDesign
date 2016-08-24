@@ -353,7 +353,6 @@
   </div>
   <span ng-if="ctrl.enquireBeforeLogin.aircraft && ctrl.current_user_present" ng-init="ctrl.enquireOnLogin(ctrl.enquireBeforeLogin)"></span>
   <div ng-if="ctrl.airport_break_ups.notam_details.length < 1" class="search_result_main">
-
     <div class="container">
       <div class="search_result">
 
@@ -364,6 +363,7 @@
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.convertToInt(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.convertToInt(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.convertToInt(filterFlyingTime)[0] == result.totalCost || ctrl.convertToInt(filterFlyingTime)[1] == result.totalCost " >-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >-->
         <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
+        <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
           <!--<div class="result-search" ng-if="result.night_flight">-->
           <div class="result-search" ng-show="result.night_flight">
@@ -489,11 +489,11 @@
                         <div class="row">
                           <div class="col-xs-7">
                             <!--<p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>-->
-                            <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)</p>
+                            <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)</p>
                           </div>
                           <div class="col-xs-5 text-right">
                             <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
-                            <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
+                            <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
                           </div>
                         </div>
                       </div>
@@ -534,7 +534,7 @@
                             <p>Handling Charges</p>
                           </div>
                           <div class="col-xs-5">
-                            <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft_handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
+                            <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft.handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
                           </div>
                         </div>
                       </div>
@@ -607,12 +607,12 @@
                           <div class="row">
                             <div class="col-xs-7">
                               <!--<p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)-->
-                              <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)
+                              <p>Flight Cost (₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(result.aircraft.per_hour_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency}} per hour)
                               </p>
                             </div>
                             <div class="col-xs-5 text-right">
                               <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
-                              <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft_flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
+                              <p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>
                             </div>
                           </div>
                         </div>
@@ -643,7 +643,7 @@
                               <p>Handling Charges</p>
                             </div>
                             <div class="col-xs-5">
-                              <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft_handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
+                              <p class="text-right">₹ {{ctrl.aircraft_handling_cost_commission_in_percentage(flight_plan.landing_cost_at_arrival + flight_plan.handling_cost_at_takeoff, result.aircraft.handling_cost_commission_in_percentage) | currency:"":0 | indianCurrency}}</p>
                             </div>
                           </div>
                         </div>

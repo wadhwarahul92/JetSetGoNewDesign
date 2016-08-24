@@ -101,17 +101,17 @@ BEGIN
       # next if aircraft_has_trip(aircraft)
 
       @results << {
-          aircraft: aircraft,
+          # aircraft: aircraft,
           aircraft_id: aircraft.id,
-          aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
-          aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
-          aircraft_accomodation_cost_commission_in_percentage: aircraft.accomodation_cost_commission_in_percentage,
-          aircraft_type_category: aircraft.aircraft_type.aircraft_category.name,
-          aircraft_seating_capacity: aircraft.seating_capacity,
-          aircraft_type_name: aircraft.aircraft_type.name,
-          aircraft_tail_number: aircraft.tail_number,
-          aircraft_image: aircraft.image.url(:original),
-          aircraft_interior_image: aircraft.interior.url(:original),
+          # aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
+          # aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
+          # aircraft_accomodation_cost_commission_in_percentage: aircraft.accomodation_cost_commission_in_percentage,
+          # aircraft_type_category: aircraft.aircraft_type.aircraft_category.name,
+          # aircraft_seating_capacity: aircraft.seating_capacity,
+          # aircraft_type_name: aircraft.aircraft_type.name,
+          # aircraft_tail_number: aircraft.tail_number,
+          # aircraft_image: aircraft.image.url(:original),
+          # aircraft_interior_image: aircraft.interior.url(:original),
           flight_plan: flight_plan(aircraft),
       }
 
