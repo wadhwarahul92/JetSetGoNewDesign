@@ -268,6 +268,14 @@
               <h4>Sub Total</h4>
             </div>
           </div>
+          <div class="row" ng-show="ctrl.trip.is_miscellaneous_expenses">
+            <div class="col-sm-6">
+              <p>Miscellaneous Expenses</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p><i class="fa fa-rupee"></i> {{ctrl.trip.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
+            </div>
+          </div>
           <div class="row" ng-repeat="tax in ctrl.trip.taxBreakup">
             <div class="col-sm-6">
               <p>{{tax.name}}({{tax.value}}%)</p>
@@ -310,7 +318,7 @@
             </div>
             <div class="col-xs-6 text-right">
               <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</h5>
-              <p>(Pay 10% for book flight)</p>
+              <p ng-hide="ctrl.trip == 'confirmed'">(Pay 10% for book flight)</p>
             </div>
           </div>
           <div class="row">
