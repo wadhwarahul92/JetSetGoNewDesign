@@ -556,7 +556,7 @@ span.heading:after{
         position: absolute;
         bottom: 0;
         a{
-          background-color: #750005;
+          background-color: #920000;
           display: inline-block;
           padding: 8px 20px;
           text-align: center;
@@ -569,15 +569,14 @@ span.heading:after{
       }
     }
     .emptyleg_content{
-      border-left: 1px solid #750005;
-      margin-top: 50px;
-      padding: 10px 15px 10px 15px;
+      border-left: 2px solid #920000;
+      margin-top: 30px;
+      padding: 5px 15px 5px 15px;
       p.content{
         font-size: 15px;
-        font-weight: bold;
       }
       a.view-more-btn{
-        background-color: #750005;
+        background-color: #920000;
         display: inline-block;
         padding: 8px 20px;
         text-align: center;
@@ -594,7 +593,7 @@ span.heading:after{
     }
     .enquire-con{
       .ennquire-btn{
-        background-color: #750005;
+        background-color: #920000;
         border: 1px solid #f2f2f2;
         color: #ffffff;
         text-decoration: none;
@@ -605,11 +604,27 @@ span.heading:after{
       }
     }
   }
+  .carousel-control{
+    opacity: 1;
+  }
+  .carousel-indicators{
+    bottom: -35px;
+    z-index: 1;
+  }
+  .carousel-indicators li{
+    border: 1px solid #998776;
+    margin: 2px;
+  }
+  .carousel-indicators .active{
+    background-color: #998776;
+    width: 10px;
+    height: 10px;
+  }
   .fa-chevron-right:before{
-    color: #750005;
+    color: #920000;
   }
   .fa-chevron-left:before{
-    color: #750005;
+    color: #920000;
   }
 }
 
@@ -666,17 +681,13 @@ span.heading:after{
         margin: 10px;
         float: right;
         border-radius: 5px;
-      }
-      a.enquire-btn:hover{
-        background-color: #DABB9C;
-        color: #000000;
-        border: 1px solid #000000;
         -webkit-transition: all 0.6s ease-in-out;
         -moz-transition: all 0.6s ease-in-out;
         -ms-transition: all 0.6s ease-in-out;
         -o-transition: all 0.6s ease-in-out;
         transition: all 0.6s ease-in-out;
       }
+      
     }
     .helisetgo_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');

@@ -6,8 +6,10 @@ footer{
   border-top: 10px solid #301d0c;
   padding: 15px 0;
   h4{
-    font-size: 16px;
+    font-size: 15px;
     color: #000000;
+    margin-bottom: 0;
+    font-weight: bold;
   }
   .member-con{
     min-height: 150px;
@@ -87,7 +89,7 @@ footer{
         float: left;
         margin-right: 10px;
         a{
-          color: #000000;
+          color: #920000;
           font-size: 14px;
         }
       }
@@ -98,7 +100,7 @@ footer{
     font-size: 14px;
     color: #ffffff;
     a{
-      color:#ffffff;
+      color:#670606;
     }
   }
 }

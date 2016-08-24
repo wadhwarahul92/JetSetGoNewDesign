@@ -16,13 +16,13 @@
             <div class="col-sm-10 col-xs-12 right-nav no-padding-right pull-right">
               <!--<p class="header-right-text text-right">+91-11-39585858 <a href="#">Login</a> | <a href="#">Signup</a></p>-->
               <ul class="top-login-nav">
-
-                <li class="menu-list-toogle"><a ng-click="custom = !custom" href="javascript:void(0)" ng-class="custom ? 'underline' : 'non-underline'"><i class="fa fa-bars"></i> Menu</a>
+                <!-- ng-class="custom ? 'underline' : 'non-underline'" -->
+                <li class="menu-list-toogle"><a ng-click="custom = !custom" href="javascript:void(0)" ><i class="fa fa-bars" style="width: 13px;" ng-class="!custom ? 'fa-bars' : 'fa-times'"></i> Menu</a>
                   <ul class="dropdown main-nav" ng-show="custom">
                     <li><a href="/contact_us">Contact</a></li>
                     <li><a href="/media">Media</a></li>
                     <li><a href="/jetsteals/list" target="_self">JetSteals&trade;</a></li>
-                    <li><a href="/about_us">About</a></li>
+                    <li><a href="/about_us">About us</a></li>
                     <div class="clearfix"></div>
 
                     <!-- <li>
