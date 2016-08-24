@@ -407,9 +407,9 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
               <div class="img-bg">
-                <h3>{{result.aircraft.aircraft_type.name}}</h3>
+                <h3>{{result.aircraft.aircraft_type.name}} {{result.aircraft.id}}</h3>
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
-                <h4>₹ {{ctrl.totalTripCost(result) | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con text-center">
                   <a href="javascript:void(0)" ng-click="custom =! custom">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                 </div>
@@ -667,6 +667,16 @@
                         </div>
                       </div>
                     </div>
+                    <div class="cost-con" ng-show="result.is_miscellaneous_expenses">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <p>Miscellaneous Expenses</p>
+                        </div>
+                        <div class="col-xs-5">
+                          <p class="text-right">₹ {{result.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
+                        </div>
+                      </div>
+                    </div>
                     <div class="cost-con" ng-repeat="tax in result.taxBreakup">
                       <div class="row">
                         <div class="col-xs-7">
@@ -677,6 +687,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="cost-con">
                       <div class="row">
                         <div class="col-xs-7">

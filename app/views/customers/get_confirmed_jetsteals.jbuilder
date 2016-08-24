@@ -42,6 +42,11 @@ json.jetsteals{
       json.cruise_speed_in_nm_per_hour jetsteal.aircraft.cruise_speed_in_nm_per_hour
       json.flying_range_in_nm jetsteal.aircraft.flying_range_in_nm
       json.per_hour_cost jetsteal.aircraft.per_hour_cost
+
+      json.flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+      json.handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+      json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
+
       json.image jetsteal.aircraft.image.url(:original)
       json.interior_image_original jetsteal.aircraft.interior.url(:original)
       json.interior_image_size_400 jetsteal.aircraft.interior.url(:size_400x400)
@@ -199,6 +204,9 @@ json.trips{
       json.mtow aircraft.mtow
       # json.catering_cost_per_pax aircraft.catering_cost_per_pax
       json.is_working aircraft.is_working?
+      json.flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+      json.handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+      json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
 
       json.name aircraft.aircraft_type.name
       json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }

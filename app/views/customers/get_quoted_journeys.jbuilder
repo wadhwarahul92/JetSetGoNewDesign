@@ -117,6 +117,10 @@ json.array! @quotes do |quote|
     # json.catering_cost_per_pax aircraft.catering_cost_per_pax
     json.is_working aircraft.is_working?
 
+    json.flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
+    json.handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
+    json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
+
     json.name aircraft.aircraft_type.name
     json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
   }

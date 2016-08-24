@@ -33,7 +33,21 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
   #  Calculate subTotal of a single search result
   costBreakUpInstance.subTotal = (trip)->
+    trip.is_miscellaneous_expenses = false
+    trip.miscellaneous_expenses_amount = 0.0
+    trip.extra_time = 0
     cost = 0.0
+
+    miscellaneous_expenses = 0.0
+
+    min_mins = 0
+
+    date_list = []
+    total_flight_mins = 0
+    hours = 0
+    minutes = 0
+
+
     if trip.flight_plan
       for flight_plan in trip.flight_plan
         cost += flight_plan.flight_cost + (trip.aircraft_flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
@@ -55,6 +69,14 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 #                cost += empty_leg.watch_hour_cost + (costBreakUpInstance.commission/100 * empty_leg.watch_hour_cost)
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
 #            cost += chosen_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage * chosen_plan.cost)
+
+        if flight_plan.flight_type == 'user_search'
+          end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
+          end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
+          date_list.push(moment(end_at).format('DD'))
+
+          hours += parseInt(flight_plan.flight_time.split(':')[0])
+          minutes += parseInt(flight_plan.flight_time.split(':')[1])
     else
       for activity in trip.activities
         cost += activity.flight_cost + (activity.aircraft.aircraft_flight_cost_commission_in_percentage/100 * activity.flight_cost)
@@ -65,6 +87,25 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
           cost = cost + (activity.accommodation_plan.cost * activity.accommodation_plan.nights) + (activity.aircraft.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 #        if activity.accommodation_plan and activity.accommodation_plan.cost
 #          cost += activity.accommodation_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
+        unless activity.empty_leg
+          date_list.push(moment(new Date(activity.start_at)).format('DD'))
+          date_list.push(moment(new Date(activity.end_at)).format('DD'))
+          hours += 0
+          minutes += moment.duration(moment(new Date(activity.end_at)).diff(moment(new Date(activity.start_at)))).asMinutes()
+
+    min_mins = ((_.uniq(date_list).length * 2)*60)
+    total_flight_mins =  (((hours*60) + minutes))
+
+    if total_flight_mins < min_mins
+      miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
+      cost = cost + miscellaneous_expenses
+      trip.is_miscellaneous_expenses = true
+      trip.miscellaneous_expenses_amount = miscellaneous_expenses
+
+#      miscellaneous_expenses = ((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
+#      amount + miscellaneous_expenses
+#    end
+#    (amount + ( (Tax.total_tax_value / 100) * amount ) + miscellaneous_expenses).to_i
     cost
 
   #  Calculate Grand Total price of a single search result
