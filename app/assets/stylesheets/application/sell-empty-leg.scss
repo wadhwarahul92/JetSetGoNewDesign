@@ -29,19 +29,24 @@
       }
       .emptyleg_sell{
         width: 100%;
-        padding: 15px 0;
+        margin: 15px 0;
+        position: relative;
         .search_img{
           padding: 0;
           .img-hide{
-              width: 100%;
-              overflow: hidden;
+            width: 100%;
+            overflow: hidden;
+            height: 320px;
+            img{
+              min-height: 320px;
+            }
           }
         }
         .search-ryt-con{
-            padding: 0;
+          padding: 0;
           position: relative;
           .img-bg{
-              width: 100%;
+            width: 100%;
             background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
             background-size: cover;
             padding: 15px 0;
@@ -55,6 +60,7 @@
               width: 100%;
               border: none;
               height: 35px;
+              padding: 0 5px;
             }
             .sell-text{
               font-size: 18px;
@@ -74,7 +80,18 @@
                 border: 0;
                 padding: 10px;
                 color: #ffffff;
+                display: inline-block;
+                text-align: center;
+                cursor: pointer;
               }
+            }
+          }
+          .sell_emptyleg{
+            margin-top: 80px;
+            p{
+              font-size: 16px;
+              font-weight: bold;
+              text-align: center;
             }
           }
         }

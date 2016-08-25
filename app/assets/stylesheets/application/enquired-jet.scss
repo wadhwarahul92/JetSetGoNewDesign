@@ -115,6 +115,7 @@
     font-size: 24px;
     color: #920000;
     font-weight: bold;
+    margin-bottom: 20px;
   }
   h2.no-result-heading{
     text-align: center;
@@ -127,10 +128,12 @@
     .info{
       th{
         background-color: #F0E7DB;
+        font-size: 15px;
       }
     }
     td.info-detail{
       background-color: #F9ECE0;
+      font-size: 15px;
     }
     .booking-detail{
       width: 100%;

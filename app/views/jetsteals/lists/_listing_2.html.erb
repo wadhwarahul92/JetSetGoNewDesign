@@ -29,13 +29,17 @@
                 <div class="jetsteal-location">
                   <div class="small-6 columns data">
                     <h4>{{jetsteal.departure_airport.city.name}}</h4>
-                    <p>{{jetsteal.flight_start_time.split(',')[1]}}</p>
-                    <p>{{jetsteal.flight_start_time.split(',')[0]}}</p>
+                    <p ng-show="jetsteal.sell_by_seats">{{jetsteal.flight_start_time.split(',')[1]}}</p>
+                    <p ng-show="jetsteal.sell_by_seats">{{jetsteal.flight_start_time.split(',')[0]}}</p>
+                    <p ng-hide="jetsteal.sell_by_seats">{{jetsteal.flight_end_time.split(',')[0]}}</p>
                   </div>
                   <div class="small-6 columns text-right data">
                     <h4>{{jetsteal.arrival_airport.city.name}}</h4>
-                    <p>{{jetsteal.flight_end_time.split(',')[1]}}</p>
+                    <p ng-show="jetsteal.sell_by_seats">{{jetsteal.flight_end_time.split(',')[1]}}</p>
                     <p class="pax-txt"><b>Pax:</b> {{jetsteal.aircraft.seating_capacity}}</p>
+                  </div>
+                  <div ng-hide="jetsteal.sell_by_seats" class="small-12 columns text-center data">
+                    <p class="anytime-text">Any Time</p>
                   </div>
                   <div style="clear: both;"></div>
                 </div>
@@ -76,6 +80,7 @@
 
 <div class="row">
   <div class="small-12 columns">
+    
     <!-- <div class="small-12 medium-6 columns count_this"
          ng-hide="(ctrl.date && jetsteal.date != ctrl.date) || (ctrl.departure_airport_id && jetsteal.departure_airport.id != ctrl.departure_airport_id) || (ctrl.arrival_airport_id && jetsteal.arrival_airport.id != ctrl.arrival_airport_id) || (ctrl.pax && jetsteal.aircraft.seating_capacity < ctrl.pax)"
          ng-repeat="jetsteal in ctrl.jetsteals | orderBy:['sold_out']">
