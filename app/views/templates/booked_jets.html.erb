@@ -64,33 +64,52 @@
 
 
 <!--==============Start================-->
+  
+  
+  
 
-  <div class="col-md-8 col-md-offset-2" >
-    <div class="trip_jetsteal_con" ng-init="!ctrl.active_jetsteal">
-      <span class="" ng-class="ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
-        Trips
-      </span>
-      <span class="" ng-show="ctrl.booked_jets.jetsteals.length > 0" ng-class="!ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="!ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
-        Jetsteals
-      </span>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="enquired-booking-main" ng-hide="ctrl.active_jetsteal">
+          <div ng-if="ctrl.booked_jets.trips.length > 0">
+            <h2 class="heading">Confirmed Booking</h2>
+          </div>
+        </div>
+        <div class="enquired-booking-main" ng-show="ctrl.active_jetsteal">
+          <div ng-if="ctrl.booked_jets.jetsteals.length > 0">
+            <h2 class="heading">JetSteals</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12" >
+        <div class="trip_jetsteal_con" ng-init="!ctrl.active_jetsteal">
+          <span class="" ng-class="ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
+            Trips
+          </span>
+          <span class="" ng-show="ctrl.booked_jets.jetsteals.length > 0" ng-class="!ctrl.active_jetsteal ? 'select-btn' : 'active-select-btn'" ng-click="!ctrl.active_jetsteal ? (ctrl.active_jetsteal =! ctrl.active_jetsteal) : ''">
+            Jetsteals
+          </span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
     </div>
   </div>
-  <div class="clearfix"></div>
 
 <div class="enquired-booking-main" ng-hide="ctrl.active_jetsteal">
   <h2 class="no-result-heading" ng-if="ctrl.booked_jets.trips.length < 1">You have not Confirmed any booking for Now</h2>
   <div class="container" ng-if="ctrl.booked_jets.trips.length > 0">
     <div class="clearfix"></div>
-    <h2 class="heading">Confirmed Booking</h2>
+    <!-- <h2 class="heading">Confirmed Booking</h2> -->
 
     <table border="0" width="100%">
       <tr ng-repeat="trip in ctrl.booked_jets.trips">
         <td>
           <table class="table" width="100%">
             <tr class="info">
-              <th>Booking No</th>
-              <th>Aircraft Name</th>
-              <th>Departure Date</th>
+              <th class="first-coloum">Booking No</th>
+              <th class="scnd-coloum">Aircraft Name</th>
+              <th class="thrd-coloum">Departure Date</th>
             </tr>
             <tr>
               <td class="info-detail">Trip#{{trip.id}}</td>
@@ -133,8 +152,7 @@
 <div class="enquired-booking-main" ng-show="ctrl.active_jetsteal">
   <h2 class="no-result-heading" ng-if="ctrl.booked_jets.jetsteals.length < 1">You have not Confirmed any booking for Now</h2>
   <div class="container" ng-if="ctrl.booked_jets.jetsteals.length > 0">
-    <h2 class="heading">JetSteals</h2>
-
+    <!-- <h2 class="heading">JetSteals</h2> -->
     <table border="0" width="100%">
       <tr ng-repeat="jetsteal in ctrl.booked_jets.jetsteals">
         <td>

@@ -1,6 +1,6 @@
 .profile-detail-main{
   width: 100%;
-  background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/441/original/bg.png?1470035237');
+  background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/707/original/customer_bg.png?1472116302');
   padding: 15px 0;
   .profile-main{
     width: 100%;
@@ -14,7 +14,7 @@
       .add-img-icon{
         width:100%;
         display: inline-block;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(131, 107, 84, 0.6);
         padding: 5px 10px;
         position: absolute;
         bottom: 0;
@@ -46,17 +46,17 @@
       }
       ul.user-detail{
         padding: 0;
-        margin: 15px 0;
+        margin: 30px 0;
         color: #A76F4D;
         width: 100%;
         li{
           float: left;
           width: 15%;
           list-style: none;
-          border-right: 1px solid #D9C3A4;
+          border-right: 2px solid #D9C3A4;
           text-align: right;
           padding: 0 15px;
-          min-height: 88px;
+          min-height: 80px;
           position: relative;
           .notication-icon{
             color: #920000;
@@ -74,18 +74,20 @@
             margin: 0;
           }
           p{
-            font-size: 18px;
+            font-size: 15px;
             margin: 0;
+            font-weight: bold;
+            line-height: 15px;
           }
         }
       }
       .edit-icon{
         display: inline-block;
-        padding: 8px 20px;
+        padding: 6px 20px;
         border-radius: 5px;
         background-color: #920000;
         color: #ffffff;
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   }
@@ -211,6 +213,7 @@
           padding-top: 5px;
         }
         ul.user-detail{
+          margin: 10px 0;
           li{
             width: 24%;
             min-height: 67px;
@@ -232,13 +235,16 @@
 }
 
 @media(max-width: 767px){
-  .profile-image{
-    text-align: center;
-  }
   .profile-detail-main{
     .profile-main{
       .user-info{
         padding: 15px;
+      }
+      .profile-image{
+        text-align: center;
+        .p_img{
+          width: initial;
+        }
       }
     }
   }
