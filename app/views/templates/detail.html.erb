@@ -482,30 +482,33 @@
       </div>
     </div>
 
-    
-    <div ng-if="ctrl.trip.status == 'confirmed'">
-      <div class="row psng-cate-btns">
-        <div class="col-xs-6 text-right">
-          <a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a>
+
+    <div ng-init="ctrl.can_add_passengers()" ng-if="ctrl.trip.status == 'confirmed'">
+      <div ng-if="ctrl.trip.can_add_passenger">
+        <div class="row psng-cate-btns">
+          <div class="col-xs-6 text-right">
+            <a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a>
+          </div>
+          <div class="col-xs-6">
+            <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit caterings</a>
-        </div>
-      </div>
-      <div ng-show="catering_visible" class="customer-detail add-passenger">
-        <h3 ng-click="ctrl.category = !ctrl.category">
-        Add Category
-        <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
-        </a>
-        </h3>
-        <div class="row" ng-show="!ctrl.category">
-          <div class="col-sm-12">
-            <h4>Catering:</h4>
-            <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
-            <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
+        <div ng-show="catering_visible" class="customer-detail add-passenger">
+          <h3 ng-click="ctrl.category = !ctrl.category">
+            Add Category
+            <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
+            </a>
+          </h3>
+          <div class="row" ng-show="!ctrl.category">
+            <div class="col-sm-12">
+              <h4>Catering:</h4>
+              <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
+              <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">save</a>
+            </div>
           </div>
         </div>
       </div>
+
       <div ng-show="bar_visible" class="customer-detail add-passenger">
         <h3 ng-click="ctrl.pax_active = !ctrl.pax_active">
         Add Passenger
@@ -527,14 +530,14 @@
           </div> -->
           <div class="row"  ng-repeat="passenger_detail in ctrl.passenger_details_">
             <div class="passenger-repeat">
-              <div class="col-md-3 col-sm-4 col-xs-12">
-                <h4>Email Id</h4>
-                <input type="text" ng-model="passenger_detail.email" class="txt-email" />
-              </div>
-              <div class="col-md-3 col-sm-4 col-xs-12">
-                <h4>Phone</h4>
-                <input type="text" ng-model="passenger_detail.contact" class="txt-phn" />
-              </div>
+              <!--<div class="col-md-3 col-sm-4 col-xs-12">-->
+                <!--<h4>Email Id</h4>-->
+                <!--<input type="text" ng-model="passenger_detail.email" class="txt-email" />-->
+              <!--</div>-->
+              <!--<div class="col-md-3 col-sm-4 col-xs-12">-->
+                <!--<h4>Phone</h4>-->
+                <!--<input type="text" ng-model="passenger_detail.contact" class="txt-phn" />-->
+              <!--</div>-->
               <div class="col-xs-12">
                 <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
               </div>
@@ -558,22 +561,22 @@
               <!--<h4>Last Name</h4>-->
               <!--<input type="text" class="txt-textfield" />-->
               <!--</div>-->
-              <div class="col-md-2 col-sm-3 col-xs-12">
-                <h4>Gender</h4>
-                <select ng-model="passenger_detail.gender" class="txt-textfield">
-                  <option>Male</option>
-                  <option>Female</option>
-                </select>
-                <!-- <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> -->
-              </div>
+              <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+                <!--<h4>Gender</h4>-->
+                <!--<select ng-model="passenger_detail.gender" class="txt-textfield">-->
+                  <!--<option>Male</option>-->
+                  <!--<option>Female</option>-->
+                <!--</select>-->
+                <!--&lt;!&ndash; <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> &ndash;&gt;-->
+              <!--</div>-->
               <div class="col-md-2 col-sm-3 col-xs-12">
                 <h4>Nationality</h4>
                 <input type="text" ng-model="passenger_detail.nationality" class="txt-textfield" />
               </div>
-              <div class="col-md-2 col-sm-3 col-xs-12">
-                <h4>Age</h4>
-                <input type="text" ng-model="passenger_detail.age" class="txt-textfield" />
-              </div>
+              <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+                <!--<h4>Age</h4>-->
+                <!--<input type="text" ng-model="passenger_detail.age" class="txt-textfield" />-->
+              <!--</div>-->
               <!-- <div class="col-md-3">
                 <h4>Upload Passport</h4>
                 <input type="file" name="pic" class="txt-upload" accept="image/*">
@@ -615,22 +618,22 @@
           <tr class="info">
             <th>Title</th>
             <th>Name</th>
-            <th>Age</th>
+            <!--<th>Age</th>-->
             <th>Nationality</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Contact</th>
+            <!--<th>Gender</th>-->
+            <!--<th>Email</th>-->
+            <!--<th>Contact</th>-->
           </tr>
           </thead>
           <tbody>
           <tr class="body-row" ng-repeat="passenger_detail in ctrl.passenger_details">
             <td>{{ passenger_detail.title }}</td>
             <td>{{ passenger_detail.name }}</td>
-            <td>{{ passenger_detail.age }}</td>
+            <!--<td>{{ passenger_detail.age }}</td>-->
             <td>{{ passenger_detail.nationality }}</td>
-            <td>{{ passenger_detail.gender }}</td>
-            <td>{{ passenger_detail.email }}</td>
-            <td>{{ passenger_detail.contact }}</td>
+            <!--<td>{{ passenger_detail.gender }}</td>-->
+            <!--<td>{{ passenger_detail.email }}</td>-->
+            <!--<td>{{ passenger_detail.contact }}</td>-->
           </tr>
           </tbody>
         </table>

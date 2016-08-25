@@ -200,11 +200,11 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       _passenger_details.push({
         title: passenger_detail.title
         name: passenger_detail.name
-        email: passenger_detail.email
-        age: passenger_detail.age
+#        email: passenger_detail.email
+#        age: passenger_detail.age
         nationality: passenger_detail.nationality
-        contact: passenger_detail.contact
-        gender: passenger_detail.gender
+#        contact: passenger_detail.contact
+#        gender: passenger_detail.gender
         trip_id: @trip_id
       })
 
@@ -241,31 +241,31 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
           message: 'Name cannot be blank.'
           classes: ['alert-danger']
         return false
-      unless passenger_detail.age
-        notify
-          message: 'Age cannot be blank'
-          classes: ['alert-danger']
-        return false
+#      unless passenger_detail.age
+#        notify
+#          message: 'Age cannot be blank'
+#          classes: ['alert-danger']
+#        return false
       unless passenger_detail.nationality
         notify
           message: 'Nationality cannot be blank'
           classes: ['alert-danger']
         return false
-      unless passenger_detail.gender
-        notify
-          message: 'Gender cannot be blank.'
-          classes: ['alert-danger']
-        return false
-      unless passenger_detail.email
-        notify
-          message: 'Email cannot be blank.'
-          classes: ['alert-danger']
-        return false
-      unless passenger_detail.contact
-        notify
-          message: 'Contact cannot be blank.'
-          classes: ['alert-danger']
-        return false
+#      unless passenger_detail.gender
+#        notify
+#          message: 'Gender cannot be blank.'
+#          classes: ['alert-danger']
+#        return false
+#      unless passenger_detail.email
+#        notify
+#          message: 'Email cannot be blank.'
+#          classes: ['alert-danger']
+#        return false
+#      unless passenger_detail.contact
+#        notify
+#          message: 'Contact cannot be blank.'
+#          classes: ['alert-danger']
+#        return false
     true
 
   @create_catering = ->
@@ -292,6 +292,9 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
     cost + (percentage/100 * cost)
+
+  @can_add_passengers = ()->
+    @trip.can_add_passenger = moment(new Date(this.trip.activities[0].start_at)) > moment().subtract(3, 'hour')
 
   return undefined
 
