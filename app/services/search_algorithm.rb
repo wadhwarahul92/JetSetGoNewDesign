@@ -605,7 +605,7 @@ BEGIN
     details = {}
 
     search_activities.each do |activity|
-      expected_time = activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME
+      expected_time = activity.start_at
 
       if airport_has_notam(activity.departure_airport_id, expected_time)
         notam_detail << {
