@@ -484,7 +484,7 @@
 
 
     <div ng-init="ctrl.can_add_passengers()" ng-if="ctrl.trip.status == 'confirmed'">
-      <div ng-if="ctrl.trip.can_add_passenger">
+      <div ng-show="ctrl.trip.can_add_passenger">
         <div class="row psng-cate-btns">
           <div class="col-xs-6 text-right">
             <a href="javascript:void(0)" ng-click="bar_visible = true">Add passenger details</a>

@@ -294,7 +294,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
     cost + (percentage/100 * cost)
 
   @can_add_passengers = ()->
-    @trip.can_add_passenger = moment(new Date(this.trip.activities[0].start_at)) > moment().subtract(3, 'hour')
+    @trip.can_add_passenger = moment(new Date(this.trip.activities[0].start_at)).subtract(3, 'hour') > moment()
 
   return undefined
 
