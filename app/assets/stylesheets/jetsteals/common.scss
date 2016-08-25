@@ -806,7 +806,19 @@ tbody.sapia_color tr:nth-child(even) {background: #FFF !important}
 }
 /*================================Media Query===================================*/
 
-
+@media(max-width: 1180px){
+  .jetsteel-main-con{
+    .jetsteal-slider-con{
+      .emptyleg_detail{
+        .detail-link-con{
+          a{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
 @media(max-width: 1100px) {
   .list_box{
    .content_box{

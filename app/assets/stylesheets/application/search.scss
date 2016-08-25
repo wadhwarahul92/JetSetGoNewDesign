@@ -951,6 +951,7 @@ h3.no-nyt-landing{
         text-decoration: none;
         border-radius: 8px;
         margin-bottom: 5px;
+        margin-top: 20px;
       }
       .arrow-up{
         width: 0;
@@ -980,8 +981,8 @@ h3.no-nyt-landing{
           color: #920000;
           cursor: pointer;
           position: absolute;
-          top: -21px;
-          right: -8px;
+          top: -8px;
+          right: 3px;
           -webkit-transition: all 0.6s ease-in-out;
           -moz-transition: all 0.6s ease-in-out;
           -ms-transition: all 0.6s ease-in-out;
@@ -1047,7 +1048,7 @@ h3.no-nyt-landing{
               bottom: -5px;
             }
             .cost-con{
-              border-bottom: 1px solid #fbdc99;
+              border-bottom: 1px solid #f9f3e6;
               padding: 10px 0;
               p{
                 margin: 0;
