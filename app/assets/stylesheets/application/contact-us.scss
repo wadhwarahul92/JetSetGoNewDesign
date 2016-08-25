@@ -131,6 +131,12 @@
   .contact-main-con{
     width: 100%;
     padding: 20px 0;
+    h2{
+      font-size: 24px;
+      color: #920000;
+      font-weight: bold;
+      margin: 0 0 15px 0;
+    }
     .google-map-con{
       width: 100%;
     }
@@ -153,15 +159,15 @@
           background-repeat: no-repeat;
         }
         li.location-icon{
-          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/692/original/address_icon.png?1472023437');
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/702/original/address-_v.png?1472036680');
           background-position: 0 0;
         }
         li.phn-icon{
-          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/558/original/call.png?1470735317');
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/699/original/cphoneicon.png?1472035938');
           background-position: 0 0;
         }
         li.email-icon{
-          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/559/original/mail.png?1470735331');
+          background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/704/original/mail.gif?1472037701');
           background-position: 0 0;
         }
       }
