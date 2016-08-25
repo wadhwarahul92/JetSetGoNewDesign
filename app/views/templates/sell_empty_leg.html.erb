@@ -135,7 +135,7 @@
                              <!--ng-value="string">-->
                     </p>
                   </div>
-                  <div class="col-xs-12 sell-btn-con" ng-hide="activity.sell_button_clicked">
+                  <div class="col-xs-12 sell-btn-con" ng-if="!activity.sell_button_clicked">
                     <!--<input type="submit" value="Sell your empty legs" class="sell-btn" />-->
                     <span class="sell-btn" ng-click="ctrl.sell_empty_leg(activity, trip)">Sell your empty legs</span>
                   </div>
