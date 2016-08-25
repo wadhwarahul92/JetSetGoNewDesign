@@ -497,7 +497,14 @@ ActiveRecord::Schema.define(version: 20160823113635) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
-
+  
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text     "description",     limit: 65535
+    t.integer  "organisation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+  
   create_table "testimonials", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "text",       limit: 65535
