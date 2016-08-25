@@ -5,7 +5,7 @@ class Admin::AircraftsController < Admin::BaseController
   before_filter :set_aircraft, only: [:show, :edit, :update, :admin_approve]
 
   def index
-    @aircrafts = Aircraft.includes(:aircraft_type).all
+    @aircrafts = Aircraft.includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
   end
 
   def new
