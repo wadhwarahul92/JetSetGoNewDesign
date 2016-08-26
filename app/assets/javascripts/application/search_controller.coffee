@@ -360,14 +360,14 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 #  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
 #    cost + percentage/100 * cost
 
-  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
-    cost + percentage/100 * cost
-
-  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
-    cost + percentage/100 * cost
-
-  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
-    cost + percentage/100 * cost
+#  @aircraft_flight_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
+#
+#  @aircraft_handling_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
+#
+#  @aircraft_accomodation_cost_commission_in_percentage = (cost, percentage)->
+#    cost + percentage/100 * cost
 
   @check_empty_leg = (trip)->
     flag = false
@@ -419,6 +419,43 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     result.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(result)
     result.subTotal = CustomerCostBreakUpsService.subTotal(result)
     result.night_flight = @check_night_landing(result)
+
+  @total_customer_flight_plan_time = (result)->
+    hours = 0
+    minutes = 0
+    seconds = 0
+    flight_time_ = ''
+    for plan in result.flight_plan
+      unless plan.flight_type == 'empty_leg'
+        hours += parseInt(plan.flight_time.split(':')[0])
+        minutes += parseInt(plan.flight_time.split(':')[1])
+        seconds += parseInt(plan.flight_time.split(':')[2])
+    minutes +=  parseInt(seconds/60)
+    hours +=  parseInt(minutes/60)
+
+    flight_time_ = (hours.toString()+' Hrs ' +minutes.toString()+ ' Mins')
+
+  @cost_with_commission_in_percentage = (result, aircraft)->
+    result.total_flight_cost = 0.0
+    result.total_handling_cost = 0.0
+    result.set_watch_hour = false
+    result.total_flight_time = ''
+    result.set_accomodation = false
+    result.total_accommodation_cost = 0.0
+    result.total_accommodation_nights = 0
+
+    for plan in result.flight_plan
+      result.total_flight_cost += plan.flight_cost
+      result.total_handling_cost += plan.handling_cost_at_takeoff + plan.landing_cost_at_arrival
+      if plan.accommodation_leg
+        result.set_accomodation = true
+        result.total_accommodation_cost += (plan.accommodation_leg.cost * plan.accommodation_leg.nights)
+        result.total_accommodation_nights += plan.accommodation_leg.nights
+      if plan.watch_hour_at_arrival
+        result.set_watch_hour  = true
+    result.total_flight_cost = (result.total_flight_cost + (result.total_flight_cost * (result.aircraft.flight_cost_commission_in_percentage/100)))
+    result.total_handling_cost = (result.total_handling_cost + (result.total_handling_cost * (result.aircraft.handling_cost_commission_in_percentage/100)))
+    result.total_accommodation_cost = (result.total_accommodation_cost + (result.total_accommodation_cost * (result.aircraft.accomodation_cost_commission_in_percentage/100)))
 
   return undefined
 ]

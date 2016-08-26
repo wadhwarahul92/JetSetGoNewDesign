@@ -68,7 +68,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       @trip.total_flight_cost = 0.0
       @trip.total_landing_cost = 0.0
       @trip.total_ground_handling_cost = 0.0
-      @trip.total_accomodation_charge = 0.0
+#      @trip.total_accomodation_charge = 0.0
       @trip.set_watch_hour = false
       @trip.total_flight_time = ''
       @trip.total_accommodation_cost = 0.0

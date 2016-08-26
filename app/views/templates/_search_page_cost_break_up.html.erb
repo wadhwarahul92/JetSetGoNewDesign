@@ -1,0 +1,215 @@
+<!--Detail Start-->
+<div ng-init="ctrl.cost_with_commission_in_percentage(result, result.aircraft)" class="empty-leg-toogle-main" ng-show="custom">
+  <div class="arrow-up"></div>
+  <div class="white-arrow-up"></div>
+  <div class="top-destination-con">
+    <div class="col-xs-12 text-right">
+      <a href="javascript:void(0)" ng-click="custom3 =! custom3" class="empty-leg-btn" ng-show="ctrl.check_empty_leg(result)">Empty Legs</a>
+      <!--<img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/405/original/emptylegs-on.png?1468581744" alt="">-->
+      <i class="fa fa-times-circle-o cross-icon" ng-click="custom =! custom;"></i>
+    </div>
+    <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
+      <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
+        <p>
+          <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
+        </p>
+        <p class="city-name">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
+        <p class="time-con">{{ctrl.formatTime2(flight_plan.start_at).split(',')[1]}}</p>
+        <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
+      </div>
+      <div class="destination-con col-sm-2 hidden-xs">
+        <p>
+          <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+        </p>
+        <p class="time-duration">{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</p>
+      </div>
+      <div class="destination-con col-sm-3 col-xs-6">
+        <p>
+          <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672'}}" alt="">
+        </p>
+        <p class="city-name">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
+        <p class="time-con">{{ctrl.formatTime2(flight_plan.end_at).split(',')[1]}}</p>
+        <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="img-total-cost-con">
+      <div class="col-md-4 col-sm-6">
+        <div class="aircraft-img">
+          <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt="">-->
+          <img class="" ng-src="{{result.aircraft.interior_image_size_400}}" alt="">
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-6">
+        <div class="flight-cost-con">
+          <h2>Cost Details</h2>
+          <!--<div>-->
+            <!--<div class="cost-con" ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">-->
+              <!--<div class="row">-->
+                <!--<div class="col-sm-5 col-xs-6">-->
+                  <!--<p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>-->
+                <!--</div>-->
+                <!--<div class="col-sm-2 hidden-xs text-center">-->
+                  <!--<p style="font-weight: bold"> >> </p>-->
+                <!--</div>-->
+                <!--<div class="col-sm-5 col-xs-6 text-right">-->
+                  <!--<p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="cost-con">
+              <div class="row">
+                <div class="col-xs-7">
+                  <p>Flight Time</p>
+                </div>
+                <div class="col-xs-5 text-right">
+                  <!--<p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>-->
+                  <p>{{ctrl.total_customer_flight_plan_time(result)}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="cost-con">
+              <div class="row">
+                <div class="col-xs-7">
+                  <!--<p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>-->
+                  <p>Flight Cost</p>
+                </div>
+                <div class="col-xs-5 text-right">
+                  <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
+                  <!--<p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>-->
+                  <p>₹ {{ result.total_flight_cost | currency:"":0 | indianCurrency }}</p>
+                </div>
+              </div>
+            </div>
+            <!--<div class="cost-con">-->
+            <!--<div class="row">-->
+            <!--<div class="col-xs-7">-->
+            <!--<p>Ground Handling Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-xs-5 text-right">-->
+            <!--<p>₹ {{ctrl.include_commission(flight_plan.handling_cost_at_takeoff) | currency:"":0 | indianCurrency}}</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="cost-con">-->
+            <!--<div class="row">-->
+            <!--<div class="col-xs-7">-->
+            <!--<p>Landing Charges</p>-->
+            <!--</div>-->
+            <!--<div class="col-xs-5">-->
+            <!--<p class="text-right">₹ {{ctrl.include_commission(flight_plan.landing_cost_at_arrival) | currency:"":0 | indianCurrency}}</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="cost-con">
+              <div class="row">
+                <div class="col-xs-7">
+                  <p>Handling Charges</p>
+                </div>
+                <div class="col-xs-5">
+                  <p class="text-right">₹ {{result.total_handling_cost | currency:"":0 | indianCurrency}}</p>
+                </div>
+              </div>
+            </div>
+            <!--<div ng-show="flight_plan.chosen_intermediate_plan == 'accommodation_plan'">-->
+            <!--<div class="cost-con">-->
+            <!--<div class="row">-->
+            <!--<div class="col-xs-12">-->
+            <!--<p class="text-capitalize">Accommodation</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="cost-con" ng-repeat="(key, value) in flight_plan.accommodation_plan">-->
+            <!--<div class="row">-->
+            <!--<div class="col-xs-7">-->
+            <!--<p class="text-capitalize">{{key}}</p>-->
+            <!--</div>-->
+            <!--<div class="col-xs-5">-->
+            <!--<p class="text-right" ng-show="key == 'nights'">{{value}}</p>-->
+            <!--<p class="text-right" ng-hide="key == 'nights'">₹ {{value | currency:"":0 | indianCurrency}}</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="cost-con" ng-show="result.set_watch_hour">
+              <div class="row">
+                <div class="col-xs-7">
+                  <p>Watch Hours</p>
+                </div>
+                <div class="col-xs-5">
+                  <p class="text-right">As per actual</p>
+                </div>
+              </div>
+            </div>
+          <div class="cost-con" ng-if="result.set_accomodation">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Accommodation</p>
+              </div>
+              <div class="col-xs-5 text-right" >
+                <p>Cost - ₹ {{ result.total_accommodation_cost | currency:"":0 | indianCurrency }}</p>
+                <p>Night-{{result.total_accommodation_nights}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!--</div>-->
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-xs-12">
+                <h4>Sub Total</h4>
+              </div>
+            </div>
+          </div>
+          <div class="cost-con" ng-show="result.is_miscellaneous_expenses">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Miscellaneous Expenses</p>
+              </div>
+              <div class="col-xs-5">
+                <p class="text-right">₹ {{result.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="cost-con" ng-repeat="tax in result.taxBreakup">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>{{tax.name}}({{tax.value}}%)</p>
+              </div>
+              <div class="col-xs-5">
+                <p class="text-right">₹ {{tax.amount | currency:"":2 | indianCurrency}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-xs-7">
+                <h5>Grand Total(Including empty legs)</h5>
+              </div>
+              <div class="col-xs-5">
+                <h5 class="text-right">
+                  ₹ {{result.totalCost | currency:"":0 | indianCurrency}}
+                  <br>
+                  <span style="font-size: 14px; font-weight: 100">(All inclusive)</span>
+                </h5>
+              </div>
+              <div class="col-xs-12">
+                <p class="text-right watch-hour" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0">
+                  *Applicable airport watch hour extension charges, TBC by operator.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="detail-link-con">
+            <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!--Detail End-->
