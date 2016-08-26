@@ -3,13 +3,13 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @activities = [{}]
   @currentUser = null
   
-  if $routeParams.search_id
-    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
-      (data)=>
-        @activities = data
-        for activity in @activities
-          activity.start_at = Date.parse(activity.start_at)
-    )
+#  if $routeParams.search_id
+#    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
+#      (data)=>
+#        @activities = data
+#        for activity in @activities
+#          activity.start_at = Date.parse(activity.start_at)
+#    )
     
   @signIn = ->
     CurrentUserService.openSignInModal('md')
@@ -97,19 +97,20 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   )
 
   # fetching jetsteals
-  arr = []
-  $http.get('/jetsteals/get_list.json').success(
-    (data)=>
-      $.each(data, (i, v)=>
-#        if !v.sold_out && arr.length < 2
-        if arr.length < 4
-          arr.push(v)
-          @jetsteals = arr
-      )
-  ).error(
-    ->
-      alert 'error fetching jetsteals, try again later'
-  )
+  @load_jetsteals = ()->
+    arr = []
+    $http.get('/jetsteals/get_list.json').success(
+      (data)=>
+        $.each(data, (i, v)=>
+#          if !v.sold_out && arr.length < 2
+          if arr.length < 4
+            arr.push(v)
+            @jetsteals = arr
+        )
+    ).error(
+      ->
+        alert 'error fetching jetsteals, try again later'
+    )
 
   @formatTime = (time)->
     data = null
