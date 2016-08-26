@@ -43,20 +43,20 @@
       <div class="col-md-8 col-sm-6">
         <div class="flight-cost-con">
           <h2>Cost Details</h2>
-          <div>
-            <div class="cost-con" ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">
-              <div class="row">
-                <div class="col-sm-5 col-xs-6">
-                  <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>
-                </div>
-                <div class="col-sm-2 hidden-xs text-center">
-                  <p style="font-weight: bold"> >> </p>
-                </div>
-                <div class="col-sm-5 col-xs-6 text-right">
-                  <p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>
-                </div>
-              </div>
-            </div>
+          <!--<div>-->
+            <!--<div class="cost-con" ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">-->
+              <!--<div class="row">-->
+                <!--<div class="col-sm-5 col-xs-6">-->
+                  <!--<p style="font-weight: bold">{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</p>-->
+                <!--</div>-->
+                <!--<div class="col-sm-2 hidden-xs text-center">-->
+                  <!--<p style="font-weight: bold"> >> </p>-->
+                <!--</div>-->
+                <!--<div class="col-sm-5 col-xs-6 text-right">-->
+                  <!--<p style="font-weight: bold">{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="cost-con">
               <div class="row">
                 <div class="col-xs-7">
@@ -78,17 +78,6 @@
                   <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
                   <!--<p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>-->
                   <p>₹ {{ result.total_flight_cost | currency:"":0 | indianCurrency }}</p>
-                </div>
-              </div>
-            </div>
-            <div class="cost-con" ng-if="flight_plan.accommodation_leg">
-              <div class="row">
-                <div class="col-xs-7">
-                  <p>Accommodation</p>
-                </div>
-                <div class="col-xs-5 text-right" >
-                  <p>Cost - ₹ {{ result.total_accommodation_cost | currency:"":0 | indianCurrency }}</p>
-                  <p>Night-{{result.total_accommodation_nights}}</p>
                 </div>
               </div>
             </div>
@@ -144,7 +133,6 @@
             <!--</div>-->
             <!--</div>-->
 
-            {{result.set_watch_hour}}
             <div class="cost-con" ng-show="result.set_watch_hour">
               <div class="row">
                 <div class="col-xs-7">
@@ -155,7 +143,19 @@
                 </div>
               </div>
             </div>
+          <div class="cost-con" ng-if="result.set_accomodation">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Accommodation</p>
+              </div>
+              <div class="col-xs-5 text-right" >
+                <p>Cost - ₹ {{ result.total_accommodation_cost | currency:"":0 | indianCurrency }}</p>
+                <p>Night-{{result.total_accommodation_nights}}</p>
+              </div>
+            </div>
           </div>
+
+          <!--</div>-->
           <div class="cost-con">
             <div class="row">
               <div class="col-xs-12">
