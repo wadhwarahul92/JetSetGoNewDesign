@@ -85,6 +85,9 @@ a:focus{
     .logo-main-con{
 
     }
+    .no-padding-right{
+      padding-right: 15px;
+    }
     .right-nav{
       .header-right-text{
         a{
@@ -109,8 +112,6 @@ a:focus{
               float: none;
               width: 100%;
               a{
-                font-size: 16px;
-                color: #000000;
               }
               a.no-right-padding{
                 padding-right: 0;

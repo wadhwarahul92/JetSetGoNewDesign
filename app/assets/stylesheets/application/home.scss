@@ -80,7 +80,7 @@ $main-blue-color:rgb(5, 81, 139);
     margin: 0 auto;
   }
   .closs-btn{
-    color: #7E6356;
+    color: #920000;
     font-size: 25px;
     position: absolute;
     right: 6px;
@@ -229,6 +229,12 @@ $main-blue-color:rgb(5, 81, 139);
         position:absolute;
         top: 12px;
         left: 10px;
+      }
+      .text-icon{
+        left: 26px;
+      }
+      .phn-icon{
+        top: 15px;
       }
       .form-control{
         padding:6px 12px 6px 25px;
@@ -1541,7 +1547,6 @@ span.heading:after{
       }
     }
   }
-
   //Subscrib section
   .subscrib-main-con{
     .subscrib-textfield{
@@ -1556,5 +1561,4 @@ span.heading:after{
       padding: 10px 0;
     }
   }
-
 }

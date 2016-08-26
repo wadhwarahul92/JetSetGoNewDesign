@@ -23,7 +23,8 @@
               <!--<i class="fa fa-user form-icon"></i>-->
             <!--</div>-->
             <div class="field margin-top">
-              <span class="form-icon">+91</span>
+              <i class="fa fa-phone form-icon phn-icon"></i>
+              <span class="form-icon text-icon">+91</span>
               <input type="text" placeholder="Phone" class="form-control text-field" ng-model="ctrl.user.phone" />
               <!--<i class="fa fa-user form-icon"></i>-->
             </div>
@@ -37,7 +38,7 @@
               <input type="password" id="password" placeholder="Password" class="form-control text-field" ng-model="ctrl.user.password" />
               <i class="fa fa-unlock-alt form-icon"></i>
             </div>
-            <div class="field margin-top">
+            <div id="captcha" class="field margin-top">
               <no-captcha g-recaptcha-response="ctrl.user.captcha" size=""></no-captcha>
             </div>
             <!--<p class="field forget-text">-->
