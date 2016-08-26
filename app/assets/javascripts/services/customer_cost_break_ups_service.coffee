@@ -80,6 +80,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
         seconds += parseInt(flight_plan.flight_time.split(':')[2])
         if seconds > 60
           minutes += parseInt(seconds/60)
+          seconds = seconds % 60
     else
       for activity in trip.activities
         cost += activity.flight_cost + (activity.aircraft.aircraft_flight_cost_commission_in_percentage/100 * activity.flight_cost)
