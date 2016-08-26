@@ -71,22 +71,26 @@
       </div>
       <div class="col-xs-12">
         <div class="trip-main-con" ng-repeat="trip in ctrl.confirmed_trips">
-          <h3 class="trip-heading"><span class="trip">Trip#{{trip.id}}</span> starting @ {{ctrl.starting_date(trip)}}</h3>
+          <h3 class="trip-heading"><span class="trip">Trip#{{trip.id}}</span> Starting @ {{ctrl.starting_date(trip)}}</h3>
 
           <div ng-if="activity.empty_leg" ng-repeat="activity in trip.activities">
             <div class="location-con" >
               <div class="row">
-                <div class="departure-con col-sm-3 col-xs-6 text-center">
+                <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
                   <p>
-                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
+                    <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
                   </p>
                   <p class="city-name">{{activity.departure_airport.name}}</p>
                   <p class="time-con">{{ctrl.date_format(activity.start_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.date_format(activity.start_at).split(',')[0]}}</p>
                 </div>
-                <div class="arrival-con col-sm-3 col-xs-6 text-center">
+                <div class="col-md-3 text-center col-sm-4 hidden-xs">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+                  <p><b>{{activity.flight_time}}</b></p>
+                </div>
+                <div class="arrival-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
                   <p>
-                    <img width="40" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
+                    <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
                   </p>
                   <p class="city-name">{{activity.arrival_airport.name}}</p>
                   <p class="time-con">{{ctrl.date_format(activity.end_at).split(',')[1]}}</p>
@@ -102,16 +106,52 @@
               <div class="col-md-8 col-sm-8 col-xs-12 search_img">
                 <div class="img-hide">
                   <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/414/original/3-.jpg?1468909133" alt="" />-->
-                  <img ng-src="{{activity.aircraft.exterior_image}}" alt="" />
+                  <img class="img-responsive" ng-src="{{activity.aircraft.exterior_image}}" alt="" />
                 </div>
+                <div class="icon-con">
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{activity.aircraft.crew}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
+                  <span class="icon-detail">{{activity.aircraft.cabin_height_in_meters}} ft</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{activity.aircraft.seating_capacity}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">{{activity.aircraft.baggage_capacity_in_kg}} kgs</span>
+                </span>
+                <span class="icons-main">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{activity.aircraft.cruise_speed_in_nm_per_hour}} nm</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{activity.aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/608/original/wifi.png?1471342954'}}" uib-tooltip="Wifi: {{activity.aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{activity.aircraft.phone ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/606/original/call.png?1471342903'}}" uib-tooltip="Phone: {{activity.aircraft.phone ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{activity.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/623/original/labotry.png?1471351162'}}" uib-tooltip="Lavatory" alt="">
+                  <span class="icon-detail">{{activity.aircraft.number_of_toilets}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{activity.aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{activity.aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+              </div>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
                 <div class="img-bg">
-                  <div class="col-sm-6 col-xs-12">
+                  <div class="col-xs-12">
+                    <h2>{{activity.aircraft.name}}</h2>
+                    <h4>{{activity.aircraft.category}}</h4>
+                  </div>
+                  <div class="col-sm-6 col-xs-6">
                     <label>Min Cost</label>
                     <input type="number" ng-disabled="activity.sell_button_clicked" ng-model="activity.minimum_sale_price" class="txt-minmax" />
                   </div>
-                  <div class="col-sm-6 col-xs-12">
+                  <div class="col-sm-6 col-xs-6">
                     <label>Max Cost</label>
                     <input type="number" ng-disabled="activity.sell_button_clicked" ng-model="activity.maximum_sale_price" class="txt-minmax" />
                   </div>
@@ -153,13 +193,13 @@
           <h3>Why sell your Empty legs?</h3>
           <div class="row">
             <div class="col-sm-4">
-              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/489/original/sellemptylegs.png?1470136884" class="img-responsive" alt="">
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/712/original/sellemptylegs.png?1472204060" class="img-responsive" alt="">
             </div>
             <div class="col-sm-4">
-              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/646/original/getlisted1.png?1471514982" class="img-responsive" alt="">
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/711/original/getlisted.png?1472204039" class="img-responsive" alt="">
             </div>
             <div class="col-sm-4">
-              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/488/original/getbenifits.png?1470136858" class="img-responsive" alt="">
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/710/original/getbenifits.png?1472204016" class="img-responsive" alt="">
             </div>
           </div>
         </div>

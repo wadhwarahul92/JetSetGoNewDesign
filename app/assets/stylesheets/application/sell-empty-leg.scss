@@ -6,14 +6,14 @@
       font-weight: bold;
     }
     h2.subheading{
-      font-size: 22px;
+      font-size: 16px;
       margin: 0;
     }
     .trip-main-con{
       width: 100%;
       padding: 20px 0;
       h3.trip-heading{
-        font-size: 22px;
+        font-size: 14px;
         font-weight: bold;
         span.trip{
           display: inline-block;
@@ -26,6 +26,9 @@
         p{
           margin: 0;
         }
+        p.city-name{
+          font-weight: bold;
+        }
       }
       .emptyleg_sell{
         width: 100%;
@@ -33,6 +36,7 @@
         position: relative;
         .search_img{
           padding: 0;
+          position: relative;
           .img-hide{
             width: 100%;
             overflow: hidden;
@@ -41,10 +45,42 @@
               min-height: 320px;
             }
           }
+          .icon-con{
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(131, 107, 84, 0.6);
+            padding: 2px 5px;
+            width: 100%;
+            .icons-main{
+              border-right: 1px solid #ffffff;
+              display: inline-block;
+              min-height: 23px;
+              text-align: center;
+              min-width: 60px;
+              .icon-detail{
+                color: #ffffff;
+                display: inline-block;
+                padding-right: 5px;
+                position: relative;
+                top: 5px;
+                font-size: 12px;
+              }
+            }
+          }
         }
         .search-ryt-con{
           padding: 0;
           position: relative;
+          h2{
+            font-size: 24px;
+            color: #000000;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+          }
+          h4{
+            font-size: 16px;
+            margin: 0 0 25px 0;
+          }
           .img-bg{
             width: 100%;
             background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
@@ -64,7 +100,7 @@
             }
             .sell-text{
               font-size: 18px;
-              margin-top: 100px;
+              margin-top: 60px;
               font-weight: bold;
               .radio-btn{
                 position: relative;
@@ -77,6 +113,7 @@
               .sell-btn{
                 width: 100%;
                 background-color: #920000;
+                border-radius: 8px;
                 border: 0;
                 padding: 10px;
                 color: #ffffff;
@@ -87,7 +124,7 @@
             }
           }
           .sell_emptyleg{
-            margin-top: 80px;
+            margin-top: 60px;
             p{
               font-size: 16px;
               font-weight: bold;
@@ -101,4 +138,49 @@
       width: 100%;
       padding: 15px 0;
     }
+}
+
+@media(max-width: 1100px){
+  .sell_empty_main_con{
+    .trip-main-con{
+      .emptyleg_sell{
+        .search_img{
+          .img-hide{
+            height: 250px;
+            img{
+              min-height: 250px;
+            }
+          }
+          .icon-con{
+            .icons-main{
+              img{
+                width: 22px;
+              }
+              .icon-detail{
+                font-size: 10px;
+              } 
+            }
+          } 
+        }
+        .search-ryt-con{
+          .img-bg{
+            height: 250px;
+            .sell-text{
+              margin-top: 10px;
+            }
+          }
+          h2{
+            font-size: 18px;
+          }
+          h4{
+            font-size: 13px;
+            margin-bottom: 5px;
+          }
+          .sell_emptyleg{
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
 }
