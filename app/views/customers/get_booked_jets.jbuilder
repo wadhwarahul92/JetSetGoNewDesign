@@ -136,10 +136,6 @@ json.array! @trips do |trip|
     json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
 
     json.name aircraft.aircraft_type.name
-    json.crew aircraft.crew
-    json.cabin_height_in_meters aircraft.cabin_height_in_meters
-    json.seating_capacity aircraft.seating_capacity
-    json.baggage_capacity_in_kg aircraft.baggage_capacity_in_kg
     json.category aircraft.aircraft_type.aircraft_category.name
     json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
   }
