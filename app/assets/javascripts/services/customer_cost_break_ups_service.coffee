@@ -45,6 +45,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
     total_flight_mins = 0
     hours = 0
     minutes = 0
+    seconds = 0
 
 
     if trip.flight_plan
@@ -69,13 +70,17 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'accommodation_plan'
 #            cost += chosen_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage * chosen_plan.cost)
 
-        if flight_plan.flight_type == 'user_search'
-          end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
-          end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
-          date_list.push(moment(end_at).format('DD'))
+        end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
+        end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
+        end_at = moment(end_at).add(flight_plan.flight_time.split(':')[2],'seconds')
+        date_list.push(moment(end_at).format('DD'))
 
-          hours += parseInt(flight_plan.flight_time.split(':')[0])
-          minutes += parseInt(flight_plan.flight_time.split(':')[1])
+        hours += parseInt(flight_plan.flight_time.split(':')[0])
+        minutes += parseInt(flight_plan.flight_time.split(':')[1])
+        seconds += parseInt(flight_plan.flight_time.split(':')[2])
+        if seconds > 60
+          minutes += parseInt(seconds/60)
+          seconds = seconds % 60
     else
       for activity in trip.activities
         cost += activity.flight_cost + (activity.aircraft.aircraft_flight_cost_commission_in_percentage/100 * activity.flight_cost)
@@ -86,11 +91,11 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
           cost = cost + (activity.accommodation_plan.cost * activity.accommodation_plan.nights) + (activity.aircraft.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 #        if activity.accommodation_plan and activity.accommodation_plan.cost
 #          cost += activity.accommodation_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
-        unless activity.empty_leg
-          date_list.push(moment(new Date(activity.start_at)).format('DD'))
-          date_list.push(moment(new Date(activity.end_at)).format('DD'))
-          hours += 0
-          minutes += moment.duration(moment(new Date(activity.end_at)).diff(moment(new Date(activity.start_at)))).asMinutes()
+#        unless activity.empty_leg
+        date_list.push(moment(new Date(activity.start_at)).format('DD'))
+        date_list.push(moment(new Date(activity.end_at)).format('DD'))
+        hours += 0
+        minutes += moment.duration(moment(new Date(activity.end_at)).diff(moment(new Date(activity.start_at)))).asMinutes()
 
     min_mins = ((_.uniq(date_list).length * 2)*60)
     total_flight_mins =  (((hours*60) + minutes))
