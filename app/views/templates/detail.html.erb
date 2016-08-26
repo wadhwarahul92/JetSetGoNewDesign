@@ -66,10 +66,9 @@
 <div class="profile-info-main detail-profile">
   <div class="container">
     <h2 class="heading">
-
-{{ctrl.trip.status == 'enquiry' ? 'Enquired Booking' : ''}}
-{{ctrl.trip.status == 'quoted' ? 'Quoted Booking' : ''}}
-{{ctrl.trip.status == 'confirmed' ? 'Confirmed Booking' : ''}}
+      {{ctrl.trip.status == 'enquiry' ? 'Enquired Booking' : ''}}
+      {{ctrl.trip.status == 'quoted' ? 'Quoted Booking' : ''}}
+      {{ctrl.trip.status == 'confirmed' ? 'Confirmed Booking' : ''}}
     </h2>
     <div class="booking-detail">
       <div class="row">
@@ -187,7 +186,7 @@
                   <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.number_of_toilets}}</span>
                 </span>
                 <span class="icons-main">
-                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{ctrl.trip.activities[0].aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{ctrl.trip.activities[0].aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
                 </span>
               </div>
             </div>
