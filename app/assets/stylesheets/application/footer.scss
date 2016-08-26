@@ -122,11 +122,30 @@ footer{
 }
 @media(max-width: 767px){
   footer{
+    h4{
+      margin: 0;
+    }
     .member-con{
       border-right: 0px;
       border-bottom: 1px solid rgba(0,0,0,0.5);
       min-height: inherit;
       padding-bottom: 20px;
+    }
+    .services-con{
+      margin-top: 0;
+      ul{
+        li{
+          a{
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    .copytext-con{
+      margin-top: 5px;
+      p{
+        font-size: 11px;
+      }
     }
     .logo-con{
       border-right: 0px;
@@ -134,6 +153,9 @@ footer{
       min-height: inherit;
       text-align: left;
       margin: 20px 0;
+      p{
+        font-size: 11px;
+      }
       .footer-logo-con{
         margin: 10px 0;
       }
