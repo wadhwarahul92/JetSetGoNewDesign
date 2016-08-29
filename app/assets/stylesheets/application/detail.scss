@@ -71,34 +71,13 @@
 			}
 			.img-con{
 				width:100%;
-				background-color: #eee;
+				background-color: #f0e5d6;
 				height: 320px;
 				overflow: hidden;
+				position: relative;
 				img{
 					min-height: 320px;
 				}
-			}
-			.icon-con{
-				position: absolute;
-			    bottom: 0;
-			    background-color: rgba(131, 107, 84, 0.6);
-			    padding: 2px 5px;
-			    width: 100%;
-			    .icons-main{
-			    	border-right: 1px solid #ffffff;
-				    display: inline-block;
-				    min-height: 23px;
-				    text-align: center;
-				    min-width: 60px;
-			    }
-			    .icon-detail{
-			    	color: #ffffff;
-				    display: inline-block;
-				    padding-right: 5px;
-				    position: relative;
-				    top: 5px;
-				    font-size: 12px;
-			    }
 			}
 			.jet-detail{
 				width: 100%;
@@ -142,6 +121,7 @@
 		p.inclusive{
 			font-size: 11px;
 			font-weight: bold;
+			margin-bottom: 15px;
 		}
 		h4{
 			font-size: 20px;
@@ -178,6 +158,10 @@
 			tr{
 				td{
 					padding:10px;
+					img{
+						position: relative;
+						top: -2px;
+					}
 					h5{
 						font-size: 15px;
 						font-weight: bold;
@@ -327,10 +311,11 @@
       }
     }
     tr.body-row{
-      border-bottom: 1px solid #eeeeee;
+      border-bottom: 1px solid #f9f3e6;
       td{
         background: #ffffff;
         padding: 15px 10px;
+        border-top: 0px;
       }
     }
   }
@@ -342,17 +327,6 @@
 			.jetdetail-col{
 				.img-con{
 					height: 250px;
-				}
-				.icon-con{
-					.icons-main{
-						min-width: 40px;
-						img{
-							width: 22px;
-						}
-					}
-					.icon-detail{
-						font-size: 10px;
-					}
 				}
 				.jet-detail{
 					height: 250px;

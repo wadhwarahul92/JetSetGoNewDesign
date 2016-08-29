@@ -724,6 +724,31 @@ h3.no-nyt-landing{
       }
     }
   }
+  .icon-con{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(131,107,84, 0.6);
+    padding: 2px 5px;
+    width: 100%;
+    .icons-main{
+      border-right: 1px solid #ffffff;
+      display: inline-block;
+      min-height: 23px;
+      text-align: center;
+      min-width: 60px;
+    }
+    img{
+      cursor: pointer;
+    }
+    .icon-detail{
+      color: #ffffff;
+      display: inline-block;
+      padding-right: 5px;
+      position: relative;
+      top: 5px;
+      font-size: 12px;
+    }
+  }
   .filter-toggle-main{
     background-color: #d6cab9;
     padding: 10px 0;
@@ -775,10 +800,20 @@ h3.no-nyt-landing{
         text-align: center;
         color: #ffffff;
         padding: 9px 20px;
-        background-color: #720000;
-        border: 1px solid #ffffff;
+        background-color: #920000;
         width: 15%;
-        border-radius: 5px;
+        border-radius: 7px;
+      }
+      .modity-botm-btn{
+        color: #ffffff;
+        display: inline-block;
+        padding: 6px 15px;
+        min-width: 150px;
+        text-align: center;
+        background-color: #920000;
+        font-size: 15px;
+        height: 35px;
+        border-radius: 7px; 
       }
     }
     .shadow-con{
@@ -806,8 +841,14 @@ h3.no-nyt-landing{
             float: left;
             padding: 5px 0;
             list-style: none;
-            font-size: 16px;
-            color: #998776;
+            font-size: 15px;
+            color: #000000;
+            input[type=checkbox]{
+              width: 14px;
+              height: 14px;
+              position: relative;
+              top: 2px;
+            }
           }
         }
       }
@@ -845,34 +886,10 @@ h3.no-nyt-landing{
           .img-hide{
             width: 100%;
             overflow: hidden;
+            position: relative;
             img{
               width: 100%;
               height: 320px;
-            }
-          }
-          .icon-con{
-            position: absolute;
-            bottom: 0;
-            background-color: rgba(131,107,84, 0.6);
-            padding: 2px 5px;
-            width: 100%;
-            .icons-main{
-              border-right: 1px solid #ffffff;
-              display: inline-block;
-              min-height: 23px;
-              text-align: center;
-              min-width: 60px;
-            }
-            img{
-              cursor: pointer;
-            }
-            .icon-detail{
-              color: #ffffff;
-              display: inline-block;
-              padding-right: 5px;
-              position: relative;
-              top: 5px;
-              font-size: 12px;
             }
           }
         }
@@ -960,7 +977,7 @@ h3.no-nyt-landing{
         border-bottom: 13px solid #998776;
         position: absolute;
         top: -13px;
-        left: 23px;
+        right: 245px;
       }
       .white-arrow-up{
         width: 0;
@@ -970,7 +987,7 @@ h3.no-nyt-landing{
         border-bottom: 17px solid #ffffff;
         position: absolute;
         top: -12px;
-        left: 21px;
+        right: 243px;
       }
       .top-destination-con{
         width: 100%;
@@ -1009,7 +1026,6 @@ h3.no-nyt-landing{
           margin-bottom: 10px;
           p{
             margin-bottom: 2px;
-            text-align: center;
             font-size: 11px;
           }
         }
@@ -1206,6 +1222,23 @@ h3.no-nyt-landing{
       }
     }
   }
+  .search_result_main{
+    .empty-leg-toogle-main{
+      .arrow-up{
+        right: 211px;
+      }
+      .white-arrow-up{
+        right: 209px;
+      }
+    }
+  }
+  .icon-con{
+    .icons-main{
+      img{
+        height:15px;
+      }
+    }
+  }
 }
 @media (max-width: 1024px) {
   .search-result-box{
@@ -1285,6 +1318,16 @@ h3.no-nyt-landing{
       }
     }
   }
+  .search_result_main{
+    .empty-leg-toogle-main{
+      .arrow-up{
+        right: 23px;
+      }
+      .white-arrow-up{
+        right: 21px;
+      }
+    }
+  }
   .search-edit-form {
     .search-main-container {
       .search-form{
@@ -1349,11 +1392,6 @@ h3.no-nyt-landing{
           }
         }
         .search_img{
-          .icon-con{
-            .icons-main{
-              min-width: 40px;
-            }
-          }
         }
       }
     }
@@ -1377,6 +1415,50 @@ h3.no-nyt-landing{
 
 }
 @media (max-width: 767px) {
+  .icon-toogle{
+    background-color: #584232;
+    display: inline-block;
+    padding: 3px 10px;
+    min-width: 100px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 10px;
+  }
+  .icon-con{
+    position: inherit;
+    width: 100%;
+    padding: 0;
+    .icons-main{
+      padding: 10px 0;
+      min-width: 33.3%;
+      float: left;
+      border-bottom: 1px solid #ffffff;
+      img{
+        width: 22px;
+      }
+      .icon-detail{
+        font-size: 10px;
+      }
+    }
+    img{
+      cursor: pointer;
+    }
+    .icon-detail{
+      color: #ffffff;
+      display: inline-block;
+      padding-right: 5px;
+      position: relative;
+      top: 5px;
+      font-size: 12px;
+    }
+  }
   .search-edit-form {
     .search-main-container {
       .search-form{
@@ -1393,18 +1475,6 @@ h3.no-nyt-landing{
             img{
               width: 100%;
               height: inherit;
-            }
-          }
-          .icon-con{
-            .icons-main{
-              min-height: inherit;
-              margin: 2px 0;
-              img{
-                width: 22px;
-              }
-              .icon-detail{
-                font-size: 10px;
-              }
             }
           }
         }

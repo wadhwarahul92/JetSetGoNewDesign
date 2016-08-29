@@ -83,7 +83,7 @@ $main-blue-color:rgb(5, 81, 139);
     font-size: 17px;
     color: #920000;
     font-weight: bold;
-    border-bottom: 3px solid #998675;
+    border-bottom: 5px solid #998675;
     position: relative;
     padding-bottom: 5px;
     .year-browse{
@@ -103,9 +103,9 @@ $main-blue-color:rgb(5, 81, 139);
   h2:after{
     content: "";
     position: absolute;
-    width: 240px;
-    height: 3px;
-    bottom: -3px;
+    width: 150px;
+    height: 5px;
+    bottom: -5px;
     left: 0;
     background-color: #D6CBB9;
   }

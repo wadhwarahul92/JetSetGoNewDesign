@@ -229,6 +229,7 @@ $main-blue-color:rgb(5, 81, 139);
         position:absolute;
         top: 12px;
         left: 10px;
+        color: #9D855D;
       }
       .text-icon{
         left: 26px;
@@ -411,17 +412,17 @@ span.heading:after{
           color: #ffffff;
           font-size: 15px;
           //font-weight: bold;
-          border: 1px solid #ffffff;
           text-decoration: none;
           border-radius: 7px;
         }
         .add-trip-btn{
           color: #ffffff;
           display: inline-block;
-          padding: 7px 15px;
-          border: 1px solid #ffffff;
+          padding: 6px 15px;
           background-color: #920000;
           font-size: 15px;
+          min-width: 150px;
+          text-align: center;
           border-radius: 7px;
           //font-weight: bold;
           //-webkit-border-radius: 10px;
@@ -663,7 +664,6 @@ span.heading:after{
       }
       a.enquire-btn{
         background-color: #920000;
-        border: 1px solid #000000;
         color: #ffffff;
         text-decoration: none;
         padding: 5px 20px;
@@ -680,7 +680,6 @@ span.heading:after{
       a.active-btn{
         background-color: #DABB9C;
         color: #000000;
-        border: 1px solid #000000;
         text-decoration: none;
         padding: 5px 20px;
         display: inline-block;
@@ -701,7 +700,7 @@ span.heading:after{
       background-position: center;
     }
     .jetsetyatra_detail{
-      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/410/original/yatra-services.png?1468832528');
+      background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/714/original/JetSetYatra.png?1472470535');
       background-size: cover;
       background-position: center;
     }
