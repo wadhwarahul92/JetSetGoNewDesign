@@ -117,7 +117,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY, hh:mm A')
     if data and data == 'Invalid date'
-      return 'Departure time'
+      return 'Departure Date, Time'
     else
       return data
 
@@ -126,7 +126,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY')
     if data and data == 'Invalid date'
-      return 'Departure time'
+      return 'Departure Date, Time'
     else
       return data
 

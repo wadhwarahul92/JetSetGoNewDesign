@@ -146,7 +146,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
   @formatTime = (time)->
     data = null
     try
-      data = moment(new Date("#{time}")).format('Do MMM YYYY')
+      data = moment(new Date("#{time}")).format('Do MMM, YYYY')
     if data and data == 'Invalid date'
       return 'Date of birth'
     else

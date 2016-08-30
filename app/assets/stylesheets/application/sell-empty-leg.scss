@@ -41,30 +41,9 @@
             width: 100%;
             overflow: hidden;
             height: 320px;
+            position: relative;
             img{
               min-height: 320px;
-            }
-          }
-          .icon-con{
-            position: absolute;
-            bottom: 0;
-            background-color: rgba(131, 107, 84, 0.6);
-            padding: 2px 5px;
-            width: 100%;
-            .icons-main{
-              border-right: 1px solid #ffffff;
-              display: inline-block;
-              min-height: 23px;
-              text-align: center;
-              min-width: 60px;
-              .icon-detail{
-                color: #ffffff;
-                display: inline-block;
-                padding-right: 5px;
-                position: relative;
-                top: 5px;
-                font-size: 12px;
-              }
             }
           }
         }
