@@ -31,6 +31,19 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
         controllerAs: 'ctrl'
       )
 
+  serviceInstance.openForgetModal = (size = 'sm') ->
+    if serviceInstance.currentUser
+      notify
+        message: 'You are already signed in.'
+    else
+      serviceInstance.modal.close() if serviceInstance.modal
+      serviceInstance.modal = $uibModal.open(
+        templateUrl: '/templates/forget_password'
+        size: size
+        controller: 'ForgetPasswordController'
+        controllerAs: 'ctrl'
+      )
+
   serviceInstance.getCurrentUser = ->
     if serviceInstance.currentUser
       deffered = $q.defer()

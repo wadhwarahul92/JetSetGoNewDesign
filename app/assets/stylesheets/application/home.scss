@@ -1224,7 +1224,13 @@ span.heading:after{
     }
   }
   .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev{
-    top: 20%;
+    top: 50%;
+  }
+  .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+    margin-left: -75px;
+  }
+  .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+        margin-right: -75px;
   }
   .news-media-main-con{
     .media-slider-con{
@@ -1241,6 +1247,12 @@ span.heading:after{
 }
 
 @media(max-width: 767px){
+  .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+    margin-left: -50px;
+  }
+  .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+        margin-right: -50px;
+  }
   .jetsteel-app {
     .app-img-con{
       text-align:center;
@@ -1251,6 +1263,7 @@ span.heading:after{
       }
     }
   }
+
   .searvices_main_con {
     padding-bottom: 10px;
     .services-widget {
@@ -1318,6 +1331,7 @@ span.heading:after{
   }
   .jetsteel-main-con {
     .jetsteal-slider-con {
+      padding: 20px  0;
       .emptyleg_detail {
         h2.aircraft_name{
           margin: 0;
@@ -1511,6 +1525,12 @@ span.heading:after{
 
 @media(max-width: 650px){
   //top header section
+  .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+    margin-left: -35px;
+  }
+  .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+        margin-right: -35px;
+  }
   .top-header-search-con{
     .search-main-con{
       h2{

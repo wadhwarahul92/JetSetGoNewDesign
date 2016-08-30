@@ -116,6 +116,10 @@
     .sell_emptyleg_con{
       width: 100%;
       padding: 15px 0;
+      h3{
+        font-size: 18px;
+        font-weight: bold;
+      }
     }
 }
 
@@ -160,6 +164,13 @@
           }
         }
       }
+    }
+  }
+}
+@media(max-width: 1100px){
+  .sell_emptyleg_con{
+    img{
+      margin-bottom: 5px;
     }
   }
 }

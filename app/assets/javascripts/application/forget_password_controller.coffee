@@ -1,9 +1,9 @@
 jetsetgo_app.controller 'ForgetPasswordController', ['$http','notify', '$timeout', ($http, notify, $timeout)->
 
-  $timeout (->
-    angular.element('.closs-btn').triggerHandler 'click'
-    return
-  ), 0
+  # $timeout (->
+  #   angular.element('.closs-btn').triggerHandler 'click'
+  #   return
+  # ), 0
 
   @email = null
 
