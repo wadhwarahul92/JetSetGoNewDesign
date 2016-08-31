@@ -21,7 +21,7 @@
       setInterval('cycleImages()', 3000);
     })
 </script-->
-
+<div id="spinner" ng-show="ctrl.loading" ></div>
 <!-- top header search con start -->
 <div class="top-header-search-con">
   <!--div id="background_cycler" >
@@ -644,6 +644,10 @@
         },3000);
         //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
     });
+
+//    $(window).load(function(){
+//        $('#spinner').fadeOut('slow');
+//    });
 </script>
 
 <%= javascript_include_tag 'vendors/bg-slider/bar'%>
