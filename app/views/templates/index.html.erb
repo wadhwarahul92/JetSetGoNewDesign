@@ -40,7 +40,8 @@
   <div class="homepage">
 
     <div class="homepage-header">
-      <div class="container header-container">
+    </div>
+    <div class="container header-container">
         <!-- header start -->
         <!--<div>-->
         <!--<nav ng-hide="ctrl.isFromMobile" id="header" class="navbar navbar-default home-header header">-->
@@ -138,7 +139,7 @@
                 </span>
                 <div class="dropdown datetimepicker-holder search-textfield">
                   <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(activity.start_at) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-                  <ul class="dropdown-menu" role="menu">
+                  <ul class="dropdown-menu dropdown-celender" role="menu">
                     <datetimepicker
                     data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                     data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
@@ -159,7 +160,6 @@
         </div>
         <!-- search con finish -->
       </div>
-    </div>
   </div>
 </div>
 <!-- top header search con finish -->

@@ -38,22 +38,22 @@
     padding: 0;
     background: center center no-repeat;
     -webkit-transform: translateZ(0);
-    transform: translateZ(0)
+    transform: translateZ(0);
 }
 body .vegas-container {
     overflow: hidden!important;
-    position: relative
+    position: relative;
 }
 .vegas-video {
     min-width: 100%;
     min-height: 100%;
     width: auto;
-    height: auto
+    height: auto;
 }
 body.vegas-container {
     overflow: auto;
     position: static;
-    z-index: -2
+    z-index: -2;
 }
 body.vegas-container>.vegas-overlay,
 body.vegas-container>.vegas-slide,
