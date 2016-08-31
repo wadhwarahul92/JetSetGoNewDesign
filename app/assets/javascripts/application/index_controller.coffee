@@ -2,6 +2,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @activities = [{}]
   @currentUser = null
+  @loading = true
   
 #  if $routeParams.search_id
 #    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
@@ -107,6 +108,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
             arr.push(v)
             @jetsteals = arr
         )
+        @loading = false
     ).error(
       ->
         alert 'error fetching jetsteals, try again later'
