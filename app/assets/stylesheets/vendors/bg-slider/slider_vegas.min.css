@@ -7,7 +7,7 @@
 }
 @media (min-width: 768px) {
     .container {
-        width: 750px
+        /*width: 750px*/
     }
     .medium-1,
     .medium-2,
@@ -87,7 +87,7 @@
 }
 @media (min-width: 992px) {
     .container {
-        width: 970px
+        /*width: 970px*/
     }
     .large-1,
     .large-2,
