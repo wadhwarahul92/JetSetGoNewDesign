@@ -1,4 +1,4 @@
-organisations_app.controller 'ForgotPasswordController', ['$http', 'notify', ($http, notify)->
+organisations_app.controller 'ForgotPasswordController', ['$http', 'notify', '$location', ($http, notify, $location)->
 
   @email = null
 
@@ -9,6 +9,7 @@ organisations_app.controller 'ForgotPasswordController', ['$http', 'notify', ($h
         notify(
           message: 'Email sent. Check your inbox.'
         )
+        location.replace('/')
     ).error(
       (data)->
         error = 'Something went wrong'
