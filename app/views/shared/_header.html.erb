@@ -17,7 +17,10 @@
               <!--<p class="header-right-text text-right">+91-11-39585858 <a href="#">Login</a> | <a href="#">Signup</a></p>-->
               <ul class="top-login-nav">
                 <!-- ng-class="custom ? 'underline' : 'non-underline'" -->
-                <li class="menu-list-toogle"><a ng-click="custom = !custom" href="javascript:void(0)" ><i class="fa fa-bars" style="width: 13px;" ng-class="!custom ? 'fa-bars' : 'fa-times'"></i> Menu</a>
+                <li class="menu-list-toogle hidden-xs">
+                <a ng-click="custom = !custom" href="javascript:void(0)" >
+                <i class="fa fa-bars" style="width: 13px;" ng-class="!custom ? 'fa-bars' : 'fa-times'"></i> Menu
+                </a>
                   <ul class="dropdown main-nav" ng-show="custom">
                     <li><a href="/contact_us">Contact Us</a></li>
                     <li><a href="/media">Media</a></li>
@@ -56,6 +59,18 @@
                 </li>
                 <li>
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/701/original/phone.png?1472036639" alt=""> <!-- <span>+91-11-39585858</span> -->
+                </li>
+                <li class="hidden-lg hidden-md hidden-sm">
+                  <a href="/contact_us">Contact Us</a>
+                </li>
+                <li class="hidden-lg hidden-md hidden-sm">
+                  <a href="/media">Media</a>
+                </li>
+                <li class="hidden-lg hidden-md hidden-sm">
+                  <a href="/jetsteals/list" target="_self">JetSteals&trade;</a>
+                </li>
+                <li class="hidden-lg hidden-md hidden-sm">
+                  <a href="/about_us">About Us</a>
                 </li>
                 <div class="clearfix"></div>
               </ul>

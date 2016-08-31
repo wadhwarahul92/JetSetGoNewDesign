@@ -46,6 +46,7 @@ $main-blue-color:rgb(5, 81, 139);
     max-height: 400px;
     overflow-x: scroll;
     overflow-y: inherit;
+    min-width: 400px;
   }
 }
 .login-left-con{
@@ -1452,7 +1453,7 @@ span.heading:after{
 
   //jetsteel section
   .jetsteel-main-con{
-    padding: 20px 0 30px 0;
+    padding: 20px 0 0px 0;
     span.heading{
       margin:0 0 0 6px;
       color: #ffffff;
