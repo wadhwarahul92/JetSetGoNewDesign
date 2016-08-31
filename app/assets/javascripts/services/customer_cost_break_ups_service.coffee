@@ -10,7 +10,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
   costBreakUpInstance.taxes = [
     {
-      name: 'Service Tax'
+      name: 'Taxes'
       value: 14.0
     }
     {
