@@ -4,6 +4,25 @@
   </a>
 </script>
 
+<script type="text/javascript" charset="utf-8">
+    $('#myCarousel2').carousel({
+        interval: false
+    });
+
+    $(document).ready(function(){
+        setTimeout(function(){
+            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
+            $('span.fa').css('display', 'inline-block')
+        },3000);
+        //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
+    });
+
+    //    $(window).load(function(){
+    //        $('#spinner').fadeOut('slow');
+    //    });
+</script>
+
 <!--script type="text/javascript">
   function cycleImages(){
       var $active = $('#background_cycler .active');
@@ -631,24 +650,7 @@
 
 <!-- jetsetgo app con finish -->
 
-<script type="text/javascript" charset="utf-8">
-    $('#myCarousel2').carousel({
-        interval: false
-    });
 
-    $(document).ready(function(){
-        setTimeout(function(){
-            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
-            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
-            $('span.fa').css('display', 'inline-block')
-        },3000);
-        //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
-    });
-
-//    $(window).load(function(){
-//        $('#spinner').fadeOut('slow');
-//    });
-</script>
 
 <%= javascript_include_tag 'vendors/bg-slider/bar'%>
 <%= javascript_include_tag 'vendors/bg-slider/vegas.min.js'%>
