@@ -3,23 +3,8 @@
     <span ng-bind-html="match.model.label | uibTypeaheadHighlight:query"></span>
   </a>
 </script>
-<script type="text/javascript">
-    $('#myCarousel2').carousel({
-        interval: false
-    });
-</script>
 
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-      setTimeout(function(){
-        $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
-        $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
-        $('span.fa').css('display', 'inline-block')
-      },3000);
-    });
-</script>
-
-<script type="text/javascript">
+<!--script type="text/javascript">
   function cycleImages(){
       var $active = $('#background_cycler .active');
       var $next = ($('#background_cycler .active').next().length > 0) ? $('#background_cycler .active').next() : $('#background_cycler .img:first');
@@ -35,141 +20,146 @@
       // run every 5s
       setInterval('cycleImages()', 3000);
     })
-</script>
+</script-->
 
 <!-- top header search con start -->
 <div class="top-header-search-con">
-  <div id="background_cycler" >
-    <script type="text/javascript">
+  <!--div id="background_cycler" >
+    <!--script type="text/javascript">
       $('#background_cycler').hide(); //hide the background while the images load, ready to fade in later
-    </script>
+    </script-->
 
-    <div class="img active" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/656/original/slider1.jpg?1471607474') top center no-repeat; background-size:cover; height: 100vh; "></div>
+    <!-- <div class="img active" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/656/original/slider1.jpg?1471607474') top center no-repeat; background-size:cover; height: 100vh; "></div>
     <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/657/original/slider2.jpg?1471607491') top center no-repeat; background-size:cover; height: 100vh;"></div>
     <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/658/original/slider3.jpg?1471607511') top center no-repeat; background-size:cover; height: 100vh;"></div>
     <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/659/original/slider4.jpg?1471607529') top center no-repeat; background-size:cover; height: 100vh;"></div>
     <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/661/original/slider5.jpg?1471607556') top center no-repeat; background-size:cover; height: 100vh;"></div>
     <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/662/original/slider6.jpg?1471607577') top center no-repeat; background-size:cover; height: 100vh;"></div>
-    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/663/original/slider7.jpg?1471607602') top center no-repeat; background-size:cover; height: 100vh;"></div>
-  </div>
-  <div class="container header-container">
-    <!-- header start -->
-    <!--<div>-->
-    <!--<nav ng-hide="ctrl.isFromMobile" id="header" class="navbar navbar-default home-header header">-->
-    <!--<div class="container-fluid">-->
-    <!--<div class="navbar-header navbar-responsive">-->
-    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">-->
-    <!--<span class="sr-only">Toggle navigation</span>-->
-    <!--<span class="icon-bar"></span>-->
-    <!--<span class="icon-bar"></span>-->
-    <!--<span class="icon-bar"></span>-->
-    <!--</button>-->
-    <!--<div class="row header_row">-->
-    <!--<div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">-->
-    <!--<a class="logo-img" href="/tmp_url"><img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>-->
-    <!--</div>-->
-    <!--<div id="bs-example-navbar-collapse-2" class="collapse navbar-collapse res-header navbar-hidden">-->
-    <!--<div class="col-sm-10 col-xs-12 right-nav pull-right">-->
-    <!--<ul class="nav navbar-nav navbar-right main-nav">-->
-    <!--<li>-->
-    <!--<a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>-->
-    <!--<a ng-show="ctrl.currentUser" class="no-right-padding" href="/profile"> <img src="" style="max-height: 20px;max-width: 20px" ng-src="{{ctrl.currentUser.image}}" alt=""> {{ctrl.currentUser.full_name}} <i class="fa fa-caret-down"></i></a>-->
-    <!--<ul class="sub-nav">-->
-    <!--<li ng-show="ctrl.currentUser" ><a class="no-right-padding" href="/profile">Profile</a></li>-->
-    <!--<li ng-show="ctrl.currentUser" ><a ng-click="ctrl.signOut()" class="no-right-padding" href="">Sign Out</a></li>-->
-    <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="/contact_us">Contact</a></li>-->
-    <!--<li><a href="/media">Media</a></li>-->
-    <!--<li><a target="_self" href="/jetsteals/list">JetSteals™</a></li>-->
-    <!--<li><a href="/about_us">About</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div class="img" style="background:url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/663/original/slider7.jpg?1471607602') top center no-repeat; background-size:cover; height: 100vh;"></div> -->
+  <!-- </div> -->
+  <div class="homepage">
 
-    <!--</div>-->
-    <!--</nav>-->
-    <!--</div>-->
-    <!-- header finish -->
+    <div class="homepage-header">
+      <div class="container header-container">
+        <!-- header start -->
+        <!--<div>-->
+        <!--<nav ng-hide="ctrl.isFromMobile" id="header" class="navbar navbar-default home-header header">-->
+        <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header navbar-responsive">-->
+        <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">-->
+        <!--<span class="sr-only">Toggle navigation</span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
+        <!--<div class="row header_row">-->
+        <!--<div class="col-lg-2 col-md-2 col-sm-2 logo-main-con">-->
+        <!--<a class="logo-img" href="/tmp_url"><img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/023/original/JSG-main-logo-db779e87994672c825f333c07a75d7d2_%281%29.png?1453111090" /></a>-->
+        <!--</div>-->
+        <!--<div id="bs-example-navbar-collapse-2" class="collapse navbar-collapse res-header navbar-hidden">-->
+        <!--<div class="col-sm-10 col-xs-12 right-nav pull-right">-->
+        <!--<ul class="nav navbar-nav navbar-right main-nav">-->
+        <!--<li>-->
+        <!--<a ng-click="ctrl.signIn()" ng-hide="ctrl.currentUser" class="no-right-padding" href=""><i class="fa fa-user" aria-hidden="true"></i> Guest</a>-->
+        <!--<a ng-show="ctrl.currentUser" class="no-right-padding" href="/profile"> <img src="" style="max-height: 20px;max-width: 20px" ng-src="{{ctrl.currentUser.image}}" alt=""> {{ctrl.currentUser.full_name}} <i class="fa fa-caret-down"></i></a>-->
+        <!--<ul class="sub-nav">-->
+        <!--<li ng-show="ctrl.currentUser" ><a class="no-right-padding" href="/profile">Profile</a></li>-->
+        <!--<li ng-show="ctrl.currentUser" ><a ng-click="ctrl.signOut()" class="no-right-padding" href="">Sign Out</a></li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--<li><a href="/contact_us">Contact</a></li>-->
+        <!--<li><a href="/media">Media</a></li>-->
+        <!--<li><a target="_self" href="/jetsteals/list">JetSteals™</a></li>-->
+        <!--<li><a href="/about_us">About</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
-    <!-- search con start -->
-    <div class="search-main-con">
-      <div class="col-xs-12 no-padding-left">
-        <span class="search-main-form autocomplete-height" ng-repeat="activity in ctrl.activities">
-          <span class="search-form">
-            <span class="search-icon departure-icon">
-              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153" alt="">
+        <!--</div>-->
+        <!--</nav>-->
+        <!--</div>-->
+        <!-- header finish -->
+
+        <!-- search con start -->
+        <div class="search-main-con">
+          <div class="col-xs-12 no-padding-left">
+            <span class="search-main-form autocomplete-height" ng-repeat="activity in ctrl.activities">
+              <span class="search-form">
+                <span class="search-icon departure-icon">
+                  <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153" alt="">
+                </span>
+                <input class="search-textfield text-white" title="Departure Airport"
+                       ng-disabled="$index+1 < ctrl.activities.length"
+                       placeholder="Departure"
+                       autocomplete="off"
+                       typeahead-editable="false"
+                       typeahead-select-on-exact="true"
+                       typeahead-template-url="airportsTypeAhead.html"
+                       ng-model="activity.departure_airport"
+                       uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                       type="text"
+                       typeahead-min-length="0">
+              </span>
+              <span class="search-form">
+                <span class="search-icon">
+                  <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122" alt="">
+                </span>
+                <input class="search-textfield text-white" title="Arrival Airport"
+                       ng-disabled="$index+1 < ctrl.activities.length"
+                       placeholder="Arrival"
+                       autocomplete="off"
+                       typeahead-editable="false"
+                       typeahead-select-on-exact="true"
+                       typeahead-template-url="airportsTypeAhead.html"
+                       ng-model="activity.arrival_airport"
+                       uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
+                       type="text"
+                       typeahead-min-length="0">
+              </span>
+              <span class="search-form">
+                <span class="search-icon">
+                  <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/356/original/pax.png?1468494207" alt="">
+                </span>
+                <input class="search-textfield text-white"
+                       autocomplete="off"
+                       typeahead-editable="false"
+                       typeahead-select-on-exact="true"
+                       ng-model="activity.pax"
+                       uib-typeahead="pax for pax in ['1','2','3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37']"
+                       type="text"
+                       typeahead-min-length="0"
+                       placeholder="Pax">
+              </span>
+              <span class="search-form">
+                <span class="search-icon">
+                  <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
+                </span>
+                <div class="dropdown datetimepicker-holder search-textfield">
+                  <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(activity.start_at) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa"></i> {{ctrl.formatTime(activity.start_at)}}</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                    data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
+                    data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
+                    datetimepicker-config="{ dropdownSelector: '.fa' }"
+                    ng-model="activity.start_at"></datetimepicker>
+                  </ul>
+                </div>
+              </span>
+              <a href="javascript:void(0)" class="cross-icon" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+              </a>
             </span>
-            <input class="search-textfield text-white" title="Departure Airport"
-                   ng-disabled="$index+1 < ctrl.activities.length"
-                   placeholder="Departure"
-                   autocomplete="off"
-                   typeahead-editable="false"
-                   typeahead-select-on-exact="true"
-                   typeahead-template-url="airportsTypeAhead.html"
-                   ng-model="activity.departure_airport"
-                   uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-                   type="text"
-                   typeahead-min-length="0">
-          </span>
-          <span class="search-form">
-            <span class="search-icon">
-              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122" alt="">
-            </span>
-            <input class="search-textfield text-white" title="Arrival Airport"
-                   ng-disabled="$index+1 < ctrl.activities.length"
-                   placeholder="Arrival"
-                   autocomplete="off"
-                   typeahead-editable="false"
-                   typeahead-select-on-exact="true"
-                   typeahead-template-url="airportsTypeAhead.html"
-                   ng-model="activity.arrival_airport"
-                   uib-typeahead="airport as airport.label for airport in ctrl.airports | filter:{label:$viewValue}"
-                   type="text"
-                   typeahead-min-length="0">
-          </span>
-          <span class="search-form">
-            <span class="search-icon">
-              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/356/original/pax.png?1468494207" alt="">
-            </span>
-            <input class="search-textfield text-white"
-                   autocomplete="off"
-                   typeahead-editable="false"
-                   typeahead-select-on-exact="true"
-                   ng-model="activity.pax"
-                   uib-typeahead="pax for pax in ['1','2','3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37']"
-                   type="text"
-                   typeahead-min-length="0"
-                   placeholder="Pax">
-          </span>
-          <span class="search-form">
-            <span class="search-icon">
-              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
-            </span>
-            <div class="dropdown datetimepicker-holder search-textfield">
-              <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(activity.start_at) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"><i class="fa"></i> {{ctrl.formatTime(activity.start_at)}}</a>
-              <ul class="dropdown-menu" role="menu">
-                <datetimepicker
-                data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
-                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                datetimepicker-config="{ dropdownSelector: '.fa' }"
-                ng-model="activity.start_at"></datetimepicker>
-              </ul>
-            </div>
-          </span>
-          <a href="javascript:void(0)" class="cross-icon" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">
-            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-          </a>
-        </span>
-        <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
-        <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
-        <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip
-          <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+            <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
+            <a class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
+            <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+          </div>
+        </div>
+        <!-- search con finish -->
       </div>
     </div>
-    <!-- search con finish -->
   </div>
 </div>
 <!-- top header search con finish -->
@@ -640,3 +630,22 @@
 </div>
 
 <!-- jetsetgo app con finish -->
+
+<script type="text/javascript" charset="utf-8">
+    $('#myCarousel2').carousel({
+        interval: false
+    });
+
+    $(document).ready(function(){
+        setTimeout(function(){
+            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
+            $('span.fa').css('display', 'inline-block')
+        },3000);
+        //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
+    });
+</script>
+
+<%= javascript_include_tag 'vendors/bg-slider/bar'%>
+<%= javascript_include_tag 'vendors/bg-slider/vegas.min.js'%>
+<%= javascript_include_tag 'vendors/bg-slider/slider_vegas_app.min.js'%>

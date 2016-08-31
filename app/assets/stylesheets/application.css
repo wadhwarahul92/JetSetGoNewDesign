@@ -7,5 +7,7 @@
  *= require ./vendors/animate
  *= require_tree ./application
  *= require_self
+ *= require ./vendors/bg-slider/slider_vegas.min.css
+ *= require ./vendors/bg-slider/vegas.min.css
  *= require ./vendors/filter_slider
  */
