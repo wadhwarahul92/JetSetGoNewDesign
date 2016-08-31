@@ -14,7 +14,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @searchId = $routeParams.id
 
-  @loading = true
+#  @loading = true
 
   @active_xs_search_bar = false
 
@@ -119,7 +119,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
             @set_costs(result)
-          @loading = false
+#          @loading = false
       )
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
