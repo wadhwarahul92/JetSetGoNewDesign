@@ -128,7 +128,7 @@
           </h4>
         </div>
         <div class="col-sm-2 col-xs-12 text-right">           
-          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="" ng-src="{{ctrl.custom2 ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/619/original/cross.png?1471347394' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
+          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="" ng-src="{{ctrl.custom2 ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/718/original/modifycross.png?1472544339' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
         </div>
       </div>
     </div>
@@ -371,38 +371,38 @@
               <div class="img-hide">
                 <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
                 <img ng-src="{{result.aircraft.image}}" alt="">
-                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="icon-detail =! icon-detail">More Detail</span>
+                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.icon-detail =! ctrl.icon-detail">More Detail</span>
               </div>
-              <div class="icon-con">
+              <div class="icon-con" ng-hide="ctrl.icon_detail">
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">{{result.aircraft.baggage_capacity_in_kg}} kgs</span>
+                </span>
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{result.aircraft.crew}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{result.aircraft.seating_capacity}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/608/original/wifi.png?1471342954'}}" uib-tooltip="Wifi: {{result.aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
                 </span>
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
                    <span class="icon-detail">{{result.aircraft.cabin_height_in_meters}} ft</span>
                 </span>
                 <span class="icons-main">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{result.aircraft.seating_capacity}}</span>
-                </span>
-                <span class="icons-main">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
-                  <span class="icon-detail">{{result.aircraft.baggage_capacity_in_kg}} kgs</span>
-                </span>
-                <span class="icons-main">
-                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm</span>
-                </span>
-                <span class="icons-main">
-                  <img src="" ng-src="{{result.aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/608/original/wifi.png?1471342954'}}" uib-tooltip="Wifi: {{result.aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
-                </span>
-                <span class="icons-main">
                   <img src="" ng-src="{{result.aircraft.phone ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/606/original/call.png?1471342903'}}" uib-tooltip="Phone: {{result.aircraft.phone ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{result.aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
                 </span>
                 <span class="icons-main">
                   <img src="" ng-src="{{result.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/623/original/labotry.png?1471351162'}}" uib-tooltip="Lavatory" alt="">
                   <span class="icon-detail">{{result.aircraft.number_of_toilets}}</span>
                 </span>
-                <span class="icons-main">
-                  <img src="" ng-src="{{result.aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/618/original/cabincrew.png?1471346847'}}" uib-tooltip="Flight Attendant: {{result.aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
+                <span class="icons-main no-border">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm</span>
                 </span>
                 <div class="clearfix"></div>
               </div>

@@ -14,15 +14,18 @@
             <div class="height"></div>
             <div class="field margin-top">
               <input type="text" id="name" placeholder="Name" class="form-control text-field" style="text-align: left" ng-model="ctrl.enquiry.name" />
-              <i class="fa fa-user form-icon"></i>
+              <!-- <i class="fa fa-user form-icon"></i> -->
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/721/original/loginsm.png?1472549141" class="form-icon">
             </div>
             <div class="field margin-top">
               <input type="email" id="email" placeholder="Email Id" class="form-control text-field" style="text-align: left" n ng-model="ctrl.enquiry.email" />
-              <i class="fa fa-envelope form-icon"></i>
+              <!-- <i class="fa fa-envelope form-icon"></i> -->
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/726/original/email.png?1472550063" class="form-icon">
             </div>
             <div class="field margin-top">
               <input type="text" id="mobile_no" placeholder="Mobile No." class="form-control text-field" style="text-align: left" n ng-model="ctrl.enquiry.mobile_number" />
-              <i class="fa fa-phone form-icon"></i>
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/723/original/phone_sm.png?1472549169" class="form-icon phn-icon">
+              <!-- <i class="fa fa-phone form-icon"></i> -->
             </div>
             <div class="field margin-top">
               <!--<input type="datetime" id="date" placeholder="Date of Travel" class="form-control text-field" n ng-model="ctrl.enquiry.date_of_travel" />-->
@@ -30,7 +33,8 @@
               <span class="search-form">
                 <div style="width:100%;" class="dropdown datetimepicker-holder search-textfield date-textfield celender-main">
                   <a class="celender-text" role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.enquiry.date_of_travel) != 'Click to choose time' ? 'select-celender-text' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(ctrl.enquiry.date_of_travel)}}</a>
-                  <i class="fa fa-calendar form-icon"></i>
+                  <!-- <i class="fa fa-calendar form-icon"></i> -->
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/724/original/calendar.png?1472549273" class="form-icon phn-icon">
                   <ul class="dropdown-menu" role="menu">
                     <datetimepicker
                     data-on-set-time="ctrl.onSetTime(newDate, oldDate, 0)"
