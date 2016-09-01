@@ -58,6 +58,10 @@ $main-blue-color:rgb(5, 81, 139);
     overflow-x: scroll;
     overflow-y: inherit;
     min-width: 400px;
+    z-index: 1 !important;
+  }
+  .dropdown-celender{
+    min-width: inherit;
   }
 }
 .login-left-con{
@@ -320,7 +324,6 @@ span.heading:after{
 
   .header-container{
       position: relative;
-      height: 100vh;
     }
     .header#header{
       border-bottom: 0px !important;
@@ -1464,7 +1467,7 @@ span.heading:after{
 
   //jetsteel section
   .jetsteel-main-con{
-    padding: 20px 0 0px 0;
+    padding: 0;
     span.heading{
       margin:0 0 0 6px;
       color: #ffffff;
