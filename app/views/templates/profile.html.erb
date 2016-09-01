@@ -102,9 +102,14 @@
               <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">-->
             <!--</span>-->
             <div class="dropdown datetimepicker-holder search-textfield" ng-class="ctrl.upd_profile ? 'edit_text_field' : 'text-field'">
-              <a class="" ng-class="ctrl.upd_profile ? 'date-gray' : 'date-text-field'" style="padding-left: 0;" role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.currentUser.dob) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(ctrl.currentUser.dob)}}</a>
+              <a class="fa" ng-class="ctrl.upd_profile ? 'date-gray' : 'date-text-field'" style="padding-left: 0;" role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(ctrl.currentUser.dob) != 'Click to choose time' ? 'white-color' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(ctrl.currentUser.dob)}}</a>
               <ul class="dropdown-menu" role="menu">
-                <datetimepicker data-on-set-time="ctrl.onSetTime(newDate, oldDate)" data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate)" datetimepicker-config="{ dropdownSelector: '.fa' }" ng-model="ctrl.currentUser.dob"></datetimepicker>
+                <datetimepicker data-on-set-time="ctrl.onSetTime(newDate, oldDate)"
+                                data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate)"
+                                datetimepicker-config="{dropdownSelector: '.save-btn', minView:'day' }"
+                                ng-model="ctrl.currentUser.dob">
+
+                </datetimepicker>
               </ul>
             </div>
         </span>
