@@ -202,12 +202,12 @@
                         <datetimepicker
                         data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                         data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                        datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+                        datetimepicker-config="{ dropdownSelector: '.modify-btn', minView:'hour' }"
                         ng-model="search_activity.start_at"></datetimepicker>
                       </ul>
                     </div>
                   </span>
-                  <a href="javascript:void(0)" class="cross-icon" ng-show="$index > 0" ng-click="ctrl.removeActivity($index)">
+                  <a href="javascript:void(0)" class="cross-icon" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))" ng-click="ctrl.removeActivity($index)">
                     <i class="fa fa-times-circle-o" aria-hidden="true"></i>
                   </a>
                   <br/> <br/>
