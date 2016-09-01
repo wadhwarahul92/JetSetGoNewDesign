@@ -373,9 +373,9 @@
               <div class="img-hide">
                 <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
                 <img ng-src="{{result.aircraft.image}}" alt="">
-                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.icon-detail =! ctrl.icon-detail">More Detail</span>
+                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="(result.icon_detail=false)" ng-click="result.icon_detail =! result.icon_detail">More Detail</span>
               </div>
-              <div class="icon-con" ng-hide="ctrl.icon_detail">
+              <div class="icon-con" ng-hide="result.icon_detail">
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                   <span class="icon-detail">{{result.aircraft.baggage_capacity_in_kg}} kgs</span>
