@@ -28,6 +28,8 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @cost = true
 
+  @share_email = ''
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -275,6 +277,23 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
           message: 'successfully saved.'
         )
         location.reload()
+    ).error(
+      (data)=>
+        notify(
+          massege: data.errors[0]
+          classes: ['alert-danger']
+        )
+
+    )
+
+  @share = ()->
+
+    $http.post('customers/share_email', { email: @share_email, trip_id: @trip_id, customer: @currentUser.id}).success(
+      ->
+        notify(
+          message: 'Successfully shared.'
+        )
+
     ).error(
       (data)=>
         notify(

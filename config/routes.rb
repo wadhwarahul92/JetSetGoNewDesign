@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       get 'get_user_trips'
       get 'get_confirmed_jetsteals'
       put 'activity_sell_empty_leg'
+      post 'share_email'
     end
   end
 
