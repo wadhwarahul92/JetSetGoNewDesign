@@ -122,7 +122,13 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/sell_empty_leg'
     controller: 'SellEmptyLegController'
     controllerAs: 'ctrl'
+  }).when('/requested_add_passenger', {
+    templateUrl: '/templates/requested_add_passenger'
+    controller: 'RequestedAddPassengerController'
+    controllerAs: 'ctrl'
   })
+
+
 
   $locationProvider.html5Mode(true)
 

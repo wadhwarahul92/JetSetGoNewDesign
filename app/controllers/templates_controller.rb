@@ -98,4 +98,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def requested_add_passenger
+
+  end
+
 end
