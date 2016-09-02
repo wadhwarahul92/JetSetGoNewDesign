@@ -1,3 +1,13 @@
+<script type="application/javascript">
+    $(document).ready(function(){
+        $('.navbar-collapse a.page-link').click(function(){
+            $(".navbar-collapse").hide();
+        });
+        $('.navbar-toggle').click(function(){
+            $(".navbar-collapse").toggle();
+        });
+    });
+</script>
 <div ng-controller="HeaderController as ctrl">
   <nav ng-hide="ctrl.isFromMobile || ctrl.hideForPath()" id="header" class="navbar navbar-default fixed-header">
     <div class="container container-fluid header-container">
@@ -40,20 +50,20 @@
                   </ul>
                 </li>
                 <li ng-show="ctrl.currentUser" >
-                  <a ng-click="ctrl.signOut()" class="no-right-padding" href="">Sign Out</a>
+                  <a ng-click="ctrl.signOut()" class="no-right-padding page-link" href="">Sign Out</a>
                 </li>
                 <li ng-show="ctrl.currentUser">
-                  <a class="no-right-padding ms-text-capitalize" href="/profile">
+                  <a class="no-right-padding ms-text-capitalize page-link" href="/profile">
                     <img src="" style="max-height: 20px;max-width: 20px" ng-src="{{ctrl.currentUser.image}}" alt=""> {{ctrl.currentUser.full_name}}
                   </a>
                 </li>
                 <li ng-hide="ctrl.currentUser">
-                  <a href="" ng-click="ctrl.openSignUpModal()">
+                  <a href="" class="page-link" ng-click="ctrl.openSignUpModal()">
                     <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/355/original/login.png?1468494171" alt=""> Sign Up
                   </a>
                 </li>
                 <li ng-hide="ctrl.currentUser">
-                  <a ng-click="ctrl.signIn()" href="">
+                  <a class="page-link" ng-click="ctrl.signIn()" href="">
                     <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/359/original/signin.png?1468494272" alt=""> Login
                   </a>
                 </li>
@@ -61,16 +71,16 @@
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/701/original/phone.png?1472036639" alt=""> <!-- <span>+91-11-39585858</span> -->
                 </li>
                 <li class="hidden-lg hidden-md hidden-sm">
-                  <a href="/contact_us">Contact Us</a>
+                  <a class="page-link" href="/contact_us">Contact Us</a>
                 </li>
                 <li class="hidden-lg hidden-md hidden-sm">
-                  <a href="/media">Media</a>
+                  <a class="page-link" href="/media">Media</a>
                 </li>
                 <li class="hidden-lg hidden-md hidden-sm">
-                  <a href="/jetsteals/list" target="_self">JetSteals&trade;</a>
+                  <a class="page-link" href="/jetsteals/list" target="_self">JetSteals&trade;</a>
                 </li>
                 <li class="hidden-lg hidden-md hidden-sm">
-                  <a href="/about_us">About Us</a>
+                  <a class="page-link" href="/about_us">About Us</a>
                 </li>
                 <div class="clearfix"></div>
               </ul>
