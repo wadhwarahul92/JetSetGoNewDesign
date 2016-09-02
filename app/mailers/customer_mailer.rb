@@ -46,4 +46,22 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  ######################################################################
+  # Description: When customer share email to add passenger details
+  # @param [email] email
+  # @param [Trip] trip
+  # @return [ActionMailer::Base]
+  ######################################################################
+  def share_email(email, trip_id, token)
+    @trip_id = trip_id
+    @email = email
+    @token = token
+    mail(
+        to: @email,
+        subject: 'JetSetGo - Share passenger detail'
+    )
+  end
+
+
+
 end
