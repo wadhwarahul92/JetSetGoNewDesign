@@ -284,7 +284,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
         notify(
           message: 'successfully saved.'
         )
-        location.reload()
+#        location.reload()
     ).error(
       (data)=>
         notify(

@@ -4,31 +4,31 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="gap"></div>
-        <p class="top_name_content"><span class="name">Rahul</span> has requested you to add passenger on his behalf.</p>
+        <!--<p class="top_name_content"><span class="name">Rahul</span> has requested you to add passenger on his behalf.</p>-->
         <div class="trip-info">
           <h2 class="heading">Trip Info</h2>
           <div class="trip-main-con">
-            <div class="location-con" >
+            <div class="location-con" ng-repeat="activity in ctrl.trip.activities" ng-if="!activity.empty_leg" >
               <div class="row">
                 <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
                   <p>
                     <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
                   </p>
-                  <p class="city-name"><b>Indira Gandhi International Airport</b></p>
-                  <p class="time-con">08:09 AM</p>
-                  <p class="date-con">8th September 2016</p>
+                  <p class="city-name"><b>{{activity.departure_airport.name}}</b></p>
+                  <p class="time-con">{{activity.start_at.split(',')[1]}}</p>
+                  <p class="date-con">{{activity.start_at.split(',')[0]}}</p>
                 </div>
                 <div class="col-md-3 text-center col-sm-4 hidden-xs">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
-                  <p><b>4 hours 12 minutes</b></p>
+                  <p><b>{{ctrl.count_flight_time(activity)}}</b></p>
                 </div>
                 <div class="arrival-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
                   <p>
                     <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
                   </p>
-                  <p class="city-name"><b>Amausi Airport</b></p>
-                  <p class="time-con">10:09 AM</p>
-                  <p class="date-con">8th September 2016</p>
+                  <p class="city-name"><b>{{activity.arrival_airport.name}}</b></p>
+                  <p class="time-con">{{activity.end_at.split(',')[1]}}</p>
+                  <p class="date-con">{{activity.end_at.split(',')[0]}}</p>
 
                   <!--<p class="city-name">Aizawl Airport</p>-->
                   <!--<p class="time-con">11:10 AM</p>-->
@@ -36,34 +36,34 @@
                 </div>
               </div>
             </div>
-            <div class="location-con" >
-              <div class="row">
-                <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
-                  <p>
-                    <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
-                  </p>
-                  <p class="city-name"><b>Indira Gandhi International Airport</b></p>
-                  <p class="time-con">08:09 AM</p>
-                  <p class="date-con">8th September 2016</p>
-                </div>
-                <div class="col-md-3 text-center col-sm-4 hidden-xs">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
-                  <p><b>4 hours 12 minutes</b></p>
-                </div>
-                <div class="arrival-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
-                  <p>
-                    <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
-                  </p>
-                  <p class="city-name"><b>Amausi Airport</b></p>
-                  <p class="time-con">10:09 AM</p>
-                  <p class="date-con">8th September 2016</p>
+            <!--<div class="location-con" >-->
+              <!--<div class="row">-->
+                <!--<div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">-->
+                  <!--<p>-->
+                    <!--<img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">-->
+                  <!--</p>-->
+                  <!--<p class="city-name"><b>Indira Gandhi International Airport</b></p>-->
+                  <!--<p class="time-con">08:09 AM</p>-->
+                  <!--<p class="date-con">8th September 2016</p>-->
+                <!--</div>-->
+                <!--<div class="col-md-3 text-center col-sm-4 hidden-xs">-->
+                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">-->
+                  <!--<p><b>4 hours 12 minutes</b></p>-->
+                <!--</div>-->
+                <!--<div class="arrival-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">-->
+                  <!--<p>-->
+                    <!--<img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">-->
+                  <!--</p>-->
+                  <!--<p class="city-name"><b>Amausi Airport</b></p>-->
+                  <!--<p class="time-con">10:09 AM</p>-->
+                  <!--<p class="date-con">8th September 2016</p>-->
 
-                  <!--<p class="city-name">Aizawl Airport</p>-->
-                  <!--<p class="time-con">11:10 AM</p>-->
-                  <!--<p class="date-con">20th Aug 2016</p>-->
-                </div>
-              </div>
-            </div>
+                  <!--&lt;!&ndash;<p class="city-name">Aizawl Airport</p>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<p class="time-con">11:10 AM</p>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<p class="date-con">20th Aug 2016</p>&ndash;&gt;-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
           </div>
         </div>
         <div>
@@ -86,8 +86,8 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <h4>Catering:</h4>
-                    <input type="text" class="txt-forward-email">
-                    <a class="btn-send" href="javascript:void(0)">Save</a>
+                    <input type="text" class="txt-forward-email" ng-model="ctrl.trip.catering">
+                    <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">Save</a>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@
                     </thead>
                     <tbody>
                     <tr class="body-row">
-                      <td>Catering1</td>
+                      <td>{{ctrl.trip.catering}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -131,21 +131,13 @@
                   <div class="clearfix"></div>
                 </div> -->
                 <div class="row">
-                  <div class="passenger-repeat">
-                    <!--<div class="col-md-3 col-sm-4 col-xs-12">-->
-                    <!--<h4>Email Id</h4>-->
-                    <!--<input type="text" ng-model="passenger_detail.email" class="txt-email" />-->
-                    <!--</div>-->
-                    <!--<div class="col-md-3 col-sm-4 col-xs-12">-->
-                    <!--<h4>Phone</h4>-->
-                    <!--<input type="text" ng-model="passenger_detail.contact" class="txt-phn" />-->
-                    <!--</div>-->
+                  <div class="passenger-repeat" ng-repeat="passenger_detail in ctrl.passenger_details_">
                     <div class="col-xs-12">
                       <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
                     </div>
                     <div class="col-md-2 col-sm-3 col-xs-12">
                       <h4>Title</h4>
-                      <select class="txt-textfield">
+                      <select  ng-model="passenger_detail.title" class="txt-textfield">
                         <option>Mr.</option>
                         <option>Ms.</option>
                         <option>Mrs.</option>
@@ -157,7 +149,7 @@
                     </div>
                     <div class="col-md-4 col-sm-3 col-xs-12">
                       <h4>Name</h4>
-                      <input type="text" class="txt-textfield" />
+                      <input type="text" class="txt-textfield" ng-model="passenger_detail.name" />
                     </div>
                     <!--<div class="col-md-2">-->
                     <!--<h4>Last Name</h4>-->
@@ -173,7 +165,7 @@
                     <!--</div>-->
                     <div class="col-md-2 col-sm-3 col-xs-12">
                       <h4>Nationality</h4>
-                      <input type="text" class="txt-textfield" />
+                      <input type="text" class="txt-textfield" ng-model="passenger_detail.nationality"/>
                     </div>
                     <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
                     <!--<h4>Age</h4>-->
@@ -184,7 +176,7 @@
                       <input type="file" name="pic" class="txt-upload" accept="image/*">
                       <span class="mandatory-txt">Mandatory for Foreign Passengers</span>
                     </div> -->
-                    <a class="cross-btn" href="javascript:void(0)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+                    <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
                     <div class="clearfix"></div>
                   </div>
                 </div>
@@ -215,42 +207,16 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="body-row">
-                    <td>Mr.</td>
-                    <td>Rahul</td>
+                  <tr class="body-row" ng-repeat="passenger in ctrl.trip.passengers">
+                    <td>{{passenger.title}}</td>
+                    <td>{{passenger.name}}</td>
                     <!--<td>{{ passenger_detail.age }}</td>-->
-                    <td>Indian</td>
+                    <td>{{passenger.nationality}}</td>
                     <!--<td>{{ passenger_detail.gender }}</td>-->
                     <!--<td>{{ passenger_detail.email }}</td>-->
                     <!--<td>{{ passenger_detail.contact }}</td>-->
                   </tr>
-                  <tr class="body-row">
-                    <td>Ms.</td>
-                    <td>Smriti</td>
-                    <!--<td>{{ passenger_detail.age }}</td>-->
-                    <td>Indian</td>
-                    <!--<td>{{ passenger_detail.gender }}</td>-->
-                    <!--<td>{{ passenger_detail.email }}</td>-->
-                    <!--<td>{{ passenger_detail.contact }}</td>-->
-                  </tr>
-                  <tr class="body-row">
-                    <td>Mr.</td>
-                    <td>Rahul</td>
-                    <!--<td>{{ passenger_detail.age }}</td>-->
-                    <td>Indian</td>
-                    <!--<td>{{ passenger_detail.gender }}</td>-->
-                    <!--<td>{{ passenger_detail.email }}</td>-->
-                    <!--<td>{{ passenger_detail.contact }}</td>-->
-                  </tr>
-                  <tr class="body-row">
-                    <td>Ms.</td>
-                    <td>Smriti</td>
-                    <!--<td>{{ passenger_detail.age }}</td>-->
-                    <td>Indian</td>
-                    <!--<td>{{ passenger_detail.gender }}</td>-->
-                    <!--<td>{{ passenger_detail.email }}</td>-->
-                    <!--<td>{{ passenger_detail.contact }}</td>-->
-                  </tr>
+
                   </tbody>
                 </table>
               </div>

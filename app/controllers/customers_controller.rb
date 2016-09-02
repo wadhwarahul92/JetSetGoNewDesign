@@ -151,11 +151,28 @@ class CustomersController < ApplicationController
       customer = User.where(id: params[:customer])
       if customer.present?
         token = User.where(id: params[:customer]).first.api_token
-        CustomerMailer.share_email(params[:email], params[:trip_id], token: token).deliver_later
+        CustomerMailer.share_email(params[:email], params[:trip_id], token).deliver_now
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, nothing: true
       end
+    else
+      render status: :unprocessable_entity, nothing: true
+    end
+  end
+
+  def get_shared_trip
+    if params[:token].present? and params[:trip_id].present?
+      token = params[:token]
+      trip_id = params[:trip_id]
+      user = User.where(api_token: token).first
+      if user.present?
+        @trip = user.trips.where(id: trip_id).first
+        # render status: :ok, nothing: true
+      else
+        render status: :unprocessable_entity, nothing: true
+      end
+
     else
       render status: :unprocessable_entity, nothing: true
     end
@@ -203,5 +220,12 @@ class CustomersController < ApplicationController
         jetsteals: jetsteals
     }
   end
+
+  # def set_required_params
+  #   params.require(:required_variables).permit(
+  #       :token,
+  #       :trip_id
+  #   )
+  # end
 
 end
