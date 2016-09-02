@@ -1,5 +1,7 @@
 jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
 
+#  @loading = true
+
   @jsg_commision = CustomerCostBreakUpsService.commission
 
   @results = []
@@ -13,8 +15,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @custom2 = false
 
   @searchId = $routeParams.id
-
-#  @loading = true
 
   @active_xs_search_bar = false
 
