@@ -43,9 +43,9 @@ json.jetsteals{
       json.flying_range_in_nm jetsteal.aircraft.flying_range_in_nm
       json.per_hour_cost jetsteal.aircraft.per_hour_cost
 
-      json.flight_cost_commission_in_percentage aircraft.flight_cost_commission_in_percentage
-      json.handling_cost_commission_in_percentage aircraft.handling_cost_commission_in_percentage
-      json.accomodation_cost_commission_in_percentage aircraft.accomodation_cost_commission_in_percentage
+      json.flight_cost_commission_in_percentage jetsteal.aircraft.flight_cost_commission_in_percentage
+      json.handling_cost_commission_in_percentage jetsteal.aircraft.handling_cost_commission_in_percentage
+      json.accomodation_cost_commission_in_percentage jetsteal.aircraft.accomodation_cost_commission_in_percentage
 
       json.image jetsteal.aircraft.image.url(:original)
       json.interior_image_original jetsteal.aircraft.interior.url(:original)
