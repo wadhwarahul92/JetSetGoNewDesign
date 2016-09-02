@@ -1,0 +1,17 @@
+.requested_add_passenger{
+  .gap{
+    height: 100px;
+  }
+  p.top_name_content{
+    font-size: 17px;
+    span.name{
+      color: #920000;
+      font-weight: bold;
+      font-size: 19px;
+    }
+  }
+  .cross-btn{
+    position: relative !important;
+    top: 42px !important;
+  }
+}
