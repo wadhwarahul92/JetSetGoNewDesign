@@ -91,9 +91,9 @@
                         <div class="col-sm-8 no-padding-right">
                           <div class="booking-img">
                             <img src="" class="img-responsive" ng-src="{{quote.activities[0].aircraft.exterior_image}}" />
-                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.icon_detail = !ctrl.icon_detail">More Detail</span>
+                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="(quote.icon_detail=false)" ng-click="quote.icon_detail = !quote.icon_detail">More Detail</span>
                           </div>
-                          <div class="icon-con" ng-hide="ctrl.icon_detail">
+                          <div class="icon-con" ng-hide="quote.icon_detail">
                             <span class="icons-main">
                               <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                               <span class="icon-detail">{{quote.aircraft.baggage_capacity_in_kg}} kgs</span>
