@@ -42,6 +42,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @current_user_present = false
   @count_night_flight = 0
+#  @search_notam_active = false
 
   $scope.$watch(
     =>
@@ -106,7 +107,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 #      @check_night_landing(@results)
 
       @airport_break_ups = data.airport_break_ups
-      if @airport_break_ups.notam_details.length > 0
+#      @search_notam_active = @check_search_notam_active(@airport_break_ups)
+      if @check_search_notam_active(@airport_break_ups)
         @custom2 = true
       else
         @custom2 = false
@@ -174,6 +176,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     data = null
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY')
+    if data and data == 'Invalid date'
+      return 'Departure time'
+    else
+      return data
+
+  @formatTime4 = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('h:mm A')
     if data and data == 'Invalid date'
       return 'Departure time'
     else
@@ -461,6 +472,13 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     result.total_flight_cost = (result.total_flight_cost + (result.total_flight_cost * (result.aircraft.flight_cost_commission_in_percentage/100)))
     result.total_handling_cost = (result.total_handling_cost + (result.total_handling_cost * (result.aircraft.handling_cost_commission_in_percentage/100)))
     result.total_accommodation_cost = (result.total_accommodation_cost + (result.total_accommodation_cost * (result.aircraft.accomodation_cost_commission_in_percentage/100)))
+
+  @check_search_notam_active = ->
+    flag = false
+    for break_up in @airport_break_ups
+      if break_up.is_notam
+        flag = true
+    flag
 
   return undefined
 ]
