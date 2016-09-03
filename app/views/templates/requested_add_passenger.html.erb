@@ -131,53 +131,55 @@
                   <div class="clearfix"></div>
                 </div> -->
                 <div class="row">
-                  <div class="passenger-repeat" ng-repeat="passenger_detail in ctrl.passenger_details_">
-                    <div class="col-xs-12">
-                      <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+                  <div class="col-xs-12">
+                    <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
+                  </div>
+                  <div class="" ng-repeat="passenger_detail in ctrl.passenger_details_">
+                    <div class="passenger-repeat">
+                      <div class="col-md-2 col-sm-3 col-xs-12">
+                        <h4>Title</h4>
+                        <select  ng-model="passenger_detail.title" class="txt-textfield">
+                          <option>Mr.</option>
+                          <option>Ms.</option>
+                          <option>Mrs.</option>
+                          <option>Miss.</option>
+                          <option>Dr.</option>
+                          <option>Capt.</option>
+                        </select>
+                        <!-- <input type="text" ng-model="passenger_detail.title" class="txt-textfield" /> -->
+                      </div>
+                      <div class="col-md-4 col-sm-3 col-xs-12">
+                        <h4>Name</h4>
+                        <input type="text" class="txt-textfield" ng-model="passenger_detail.name" />
+                      </div>
+                      <!--<div class="col-md-2">-->
+                      <!--<h4>Last Name</h4>-->
+                      <!--<input type="text" class="txt-textfield" />-->
+                      <!--</div>-->
+                      <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+                      <!--<h4>Gender</h4>-->
+                      <!--<select ng-model="passenger_detail.gender" class="txt-textfield">-->
+                      <!--<option>Male</option>-->
+                      <!--<option>Female</option>-->
+                      <!--</select>-->
+                      <!--&lt;!&ndash; <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> &ndash;&gt;-->
+                      <!--</div>-->
+                      <div class="col-md-2 col-sm-3 col-xs-12">
+                        <h4>Nationality</h4>
+                        <input type="text" class="txt-textfield" ng-model="passenger_detail.nationality"/>
+                      </div>
+                      <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+                      <!--<h4>Age</h4>-->
+                      <!--<input type="text" ng-model="passenger_detail.age" class="txt-textfield" />-->
+                      <!--</div>-->
+                      <!-- <div class="col-md-3">
+                        <h4>Upload Passport</h4>
+                        <input type="file" name="pic" class="txt-upload" accept="image/*">
+                        <span class="mandatory-txt">Mandatory for Foreign Passengers</span>
+                      </div> -->
+                      <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+                      <div class="clearfix"></div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-12">
-                      <h4>Title</h4>
-                      <select  ng-model="passenger_detail.title" class="txt-textfield">
-                        <option>Mr.</option>
-                        <option>Ms.</option>
-                        <option>Mrs.</option>
-                        <option>Miss.</option>
-                        <option>Dr.</option>
-                        <option>Capt.</option>
-                      </select>
-                      <!-- <input type="text" ng-model="passenger_detail.title" class="txt-textfield" /> -->
-                    </div>
-                    <div class="col-md-4 col-sm-3 col-xs-12">
-                      <h4>Name</h4>
-                      <input type="text" class="txt-textfield" ng-model="passenger_detail.name" />
-                    </div>
-                    <!--<div class="col-md-2">-->
-                    <!--<h4>Last Name</h4>-->
-                    <!--<input type="text" class="txt-textfield" />-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
-                    <!--<h4>Gender</h4>-->
-                    <!--<select ng-model="passenger_detail.gender" class="txt-textfield">-->
-                    <!--<option>Male</option>-->
-                    <!--<option>Female</option>-->
-                    <!--</select>-->
-                    <!--&lt;!&ndash; <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> &ndash;&gt;-->
-                    <!--</div>-->
-                    <div class="col-md-2 col-sm-3 col-xs-12">
-                      <h4>Nationality</h4>
-                      <input type="text" class="txt-textfield" ng-model="passenger_detail.nationality"/>
-                    </div>
-                    <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
-                    <!--<h4>Age</h4>-->
-                    <!--<input type="text" ng-model="passenger_detail.age" class="txt-textfield" />-->
-                    <!--</div>-->
-                    <!-- <div class="col-md-3">
-                      <h4>Upload Passport</h4>
-                      <input type="file" name="pic" class="txt-upload" accept="image/*">
-                      <span class="mandatory-txt">Mandatory for Foreign Passengers</span>
-                    </div> -->
-                    <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
-                    <div class="clearfix"></div>
                   </div>
                 </div>
                 <div class="row">
