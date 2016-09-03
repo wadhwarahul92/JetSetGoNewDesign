@@ -162,7 +162,7 @@
                     <datetimepicker
                     data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                     data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                    datetimepicker-config="{ dropdownSelector: '.fa', minView:'hour' }"
+                    datetimepicker-config="{ dropdownSelector: '.fa', minView:'minute', minuteStep: 15 }"
                     ng-model="activity.start_at"></datetimepicker>
                   </ul>
                 </div>
