@@ -202,7 +202,7 @@
                         <datetimepicker
                         data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                         data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
-                        datetimepicker-config="{ dropdownSelector: '.modify-btn', minView:'hour' }"
+                        datetimepicker-config="{ dropdownSelector: '.modify-btn', minView:'minute', minuteStep: 15 }"
                         ng-model="search_activity.start_at"></datetimepicker>
                       </ul>
                     </div>
