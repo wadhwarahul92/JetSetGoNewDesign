@@ -59,8 +59,8 @@ class Trip < ActiveRecord::Base
       end
       date_list << activity.start_at.strftime("%d")
       date_list << activity.end_at.strftime("%d")
-      hours = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[0].to_i
-      minutes = TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[1].to_i
+      hours += TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[0].to_i
+      minutes += TimeDifference.between(activity.start_at, activity.end_at).in_hours.to_s.split('.')[1].to_i
     end
 
     min_mins = ((date_list.uniq.count * 2)*60)
