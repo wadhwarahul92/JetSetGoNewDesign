@@ -631,7 +631,7 @@ BEGIN
           x[:watch_hour] << watch_hour
         end
 
-        notam = @notams.detect{ |n| n.airport_id == id and ( n.start_at <= date.end_of_day and n.end_at >= date.beginning_of_day ) }
+        notam = @notams.detect{ |n| n.airport_id == id and ( n.start_at <= date and n.end_at >= date ) }
 
         if notam.present?
           x[:is_notam] = true
@@ -718,7 +718,9 @@ BEGIN
 
   def airport_max_field_for_landing(search_activities)
     airport_ids = search_activities.map(&:departure_airport_id) + search_activities.map(&:arrival_airport_id)
-    Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
+
+    # Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
+    Airport.where(id: airport_ids).minimum(:runway_field_length_in_feet)
   end
 
   # def flight_in_night(time)

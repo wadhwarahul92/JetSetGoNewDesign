@@ -175,13 +175,13 @@
           </h4>
         </div>
         <div class="col-sm-2 col-xs-12 text-right">           
-          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="" ng-src="{{ctrl.custom2 ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/718/original/modifycross.png?1472544339' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
+          <img ng-click="ctrl.search_bar_active =! ctrl.search_bar_active" style="cursor: pointer;" src="" ng-src="{{ctrl.search_bar_active ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/718/original/modifycross.png?1472544339' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
         </div>
       </div>
     </div>
   </div>
   <!-- {{ctrl.airport_break_ups.notam_details.length > 0}} -->
-  <div class="filter-toggle-main" ng-show="ctrl.custom2">
+  <div class="filter-toggle-main" ng-show="ctrl.search_bar_active || ctrl.count_night_flight == 0">
     <div class="container">
       <div class="search-form-con">
 
@@ -348,11 +348,11 @@
           <!--<h3 class="text-center notum-text" ng-show="ctrl.airport_break_ups.notam_details.length > 0">-->
             <!--Please select different timings as Airports are not operational at your selected time.-->
           <!--</h3>-->
-          <h3 class="text-center notum-text" ng-show="ctrl.custom2">
+          <h3 class="text-center notum-text" ng-show="ctrl.search_notam_active || ctrl.count_night_flight == 0">
             Please select different timings as Airports are not operational at your selected time.
           </h3>
 
-          <div class="row" ng-hide="ctrl.airport_break_ups.notam_details.length > 0">
+          <div class="row" ng-hide="ctrl.search_notam_active || ctrl.count_night_flight == 0">
             <div class="col-sm-4 col-xs-12">
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
@@ -404,7 +404,7 @@
   </div>
   <span ng-if="ctrl.enquireBeforeLogin.aircraft && ctrl.current_user_present" ng-init="ctrl.enquireOnLogin(ctrl.enquireBeforeLogin)"></span>
   <!--<div ng-if="ctrl.airport_break_ups.notam_details.length < 1" class="search_result_main">-->
-  <div  class="search_result_main" ng-if="!ctrl.custom2">
+  <div  class="search_result_main" ng-if="!ctrl.search_notam_active">
     <div class="container">
       <div class="search_result">
 
