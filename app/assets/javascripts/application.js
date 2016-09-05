@@ -52,6 +52,7 @@
 //= require ./services/base
 //= require ./services/cost_break_ups_service
 //= require ./services/customer_cost_break_ups_service
+//= require ./vendors/owl-carousel/owl_carousel
 
 
 $(document).on('ready page:load', function(){
