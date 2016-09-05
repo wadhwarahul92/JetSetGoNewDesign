@@ -1,5 +1,7 @@
 jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
 
+  @loading = true
+
   @jsg_commision = CustomerCostBreakUpsService.commission
 
   @results = []
@@ -10,11 +12,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @user = false
 
-  @custom2 = false
+  @search_bar_active = false
 
   @searchId = $routeParams.id
-
-#  @loading = true
 
   @active_xs_search_bar = false
 
@@ -41,7 +41,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @enquireBeforeLogin = {}
 
   @current_user_present = false
-  @count_night_flight = 0
+
+  @search_notam_active = false
 
   $scope.$watch(
     =>
@@ -106,10 +107,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 #      @check_night_landing(@results)
 
       @airport_break_ups = data.airport_break_ups
-      if @airport_break_ups.notam_details.length > 0
-        @custom2 = true
+#      @search_notam_active = @check_search_notam_active(@airport_break_ups)
+      if @check_search_notam_active(@airport_break_ups)
+        @search_bar_active = true
+        @search_notam_active = true
       else
-        @custom2 = false
+        @search_bar_active = false
 
       @search_activities = data.search_activities
 
@@ -119,13 +122,14 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           for result in @results
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
             @set_costs(result)
-#          @loading = false
       )
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
         search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
         search_activity.start_at = new Date(search_activity.start_at)
 
+
+      @count_night_flight = 0
 
       @search_activities_static = JSON.parse(JSON.stringify @search_activities)
       if @results.length > 0
@@ -174,6 +178,15 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     data = null
     try
       data = moment(new Date("#{time}")).format('Do MMM YYYY')
+    if data and data == 'Invalid date'
+      return 'Departure time'
+    else
+      return data
+
+  @formatTime4 = (time)->
+    data = null
+    try
+      data = moment(new Date("#{time}")).format('h:mm A')
     if data and data == 'Invalid date'
       return 'Departure time'
     else
@@ -401,9 +414,14 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     for flight_plan in result.flight_plan
       end_at = moment(flight_plan.start_at).add(flight_plan.flight_time.split(':')[0],'hours')
       end_at = moment(end_at).add(flight_plan.flight_time.split(':')[1],'minutes')
-      if @is_night_time(moment(flight_plan.start_at).format("HH")) or @is_night_time(moment(end_at).format("HH"))
-        if @airportForId(flight_plan.departure_airport_id).night_landing and @airportForId(flight_plan.arrival_airport_id).night_landing
+      if @is_night_time(moment(flight_plan.start_at).format("HH"))
+        if @airportForId(flight_plan.departure_airport_id).night_landing
           # do nothing
+        else
+          can_night_land = false
+      if @is_night_time(moment(end_at).format("HH"))
+        if @airportForId(flight_plan.arrival_airport_id).night_landing
+         # do nothing
         else
           can_night_land = false
     can_night_land
@@ -411,13 +429,14 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @is_night_time = (time_hour)->
     night = false
 #    if 6 < parseInt(time_hour) and parseInt(time_hour) < 18
-    if 6 > parseInt(time_hour) or parseInt(time_hour) > 18
+    if 5 > parseInt(time_hour) or parseInt(time_hour) > 17
       night = true
     night
 
   @has_all_night_landing_airport = (is_night_flight)->
     if is_night_flight
       @count_night_flight = @count_night_flight + 1
+    @loading = false
 
   @set_costs = (result)->
     result.totalCost = @totalTripCost(result)
@@ -461,6 +480,13 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     result.total_flight_cost = (result.total_flight_cost + (result.total_flight_cost * (result.aircraft.flight_cost_commission_in_percentage/100)))
     result.total_handling_cost = (result.total_handling_cost + (result.total_handling_cost * (result.aircraft.handling_cost_commission_in_percentage/100)))
     result.total_accommodation_cost = (result.total_accommodation_cost + (result.total_accommodation_cost * (result.aircraft.accomodation_cost_commission_in_percentage/100)))
+
+  @check_search_notam_active = ->
+    flag = false
+    for break_up in @airport_break_ups
+      if break_up.is_notam
+        flag = true
+    flag
 
   return undefined
 ]

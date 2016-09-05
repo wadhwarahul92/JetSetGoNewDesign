@@ -589,70 +589,138 @@ BEGIN
     speed
   end
 
-  def airport_notam_detail(airport_id, time)
-    @airport_notam_map ||= {}
-    return @airport_notam_map["#{airport_id}-#{time.to_s}"] if @airport_notam_map["#{airport_id}-#{time.to_s}"].present?
-    notam = @notams.detect{ |n| n.airport_id == airport_id and ( n.start_at <= time and n.end_at >= time ) }
-    notam.present? ? ( @airport_notam_map["#{airport_id}-#{time.to_s}"] = true ) : ( @airport_notam_map["#{airport_id}-#{time.to_s}"] = false )
-    @airport_notam_map["#{airport_id}-#{time.to_s}"]
-  end
+  # def airport_notam_detail(airport_id, time)
+  #   @airport_notam_map ||= {}
+  #   return @airport_notam_map["#{airport_id}-#{time.to_s}"] if @airport_notam_map["#{airport_id}-#{time.to_s}"].present?
+  #   notam = @notams.detect{ |n| n.airport_id == airport_id and ( n.start_at <= time and n.end_at >= time ) }
+  #   notam.present? ? ( @airport_notam_map["#{airport_id}-#{time.to_s}"] = true ) : ( @airport_notam_map["#{airport_id}-#{time.to_s}"] = false )
+  #   @airport_notam_map["#{airport_id}-#{time.to_s}"]
+  # end
 
-  def check_airport_availablity(search_activities)
-    notam_detail = []
 
-    watch_hour_detail = []
+  def make_search_description(airport_ids, dates)
 
-    details = {}
+    search = []
+    # watch_hour = nil
+    # notam = nil
 
-    search_activities.each do |activity|
-      expected_time = activity.start_at
+    for id in airport_ids
 
-      if airport_has_notam(activity.departure_airport_id, expected_time)
-        notam_detail << {
-            airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
-            start_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
-            end_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
-        }
+      airport = @airports.detect{ |a| a if a.id == id }
+      x = {
+          name: '',
+          night_landing: false,
+          night_parking: false,
+          is_watch_hour: false,
+          is_notam: false,
+          watch_hour: [],
+          notam: []
+      }
+      x[:name] = airport.name
+      x[:night_landing] = airport.night_landing
+      x[:night_parking] = airport.night_parking
+
+      for date in dates
+        watch_hour = nil
+        notam = nil
+
+        watch_hour =  @watch_hours.detect{ |w| w.airport_id == id and ( w.start_at <= date.end_of_day and w.end_at >= date.beginning_of_day ) }
+
+        if watch_hour.present?
+          x[:is_watch_hour] = true
+          x[:watch_hour] << watch_hour
+        end
+
+        notam = @notams.detect{ |n| n.airport_id == id and ( n.start_at <= date and n.end_at >= date ) }
+
+        if notam.present?
+          x[:is_notam] = true
+          x[:notam] << notam
+        end
       end
 
-      if airport_has_notam(activity.arrival_airport_id, expected_time)
-        notam_detail << {
-            airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
-            start_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
-            end_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
-        }
-      end
-
-      if airport_has_watch_hour(activity.departure_airport_id, expected_time).first
-        watch_hour_detail << {
-            airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
-            start_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
-            end_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
-        }
-      end
-
-      if airport_has_watch_hour(activity.arrival_airport_id, expected_time).first
-        watch_hour_detail << {
-            airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
-            start_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
-            end_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
-        }
-      end
+      search << x
 
     end
 
+    search
 
-    details  = {
-        notam_details: notam_detail,
-        watch_hour_details: watch_hour_detail
-    }
+    # dates.first.beginning_of_day
+    # dates.first.end_of_day
+
+  end
+
+  def check_airport_availablity(search_activities)
+    details = {}
+
+    airport_ids = search_activities.map(&:departure_airport_id) + search_activities.map(&:arrival_airport_id)
+    airport_ids = airport_ids.uniq
+    dates = search_activities.map(&:start_at)
+
+    details = make_search_description(airport_ids, dates)
+
+    details
+
+    # ==============================
+
+    #
+    # notam_detail = []
+    #
+    # watch_hour_detail = []
+    #
+    # details = {}
+    #
+    # search_activities.each do |activity|
+    #   expected_time = activity.start_at
+    #
+    #   if airport_has_notam(activity.departure_airport_id, expected_time)
+    #     notam_detail << {
+    #         airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
+    #         start_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
+    #         end_at:  @notams.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
+    #     }
+    #   end
+    #
+    #   if airport_has_notam(activity.arrival_airport_id, expected_time)
+    #     notam_detail << {
+    #         airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
+    #         start_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
+    #         end_at:  @notams.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
+    #     }
+    #   end
+    #
+    #   if airport_has_watch_hour(activity.departure_airport_id, expected_time).first
+    #     watch_hour_detail << {
+    #         airport:  @airports.detect{|x| x.id == activity.departure_airport_id },
+    #         start_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
+    #         end_at:  @watch_hours.detect{ |n| n.airport_id == activity.departure_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
+    #     }
+    #   end
+    #
+    #   if airport_has_watch_hour(activity.arrival_airport_id, expected_time).first
+    #     watch_hour_detail << {
+    #         airport:  @airports.detect{|x| x.id == activity.arrival_airport_id },
+    #         start_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.start_at,
+    #         end_at:  @watch_hours.detect{ |n| n.airport_id == activity.arrival_airport_id and ( n.start_at <= expected_time and n.end_at >= expected_time ) }.end_at
+    #     }
+    #   end
+    #
+    # end
+    #
+    #
+    # details  = {
+    #     notam_details: notam_detail,
+    #     watch_hour_details: watch_hour_detail
+    # }
 
   end
 
 
   def airport_max_field_for_landing(search_activities)
     airport_ids = search_activities.map(&:departure_airport_id) + search_activities.map(&:arrival_airport_id)
-    Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
+
+    # Airport.where(id: airport_ids).map(&:runway_field_length_in_feet).min
+    Airport.where(id: airport_ids).minimum(:runway_field_length_in_feet)
   end
 
   # def flight_in_night(time)

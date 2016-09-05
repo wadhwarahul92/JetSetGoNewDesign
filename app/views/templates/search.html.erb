@@ -17,35 +17,80 @@
       <div class="row">
         <!--===========-->
 
-        <!--RAHUL-->
-        <div class="breakups_main_con" ng-hide="ctrl.airport_break_ups.watch_hour_details.length == 0 && ctrl.airport_break_ups.notam_details.length == 0">
-          <div class="repeat-con" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">
+        <!--New airport breakup-->
+        <div class="breakups_main_con" >
+          <div class="repeat-con" ng-repeat="airport in ctrl.airport_break_ups">
             <div class="col-md-2 col-sm-3 col-xs-12">
-              {{ watch_hour.airport.name}}
+              {{ airport.name}}
             </div>
             <div class="col-md-10 col-sm-9 col-xs-12">
               <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{watch_hour.airport.night_landing ? 'Yes' : 'No'}}</div>
-                <div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{watch_hour.airport.night_parking ? 'Yes' : 'No'}}</div>
-                <div class="col-md-7 col-sm-6 col-xs-12">Watch Hour: {{ctrl.formatTime(watch_hour.start_at)}} - {{ctrl.formatTime(watch_hour.end_at)}}</div>
+                <div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{airport.night_landing ? 'Yes' : 'No'}}</div>
+                <div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{airport.night_parking ? 'Yes' : 'No'}}</div>
+                <div class="col-md-3 col-sm-6 col-xs-12" ng-show="airport.is_watch_hour">Watch Hour:
+                 <span ng-repeat="watch_hour in airport.watch_hour">
+                   {{ctrl.formatTime4(watch_hour.start_at)}} - {{ctrl.formatTime4(watch_hour.end_at)}}
+                 </span>
+
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12" ng-show="airport.is_notam">Notam:
+                 <span ng-repeat="notam in airport.notam">
+                   {{ctrl.formatTime4(notam.start_at)}} - {{ctrl.formatTime4(notam.end_at)}}
+                 </span>
+
+                </div>
               </div>
             </div>
             <div class="clearfix"></div>
           </div>
-          <div class="repeat-con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              {{ notam.airport.name}}
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>
-                <div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>
-                <div class="col-md-7 col-sm-6 col-xs-12">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
+          <!--<div class="repeat-con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">-->
+            <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+              <!--{{ notam.airport.name}}-->
+            <!--</div>-->
+            <!--<div class="col-md-10 col-sm-9 col-xs-12">-->
+              <!--<div class="row">-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-7 col-sm-6 col-xs-12">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="clearfix"></div>-->
+          <!--</div>-->
         </div>
+        <!--New airport breakup-->
+
+
+
+
+        <!--RAHUL-->
+        <!--<div class="breakups_main_con" ng-hide="ctrl.airport_break_ups.watch_hour_details.length == 0 && ctrl.airport_break_ups.notam_details.length == 0">-->
+          <!--<div class="repeat-con" ng-if="ctrl.airport_break_ups.watch_hour_details.length > 0" ng-repeat="watch_hour in ctrl.airport_break_ups.watch_hour_details">-->
+            <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+              <!--{{ watch_hour.airport.name}}-->
+            <!--</div>-->
+            <!--<div class="col-md-10 col-sm-9 col-xs-12">-->
+              <!--<div class="row">-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{watch_hour.airport.night_landing ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{watch_hour.airport.night_parking ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-7 col-sm-6 col-xs-12">Watch Hour: {{ctrl.formatTime(watch_hour.start_at)}} - {{ctrl.formatTime(watch_hour.end_at)}}</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="clearfix"></div>-->
+          <!--</div>-->
+          <!--<div class="repeat-con" ng-if="ctrl.airport_break_ups.notam_details.length > 0" ng-repeat="notam in ctrl.airport_break_ups.notam_details">-->
+            <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
+              <!--{{ notam.airport.name}}-->
+            <!--</div>-->
+            <!--<div class="col-md-10 col-sm-9 col-xs-12">-->
+              <!--<div class="row">-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{notam.airport.night_landing ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{notam.airport.night_parking ? 'Yes' : 'No'}}</div>-->
+                <!--<div class="col-md-7 col-sm-6 col-xs-12">Notam: {{ctrl.formatTime(notam.start_at)}} - {{ctrl.formatTime(notam.end_at)}}</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="clearfix"></div>-->
+          <!--</div>-->
+        <!--</div>-->
         <!--RAHUL-->
 
         <!--MAYUR-->
@@ -130,13 +175,13 @@
           </h4>
         </div>
         <div class="col-sm-2 col-xs-12 text-right">           
-          <img ng-click="ctrl.custom2 =! ctrl.custom2" style="cursor: pointer;" src="" ng-src="{{ctrl.custom2 ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/718/original/modifycross.png?1472544339' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
+          <img ng-click="ctrl.search_bar_active =! ctrl.search_bar_active" style="cursor: pointer;" src="" ng-src="{{ctrl.search_bar_active ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/718/original/modifycross.png?1472544339' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/485/original/modify.png?1470129943'}}" alt="filter"> 
         </div>
       </div>
     </div>
   </div>
   <!-- {{ctrl.airport_break_ups.notam_details.length > 0}} -->
-  <div class="filter-toggle-main" ng-show="ctrl.custom2">
+  <div class="filter-toggle-main" ng-show="ctrl.search_bar_active || ctrl.count_night_flight == 0">
     <div class="container">
       <div class="search-form-con">
 
@@ -300,10 +345,14 @@
         </div>
         <!-- ng-if="ctrl.airport_break_ups.notam_details.length < 1" -->
         <div class="filter-con">
-          <h3 class="text-center notum-text" ng-show="ctrl.airport_break_ups.notam_details.length > 0">
+          <!--<h3 class="text-center notum-text" ng-show="ctrl.airport_break_ups.notam_details.length > 0">-->
+            <!--Please select different timings as Airports are not operational at your selected time.-->
+          <!--</h3>-->
+          <h3 class="text-center notum-text" ng-show="ctrl.search_notam_active || ctrl.count_night_flight == 0">
             Please select different timings as Airports are not operational at your selected time.
           </h3>
-          <div class="row" ng-hide="ctrl.airport_break_ups.notam_details.length > 0">
+
+          <div class="row" ng-hide="ctrl.search_notam_active || ctrl.count_night_flight == 0">
             <div class="col-sm-4 col-xs-12">
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
@@ -354,7 +403,8 @@
     </div>
   </div>
   <span ng-if="ctrl.enquireBeforeLogin.aircraft && ctrl.current_user_present" ng-init="ctrl.enquireOnLogin(ctrl.enquireBeforeLogin)"></span>
-  <div ng-if="ctrl.airport_break_ups.notam_details.length < 1" class="search_result_main">
+  <!--<div ng-if="ctrl.airport_break_ups.notam_details.length < 1" class="search_result_main">-->
+  <div  class="search_result_main" ng-if="!ctrl.search_notam_active">
     <div class="container">
       <div class="search_result">
 
