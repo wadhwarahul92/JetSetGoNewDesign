@@ -21,6 +21,31 @@
     //    $(window).load(function(){
     //        $('#spinner').fadeOut('slow');
     //    });
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:2,
+                    nav:true
+                },
+                990:{
+                    items:3,
+                    nav:true
+                },
+                1100:{
+                    items:4,
+                    nav:true,
+                }
+            }
+        });
+    });
 </script>
 
 <!--script type="text/javascript">
@@ -480,139 +505,238 @@
   <div class="media-slider-con">
     <div class="container">
       <div class="media-con">
-        <div class="well-none">
-          <div id="myCarousel2" class="carousel slide">
-            <div class="row">
-              <div class="col-sm-1 col-xs-2">
-                <a class="right carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>
+        <div class="col-sm-offset-1 col-sm-10 col-xs-12">
+          <div class="owl-carousel">
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/626/original/30_under_30.jpg?1471424192" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Tekriwal founded JetSetGo</h3>
+                <p class="media-content">Tekriwal founded JetSetGo, an India-based private jet concierge service that links passengers to planes through an online marketplace.</p>
               </div>
-              <div class="col-sm-10 col-xs-8">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/626/original/30_under_30.jpg?1471424192" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Tekriwal founded JetSetGo</h3>
-                          <p class="media-content">Tekriwal founded JetSetGo, an India-based private jet concierge service that links passengers to planes through an online marketplace.</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://www.forbes.com/30-under-30-asia-2016/retail-ecommerce/#540ade2e1016">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/627/original/forbes_india.JPG?1471424215" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">With JetSetGo all operators are put on the same platform</h3>
-                          <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet,</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://forbesindia.com/article/best-things-money-can-buy/jetsetgo-the-uber-of-indian-skies/41417/1">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/586/original/bbc.jpg?1470824402" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Ms. Kanika Tekriwal CEO JetSetGo on BBC World&#39;s</h3>
-                          <p class="media-content">Ms. Kanika Tekriwal Chief Executive Oficer, JetSetGo one of the 30 under 30 global entrepreneurs chosen by BBC. </p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="https://www.youtube.com/watch?v=MCgCcAGt_h0&amp;feature=youtu.be">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/583/original/CNBC_TV.JPG?1470816157" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">JetSetGo Coverage in CNBC TV</h3>
-                          <p class="media-content">It’s often said that it’s lonely at the top, but the reality is that it’s lonely at the start too! In this segment we dive into a no-holds barred conversation with three startup founders.</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="https://www.youtube.com/watch?v=hB-8hA_RBUA&amp;feature=youtu.be">Read More</a>
-                      </div>
-                    </div>
-                    <!--/row-->
-                  </div>
-                  <!--/item-->
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/588/original/forbes.jpg?1470824639" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">As Sharing Economy Starts To Trump Superstition,</h3>
-                          <p class="media-content">When Kanika Tekriwal started her private jet sharing service two years ago in India,</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://thelabel.in/lifestyle/leisure/inside-jetsetgo-indias-first-budget-chartered-plane-service">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/538/original/Entrepreneur_India.JPG?1470733505" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">How JetSetGo's Co-founder Is Combating Gender Inequality</h3>
-                          <p class="media-content">"This had made me rather worried about how delusional my views on gender bias at the workplace were.</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="https://www.entrepreneur.com/article/279206">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/548/original/Your_story.jpg?1470733707" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Is your company’s female talent MIA?</h3>
-                          <p class="media-content">It was 2015, and there were seven men and just one woman in the business class of a 9 pm flight from Mumbai to Delhi.</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="https://her.yourstory.com/female-talent-problem-0803">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/584/original/femina.jpg?1470816172" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">JetSetGo with Kanika Tekriwal</h3>
-                          <p class="media-content">The general  aviation (GA) industry in India is still underdeveloped compared to its global peers with GA</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://bwdisrupt.businessworld.in/article/Kanika-Tekriwal-Her-Fight-Against-Cancer-And-Building-a-Private-Jet-Aviation-Company/13-07-2016-100377/">Read More</a>
-                      </div>
-                    </div>
-                    <!--/row-->
-                  </div>
-                  <!--/item-->
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-3 col-sm-6 col-xs-12 media-widget">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/540/original/hindustan_times.jpg?1470733549" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Bhopal’s Kanika makes it to Forbes ‘30 under 30’ achievers list</h3>
-                          <p class="media-content">Meet Bhopal’s Kanika Tekriwal. At 27 her JetSetGo has contracts running into $20 million and manages</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://www.thetalentedindian.com/in-conversation-with-one-the-of-bbcs-100-most-inspiring-women-kanika-tekriwal/">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/591/original/Financial_Express.jpg?1470825013" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Flying high</h3>
-                          <p class="media-content">If you’re a wealthy jetsetter, chances are that you have often been repelled by the outdated nature</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://www.femina.in/achievers/fly-with-me-4987.html">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/595/original/Entrepreneur_India.JPG?1470825154" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">Flying High: These 4 entrepreneurs promise you the best of life</h3>
-                          <p class="media-content">JetSetGo’s Kanika Tekriwal aims at bringing total transparency1 to her customers with zero </p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-12">
-                        <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/628/original/livemint.jpg?1471424235" alt="">
-                        <div class="media-content">
-                          <h3 class="media-heading">JetSetGo raises funds from Puneet Dalmia</h3>
-                          <p class="media-content">Private jet and helicopter operator Jetsetgo Aviation Services Pvt.</p>
-                        </div>
-                        <a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>
-                      </div>
-                    </div>
-                    <!--/row-->
-                  </div>
-                  <!--/item-->
-                </div>
-                <!--/carousel-inner-->
+              <a class="media-readmore" target="_blank" href="http://www.forbes.com/30-under-30-asia-2016/retail-ecommerce/#540ade2e1016">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/627/original/forbes_india.JPG?1471424215" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">With JetSetGo all operators are put on the same platform</h3>
+                <p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet,</p>
               </div>
-              <div class="col-sm-1 col-xs-2">
-                <a class="left carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>
+              <a class="media-readmore" target="_blank" href="http://forbesindia.com/article/best-things-money-can-buy/jetsetgo-the-uber-of-indian-skies/41417/1">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/586/original/bbc.jpg?1470824402" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Ms. Kanika Tekriwal CEO JetSetGo on BBC World&#39;s</h3>
+                <p class="media-content">Ms. Kanika Tekriwal Chief Executive Oficer, JetSetGo one of the 30 under 30 global entrepreneurs chosen by BBC. </p>
+              </div>
+              <a class="media-readmore" target="_blank" href="https://www.youtube.com/watch?v=MCgCcAGt_h0&amp;feature=youtu.be">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/583/original/CNBC_TV.JPG?1470816157" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">JetSetGo Coverage in CNBC TV</h3>
+                <p class="media-content">It’s often said that it’s lonely at the top, but the reality is that it’s lonely at the start too! In this segment we dive into a no-holds barred conversation with three startup founders.</p>
               </div>
             </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/588/original/forbes.jpg?1470824639" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">As Sharing Economy Starts To Trump Superstition,</h3>
+                <p class="media-content">When Kanika Tekriwal started her private jet sharing service two years ago in India,</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://thelabel.in/lifestyle/leisure/inside-jetsetgo-indias-first-budget-chartered-plane-service">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/538/original/Entrepreneur_India.JPG?1470733505" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">How JetSetGo's Co-founder Is Combating Gender Inequality</h3>
+                <p class="media-content">"This had made me rather worried about how delusional my views on gender bias at the workplace were.</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="https://www.entrepreneur.com/article/279206">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/548/original/Your_story.jpg?1470733707" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Is your company’s female talent MIA?</h3>
+                <p class="media-content">It was 2015, and there were seven men and just one woman in the business class of a 9 pm flight from Mumbai to Delhi.</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="https://her.yourstory.com/female-talent-problem-0803">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/584/original/femina.jpg?1470816172" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">JetSetGo with Kanika Tekriwal</h3>
+                <p class="media-content">The general  aviation (GA) industry in India is still underdeveloped compared to its global peers with GA</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://bwdisrupt.businessworld.in/article/Kanika-Tekriwal-Her-Fight-Against-Cancer-And-Building-a-Private-Jet-Aviation-Company/13-07-2016-100377/">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/540/original/hindustan_times.jpg?1470733549" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Bhopal’s Kanika makes it to Forbes ‘30 under 30’ achievers list</h3>
+                <p class="media-content">Meet Bhopal’s Kanika Tekriwal. At 27 her JetSetGo has contracts running into $20 million and manages</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://www.thetalentedindian.com/in-conversation-with-one-the-of-bbcs-100-most-inspiring-women-kanika-tekriwal/">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/591/original/Financial_Express.jpg?1470825013" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Flying high</h3>
+                <p class="media-content">If you’re a wealthy jetsetter, chances are that you have often been repelled by the outdated nature</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://www.femina.in/achievers/fly-with-me-4987.html">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/595/original/Entrepreneur_India.JPG?1470825154" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">Flying High: These 4 entrepreneurs promise you the best of life</h3>
+                <p class="media-content">JetSetGo’s Kanika Tekriwal aims at bringing total transparency1 to her customers with zero </p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>
+            </div>
+            <div>
+              <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/628/original/livemint.jpg?1471424235" alt="">
+              <div class="media-content">
+                <h3 class="media-heading">JetSetGo raises funds from Puneet Dalmia</h3>
+                <p class="media-content">Private jet and helicopter operator Jetsetgo Aviation Services Pvt.</p>
+              </div>
+              <a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>
+            </div>
           </div>
-          <!--/myCarousel-->
         </div>
+        <!--<div class="well-none">-->
+          <!--<div id="myCarousel2" class="carousel slide">-->
+            <!--<div class="row">-->
+              <!--<div class="col-sm-1 col-xs-2">-->
+                <!--<a class="right carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="prev"><i class="fa fa-chevron-left fa-4"></i></a>-->
+              <!--</div>-->
+              <!--<div class="col-sm-10 col-xs-8">-->
+                <!--&lt;!&ndash; Carousel items &ndash;&gt;-->
+                <!--<div class="carousel-inner">-->
+                  <!--<div class="item active">-->
+                    <!--<div class="row">-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/626/original/30_under_30.jpg?1471424192" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Tekriwal founded JetSetGo</h3>-->
+                          <!--<p class="media-content">Tekriwal founded JetSetGo, an India-based private jet concierge service that links passengers to planes through an online marketplace.</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://www.forbes.com/30-under-30-asia-2016/retail-ecommerce/#540ade2e1016">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/627/original/forbes_india.JPG?1471424215" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">With JetSetGo all operators are put on the same platform</h3>-->
+                          <!--<p class="media-content">About three months ago, a Gulfstream G650, a leading luxury business jet,</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://forbesindia.com/article/best-things-money-can-buy/jetsetgo-the-uber-of-indian-skies/41417/1">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/586/original/bbc.jpg?1470824402" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Ms. Kanika Tekriwal CEO JetSetGo on BBC World&#39;s</h3>-->
+                          <!--<p class="media-content">Ms. Kanika Tekriwal Chief Executive Oficer, JetSetGo one of the 30 under 30 global entrepreneurs chosen by BBC. </p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="https://www.youtube.com/watch?v=MCgCcAGt_h0&amp;feature=youtu.be">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/583/original/CNBC_TV.JPG?1470816157" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">JetSetGo Coverage in CNBC TV</h3>-->
+                          <!--<p class="media-content">It’s often said that it’s lonely at the top, but the reality is that it’s lonely at the start too! In this segment we dive into a no-holds barred conversation with three startup founders.</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="https://www.youtube.com/watch?v=hB-8hA_RBUA&amp;feature=youtu.be">Read More</a>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;/row&ndash;&gt;-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash;/item&ndash;&gt;-->
+                  <!--<div class="item">-->
+                    <!--<div class="row">-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/588/original/forbes.jpg?1470824639" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">As Sharing Economy Starts To Trump Superstition,</h3>-->
+                          <!--<p class="media-content">When Kanika Tekriwal started her private jet sharing service two years ago in India,</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://thelabel.in/lifestyle/leisure/inside-jetsetgo-indias-first-budget-chartered-plane-service">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/538/original/Entrepreneur_India.JPG?1470733505" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">How JetSetGo's Co-founder Is Combating Gender Inequality</h3>-->
+                          <!--<p class="media-content">"This had made me rather worried about how delusional my views on gender bias at the workplace were.</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="https://www.entrepreneur.com/article/279206">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/548/original/Your_story.jpg?1470733707" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Is your company’s female talent MIA?</h3>-->
+                          <!--<p class="media-content">It was 2015, and there were seven men and just one woman in the business class of a 9 pm flight from Mumbai to Delhi.</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="https://her.yourstory.com/female-talent-problem-0803">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/584/original/femina.jpg?1470816172" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">JetSetGo with Kanika Tekriwal</h3>-->
+                          <!--<p class="media-content">The general  aviation (GA) industry in India is still underdeveloped compared to its global peers with GA</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://bwdisrupt.businessworld.in/article/Kanika-Tekriwal-Her-Fight-Against-Cancer-And-Building-a-Private-Jet-Aviation-Company/13-07-2016-100377/">Read More</a>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;/row&ndash;&gt;-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash;/item&ndash;&gt;-->
+                  <!--<div class="item">-->
+                    <!--<div class="row">-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12 media-widget">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/540/original/hindustan_times.jpg?1470733549" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Bhopal’s Kanika makes it to Forbes ‘30 under 30’ achievers list</h3>-->
+                          <!--<p class="media-content">Meet Bhopal’s Kanika Tekriwal. At 27 her JetSetGo has contracts running into $20 million and manages</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://www.thetalentedindian.com/in-conversation-with-one-the-of-bbcs-100-most-inspiring-women-kanika-tekriwal/">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/591/original/Financial_Express.jpg?1470825013" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Flying high</h3>-->
+                          <!--<p class="media-content">If you’re a wealthy jetsetter, chances are that you have often been repelled by the outdated nature</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://www.femina.in/achievers/fly-with-me-4987.html">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/595/original/Entrepreneur_India.JPG?1470825154" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">Flying High: These 4 entrepreneurs promise you the best of life</h3>-->
+                          <!--<p class="media-content">JetSetGo’s Kanika Tekriwal aims at bringing total transparency1 to her customers with zero </p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-3 col-sm-6 col-xs-12">-->
+                        <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/628/original/livemint.jpg?1471424235" alt="">-->
+                        <!--<div class="media-content">-->
+                          <!--<h3 class="media-heading">JetSetGo raises funds from Puneet Dalmia</h3>-->
+                          <!--<p class="media-content">Private jet and helicopter operator Jetsetgo Aviation Services Pvt.</p>-->
+                        <!--</div>-->
+                        <!--<a class="media-readmore" target="_blank" href="http://www.hindustantimes.com/health-and-fitness/air-ambulance-services-take-off-in-india-but-not-fast-enough/story-XeSrCic5Zyrkt9CgOZVRQL.html">Read More</a>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;/row&ndash;&gt;-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash;/item&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;/carousel-inner&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="col-sm-1 col-xs-2">-->
+                <!--<a class="left carousel-control controller-arrow" href="javascript:void(0)" data-target="#myCarousel2" data-slide="next"><i class="fa fa-chevron-right fa-4"></i></a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;/myCarousel&ndash;&gt;-->
+        <!--</div>-->
         <!--/well-->
       </div>
     </div>
