@@ -85,6 +85,12 @@ BEGIN
     # puts '=== Loading Notams'
     @notams = Notam.where(airport_id: airport_ids).where('start_at >= ?', DateTime.now).to_a
 
+    # puts '=== Loading HandlingCostGrid'
+    @handling_cost_grids = HandlingCostGrid.all.to_a
+
+    # puts '=== Loading HandlingCostGrid'
+    @aircraft_types = AircraftType.where(id: @aircrafts.map(&:aircraft_type_id)).to_a
+
   end
 
   def make_results
@@ -124,10 +130,13 @@ BEGIN
     plan = []
     previous_leg = nil
 
+    # @handling_cost_grids.detect{|h| h.city_id == search_activities.last.arrival_airport_id and  h.aircraft_category_id ==  aircraft.aircraft_type.aircraft_category.id  }
+
     #########################
     # add initial ferry flight
     # And, landing cost at arrival airport
     #########################
+    aircraft.aircraft_type.aircraft_category.id
     unless search_activities.first.departure_airport_id == aircraft.base_airport_id
       plan << {
           pax: 0,
@@ -137,7 +146,7 @@ BEGIN
           start_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(search_activities.first.departure_airport_id)),
           end_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
           landing_cost_at_arrival: airport_for_id(search_activities.first.departure_airport_id).landing_cost,
-          handling_cost_at_takeoff: base_airport(aircraft).handling_cost(aircraft),
+          handling_cost_at_takeoff: get_handling_cost(aircraft),
           watch_hour_at_arrival: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
           watch_hour_cost: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
           notam_at_arrival: airport_has_notam(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME),
@@ -424,6 +433,36 @@ BEGIN
     return @airport_id_map[id] if @airport_id_map[id].present?
     @airport_id_map[id] = @airports.detect{ |airport| airport.id == id }
     @airport_id_map[id]
+  end
+
+  ######################################################################
+  # Description: This returns the aircraft_type for given id, This uses preloaded @aircrafts and does not hit the database
+  # @param [Integer] id
+  # @return [AircraftType]
+  ######################################################################
+  def aircraft_type_for_id(id)
+    @aircraft_type_id_map ||= {}
+    return @aircraft_type_id_map[id] if @aircraft_type_id_map[id].present?
+    @aircraft_type_id_map[id] = @aircraft_types.detect{ |aircraft_type| aircraft_type.id == id }
+    @aircraft_type_id_map[id]
+  end
+
+  ######################################################################
+  # Description: This returns the aircraft_type for given id, This uses preloaded @aircrafts and does not hit the database
+  # @param [Integer] id
+  # @return [AircraftType]
+  ######################################################################
+  def handling_for_id(airport_category_id, city_id )
+    # @aircraft_type_id_map ||= {}
+    # return @aircraft_type_id_map[id] if @aircraft_type_id_map[id].present?
+    # @aircraft_type_id_map[id] = @aircraft_types.detect{ |aircraft_type| aircraft_type.id == id }
+    # @aircraft_type_id_map[id]
+  end
+
+  def get_handling_cost(aircraft)
+    cost = 0.0
+    aircraft_type = aircraft_type_for_id(aircraft.aircraft_type_id)
+    debugger
   end
 
   ######################################################################
