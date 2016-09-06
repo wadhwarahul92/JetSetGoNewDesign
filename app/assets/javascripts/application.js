@@ -21,6 +21,7 @@
 //= require ./application/sign_up_controller
 //= require ./application/index_controller
 //= require ./application/airports_service
+//= require ./application/aircraft_categories_service
 //= require ./application/search_controller
 //= require ./application/aircrafts_service
 //= require ./application/contact_us_controller

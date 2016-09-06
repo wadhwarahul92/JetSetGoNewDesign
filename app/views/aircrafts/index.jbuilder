@@ -29,14 +29,15 @@ json.array! @aircrafts do |aircraft|
   json.aircraft_type{
     json.id aircraft.aircraft_type.id
     json.name aircraft.aircraft_type.name
+    json.aircraft_category_id aircraft.aircraft_type.aircraft_category_id
   }
 
-  json.aircraft_category{
-    if aircraft.aircraft_type.aircraft_category.present?
-      json.id aircraft.aircraft_type.aircraft_category.id
-      json.name aircraft.aircraft_type.aircraft_category.name
-    end
-  }
+  # json.aircraft_category{
+  #   if aircraft.aircraft_type.aircraft_category.present?
+  #     json.id aircraft.aircraft_type.aircraft_category.id
+  #     json.name aircraft.aircraft_type.aircraft_category.name
+  #   end
+  # }
 
   json.aircraft_images{
     json.array! aircraft.aircraft_images do |aircraft_image|

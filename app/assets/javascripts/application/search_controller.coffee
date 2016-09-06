@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService)->
 
   @loading = true
 
@@ -9,6 +9,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @airports = []
 
   @aircrafts = []
+
+  @aircraft_categories = []
 
   @user = false
 
@@ -87,6 +89,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       @airports = AirportsService.airports
   )
 
+  AircraftCategoriesService.getAircraftCategories().then(
+    =>
+      @aircraft_categories = AircraftCategoriesService.aircraft_categories
+  )
+
 #  $http.get("/aircraft_categories.json").success(
 #    (data)=>
 #      @aircraft_categories = data
@@ -123,6 +130,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
             result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
             @set_costs(result)
       )
+
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
         search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
@@ -152,6 +160,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @airportForId = (id)->
     _.find(@airports, {id: id})
+
+  @aircraftCategoryForId = (id)->
+    _.find(@aircraft_categories, {id: id})
 
   @totalTripCost = (trip)->
     CustomerCostBreakUpsService.totalTripCost(trip)
