@@ -1258,6 +1258,18 @@ span.heading:after{
       }
     }
   }
+  .top-header-search-con {
+    .search-main-con {
+      .text-white{
+        font-size: 12px;
+      }
+      .search-textfield{
+        .white-color{
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }
 
 @media(max-width: 767px){

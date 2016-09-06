@@ -30,6 +30,8 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @share_email = ''
 
+  @loading = true
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -91,6 +93,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       @trip.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(@trip)
       @trip.subTotal = CustomerCostBreakUpsService.subTotal(@trip)
       @trip.total_tax = @total_tax(@trip.taxBreakup)
+      @loading = false
   ).error(
     ->
       notify(

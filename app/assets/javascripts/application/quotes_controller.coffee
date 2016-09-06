@@ -10,6 +10,8 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
 
   @quotes = {}
 
+  @loading = true
+
 #  @trips = {}
 
   $scope.$watch(
@@ -68,6 +70,7 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
       @quotes = data
       for quote in @quotes
         quote.grandTotal = CustomerCostBreakUpsService.totalTripCost(quote)
+      @loading = false
   ).error(
     ->
       notify

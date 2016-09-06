@@ -10,6 +10,8 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
 
   @active_jetsteal = false
 
+  @loading = true
+
 #  @quotes = {}
 #
 #  @trips = {}
@@ -61,6 +63,7 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
       @booked_jets = data
       for confirmed_jets in @booked_jets.trips
         confirmed_jets.grandTotal = CustomerCostBreakUpsService.totalTripCost(confirmed_jets)
+      @loading = false
   ).error(
     ->
       notify(
