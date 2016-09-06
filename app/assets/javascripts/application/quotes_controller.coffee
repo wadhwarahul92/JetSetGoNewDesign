@@ -70,7 +70,7 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
       @quotes = data
       for quote in @quotes
         quote.grandTotal = CustomerCostBreakUpsService.totalTripCost(quote)
-        @loading = false
+      @loading = false
   ).error(
     ->
       notify
