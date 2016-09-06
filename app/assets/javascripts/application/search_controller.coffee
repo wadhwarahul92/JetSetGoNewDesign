@@ -46,6 +46,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_notam_active = false
 
+  @any_active_result = false
+
   $scope.$watch(
     =>
       @search_activities
@@ -123,31 +125,32 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       @search_activities = data.search_activities
 
-      AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
-        =>
-          @aircrafts = AircraftsService.aircrafts
-          for result in @results
-            result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
-            @set_costs(result)
-      )
+      if @results[0]
+        AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
+          =>
+            @aircrafts = AircraftsService.aircrafts
+            for result in @results
+              result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
+              @set_costs(result)
+        )
 
-      for search_activity in @search_activities
-        search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
-        search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
-        search_activity.start_at = new Date(search_activity.start_at)
+        for search_activity in @search_activities
+          search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
+          search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
+          search_activity.start_at = new Date(search_activity.start_at)
 
+        @count_night_flight = 0
 
-      @count_night_flight = 0
-
-      @search_activities_static = JSON.parse(JSON.stringify @search_activities)
-      if @results.length > 0
-        @min_cost = parseInt(_.first(@results).totalCost - 1).toString()
-        @max_cost = parseInt(_.last(@results).totalCost + 1).toString()
-        @filter_cost = "'"+@min_cost+','+ @max_cost+"'"
-      else
-        @min_cost = 0
-        @max_cost = 0
-        @filter_cost = "'"+0+','+ 0+"'"
+        @search_activities_static = JSON.parse(JSON.stringify @search_activities)
+        if @results.length > 0
+          @min_cost = parseInt(_.first(@results).totalCost - 1).toString()
+          @max_cost = parseInt(_.last(@results).totalCost + 1).toString()
+          @filter_cost = "'"+@min_cost+','+ @max_cost+"'"
+        else
+          @min_cost = 0
+          @max_cost = 0
+          @filter_cost = "'"+0+','+ 0+"'"
+    @loading = false
   ).error(
     (data)->
       error = 'Something went wrong.'
