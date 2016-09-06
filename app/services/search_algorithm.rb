@@ -91,6 +91,9 @@ BEGIN
     # puts '=== Loading HandlingCostGrid'
     @aircraft_types = AircraftType.where(id: @aircrafts.map(&:aircraft_type_id)).to_a
 
+    # puts '=== Loading AircraftUnavailability'
+    @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: @aircrafts.map(&:id))
+
   end
 
   def make_results
@@ -136,7 +139,7 @@ BEGIN
     # add initial ferry flight
     # And, landing cost at arrival airport
     #########################
-    aircraft.aircraft_type.aircraft_category.id
+    # aircraft.aircraft_type.aircraft_category.id
     unless search_activities.first.departure_airport_id == aircraft.base_airport_id
       plan << {
           pax: 0,
@@ -146,7 +149,7 @@ BEGIN
           start_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(search_activities.first.departure_airport_id)),
           end_at: search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
           landing_cost_at_arrival: airport_for_id(search_activities.first.departure_airport_id).landing_cost,
-          handling_cost_at_takeoff: get_handling_cost(aircraft),
+          handling_cost_at_takeoff: get_handling_cost(aircraft, airport_for_id(aircraft.base_airport_id)),
           watch_hour_at_arrival: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
           watch_hour_cost: airport_has_watch_hour(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
           notam_at_arrival: airport_has_notam(search_activities.first.departure_airport_id, search_activities.first.start_at - CONTINUOUS_FLIGHT_DELTA_TIME),
@@ -242,7 +245,7 @@ BEGIN
           start_at: search_activity.start_at,
           end_at: search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)),
           landing_cost_at_arrival: airport_for_id(search_activity.arrival_airport_id).landing_cost,
-          handling_cost_at_takeoff: airport_for_id(search_activity.departure_airport_id).handling_cost(aircraft),
+          handling_cost_at_takeoff: get_handling_cost(aircraft, airport_for_id(search_activity.departure_airport_id)),
           watch_hour_at_arrival: airport_has_watch_hour(
               search_activity.arrival_airport_id,
               search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id))
@@ -276,7 +279,7 @@ BEGIN
           start_at: plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
           end_at: plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)),
           landing_cost_at_arrival: base_airport(aircraft).landing_cost,
-          handling_cost_at_takeoff: airport_for_id(search_activities.last.arrival_airport_id).handling_cost(aircraft),
+          handling_cost_at_takeoff: get_handling_cost(aircraft, airport_for_id(search_activities.last.arrival_airport_id)),
           watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)))[0],
           watch_hour_cost: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft)))[1],
           notam_at_arrival: airport_has_notam(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(search_activities.last.arrival_airport_id), base_airport(aircraft))),
@@ -353,7 +356,7 @@ BEGIN
                       start_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
                       end_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport),
                       landing_cost_at_arrival: arrival_airport.landing_cost,
-                      handling_cost_at_takeoff: departure_airport.handling_cost(aircraft),
+                      handling_cost_at_takeoff: get_handling_cost(aircraft, departure_airport),
                       watch_hour_at_arrival: airport_has_watch_hour(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport))[0],
                       watch_hour_cost: airport_has_watch_hour(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport))[1],
                       notam_at_arrival: airport_has_notam(arrival_airport.id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, departure_airport, arrival_airport)),
@@ -371,7 +374,7 @@ BEGIN
                       start_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
                       end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
                       landing_cost_at_arrival: departure_airport.landing_cost,
-                      handling_cost_at_takeoff: arrival_airport.handling_cost(aircraft),
+                      handling_cost_at_takeoff: get_handling_cost(aircraft, arrival_airport),
                       watch_hour_at_arrival: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
                       watch_hour_cost: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
                       notam_at_arrival: airport_has_notam(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
@@ -448,21 +451,32 @@ BEGIN
   end
 
   ######################################################################
-  # Description: This returns the aircraft_type for given id, This uses preloaded @aircrafts and does not hit the database
-  # @param [Integer] id
-  # @return [AircraftType]
+  # Description: This returns the handling_cost_grid for given aircraft_category_id and city_id, This uses preloaded @handling_cost_grids and does not hit the database
+  # @param [Integer] aircraft_category_id
+  # @param [Integer] city_id
+  # @return [HandlingCostGrid]
   ######################################################################
-  def handling_for_id(airport_category_id, city_id )
-    # @aircraft_type_id_map ||= {}
-    # return @aircraft_type_id_map[id] if @aircraft_type_id_map[id].present?
-    # @aircraft_type_id_map[id] = @aircraft_types.detect{ |aircraft_type| aircraft_type.id == id }
-    # @aircraft_type_id_map[id]
+  def handling_for_aircraft_category(aircraft_category_id, city_id)
+    @handling_cost_grids.detect{ |handling_cost_grid| handling_cost_grid.aircraft_category_id == aircraft_category_id and handling_cost_grid.city_id == city_id }
   end
 
-  def get_handling_cost(aircraft)
+  ######################################################################
+  # Description: This returns the cost for given aircraft and airport
+  # @param [Aircraft] aircraft
+  # @param [Airport] airport
+  # @return [Float]
+  ######################################################################
+  def get_handling_cost(aircraft, airport)
     cost = 0.0
     aircraft_type = aircraft_type_for_id(aircraft.aircraft_type_id)
-    debugger
+    city_id = airport.city_id
+    if aircraft_type.present?
+      handling_cost_grid =   handling_for_aircraft_category(aircraft_type.aircraft_category_id, city_id)
+      if handling_cost_grid.present?
+        cost = handling_cost_grid.cost
+      end
+    end
+    cost
   end
 
   ######################################################################
@@ -584,12 +598,38 @@ BEGIN
     decimal_part.present? ? decimal_part.to_i : 0
   end
 
+  def check_aircraft_unavailability(aircraft, start_at, end_at)
+    flag = false
+    aircraft_unavailability = @aircraft_unavailabilities.detect{ |aircraft_unavailability|
+      aircraft_unavailability.aircraft_id == aircraft.id and
+          (aircraft_unavailability.start_at.between?(start_at, end_at) or
+          aircraft_unavailability.end_at.between?(start_at, end_at) or
+          start_at.between?(aircraft_unavailability.start_at, aircraft_unavailability.end_at) or
+          end_at.between?(aircraft_unavailability.start_at, aircraft_unavailability.end_at))
+    }
+
+    if aircraft_unavailability.present?
+      flag =  true
+    end
+
+    flag
+
+    # @aircraft_unavailabilities.where(
+    #     aircraft_id: aircraft.id,
+    # ).where(
+    #     'start_at BETWEEN ? AND ?
+    #      OR
+    #      end_at BETWEEN ? AND ?
+    #      OR
+    #      ? BETWEEN start_at AND end_at
+    #      OR
+    #      ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
+    # ).any?
+
+  end
+
   def aircraft_has_unavailability(aircraft)
-    AircraftUnavailability.where(
-        aircraft_id: aircraft.id,
-    ).where(
-        'start_at BETWEEN ? AND ? OR end_at BETWEEN ? AND ? OR ? BETWEEN start_at AND end_at OR ? BETWEEN start_at AND end_at', @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability, @start_time_for_unavailability, @end_time_for_unavailability
-    ).any?
+    check_aircraft_unavailability(aircraft, @start_time_for_unavailability, @end_time_for_unavailability)
   end
 
   # def aircraft_has_trip(aircraft)
@@ -611,7 +651,8 @@ BEGIN
     # false
     @can_fly = true
     @search_activities.each do |f|
-      return @can_fly = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+      # return @can_fly = false unless aircraft.flying_range_in_nm >= Distance.where(from_airport_id: f.departure_airport_id, to_airport_id: f.arrival_airport_id ).first.distance_in_nm
+      return @can_fly = false unless aircraft.flying_range_in_nm >= airport_distance_in_nm(airport_for_id(f.departure_airport_id), airport_for_id(f.arrival_airport_id))
     end
     @can_fly
 
