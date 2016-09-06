@@ -46,8 +46,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_notam_active = false
 
-  @any_active_result = false
-
   $scope.$watch(
     =>
       @search_activities
