@@ -92,7 +92,7 @@ BEGIN
     @aircraft_types = AircraftType.where(id: @aircrafts.map(&:aircraft_type_id)).to_a
 
     # puts '=== Loading AircraftUnavailability'
-    @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: @aircrafts.map(&:id))
+    @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: @aircrafts.map(&:id)).to_a
 
   end
 
