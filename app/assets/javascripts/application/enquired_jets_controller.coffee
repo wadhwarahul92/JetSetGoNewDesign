@@ -6,6 +6,8 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 
   @enquired_jets = {}
 
+  @loading = true
+
 #  @booked_jets = {}
 #
 #  @quotes = {}
@@ -80,7 +82,7 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
       @enquiries = data
       for enquiry in @enquiries
         enquiry.grandTotal = CustomerCostBreakUpsService.totalTripCost(enquiry)
-
+        @loading = false
   ).error(
     ->
       notify(

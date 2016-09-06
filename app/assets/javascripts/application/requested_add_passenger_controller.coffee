@@ -4,6 +4,7 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
   @trip_id = ''
   @trip = {}
   @passenger_details_ = [{}]
+  @loading = true
 
 
 
@@ -20,6 +21,7 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
   $http.post('customers/get_shared_trip', {token: @token, trip_id: $routeParams.trip_id }).success(
     (data)=>
       @trip = data
+      @loading = false
   ).error(
     ->
       notify(

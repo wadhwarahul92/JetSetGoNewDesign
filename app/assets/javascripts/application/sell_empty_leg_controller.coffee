@@ -4,6 +4,8 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
 
   @confirmed_trips = {}
 
+  @loading = true
+
   $scope.$watch(
     =>
       CurrentUserService.currentUser
@@ -25,6 +27,7 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
   $http.get('customers/get_booked_jets.json').success(
     (data)=>
       @confirmed_trips = data
+      @loading = false
   ).error(
     ->
       notify(
