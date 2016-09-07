@@ -148,7 +148,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           @min_cost = 0
           @max_cost = 0
           @filter_cost = "'"+0+','+ 0+"'"
-    @loading = false
   ).error(
     (data)->
       error = 'Something went wrong.'
