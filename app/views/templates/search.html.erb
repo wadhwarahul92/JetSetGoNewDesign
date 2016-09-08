@@ -20,10 +20,11 @@
         <!--New airport breakup-->
         <div class="breakups_main_con" >
           <div class="repeat-con" ng-repeat="airport in ctrl.airport_break_ups">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              {{ airport.name}}
+            <div class="col-sm-3 col-xs-12" ng-class="airport.name.length > 24 ? 'col-md-3' : 'col-md-2'">
+              {{airport.name}}
+              {{airport.name.length}}
             </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
+            <div class="col-sm-9 col-xs-12" ng-class="airport.name.length > 24 ? 'col-md-9' : 'col-md-10'">
               <div class="row">
                 <div class="col-md-2 col-sm-3 col-xs-6">Night landing: {{airport.night_landing ? 'Yes' : 'No'}}</div>
                 <div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{airport.night_parking ? 'Yes' : 'No'}}</div>
