@@ -154,13 +154,13 @@
       <div class="jetdetail-col" ng-show="ctrl.flight">
         <div class="row">
           <div class="col-md-8 col-sm-8 no-right-padding">
-            <div class="icon-img-main" ng-init="ctrl.trip.icon_detail = false">
+            <div class="icon-img-main">
               <div class="img-con">
                 <img src="" class="img-responsive aircraft-img" ng-src="{{ctrl.trip.activities[0].aircraft.exterior_image}}">
-                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.trip.icon_detail =! ctrl.trip.icon_detail">More Detail</span>
+                <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.trip.more_detail_active =! ctrl.trip.more_detail_active">More Detail</span>
               </div>
-              <div ng-show="!ctrl.trip.icon_detail" class="icon-con">
-                <span class="icons-main" ng-hide="ctrl.icon_detail">
+              <div ng-show="ctrl.trip.more_detail_active" class="icon-con">
+                <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                   <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kgs</span>
                 </span>

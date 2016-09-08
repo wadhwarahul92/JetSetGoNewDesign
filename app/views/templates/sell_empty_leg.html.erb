@@ -108,9 +108,9 @@
                 <div class="img-hide">
                   <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/414/original/3-.jpg?1468909133" alt="" />-->
                   <img class="img-responsive" ng-src="{{activity.aircraft.exterior_image}}" alt="" />
-                  <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="(activity.icon_detail=false)" ng-click="activity.icon_detail = !activity.icon_detail">More Detail</span>
+                  <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(activity)" ng-click="activity.more_detail_active = !activity.more_detail_active">More Detail</span>
                 </div>
-                <div class="icon-con" ng-hide="activity.icon_detail">
+                <div class="icon-con" ng-show="activity.more_detail_active">
                   <span class="icons-main">
                     <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                     <span class="icon-detail">{{activity.aircraft.baggage_capacity_in_kg}} kgs</span>

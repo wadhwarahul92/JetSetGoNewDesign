@@ -107,6 +107,11 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
 #          count = count+1
 #    return count
 
+  @doMediaQuery = (enquiry)->
+    enquiry.more_detail_active = true
+    w = angular.element(window).width()
+    if w < 768
+      enquiry.more_detail_active = false
 
   return undefined
 ]

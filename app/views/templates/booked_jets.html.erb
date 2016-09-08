@@ -1,3 +1,4 @@
+<div id="spinner" ng-show="ctrl.loading"></div>
 <div class="section-heading search_heading">
   <div class="container">
     <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/641/original/yourcockpit.png?1471511926" alt="">
@@ -125,9 +126,9 @@
                         <div class="col-sm-8 no-padding-right" style="position: relative;">
                           <div class="booking-img">
                             <img src="" class="img-responsive" ng-src="{{trip.activities[0].aircraft.exterior_image}}" />
-                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="(trip.icon_detail=false)" ng-click="trip.icon_detail = !trip.icon_detail">More Detail</span>
+                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(trip)" ng-click="trip.more_detail_active = !trip.more_detail_active">More Detail</span>
                           </div>
-                          <div class="icon-con" ng-hide="trip.icon_detail">
+                          <div class="icon-con" ng-show="trip.more_detail_active">
                             <span class="icons-main">
                               <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                               <span class="icon-detail">{{trip.aircraft.baggage_capacity_in_kg}} kgs</span>
