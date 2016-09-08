@@ -70,6 +70,10 @@
       <div style="width: 100%; height: 1px; background-color: #cccccc;"></div>
     </div>
     <div class="row">
+      <div class="col-xs-12 sub-border-con" ng-show="ctrl.trip.is_miscellaneous_expenses">
+        <h5 class="sub-heading"><b>Miscellaneous Expenses</b></h5>
+        <p class="sub-result"><b><i class="fa fa-rupee"></i> {{ctrl.trip.miscellaneous_expenses | currency:"":0 | indianCurrency}}</b></p>
+      </div>
       <div class="col-sm-6 col-xs-12 sub-border-con">
         <h5 class="sub-heading"><b>Tax</b></h5>
         <p class="sub-result" ng-repeat="tax in ctrl.taxBreakup">

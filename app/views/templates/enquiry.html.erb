@@ -104,6 +104,21 @@
       <div class="col-xs-12">
         <h4></h4>
       </div>
+      <!--<div class="col-sm-12 col-xs-12 sub-border-con" ng-show="ctrl.enquiry.is_miscellaneous_expenses">-->
+        <!--<h5 class="sub-heading"><strong>Miscellaneous Expenses</strong></h5>-->
+        <!--<p class="sub-result"><strong><i class="fa fa-rupee"></i> {{ctrl.enquiry.miscellaneous_expenses | currency:"":2 | indianCurrency}}</strong></p>-->
+      <!--</div>-->
+      <div class="col-sm-12 col-xs-12 sub-border-con" ng-init="ewc = false" ng-show="ctrl.enquiry.is_miscellaneous_expenses">
+        <h5 class="sub-heading"><strong>Miscellaneous Expenses</strong></h5>
+        <p class="sub-result">
+          <span ng-hide="ewc"><i class="fa fa-rupee"></i> {{ctrl.enquiry.miscellaneous_expenses | currency:"":2 | indianCurrency}}</span>
+          <% if current_user.can_add_trip? %>
+              <input ng-show="ewc" type="number" ng-model="ctrl.enquiry.miscellaneous_expenses">
+              <i class="fa fa-edit" ng-click="ewc = !ewc" ng-hide="ewc"></i>
+              <i class="fa fa-check" ng-click="ewc = !ewc" ng-show="ewc"></i>
+          <% end %>
+        </p>
+      </div>
       <div class="col-sm-6 col-xs-12 sub-border-con">
         <h5 class="sub-heading"><strong>Tax</strong></h5>
         <p class="sub-result" ng-repeat="tax in ctrl.taxBreakup">

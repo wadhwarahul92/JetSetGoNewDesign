@@ -33,8 +33,9 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
   #  Calculate subTotal of a single search result
   costBreakUpInstance.subTotal = (trip)->
-    trip.is_miscellaneous_expenses = false
-    trip.miscellaneous_expenses_amount = 0.0
+    if trip.flight_plan
+      trip.is_miscellaneous_expenses = false
+      trip.miscellaneous_expenses_amount = 0.0
     cost = 0.0
 
     miscellaneous_expenses = 0.0
@@ -103,8 +104,9 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
     if total_flight_mins < min_mins
       miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
       cost = cost + miscellaneous_expenses
-      trip.is_miscellaneous_expenses = true
-      trip.miscellaneous_expenses_amount = miscellaneous_expenses
+      if trip.flight_plan
+        trip.is_miscellaneous_expenses = true
+        trip.miscellaneous_expenses_amount = miscellaneous_expenses
 
 #      miscellaneous_expenses = ((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
 #      amount + miscellaneous_expenses
