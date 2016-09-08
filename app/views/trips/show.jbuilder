@@ -1,5 +1,7 @@
 json.id @trip.id
 json.status @trip.status
+json.is_miscellaneous_expenses @trip.is_miscellaneous_expenses
+json.miscellaneous_expenses @trip.miscellaneous_expenses
 json.catering @trip.catering
 json.sell_empty_leg @trip.sell_empty_leg
 json.user @trip.user.try(:full_name)
