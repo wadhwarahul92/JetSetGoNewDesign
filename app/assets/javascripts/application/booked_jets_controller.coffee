@@ -112,5 +112,11 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
 
+  @doMediaQuery = (trip)->
+    trip.more_detail_active = true
+    w = angular.element(window).width()
+    if w < 768
+      trip.more_detail_active = false
+
   return undefined
 ]

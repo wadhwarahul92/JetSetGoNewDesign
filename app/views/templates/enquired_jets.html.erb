@@ -90,9 +90,9 @@
                         <div class="col-sm-8 col-xs-12 no-padding-right" style="position: relative;">
                           <div class="booking-img">
                             <img src="" class="p_img img-responsive" ng-src="{{enquiry.activities[0].aircraft.exterior_image}}">
-                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="(enquiry.icon_detail=false)" ng-click="enquiry.icon_detail = !enquiry.icon_detail">More Detail</span>
+                            <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(enquiry)" ng-click="enquiry.more_detail_active = !enquiry.more_detail_active">More Detail</span>
                           </div>
-                          <div class="icon-con" ng-hide="enquiry.icon_detail">
+                          <div class="icon-con" ng-show="enquiry.more_detail_active">
                             <span class="icons-main">
                               <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                               <span class="icon-detail">{{enquiry.aircraft.baggage_capacity_in_kg}} kgs</span>

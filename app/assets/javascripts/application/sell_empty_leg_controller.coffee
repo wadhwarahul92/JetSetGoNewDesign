@@ -63,5 +63,11 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
 #  @uncheck = (activity, bool)->
 #    debugger
 
+  @doMediaQuery = (activity)->
+    activity.more_detail_active = true
+    w = angular.element(window).width()
+    if w < 768
+      activity.more_detail_active = false
+
   return undefined
 ]

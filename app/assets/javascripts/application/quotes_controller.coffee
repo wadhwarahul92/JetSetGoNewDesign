@@ -94,5 +94,11 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
 
+  @doMediaQuery = (quote)->
+    quote.more_detail_active = true
+    w = angular.element(window).width()
+    if w < 768
+      quote.more_detail_active = false
+
   return undefined
 ]

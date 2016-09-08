@@ -93,6 +93,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
       @trip.taxBreakup = CustomerCostBreakUpsService.taxBreakUp(@trip)
       @trip.subTotal = CustomerCostBreakUpsService.subTotal(@trip)
       @trip.total_tax = @total_tax(@trip.taxBreakup)
+      @trip.more_detail_active = @doMediaQuery(@trip)
       @loading = false
   ).error(
     ->
@@ -325,6 +326,13 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @can_add_passengers = ()->
     @trip.can_add_passenger = moment(new Date(this.trip.activities[0].start_at)).subtract(3, 'hour') > moment()
+
+  @doMediaQuery = (trip)->
+    flag = true
+    w = angular.element(window).width()
+    if w < 768
+      flag = false
+    flag
 
   return undefined
 
