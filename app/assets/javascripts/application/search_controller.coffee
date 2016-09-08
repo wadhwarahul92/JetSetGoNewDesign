@@ -500,5 +500,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         flag = true
     flag
 
+  @doMediaQuery = (result)->
+    result.more_detail_active = true
+    w = angular.element(window).width()
+    if w < 768
+      result.more_detail_active = false
+
   return undefined
 ]
