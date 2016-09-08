@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823113635) do
+ActiveRecord::Schema.define(version: 20160908055120) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -514,17 +514,19 @@ ActiveRecord::Schema.define(version: 20160823113635) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer  "organisation_id",        limit: 4
-    t.string   "status",                 limit: 255
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.integer  "user_id",                limit: 4
-    t.integer  "payment_transaction_id", limit: 4
+    t.integer  "organisation_id",           limit: 4
+    t.string   "status",                    limit: 255
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+    t.integer  "user_id",                   limit: 4
+    t.integer  "payment_transaction_id",    limit: 4
     t.datetime "deleted_at"
-    t.string   "payment_status",         limit: 255,   default: "unpaid"
-    t.float    "amount_paid",            limit: 24,    default: 0.0
-    t.text     "catering",               limit: 65535
-    t.boolean  "sell_empty_leg",                       default: false
+    t.string   "payment_status",            limit: 255,   default: "unpaid"
+    t.float    "amount_paid",               limit: 24,    default: 0.0
+    t.text     "catering",                  limit: 65535
+    t.boolean  "sell_empty_leg",                          default: false
+    t.boolean  "is_miscellaneous_expenses",               default: false
+    t.float    "miscellaneous_expenses",    limit: 24,    default: 0.0
   end
 
   create_table "users", force: :cascade do |t|

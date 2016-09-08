@@ -21,7 +21,8 @@ class SendQuoteService
   end
 
   def update_trip
-    @trip.update_attributes!(status: Trip::STATUS_QUOTED)
+    @params[:miscellaneous_expenses] = 0.0 unless @params[:miscellaneous_expenses].present?
+    @trip.update_attributes!(status: Trip::STATUS_QUOTED, miscellaneous_expenses: @params[:miscellaneous_expenses])
   end
 
   def update_activities

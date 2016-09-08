@@ -1,4 +1,6 @@
 json.id @trip.id
+json.is_miscellaneous_expenses @trip.is_miscellaneous_expenses?
+json.miscellaneous_expenses @trip.miscellaneous_expenses
 json.status @trip.status
 json.tax Tax.tax
 json.tax_value Tax.total_tax_value

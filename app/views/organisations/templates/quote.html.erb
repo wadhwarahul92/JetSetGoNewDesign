@@ -80,10 +80,17 @@
       </div>
     </div>
     <div class="row">
+
+      <div class="col-sm-12 col-xs-12 sub-border-con" ng-show="ctrl.quote.is_miscellaneous_expenses">
+        <h5 class="sub-heading"><b>Miscellaneous Expenses</b></h5>
+        <p class="sub-result">
+          <b><i class="fa fa-rupee"></i> {{ctrl.quote.miscellaneous_expenses | currency:"" | indianCurrency}}</b>
+        </p>
+      </div>
       <div class="col-sm-6 col-xs-12 sub-border-con">
         <h5 class="sub-heading"><b>Tax</b></h5>
         <p class="sub-result" ng-repeat="tax in ctrl.taxBreakup">
-          <b><i class="fa fa-rupee"></i>{{tax.name}} @ {{tax.value}}%: {{tax.amount | currency:"" | indianCurrency}}</b>
+          <b><i class="fa fa-rupee"></i> {{tax.name}} @ {{tax.value}}%: {{tax.amount | currency:"" | indianCurrency}}</b>
         </p>
       </div>
       <div class="col-xs-6 sub-border-con">

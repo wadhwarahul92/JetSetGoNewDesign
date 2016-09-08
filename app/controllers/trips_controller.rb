@@ -8,7 +8,9 @@ class TripsController < ApplicationController
   def enquire
     @trip = @organisation.trips.new(
         status: Trip::STATUS_ENQUIRY,
-        user_id: current_user.id
+        user_id: current_user.id,
+        is_miscellaneous_expenses: params[:enquiry][:is_miscellaneous_expenses],
+        miscellaneous_expenses: params[:enquiry][:miscellaneous_expenses_amount]
     )
     if @trip.save
 
