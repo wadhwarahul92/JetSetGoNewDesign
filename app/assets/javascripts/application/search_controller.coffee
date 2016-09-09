@@ -462,12 +462,21 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     seconds = 0
     flight_time_ = ''
     for plan in result.flight_plan
-      unless plan.flight_type == 'empty_leg'
-        hours += parseInt(plan.flight_time.split(':')[0])
-        minutes += parseInt(plan.flight_time.split(':')[1])
-        seconds += parseInt(plan.flight_time.split(':')[2])
-    minutes +=  parseInt(seconds/60)
-    hours +=  parseInt(minutes/60)
+#      unless plan.flight_type == 'empty_leg'
+      hours += parseInt(plan.flight_time.split(':')[0])
+      minutes += parseInt(plan.flight_time.split(':')[1])
+      seconds += parseInt(plan.flight_time.split(':')[2])
+
+    if seconds > 59
+      minutes += parseInt(seconds/60)
+      seconds = seconds % 60
+
+    if minutes > 59
+      hours += parseInt(minutes/60)
+      minutes = minutes % 60
+
+#    minutes +=  parseInt(seconds/60)
+#    hours +=  parseInt(minutes/60)
 
     flight_time_ = (hours.toString()+' Hrs ' +minutes.toString()+ ' Mins')
 

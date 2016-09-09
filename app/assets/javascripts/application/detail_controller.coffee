@@ -189,9 +189,10 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
     minutes = 0
     flight_time_ = ''
     for activity in trip.activities
-      unless activity.empty_leg
-        hours += moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).hours()
-        minutes += moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).minutes()
+#      unless activity.empty_leg
+      hours += moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).hours()
+      minutes += moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).minutes()
+
     hours += minutes/60 | 0
     minutes = minutes%60 | 0
     flight_time_ = (hours.toString()+' Hrs ' +minutes.toString()+ ' Mins')
