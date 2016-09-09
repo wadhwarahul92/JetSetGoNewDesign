@@ -94,6 +94,10 @@ BEGIN
     # puts '=== Loading AircraftUnavailability'
     @aircraft_unavailabilities = AircraftUnavailability.where(aircraft_id: @aircrafts.map(&:id)).to_a
 
+    @trips = Trip.where(status: 'confirmed' ).to_a
+    trip_ids =  @trips.map(&:id)
+    @activities = Activity.where(trip_id: trip_ids ).to_a
+
   end
 
   def make_results
@@ -123,6 +127,8 @@ BEGIN
           # aircraft_interior_image: aircraft.interior.url(:original),
           flight_plan: flight_plan(aircraft),
       }
+
+      is_overriding_activities(aircraft)
 
     end
   end
@@ -819,5 +825,39 @@ BEGIN
   #   # @search_activities.first.start_at + flight_time_in_hours(aircraft, airport_for_id(@search_activities.first.departure_airport_id), airport_for_id(@search_activities.first.arrival_airport_id))
   #   # search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)),
   # end
+
+  def is_overriding_activities(aircraft)
+    last_result = @results.last
+    date_list = []
+    is_override_activity = false
+
+    for plan in last_result[:flight_plan]
+
+      start_at = plan[:start_at]
+      end_at = plan[:end_at]
+      if plan[:accommodation_leg].present?
+        nights = plan[:accommodation_leg][:nights]
+        end_at = plan[:end_at] + nights.days
+      end
+
+      date_list << {
+          start_at: start_at,
+          end_at: end_at
+      }
+    end
+
+    for plan_time in date_list
+      # activities.start_at BETWEEN ? AND ?
+      # OR activities.end_at BETWEEN ? AND ?
+      # OR ? BETWEEN activities.start_at AND activities.end_at
+      # OR ? BETWEEN activities.start_at AND activities.end_at
+      x = @activities.detect{ |a|
+        a.aircraft_id == aircraft.id and (a.start_at.between?(plan_time[:start_at], plan_time[:end_at]) or a.end_at.between?(plan_time[:start_at], plan_time[:end_at]) or plan_time[:start_at].between?(a.start_at, a.end_at) or plan_time[:end_at].between?(a.start_at, a.end_at))
+      }.present?
+      is_override_activity = true if x
+    end
+    @results.pop if is_override_activity
+
+  end
 
 end
