@@ -128,7 +128,7 @@ BEGIN
           flight_plan: flight_plan(aircraft),
       }
 
-      is_check_already_trip(aircraft)
+      is_overriding_activities(aircraft)
 
     end
   end
@@ -826,7 +826,7 @@ BEGIN
   #   # search_activity.start_at + flight_time_in_hours(aircraft, airport_for_id(search_activity.departure_airport_id), airport_for_id(search_activity.arrival_airport_id)),
   # end
 
-  def is_check_already_trip(aircraft)
+  def is_overriding_activities(aircraft)
     last_result = @results.last
     date_list = []
     is_override_activity = false
