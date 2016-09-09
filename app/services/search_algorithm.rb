@@ -124,6 +124,8 @@ BEGIN
           flight_plan: flight_plan(aircraft),
       }
 
+      aircraft
+
     end
   end
 
