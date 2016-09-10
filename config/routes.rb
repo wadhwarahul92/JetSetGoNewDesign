@@ -51,6 +51,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pro_forma_invoices do
+    collection do
+      post 'pro_forma_preview'
+    end
+  end
+
   namespace :organisations do
 
     get '/' => 'welcome#index'

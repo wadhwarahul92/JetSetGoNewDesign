@@ -107,16 +107,27 @@ class FinancesController < ApplicationController
 
     end
 
-    response = HTTParty.post("#{URL}/pro_forma_preview?format=pdf", body: {
-        client_name: current_user.full_name,
-        client_address: '--',
-        itinerary_charges: itinerary_charges,
-        handling_charges: handling_charges,
-        accommodation_charges: accommodation_charges,
-        miscellaneous_charges: miscellaneous_charges,
-        token: TOKEN,
-        pass: PASSWORD
-    }.to_json,:headers => { 'Content-Type' => 'application/json' })
+    # response = HTTParty.post("#{URL}/pro_forma_preview?format=pdf", body: {
+    #     client_name: current_user.full_name,
+    #     client_address: '--',
+    #     itinerary_charges: itinerary_charges,
+    #     handling_charges: handling_charges,
+    #     accommodation_charges: accommodation_charges,
+    #     miscellaneous_charges: miscellaneous_charges,
+    #     token: TOKEN,
+    #     pass: PASSWORD
+    # }.to_json,:headers => { 'Content-Type' => 'application/json' })
+
+    response = HTTParty.post("http://localhost:3000/#{pro_forma_preview_pro_forma_invoices_path}?format=pdf", body: {
+                                                                      client_name: current_user.first_name,
+                                                                      client_address: '--',
+                                                                      itinerary_charges: itinerary_charges,
+                                                                      handling_charges: handling_charges,
+                                                                      accommodation_charges: accommodation_charges,
+                                                                      miscellaneous_charges: miscellaneous_charges,
+                                                                      token: TOKEN,
+                                                                      pass: PASSWORD
+                                                                  }.to_json,headers: { 'Content-Type' => 'application/json' })
 
     if response.code == 200
       send_data response.body

@@ -1,0 +1,216 @@
+<% unless params[:format] == 'pdf' %>
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'Download', "/pro_forma_invoices/#{@pro_forma_invoice.id}.pdf", class: 'btn btn-primary' %></li>
+          <% if @pro_forma_invoice.invoice.present? %>
+              <li><%= link_to 'View Invoice', @pro_forma_invoice.invoice, class: 'btn btn-primary' %></li>
+          <%- else %>
+              <% if current_user.manager_or_above? %>
+                  <li><%= link_to 'Create Invoice', "/pro_forma_invoices/#{@pro_forma_invoice.id}/create_invoice", class: 'btn btn-primary' %></li>
+              <%- end %>
+          <%- end %>
+        </ul>
+      </div>
+    </div>
+    <style>
+        table{
+            width: 100%;
+        }
+        body{
+            font-family: monospace;;
+        }
+        .inline li{
+            display: inline;
+            list-style-type: none;
+        }
+        .inline{
+            list-style-type: none;
+        }
+    </style>
+<%- end %>
+<%= image_tag 'http://s3.amazonaws.com/jetsetgocdn/static_files/images/000/000/017/original/logonew_%281%29.png?1452251239', style: 'height: 50px; position: absolute; left: 40%' %>
+<ul style="list-style-type: none;float: left; padding-left: 0">
+  <li><strong><%= @pro_forma_invoice.client_name %></strong></li>
+  <li><p><%= simple_format @pro_forma_invoice.client_address %></p></li>
+</ul>
+<ul style="list-style-type: none; float: right">
+  <li>
+    <strong>JetSetGo Aviation</strong> <br>
+    <strong>Services PVT. LTD.</strong> <br>
+    A-411, Somdutt Chambers 1 <br>
+    Bhikaji Cama Place <br>
+    New Delhi - 110066
+  </li>
+</ul>
+
+<div style="text-align: center; width: 100%; display: inline-block">
+  <strong>Pro Forma Invoice,</strong> <strong>Number:</strong> <%= @pro_forma_invoice.id %> <strong>Date:</strong> <%= @pro_forma_invoice.invoiced_on.strftime('%d %b %Y') %>
+</div>
+
+<% if @pro_forma_invoice.show_itineraries_on_pdf? %>
+    <fieldset>
+      <legend>Itinerary</legend>
+      <table>
+        <tr>
+          <td><strong>Aircraft</strong></td>
+          <td><strong>Departure</strong></td>
+          <td><strong>Arrival</strong></td>
+          <td><strong>Rate / hr</strong></td>
+          <td><strong>Flight time</strong></td>
+          <td><strong>Cost</strong></td>
+        </tr>
+        <% @pro_forma_invoice.itinerary_charges.group_by{ |i| i['date'] }.each_pair do |date, itinerary| %>
+            <tr>
+              <td colspan="6"><strong><%= date %></strong></td>
+            </tr>
+            <% itinerary.each do |i| %>
+                <tr>
+                  <td><%= i['aircraft'] %></td>
+                  <td><%= i['departure_airport'] %></td>
+                  <td><%= i['arrival_airport'] %></td>
+                  <td><%= i['jsg_adjusted'] %></td>
+                  <td><%= i['flight_time_hour'] %>:<%= i['flight_time_min'] %></td>
+                  <td><%= ( ( ( i['flight_time_hour'].to_i * 60 ) + i['flight_time_min'].to_i ) * ( i['jsg_adjusted'].to_f / 60 ) ).round(2) %></td>
+                </tr>
+            <%- end %>
+        <%- end %>
+        <tr>
+          <td colspan="4"><strong>Total Flight Time</strong></td>
+          <td><strong><%= in_hours @pro_forma_invoice.total_flight_time %></strong></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="4"><strong>Total Flight Cost</strong></td>
+          <td></td>
+          <td><strong><%= @pro_forma_invoice.flying_cost %></strong></td>
+        </tr>
+      </table>
+    </fieldset>
+<%- end %>
+
+<fieldset>
+  <legend>Price Details</legend>
+  <table>
+    <tr>
+      <td><strong>Item</strong></td>
+      <td><strong>Amount</strong></td>
+    </tr>
+    <tr>
+      <td>Flying Cost</td>
+      <td><%= non_negativety @pro_forma_invoice.flying_cost.to_f.round(2) %></td>
+    </tr>
+    <% @pro_forma_invoice.handling_charges.each do |handling_charge| %>
+        <tr>
+          <td>Handling at <%= handling_charge['city'] %></td>
+          <td><%= non_negativety handling_charge['jsg_adjusted'].to_f.round(2) %></td>
+        </tr>
+    <%- end %>
+    <% if @pro_forma_invoice.accommodation_charges.any? %>
+        <% @pro_forma_invoice.accommodation_charges.each do |accommodation_charge| %>
+            <tr>
+              <td>HOTAC at <%= accommodation_charge['city'] %>, <%= accommodation_charge['number_of_crew'] %> crew, <%= accommodation_charge['number_of_nights'] %> night(s)</td>
+              <td><%= non_negativety accommodation_charge['jsg_adjusted'].to_f.round(2) %></td>
+            </tr>
+        <%- end %>
+    <%- end %>
+    <% @pro_forma_invoice.miscellaneous_charges.each do |m| %>
+        <tr>
+          <td><%= m['description'] %></td>
+          <td><%= non_negativety m['charge'].to_f.round(2) %></td>
+        </tr>
+    <%- end %>
+    <% if @pro_forma_invoice.discount.to_f.present? and @pro_forma_invoice.discount.to_f > 0 %>
+        <% if @pro_forma_invoice.discount_unit == 'percentage' %>
+            <tr>
+              <td><strong>Discount @ <%= @pro_forma_invoice.discount.to_f.round(2) %> %</strong></td>
+              <td>(<%= @pro_forma_invoice.discount_amount %>)</td>
+            </tr>
+        <%- else %>
+            <tr>
+              <td><strong>Discount ( <%= @pro_forma_invoice.discount.to_f.round(2) %> )</strong></td>
+              <td>(<%= @pro_forma_invoice.discount_amount %>)</td>
+            </tr>
+        <%- end %>
+    <%- end %>
+    <tr>
+      <td><strong>Sub Total</strong></td>
+      <td><strong><%= @pro_forma_invoice.sub_total_after_discount %></strong></td>
+    </tr>
+    <tr>
+      <td><strong>Service Tax @ <%= @pro_forma_invoice.service_tax %> %</strong></td>
+      <td><%= @pro_forma_invoice.service_tax_amount %></td>
+    </tr>
+    <% if @pro_forma_invoice.other_tax_amount.present? and @pro_forma_invoice.other_tax_amount > 0 %>
+        <tr>
+          <td><strong><%= @pro_forma_invoice.other_tax_name %> @ <%= @pro_forma_invoice.other_tax %> %</strong></td>
+          <td><%= @pro_forma_invoice.other_tax_amount %></td>
+        </tr>
+    <%- end %>
+
+    <% if @pro_forma_invoice.kkc_amount.present? and @pro_forma_invoice.kkc_amount > 0 %>
+
+        <tr>
+          <td><strong>Krishi Kalyan Cess @ <%= @pro_forma_invoice.kkc %> % </strong></td>
+          <td><%= @pro_forma_invoice.kkc_amount %></td>
+        </tr>
+
+    <%- end %>
+
+    <% if @pro_forma_invoice.special_discount.to_f.present? and @pro_forma_invoice.special_discount.to_f > 0 %>
+        <% if @pro_forma_invoice.special_discount_unit == 'percentage' %>
+            <tr>
+              <td><strong>Discount @ <%= @pro_forma_invoice.special_discount.to_f.round(2) %> %</strong></td>
+              <td>(<%= @pro_forma_invoice.special_discount_amount %>)</td>
+            </tr>
+        <%- else %>
+            <tr>
+              <td><strong>Discount ( <%= @pro_forma_invoice.special_discount.to_f.round(2) %> )</strong></td>
+              <td>(<%= @pro_forma_invoice.special_discount_amount %>)</td>
+            </tr>
+        <%- end %>
+    <%- end %>
+    <tr>
+      <td><strong>Grand Total</strong></td>
+      <td><strong><%= @pro_forma_invoice.grand_total.round %></strong></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Authorized Signatory</legend>
+  <div style="height: 20px"></div>
+</fieldset>
+<fieldset>
+  <legend>Remittance Details</legend>
+  <table>
+    <tr>
+      <td><strong>Account Name</strong></td>
+      <td>Jetsetgo Aviation Services Pvt. Ltd</td>
+      <td><strong>Account Number</strong></td>
+      <td>007105006854</td>
+    </tr>
+    <tr>
+      <td><strong>Bank</strong></td>
+      <td>ICICI Bank, Branch: H 2, Green Park Extension, New Delhi-110016</td>
+      <td><strong>RTGS/IFSC Code</strong></td>
+      <td>ICIC0000071</td>
+    </tr>
+    <tr>
+      <td><strong>SWIFT Code</strong></td>
+      <td>ICICINBBCTS</td>
+      <td><strong>Phone</strong></td>
+      <td>011-39585858</td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Registration Numbers</legend>
+  <table>
+    <tr>
+      <td><strong>Service Tax</strong></td>
+      <td>AADCJ4206HSD001</td>
+      <td><strong>PAN No.</strong></td>
+      <td>AADCJ4206H</td>
+    </tr>
+  </table>
+</fieldset>
