@@ -28,7 +28,7 @@ class FinancesController < ApplicationController
 
       itinerary_charges << {
           aircraft: aircraft_,
-          jsg_adjusted: params[:result][:aircraft][:per_hour_cost],
+          jsg_adjusted: (params[:result][:aircraft][:per_hour_cost] + (params[:result][:aircraft][:per_hour_cost] * (params[:result][:aircraft][:flight_cost_commission_in_percentage]/100.to_f))),
           departure_airport: departure_airport.name,
           arrival_airport: arrival_airport.name,
           flight_time_hour: hour_diff(plan[:start_at], plan[:end_at]),
@@ -37,12 +37,12 @@ class FinancesController < ApplicationController
 
       handling_charges << {
           city: arrival_airport.city.name,
-          jsg_adjusted: plan['handling_cost_at_takeoff']
+          jsg_adjusted: (plan['handling_cost_at_takeoff'] + (plan['handling_cost_at_takeoff'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100).to_f)
       }
 
       miscellaneous_charges << {
           description: "Landing at #{arrival_airport.name}",
-          charge: plan['landing_cost_at_arrival']
+          charge: (plan['landing_cost_at_arrival'] + (plan['landing_cost_at_arrival'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100).to_f)
       }
 
       if plan['watch_hour_at_arrival']
@@ -107,16 +107,26 @@ class FinancesController < ApplicationController
 
     end
 
-    response = HTTParty.post("#{URL}/pro_forma_preview?format=pdf", body: {
-        client_name: current_user.full_name,
-        client_address: '--',
-        itinerary_charges: itinerary_charges,
-        handling_charges: handling_charges,
-        accommodation_charges: accommodation_charges,
-        miscellaneous_charges: miscellaneous_charges,
-        token: TOKEN,
-        pass: PASSWORD
-    }.to_json,:headers => { 'Content-Type' => 'application/json' })
+    # response = HTTParty.post("#{URL}/pro_forma_preview?format=pdf", body: {
+    #     client_name: current_user.full_name,
+    #     client_address: '--',
+    #     itinerary_charges: itinerary_charges,
+    #     handling_charges: handling_charges,
+    #     miscellaneous_charges: miscellaneous_charges,
+    #     token: TOKEN,
+    #     pass: PASSWORD
+    # }.to_json,:headers => { 'Content-Type' => 'application/json' })
+
+
+    response = HTTParty.post("#{URL}/pro_forma_preview_2?format=pdf", body: {
+                                                                      client_name: current_user.full_name,
+                                                                      client_address: '--',
+                                                                      itinerary_charges: itinerary_charges,
+                                                                      handling_charges: handling_charges,
+                                                                      miscellaneous_charges: miscellaneous_charges,
+                                                                      token: TOKEN,
+                                                                      pass: PASSWORD
+                                                                  }.to_json,:headers => { 'Content-Type' => 'application/json' })
 
     if response.code == 200
       send_data response.body
