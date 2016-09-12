@@ -303,7 +303,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
        if flight_plan.notam_at_arrival
          result.is_notam = true
 
-
   @addActivity = ->
     return unless @validatedActivities()
     @search_activities.push {}
@@ -529,9 +528,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @check_search_notam_active = ->
     flag = false
-    for break_up in @airport_break_ups
-      if break_up.is_notam
-        flag = true
+#    for break_up in @airport_break_ups
+#      if break_up.is_notam
+#        flag = true
     flag
 
   @doMediaQuery = (result)->

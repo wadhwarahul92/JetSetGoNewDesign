@@ -720,7 +720,7 @@ BEGIN
         # date = date.to_datetime
 
         notam = @notams.detect{ |n|
-          (n.airport_id == id and ( n.start_at <= date and n.end_at >= date ))
+          (n.airport_id == id and ( n.start_at <= date.end_of_day and n.end_at >= date.beginning_of_day ))
         }
 
         if notam.present?
