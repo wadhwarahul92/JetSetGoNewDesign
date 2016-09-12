@@ -702,7 +702,7 @@ BEGIN
           watch_hour: [],
           notam: []
       }
-      x[:name] = airport.name
+      x[:name] = airport.city.name
       x[:night_landing] = airport.night_landing
       x[:night_parking] = airport.night_parking
 

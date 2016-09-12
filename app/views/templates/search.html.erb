@@ -22,7 +22,6 @@
           <div class="repeat-con" ng-repeat="airport in ctrl.airport_break_ups">
             <div class="col-sm-3 col-xs-12" ng-class="airport.name.length > 24 ? 'col-md-3' : 'col-md-2'">
               {{airport.name}}
-              {{airport.name.length}}
             </div>
             <div class="col-sm-9 col-xs-12" ng-class="airport.name.length > 24 ? 'col-md-9' : 'col-md-10'">
               <div class="row">
@@ -462,7 +461,7 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
               <div class="img-bg">
-                <h3>{{result.aircraft.aircraft_type.name}} {{result.aircraft.id}}</h3>
+                <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <!--<h5>{{result.aircraft.aircraft_category.name}}</h5>-->
                 <h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>

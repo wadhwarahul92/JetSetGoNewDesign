@@ -20,8 +20,6 @@ class FinancesController < ApplicationController
 
     miscellaneous_charges = []
 
-    additional_charge = []
-
     params[:result][:flight_plan].each do |plan|
 
       departure_airport = Airport.find(plan[:departure_airport_id])
