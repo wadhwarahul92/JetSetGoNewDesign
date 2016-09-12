@@ -299,6 +299,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     )
 
   @checkNotam = (result)->
+    result.is_notam = false
     for flight_plan in result.flight_plan
        if flight_plan.notam_at_arrival
          result.is_notam = true
