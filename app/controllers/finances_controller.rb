@@ -14,6 +14,8 @@ class FinancesController < ApplicationController
 
     itinerary_charges = []
 
+    total_handling_charges = []
+
     handling_charges = []
 
     accommodation_charges = []
@@ -37,12 +39,12 @@ class FinancesController < ApplicationController
 
       handling_charges << {
           city: arrival_airport.city.name,
-          jsg_adjusted: (plan['handling_cost_at_takeoff'] + (plan['handling_cost_at_takeoff'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100).to_f)
+          jsg_adjusted: (plan['handling_cost_at_takeoff'] + (plan['handling_cost_at_takeoff'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100.to_f))
       }
 
-      miscellaneous_charges << {
-          description: "Landing at #{arrival_airport.name}",
-          charge: (plan['landing_cost_at_arrival'] + (plan['landing_cost_at_arrival'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100).to_f)
+      handling_charges << {
+          city: "Landing at #{arrival_airport.name}",
+          jsg_adjusted: (plan['landing_cost_at_arrival'] + (plan['landing_cost_at_arrival'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100.to_f))
       }
 
       if plan['watch_hour_at_arrival']
@@ -114,6 +116,19 @@ class FinancesController < ApplicationController
 
     end
 
+    if handling_charges.present?
+      amount = 0.0
+      for charges in handling_charges
+        amount += charges[:jsg_adjusted]
+      end
+
+      total_handling_charges << {
+          jsg_adjusted: (amount)
+      }
+    end
+
+
+
     if params[:result][:is_miscellaneous_expenses].present?
       miscellaneous_charges << {
           description: "Miscellaneous expenses",
@@ -137,7 +152,7 @@ class FinancesController < ApplicationController
     response = HTTParty.post("#{URL}/pro_forma_preview_2?format=pdf", body: {
                                                                       client_address: '--',
                                                                       itinerary_charges: itinerary_charges,
-                                                                      handling_charges: handling_charges,
+                                                                      handling_charges: total_handling_charges,
                                                                       accommodation_charges: accommodation_charges,
                                                                       miscellaneous_charges: miscellaneous_charges,
                                                                       token: TOKEN,
