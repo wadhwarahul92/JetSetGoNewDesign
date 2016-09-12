@@ -20,6 +20,8 @@ class FinancesController < ApplicationController
 
     miscellaneous_charges = []
 
+    additional_charge = []
+
     params[:result][:flight_plan].each do |plan|
 
       departure_airport = Airport.find(plan[:departure_airport_id])
@@ -46,72 +48,88 @@ class FinancesController < ApplicationController
       }
 
       if plan['watch_hour_at_arrival']
-
         miscellaneous_charges << {
             description: "Watch hour at #{arrival_airport.name}",
             charge: plan['watch_hour_cost']
         }
-
       end
 
-      if plan[:chosen_intermediate_plan].present? and plan[:chosen_intermediate_plan] == 'accommodation_plan'
-
+      if plan['accommodation_leg']
         accommodation_charges << {
-          city: arrival_airport.city.name,
-          number_of_crew: 3,
-          jsg_adjusted: plan[:accommodation_plan][:cost],
-          number_of_nights: plan[:accommodation_plan][:nights]
+            city: arrival_airport.city.name,
+            number_of_crew: 3,
+            jsg_adjusted: plan['accommodation_leg'][:cost],
+            number_of_nights: plan['accommodation_leg'][:nights]
         }
-
       end
 
-      if plan[:chosen_intermediate_plan].present? and plan[:chosen_intermediate_plan] == 'empty_leg_plan'
-
-        plan[:empty_leg_plan].each do |elp|
-
-          departure_airport = Airport.find(elp[:departure_airport_id])
-
-          arrival_airport = Airport.find(elp[:arrival_airport_id])
-
-          itinerary_charges << {
-              aircraft: aircraft_,
-              jsg_adjusted: params[:result][:aircraft][:per_hour_cost],
-              departure_airport: departure_airport.name,
-              arrival_airport: arrival_airport.name,
-              flight_time_hour: hour_diff(elp[:start_at], elp[:end_at]),
-              flight_time_min: min_diff(elp[:start_at], elp[:end_at]),
-          }
-
-          handling_charges << {
-              city: arrival_airport.city.name,
-              jsg_adjusted: elp['handling_cost_at_takeoff']
-          }
-
-          miscellaneous_charges << {
-              description: "Landing at #{arrival_airport.name}",
-              charge: elp['landing_cost_at_arrival']
-          }
-
-          if elp['watch_hour_at_arrival']
-
-            miscellaneous_charges << {
-                description: "Watch hour at #{arrival_airport.name}",
-                charge: elp['watch_hour_cost']
-            }
-
-          end
-
-        end
-
-      end
+      # if plan[:chosen_intermediate_plan].present? and plan[:chosen_intermediate_plan] == 'accommodation_plan'
+      #
+      #   accommodation_charges << {
+      #     city: arrival_airport.city.name,
+      #     number_of_crew: 3,
+      #     jsg_adjusted: plan[:accommodation_plan][:cost],
+      #     number_of_nights: plan[:accommodation_plan][:nights]
+      #   }
+      #
+      # end
+      #
+      # if plan[:chosen_intermediate_plan].present? and plan[:chosen_intermediate_plan] == 'empty_leg_plan'
+      #
+      #   plan[:empty_leg_plan].each do |elp|
+      #
+      #     departure_airport = Airport.find(elp[:departure_airport_id])
+      #
+      #     arrival_airport = Airport.find(elp[:arrival_airport_id])
+      #
+      #     itinerary_charges << {
+      #         aircraft: aircraft_,
+      #         jsg_adjusted: params[:result][:aircraft][:per_hour_cost],
+      #         departure_airport: departure_airport.name,
+      #         arrival_airport: arrival_airport.name,
+      #         flight_time_hour: hour_diff(elp[:start_at], elp[:end_at]),
+      #         flight_time_min: min_diff(elp[:start_at], elp[:end_at]),
+      #     }
+      #
+      #     handling_charges << {
+      #         city: arrival_airport.city.name,
+      #         jsg_adjusted: elp['handling_cost_at_takeoff']
+      #     }
+      #
+      #     miscellaneous_charges << {
+      #         description: "Landing at #{arrival_airport.name}",
+      #         charge: elp['landing_cost_at_arrival']
+      #     }
+      #
+      #     if elp['watch_hour_at_arrival']
+      #
+      #       miscellaneous_charges << {
+      #           description: "Watch hour at #{arrival_airport.name}",
+      #           charge: elp['watch_hour_cost']
+      #       }
+      #
+      #     end
+      #
+      #   end
+      #
+      # end
 
     end
+
+    if params[:result][:is_miscellaneous_expenses].present?
+      miscellaneous_charges << {
+          description: "Miscellaneous expenses",
+          charge: params[:result][:miscellaneous_expenses_amount]
+      }
+    end
+
 
     # response = HTTParty.post("#{URL}/pro_forma_preview?format=pdf", body: {
     #     client_name: current_user.full_name,
     #     client_address: '--',
     #     itinerary_charges: itinerary_charges,
     #     handling_charges: handling_charges,
+    #     accommodation_charges: accommodation_charges,
     #     miscellaneous_charges: miscellaneous_charges,
     #     token: TOKEN,
     #     pass: PASSWORD
@@ -119,10 +137,10 @@ class FinancesController < ApplicationController
 
 
     response = HTTParty.post("#{URL}/pro_forma_preview_2?format=pdf", body: {
-                                                                      client_name: current_user.full_name,
                                                                       client_address: '--',
                                                                       itinerary_charges: itinerary_charges,
                                                                       handling_charges: handling_charges,
+                                                                      accommodation_charges: accommodation_charges,
                                                                       miscellaneous_charges: miscellaneous_charges,
                                                                       token: TOKEN,
                                                                       pass: PASSWORD
