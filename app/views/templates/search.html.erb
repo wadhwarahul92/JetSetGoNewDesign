@@ -154,7 +154,6 @@
           end_at : {{ctrl.formatTime(watch_hour.end_at)}} |
         </div> -->
 
-
         <!--=============-->
         <div class="col-sm-10 col-xs-12" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
@@ -181,10 +180,9 @@
     </div>
   </div>
   <!-- {{ctrl.airport_break_ups.notam_details.length > 0}} -->
-  <div class="filter-toggle-main" ng-show="ctrl.search_bar_active || ctrl.count_night_flight == 0">
+  <div class="filter-toggle-main" ng-show="ctrl.search_bar_active || ctrl.count_night_flight == 0 || ctrl.results.length == 0">
     <div class="container">
       <div class="search-form-con">
-
         <!-- search con start -->
         <div class="search-edit-form" ng-hide="ctrl.disable_">
           <div class="row">
@@ -348,7 +346,7 @@
           <!--<h3 class="text-center notum-text" ng-show="ctrl.airport_break_ups.notam_details.length > 0">-->
             <!--Please select different timings as Airports are not operational at your selected time.-->
           <!--</h3>-->
-          <h3 class="text-center notum-text" ng-show="ctrl.search_notam_active || ctrl.count_night_flight == 0">
+          <h3 class="text-center notum-text" ng-show="ctrl.search_notam_active || ctrl.count_night_flight == 0 || ctrl.results.length == 0">
             Please select different timings as Airports are not operational at your selected time.
           </h3>
 
@@ -414,7 +412,7 @@
         <!--==========================-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.convertToInt(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.convertToInt(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.convertToInt(filterFlyingTime)[0] == result.totalCost || ctrl.convertToInt(filterFlyingTime)[1] == result.totalCost " >-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >-->
-        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
+        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
         <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
           <!--<div class="result-search" ng-if="result.night_flight">-->

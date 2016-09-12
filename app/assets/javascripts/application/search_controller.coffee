@@ -132,22 +132,22 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
               @set_costs(result)
         )
 
-        for search_activity in @search_activities
-          search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
-          search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
-          search_activity.start_at = new Date(search_activity.start_at)
+      for search_activity in @search_activities
+        search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
+        search_activity.arrival_airport = @airportForId(search_activity.arrival_airport_id)
+        search_activity.start_at = new Date(search_activity.start_at)
 
-        @count_night_flight = 0
+      @count_night_flight = 0
 
-        @search_activities_static = JSON.parse(JSON.stringify @search_activities)
-        if @results.length > 0
-          @min_cost = parseInt(_.first(@results).totalCost - 1).toString()
-          @max_cost = parseInt(_.last(@results).totalCost + 1).toString()
-          @filter_cost = "'"+@min_cost+','+ @max_cost+"'"
-        else
-          @min_cost = 0
-          @max_cost = 0
-          @filter_cost = "'"+0+','+ 0+"'"
+      @search_activities_static = JSON.parse(JSON.stringify @search_activities)
+      if @results.length > 0
+        @min_cost = parseInt(_.first(@results).totalCost - 1).toString()
+        @max_cost = parseInt(_.last(@results).totalCost + 1).toString()
+        @filter_cost = "'"+@min_cost+','+ @max_cost+"'"
+      else
+        @min_cost = 0
+        @max_cost = 0
+        @filter_cost = "'"+0+','+ 0+"'"
       @loading = false
   ).error(
     (data)->
@@ -298,11 +298,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       }
     )
 
-  @checkNotam = (result)->
+  @checkNotam = (result, index)->
     result.is_notam = false
     for flight_plan in result.flight_plan
        if flight_plan.notam_at_arrival
          result.is_notam = true
+         @results = _.without(@results, _.findWhere(@results, {aircraft_id: result.aircraft_id}))
 
   @addActivity = ->
     return unless @validatedActivities()
