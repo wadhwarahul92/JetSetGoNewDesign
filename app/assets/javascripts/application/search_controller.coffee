@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', '$anchorScroll', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService, $anchorScroll)->
 
   @loading = true
 
@@ -510,12 +510,18 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 #  .run(['$anchorScroll', ($anchorScroll)
 #        $anchorScroll.yOffset = 50
 #    ])
-  $scope.gotoAnchor = (result)->
-    newHash = 'anchor' + result;
+  $anchorScroll.yOffset = 50;
+  $scope.gotoAnchor = (x)->
+    debugger
+    newHash = 'anchor' + x
     if $location.hash() != newHash
-      $location.hash() + result
+      $location.hash() + x
     else
       $anchorScroll();
+
+#  $scope.gotoBottom = ()->
+#    $location.hash('bottom')
+#    $anchorScroll();
 
   return undefined
 ]
