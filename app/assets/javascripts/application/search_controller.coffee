@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', '$anchorScroll', '$rootScope', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService, $anchorScroll, $rootScope)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', '$anchorScroll', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService, $anchorScroll)->
 
   @loading = true
 
@@ -509,25 +509,13 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   $scope.gotoCost = (index)->  
     setTimeout( 
       ->
-#        run(['$anchorScroll', ($anchorScroll)
-#          $anchorScroll.yOffset = 150;
-#        ])
         $anchorScroll.yOffset = 150;
         newHash = 'cost_text' + index;
-#        $location.hash('cost_text' + index); 
+        $location.hash('cost_text' + index); 
         if $location.hash() != newHash
           $location.hash('cost_text' + index);
         else 
           $anchorScroll(); 
-
-#        $anchorScroll.yOffset = 150
-#
-#        $location.hash('cost_text'+index)
-#       $location.hash('cost_text' + $index)
-#        if $location.hash != 'cost_text' + $index
-#          $location.hash('cost_text' + $index);
-#        else
-#          $anchorScroll();
       , 
       500 
     )
