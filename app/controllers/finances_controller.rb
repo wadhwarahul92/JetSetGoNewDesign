@@ -170,7 +170,7 @@ class FinancesController < ApplicationController
   end
 
   def aircraft_
-    "#{params[:result][:aircraft][:aircraft_type][:name]}, #{params[:result][:aircraft][:tail_number]}"
+    "#{params[:result][:aircraft][:aircraft_type][:name]}"
   end
 
 end
