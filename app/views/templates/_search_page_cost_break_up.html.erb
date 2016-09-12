@@ -1,7 +1,6 @@
 <!--Detail Start-->
-<div ng-init="ctrl.cost_with_commission_in_percentage(result, result.aircraft)" class="empty-leg-toogle-main">
-  <!--ng-show="custom"-->
-  <div class="arrow-up" id="anchor{{x}}"></div>
+<div ng-init="ctrl.cost_with_commission_in_percentage(result, result.aircraft)" class="empty-leg-toogle-main" ng-show="custom" id="cost_text{{$index}}">
+  <div class="arrow-up"></div>
   <div class="white-arrow-up"></div>
   <div class="top-destination-con">
     <div class="col-xs-12 text-right">

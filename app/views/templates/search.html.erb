@@ -466,7 +466,7 @@
                 <h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con text-center">
-                  <a href="javascript:void(0)" ng-click="gotoAnchor(x)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
+                  <a href="javascript:void(0)" ng-click="custom =! custom; gotoCost($index)">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                 </div>
               </div>
             </div>
