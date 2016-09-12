@@ -350,7 +350,7 @@
             Please select different timings as Airports are not operational at your selected time.
           </h3>
 
-          <div class="row" ng-hide="ctrl.search_notam_active || ctrl.count_night_flight == 0">
+          <div class="row" ng-hide="ctrl.search_notam_active || ctrl.count_night_flight == 0 || ctrl.results.length == 0">
             <div class="col-sm-4 col-xs-12">
               <div class="filter seating-capacity">
                 <h3>Seating Capacity</h3>
