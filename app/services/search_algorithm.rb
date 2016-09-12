@@ -717,13 +717,18 @@ BEGIN
           x[:watch_hour] << watch_hour
         end
 
-        notam = @notams.detect{ |n| n.airport_id == id and ( n.start_at <= date and n.end_at >= date ) }
+        # date = date.to_datetime
+
+        notam = @notams.detect{ |n|
+          (n.airport_id == id and ( n.start_at <= date.end_of_day and n.end_at >= date.beginning_of_day ))
+        }
 
         if notam.present?
           x[:is_notam] = true
           x[:notam] << notam
         end
       end
+      # Date.today.between?(Date.yesterday, Date.tomorrow)
 
       search << x
 
