@@ -506,5 +506,16 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     if w < 768
       result.more_detail_active = false
 
+#  angular.module('anchorScrollOffsetExample', [])
+#  .run(['$anchorScroll', ($anchorScroll)
+#        $anchorScroll.yOffset = 50
+#    ])
+  $scope.gotoAnchor = (result)->
+    newHash = 'anchor' + result;
+    if $location.hash() != newHash
+      $location.hash() + result
+    else
+      $anchorScroll();
+
   return undefined
 ]
