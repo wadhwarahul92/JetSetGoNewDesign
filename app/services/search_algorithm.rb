@@ -56,6 +56,10 @@ class SearchAlgorithm
         'seating_capacity >= ? AND landing_field_length_in_feet <= ? AND runway_field_length_in_feet <= ?', max_pax, max_runway_length, max_runway_length
     )
 
+
+
+
+
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
 
     airport_ids = ( @search_activities.map(&:departure_airport_id) + @search_activities.map(&:arrival_airport_id) + candidate_aircrafts_base_airport_ids ).uniq
@@ -116,6 +120,7 @@ BEGIN
       @results << {
           # aircraft: aircraft,
           aircraft_id: aircraft.id,
+          aircraft_per_hour_cost: aircraft.per_hour_cost,
           # aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
           # aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
           # aircraft_accomodation_cost_commission_in_percentage: aircraft.accomodation_cost_commission_in_percentage,

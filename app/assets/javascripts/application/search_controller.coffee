@@ -4,6 +4,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 
+  @results_ = []
   @results = []
 
   @airports = []
@@ -45,6 +46,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @current_user_present = false
 
   @search_notam_active = false
+
+  @totalItems = 0
+  @currentPage = 1
+  @isLoadMoreActive = false
 
   $scope.$watch(
     =>
@@ -109,7 +114,11 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
-      @results = data.results
+      @results_ = _.sortBy(data.results, 'aircraft_per_hour_cost')
+      @results = @set_results(@results_,10)
+
+      if @results.length > 9
+        @isLoadMoreActive = true
 
 #      @check_night_landing(@results)
 
@@ -540,6 +549,36 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     w = angular.element(window).width()
     if w < 768
       result.more_detail_active = false
+
+  @set_results = (data, n)->
+    _.first(data, [n])
+
+#  @setPage = (pageNo)->
+#    @currentPage = pageNo
+
+  @load_more = ->
+    @currentPage = @currentPage + 1
+
+    prevAircraftIds = _.pluck(@results, 'aircraft_id')
+
+    data = @set_results(@results_, 10*@currentPage)
+    restAircraftIds = _.difference(_.pluck(data, 'aircraft_id'), prevAircraftIds)
+
+    if restAircraftIds.length > 9
+      @isLoadMoreActive = true
+    else
+      @isLoadMoreActive = false
+
+    if restAircraftIds.length > 0
+      @results = _.union(@results, data)
+
+      AircraftsService.getAircraftsForIds(restAircraftIds).then(
+        =>
+          aircrafts = AircraftsService.aircrafts
+          for result in data
+            result.aircraft = _.find(aircrafts, {id: result.aircraft_id})
+            @set_costs(result)
+      )
 
   return undefined
 ]
