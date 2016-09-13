@@ -22,6 +22,7 @@
           <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
         </p>
         <p class="time-duration"><b>{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</b></p>
+        <p class="time-duration">{{flight_plan.flight_type == 'empty_leg' ? 'Empty leg' : ''}}</p>
       </div>
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
@@ -43,7 +44,6 @@
       <div class="col-md-8 col-sm-6">
         <div class="flight-cost-con">
           <h2>Cost Details</h2>
-          <a href="" class="no-text-decoration custom-btn" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>
           <!--<div>-->
             <!--<div class="cost-con" ng-repeat="flight_plan in result.flight_plan | filter : { flight_type: 'user_search' }">-->
               <!--<div class="row">-->
@@ -216,6 +216,7 @@
             </div>
           </div>
           <div class="detail-link-con">
+            <a href="javascript:void(0)" ng-click="ctrl.previewProForma(result)">View Proforma Invoice</a>
             <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
           </div>
         </div>
