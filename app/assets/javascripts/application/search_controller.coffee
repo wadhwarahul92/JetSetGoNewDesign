@@ -562,7 +562,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     data = @set_results(@results_, @perPage*@currentPage)
     restAircraftIds = _.difference(_.pluck(data, 'aircraft_id'), prevAircraftIds)
 
-    if restAircraftIds.length > @perPage
+    if restAircraftIds.length > @perPage-1
       @isLoadMoreActive = true
     else
       @isLoadMoreActive = false
