@@ -20,8 +20,11 @@
       <tbody>
       <% @distances.each do |distance| %>
           <tr>
-            <td><%= Airport.find(distance.from_airport_id).name %></td>
-            <td><%= Airport.find(distance.to_airport_id).name  %></td>
+            <!--<td><%#= Airport.find(distance.from_airport_id).name if Airport.find(distance.from_airport_id).present? %></td>-->
+            <!--<td><%#= Airport.find(distance.to_airport_id).name if Airport.find(distance.to_airport_id).present? %></td>-->
+
+            <td><%= Airport.where(id: distance.from_airport_id).last.name if Airport.where(id: distance.from_airport_id).any? %></td>
+            <td><%= Airport.where(id: distance.to_airport_id).last.name if Airport.where(id: distance.to_airport_id).any? %></td>
             <td><%= distance.distance_in_nm %></td>
             <td>
               <%= link_to edit_admin_distance_path(distance) do %>
