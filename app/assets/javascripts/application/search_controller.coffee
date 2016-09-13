@@ -554,9 +554,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @set_results = (data, n)->
     _.first(data, [n])
 
-#  @setPage = (pageNo)->
-#    @currentPage = pageNo
-
   @load_more = ->
     @currentPage = @currentPage + 1
 
