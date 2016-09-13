@@ -555,6 +555,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     _.first(data, [n])
 
   @load_more = ->
+    @isLoadMoreActive = false
     @currentPage = @currentPage + 1
 
     prevAircraftIds = _.pluck(@results, 'aircraft_id')
