@@ -116,6 +116,7 @@ BEGIN
       @results << {
           # aircraft: aircraft,
           aircraft_id: aircraft.id,
+          aircraft_per_hour_cost: aircraft.per_hour_cost,
           # aircraft_flight_cost_commission_in_percentage: aircraft.flight_cost_commission_in_percentage,
           # aircraft_handling_cost_commission_in_percentage: aircraft.handling_cost_commission_in_percentage,
           # aircraft_accomodation_cost_commission_in_percentage: aircraft.accomodation_cost_commission_in_percentage,
