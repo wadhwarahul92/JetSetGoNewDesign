@@ -185,7 +185,7 @@
                 </span>
                 <span class="icons-main">
                   <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory" alt="">
-                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.number_of_toilets}}</span>
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.number_of_toilets < 1 ? '' : ctrl.trip.activities[0].aircraft.number_of_toilets}}</span>
                 </span>
                 <span class="icons-main no-border">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm</span>
