@@ -301,8 +301,8 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
 
   @share = ()->
     return unless @validatedShareDetails()
-    $http.post('customers/share_email', { email: @share_email, trip_id: @trip_id, customer: @currentUser.id}).success(
-      ->
+    $http.post('customers/share_email', { email: @share_email, trip_id: @trip_id}).success(
+      =>
         @share_email = ''
         notify(
           message: 'Successfully shared.'

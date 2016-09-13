@@ -146,12 +146,11 @@ class CustomersController < ApplicationController
   end
 
   def share_email
-    if params[:customer].present? and params[:email].present? and params[:trip_id].present?
+    if current_user.present? and params[:email].present? and params[:trip_id].present?
       token = nil
-      customer = User.where(id: params[:customer])
-      if customer.present?
-        token = User.where(id: params[:customer]).first.api_token
-        CustomerMailer.share_email(params[:email], params[:trip_id], token).deliver_now
+      if current_user.present?
+        token = current_user.api_token
+        CustomerMailer.share_email(params[:email], params[:trip_id], token).deliver_later
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, nothing: true

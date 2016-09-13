@@ -1,12 +1,10 @@
-jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '$routeParams', ($http, notify, $routeParams) ->
+jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '$routeParams', '$location', ($http, notify, $routeParams, $location) ->
 
   @token = ''
   @trip_id = ''
   @trip = {}
   @passenger_details_ = [{}]
   @loading = true
-
-
 
   @token = $routeParams.token
   @trip_id = $routeParams.trip_id
@@ -22,6 +20,10 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
     (data)=>
       @trip = data
       @loading = false
+      if moment(Date.now()).isBefore(moment(new Date(_this.trip.activities[0].start_at)).subtract(3, 'hours'))
+#        do nothing
+      else
+        $location.path('/')
   ).error(
     ->
       notify(
