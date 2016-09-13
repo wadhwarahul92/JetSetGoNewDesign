@@ -88,6 +88,7 @@ json.trips{
 
     json.id trip.id
     json.status trip.status
+    json.catering trip.catering
     json.payment_status trip.payment_status
     json.amount_paid trip.amount_paid
     json.sell_empty_leg trip.sell_empty_leg
