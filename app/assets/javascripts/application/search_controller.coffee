@@ -49,6 +49,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @totalItems = 0
   @currentPage = 1
+  @perPage = 10
   @isLoadMoreActive = false
 
   $scope.$watch(
@@ -115,9 +116,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   $http.get("/searches/#{$routeParams.id}.json").success(
     (data)=>
       @results_ = _.sortBy(data.results, 'aircraft_per_hour_cost')
-      @results = @set_results(@results_,10)
+      @results = @set_results(@results_, @perPage)
 
-      if @results.length > 9
+      if @results.length > @perPage-1
         @isLoadMoreActive = true
 
 #      @check_night_landing(@results)
@@ -561,10 +562,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
     prevAircraftIds = _.pluck(@results, 'aircraft_id')
 
-    data = @set_results(@results_, 10*@currentPage)
+    data = @set_results(@results_, @perPage*@currentPage)
     restAircraftIds = _.difference(_.pluck(data, 'aircraft_id'), prevAircraftIds)
 
-    if restAircraftIds.length > 9
+    if restAircraftIds.length > @perPage
       @isLoadMoreActive = true
     else
       @isLoadMoreActive = false
