@@ -56,10 +56,6 @@ class SearchAlgorithm
         'seating_capacity >= ? AND landing_field_length_in_feet <= ? AND runway_field_length_in_feet <= ?', max_pax, max_runway_length, max_runway_length
     )
 
-
-
-
-
     candidate_aircrafts_base_airport_ids = @aircrafts.map(&:base_airport_id)
 
     airport_ids = ( @search_activities.map(&:departure_airport_id) + @search_activities.map(&:arrival_airport_id) + candidate_aircrafts_base_airport_ids ).uniq
