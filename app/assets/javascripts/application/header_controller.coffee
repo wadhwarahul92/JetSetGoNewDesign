@@ -1,9 +1,14 @@
-jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserService', '$scope', '$routeParams', ($http, notify, CurrentUserService, $scope, $routeParams)->
+jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserService', '$scope', '$routeParams', '$location', ($http, notify, CurrentUserService, $scope, $routeParams, $location)->
 
   @currentUser = null
 
   @isFromMobile = false
 
+  @removenav = true
+
+  path = $location.path()
+  if path == '/requested_add_passenger'
+    @removenav = false
 
   if $routeParams.search_id
     $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
