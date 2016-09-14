@@ -154,6 +154,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :sell_empty_legs
+
     resources :airport_categories
 
     resources :airport_suppliers
