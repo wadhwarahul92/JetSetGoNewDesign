@@ -7,9 +7,9 @@
     border: 0px;
     border: 1px solid #CFC2B8;
     position: relative;
-    text-align: center;
     width: 100%;
     margin-bottom: 20px;
+    padding: 5px;
   }
   .multiple_selector{
     height: 100px;
@@ -19,8 +19,10 @@
     border: 0px;
     border: 1px solid #CFC2B8;
     position: relative;
-    text-align: center;
     margin-bottom: 20px;
+    option{
+      padding: 0 5px;
+    }
   }
   .submit-btn{
     width: 100%;

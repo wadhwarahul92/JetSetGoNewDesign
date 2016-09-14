@@ -78,6 +78,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    domain_name (0.5.20160826)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
@@ -99,8 +101,16 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     htmlentities (4.3.4)
-    httparty (0.13.7)
-      json (~> 1.8)
+    http (2.0.3)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
+    httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -267,6 +277,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     warden (1.2.4)
       rack (>= 1.0)
     wicked_pdf (1.0.3)
@@ -288,6 +301,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   foundation-rails
+  http
   httparty
   jbuilder (~> 2.0)
   jquery-rails
@@ -321,5 +335,8 @@ DEPENDENCIES
   will_paginate
   wkhtmltopdf-binary
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.5

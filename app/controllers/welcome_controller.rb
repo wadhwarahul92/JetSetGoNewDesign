@@ -8,6 +8,20 @@ class WelcomeController < ApplicationController
     render action: :index
   end
 
+  def tmp_message_send
+    if params[:phone].present? and params[:text].present?
+      array = params[:phone]
+      msg = params[:text]
+      for phone in array
+       # response =  HTTParty.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: "#{phone}", text: "#{msg}", priority: 'ndnd', style: 'normal'})
+       response =  HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: "#{phone}", text: "#{msg}", priority: 'ndnd', style: 'normal'})
+      end
+      render status: :ok, nothing: true
+    else
+      render status: :unprocessable_entity, nothing: true
+    end
+  end
+
   def current_user_
     if current_user.present?
       # @count_empty_legs = count_empty_legs

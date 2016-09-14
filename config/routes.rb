@@ -416,6 +416,7 @@ Rails.application.routes.draw do
 
   #TMP URL
   get 'tmp_url' => 'welcome#tmp_index'
+  post 'tmp_message_send' => 'welcome#tmp_message_send'
   ########
 
   root 'welcome#index'
