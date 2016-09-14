@@ -75,7 +75,7 @@
           <h3 class="trip-heading"><span class="trip">Trip#{{trip.id}}</span> Starting @ {{ctrl.starting_date(trip)}}</h3>
 
           <div ng-if="activity.empty_leg" ng-repeat="activity in trip.activities">
-            <div class="location-con" >
+            <div class="location-con" ng-init="ctrl.editable(activity)" >
               <div class="row">
                 <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
                   <p>
@@ -161,7 +161,7 @@
                   <div class="col-xs-12 sell_emptyleg" ng-show="activity.sell_button_clicked">
                     <p>Thank you for Selling your Empty Leg</p>
                   </div>
-                  <div class="col-xs-12" ng-hide="activity.sell_button_clicked">
+                  <div class="col-xs-12" ng-hide="activity.sell_button_clicked || !activity.is_editable">
                     <p class="sell-text">
                       <!--<span>Sell Empty leg?: <input type="checkbox" ng-click="ctrl.set_sell_empty_leg(); ctrl.trip.sell_empty_leg = true" ng-model="ctrl.trip.sell_empty_leg"></span>-->
 
@@ -178,7 +178,7 @@
                              <!--ng-value="string">-->
                     </p>
                   </div>
-                  <div class="col-xs-12 sell-btn-con" ng-if="!activity.sell_button_clicked">
+                  <div class="col-xs-12 sell-btn-con" ng-if="!activity.sell_button_clicked && activity.is_editable">
                     <!--<input type="submit" value="Sell your empty legs" class="sell-btn" />-->
                     <span class="sell-btn" ng-click="ctrl.sell_empty_leg(activity, trip)">Sell your empty legs</span>
                   </div>

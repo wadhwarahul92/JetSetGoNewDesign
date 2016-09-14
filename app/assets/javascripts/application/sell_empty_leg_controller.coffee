@@ -76,5 +76,11 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
     flight_time = duration.hours()+' Hrs '+duration.minutes()+' Mins '
     flight_time
 
+  @editable = (activity)->
+    if moment(Date.now()).isBefore(moment(new Date(activity.start_at)).subtract(3, 'hours'))
+      activity.is_editable = true
+    else
+      activity.is_editable = false
+
   return undefined
 ]
