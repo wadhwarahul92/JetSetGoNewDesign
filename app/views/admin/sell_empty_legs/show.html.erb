@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-6">
+    <dl>
+      <dd><%= "Activity##{@activity.id}"%></dd>
+      <dt>Aircraft</dt>
+      <dd><%= @activity.aircraft.tail_number %></dd>
+      <dt>Departure Airport</dt>
+      <dd><%= @activity.departure_airport.name %></dd>
+      <dt>Arrival Airport</dt>
+      <dd><%= @activity.arrival_airport.name %></dd>
+      <dt>Start at</dt>
+      <dd><%= @activity.start_at.strftime(time_format) %></dd>
+      <dt>End at</dt>
+      <dd><%= @activity.end_at.strftime(time_format) %></dd>
+      <dt>Minimum sale price</dt>
+      <dd><%= @activity.minimum_sale_price %></dd>
+      <dt>Maximum sale price</dt>
+      <dd><%= @activity.maximum_sale_price %></dd>
+    </dl>
+  </div>
+
+  <div class="col-sm-6"></div>
+</div>

@@ -1,58 +1,32 @@
-
-<% @activities.each do |activity| %>
-
-    <%= activity.start_at.strftime(time_format) %>
-    <%= activity.id %>
-
-<% end %>
-
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New City', new_admin_city_path, class: 'btn btn-primary' %></li>
-      <li>
-        <form action="/admin/cities" method="get">
-          <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name">
-          <input type="submit" value="search">
-        </form>
-      </li>
-    </ul>
-  </div>
-</div>
 <div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
       <thead>
       <tr class="info">
-        <th></th>
-        <th>Name</th>
-        <th>State</th>
-        <th>Accommodation category</th>
-        <th>Creator</th>
-        <th>Updated By</th>
+        <th>Tail number</th>
+        <th>Departure airport</th>
+        <th>Arrival airport</th>
+        <th>Start at</th>
+        <th>End at</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
       <% @activities.each do |activity| %>
           <tr>
+            <td><%= activity.aircraft.tail_number %></td>
+            <td><%= activity.departure_airport.name %></td>
+            <td><%= activity.arrival_airport.name %></td>
+            <td><%= activity.start_at.strftime(time_format) %></td>
+            <td><%= activity.end_at.strftime(time_format) %></td>
             <td>
-
-            </td>
-            <td><%= city.name %></td>
-            <td><%= city.state %></td>
-            <td><%= city.accomodation_category.capitalize if city.accomodation_category.present?  %></td>
-            <td><%= city.creator.full_name if city.creator %></td>
-            <td><%= city.last_updater.full_name if city.last_updater.present? %></td>
-            <td>
-              <%= link_to edit_admin_city_path(city) do %>
-                  <i class="fa fa-edit"></i>
+              <%= link_to admin_sell_empty_leg_path(activity) do %>
+                  <i class="fa fa-eye"></i>
               <%- end %>
             </td>
           </tr>
       <%- end %>
       </tbody>
     </table>
-    <%= will_paginate @cities %>
   </div>
 </div>
