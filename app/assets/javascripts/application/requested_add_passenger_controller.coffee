@@ -36,7 +36,7 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
     moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).hours().toString()+ ' Hrs ' + moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).minutes().toString() + ' Mins'
 
   @create_catering = ->
-    $http.put('customers/catering',{ catering: @trip.catering, trip_id: @trip_id }).success(
+    $http.put('customers/catering',{ catering: @trip.catering, trip_id: @trip_id, api_token: @token }).success(
       ->
         notify(
           message: 'successfully saved.'
