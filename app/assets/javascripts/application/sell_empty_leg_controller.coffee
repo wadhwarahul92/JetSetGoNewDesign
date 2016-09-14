@@ -69,5 +69,12 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
     if w < 768
       activity.more_detail_active = false
 
+  @flight_time = (start_at, end_at)->
+    flight_time = ''
+    duration = moment.duration(moment(new Date(end_at)).diff(moment(new Date(start_at))))
+
+    flight_time = duration.hours()+' Hrs '+duration.minutes()+' Mins '
+    flight_time
+
   return undefined
 ]
