@@ -102,4 +102,8 @@ class TemplatesController < ApplicationController
 
   end
 
+  def tmp_send_sms
+
+  end
+
 end

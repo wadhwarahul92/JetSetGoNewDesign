@@ -1,0 +1,33 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="send_sms_con">
+  <div class="container">
+    <div class="row">
+      <form action="">
+        <div class="col-sm-5">
+          <input type="text" class="text_box" ng-model="ctrl.message">
+        </div>
+        <div class="col-sm-5">
+          <select name="mobile_number" class="multiple_selector" multiple ng-model="ctrl.phone_numbers">
+            <option value="9818920902">Rahul</option>
+            <option value="8571038063">vasu</option>
+            <option value="9718899951">Mohit</option>
+            <option value="9953554001">Pulkit</option>
+            <option value="9717775713">Kanika</option>
+            <option value="09000176000">Gopi</option>
+            <option value="09899959765">Arijit</option>
+            <option value="09819614449">Arun</option>
+            <option value="09910790075">Dhanish</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <span type="submit" class="submit-btn" ng-click="ctrl.sendSMS()">Send</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

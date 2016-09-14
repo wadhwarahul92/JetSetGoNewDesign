@@ -353,6 +353,7 @@ Rails.application.routes.draw do
       get 'detail'
       get 'sell_empty_leg'
       get 'requested_add_passenger'
+      get 'tmp_send_sms'
     end
   end
 
@@ -410,12 +411,14 @@ Rails.application.routes.draw do
   get 'detail/:id' => 'route_overrides#welcome_index'
   get 'sell_empty_leg' => 'route_overrides#welcome_index'
   get 'requested_add_passenger' => 'route_overrides#welcome_index'
+  get 'tmp_send_sms' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'
 
   #TMP URL
   get 'tmp_url' => 'welcome#tmp_index'
+  post 'tmp_message_send' => 'welcome#tmp_message_send'
   ########
 
   root 'welcome#index'
