@@ -126,6 +126,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/requested_add_passenger'
     controller: 'RequestedAddPassengerController'
     controllerAs: 'ctrl'
+  }).when('/tmp_send_sms', {
+    templateUrl: '/templates/tmp_send_sms'
+    controller: 'TmpSendSmsController'
+    controllerAs: 'ctrl'
   })
 
 

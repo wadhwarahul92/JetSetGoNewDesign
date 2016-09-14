@@ -1,0 +1,35 @@
+.send_sms_con{
+  width: 100%;
+  .text_box{
+    height: 40px;
+    background-color: transparent !important;
+    box-shadow: none;
+    border: 0px;
+    border: 1px solid #CFC2B8;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .multiple_selector{
+    height: 100px;
+    width: 100%;
+    background-color: transparent !important;
+    box-shadow: none;
+    border: 0px;
+    border: 1px solid #CFC2B8;
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .submit-btn{
+    width: 100%;
+    padding: 12px 10px !important;
+    font-size: 16px;
+    background-color: #920000;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+}
