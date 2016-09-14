@@ -20,7 +20,7 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
     (data)=>
       @trip = data
       @loading = false
-      if moment(Date.now()).isBefore(moment(new Date(_this.trip.activities[0].start_at)).subtract(3, 'hours'))
+      if moment(Date.now()).isBefore(moment(new Date(@trip.activities[0].start_at)).subtract(3, 'hours'))
 #        do nothing
       else
         $location.path('/')
