@@ -134,13 +134,17 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       @search_activities = data.search_activities
 
       if @results[0]
+        @loading = true
         AircraftsService.getAircraftsForIds(_.pluck(@results, 'aircraft_id')).then(
           =>
             @aircrafts = AircraftsService.aircrafts
             for result in @results
               result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
               @set_costs(result)
+            @loading = false
         )
+      else
+        @loading = false
 
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
@@ -158,7 +162,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         @min_cost = 0
         @max_cost = 0
         @filter_cost = "'"+0+','+ 0+"'"
-      @loading = false
   ).error(
     (data)->
       error = 'Something went wrong.'
