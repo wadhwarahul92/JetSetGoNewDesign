@@ -390,7 +390,7 @@
                   <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Large Business Jet'" data-ng-false-value=""> Large Business Jet</li>
                   <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Light Jet'" data-ng-false-value=""> Light Jet</li>
                   <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Midsize Jet'" data-ng-false-value=""> Midsize Jet</li>
-                  <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Single Engine Turboprop'" data-ng-false-value=""> Single Engine Turbo</li>
+                  <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Single Engine Turbo'" data-ng-false-value=""> Single Engine Turbo</li>
                   <li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Airliner'" data-ng-false-value=""> Airliner</li>
                 </ul>
               </div>
@@ -414,7 +414,8 @@
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >-->
 
 
-        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
+        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter: {aircraft: {aircraft_category: {name: c_filter }}}" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >
+
           <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
           <!--<div class="result-search" ng-if="result.night_flight">-->
@@ -463,7 +464,8 @@
               <div class="img-bg">
                 <h3>{{result.aircraft.aircraft_type.name}}</h3>
                 <!--<h5>{{result.aircraft.aircraft_category.name}}</h5>-->
-                <h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>
+                <!--<h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>-->
+                <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con text-center">
                   <a href="javascript:void(0)" ng-click="custom =! custom">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>

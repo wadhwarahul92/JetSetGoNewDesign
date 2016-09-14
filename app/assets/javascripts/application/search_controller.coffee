@@ -140,6 +140,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
             @aircrafts = AircraftsService.aircrafts
             for result in @results
               result.aircraft = _.find(@aircrafts, {id: result.aircraft_id})
+              result.aircraft.aircraft_category = @aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id)
               @set_costs(result)
             @loading = false
         )
@@ -579,6 +580,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           aircrafts = AircraftsService.aircrafts
           for result in data
             result.aircraft = _.find(aircrafts, {id: result.aircraft_id})
+            result.aircraft.aircraft_category = @aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id)
             @set_costs(result)
           @isLoadMoreActive = true
       )
