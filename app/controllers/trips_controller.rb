@@ -87,8 +87,12 @@ class TripsController < ApplicationController
         # end
 
         # CustomerNotificationService.enquiry_added(@trip.user, @trip).deliver_later
-        # SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
+        SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
+        phone_numbers = @trip.organisation.operators.map(&:phone)
 
+        phone_numbers.each do |phone|
+          SmsDelivery.new(phone.to_s, SmsTemplates.operator_for_enquiry('http://j.jetsetgo.in/organisations/sign_in')).delay.deliver
+        end
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: { errors: [@error] }

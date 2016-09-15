@@ -55,7 +55,7 @@ class WelcomeController < ApplicationController
     # Description: Verify captcha
     ######################################################################
     unless from_mobile?
-      render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
+      # render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
     end
     ######################################################################
 
@@ -65,6 +65,7 @@ class WelcomeController < ApplicationController
       sign_in(@user)
       # CustomerMailer.sign_up(@user).deliver_later
       AdminMailer.customer_sign_up(@user).deliver_later
+      SmsDelivery.new(@user.phone, SmsTemplates.customer_sign_up('JetSetGo', 'www.jetsetgo.in')).delay.deliver
       render action: :current_user_
     else
       render status: :unprocessable_entity, json: { errors: @user.errors.full_messages }

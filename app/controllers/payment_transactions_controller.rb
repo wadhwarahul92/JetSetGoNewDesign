@@ -25,6 +25,15 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def _success_for_quote
+    @trip = Trip.find params[:trip_id]
+    SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_for_quote(@trip.user.first_name)).delay.deliver
+
+    phone_numbers = @trip.organisation.operators.map(&:phone)
+
+    for phone in phone_numbers
+      SmsDelivery.new(phone.to_s, SmsTemplates.operator_get_payment(@trip.user.first_name)).delay.deliver
+    end
+
     redirect_to "detail/#{params[:trip_id]}"
   end
 
