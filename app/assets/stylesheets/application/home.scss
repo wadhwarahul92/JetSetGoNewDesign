@@ -524,7 +524,7 @@ span.heading:after{
       h5.engine_type{
         font-size: 14px;
         color: #000000;
-        margin: 0 0 30px 0;
+        margin: 0 0 10px 0;
         padding: 0 15px;
       }
       h4.estimated-price{
@@ -538,6 +538,11 @@ span.heading:after{
           font-size: 14px;
           margin-top: 10px;
         }
+      }
+      h3.anytime-text{
+        font-size: 15px;
+        margin-top: 10px;
+        font-weight: bold;
       }
       .jetsteal-location{
         margin: 10px 0;
