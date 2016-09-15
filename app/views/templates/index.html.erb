@@ -239,7 +239,7 @@
                       <div class="jetsteal-location">
                         <div class="col-sm-6 col-xs-6 data">
                           <h4>{{jetsteal.departure_airport.city.name}}</h4>
-                          <p>{{jetsteal.flight_start_time.split(',')[1]}}</p>
+                          <p>{{jetsteal.sell_by_seats ? jetsteal.flight_start_time.split(',')[1] : ''}}</p>
                           <p>{{jetsteal.flight_start_time.split(',')[0]}}</p>
                         </div>
                         <!-- <div class="col-sm-2 hidden-xs data text-center">
@@ -247,11 +247,12 @@
                         </div> -->
                         <div class="col-sm-6 col-xs-6 data text-right">
                           <h4>{{jetsteal.arrival_airport.city.name}}</h4>
-                          <p>{{jetsteal.flight_end_time.split(',')[1]}}</p>
+                          <p>{{jetsteal.sell_by_seats ? jetsteal.flight_end_time.split(',')[1] : ''}}</p>
                           <p class="pax-txt"><b>Pax:</b> {{jetsteal.aircraft.seating_capacity}}</p>
                         </div>
                         <div class="clearfix"></div>
                       </div>
+                      <h3 class="anytime-text text-center">{{jetsteal.sell_by_seats ? 'Members fly free' : 'Any Time' }}</h3>
                       <h4 class="estimated-price text-center"><i class="fa fa-inr"></i> {{jetsteal.sell_by_seats ? jetsteal.min_seat_cost : jetsteal.cost | currency:'':0 | indianCurrency}} <span class="text">
                       {{ jetsteal.sell_by_seats ? 'Starting Price' : 'Estimated Price' }}
                       </span></h4>
