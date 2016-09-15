@@ -5,6 +5,7 @@ json.array! @aircrafts do |aircraft|
   json.seating_capacity aircraft.seating_capacity
   json.baggage_capacity_in_kg aircraft.baggage_capacity_in_kg
   json.runway_field_length_in_feet aircraft.runway_field_length_in_feet
+  json.landing_field_length_in_feet aircraft.landing_field_length_in_feet
   json.number_of_toilets aircraft.number_of_toilets
   json.cabin_width_in_meters aircraft.cabin_width_in_meters
   json.cabin_height_in_meters aircraft.cabin_height_in_meters

@@ -29,6 +29,10 @@
 	<input type="number" id="runway_field_length_in_feet" placeholder="Runway field length in feet" class="form-control text-boxes" ng-model="ctrl.aircraft.runway_field_length_in_feet">
 </div>
 <div class="col-sm-6 col-xs-12 form-colomn">
+  <!-- <label for="runway_field_length_in_feet">Runway field length in feet</label> -->
+  <input type="number" id="landing_field_length_in_feet" placeholder="Landing field length in feet" class="form-control text-boxes" ng-model="ctrl.aircraft.landing_field_length_in_feet">
+</div>
+<div class="col-sm-6 col-xs-12 form-colomn">
 	<!-- <label for="number_of_toilets">Number of toilets</label> -->
 	<select ng-options="n for n in [0,1,2,3]" id="number_of_toilets" class="form-control text-boxes" ng-model="ctrl.aircraft.number_of_toilets">
 		<option value="">Select Number of toilets</option>

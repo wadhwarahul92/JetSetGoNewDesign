@@ -58,6 +58,7 @@ class Organisations::AircraftsController < Organisations::BaseController
 	                :aircraft_type_id,
 	                :seating_capacity,
 	                :runway_field_length_in_feet,
+	                :landing_field_length_in_feet,
 	                :baggage_capacity_in_kg,
 	                :number_of_toilets,
 	                :cabin_width_in_meters,
