@@ -55,7 +55,7 @@ class WelcomeController < ApplicationController
     # Description: Verify captcha
     ######################################################################
     unless from_mobile?
-      # render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
+      render status: :unprocessable_entity, json: { errors: ['Captcha is invalid.'] } and return unless CaptchaValidator.new(params[:captcha], request.remote_ip).validated!
     end
     ######################################################################
 
