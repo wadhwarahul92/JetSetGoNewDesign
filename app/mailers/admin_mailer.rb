@@ -132,9 +132,9 @@ class AdminMailer < ApplicationMailer
   # @param [Operator] operator
   # @return [ActionMailer::Base]
   ######################################################################
-  def new_enquiry(operator, trip)
+  def new_enquiry(customer, trip)
     @trip = trip
-    @operator = operator
+    @customer = customer
     mail(
         subject: DEFAULT_SUBJECT + 'new enquiry created'
     )
@@ -164,7 +164,7 @@ class AdminMailer < ApplicationMailer
     @trip = trip
     @operator = operator
     mail(
-        subject: DEFAULT_SUBJECT + 'quote created'
+        subject: DEFAULT_SUBJECT + 'Quotation For Trip'
     )
   end
 
@@ -241,6 +241,13 @@ class AdminMailer < ApplicationMailer
     @customer = customer
     mail(
         subject: DEFAULT_SUBJECT + 'Confirmation instructions.'
+    )
+  end
+
+  def payment_success(trip)
+    @trip = trip
+    mail(
+        subject: DEFAULT_SUBJECT + "Our booking has been confirmed for Flight #{@trip.activities.first.aircraft.tail_number}"
     )
   end
 

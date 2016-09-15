@@ -6,7 +6,7 @@
           <td class="inner contents">
             <p class="h1">Hi, Admin</p>
             <p>
-              <strong><%= @operator.full_name %></strong> generate new quote from <strong><%= @trip.organisation.name %></strong>
+              <strong><%= @operator.full_name %></strong> has quoted enquiry for so and so flight enquired by <strong><%= @trip.user.full_name %></strong>
             </p>
           </td>
         </tr>
@@ -123,6 +123,22 @@
             <% end %>
           </table>
       <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p>
+              Happy landings,
+              <br>
+               Monika from JetSetGo
+
+            </p>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>

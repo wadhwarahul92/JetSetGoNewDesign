@@ -3,13 +3,7 @@
     <td class="one-column inner contents">
       <p class="h1">Hi,</p>
       <p>
-        <strong><%= @customer.email %></strong> has enquired for flight.
-        <br><br>
-        Reference ID: Enquiry#<%= @trip.id %> <br><br>
-
-        Enquiry date: <%= @trip.created_at.strftime(time_format) %>
-        <br><br>
-        Aircraft: <%= @trip.activities.first.aircraft.tail_number%>
+        <strong><%= @trip.user.full_name %></strong>  has paid the booking amount for so we request you to please start  planning the flight.
 
       </p>
     </td>
@@ -127,9 +121,12 @@
   <tr>
     <td class="one-column inner contents">
       <p>
-        Happy landings,
-        <br>
-         Monika from JetSetGo
+        To confirm the flight and for any further details you may need please follow the <a href="http://j.jetsetgo.in/organisations/sign_in">link</a>.
+        <br><br>
+        Remember JetSetGo gives you the ability to modify the price to your liking. Please confirm the flight as soon as possible.
+        <br><br>
+        Monika <br>
+        Monika from JetSetGo
       </p>
     </td>
   </tr>

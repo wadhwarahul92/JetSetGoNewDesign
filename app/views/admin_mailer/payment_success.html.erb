@@ -3,11 +3,11 @@
     <td class="one-column inner contents">
       <p class="h1">Hi,</p>
       <p>
-        <strong><%= @customer.email %></strong> has enquired for flight.
+        Booking amount has been received from <strong><%= @trip.user.full_name %></strong> for so and so flight.
         <br><br>
-        Reference ID: Enquiry#<%= @trip.id %> <br><br>
+        Reference ID: Trip#<%= @trip.id %> <br><br>
 
-        Enquiry date: <%= @trip.created_at.strftime(time_format) %>
+        Trip date: <%= @trip.created_at.strftime(time_format) %>
         <br><br>
         Aircraft: <%= @trip.activities.first.aircraft.tail_number%>
 

@@ -15,6 +15,8 @@
                                    'created_at',
                                    'updated_at',
                                    'deleted_at',
+                                   'sell_empty_leg',
+                                   'is_miscellaneous_expenses',
                                    'user_id',
                                    'payment_transaction_id').each_pair do |key, value| %>
             <tr>
@@ -57,6 +59,14 @@
                                           'created_at',
                                           'updated_at',
                                           'deleted_at',
+                                          'watch_hour_cost',
+                                          'empty_leg_seat_price',
+                                          'empty_leg_whole_price',
+                                          'grand_total',
+                                          'in_sale',
+                                          'minimum_sale_price',
+                                          'maximum_sale_price',
+                                          'sell_button_clicked',
                                           'user_id',
                                           'payment_transaction_id').each_pair do |key, value| %>
                 <tr>
@@ -104,6 +114,22 @@
           </table>
           <br/>
       <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="one-column inner contents">
+      <p class="h1">Hi,</p>
+      <p>
+        To confirm the flight and for any further details you may need please follow the <a href="http://j.jetsetgo.in/organisations/sign_in">link</a>.
+        <br><br>
+        Remember JetSetGo gives you the ability to modify the price to your liking. Please confirm the flight as soon as possible.
+        <br><br>
+        Monika br
+        Monika from JetSetGo
+
+        </strong>
+      </p>
     </td>
   </tr>
 </table>

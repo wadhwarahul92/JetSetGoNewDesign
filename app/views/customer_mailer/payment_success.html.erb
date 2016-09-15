@@ -3,8 +3,9 @@
     <td class="one-column inner contents">
       <p class="h1">Dear <%= @customer.first_name %>,</p>
       <br>
-      <p>JetSetGo has received your trip details. We are going to quickly double check with the operator on price and availability before we proceed to confirm your booking.
-        Our operators put in their best to maintain prices and schedules by the clock but the scope for change always exists. You will only find this all the more beneficial.</p>
+      <p>Thank you, for choosing JetSetGo. We promise you a delightful experience.</p>
+      <br>
+      <p>Your flight details are as below</p>
     </td>
   </tr>
   <tr >
@@ -65,7 +66,7 @@
             <table width="100%">
               <tr>
                 <td class="inner" width="50%" valign="top">
-                 <p class="h1" style="text-align: left">Aircraft</p>
+                  <p class="h1" style="text-align: left">Aircraft</p>
                 </td>
                 <td class="inner" width="50%" valign="top">
                   <p style="text-align: left"><%= @trip.activities.first.aircraft.aircraft_type.name %></p>
@@ -73,7 +74,7 @@
               </tr>
               <tr>
                 <td class="inner" width="50%" valign="top">
-                 <p class="h1" style="text-align: left">Seats:</p>
+                  <p class="h1" style="text-align: left">Seats:</p>
                 </td>
                 <td class="inner" width="50%" valign="top">
                   <p style="text-align: left"><%= @trip.activities.first.aircraft.seating_capacity %></p>
@@ -102,50 +103,24 @@
           </td>
         </tr>
         <tr>
-          <td class="two-column">
-            <table width="100%">
-              <tr>
-                <td class="inner" width="50%" valign="top">
-                 <p class="h1" style="text-align: left;">Name:</p>
-                </td>
-                <td class="inner contents" width="50%" valign="top">
-                  <%= @customer.full_name %>
-                </td>
-              </tr>
-              <tr>
-                <td class="inner" width="50%" valign="top">
-                  <p class="h1" style="text-align: left;">Email Id:</p>
-                </td>
-                <td class="inner contents"width="50%" valign="top">
-                  <%= @customer.email %>
-                </td>
-              </tr>
-              <tr>
-                <td class="inner"width="50%" valign="top">
-                  <p class="h1" style="text-align: left;">Contact No:</p>
-                </td>
-                <td class="inner contents" width="50%" valign="top">
-                  <%= @customer.phone %>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
           <td class="one-column">
             <table width="100%">
               <tr>
                 <td class="inner contents">
                   <p>
-                    Happy landings,<br>
-                    JetSetGo Team</p>
+                    For any assistance, please feel free to contact us on +91-11-39585858 or info@jetsetgo.in
+                    <br><br>
+                    Happy landings,
+                    <br><br>
+                     Monika from JetSetGo
+                  </p>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
 
-          </td>
+        </td>
         </tr>
       </table>
     </td>
