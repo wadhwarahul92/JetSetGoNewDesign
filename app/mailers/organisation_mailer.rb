@@ -14,7 +14,7 @@ class OrganisationMailer < ApplicationMailer
     @organisation = operator.organisation
     mail(
         to: @operator.email,
-        subject: 'Welcome to JetSetGo'
+        subject: 'Confirmation instructions'
     )
   end
 

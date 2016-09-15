@@ -27,7 +27,7 @@ class CustomerMailer < ApplicationMailer
     @customer = customer
     mail(
         to: @customer.email,
-        subject: 'Welcome to JetSetGo'
+        subject: 'Confirmation instructions'
     )
   end
 

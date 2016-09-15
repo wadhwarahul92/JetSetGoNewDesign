@@ -135,7 +135,7 @@ class Organisations::OperatorsController < Organisations::BaseController
       if @operator.save
         sign_in(@operator)
         AdminMailer.new_organisation_and_admin_created(@organisation, @operator).deliver_later
-        # OrganisationMailer.organisation_and_operator_created(@operator).deliver_later
+        OrganisationMailer.organisation_and_operator_created(@operator).deliver_later
         SmsDelivery.new(@operator.phone, SmsTemplates.operator_sign_up('JetSetGo')).delay.deliver
         render status: :ok, nothing: true
       else

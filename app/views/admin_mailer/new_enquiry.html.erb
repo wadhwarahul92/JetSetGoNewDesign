@@ -1,52 +1,48 @@
 <table class="outer" align="center">
   <tr>
-    <td class="one-column">
-      <table width="100%">
-        <tr>
-          <td class="inner contents">
-            <p class="h1">Hi, Admin</p>
-            <p>
-              <strong><%= @operator.full_name %></strong> create an Enquiry</strong>
-            </p>
-          </td>
-        </tr>
-      </table>
+    <td class="one-column inner contents">
+      <p class="h1">Hi,</p>
+      <p>
+        <strong><%= @customer.email %></strong> has enquired for flight.
+        <br><br>
+        Reference ID: Enquiry#<%= @trip.id %> <br><br>
+
+        Enquiry date: <%= @trip.created_at.strftime(time_format) %>
+        <br><br>
+        Aircraft: <%= @trip.activities.first.aircraft.tail_number%>
+
+      </p>
     </td>
   </tr>
   <tr>
     <td class="two-column">
-      <table width="100%">
+      <table class="table-content" width="100%" style="border: 1px solid #cccccc">
         <% @trip.attributes.except('id',
                                    'organisation_id',
                                    'created_at',
                                    'updated_at',
                                    'deleted_at',
+                                   'sell_empty_leg',
+                                   'is_miscellaneous_expenses',
                                    'user_id',
                                    'payment_transaction_id').each_pair do |key, value| %>
-            <tr style="border: 1px solid #000000;">
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= key %></p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+            <tr>
+              <td class="inner" width="40%" valign="top" style="border-right:1px solid #cccccc">
+                <p class="h2" style="font-size: 14px;"><%= key.gsub("_", " ").capitalize %></p>
               </td>
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;">
-                          <%= value %>
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+              <td class="inner" width="60%" valign="top">
+                <p class="h2" style="font-size: 14px;">
+                  <%=
+                      case value
+                        when true
+                          "Yes"
+                        when false
+                          "No"
+                        else
+                          value
+                      end
+                  %>
+                </p>
               </td>
             </tr>
         <% end %>
@@ -54,75 +50,87 @@
     </td>
   </tr>
   <tr>
-    <td class="one-column">
-      <table width="100%">
-        <tr>
-          <td class="inner contents">
-            <p>
-              <strong>Legs</strong>
-            </p>
-          </td>
-        </tr>
-      </table>
+    <td class="one-column inner contents">
+      <p>
+        <strong>Legs</strong>
+      </p>
     </td>
   </tr>
   <tr>
     <td class="two-column">
       <% @trip.activities.each do |activity| %>
-          <table width="100%" style="border: 1px solid #09c; margin-top: 10px; ">
+          <table class="table-content" width="100%" style="border: 1px solid #cccccc;">
             <% activity.attributes.except('id',
                                           'aircraft_id',
                                           'trip_id',
                                           'created_at',
                                           'updated_at',
                                           'deleted_at',
+                                          'watch_hour_cost',
+                                          'empty_leg_seat_price',
+                                          'empty_leg_whole_price',
+                                          'grand_total',
+                                          'in_sale',
+                                          'minimum_sale_price',
+                                          'maximum_sale_price',
+                                          'sell_button_clicked',
                                           'user_id',
                                           'payment_transaction_id').each_pair do |key, value| %>
-                <tr style="border: 1px solid #000000;">
-                  <td width="50%" valign="top" style="border: 1px solid #000000;">
-                    <div class="column">
-                      <table width="100%">
-                        <tr>
-                          <td class="inner">
-                            <p class="h2" style="font-size: 14px;">
-                              <% if key == 'departure_airport_id' %>
-                                  departure airport
-                              <% elsif key == 'arrival_airport_id' %>
-                                  arrival airport
-                              <% else %>
-                                  <%= key %>
-                              <% end %>
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+                <tr>
+                  <td class="inner" width="40%" valign="top" style="border-right:1px solid #cccccc">
+                    <p class="h2" style="font-size: 14px;">
+                      <% if key == 'departure_airport_id' %>
+                          Departure Airport
+                      <% elsif key == 'arrival_airport_id' %>
+                          Arrival Airport
+                      <% else %>
+                          <%= key.gsub('_', ' ').capitalize %>
+                      <% end %>
+                    </p>
                   </td>
-                  <td width="50%" valign="top" style="border: 1px solid #000000;">
-                    <div class="column">
-                      <table width="100%">
-                        <tr>
-                          <td class="inner">
-                            <p class="h2" style="font-size: 14px;">
-                              <% if key == 'departure_airport_id' %>
-                                  <%= activity.departure_airport.name %>
-                              <% elsif key == 'arrival_airport_id' %>
-                                  <%= activity.arrival_airport.name %>
-                              <% elsif key == 'start_at' || key == 'end_at' %>
-                                  <%= value.strftime(time_format) %>
-                              <% else %>
-                                  <%= value %>
+                  <td class="inner" width="50%" valign="top">
+                    <p class="h2" style="font-size: 14px;">
+                      <% if key == 'departure_airport_id' %>
+                          <%= activity.departure_airport.name %>
+                      <% elsif key == 'arrival_airport_id' %>
+                          <%= activity.arrival_airport.name %>
+                      <% elsif key == 'start_at' || key == 'end_at' %>
+                          <%= value.strftime(time_format) %>
+                      <% elsif key == 'accommodation_plan'%>
+                          <% if value.present? %>
+                              <% value.each_pair do |key, val| %>
+                                  <%= key %>: <%= val %> <br>
                               <% end %>
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+                          <% end %>
+                      <% else %>
+                          <%=
+                              case value
+                                when true
+                                  "Yes"
+                                when false
+                                  "No"
+                                else
+                                  value
+                              end
+                          %>
+                      <% end %>
+                    </p>
                   </td>
                 </tr>
             <% end %>
           </table>
+          <br/>
       <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="one-column inner contents">
+      <p>
+        Happy landings,
+        <br>
+         Monika from JetSetGo
+      </p>
     </td>
   </tr>
 </table>
