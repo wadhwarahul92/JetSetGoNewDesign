@@ -69,19 +69,19 @@
         </div>
         <div>
           <div>
-            <div class="row psng-cate-btns">
-              <div class="col-xs-6 text-right">
-                <a href="javascript:void(0)">Add Passenger Details</a>
-              </div>
-              <div class="col-xs-6">
-                <a href="javascript:void(0)">Add/Edit Caterings</a>
-              </div>
-            </div>
+            <!--<div class="row psng-cate-btns">-->
+              <!--<div class="col-xs-6 text-right">-->
+                <!--<a href="javascript:void(0)">Add Passenger Details</a>-->
+              <!--</div>-->
+              <!--<div class="col-xs-6">-->
+                <!--<a href="javascript:void(0)">Add/Edit Caterings</a>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="customer-detail add-passenger">
-              <h3 ng-click="ctrl.category = !ctrl.category">
+              <h3>
                 Add Catering
-                <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
-                </a>
+                <!--<a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>-->
+                <!--</a>-->
               </h3>
               <div>
                 <div class="row">
@@ -92,16 +92,16 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div ng-show="ctrl.trip.catering.length > 0">
                 <div class="add-passenger-record">
                   <table class="table table-striped">
-                    <thead>
-                    <tr class="info">
-                      <th>Catering</th>
-                    </tr>
-                    </thead>
+                    <!--<thead>-->
+                    <!--<tr class="info">-->
+                      <!--<th>Catering</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
                     <tbody>
-                    <tr class="body-row">
+                    <tr class="body-row" style="border-top: 1px solid #f9f3e6;">
                       <td>{{ctrl.trip.catering}}</td>
                     </tr>
                     </tbody>
@@ -114,7 +114,7 @@
           <div class="customer-detail add-passenger">
             <h3>
               Add Passenger
-              <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.pax_active ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>
+              <!--<a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.pax_active ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>-->
             </h3>
             <div>
               <div>
@@ -131,6 +131,33 @@
                   </div>
                   <div class="clearfix"></div>
                 </div> -->
+                <div class="add-passenger-record">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr class="info">
+                      <th>Title</th>
+                      <th>Name</th>
+                      <!--<th>Age</th>-->
+                      <th>Nationality</th>
+                      <!--<th>Gender</th>-->
+                      <!--<th>Email</th>-->
+                      <!--<th>Contact</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="body-row" ng-repeat="passenger in ctrl.trip.passengers">
+                      <td>{{passenger.title}}</td>
+                      <td>{{passenger.name}}</td>
+                      <!--<td>{{ passenger_detail.age }}</td>-->
+                      <td>{{passenger.nationality}}</td>
+                      <!--<td>{{ passenger_detail.gender }}</td>-->
+                      <!--<td>{{ passenger_detail.email }}</td>-->
+                      <!--<td>{{ passenger_detail.contact }}</td>-->
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>
@@ -194,36 +221,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <div class="add-passenger-record">
-                <table class="table table-striped">
-                  <thead>
-                  <tr class="info">
-                    <th>Title</th>
-                    <th>Name</th>
-                    <!--<th>Age</th>-->
-                    <th>Nationality</th>
-                    <!--<th>Gender</th>-->
-                    <!--<th>Email</th>-->
-                    <!--<th>Contact</th>-->
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr class="body-row" ng-repeat="passenger in ctrl.trip.passengers">
-                    <td>{{passenger.title}}</td>
-                    <td>{{passenger.name}}</td>
-                    <!--<td>{{ passenger_detail.age }}</td>-->
-                    <td>{{passenger.nationality}}</td>
-                    <!--<td>{{ passenger_detail.gender }}</td>-->
-                    <!--<td>{{ passenger_detail.email }}</td>-->
-                    <!--<td>{{ passenger_detail.contact }}</td>-->
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-
             </div>
           </div>
         </div
