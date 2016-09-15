@@ -48,7 +48,6 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
           massege: data.errors[0]
           classes: ['alert-danger']
         )
-
     )
 
   @create_passenger_detail = ->
