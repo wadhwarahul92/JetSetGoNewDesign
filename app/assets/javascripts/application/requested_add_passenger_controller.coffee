@@ -5,7 +5,6 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
   @trip = {}
   @passenger_details_ = [{}]
   @loading = true
-  @catering = ''
 
   @token = $routeParams.token
   @trip_id = $routeParams.trip_id
@@ -20,7 +19,7 @@ jetsetgo_app.controller 'RequestedAddPassengerController', ['$http', 'notify', '
   $http.post('customers/get_shared_trip', {token: @token, trip_id: $routeParams.trip_id }).success(
     (data)=>
       @trip = data
-      @catering = @trip.catering
+      debugger
       @loading = false
       if moment(Date.now()).isBefore(moment(new Date(@trip.activities[0].start_at)).subtract(3, 'hours'))
 #        do nothing
