@@ -1,0 +1,129 @@
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column inner contents">
+      <p class="h1">Dear <%= @customer.first_name %>,</p>
+      <br>
+      <p>Thank you, for choosing JetSetGo. We promise you a delightful experience.</p>
+      <br>
+      <p>Your flight details are as below</p>
+    </td>
+  </tr>
+  <tr >
+    <td class="one-column">
+      <table width="100%" style="border: 1px solid #cccccc">
+        <tr>
+          <td class="one-column inner contents" style="border-bottom: 1px dotted #cccccc;">
+            <p class="h1" style="text-align: center">Itinerary Details</p>
+          </td>
+        <tr>
+        <tr>
+          <td class="one-column inner contents">
+            <p class="h1">Journey Details:</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="two-column" style="border-bottom: 1px dotted #cccccc;">
+            <table width="100%">
+              <% @trip.activities.each do |activity| %>
+                  <% next if activity.empty_leg %>
+                  <tr>
+                    <td class="inner" width="50%" style="text-align: left;">
+                      <p class="h1" style="font-size: 14px;">
+                        Departure
+                      </p>
+                      <p class="h2" style="font-size: 14px;">
+                        <%= activity.departure_airport.name %>
+                        <br>
+                        <%= activity.departure_airport.city.name %>
+                        <br>
+                        <%= activity.start_at.strftime(time_format)%>
+                      </p>
+                    </td>
+                    <td class="inner" width="50%" style="text-align: left;">
+                      <p class="h1" style="font-size: 14px;">
+                        Arrival
+                      </p>
+                      <p class="h2" style="font-size: 14px;">
+                        <%= activity.arrival_airport.name %>
+                        <br>
+                        <%= activity.arrival_airport.city.name %>
+                        <br>
+                        <%= activity.end_at.strftime(time_format)%>
+                      </p>
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="one-column inner">
+            <p class="h1">Aircraft Details:</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="two-column" style="border-bottom: 1px dotted #cccccc;">
+            <table width="100%">
+              <tr>
+                <td class="inner" width="50%" valign="top">
+                  <p class="h1" style="text-align: left">Aircraft</p>
+                </td>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.aircraft_type.name %></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="inner" width="50%" valign="top">
+                  <p class="h1" style="text-align: left">Seats:</p>
+                </td>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.seating_capacity %></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="inner" width="50%" valign="top">
+                  <p class="h1" style="text-align: left">Crew:</p>
+                </td>
+                <td class="inner" width="50%" valign="top">
+                  <p style="text-align: left"><%= @trip.activities.first.aircraft.crew %></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="one-column">
+            <table width="100%">
+              <tr>
+                <td class="inner contents">
+                  <p class="h1" style="text-align: left">Contact Information:</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="one-column">
+            <table width="100%">
+              <tr>
+                <td class="inner contents">
+                  <p>
+                    For any assistance, please feel free to contact us on +91-11-39585858 or info@jetsetgo.in
+                    <br><br>
+                    Happy landings,
+                    <br><br>
+                     Monika from JetSetGo
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>

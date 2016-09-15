@@ -286,4 +286,13 @@ class OrganisationMailer < ApplicationMailer
     )
   end
 
+  def payment_success(trip)
+    @trip = trip
+    @email = Organisation.get_all_emails(trip.organisation)
+    mail(
+        to: @email,
+        subject: "JetSetGo - Enquiry Has been Confirmed for #{@trip.activities.first.aircraft.tail_number}."
+    )
+  end
+
 end

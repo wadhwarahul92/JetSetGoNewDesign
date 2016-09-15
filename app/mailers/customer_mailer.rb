@@ -62,6 +62,16 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def payment_success(trip)
+    @trip = trip
+    @customer = @trip.user
+    @email = @customer.email
+    mail(
+        to: @email,
+        subject: "JetSetGo - Our booking has been confirmed for Flight #{@trip.activities.first.aircraft.tail_number}"
+    )
+  end
+
 
 
 end

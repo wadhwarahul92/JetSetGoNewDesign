@@ -244,4 +244,11 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  def payment_success(trip)
+    @trip = trip
+    mail(
+        subject: DEFAULT_SUBJECT + "Our booking has been confirmed for Flight #{@trip.activities.first.aircraft.tail_number}"
+    )
+  end
+
 end

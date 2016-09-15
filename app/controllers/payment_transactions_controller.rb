@@ -16,6 +16,21 @@ class PaymentTransactionsController < ApplicationController
     @quote_purchaser = QuotePurchaser.new(@response_data)
     @quote_purchaser.process_purchase
     if @quote_purchaser.status == 'success'
+
+      @trip = Trip.find @response_data['merchant_param3'].to_i
+
+      SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_for_quote(@trip.user.first_name)).delay.deliver
+
+      phone_numbers = @trip.organisation.operators.map(&:phone)
+
+      for phone in phone_numbers
+        SmsDelivery.new(phone.to_s, SmsTemplates.operator_get_payment(@trip.user.first_name)).delay.deliver
+      end
+
+      AdminMailer.payment_success(@trip).deliver_later
+      CustomerMailer.payment_success(@trip).deliver_later
+      OrganisationMailer.payment_success(@trip).deliver_later
+
       redirect_to "/detail/#{@response_data['merchant_param3']}"
       # redirect_to action: :_success_for_quote, json: {trip_id: @response_data['merchant_param3']}
     else
@@ -25,15 +40,6 @@ class PaymentTransactionsController < ApplicationController
   end
 
   def _success_for_quote
-    @trip = Trip.find params[:trip_id]
-    SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_for_quote(@trip.user.first_name)).delay.deliver
-
-    phone_numbers = @trip.organisation.operators.map(&:phone)
-
-    for phone in phone_numbers
-      SmsDelivery.new(phone.to_s, SmsTemplates.operator_get_payment(@trip.user.first_name)).delay.deliver
-    end
-
     redirect_to "detail/#{params[:trip_id]}"
   end
 
