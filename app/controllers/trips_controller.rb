@@ -92,7 +92,7 @@ class TripsController < ApplicationController
 
         SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_create_enquiry('JetSetGo')).delay.deliver
 
-        phone_numbers = @trip.organisation.operators.map(&:phone)
+        phone_numbers = @trip.organisation.operators.map(&:phone).uniq
 
         phone_numbers.each do |phone|
           SmsDelivery.new(phone.to_s, SmsTemplates.operator_for_enquiry('http://j.jetsetgo.in/organisations/sign_in')).delay.deliver
