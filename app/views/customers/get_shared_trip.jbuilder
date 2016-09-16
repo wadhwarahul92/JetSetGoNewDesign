@@ -3,6 +3,7 @@ json.status @trip.status
 json.catering @trip.catering
 json.sell_empty_leg @trip.sell_empty_leg
 json.user @trip.user.try(:full_name)
+# json.user_email @trip.user.try(:email)
 
 json.activities{
   json.array! @trip.activities do |activity|
