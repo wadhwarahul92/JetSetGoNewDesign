@@ -32,8 +32,6 @@
                         Departure
                       </p>
                       <p class="h2" style="font-size: 14px;">
-                        <%= activity.departure_airport.name %>
-                        <br>
                         <%= activity.departure_airport.city.name %>
                         <br>
                         <%= activity.start_at.strftime(time_format)%>
@@ -44,8 +42,6 @@
                         Arrival
                       </p>
                       <p class="h2" style="font-size: 14px;">
-                        <%= activity.arrival_airport.name %>
-                        <br>
                         <%= activity.arrival_airport.city.name %>
                         <br>
                         <%= activity.end_at.strftime(time_format)%>
