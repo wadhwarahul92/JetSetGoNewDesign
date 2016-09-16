@@ -6,6 +6,8 @@ class TripsController < ApplicationController
   before_action :authenticate_user_api
 
   def enquire
+    @user = User.find current_user.id
+
     if can_enquire
       @trip = @organisation.trips.new(
           status: Trip::STATUS_ENQUIRY,
@@ -79,6 +81,13 @@ class TripsController < ApplicationController
         if save_able
           @activities.map(&:save)
 
+          is_allow = true
+          enquiry_count = (@user.enquiry_count + 1)
+          last_enquired = DateTime.now
+          is_allow = false if enquiry_count > 2
+          @user.update_attributes(enquiry_count: enquiry_count, last_enquired: last_enquired, is_allow: is_allow )
+
+
           AdminMailer.new_enquiry(current_user, @trip).deliver_later
 
           OrganisationMailer.new_enquiry(current_user, @trip).deliver_later
@@ -133,17 +142,12 @@ class TripsController < ApplicationController
   def can_enquire
     flag = true
 
-    @user = User.find current_user.id
     if @user.is_allow
-      is_allow = true
-      enquiry_count = (@user.enquiry_count + 1)
-      last_enquired = DateTime.now
-      is_allow = false if enquiry_count > 2
-      @user.update_attributes(enquiry_count: enquiry_count, last_enquired: last_enquired, is_allow: is_allow )
+      # do nothing
     else
       if @user.last_enquired.strftime('%d') < DateTime.now.strftime('%d')
         is_allow = true
-        enquiry_count = 1
+        enquiry_count = 0
         last_enquired = DateTime.now
         @user.update_attributes(enquiry_count: enquiry_count, last_enquired: last_enquired, is_allow: is_allow )
       else
