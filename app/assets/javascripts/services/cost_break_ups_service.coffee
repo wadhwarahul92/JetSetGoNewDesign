@@ -31,6 +31,9 @@ Services_app.factory 'CostBreakUpsService', ['$http', ($http)->
   costBreakUpInstance.subTotal = (trip)->
     cost = 0.0
 
+    if trip.is_miscellaneous_expenses
+      cost = cost + trip.miscellaneous_expenses
+
     if trip.flight_plan
       for flight_plan in trip.flight_plan
         cost += flight_plan.flight_cost
