@@ -187,6 +187,23 @@
     h6.seprater-text{
       font-size: 22px;
       font-weight: bold;
+      text-align: center;
+      position: relative;
+      margin-bottom: 40px;
+      span{
+        position: absolute;
+        z-index: 1;
+        display: inline-block;
+        background-color: #ffffff;
+      }
+    }
+    h6.seprater-text:after{
+      content: "";
+      border-bottom: 1px solid #cccccc;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 14px;
     }
     .seprator-con{
       h4{
