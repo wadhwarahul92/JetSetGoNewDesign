@@ -61,6 +61,25 @@ class Admin::JetstealsController < Admin::BaseController
     jetsteal_launcher = JetstealLauncher.new(@jetsteal)
     if jetsteal_launcher.launch!
       flash[:success] = "Jetsteal ##{@jetsteal.id} launched"
+      phone_numbers = User.all.map(&:phone).uniq
+
+      aircraft_name = @jetsteal.aircraft.aircraft_type.name.to_s
+      from_city = @jetsteal.departure_airport.city.name.to_s
+      to_city = @jetsteal.arrival_airport.city.name.to_s
+      from_date = @jetsteal.end_at.strftime('%d %b %Y, %I:%M %p').to_s
+      whole_jet_price = @jetsteal.cost.to_s
+
+      if @jetsteal.sell_by_seats
+        minimum_seat_price = @jetsteal.jetsteal_seats.minimum(:cost).to_s
+        for phone in phone_numbers
+          SmsDelivery.new(phone, SmsTemplates.jetsteal_launched_for_seat_and_jet(aircraft_name, from_city, to_city, from_date, minimum_seat_price, whole_jet_price)).delay.deliver
+        end
+      else
+        for phone in phone_numbers
+          SmsDelivery.new(phone, SmsTemplates.jetsteal_launched_for_jet(aircraft_name, from_city, to_city, from_date, whole_jet_price)).delay.deliver
+        end
+      end
+
       redirect_to action: :index
     else
       flash[:error] = jetsteal_launcher.error_message

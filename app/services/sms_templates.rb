@@ -11,7 +11,7 @@ class SmsTemplates
     end
 
     def generate_quote
-      "Quote has been generated. Please check your account. For any queries please feel free to call 01139585858."
+      'Quote has been generated. Please check your account. For any queries please feel free to call 01139585858.'
     end
 
     def customer_sign_up(service, web_link)
@@ -40,6 +40,14 @@ class SmsTemplates
 
     def operator_get_payment(name)
       "Thankyou for servicing the query #{name} has made the booking payment."
+    end
+
+    def jetsteal_launched_for_seat_and_jet(aircraft_name, from_city, to_city, from_date, minimum_seat_price, whole_jet_price )
+      "Empty leg on #{aircraft_name} aircraft from #{from_city} to #{to_city} on #{from_date} at starting @ rs #{minimum_seat_price} per seat or rs #{whole_jet_price} for the aircraft. call 011 39585858 to book now."
+    end
+
+    def jetsteal_launched_for_jet(aircraft_name, from_city, to_city, from_date, whole_jet_price )
+      "Empty leg on #{aircraft_name} aircraft from #{from_city} to #{to_city} on #{from_date} at rs #{whole_jet_price} for the aircraft. call 011 39585858 to book now."
     end
 
   end
