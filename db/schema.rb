@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908055120) do
+ActiveRecord::Schema.define(version: 20160916084157) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -396,6 +396,33 @@ ActiveRecord::Schema.define(version: 20160908055120) do
     t.integer  "jetsteal_id",        limit: 4
   end
 
+  create_table "pro_forma_invoices", force: :cascade do |t|
+    t.string   "client_name",             limit: 255
+    t.text     "client_address",          limit: 65535
+    t.date     "invoiced_on"
+    t.text     "itinerary_charges",       limit: 65535
+    t.string   "aircraft",                limit: 255
+    t.integer  "number_of_seats",         limit: 4,     default: 0
+    t.integer  "number_of_crews",         limit: 4,     default: 0
+    t.boolean  "catering_included"
+    t.integer  "accommodation_nights",    limit: 4,     default: 0
+    t.datetime "deleted_at"
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.text     "miscellaneous_charges",   limit: 65535
+    t.float    "service_tax",             limit: 24,    default: 14.0
+    t.text     "handling_charges",        limit: 65535
+    t.float    "discount",                limit: 24
+    t.string   "discount_unit",           limit: 255,   default: "percentage"
+    t.text     "accommodation_charges",   limit: 65535
+    t.string   "special_discount_unit",   limit: 255,   default: "percentage"
+    t.float    "special_discount",        limit: 24
+    t.string   "other_tax_name",          limit: 255
+    t.float    "other_tax",               limit: 24,    default: 0.0
+    t.boolean  "show_itineraries_on_pdf",               default: true
+    t.float    "kkc",                     limit: 24,    default: 0.0
+  end
+
   create_table "rpush_apps", force: :cascade do |t|
     t.string   "name",                    limit: 255,               null: false
     t.string   "environment",             limit: 255
@@ -530,20 +557,20 @@ ActiveRecord::Schema.define(version: 20160908055120) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                    limit: 255,   default: "",    null: false
-    t.string   "encrypted_password",       limit: 255,   default: "",    null: false
+    t.string   "email",                    limit: 255,   default: "",                    null: false
+    t.string   "encrypted_password",       limit: 255,   default: "",                    null: false
     t.string   "reset_password_token",     limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",            limit: 4,     default: 0,     null: false
+    t.integer  "sign_in_count",            limit: 4,     default: 0,                     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",       limit: 255
     t.string   "last_sign_in_ip",          limit: 255
     t.string   "first_name",               limit: 255
     t.string   "last_name",                limit: 255
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
     t.string   "type",                     limit: 255
     t.string   "phone",                    limit: 255
     t.boolean  "approved_by_admin",                      default: false
@@ -567,6 +594,9 @@ ActiveRecord::Schema.define(version: 20160908055120) do
     t.string   "nationality",              limit: 255
     t.datetime "dob"
     t.boolean  "sms_active",                             default: false
+    t.integer  "enquiry_count",            limit: 4,     default: 0
+    t.datetime "last_enquired",                          default: '2016-09-16 09:00:20'
+    t.boolean  "is_allow",                               default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
