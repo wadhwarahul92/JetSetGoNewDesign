@@ -39,7 +39,7 @@
                     <datetimepicker
                     data-on-set-time="ctrl.onSetTime(newDate, oldDate, 0)"
                     data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, 0)"
-                    datetimepicker-config="{ dropdownSelector: '.fa-calendar' }"
+                    datetimepicker-config="{ dropdownSelector: '.fa', minView:'minute', minuteStep: 15 }"
                     ng-model="ctrl.enquiry.date_of_travel"></datetimepicker>
                   </ul>
                 </div>
