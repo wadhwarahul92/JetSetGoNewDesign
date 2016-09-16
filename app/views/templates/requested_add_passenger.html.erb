@@ -9,6 +9,7 @@
         <div class="trip-info">
           <h2 class="heading">Trip Info</h2>
           <div class="trip-main-con">
+            <p class="user-name-text text-right"><b>User: </b>{{ctrl.trip.user}}</p>
             <div class="location-con" ng-repeat="activity in ctrl.trip.activities" ng-if="!activity.empty_leg" >
               <div class="row">
                 <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
