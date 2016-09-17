@@ -163,9 +163,9 @@ class Organisations::TripsController < Organisations::BaseController
       AdminMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       # OrganisationMailer.send_quote(current_user, send_quote_service.trip).deliver_later
       CustomerMailer.send_quote(send_quote_service.trip.user, send_quote_service.trip.user).deliver_later
-      send_quote_service.trip.organisation.operators.each do |operator|
-        NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
-      end
+      # send_quote_service.trip.organisation.operators.each do |operator|
+      #   NotificationService.quote_created(operator, send_quote_service.trip).deliver_later
+      # end
       CustomerNotificationService.quote_created(send_quote_service.trip.user, send_quote_service.trip).deliver_later
       SmsDelivery.new(send_quote_service.trip.user.phone.to_s, SmsTemplates.customer_for_quote('http://j.jetsetgo.in')).delay.deliver
 
