@@ -159,10 +159,12 @@
           <h4 class="places-con"> 
             <div class="row">
               <span class="col-md-4 col-sm-4 col-xs-12 data">
-                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153"> {{ctrl.airportForId(search_activity.departure_airport_id).name}}
+                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153">
+                {{ctrl.airportForId(search_activity.departure_airport_id).city.name}}
               </span>
               <span class="col-md-4 col-sm-4 col-xs-12 data">
-                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122"> {{ctrl.airportForId(search_activity.arrival_airport_id).name}}
+                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122">
+                {{ctrl.airportForId(search_activity.arrival_airport_id).city.name}}
               </span>
               <span class="col-md-3 col-sm-3 col-xs-12 data">
                 <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135"> {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}

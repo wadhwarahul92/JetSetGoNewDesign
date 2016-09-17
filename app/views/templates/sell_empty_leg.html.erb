@@ -81,7 +81,7 @@
                   <p>
                     <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">
                   </p>
-                  <p class="city-name">{{activity.departure_airport.name}}</p>
+                  <p class="city-name">{{activity.departure_airport.city.name}}</p>
                   <p class="time-con">{{ctrl.date_format(activity.start_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.date_format(activity.start_at).split(',')[0]}}</p>
                 </div>
@@ -93,7 +93,7 @@
                   <p>
                     <img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">
                   </p>
-                  <p class="city-name">{{activity.arrival_airport.name}}</p>
+                  <p class="city-name">{{activity.arrival_airport.city.name}}</p>
                   <p class="time-con">{{ctrl.date_format(activity.end_at).split(',')[1]}}</p>
                   <p class="date-con">{{ctrl.date_format(activity.end_at).split(',')[0]}}</p>
 

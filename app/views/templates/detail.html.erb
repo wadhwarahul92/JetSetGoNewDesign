@@ -103,7 +103,7 @@
         <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
           <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
-            <p><b>{{activity.departure_airport.name}}</b></p>
+            <p><b>{{activity.departure_airport.city.name}}</b></p>
             <p>{{activity.departure_airport.city.state}}</p>
             <p>{{activity.start_at.split(',')[0]}}</p>
             <p>{{activity.start_at.split(',')[1]}}</p>
@@ -115,7 +115,7 @@
           </div>
           <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
-            <p><b>{{activity.arrival_airport.name}}</b></p>
+            <p><b>{{activity.arrival_airport.city.name}}</b></p>
             <p>{{activity.arrival_airport.city.state}}</p>
             <p>{{activity.end_at.split(',')[0]}}</p>
             <p>{{activity.end_at.split(',')[1]}}</p>

@@ -66,6 +66,11 @@ json.array! @trips do |trip|
           json.name activity.departure_airport.name
           json.code activity.departure_airport.code
           json.icao_code activity.departure_airport.icao_code
+          json.city{
+            json.id activity.departure_airport.city.id
+            json.name activity.departure_airport.city.name
+            json.image_url activity.departure_airport.city.image.url(:original)
+          }
         }
 
         json.arrival_airport{
@@ -73,6 +78,11 @@ json.array! @trips do |trip|
           json.name activity.arrival_airport.name
           json.code activity.arrival_airport.code
           json.icao_code activity.arrival_airport.icao_code
+          json.city{
+            json.id activity.arrival_airport.city.id
+            json.name activity.arrival_airport.city.name
+            json.image_url activity.arrival_airport.city.image.url(:original)
+          }
         }
 
         json.start_at activity.start_at.strftime(time_format)
