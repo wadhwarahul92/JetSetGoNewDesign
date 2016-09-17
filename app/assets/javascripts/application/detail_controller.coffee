@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 'CurrentUserService', '$scope', 'CustomerCostBreakUpsService', ($http, notify, $routeParams, CurrentUserService, $scope, CustomerCostBreakUpsService)->
+jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 'CurrentUserService', '$scope', 'CustomerCostBreakUpsService', '$location', ($http, notify, $routeParams, CurrentUserService, $scope, CustomerCostBreakUpsService, $location)->
 
   @jsg_commision = CustomerCostBreakUpsService.commission
 

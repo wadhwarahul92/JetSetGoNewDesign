@@ -100,15 +100,15 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
     min_mins = ((_.uniq(date_list).length * 2)*60)
     total_flight_mins =  (((hours*60) + minutes))
 
-    if trip.flight_plan
-      if total_flight_mins < min_mins
-        miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
-        cost += cost + miscellaneous_expenses
-        if trip.flight_plan
-          trip.is_miscellaneous_expenses = true
-          trip.miscellaneous_expenses_amount = miscellaneous_expenses
-    else
-      cost += trip.miscellaneous_expenses
+#    if trip.flight_plan
+    if total_flight_mins < min_mins
+      miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
+      cost += cost + miscellaneous_expenses
+      if trip.flight_plan
+        trip.is_miscellaneous_expenses = true
+        trip.miscellaneous_expenses_amount = miscellaneous_expenses
+#    else
+#      cost += trip.miscellaneous_expenses
 
 
 #      miscellaneous_expenses = ((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100.to_f))).round(2)
