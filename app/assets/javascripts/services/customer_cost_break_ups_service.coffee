@@ -58,7 +58,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
         if flight_plan.watch_hour_at_arrival
           cost += flight_plan.watch_hour_cost + (costBreakUpInstance.commission/100 * flight_plan.watch_hour_cost)
         if flight_plan.accommodation_leg
-          cost = cost + (flight_plan.accommodation_leg.cost * flight_plan.accommodation_leg.nights) + (trip.aircraft.accomodation_cost_commission_in_percentage/100 * flight_plan.accommodation_leg.cost)
+          cost = cost + (flight_plan.accommodation_leg.cost) + (trip.aircraft.accomodation_cost_commission_in_percentage/100 * flight_plan.accommodation_leg.cost)
 #        if flight_plan.chosen_intermediate_plan
 #          chosen_plan = flight_plan[flight_plan.chosen_intermediate_plan]
 #          if chosen_plan and flight_plan.chosen_intermediate_plan == 'empty_leg_plan'
@@ -89,7 +89,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
         cost += activity.landing_cost_at_arrival + (activity.aircraft.aircraft_handling_cost_commission_in_percentage/100 * activity.landing_cost_at_arrival)
         cost += activity.watch_hour_cost + (costBreakUpInstance.commission/100 * activity.watch_hour_cost)
         if activity.accommodation_plan
-          cost = cost + (activity.accommodation_plan.cost * activity.accommodation_plan.nights) + (activity.aircraft.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
+          cost = cost + (activity.accommodation_plan.cost) + (activity.aircraft.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 #        if activity.accommodation_plan and activity.accommodation_plan.cost
 #          cost += activity.accommodation_plan.cost + (trip.aircraft_accomodation_cost_commission_in_percentage/100 * activity.accommodation_plan.cost)
 #        unless activity.empty_leg

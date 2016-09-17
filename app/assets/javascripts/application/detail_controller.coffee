@@ -83,7 +83,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
         @trip.total_ground_handling_cost += activity.handling_cost_at_takeoff
         if activity.accommodation_plan
           @trip.total_accommodation_nights += activity.accommodation_plan.nights
-          @trip.total_accommodation_cost += activity.accommodation_plan.cost * activity.accommodation_plan.nights
+          @trip.total_accommodation_cost += activity.accommodation_plan.cost
         if activity.watch_hour_at_arrival
           @trip.set_watch_hour = true
         activity.flight_time = moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).hours().toString()+ ' Hrs ' + moment.duration(new Date(activity.end_at) - new Date(activity.start_at)).minutes().toString() + ' Mins'
