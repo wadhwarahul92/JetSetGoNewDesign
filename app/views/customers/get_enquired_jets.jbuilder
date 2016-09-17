@@ -2,6 +2,8 @@ json.array! @enquiries do |enquiry|
 
   json.id enquiry.id
   json.status enquiry.status
+  json.is_miscellaneous_expenses enquiry.is_miscellaneous_expenses
+  json.miscellaneous_expenses enquiry.miscellaneous_expenses
   json.payment_status enquiry.payment_status
   json.amount_paid enquiry.amount_paid
 
