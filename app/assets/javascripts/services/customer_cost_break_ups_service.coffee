@@ -106,7 +106,6 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
         miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
         cost = cost + miscellaneous_expenses
         trip.is_miscellaneous_expenses = true
-        if trip.aircraft.id == 752
         trip.miscellaneous_expenses_amount = miscellaneous_expenses
     else
       if trip.is_miscellaneous_expenses
