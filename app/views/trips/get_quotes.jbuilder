@@ -4,6 +4,8 @@ json.array! @quotes do |quote|
   json.tax_value Tax.total_tax_value
   json.id quote.id
   json.status quote.status
+  json.is_miscellaneous_expenses quote.is_miscellaneous_expenses
+  json.miscellaneous_expenses quote.miscellaneous_expenses
   json.jsg_commission Admin::JSG_COMMISSION_IN_PERCENTAGE
   json.activities{
     json.array! quote.activities do |activity|
