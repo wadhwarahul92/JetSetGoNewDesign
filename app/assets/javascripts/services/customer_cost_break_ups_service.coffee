@@ -50,6 +50,7 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
 
     if trip.flight_plan
       for flight_plan in trip.flight_plan
+
         cost += flight_plan.flight_cost + (trip.aircraft.flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
         cost += flight_plan.handling_cost_at_takeoff + (trip.aircraft.handling_cost_commission_in_percentage/100 * flight_plan.handling_cost_at_takeoff)
         # aircraft_handling_cost_commission_in_percentage is same for landing_cost
@@ -103,10 +104,11 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
     if trip.flight_plan
       if total_flight_mins < min_mins
         miscellaneous_expenses = parseFloat((min_mins - total_flight_mins) * (((trip.aircraft.per_hour_cost)/60) + (trip.aircraft.per_hour_cost/60 * trip.aircraft.flight_cost_commission_in_percentage/100)).toFixed(2))
-        cost += cost + miscellaneous_expenses
-        if trip.flight_plan
-          trip.is_miscellaneous_expenses = true
-          trip.miscellaneous_expenses_amount = miscellaneous_expenses
+        cost = cost + miscellaneous_expenses
+        trip.is_miscellaneous_expenses = true
+        if trip.aircraft.id == 752
+          debugger
+        trip.miscellaneous_expenses_amount = miscellaneous_expenses
     else
       if trip.is_miscellaneous_expenses
         cost += trip.miscellaneous_expenses
