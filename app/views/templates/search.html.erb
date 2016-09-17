@@ -159,10 +159,12 @@
           <h4 class="places-con"> 
             <div class="row">
               <span class="col-md-4 col-sm-4 col-xs-12 data">
-                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153"> {{ctrl.airportForId(search_activity.departure_airport_id).name}}
+                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153">
+                {{ctrl.airportForId(search_activity.departure_airport_id).city.name}}
               </span>
               <span class="col-md-4 col-sm-4 col-xs-12 data">
-                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122"> {{ctrl.airportForId(search_activity.arrival_airport_id).name}}
+                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122">
+                {{ctrl.airportForId(search_activity.arrival_airport_id).city.name}}
               </span>
               <span class="col-md-3 col-sm-3 col-xs-12 data">
                 <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135"> {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
@@ -451,11 +453,11 @@
                   <img src="" ng-src="{{result.aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/761/original/without_cabincrew.png?1472815358'}}" uib-tooltip="Flight Attendant: {{result.aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
                 </span>
                 <span class="icons-main">
-                  <img src="" ng-src="{{result.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory" alt="">
+                  <img src="" ng-src="{{result.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory{{result.aircraft.number_of_toilets ? '' : ': Not-Available'}}" alt="">
                   <span class="icon-detail">{{result.aircraft.number_of_toilets < 1 ? '' : result.aircraft.number_of_toilets}}</span>
                 </span>
                 <span class="icons-main no-border">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm</span>
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm/hr</span>
                 </span>
                 <div class="clearfix"></div>
               </div>
