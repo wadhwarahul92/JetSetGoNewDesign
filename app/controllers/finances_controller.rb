@@ -31,8 +31,8 @@ class FinancesController < ApplicationController
       itinerary_charges << {
           aircraft: aircraft_,
           jsg_adjusted: (params[:result][:aircraft][:per_hour_cost] + (params[:result][:aircraft][:per_hour_cost] * (params[:result][:aircraft][:flight_cost_commission_in_percentage]/100.to_f))),
-          departure_airport: departure_airport.name,
-          arrival_airport: arrival_airport.name,
+          departure_airport: departure_airport.city.name,
+          arrival_airport: arrival_airport.city.name,
           flight_time_hour: hour_diff(plan[:start_at], plan[:end_at]),
           flight_time_min: min_diff(plan[:start_at], plan[:end_at]),
       }
@@ -43,13 +43,13 @@ class FinancesController < ApplicationController
       }
 
       handling_charges << {
-          city: "Landing at #{arrival_airport.name}",
+          city: "Landing at #{arrival_airport.city.name}",
           jsg_adjusted: (plan['landing_cost_at_arrival'] + (plan['landing_cost_at_arrival'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100.to_f))
       }
 
       if plan['watch_hour_at_arrival']
         miscellaneous_charges << {
-            description: "Watch hour at #{arrival_airport.name}",
+            description: "Watch hour at #{arrival_airport.city.name}",
             charge: plan['watch_hour_cost']
         }
       end

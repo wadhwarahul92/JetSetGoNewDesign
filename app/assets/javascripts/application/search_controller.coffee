@@ -289,7 +289,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         anchor.attr({
           href: url
           target: '_blank'
-          download: 'pro forma preview.pdf'
+          download: 'JSG pro forma preview.pdf'
         })[0].click();
         anchor.remove();
     ).error(
