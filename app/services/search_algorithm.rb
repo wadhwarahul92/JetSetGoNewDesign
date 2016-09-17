@@ -185,12 +185,14 @@ BEGIN
               search_activity[:start_at]
           ).in_hours.to_f
 
+          stay_time = (stay_time - 5) if stay_time > 4
+
           if stay_time > 4 && stay_time < 48
 
-            nights =  (stay_time.to_i / 24) + 1
+            nights = (stay_time.to_i / 24) + 1
 
             accommodation_plan = {
-                nights:  (stay_time.to_i/24) + 1,
+                nights:  nights,
                 cost: accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
             }
 
