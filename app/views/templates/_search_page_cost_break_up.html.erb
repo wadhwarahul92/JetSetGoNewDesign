@@ -1,7 +1,7 @@
 <!--Detail Start-->
 <div ng-init="ctrl.cost_with_commission_in_percentage(result, result.aircraft)" class="empty-leg-toogle-main" ng-show="custom">
-  <div class="arrow-up"></div>
-  <div class="white-arrow-up"></div>
+  <div class="" ng-class="!result.enquired ? 'arrow-up' : 'arrow-up2'"></div>
+  <div class="" ng-class="!result.enquired ? 'white-arrow-up' : 'white-arrow-up2'"></div>
   <div class="top-destination-con">
     <div class="col-xs-12 text-right">
       <a href="javascript:void(0)" ng-click="custom3 =! custom3" class="empty-leg-btn" ng-show="ctrl.check_empty_leg(result)">Empty Legs</a>
