@@ -21,15 +21,15 @@ class PaymentTransactionsController < ApplicationController
 
       SmsDelivery.new(@trip.user.phone.to_s, SmsTemplates.customer_for_quote(@trip.user.first_name)).delay.deliver
 
-      phone_numbers = @trip.organisation.operators.map(&:phone).uniq
-
-      for phone in phone_numbers
-        SmsDelivery.new(phone.to_s, SmsTemplates.operator_get_payment(@trip.user.first_name)).delay.deliver
-      end
+      # phone_numbers = @trip.organisation.operators.map(&:phone).uniq
+      #
+      # for phone in phone_numbers
+      #   SmsDelivery.new(phone.to_s, SmsTemplates.operator_get_payment(@trip.user.first_name)).delay.deliver
+      # end
 
       AdminMailer.payment_success(@trip).deliver_later
       CustomerMailer.payment_success(@trip).deliver_later
-      OrganisationMailer.payment_success(@trip).deliver_later
+      # OrganisationMailer.payment_success(@trip).deliver_later
 
       redirect_to "/detail/#{@response_data['merchant_param3']}"
       # redirect_to action: :_success_for_quote, json: {trip_id: @response_data['merchant_param3']}
