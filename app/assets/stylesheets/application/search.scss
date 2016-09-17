@@ -992,6 +992,26 @@ h3.no-nyt-landing{
         top: -12px;
         right: 243px;
       }
+      .arrow-up2{
+        width: 0;
+        height: 0;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 13px solid #998776;
+        position: absolute;
+        top: -13px;
+        right: 176px;
+      }
+      .white-arrow-up2{
+        width: 0;
+        height: 0;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        border-bottom: 17px solid #ffffff;
+        position: absolute;
+        top: -12px;
+        right: 174px;
+      }
       .top-destination-con{
         width: 100%;
         padding: 10px 0;
@@ -1249,6 +1269,12 @@ h3.no-nyt-landing{
       .white-arrow-up{
         right: 209px;
       }
+      .arrow-up2{
+        right: 142px;
+      }
+      .white-arrow-up2{
+        right: 140px;
+      }
     }
   }
   .icon-con{
@@ -1344,6 +1370,12 @@ h3.no-nyt-landing{
         right: 23px;
       }
       .white-arrow-up{
+        right: 21px;
+      }
+      .arrow-up2{
+        right: 23px;
+      }
+      .white-arrow-up2{
         right: 21px;
       }
     }
