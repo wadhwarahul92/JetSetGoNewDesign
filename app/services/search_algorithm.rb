@@ -185,7 +185,7 @@ BEGIN
               search_activity[:start_at]
           ).in_hours.to_f
 
-          if stay_time > 4 && stay_time < 24
+          if stay_time > 4 && stay_time < 48
 
             nights =  (stay_time.to_i / 24) + 1
 
@@ -198,7 +198,7 @@ BEGIN
 
           end
 
-          if stay_time > 24
+          if stay_time > 48
             plan << {
                 pax: 0,
                 departure_airport_id: previous_leg.last[:arrival_airport_id],
