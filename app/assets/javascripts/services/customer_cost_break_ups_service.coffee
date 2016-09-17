@@ -48,7 +48,6 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
     minutes = 0
     seconds = 0
 
-    debugger
     if trip.flight_plan
       for flight_plan in trip.flight_plan
         cost += flight_plan.flight_cost + (trip.aircraft.flight_cost_commission_in_percentage/100 * flight_plan.flight_cost)
