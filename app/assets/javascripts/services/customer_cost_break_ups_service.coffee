@@ -107,7 +107,6 @@ Services_app.factory 'CustomerCostBreakUpsService', ['$http', ($http)->
         cost = cost + miscellaneous_expenses
         trip.is_miscellaneous_expenses = true
         if trip.aircraft.id == 752
-          debugger
         trip.miscellaneous_expenses_amount = miscellaneous_expenses
     else
       if trip.is_miscellaneous_expenses
