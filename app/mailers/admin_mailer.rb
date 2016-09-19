@@ -228,7 +228,7 @@ class AdminMailer < ApplicationMailer
   def create_yatra_enquiry(yatra_enquiry)
     @yatra_enquiry = yatra_enquiry
     mail(
-        subject: DEFAULT_SUBJECT + 'New Yatra Enquiry Received.'
+        subject: DEFAULT_SUBJECT + 'New Yatra Enquiry Received'
     )
   end
 
@@ -240,7 +240,7 @@ class AdminMailer < ApplicationMailer
   def customer_sign_up(customer)
     @customer = customer
     mail(
-        subject: DEFAULT_SUBJECT + 'Confirmation instructions.'
+        subject: DEFAULT_SUBJECT + 'Confirmation instructions'
     )
   end
 
@@ -248,6 +248,13 @@ class AdminMailer < ApplicationMailer
     @trip = trip
     mail(
         subject: DEFAULT_SUBJECT + "Our booking has been confirmed for Flight #{@trip.activities.first.aircraft.tail_number}"
+    )
+  end
+
+  def contact_us(contact)
+    @contact = contact
+    mail(
+        subject: DEFAULT_SUBJECT + "New Contact Us Enquiry"
     )
   end
 
