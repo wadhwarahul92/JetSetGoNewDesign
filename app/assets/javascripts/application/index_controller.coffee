@@ -2,7 +2,6 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @activities = [{}]
   @currentUser = null
-  @active_min_height = true
   @loading = true
   
 #  if $routeParams.search_id
@@ -110,7 +109,6 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
             @jetsteals = arr
         )
         @loading = false
-        @active_min_height = false
     ).error(
       ->
         alert 'error fetching jetsteals, try again later'
