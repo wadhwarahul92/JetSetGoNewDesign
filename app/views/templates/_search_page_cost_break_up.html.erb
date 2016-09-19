@@ -22,7 +22,8 @@
           <img width="35" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
         </p>
         <p class="time-duration"><b>{{(flight_plan.flight_time).split(':')[0]}} Hrs {{(flight_plan.flight_time).split(':')[1]}} Mins</b></p>
-        <p class="time-duration">{{flight_plan.flight_type == 'empty_leg' ? 'Empty leg' : ''}}</p>
+        <p class="time-duration">{{flight_plan.flight_type == 'empty_leg' ? (flight_plan.departure_airport_id == result.aircraft.base_airport.id ? 'Positioning' : (flight_plan.arrival_airport_id == result.aircraft.base_airport.id ? 'Re - Positioning' :'Empty Leg') ) : ''}}</p>
+<!--{{flight_plan.flight_type == 'empty_leg'}}  ? ( {{flight_plan.departure_airport_id == result.aircraft.base_airport.id}} ? 'Positioning' : 'Empty Leg'  : ''-->
       </div>
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
