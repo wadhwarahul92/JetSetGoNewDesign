@@ -1407,6 +1407,13 @@ h3.no-nyt-landing{
     .search-form-con {
       .modify-btn{
         width: 100%;
+        margin-bottom: 10px;
+      }
+      .modity-botm-btn{
+        min-width: inherit;
+        font-size: 12px;
+        display: inline;
+        padding: 5px 9px;
       }
     }
   }
@@ -1563,6 +1570,13 @@ h3.no-nyt-landing{
           .flight-cost-con {
             .cost-con {
               p{
+                font-size: 11px;
+              }
+            }
+            .detail-link-con {
+              a{
+                padding: 5px 10px;
+                margin-left: 5px;
                 font-size: 11px;
               }
             }
@@ -1785,7 +1799,6 @@ h3.no-nyt-landing{
   .top_filter_nav{
     .places-con{
       span.data{
-        width: 45%;
         display: inline-block;
       }
     }
@@ -1795,7 +1808,6 @@ h3.no-nyt-landing{
   .top_filter_nav{
     .places-con{
       span.data{
-        width: 95%;
         display: inline-block;
       }
     }
