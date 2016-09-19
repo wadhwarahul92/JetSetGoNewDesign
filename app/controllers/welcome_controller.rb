@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    redirect_to '/jetsteals/list'
+    # redirect_to '/jetsteals/list'
   end
 
   def tmp_index
