@@ -72,6 +72,14 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def create_yatra_enquiry(yatra_enquiry)
+    @yatra_enquiry = yatra_enquiry
+    mail(
+        to: @yatra_enquiry.email,
+        subject: "JetSetGo - Thank for your enquiry."
+    )
+  end
+
 
 
 end
