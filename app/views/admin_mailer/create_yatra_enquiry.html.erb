@@ -1,46 +1,17 @@
-<table class="outer" align="center">
-  <tr>
-    <td class="one-column">
-      <table width="100%">
-        <tr>
-          <td class="inner contents">
-            <p class="h1">Hi, Admin</p>
+<p class="h1">Dear Team</p>
+<p>We have received a new  Service enquiry. Below is the one:-</p>
 
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td class="two-column">
-      <table width="100%">
-        <% @yatra_enquiry.attributes.each_pair do |key, value| %>
-            <tr style="border: 1px solid #000000;">
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= key %></p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </td>
-              <td width="50%" valign="top" style="border: 1px solid #000000;">
-                <div class="column">
-                  <table width="100%">
-                    <tr>
-                      <td class="inner">
-                        <p class="h2" style="font-size: 14px;"><%= value %></p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </td>
-            </tr>
-        <% end %>
-      </table>
-    </td>
-  </tr>
-</table>
+Customer Name: <%= @yatra_enquiry.name %>
+<br>
+Email id: <%= @yatra_enquiry.email %>
+<br>
+Mobile no: <%= @yatra_enquiry.mobile_number %>
+<br>
+Service type: <%= @yatra_enquiry.package %>
+<br>
+From: <%= @yatra_enquiry.date_of_travel.strftime(time_format) %>
+
+<br><br>
+Thank you,
+<br>
+ JetSetGo Team
