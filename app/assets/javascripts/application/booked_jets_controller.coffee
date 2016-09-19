@@ -29,7 +29,7 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
   setTimeout(
     ->
       unless scope.currentUser
-        location.replace('tmp_url')
+        location.replace('/')
   ,
     1500
   )
