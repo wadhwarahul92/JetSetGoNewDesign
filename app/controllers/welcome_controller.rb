@@ -75,6 +75,7 @@ class WelcomeController < ApplicationController
   def create_contact
     @contact = ContactDetail.new(contact_params)
     if @contact.save
+      AdminMailer.contact_us(@contact).deliver_later
       render status: :ok, nothing: true
     else
       render status: :unprocessable_entity, json: { errors: @contact.errors.full_messages }
