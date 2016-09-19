@@ -393,29 +393,27 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       previous = search_activity
 
   @beforeRenderDate = (view, dates, leftDate, upDate, rightDate, index)->
-#    Temp comment for create past trip
-
-#    activeDate = null
-#    if index > 0
-#      previous_activity = @search_activities[index-1]
-#      time = previous_activity.start_at
-#      previous_date = time.getDate()
-#      previous_month = time.getMonth()
-#      if view == 'day'
-#        for __date in dates
-#          if parseInt(__date.display) < previous_date and (new Date(__date.localDateValue())).getMonth() == previous_month
-#            __date.selectable = false
-#      else
-#        if time
-#          activeDate = moment(time)
-#          for date in dates
-#            if date.localDateValue() <= activeDate.valueOf()
-#              date.selectable = false
-#    else
-#      activeDate = moment(new Date())
-#      for _date in dates
-#        if _date.localDateValue() <= activeDate.valueOf()
-#          _date.selectable = false
+    activeDate = null
+    if index > 0
+      previous_activity = @search_activities[index-1]
+      time = previous_activity.start_at
+      previous_date = time.getDate()
+      previous_month = time.getMonth()
+      if view == 'day'
+        for __date in dates
+          if parseInt(__date.display) < previous_date and (new Date(__date.localDateValue())).getMonth() == previous_month
+            __date.selectable = false
+      else
+        if time
+          activeDate = moment(time)
+          for date in dates
+            if date.localDateValue() <= activeDate.valueOf()
+              date.selectable = false
+    else
+      activeDate = moment(new Date())
+      for _date in dates
+        if _date.localDateValue() <= activeDate.valueOf()
+          _date.selectable = false
 
   @customSplit = (string)->
     string.split(',')
