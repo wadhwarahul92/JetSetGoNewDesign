@@ -96,7 +96,8 @@ class WelcomeController < ApplicationController
           reset_password_sent_at: Time.now.utc,
           api_token: nil
       )
-        OperatorMailer.forgot_password(@user, raw).deliver_later
+        # OperatorMailer.forgot_password(@user, raw).deliver_later
+        CustomerMailer.forgot_password(@user, raw).deliver_later
         render status: :ok, nothing: true
       else
         render status: :unprocessable_entity, json: {errors: @user.errors.full_messages}

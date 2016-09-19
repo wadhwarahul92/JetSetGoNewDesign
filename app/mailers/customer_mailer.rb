@@ -80,6 +80,16 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def forgot_password(operator, token)
+
+    @operator = operator
+    @token = token
+    mail(
+        to: @operator.email,
+        subject: 'JetSetGo - password reset'
+    )
+  end
+
 
 
 end
