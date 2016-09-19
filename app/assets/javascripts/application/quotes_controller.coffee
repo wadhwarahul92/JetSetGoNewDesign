@@ -27,7 +27,7 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
   setTimeout(
     ->
       unless scope.currentUser
-        location.replace('tmp_url')
+        location.replace('/')
   ,
     1500
   )

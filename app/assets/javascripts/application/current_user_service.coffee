@@ -9,7 +9,7 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
       $http.delete('/sign_out_.json').success(
         =>
           serviceInstance.currentUser = null
-          $location.path('tmp_url')
+          $location.path('/')
           notify
             message: 'Successfully signed out.'
       )

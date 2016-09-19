@@ -31,7 +31,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
   setTimeout(
     ->
       unless scope.currentUser
-        location.replace('tmp_url')
+        location.replace('/')
     ,
     1500
   )
@@ -125,7 +125,7 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
         notify(
           message: 'Successfully saved. Please login again.'
         )
-        location.replace('tmp_url')
+        location.replace('/')
     ).error(
       (data)=>
         notify(

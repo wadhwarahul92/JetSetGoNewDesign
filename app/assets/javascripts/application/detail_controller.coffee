@@ -45,7 +45,7 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
   setTimeout(
     ->
       unless scope.currentUser
-        location.replace('tmp_url')
+        location.replace('/')
   ,
     1500
   )

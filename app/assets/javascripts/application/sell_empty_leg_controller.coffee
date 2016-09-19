@@ -19,7 +19,7 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
   setTimeout(
     ->
       unless scope.currentUser
-        location.replace('tmp_url')
+        location.replace('/')
   ,
     1500
   )
