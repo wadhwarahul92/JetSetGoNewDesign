@@ -422,7 +422,6 @@
           <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
           <!--<div class="result-search" ng-if="result.night_flight">-->
-          {{!result.night_flight}} || {{result.is_notam}}
           <div class="result-search" ng-hide="!result.night_flight || result.is_notam">
             <div class="col-md-8 col-sm-8 col-xs-12 search_img">
               <div class="img-hide">
