@@ -148,6 +148,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         )
       else
         @loading = false
+        @active_min_height = false
 
       for search_activity in @search_activities
         search_activity.departure_airport = @airportForId(search_activity.departure_airport_id)
@@ -489,6 +490,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     if is_night_flight
       @count_night_flight = @count_night_flight + 1
     @loading = false
+    if @count_night_flight == 0 or @results.length < 9
+      @isLoadMoreActive = false
 
   @set_costs = (result)->
     result.totalCost = @totalTripCost(result)
