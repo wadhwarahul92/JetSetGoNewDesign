@@ -3,7 +3,8 @@ class YatraEnquiriesController < ApplicationController
   def create
     @yatra_enquiry = YatraEnquiry.new(yatra_enquiry_params)
     if @yatra_enquiry.save
-      AdminMailer.create_yatra_enquiry(@yatra_enquiry).deliver_now
+      AdminMailer.create_yatra_enquiry(@yatra_enquiry).deliver_later
+      CustomerMailer.create_yatra_enquiry(@yatra_enquiry).deliver_later
       # Operator.all.each do |operator|
       #   OrganisationMailer.create_yatra_enquiry(@yatra_enquiry, operator).deliver_later
       # end
