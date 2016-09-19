@@ -259,6 +259,8 @@ BEGIN
           nights = (stay_time.to_i / 24) + 1
           accommodationCost = accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
 
+          accommodationCost = accommodationCost + aircraft.per_hour_cost*2 * nights if stay_time > 24
+
           emptyLegPlanCost = calculate_empty_leg_plan_cost(aircraft, previous_leg, search_activity)
 
           if accommodationCost > emptyLegPlanCost
