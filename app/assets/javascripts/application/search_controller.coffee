@@ -1,5 +1,6 @@
 jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService)->
 
+  @active_min_height = true
   @loading = true
 
   @jsg_commision = CustomerCostBreakUpsService.commission
@@ -143,6 +144,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
               result.aircraft.aircraft_category = @aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id)
               @set_costs(result)
             @loading = false
+            @active_min_height = false
         )
       else
         @loading = false
