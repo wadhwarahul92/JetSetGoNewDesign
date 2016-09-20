@@ -39,7 +39,7 @@ jetsetgo_app.controller 'SignUpController', ['$http', 'notify', 'CurrentUserServ
     true
 
   @create = ->
-    return unless @validatedActivities()
+#    return unless @validatedActivities()
 
     $http.post('/sign_up_.json', @user).success(
       (data)=>
