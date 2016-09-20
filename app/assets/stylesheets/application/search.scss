@@ -1223,13 +1223,14 @@ h3.no-nyt-landing{
     padding: 20px 0;
     text-align: center;
     .load-more-btn{
-      background-color: #750005;
+      background-color: transparent;
       display: inline-block;
       padding: 12px 30px;
       text-align: center;
       min-width: 250px;
       border: none;
-      color: #ffffff;
+      //color: #ffffff;
+      color: #920000;
       text-decoration: none;
       border-radius: 8px;
     }
