@@ -7,31 +7,37 @@ jetsetgo_app.controller 'SignUpController', ['$http', 'notify', 'CurrentUserServ
 
   @validatedActivities = ->
     unless @user.first_name
+      @user.captcha = null
       notify
         message: 'Name cannot be blank.'
         classes: ['alert-danger']
       return false
     unless @user.phone
+      @user.captcha = null
       notify
         message: 'Phone cannot be blank'
         classes: ['alert-danger']
       return false
     unless @user.phone.length == 10
+      @user.captcha = null
       notify
         message: 'Invalid phone number.'
         classes: ['alert-danger']
       return false
     unless @user.email
+      @user.captcha = null
       notify
         message: 'Email cannot be blank.'
         classes: ['alert-danger']
       return false
     unless @user.password
+      @user.captcha = null
       notify
         message: 'Password cannot be blank.'
         classes: ['alert-danger']
       return false
     unless @user.password.length > 7
+      @user.captcha = null
       notify
         message: 'Password length cannot be less than 8.'
         classes: ['alert-danger']
@@ -39,7 +45,7 @@ jetsetgo_app.controller 'SignUpController', ['$http', 'notify', 'CurrentUserServ
     true
 
   @create = ->
-#    return unless @validatedActivities()
+    return unless @validatedActivities()
 
     $http.post('/sign_up_.json', @user).success(
       (data)=>
