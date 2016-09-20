@@ -562,8 +562,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @set_results = (data, n)->
     _.first(data, [n])
 
-  @apply_filter = ->
-    @aircraft_categories
+#  @apply_filter = ->
+#    @aircraft_categories
 
 
   @load_more = ->
