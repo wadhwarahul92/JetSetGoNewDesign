@@ -145,6 +145,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
               @set_costs(result)
             @loading = false
             @active_min_height = false
+            @load_more()
         )
       else
         @loading = false
@@ -561,6 +562,10 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @set_results = (data, n)->
     _.first(data, [n])
 
+#  @apply_filter = ->
+#    @aircraft_categories
+
+
   @load_more = ->
     @isLoadMoreActive = false
     @currentPage = @currentPage + 1
@@ -586,6 +591,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
             result.aircraft.aircraft_category = @aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id)
             @set_costs(result)
           @isLoadMoreActive = true
+          @load_more()
+
       )
 
   return undefined
