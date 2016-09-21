@@ -3,7 +3,7 @@
     <td class="one-column inner contents">
       <p class="h1">Hi,</p>
       <p>
-        Booking amount has been received from <strong><%= @trip.user.full_name %></strong> for so and so flight.
+        Booking amount has been received from <strong><%= @trip.user.full_name.titleize %></strong> for so and so flight.
         <br><br>
         Reference ID: Trip#<%= @trip.id %> <br><br>
 

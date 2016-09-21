@@ -45,7 +45,7 @@
       <tbody>
       <% @subscribers.each do |subscriber| %>
       <tr>
-        <td><%= subscriber.name %></td>
+        <td><%= subscriber.name.titleize %></td>
         <td><%= subscriber.phone %></td>
         <td><%= subscriber.email %></td>
       </tr>

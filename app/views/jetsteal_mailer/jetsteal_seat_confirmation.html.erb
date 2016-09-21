@@ -4,7 +4,7 @@
       <table class="twelve columns">
         <tr>
           <td class="text-pad">
-            <p>Dear <%= @contact.first_name.capitalize %>,</p>
+            <p>Dear <%= @contact.first_name.titleize %>,</p>
             <p>Thank you for buying <%= @jetsteal_seats.count %> <%= @jetsteal_seats.count > 1 ? 'seats' : 'seat' %> on JetSetGo.</p>
             <p>For any assistance, please feel free to contact us on +91-11-39585858 or info@jetsetgo.in</p>
             <p>This email contains a system generated seat confirmation pdf with unique confirmation id and your invoice.</p>
