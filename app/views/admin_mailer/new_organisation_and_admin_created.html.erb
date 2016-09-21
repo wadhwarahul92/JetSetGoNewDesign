@@ -7,11 +7,11 @@ We have to approve the organisation and all its aircrafts before they start show
 <table border="1">
   <tr>
     <th>Organisation Name</th>
-    <td><%= @organisation.name %></td>
+    <td><%= @organisation.name.capitalize %></td>
   </tr>
   <tr>
     <th>Name</th>
-    <td><%= @operator.full_name %></td>
+    <td><%= @operator.full_name.titleize %></td>
   </tr>
   <tr>
     <th>Email</th>

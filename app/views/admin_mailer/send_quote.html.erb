@@ -6,7 +6,7 @@
           <td class="inner contents">
             <p class="h1">Hi, Admin</p>
             <p>
-              <strong><%= @operator.full_name %></strong> has quoted enquiry for so and so flight enquired by <strong><%= @trip.user.full_name %></strong>
+              <strong><%= @operator.full_name.titleize %></strong> has quoted enquiry for so and so flight enquired by <strong><%= @trip.user.full_name.titleize %></strong>
             </p>
           </td>
         </tr>
