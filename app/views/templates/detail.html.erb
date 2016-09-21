@@ -101,19 +101,19 @@
       <!-- && (ctrl.trip.status == 'confirmed' || journey.open) -->
       <div ng-show="ctrl.journey">
         <div class="location-main row" ng-repeat="activity in ctrl.trip.activities" ng-hide="activity.empty_leg">
-          <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
+          <div class="col-md-offset-2 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654">
             <p><b>{{activity.departure_airport.city.name}}</b></p>
             <p>{{activity.departure_airport.city.state}}</p>
             <p>{{activity.start_at.split(',')[0]}}</p>
             <p>{{activity.start_at.split(',')[1]}}</p>
           </div>
-          <div class="col-md-3 text-center col-sm-4 hidden-xs">
+          <div class="col-md-2 text-center col-sm-4 hidden-xs">
             <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
             <p><b>{{activity.flight_time}}</b></p>
             <p>Pax: {{activity.pax}}</p>
           </div>
-          <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-6">
+          <div class="col-md-offset-2 col-md-3 col-sm-4 col-xs-6">
             <img width="28" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672">
             <p><b>{{activity.arrival_airport.city.name}}</b></p>
             <p>{{activity.arrival_airport.city.state}}</p>
@@ -380,7 +380,10 @@
             </div>
             <div class="col-xs-6 text-right">
               <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</h5>
-              <p class="inclusive" ng-hide="ctrl.trip.status == 'confirmed'">(Pay 10% for book flight)</p>
+              <p class="inclusive" ng-hide="ctrl.trip.status == 'confirmed'">
+                <!--(Pay 10% for book flight)-->
+                (Booking Amount)
+              </p>
             </div>
           </div>
           <div class="row">

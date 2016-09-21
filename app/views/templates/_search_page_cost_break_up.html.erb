@@ -11,7 +11,7 @@
     <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
-          <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
+          <img width="30" claubs="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
         </p>
         <p class="city-name"><b>{{ctrl.airportForId(flight_plan.departure_airport_id).city.name}}</b></p>
         <p class="time-con">{{ctrl.formatTime2(flight_plan.start_at).split(',')[1]}}</p>
@@ -165,13 +165,13 @@
           </div>
 
           <!--</div>-->
-          <div class="cost-con">
-            <div class="row">
-              <div class="col-xs-12">
-                <h4>Sub Total</h4>
-              </div>
-            </div>
-          </div>
+          <!--<div class="cost-con">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12">-->
+                <!--<h4>Sub Total</h4>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="cost-con" ng-show="result.is_miscellaneous_expenses">
             <div class="row">
               <div class="col-xs-7">
@@ -185,7 +185,7 @@
           <div class="cost-con" ng-repeat="tax in result.taxBreakup">
             <div class="row">
               <div class="col-xs-7">
-                <p>{{tax.name}}({{tax.value}}%)</p>
+                <p>{{tax.name}} ({{tax.value}}%)</p>
               </div>
               <div class="col-xs-5">
                 <p class="text-right">₹ {{tax.amount | currency:"":2 | indianCurrency}}</p>
@@ -204,8 +204,7 @@
               <div class="col-xs-5">
                 <h5 class="text-right">
                   ₹ {{result.totalCost | currency:"":0 | indianCurrency}}
-                  <br>
-                  <span style="font-size: 14px; font-weight: 100">(All inclusive)</span>
+                  <!--<span style="font-size: 14px; font-weight: 100">(All inclusive)</span>-->
                 </h5>
               </div>
               <div class="col-xs-12">
@@ -216,7 +215,7 @@
             </div>
           </div>
           <div class="detail-link-con">
-            <a href="javascript:void(0)" ng-click="ctrl.previewProForma(result)">Download Proforma Invoice</a>
+            <a href="javascript:void(0)" ng-click="ctrl.previewProForma(result)">Download Pro forma Invoice</a>
             <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
           </div>
         </div>
