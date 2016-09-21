@@ -1,10 +1,10 @@
 .p Hi,
 .p
-  = @operatr.full_name
+  = @operatr.full_name.titleize
   | has registered to JetSetGo as operator with following details.
 dl
   dt Name
-  dd= @operator.full_name
+  dd= @operator.full_name.titleize
   dt Email
   dd= @operator.email
   dt Phone

@@ -1,7 +1,7 @@
 <table class="outer" align="center">
   <tr>
     <td class="one-column inner contents">
-      <p class="h1">Dear <%= @customer.first_name %>,</p>
+      <p class="h1">Dear <%= @customer.first_name.titleize %>,</p>
       <br>
       <p>JetSetGo has received your trip details. We are going to quickly double check with the operator on price and availability before we proceed to confirm your booking.
         Our operators put in their best to maintain prices and schedules by the clock but the scope for change always exists. You will only find this all the more beneficial.</p>
@@ -109,7 +109,7 @@
                  <p class="h1" style="text-align: left;">Name:</p>
                 </td>
                 <td class="inner contents" width="50%" valign="top">
-                  <%= @customer.full_name %>
+                  <%= @customer.full_name.titleize %>
                 </td>
               </tr>
               <tr>
