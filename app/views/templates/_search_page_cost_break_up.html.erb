@@ -11,7 +11,7 @@
     <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
-          <img width="30" claubs="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
+          <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
         </p>
         <p class="city-name"><b>{{ctrl.airportForId(flight_plan.departure_airport_id).city.name}}</b></p>
         <p class="time-con">{{ctrl.formatTime2(flight_plan.start_at).split(',')[1]}}</p>
