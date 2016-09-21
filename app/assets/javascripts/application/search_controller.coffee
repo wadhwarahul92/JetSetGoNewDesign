@@ -604,6 +604,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @active_aircraft_categories_ = []
   @active_results = []
+  @active_aircrafts = []
 
 
 #  @check = (aircraft_category, checked)->
@@ -635,13 +636,23 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       @active_aircraft_categories_ = _.without(@active_aircraft_categories_, _.findWhere(@active_aircraft_categories_, {id: aircraft_category.id}))
 
     for aircraft_category in @active_aircraft_categories_
-#      _.where(@results, @check_category())
-      _.findWhere(@results, @check_filter(result))
+      for result in @results
+        if result.aircraft.aircraft_category
+          if result.aircraft.aircraft_category.id == aircraft_category.id
+            @active_results.push result
+
+    active_aircraft_ids = _.pluck(this.active_results, 'aircraft_id').uniq
+
+    for result in _.without(@results, {aircraft_id: active_aircraft_ids})
+      result.aircraft.aircraft_category.is_active = false
+
+    for result in _.where(@results, {aircraft_id: active_aircraft_ids})
+      result.aircraft.aircraft_category.is_active = true
 
 
 
-  @check_filter = (aircraft_category)->
-    debugger
+#  @check_filter = (aircraft_category)->
+#    debugger
 
   return undefined
 ]
