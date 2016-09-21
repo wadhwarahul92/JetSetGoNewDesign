@@ -185,7 +185,7 @@
           <div class="cost-con" ng-repeat="tax in result.taxBreakup">
             <div class="row">
               <div class="col-xs-7">
-                <p>{{tax.name}}({{tax.value}}%)</p>
+                <p>{{tax.name}} ({{tax.value}}%)</p>
               </div>
               <div class="col-xs-5">
                 <p class="text-right">₹ {{tax.amount | currency:"":2 | indianCurrency}}</p>
@@ -204,8 +204,7 @@
               <div class="col-xs-5">
                 <h5 class="text-right">
                   ₹ {{result.totalCost | currency:"":0 | indianCurrency}}
-                  <br>
-                  <span style="font-size: 14px; font-weight: 100">(All inclusive)</span>
+                  <!--<span style="font-size: 14px; font-weight: 100">(All inclusive)</span>-->
                 </h5>
               </div>
               <div class="col-xs-12">
@@ -216,7 +215,7 @@
             </div>
           </div>
           <div class="detail-link-con">
-            <a href="javascript:void(0)" ng-click="ctrl.previewProForma(result)">Download Proforma Invoice</a>
+            <a href="javascript:void(0)" ng-click="ctrl.previewProForma(result)">Download Pro forma Invoice</a>
             <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
           </div>
         </div>
