@@ -84,7 +84,7 @@ class TripsController < ApplicationController
           is_allow = true
           enquiry_count = (@user.enquiry_count + 1)
           last_enquired = DateTime.now
-          is_allow = false if enquiry_count > 2
+          is_allow = false if enquiry_count > 9
           @user.update_attributes(enquiry_count: enquiry_count, last_enquired: last_enquired, is_allow: is_allow )
 
 
@@ -116,7 +116,7 @@ class TripsController < ApplicationController
         render status: :unprocessable_entity, json: { errors: @trip.errors.full_messages }
       end
     else
-      render status: :unprocessable_entity, json: { errors: ["You can't enquire more then 3 times in a day."] }
+      render status: :unprocessable_entity, json: { errors: ["You can't enquire more then 10 times in a day."] }
     end
 
   end
