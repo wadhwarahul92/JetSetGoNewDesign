@@ -25,6 +25,7 @@ window.jetsetgo_app = angular.module 'jetsetgo_app', [
   'noCAPTCHA'
   'easypiechart'
   'Services_app'
+  'checklist-model'
 ]
 
 jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider', ($routeProvider, $locationProvider, noCaptchaProvider)->

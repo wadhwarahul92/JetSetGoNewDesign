@@ -53,6 +53,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @perPage = 10
   @isLoadMoreActive = false
 
+  @c_filter = []
+
   $scope.$watch(
     =>
       @search_activities
@@ -99,6 +101,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   AircraftCategoriesService.getAircraftCategories().then(
     =>
       @aircraft_categories = AircraftCategoriesService.aircraft_categories
+      for aircraft_category in @aircraft_categories
+        aircraft_category.is_active = true
   )
 
 #  $http.get("/aircraft_categories.json").success(
@@ -594,6 +598,50 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           @load_more()
 
       )
+
+  @abc = ->
+#    debugger
+
+  @active_aircraft_categories_ = []
+  @active_results = []
+
+
+#  @check = (aircraft_category, checked)->
+#    if checked
+#      for result in _.findWhere(@results, {aircraft: {aircraft_category: {id: aircraft_category.id}}})
+#        debugger
+#        result.aircraft.aircraft_category.is_active = true
+#        debugger
+#
+#      @aircraft_categories_.push _.find(@aircraft_categories, {id: aircraft_category.id})
+#    else
+#      active_results = _.findWhere(@results, {aircraft: {aircraft_category: {id: aircraft_category.id}}})
+#      inactive_results = _.difference(@results, active_results)
+#
+#      for result in inactive_results
+#        result.aircraft.aircraft_category.is_active = true
+#    debugger
+##      @aircraft_categories_ = _.without(@aircraft_categories_, _.findWhere(@aircraft_categories_, {id: aircraft_category.id}))
+#
+##
+##    if @aircraft_categories_.length == 0
+##      debugger
+##      dce
+
+  @check = (aircraft_category, checked)->
+    if checked
+      @active_aircraft_categories_.push _.find(@aircraft_categories, {id: aircraft_category.id})
+    else
+      @active_aircraft_categories_ = _.without(@active_aircraft_categories_, _.findWhere(@active_aircraft_categories_, {id: aircraft_category.id}))
+
+    for aircraft_category in @active_aircraft_categories_
+#      _.where(@results, @check_category())
+      _.findWhere(@results, @check_filter(result))
+
+
+
+  @check_filter = (aircraft_category)->
+    debugger
 
   return undefined
 ]

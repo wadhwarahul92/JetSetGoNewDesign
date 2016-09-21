@@ -14,6 +14,7 @@
 //= require ./vendors/angular-full-calendar
 //= require ./vendors/angular-no-captcha
 //= require ./vendors/easy_pie_chart
+//= require ./vendors/check_list_model
 //= require ./application/base
 //= require ./application/current_user_service
 //= require ./application/header_controller
