@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Message</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @contact_us_enquiries.each do |contact_us_enquiry| %>
+          <tr>
+            <td><%= contact_us_enquiry.name.titleize %></td>
+            <td><%= contact_us_enquiry.email %></td>
+            <td><%= contact_us_enquiry.phone %></td>
+            <td><%= contact_us_enquiry.message %></td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= will_paginate @contact_us_enquiries %>

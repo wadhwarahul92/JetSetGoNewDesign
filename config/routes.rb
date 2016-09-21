@@ -162,6 +162,10 @@ Rails.application.routes.draw do
 
     resources :suppliers
 
+    resources :service_enquiries
+
+    resources :contact_us_enquiries
+
     resources :operators
 
     resources :aircraft_types do
