@@ -30,8 +30,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_activities_static = []
 
-  @c_filter = []
-
   @min_cost = ''
 
   @max_cost = ''
@@ -99,6 +97,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   AircraftCategoriesService.getAircraftCategories().then(
     =>
       @aircraft_categories = AircraftCategoriesService.aircraft_categories
+      for aircraft_category in @aircraft_categories
+        aircraft_category.is_active = true
   )
 
 #  $http.get("/aircraft_categories.json").success(
@@ -594,6 +594,17 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
           @load_more()
 
       )
+
+
+  @check = (aircraft_category, checked)->
+    if checked
+      for result in @results
+        if result.aircraft.aircraft_category.id == aircraft_category.id
+          result.aircraft.aircraft_category.is_active = true
+    else
+      for result in @results
+        if result.aircraft.aircraft_category.id == aircraft_category.id
+          result.aircraft.aircraft_category.is_active = false
 
   return undefined
 ]
