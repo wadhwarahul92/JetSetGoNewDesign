@@ -51,8 +51,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @perPage = 10
   @isLoadMoreActive = false
 
-  @c_filter = []
-
   $scope.$watch(
     =>
       @search_activities
