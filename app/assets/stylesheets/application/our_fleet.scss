@@ -159,38 +159,55 @@
       .interior_map_con{
         margin-top: 30px;
         h2{
-          font-size: 22px;
+          font-size: 17px;
+          border-bottom: 5px solid #998776;
+          padding-bottom: 5px;
+          position: relative;
+          cursor: pointer;
+          color: #920000;
           font-weight: bold;
-          margin: 20px;
+        }
+        h2:before{
+          content: "";
+          position: absolute;
+          background-color: #d6cab9;
+          height: 5px;
+          width: 150px;
+          bottom: -5px;
         }
         .interior_aircraft_con{
           width: 100%;
           .interior_aircraft{
-
+            img{
+              max-height: 400px;
+            }
           }
           .interior_specification{
             margin-top: 30px;
             .spec{
               h3{
-                font-size: 18px;
+                font-size: 15px;
                 font-weight: bold;
                 margin-bottom: 0;
               }
               p{
-                font-size: 14px;
+                font-size: 13px;
               }
             }
           }
         }
         .range_map_con{
           width: 100%;
+          img{
+            border: 1px solid #998776;
+          }
           h3{
-            font-size: 18px;
+            font-size: 15px;
             font-weight: bold;
             margin-bottom: 0;
           }
           p{
-            font-size: 14px;
+            font-size: 13px;
           }
         }
       }
@@ -231,7 +248,7 @@
             .interior_specification {
               .spec {
                 h3{
-                  font-size: 15px;
+                  font-size: 14px;
                 }
                 p{
                   font-size: 12px;
@@ -241,7 +258,7 @@
           }
           .range_map_con {
             h3{
-              font-size: 15px;
+              font-size: 14px;
             }
             p{
               font-size: 12px;
