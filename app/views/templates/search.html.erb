@@ -382,28 +382,7 @@
               <div class="filter aircraft_type">
                 <h3>Aircraft Type</h3>
                 <ul class="">
-                  <!--<li><input type="checkbox" data-ng-model="c_filter1" data-ng-true-value="'Twin Engine Turboprop'" data-ng-false-value=""> Twin Engine Turboprop</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter2" data-ng-true-value="'Large Business Jet'" data-ng-false-value=""> Large Business Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter3" data-ng-true-value="'Light Jet'" data-ng-false-value=""> Light Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter4" data-ng-true-value="'Midsize Jet'" data-ng-false-value=""> Midsize Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter5" data-ng-true-value="'Single Engine Turboprop'" data-ng-false-value=""> Single Engine Turbo</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter6" data-ng-true-value="'Airliner'" data-ng-false-value=""> Airliner</li>-->
-
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Twin Engine Turboprop'" data-ng-false-value=""> Twin Engine Turboprop</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Large Business Jet'" data-ng-false-value=""> Large Business Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Light Jet'" data-ng-false-value=""> Light Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Midsize Jet'" data-ng-false-value=""> Midsize Jet</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Single Engine Turbo'" data-ng-false-value=""> Single Engine Turbo</li>-->
-                  <!--<li><input type="checkbox" data-ng-model="c_filter" data-ng-true-value="'Airliner'" data-ng-false-value=""> Airliner</li>-->
-
-
-
-                  <!--{{ctrl.results}}-->
                   <li ng-repeat="aircraft_category in ctrl.aircraft_categories">
-
-                    <!--<input type="checkbox" data-ng-model="ctrl.c_filter" data-ng-true-value="'{{aircraft_category.name}}'" data-ng-false-value=""> {{aircraft_category.name}}-->
-                    <!--<input type="checkbox" checklist-model="ctrl.results" checklist-value="aircraft_category.name">{{aircraft_category.name}}-->
-                    <!--<input type="checkbox" checklist-model="ctrl.results" checklist-value="aircraft_category" ng-change="ctrl.check(aircraft_category, checked)"> {{aircraft_category.name}}-->
                     <input type="checkbox" ng-model="aircraft_category.is_active" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active)"> {{aircraft_category.name}}
                   </li>
 
@@ -428,12 +407,8 @@
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.convertToInt(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.convertToInt(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.convertToInt(filterFlyingTime)[0] == result.totalCost || ctrl.convertToInt(filterFlyingTime)[1] == result.totalCost " >-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost " >-->
 
-        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter: {aircraft: {aircraft_category: {name: c_filter }}}" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >
+        <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost'" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >
 
-          <!--{{ctrl.active_aircraft_categories_}}-->
-          <!--<br>-->
-          <!--{{ctrl.active_results}}-->
-          <!--<br>-->
           <!--{{result.aircraft.aircraft_category.is_active}}-->
           <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->

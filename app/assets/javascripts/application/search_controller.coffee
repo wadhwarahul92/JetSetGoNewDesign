@@ -30,8 +30,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @search_activities_static = []
 
-  @c_filter = []
-
   @min_cost = ''
 
   @max_cost = ''
