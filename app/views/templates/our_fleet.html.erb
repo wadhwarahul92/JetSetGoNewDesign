@@ -6,14 +6,14 @@
 <div class="fleet_main_con">
   <div class="top_head">
     <div class="container">
-      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/802/original/subheader_fleet.png?1474450065" alt="">
+      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/814/original/subheader_fleet.png?1474537945" alt="">
     </div>
   </div>
   <div class="container">
     <div class="fleet_result_main">
-      <h3 class="main-heading">
+      <h2 class="heading">
         Midsize Jet
-      </h3>
+      </h2>
       <!-- repeat from start-->
       <div class="">
         <div class="fleet_result">
@@ -25,20 +25,20 @@
             <div class="icon-con">
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
-                  <span class="icon-detail">{{result.aircraft.baggage_capacity_in_kg}} kgs</span>
+                  <span class="icon-detail">200 kgs</span>
                 </span>
                 <span class="icons-main">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{result.aircraft.crew}}</span>
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">2</span>
                 </span>
                 <span class="icons-main">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{result.aircraft.seating_capacity}}</span>
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">5</span>
                 </span>
                 <span class="icons-main">
                   <img src="" ng-src="{{result.aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/763/original/without_wifi.png?1472815403'}}" uib-tooltip="Wifi: {{result.aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
                 </span>
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
-                   <span class="icon-detail">{{result.aircraft.cabin_height_in_meters}} ft</span>
+                   <span class="icon-detail">4.76 ft</span>
                 </span>
                 <span class="icons-main">
                   <img src="" ng-src="{{result.aircraft.phone ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/762/original/without_phone.png?1472815384'}}" uib-tooltip="Phone: {{result.aircraft.phone ? 'Available' : 'Not-Available'}}" alt="">
@@ -48,10 +48,10 @@
                 </span>
                 <span class="icons-main">
                   <img src="" ng-src="{{result.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory{{result.aircraft.number_of_toilets ? '' : ': Not-Available'}}" alt="">
-                  <span class="icon-detail">{{result.aircraft.number_of_toilets < 1 ? '' : result.aircraft.number_of_toilets}}</span>
+                  <span class="icon-detail">2</span>
                 </span>
                 <span class="icons-main no-border">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{result.aircraft.cruise_speed_in_nm_per_hour}} nm/hr</span>
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">210 nm/hr</span>
                 </span>
               <div class="clearfix"></div>
             </div>
@@ -59,21 +59,22 @@
           <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
             <div class="img-bg">
               <h3 class="aircraft-type">Cessna Citation CJ2</h3>
-              <p class="aircraft-content">The Cessna Citation/M2/CJ series are American turbofan-powered light corporate jets built by the Cessna Aircraft Company in Wichita, Kansas. The Citation brand of business jets encompasses seven distinct 'families' of aircraft. </p>
+              <p class="aircraft-content">The Cessna Citation/M2/CJ series are American turbofan-powered light corporate jets built by the Cessna Aircraft Company in Wichita, Kansas. The Citation brand of business jets encompasses seven distinct 'families' of aircraft.</p>
               <div class="detail-link-con text-center">
-                <a href="javascript:void(0)">Details</a>
+                <a href="javascript:void(0)" ng-click="ctrl.fleet_detail =! ctrl.fleet_detail">Details</a>
               </div>
             </div>
           </div>
           <div class="clearfix"></div>
         </div>
         <!-- detail start-->
-        <div class="fleet-toogle-main">
+        <div ng-show="ctrl.fleet_detail" class="fleet-toogle-main">
           <div class="arrow-up"></div>
           <div class="white-arrow-up"></div>
+          <i class="fa fa-times-circle-o cross-icon" ng-click="ctrl.fleet_detail =! ctrl.fleet_detail"></i>
           <div class="img-content-con">
             <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="aircraft-img">
+              <div class="aircraft-img text-center">
                 <img src="https://d3hdtzk3ohuh17.cloudfront.net/aircrafts/interiors/000/000/262/size_400x400/2.jpg?1470483595" alt="" class="img-responsive">
               </div>
             </div>
@@ -82,20 +83,62 @@
                 <p>The Cessna Citation/M2/CJ series are American turbofan-powered light corporate jets built by the Cessna Aircraft Company in Wichita, Kansas. The Citation brand of business jets encompasses seven distinct 'families' of aircraft.</p>
               </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="interior_aircraft_con">
-                <div class="interior_aircraft">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/805/original/Cessna-Citation-CJ2_int.png?1474453843" alt="" class="img-responsive">
-                </div>
-              </div>
-            </div>
             <div class="clearfix"></div>
           </div>
           <div class="interior_map_con">
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-5 col-sm-6 col-xs-12">
               <div class="interior_aircraft_con">
-                <div class="interior_aircraft">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/805/original/Cessna-Citation-CJ2_int.png?1474453843" alt="" class="img-responsive">
+                <h2>Hawker 810</h2>
+                <div class="row">
+                  <div class="col-xs-5 interior_aircraft">
+                    <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/805/original/Cessna-Citation-CJ2_int.png?1474453843" alt="" class="img-responsive">
+                  </div>
+                  <div class="col-xs-7 interior_specification">
+                    <div class="spec">
+                      <h3>Interior Seating Length</h3>
+                      <p>18.72ft</p>
+                    </div>
+                    <div class="spec">
+                      <h3>Overall Cabin Length</h3>
+                      <p>21.30ft</p>
+                    </div>
+                    <div class="spec">
+                      <h3>Cabin Height</h3>
+                      <p>5.75ft</p>
+                    </div>
+                    <div class="spec">
+                      <h3>Cabin Width</h3>
+                      <p>6.00ft</p>
+                    </div>
+                    <div class="spec">
+                      <h3>Baggage Volume</h3>
+                      <p>5.75kgs</p>
+                    </div>
+                    <div class="spec">
+                      <h3>Passenger Capacity</h3>
+                      <p>8</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-6 col-xs-12">
+              <div class="range_map_con">
+                <h2>Range Map</h2>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/813/original/hawkerrangemap.png?1474537143" class="img-responsive" alt="">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6 col-xs-4">
+                    <h3>Range in Distance</h3>
+                    <p>5.75km</p>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-4">
+                    <h3>Range in Hours</h3>
+                    <p>5.75hrs</p>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-4">
+                    <h3>Speed</h3>
+                    <p>5.75kph</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,6 +146,57 @@
           </div>
         </div>
         <!-- detail finish-->
+        <div class="fleet_result">
+          <div class="col-md-8 col-sm-8 col-xs-12 search_img">
+            <div class="img-hide">
+              <img src="https://d3hdtzk3ohuh17.cloudfront.net/aircrafts/images/000/000/262/original/1_copy.jpg?1469012216" alt="">
+              <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(result)" ng-click="result.more_detail_active =! result.more_detail_active">More Detail</span>
+            </div>
+            <div class="icon-con">
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">200 kgs</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">2</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">5</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/763/original/without_wifi.png?1472815403'}}" uib-tooltip="Wifi: {{result.aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
+                   <span class="icon-detail">4.76 ft</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.phone ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/762/original/without_phone.png?1472815384'}}" uib-tooltip="Phone: {{result.aircraft.phone ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/761/original/without_cabincrew.png?1472815358'}}" uib-tooltip="Flight Attendant: {{result.aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{result.aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory{{result.aircraft.number_of_toilets ? '' : ': Not-Available'}}" alt="">
+                  <span class="icon-detail">2</span>
+                </span>
+                <span class="icons-main no-border">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">210 nm/hr</span>
+                </span>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 search-ryt-con">
+            <div class="img-bg">
+              <h3 class="aircraft-type">Cessna Citation CJ2</h3>
+              <p class="aircraft-content">The Cessna Citation/M2/CJ series are American turbofan-powered light corporate jets built by the Cessna Aircraft Company in Wichita, Kansas. The Citation brand of business jets encompasses seven distinct 'families' of aircraft.</p>
+              <div class="detail-link-con text-center">
+                <a href="javascript:void(0)">Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
       </div>
       <!-- repeat from finish-->
     </div>
