@@ -399,12 +399,12 @@
 
 
                   <!--{{ctrl.results}}-->
-                  {{ctrl.aircraft_categories}}
                   <li ng-repeat="aircraft_category in ctrl.aircraft_categories">
 
                     <!--<input type="checkbox" data-ng-model="ctrl.c_filter" data-ng-true-value="'{{aircraft_category.name}}'" data-ng-false-value=""> {{aircraft_category.name}}-->
                     <!--<input type="checkbox" checklist-model="ctrl.results" checklist-value="aircraft_category.name">{{aircraft_category.name}}-->
-                    <input type="checkbox" checklist-model="ctrl.results" checklist-value="aircraft_category" ng-change="ctrl.check(aircraft_category, checked)"> {{aircraft_category.name}}
+                    <!--<input type="checkbox" checklist-model="ctrl.results" checklist-value="aircraft_category" ng-change="ctrl.check(aircraft_category, checked)"> {{aircraft_category.name}}-->
+                    <input type="checkbox" ng-model="aircraft_category.is_active" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active)"> {{aircraft_category.name}}
                   </li>
 
                 </ul>

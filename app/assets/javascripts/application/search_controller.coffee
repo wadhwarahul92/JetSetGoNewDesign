@@ -599,60 +599,16 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       )
 
-  @abc = ->
-#    debugger
-
-  @active_aircraft_categories_ = []
-  @active_results = []
-  @active_aircrafts = []
-
-
-#  @check = (aircraft_category, checked)->
-#    if checked
-#      for result in _.findWhere(@results, {aircraft: {aircraft_category: {id: aircraft_category.id}}})
-#        debugger
-#        result.aircraft.aircraft_category.is_active = true
-#        debugger
-#
-#      @aircraft_categories_.push _.find(@aircraft_categories, {id: aircraft_category.id})
-#    else
-#      active_results = _.findWhere(@results, {aircraft: {aircraft_category: {id: aircraft_category.id}}})
-#      inactive_results = _.difference(@results, active_results)
-#
-#      for result in inactive_results
-#        result.aircraft.aircraft_category.is_active = true
-#    debugger
-##      @aircraft_categories_ = _.without(@aircraft_categories_, _.findWhere(@aircraft_categories_, {id: aircraft_category.id}))
-#
-##
-##    if @aircraft_categories_.length == 0
-##      debugger
-##      dce
 
   @check = (aircraft_category, checked)->
     if checked
-      @active_aircraft_categories_.push _.find(@aircraft_categories, {id: aircraft_category.id})
-    else
-      @active_aircraft_categories_ = _.without(@active_aircraft_categories_, _.findWhere(@active_aircraft_categories_, {id: aircraft_category.id}))
-
-    for aircraft_category in @active_aircraft_categories_
       for result in @results
-        if result.aircraft.aircraft_category
-          if result.aircraft.aircraft_category.id == aircraft_category.id
-            @active_results.push result
-
-    active_aircraft_ids = _.pluck(this.active_results, 'aircraft_id').uniq
-
-    for result in _.without(@results, {aircraft_id: active_aircraft_ids})
-      result.aircraft.aircraft_category.is_active = false
-
-    for result in _.where(@results, {aircraft_id: active_aircraft_ids})
-      result.aircraft.aircraft_category.is_active = true
-
-
-
-#  @check_filter = (aircraft_category)->
-#    debugger
+        if result.aircraft.aircraft_category.id == aircraft_category.id
+          result.aircraft.aircraft_category.is_active = true
+    else
+      for result in @results
+        if result.aircraft.aircraft_category.id == aircraft_category.id
+          result.aircraft.aircraft_category.is_active = false
 
   return undefined
 ]
