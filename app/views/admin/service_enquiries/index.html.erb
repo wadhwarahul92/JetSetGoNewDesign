@@ -3,21 +3,25 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
         <th>Mobile number</th>
         <th>Date of travel</th>
         <th>Package</th>
+        <th>Enquiry date</th>
       </tr>
       </thead>
       <tbody>
       <% @service_enquiries.each do |service_enquiry| %>
           <tr>
+            <td><%= service_enquiry.id %></td>
             <td><%= service_enquiry.name.titleize %></td>
             <td><%= service_enquiry.email %></td>
             <td><%= service_enquiry.mobile_number %></td>
             <td><%= service_enquiry.date_of_travel.strftime(time_format) %></td>
             <td><%= service_enquiry.package %></td>
+            <td><%= service_enquiry.created_at.strftime(time_format) %></td>
           </tr>
       <%- end %>
       </tbody>
