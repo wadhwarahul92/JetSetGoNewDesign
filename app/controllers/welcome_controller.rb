@@ -133,7 +133,7 @@ class WelcomeController < ApplicationController
   end
 
   def get_passenger_datails
-    @trip = current_user.trips.find params[:id]
+    @trip = current_user.trips.includes(:activities, :passenger_details).find params[:id]
     @passenger_details = @trip.passenger_details
   end
 
