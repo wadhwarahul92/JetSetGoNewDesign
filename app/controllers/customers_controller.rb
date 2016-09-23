@@ -33,26 +33,26 @@ class CustomersController < ApplicationController
   end
 
   def get_booked_jets
-    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED).order(id: :desc)
+    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED).includes(:activities).order(id: :desc)
   end
 
   def get_upcoming_journeys
-    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED)
+    @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED).includes(:activities)
     if @trips.present?
       @trips = get_upcoming_trips(@trips)
     end
   end
 
   def get_past_journeys
-    @trips = get_past_trips(@customer.trips.where(status: Trip::STATUS_CONFIRMED))
+    @trips = get_past_trips(@customer.trips.where(status: Trip::STATUS_CONFIRMED)).includes(:activities)
   end
 
   def get_enquired_jets
-    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY).order(id: :desc)
+    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).order(id: :desc)
   end
 
   def get_quoted_journeys
-    @quotes = @customer.trips.where(status: Trip::STATUS_QUOTED)
+    @quotes = @customer.trips.where(status: Trip::STATUS_QUOTED).includes(:activities)
   end
 
   def get_offers
