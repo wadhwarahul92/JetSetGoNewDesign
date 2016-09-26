@@ -185,9 +185,10 @@ BEGIN
               search_activity[:start_at]
           ).in_hours.to_f
 
-          stay_time = (stay_time - 5) if stay_time > 4
+          # stay_time = (stay_time - 5) if stay_time > 4
 
-          if stay_time > 4 && stay_time < 48
+          # if stay_time > 4 && stay_time < 48
+          if stay_time > 4
 
             nights = (stay_time.to_i / 24) + 1
 
