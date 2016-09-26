@@ -176,30 +176,30 @@ BEGIN
       if previous_leg.present?
 
         # if search_activity.departure_airport == airport_for_id(previous_leg.last[:arrival_airport_id])
-        # unless search_activity.departure_airport_id == aircraft.base_airport_id
-        #
-        #   accommodation_plan = nil
-        #
-        #   stay_time = TimeDifference.between(
-        #       previous_leg.last[:end_at],
-        #       search_activity[:start_at]
-        #   ).in_hours.to_f
-        #
-        #   stay_time = (stay_time - 5) if stay_time > 4
-        #
-        #   if stay_time > 4 && stay_time < 48
-        #
-        #     nights = (stay_time.to_i / 24) + 1
-        #
-        #     accommodation_plan = {
-        #         nights:  nights,
-        #         cost: accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
-        #     }
-        #
-        #     plan.last.merge!(accommodation_leg: accommodation_plan)
-        #
-        #   end
-        #
+        unless search_activity.departure_airport_id == aircraft.base_airport_id
+
+          accommodation_plan = nil
+
+          stay_time = TimeDifference.between(
+              previous_leg.last[:end_at],
+              search_activity[:start_at]
+          ).in_hours.to_f
+
+          stay_time = (stay_time - 5) if stay_time > 4
+
+          if stay_time > 4 && stay_time < 48
+
+            nights = (stay_time.to_i / 24) + 1
+
+            accommodation_plan = {
+                nights:  nights,
+                cost: accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
+            }
+
+            plan.last.merge!(accommodation_leg: accommodation_plan)
+
+          end
+
         #   if stay_time > 48
         #     plan << {
         #         pax: 0,
@@ -241,88 +241,88 @@ BEGIN
         #         )[:diff]
         #     }
         #   end
-        # end
+        end
 
         # ================
-        unless search_activity.departure_airport_id == aircraft.base_airport_id
-
-          accommodation_plan = nil
-
-          stay_time = TimeDifference.between(
-              previous_leg.last[:end_at],
-              search_activity[:start_at]
-          ).in_hours.to_f
-
-
-
-
-          nights = (stay_time.to_i / 24) + 1
-          accommodationCost = accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
-
-          accommodationCost = (accommodationCost + ((aircraft.per_hour_cost*2) * nights)) if stay_time > 24
-
-          emptyLegPlanCost = calculate_empty_leg_plan_cost(aircraft, previous_leg, search_activity)
-
-          if accommodationCost > emptyLegPlanCost
-            is_aircraft_return = true
-          else
-            is_aircraft_return = false
-          end
-
-          if stay_time > 4 && !is_aircraft_return
-
-
-            accommodation_plan = {
-                nights:  nights,
-                cost: accommodationCost
-            }
-
-            plan.last.merge!(accommodation_leg: accommodation_plan)
-
-          end
-
-          if is_aircraft_return
-            plan << {
-                pax: 0,
-                departure_airport_id: previous_leg.last[:arrival_airport_id],
-                arrival_airport_id: aircraft.base_airport_id,
-                flight_type: 'empty_leg',
-                start_at: previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
-                end_at: previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)),
-                landing_cost_at_arrival: base_airport(aircraft).landing_cost,
-                handling_cost_at_takeoff: get_handling_cost(aircraft, base_airport(aircraft)),
-                watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)))[0],
-                watch_hour_cost: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)))[1],
-                notam_at_arrival: (airport_has_notam(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))) or airport_has_notam(previous_leg.last[:arrival_airport_id], previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME)),
-                flight_cost: flight_cost_for_aircraft(aircraft,
-                                                      previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
-                                                      previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))),
-                flight_time: Time.diff(
-                    previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
-                    previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))
-                )[:diff]
-            }
-            plan << {
-                pax: 0,
-                departure_airport_id: aircraft.base_airport_id,
-                arrival_airport_id: search_activity.departure_airport.id,
-                flight_type: 'empty_leg',
-                start_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), search_activity.departure_airport),
-                end_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
-                landing_cost_at_arrival: search_activity.departure_airport.landing_cost,
-                handling_cost_at_takeoff: get_handling_cost(aircraft, search_activity.arrival_airport),
-                watch_hour_at_arrival: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
-                watch_hour_cost: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
-                notam_at_arrival: (airport_has_notam(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME) or airport_has_notam(aircraft.base_airport_id, search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), search_activity.departure_airport))),
-                flight_cost: flight_cost_for_aircraft(aircraft,
-                                                      previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])), previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
-                flight_time: Time.diff(
-                    previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])),
-                    previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
-                )[:diff]
-            }
-          end
-        end
+        # unless search_activity.departure_airport_id == aircraft.base_airport_id
+        #
+        #   accommodation_plan = nil
+        #
+        #   stay_time = TimeDifference.between(
+        #       previous_leg.last[:end_at],
+        #       search_activity[:start_at]
+        #   ).in_hours.to_f
+        #
+        #
+        #
+        #
+        #   nights = (stay_time.to_i / 24) + 1
+        #   accommodationCost = accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
+        #
+        #   accommodationCost = (accommodationCost + ((aircraft.per_hour_cost*2) * nights)) if stay_time > 24
+        #
+        #   emptyLegPlanCost = calculate_empty_leg_plan_cost(aircraft, previous_leg, search_activity)
+        #
+        #   if accommodationCost > emptyLegPlanCost
+        #     is_aircraft_return = true
+        #   else
+        #     is_aircraft_return = false
+        #   end
+        #
+        #   if stay_time > 4 && !is_aircraft_return
+        #
+        #
+        #     accommodation_plan = {
+        #         nights:  nights,
+        #         cost: accommodationCost
+        #     }
+        #
+        #     plan.last.merge!(accommodation_leg: accommodation_plan)
+        #
+        #   end
+        #
+        #   if is_aircraft_return
+        #     plan << {
+        #         pax: 0,
+        #         departure_airport_id: previous_leg.last[:arrival_airport_id],
+        #         arrival_airport_id: aircraft.base_airport_id,
+        #         flight_type: 'empty_leg',
+        #         start_at: previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+        #         end_at: previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)),
+        #         landing_cost_at_arrival: base_airport(aircraft).landing_cost,
+        #         handling_cost_at_takeoff: get_handling_cost(aircraft, base_airport(aircraft)),
+        #         watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)))[0],
+        #         watch_hour_cost: airport_has_watch_hour(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)))[1],
+        #         notam_at_arrival: (airport_has_notam(aircraft.base_airport_id, plan.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))) or airport_has_notam(previous_leg.last[:arrival_airport_id], previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME)),
+        #         flight_cost: flight_cost_for_aircraft(aircraft,
+        #                                               previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+        #                                               previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))),
+        #         flight_time: Time.diff(
+        #             previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+        #             previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft))
+        #         )[:diff]
+        #     }
+        #     plan << {
+        #         pax: 0,
+        #         departure_airport_id: aircraft.base_airport_id,
+        #         arrival_airport_id: search_activity.departure_airport.id,
+        #         flight_type: 'empty_leg',
+        #         start_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), search_activity.departure_airport),
+        #         end_at: search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME,
+        #         landing_cost_at_arrival: search_activity.departure_airport.landing_cost,
+        #         handling_cost_at_takeoff: get_handling_cost(aircraft, search_activity.arrival_airport),
+        #         watch_hour_at_arrival: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
+        #         watch_hour_cost: airport_has_watch_hour(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
+        #         notam_at_arrival: (airport_has_notam(search_activity.departure_airport.id, previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME) or airport_has_notam(aircraft.base_airport_id, search_activity.start_at - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), search_activity.departure_airport))),
+        #         flight_cost: flight_cost_for_aircraft(aircraft,
+        #                                               previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])), previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+        #         flight_time: Time.diff(
+        #             previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, search_activity.departure_airport,  airport_for_id(previous_leg.last[:arrival_airport_id])),
+        #             previous_leg.last[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+        #         )[:diff]
+        #     }
+        #   end
+        # end
         # ================
       end
 
