@@ -321,6 +321,15 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-xs-7">
+              <h4>Sub Total</h4>
+            </div>
+            <div class="col-xs-5">
+              <p class="text-right">₹ {{ctrl.trip.subTotal | currency:"":2 | indianCurrency}}</p>
+            </div>
+          </div>
           <div class="cost-con" ng-show="ctrl.trip.is_miscellaneous_expenses">
             <div class="row">
               <div class="col-sm-6">
@@ -329,11 +338,6 @@
               <div class="col-sm-6 text-right">
                 <p><i class="fa fa-rupee"></i> {{ctrl.trip.miscellaneous_expenses | currency:"":2 | indianCurrency}}</p>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <h4>Sub Total</h4>
             </div>
           </div>
           <div class="cost-con" ng-repeat="tax in ctrl.trip.taxBreakup">
