@@ -114,6 +114,9 @@ BEGIN
       # next if aircraft_has_trip(aircraft)
 
       flight_plan_ = flight_plan(aircraft)
+
+      actual_flight_plan = empty_calculate_miscellaneous(flight_plan(aircraft),aircraft)
+
       @results << {
           # aircraft: aircraft,
           aircraft_id: aircraft.id,
@@ -127,8 +130,9 @@ BEGIN
           # aircraft_tail_number: aircraft.tail_number,
           # aircraft_image: aircraft.image.url(:original),
           # aircraft_interior_image: aircraft.interior.url(:original),
-          flight_plan: flight_plan_,
-          miscellaneous_cost: cost_calculate_miscellaneous(flight_plan_, aircraft)
+          flight_plan:  actual_flight_plan,
+          miscellaneous_cost: cost_calculate_miscellaneous(actual_flight_plan, aircraft)
+
 
       }
 
@@ -951,7 +955,6 @@ BEGIN
       is_override_activity = true if x
     end
     @results.pop if is_override_activity
-
   end
 
   def calculate_empty_leg_plan_cost(aircraft, previous_leg, search_activity)
@@ -961,7 +964,6 @@ BEGIN
     flight_cost_for_base =  flight_cost_for_aircraft(aircraft,
                                                     previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
                                                     previous_leg.last[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_leg.last[:arrival_airport_id]), base_airport(aircraft)))
-
 
     landing_cost_at_user_departure = search_activity.departure_airport.landing_cost
     handling_cost_at_user_arrival = get_handling_cost(aircraft, search_activity.arrival_airport)
@@ -974,65 +976,243 @@ BEGIN
     cost
   end
 
-
-
-  def cost_calculate_miscellaneous(flight_plan, aircraft)
-    cost = 0
-
+  def empty_calculate_miscellaneous(flight_plan, aircraft)
     totalFlyingTime = 0
-
+    flight_plan_internal = []
     for plan in  flight_plan
       totalFlyingTime += totalSecondINString(plan[:flight_time])
     end
-
     totalDaysOccupied = time_in_days(flight_plan.first[:start_at],flight_plan.last[:end_at])
 
-    if aircraft.id == 332
-      aircraft.id
+    totalFlyingSeconds_Minimum = totalDaysOccupied*2*60*60
+    if(totalFlyingTime < (totalFlyingSeconds_Minimum - 3600) ) # 1 hr less is for avoiding the empty leg for last 1 hr . as empty leg will be done for 1 hr min for both the legs to and fro minimum.
+      plans = []
+      isIncrement =  false
+
+      incrementedTime = 0
+      flight_plan.each_with_index do |plan, index|
+        plans << plan
+        if plan[:accommodation_leg].present?
+          if plan[:accommodation_leg].present? and plan[:flight_type] == 'user_search'
+            starting_day_For_Idle = plan[:end_at].end_of_day + 1.seconds
+            ending_day_for_Idle = flight_plan[index+1][:start_at].beginning_of_day
+            idle_days = 0
+            if starting_day_For_Idle < ending_day_for_Idle
+              idle_days  = TimeDifference.between(starting_day_For_Idle, ending_day_for_Idle).in_hours.to_i/24
+            end
+            if idle_days > 0
+              time_diff = Time.diff(plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME, plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(plan[:arrival_airport_id]), base_airport(aircraft)))[:diff]
+              total_empty_leg_time_in_seconds = 0
+              total_empty_leg_time_in_seconds = time_diff.split(':')[0].to_i*60*60
+              total_empty_leg_time_in_seconds += time_diff.split(':')[1].to_i*60
+              total_empty_leg_time_in_seconds += time_diff.split(':')[2].to_i
+              # if total_empty_leg_time_in_seconds < idle_days*2*60*60
+              if total_empty_leg_time_in_seconds < (totalFlyingSeconds_Minimum - totalFlyingTime - 3600)
+                plan_internal = generate_empty_leg(aircraft, plan, flight_plan[index+1])
+                plans.last[:accommodation_leg] = nil
+
+
+                newTimeIncrease = 0
+                newTimeIncrease += totalSecondINString(plan_internal[0][:flight_time])
+                newTimeIncrease += totalSecondINString(plan_internal[1][:flight_time])
+
+
+                # if newTimeIncrease < (totalFlyingSeconds_Minimum - totalFlyingTime - 3600)
+                  for plan_ in plan_internal
+                    plans << plan_
+                  end
+                  isIncrement =  true
+                # end
+
+                flight_plan.each_with_index do |plan, index2|
+                  next if index2 <= index
+                  plans << plan
+                end
+                break
+              end
+            end
+
+            #   {
+            #
+            #
+            #
+            #  if plan[:arrival_airport_id] to airport[:base_airport_id] flight_time *2 <  time_difference_in_days*2
+            #
+            #    # create empty leg plan
+            #    # Put the empty leg plan between current plan and previous leg
+            #    # remove the accomation cost from current Plan
+            #
+            #
+            #    number_of_days_occupied = [ flight_plan all dates including accomation dates ]
+            #
+            #
+            #  end
+            #
+            #
+            #
+            #
+            #
+            #   }
+            # end
+
+          end
+        end
+      end
+      flight_plan_internal = plans
+      if isIncrement
+        empty_calculate_miscellaneous(flight_plan_internal,aircraft)
+      end
+    else
+      # do nothing
+      flight_plan_internal  = flight_plan
+      # flight_plan_internal << planplans.last[:accommodation_leg] = nil
     end
 
+
+
+
+    flight_plan_internal
+  end
+
+  def cost_calculate_miscellaneous(flight_plan, aircraft)
+    cost = 0
+    totalFlyingTime = 0
+    totalDaysOccupied = 0
+    total_dates = []
+
+
+    is_prev_accomodation =  false
+    prevEndDate = nil
+
+    for plan in flight_plan
+      totalFlyingTime += totalSecondINString(plan[:flight_time])
+      total_dates << plan[:start_at].beginning_of_day
+      total_dates << plan[:end_at].beginning_of_day
+      if is_prev_accomodation
+        tilldate = plan[:start_at].beginning_of_day
+        dayDiffernce = time_in_days(prevEndDate,tilldate)
+        incrementedDays = 0
+        dayDiffernce.times do
+          total_dates << prevEndDate+incrementedDays.days
+          incrementedDays +=1
+        end
+      end
+
+      if plan[:accommodation_leg].present?
+        is_prev_accomodation = true
+        prevEndDate = plan[:end_at].beginning_of_day
+      else
+        is_prev_accomodation = false
+      end
+    end
+
+    total_dates = total_dates.uniq
+
+    # unique count will be the number of days
+    totalDaysOccupied = total_dates.count
     totalFlyingSeconds_Minimum = totalDaysOccupied*2*60*60
 
-    if(totalFlyingTime < totalFlyingSeconds_Minimum)
-      cost =  aircraft.per_hour_cost * (totalFlyingSeconds_Minimum - totalFlyingTime)/3600
-    else
-      cost
+    if((totalFlyingSeconds_Minimum - totalFlyingTime) > 0)
+      cost = ((totalFlyingSeconds_Minimum - totalFlyingTime)/3600.to_f)*aircraft.per_hour_cost
     end
+
     cost
   end
 
   def time_in_days(start_at, end_at)
-
     daysOcuupied = 1
-
-
     date_Increment =  start_at.beginning_of_day
-
     end_date_beginning = end_at.beginning_of_day
-    for day in [0...1000]
-
+    300.times do
       date_Increment = date_Increment + 1.days
-      if(date_Increment.day <= end_date_beginning.day)
+
+      # todo create function for compaire date
+      if(date_Increment <= end_date_beginning)
         daysOcuupied += 1
       else
         break
       end
-
     end
-
     daysOcuupied
-
   end
-
 
   def totalSecondINString(string)
-
     totalSecondsOfFly = 0
-
     totalSecondsOfFly = ((string.split(':')[0].to_i*60*60) + (string.split(':')[1].to_i*60) + (string.split(':')[2].to_i))
-
-    totalSecondsOfFly
+    totalSecondsOfFly.to_i
   end
 
+  def manipulate_middle_plan(flight_plan)
+    plans = []
+    flight_plan.each_with_index do |plan, index|
+      if plan[:accommodation_leg].present? and plan[:flight_type] == 'user_search'
+        staytime_ = TimeDifference.between(plans.last[:end_at], flight_plan[index+1][:start_at]).in_hours.to_f
+      end
+      plans << plan
+    end
+    plans
+  end
+
+  def generate_empty_leg(aircraft, previous_plan, next_plan)
+    tmp_plan = []
+    tmp_plan << {
+        pax: 0,
+        departure_airport_id: previous_plan[:arrival_airport_id],
+        arrival_airport_id: aircraft.base_airport_id,
+        flight_type: 'empty_leg',
+        start_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+        end_at: previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_plan[:arrival_airport_id]), base_airport(aircraft)),
+        landing_cost_at_arrival: base_airport(aircraft).landing_cost,
+        handling_cost_at_takeoff: get_handling_cost(aircraft, base_airport(aircraft)),
+        watch_hour_at_arrival: airport_has_watch_hour(aircraft.base_airport_id, previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_plan[:arrival_airport_id]), base_airport(aircraft)))[0],
+        watch_hour_cost: 0.0,
+        notam_at_arrival: (airport_has_notam(aircraft.base_airport_id, next_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_plan[:arrival_airport_id]), base_airport(aircraft))) or airport_has_notam(previous_plan[:arrival_airport_id], previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME)),
+        flight_cost: flight_cost_for_aircraft(aircraft,
+                                              previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+                                              previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_plan[:arrival_airport_id]), base_airport(aircraft))),
+        flight_time: Time.diff(
+            previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME,
+            previous_plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(previous_plan[:arrival_airport_id]), base_airport(aircraft))
+        )[:diff]
+    }
+    tmp_plan << {
+        pax: 0,
+        departure_airport_id: aircraft.base_airport_id,
+        arrival_airport_id: next_plan[:departure_airport_id],
+        flight_type: 'empty_leg',
+        start_at: next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft),airport_for_id(next_plan[:departure_airport_id])),
+        end_at: next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
+        landing_cost_at_arrival: airport_for_id(next_plan[:departure_airport_id]).landing_cost,
+        handling_cost_at_takeoff: get_handling_cost(aircraft, airport_for_id(next_plan[:arrival_airport_id])),
+        watch_hour_at_arrival: airport_has_watch_hour(next_plan[:departure_airport_id], previous_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
+        watch_hour_cost: airport_has_watch_hour(next_plan[:departure_airport_id], previous_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
+        notam_at_arrival: (airport_has_notam(next_plan[:departure_airport_id], previous_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME) or airport_has_notam(aircraft.base_airport_id, next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft), airport_for_id(next_plan[:departure_airport_id])))),
+        flight_cost: flight_cost_for_aircraft(aircraft,next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, base_airport(aircraft),airport_for_id(next_plan[:departure_airport_id])), next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+        flight_time: Time.diff(
+            next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, airport_for_id(next_plan[:departure_airport_id]), base_airport(aircraft)),
+            next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+        )[:diff]
+    }
+
+    # {
+    #     pax: 0,
+    #     departure_airport_id: arrival_airport.id,
+    #     arrival_airport_id: departure_airport.id,
+    #     flight_type: 'empty_leg',
+    #     start_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
+    #     end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
+    #     landing_cost_at_arrival: departure_airport.landing_cost,
+    #     handling_cost_at_takeoff: get_handling_cost(aircraft, arrival_airport),
+    #     watch_hour_at_arrival: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
+    #     watch_hour_cost: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
+    #     notam_at_arrival: airport_has_notam(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+    #     flight_cost: flight_cost_for_aircraft(aircraft, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport), plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
+    #     flight_time: Time.diff(
+    #         plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
+    #         plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
+    #     )[:diff]
+    # }
+    tmp_plan
+  end
 
 end
