@@ -113,7 +113,7 @@ BEGIN
 
       # next if aircraft_has_trip(aircraft)
 
-      flight_plan_ = flight_plan(aircraft)
+      # flight_plan_ = flight_plan(aircraft)
 
       actual_flight_plan = empty_calculate_miscellaneous(flight_plan(aircraft),aircraft)
 
@@ -999,7 +999,7 @@ BEGIN
       plans = []
       isIncrement =  false
 
-      incrementedTime = 0
+      # incrementedTime = 0
       flight_plan.each_with_index do |plan, index|
         plans << plan
         if plan[:accommodation_leg].present?
@@ -1021,11 +1021,9 @@ BEGIN
                 plan_internal = generate_empty_leg(aircraft, plan, flight_plan[index+1])
                 plans.last[:accommodation_leg] = nil
 
-
                 newTimeIncrease = 0
                 newTimeIncrease += totalSecondINString(plan_internal[0][:flight_time])
                 newTimeIncrease += totalSecondINString(plan_internal[1][:flight_time])
-
 
                 # if newTimeIncrease < (totalFlyingSeconds_Minimum - totalFlyingTime - 3600)
                   for plan_ in plan_internal
@@ -1041,30 +1039,6 @@ BEGIN
                 break
               end
             end
-
-            #   {
-            #
-            #
-            #
-            #  if plan[:arrival_airport_id] to airport[:base_airport_id] flight_time *2 <  time_difference_in_days*2
-            #
-            #    # create empty leg plan
-            #    # Put the empty leg plan between current plan and previous leg
-            #    # remove the accomation cost from current Plan
-            #
-            #
-            #    number_of_days_occupied = [ flight_plan all dates including accomation dates ]
-            #
-            #
-            #  end
-            #
-            #
-            #
-            #
-            #
-            #   }
-            # end
-
           end
         end
       end
@@ -1073,14 +1047,8 @@ BEGIN
         empty_calculate_miscellaneous(flight_plan_internal,aircraft)
       end
     else
-      # do nothing
       flight_plan_internal  = flight_plan
-      # flight_plan_internal << planplans.last[:accommodation_leg] = nil
     end
-
-
-
-
     flight_plan_internal
   end
 
@@ -1152,16 +1120,16 @@ BEGIN
     totalSecondsOfFly.to_i
   end
 
-  def manipulate_middle_plan(flight_plan)
-    plans = []
-    flight_plan.each_with_index do |plan, index|
-      if plan[:accommodation_leg].present? and plan[:flight_type] == 'user_search'
-        staytime_ = TimeDifference.between(plans.last[:end_at], flight_plan[index+1][:start_at]).in_hours.to_f
-      end
-      plans << plan
-    end
-    plans
-  end
+  # def manipulate_middle_plan(flight_plan)
+  #   plans = []
+  #   flight_plan.each_with_index do |plan, index|
+  #     if plan[:accommodation_leg].present? and plan[:flight_type] == 'user_search'
+  #       staytime_ = TimeDifference.between(plans.last[:end_at], flight_plan[index+1][:start_at]).in_hours.to_f
+  #     end
+  #     plans << plan
+  #   end
+  #   plans
+  # end
 
   def generate_empty_leg(aircraft, previous_plan, next_plan)
     tmp_plan = []
@@ -1203,25 +1171,6 @@ BEGIN
             next_plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
         )[:diff]
     }
-
-    # {
-    #     pax: 0,
-    #     departure_airport_id: arrival_airport.id,
-    #     arrival_airport_id: departure_airport.id,
-    #     flight_type: 'empty_leg',
-    #     start_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
-    #     end_at: plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME,
-    #     landing_cost_at_arrival: departure_airport.landing_cost,
-    #     handling_cost_at_takeoff: get_handling_cost(aircraft, arrival_airport),
-    #     watch_hour_at_arrival: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[0],
-    #     watch_hour_cost: airport_has_watch_hour(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME)[1],
-    #     notam_at_arrival: airport_has_notam(departure_airport.id, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
-    #     flight_cost: flight_cost_for_aircraft(aircraft, plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport), plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME),
-    #     flight_time: Time.diff(
-    #         plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME - flight_time_in_hours(aircraft, arrival_airport, departure_airport),
-    #         plan[:start_at] - CONTINUOUS_FLIGHT_DELTA_TIME
-    #     )[:diff]
-    # }
     tmp_plan
   end
 

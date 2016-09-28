@@ -14,7 +14,6 @@
           <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
         </p>
         <p class="city-name"><b>{{ctrl.airportForId(flight_plan.departure_airport_id).city.name}}</b></p>
-        <p class="city-name"><b>{{ctrl.airportForId(flight_plan.departure_airport_id).name}}</b></p>
         <p class="time-con">{{ctrl.formatTime2(flight_plan.start_at).split(',')[1]}}</p>
         <p class="date-con">{{ctrl.formatTime(flight_plan.start_at).split(',')[0]}}</p>
       </div>
@@ -30,7 +29,6 @@
           <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672'}}" alt="">
         </p>
         <p class="city-name"><b>{{ctrl.airportForId(flight_plan.arrival_airport_id).city.name}}</b></p>
-        <p class="city-name"><b>{{ctrl.airportForId(flight_plan.arrival_airport_id).name}}</b></p>
         <p class="time-con">{{ctrl.formatTime2(flight_plan.end_at).split(',')[1]}}</p>
         <p class="date-con">{{ctrl.formatTime(flight_plan.end_at).split(',')[0]}}</p>
       </div>
@@ -165,6 +163,16 @@
               </div>
             </div>
           </div>
+          <div class="cost-con" ng-show="result.is_miscellaneous_expenses">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Miscellaneous Expenses</p>
+              </div>
+              <div class="col-xs-5">
+                <p class="text-right">₹ {{result.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
+              </div>
+            </div>
+          </div>
 
           <!--</div>-->
           <div class="cost-con">
@@ -174,16 +182,6 @@
               </div>
               <div class="col-xs-5">
                 <p class="text-right">₹ {{result.subTotal | currency:"":2 | indianCurrency}}</p>
-              </div>
-            </div>
-          </div>
-          <div class="cost-con" ng-show="result.is_miscellaneous_expenses">
-            <div class="row">
-              <div class="col-xs-7">
-                <p>Miscellaneous Expenses</p>
-              </div>
-              <div class="col-xs-5">
-                <p class="text-right">₹ {{result.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
               </div>
             </div>
           </div>
