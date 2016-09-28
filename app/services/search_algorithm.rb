@@ -998,7 +998,7 @@ BEGIN
             ending_day_for_Idle = flight_plan[index+1][:start_at].beginning_of_day
             idle_days = 0
             if starting_day_For_Idle < ending_day_for_Idle
-              idle_days  = TimeDifference.between(starting_day_For_Idle, ending_day_for_Idle).in_hours.to_i/24
+              idle_days  = 1 + TimeDifference.between(starting_day_For_Idle, ending_day_for_Idle).in_hours.to_i/24
             end
             if idle_days > 0
               time_diff = Time.diff(plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME, plan[:end_at] + CONTINUOUS_FLIGHT_DELTA_TIME + flight_time_in_hours(aircraft, airport_for_id(plan[:arrival_airport_id]), base_airport(aircraft)))[:diff]
@@ -1007,7 +1007,7 @@ BEGIN
               total_empty_leg_time_in_seconds += time_diff.split(':')[1].to_i*60
               total_empty_leg_time_in_seconds += time_diff.split(':')[2].to_i
               # if total_empty_leg_time_in_seconds < idle_days*2*60*60
-              if total_empty_leg_time_in_seconds < (totalFlyingSeconds_Minimum - totalFlyingTime - 3600)
+              if total_empty_leg_time_in_seconds < (totalFlyingSeconds_Minimum - totalFlyingTime )
                 plan_internal = generate_empty_leg(aircraft, plan, flight_plan[index+1])
                 plans.last[:accommodation_leg] = nil
 
