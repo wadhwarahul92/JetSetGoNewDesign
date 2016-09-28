@@ -1,7 +1,7 @@
 class MediaContentsController < ApplicationController
 
   def index
-    @media_contents = MediaContent.all.order('created_at desc')
+    @media_contents = MediaContent.all.order('order_number asc')
   end
 
 end

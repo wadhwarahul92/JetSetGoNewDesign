@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927115530) do
+ActiveRecord::Schema.define(version: 20160928074838) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -323,6 +323,7 @@ ActiveRecord::Schema.define(version: 20160927115530) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "order_number", limit: 4
   end
 
   create_table "media_contents", force: :cascade do |t|

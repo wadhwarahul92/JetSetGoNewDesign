@@ -17,6 +17,7 @@
         <th>Description</th>
         <th>Image URL</th>
         <th>Redirect URL</th>
+        <th>Order No</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -28,6 +29,7 @@
             <td><%= media_content.description %></td>
             <td><%= media_content.image_url %></td>
             <td><%= media_content.redirect_url %></td>
+            <td><%= media_content.order_number %></td>
             <td>
               <%= link_to edit_admin_media_content_path(media_content) do %>
                   <i class="fa fa-edit"></i>
