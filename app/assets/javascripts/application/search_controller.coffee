@@ -542,7 +542,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
         result.total_accommodation_nights += plan.accommodation_leg.nights
       if plan.watch_hour_at_arrival
         result.set_watch_hour  = true
-    result.total_flight_cost = (result.total_flight_cost + (result.total_flight_cost * (result.aircraft.flight_cost_commission_in_percentage/100)))
+    result.total_flight_cost = ((result.total_flight_cost) + (result.total_flight_cost * (result.aircraft.flight_cost_commission_in_percentage/100)))
     result.total_handling_cost = (result.total_handling_cost + (result.total_handling_cost * (result.aircraft.handling_cost_commission_in_percentage/100)))
     result.total_accommodation_cost = (result.total_accommodation_cost + (result.total_accommodation_cost * (result.aircraft.accomodation_cost_commission_in_percentage/100)))
 

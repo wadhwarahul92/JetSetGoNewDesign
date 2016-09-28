@@ -8,9 +8,10 @@ jetsetgo_app.factory 'AircraftCategoriesService', ['$http', 'notify', ($http, no
     promise = $http.get('/aircraft_categories.json')
     promise.success(
       (data)->
-        if data and data[0]
-          for aircraft_category in data
-            serviceInstance.aircraft_categories.push aircraft_category
+        if serviceInstance.aircraft_categories.length < 1
+          if data and data[0]
+            for aircraft_category in data
+              serviceInstance.aircraft_categories.push aircraft_category
     ).error(
       ->
         notify

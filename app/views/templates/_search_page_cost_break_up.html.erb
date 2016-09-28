@@ -78,7 +78,7 @@
                 <div class="col-xs-5 text-right">
                   <!--<p>₹ {{ctrl.include_commission(flight_plan.flight_cost) | currency:"":0 | indianCurrency }}</p>-->
                   <!--<p>₹ {{ctrl.aircraft_flight_cost_commission_in_percentage(flight_plan.flight_cost, result.aircraft.flight_cost_commission_in_percentage) | currency:"":0 | indianCurrency }}</p>-->
-                  <p>₹ {{ result.total_flight_cost | currency:"":0 | indianCurrency }}</p>
+                  <p>₹ {{ result.total_flight_cost | currency:"":2 | indianCurrency }}</p>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
                   <p>Handling Charges</p>
                 </div>
                 <div class="col-xs-5">
-                  <p class="text-right">₹ {{result.total_handling_cost | currency:"":0 | indianCurrency}}</p>
+                  <p class="text-right">₹ {{result.total_handling_cost | currency:"":2 | indianCurrency}}</p>
                 </div>
               </div>
             </div>
@@ -159,16 +159,7 @@
                 <p>Cost</p>
               </div>
               <div class="col-xs-5 text-right" >
-                <p>₹ {{ result.total_accommodation_cost | currency:"":0 | indianCurrency }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!--</div>-->
-          <div class="cost-con">
-            <div class="row">
-              <div class="col-xs-12">
-                <h4>Sub Total</h4>
+                <p>₹ {{ result.total_accommodation_cost | currency:"":2 | indianCurrency }}</p>
               </div>
             </div>
           </div>
@@ -179,6 +170,18 @@
               </div>
               <div class="col-xs-5">
                 <p class="text-right">₹ {{result.miscellaneous_expenses_amount | currency:"":2 | indianCurrency}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!--</div>-->
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-xs-7">
+                <h4>Sub Total</h4>
+              </div>
+              <div class="col-xs-5">
+                <p class="text-right">₹ {{result.subTotal | currency:"":2 | indianCurrency}}</p>
               </div>
             </div>
           </div>
