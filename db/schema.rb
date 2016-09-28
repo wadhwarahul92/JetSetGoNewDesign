@@ -323,7 +323,6 @@ ActiveRecord::Schema.define(version: 20160928074838) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "order_number", limit: 4
   end
 
   create_table "media_contents", force: :cascade do |t|
@@ -334,6 +333,7 @@ ActiveRecord::Schema.define(version: 20160928074838) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.datetime "deleted_at"
+    t.integer  "order_number", limit: 4
   end
 
   create_table "notams", force: :cascade do |t|
