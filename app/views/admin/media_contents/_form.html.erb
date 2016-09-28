@@ -6,7 +6,7 @@
         <%= f.input :description %>
         <%= f.input :image_url %>
         <%= f.input :redirect_url %>
-
+        <%= f.input :order_number unless params[:action] == 'new'%>
         <%= f.submit 'Save', class: 'btn btn-success ' %>
       </div>
       <div class="col-sm-6">

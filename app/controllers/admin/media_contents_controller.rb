@@ -5,7 +5,7 @@ class Admin::MediaContentsController < Admin::BaseController
   before_action :set_media_content, only: [:edit, :update, :destroy]
 
   def index
-    @media_contents = MediaContent.all
+    @media_contents = MediaContent.all.order('order_number asc')
   end
 
   def new
@@ -13,7 +13,8 @@ class Admin::MediaContentsController < Admin::BaseController
   end
 
   def create
-    @media_content = MediaContent.new(media_content_params)
+    order = MediaContent.maximum(:order_number).present? ? MediaContent.maximum(:order_number) + 1 : 1
+    @media_content = MediaContent.new(media_content_params.merge(order_number: order))
     if @media_content.save
       flash[:success] = 'Successfully created.'
       redirect_to action: :index
@@ -49,6 +50,7 @@ class Admin::MediaContentsController < Admin::BaseController
   def media_content_params
     params.require(:media_content).permit(:one_liner,
                                           :description,
+                                          :order_number,
                                           :image_url,
                                           :redirect_url)
   end

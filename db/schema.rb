@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927115530) do
+ActiveRecord::Schema.define(version: 20160928074838) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -333,6 +333,7 @@ ActiveRecord::Schema.define(version: 20160927115530) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.datetime "deleted_at"
+    t.integer  "order_number", limit: 4
   end
 
   create_table "notams", force: :cascade do |t|
@@ -404,33 +405,6 @@ ActiveRecord::Schema.define(version: 20160927115530) do
     t.string   "billing_country",    limit: 255
     t.boolean  "is_jetsteal",                      default: false
     t.integer  "jetsteal_id",        limit: 4
-  end
-
-  create_table "pro_forma_invoices", force: :cascade do |t|
-    t.string   "client_name",             limit: 255
-    t.text     "client_address",          limit: 65535
-    t.date     "invoiced_on"
-    t.text     "itinerary_charges",       limit: 65535
-    t.string   "aircraft",                limit: 255
-    t.integer  "number_of_seats",         limit: 4,     default: 0
-    t.integer  "number_of_crews",         limit: 4,     default: 0
-    t.boolean  "catering_included"
-    t.integer  "accommodation_nights",    limit: 4,     default: 0
-    t.datetime "deleted_at"
-    t.datetime "created_at",                                                   null: false
-    t.datetime "updated_at",                                                   null: false
-    t.text     "miscellaneous_charges",   limit: 65535
-    t.float    "service_tax",             limit: 24,    default: 14.0
-    t.text     "handling_charges",        limit: 65535
-    t.float    "discount",                limit: 24
-    t.string   "discount_unit",           limit: 255,   default: "percentage"
-    t.text     "accommodation_charges",   limit: 65535
-    t.string   "special_discount_unit",   limit: 255,   default: "percentage"
-    t.float    "special_discount",        limit: 24
-    t.string   "other_tax_name",          limit: 255
-    t.float    "other_tax",               limit: 24,    default: 0.0
-    t.boolean  "show_itineraries_on_pdf",               default: true
-    t.float    "kkc",                     limit: 24,    default: 0.0
   end
 
   create_table "rpush_apps", force: :cascade do |t|
@@ -535,13 +509,6 @@ ActiveRecord::Schema.define(version: 20160927115530) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "terms_and_conditions", force: :cascade do |t|
-    t.text     "description",     limit: 65535
-    t.integer  "organisation_id", limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
   create_table "testimonials", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "text",       limit: 65535
@@ -605,7 +572,7 @@ ActiveRecord::Schema.define(version: 20160927115530) do
     t.datetime "dob"
     t.boolean  "sms_active",                             default: false
     t.integer  "enquiry_count",            limit: 4,     default: 0
-    t.datetime "last_enquired",                          default: '2016-09-16 09:00:20'
+    t.datetime "last_enquired",                          default: '2016-09-16 11:30:03'
     t.boolean  "is_allow",                               default: true
   end
 

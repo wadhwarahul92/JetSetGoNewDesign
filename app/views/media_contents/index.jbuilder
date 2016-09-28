@@ -5,5 +5,6 @@ json.array! @media_contents do |media_content|
   json.description media_content.description
   json.image_url media_content.image_url
   json.redirect_url media_content.redirect_url
+  json.order_number media_content.order_number
 
 end
