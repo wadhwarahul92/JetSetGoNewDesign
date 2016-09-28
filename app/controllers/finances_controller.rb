@@ -35,6 +35,7 @@ class FinancesController < ApplicationController
           arrival_airport: arrival_airport.city.name,
           flight_time_hour: hour_diff(plan[:start_at], plan[:end_at]),
           flight_time_min: min_diff(plan[:start_at], plan[:end_at]),
+          flight_time_sec: sec_diff(plan[:start_at], plan[:end_at]),
       }
 
       handling_charges << {
@@ -58,7 +59,7 @@ class FinancesController < ApplicationController
         accommodation_charges << {
             city: arrival_airport.city.name,
             number_of_crew: 3,
-            jsg_adjusted: plan['accommodation_leg'][:cost],
+            jsg_adjusted: plan['accommodation_leg'][:cost] + (plan['accommodation_leg'][:cost] * params[:result][:aircraft][:accomodation_cost_commission_in_percentage]/100.to_f),
             number_of_nights: plan['accommodation_leg'][:nights]
         }
       end
@@ -181,6 +182,14 @@ class FinancesController < ApplicationController
     end_at = DateTime.parse(end_at) if end_at.is_a?(String)
     hours = TimeDifference.between(start_at, end_at).in_hours
     decimal_part = hours.to_s.split('.')[1]
+    decimal_part.present? ? decimal_part.to_i : 0
+  end
+
+  def sec_diff(start_at, end_at)
+    start_at = DateTime.parse(start_at) if start_at.is_a?(String)
+    end_at = DateTime.parse(end_at) if end_at.is_a?(String)
+    hours = TimeDifference.between(start_at, end_at).in_hrs_mins_secs
+    decimal_part = hours.to_s.split('.')[2]
     decimal_part.present? ? decimal_part.to_i : 0
   end
 
