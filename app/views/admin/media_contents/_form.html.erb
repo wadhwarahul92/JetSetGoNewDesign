@@ -1,0 +1,16 @@
+<%= simple_form_for [:admin, @media_content] do |f| %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.error_notification %>
+        <%= f.input :one_liner %>
+        <%= f.input :description %>
+        <%= f.input :image_url %>
+        <%= f.input :redirect_url %>
+
+        <%= f.submit 'Save', class: 'btn btn-success ' %>
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+<%- end %>

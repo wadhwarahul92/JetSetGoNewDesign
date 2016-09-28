@@ -44,6 +44,7 @@
 //= require ./application/past_journeys_controller
 //= require ./application/enquired_jets_controller
 //= require ./application/offers_controller
+//= require ./application/media_controller
 //= require ./application/passenger_details_controller
 //= require ./application/detail_controller
 //= require ./application/sell_empty_leg_controller

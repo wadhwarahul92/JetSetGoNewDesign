@@ -14,6 +14,15 @@
     <div class="container">
       <h2>
         Press Releases
+        <br>
+        <div ng-repeat="media_content in ctrl.media">
+          {{media_content.id}} <br>
+          {{media_content.one_liner}} <br>
+          {{media_content.description}} <br>
+          {{media_content.image_url}} <br>
+          {{media_content.redirect_url}} <br>
+        </div>
+
         <!-- <span class="pull-right year-browse">
           Browse By Year 
           <select class="year-select">
