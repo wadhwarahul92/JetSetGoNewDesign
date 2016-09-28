@@ -511,9 +511,9 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       minutes += parseInt(plan.flight_time.split(':')[1])
       seconds += parseInt(plan.flight_time.split(':')[2])
 
-#    if seconds > 59
-#      minutes += parseInt(seconds/60)
-#      seconds = seconds % 60
+    if seconds > 59
+      minutes += parseInt(seconds/60)
+      seconds = seconds % 60
 
     if minutes > 59
       hours += parseInt(minutes/60)

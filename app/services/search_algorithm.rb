@@ -679,7 +679,9 @@ BEGIN
   def flight_cost_for_aircraft(aircraft, start_at, end_at)
     h = hour_diff(start_at, end_at)
     m = min_diff(start_at, end_at)
-    aircraft.per_hour_cost.to_f / 60 * ( h*60 + m )
+    s = sec_diff(start_at, end_at)
+    aircraft.per_hour_cost.to_f / 60 * ( h*60 + m + s/60 )
+    aircraft.per_hour_cost.to_f / 60 * (h.to_f*60 + m.to_f + s/60.to_f)
   end
 
   def hour_diff(start_at, end_at)
@@ -694,6 +696,14 @@ BEGIN
     end_at = DateTime.parse(end_at) if end_at.is_a?(String)
     hours = TimeDifference.between(start_at, end_at).in_hours
     decimal_part = hours.to_s.split('.')[1]
+    decimal_part.present? ? decimal_part.to_i : 0
+  end
+
+  def sec_diff(start_at, end_at)
+    start_at = DateTime.parse(start_at) if start_at.is_a?(String)
+    end_at = DateTime.parse(end_at) if end_at.is_a?(String)
+    hours = TimeDifference.between(start_at, end_at).in_hrs_mins_secs
+    decimal_part = hours.to_s.split('.')[2]
     decimal_part.present? ? decimal_part.to_i : 0
   end
 

@@ -13,6 +13,11 @@ class TimeDifference
       h[:diff]
     end
 
+    def in_hrs_mins_secs
+      h = Time.diff(@start_at, @end_at, '%h.%m.%s')
+      h[:diff]
+    end
+
   end
 
   class <<self
