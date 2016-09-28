@@ -60,6 +60,8 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     controllerAs: 'ctrl'
   }).when('/media', {
     templateUrl: '/templates/media'
+    controller: 'MediaController'
+    controllerAs: 'ctrl'
   }).when('/jet_setters', {
     templateUrl: '/templates/jet_setters'
   }).when('/contact_us', {

@@ -148,6 +148,8 @@ Rails.application.routes.draw do
 
     resources :cities
 
+    resources :media_contents
+
     resources :airports do
       collection do
         get 'edit_all'
@@ -370,6 +372,8 @@ Rails.application.routes.draw do
   end
 
   resources :yatra_enquiries
+
+  resources :media_contents
 
   resources :finances do
     collection do

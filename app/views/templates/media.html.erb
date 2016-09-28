@@ -23,6 +23,19 @@
         </span> -->
       </h2>
       <div class="media-content">
+        <div class="section" ng-repeat="media_content in ctrl.media">
+          <div class="row">
+            <div class="col-sm-3 col-xs-12">
+              <img class="img-responsive" src="" ng-src="{{media_content.image_url}}" alt="" />
+            </div>
+            <div class="col-sm-9 col-xs-12">
+              <p>{{media_content.description}}</p>
+              <p class="read-more">
+                <a href="" ng-href="{{media_content.redirect_url}}" target="_blank">Read More </a>
+              </p>
+            </div>
+          </div>
+        </div>
         <div class="section">
           <div class="row">
             <div class="col-sm-3 col-xs-12">
