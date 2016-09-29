@@ -8,7 +8,7 @@ jetsetgo_app.controller 'OurFleetController', ['$http', '$routeParams', 'Aircraf
 
   @aircraft_category = null
 
-  @id = 12
+  @id = $routeParams.id
 
   AircraftCategoriesService.getAircraftCategories().then(
     =>
