@@ -5,7 +5,7 @@ class AircraftsController < ApplicationController
   end
 
   def all_aircrafts
-    @aircrafts = Aircraft.all
+    @aircrafts = Aircraft.all.includes(:aircraft_images, :aircraft_type, :base_airport )
   end
 
 end
