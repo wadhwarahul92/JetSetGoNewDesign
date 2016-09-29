@@ -74,6 +74,12 @@ class Aircraft < ActiveRecord::Base
   has_attached_file :interior, styles: { size_400x400: '400x400'}
   validates_attachment_content_type :interior, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :specification_image
+  validates_attachment_content_type :specification_image, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :range_map_image
+  validates_attachment_content_type :range_map_image, content_type: /\Aimage\/.*\Z/
+
   def upcase_tail_number
     self.tail_number = self.tail_number.upcase if self.tail_number.present?
   end

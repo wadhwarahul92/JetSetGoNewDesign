@@ -328,6 +328,8 @@ Rails.application.routes.draw do
 
   get 'get_passenger_datails/:id' => 'welcome#get_passenger_datails'
 
+  get 'get_fleets/:id' => 'welcome#get_fleets'
+
   resources :templates do
     collection do
       get 'sign_in_modal'
