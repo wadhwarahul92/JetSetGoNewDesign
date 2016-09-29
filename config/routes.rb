@@ -330,6 +330,7 @@ Rails.application.routes.draw do
   get 'get_passenger_datails/:id' => 'welcome#get_passenger_datails'
 
   get 'get_fleets/:id' => 'welcome#get_fleets'
+  get 'our_fleet/:id' => 'welcome#our_fleet'
 
   resources :templates do
     collection do
@@ -426,7 +427,7 @@ Rails.application.routes.draw do
   get 'sell_empty_leg' => 'route_overrides#welcome_index'
   get 'requested_add_passenger' => 'route_overrides#welcome_index'
   get 'tmp_send_sms' => 'route_overrides#welcome_index'
-  get 'our_fleet' => 'route_overrides#welcome_index'
+  # get 'our_fleet' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'

@@ -142,6 +142,16 @@ class WelcomeController < ApplicationController
     @aircrafts = Aircraft.where(is_jsg_fleet: true,aircraft_type_id: aircraft_type_ids).includes(:aircraft_images, :aircraft_type, :base_airport )
   end
 
+  def our_fleet
+    if request.format == 'text/html'
+      render template: 'templates/our_fleet', layout: 'application'
+    elsif request.format == 'application/json'
+      aircraft_type_ids = AircraftType.where(aircraft_category_id: params[:id]).map(&:id)
+      @aircrafts = Aircraft.where(is_jsg_fleet: true,aircraft_type_id: aircraft_type_ids).includes(:aircraft_images, :aircraft_type, :base_airport )
+      render status: :ok
+    end
+  end
+
   private
 
   def user_params

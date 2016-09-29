@@ -18,7 +18,7 @@ jetsetgo_app.controller 'OurFleetController', ['$http', '$routeParams', 'Aircraf
   )
 
   #  $http.get("get_fleets/#{$routeParams.id}.json").success(
-  $http.get("get_fleets/#{@id}.json").success(
+  $http.get("our_fleet/#{@id}.json").success(
     (data)=>
       @aircrafts = data
     ).error(
@@ -30,7 +30,7 @@ jetsetgo_app.controller 'OurFleetController', ['$http', '$routeParams', 'Aircraf
   )
 
   @aircraftCategoryForId = (id)->
-    _.find(@aircraft_categories, {id: id})
+    _.find(@aircraft_categories,{id: parseInt(id)})
 
   return undefined
 ]
