@@ -105,7 +105,11 @@ class Admin::AircraftsController < Admin::BaseController
                                  :base_airport_id,
                                  :mtow,
                                  :image,
-                                 :interior
+                                 :interior,
+                                 :specification_image,
+                                 :range_map_image,
+                                 :one_liner,
+                                 :description
     )
   end
 

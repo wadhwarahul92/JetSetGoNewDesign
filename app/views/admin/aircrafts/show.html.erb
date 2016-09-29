@@ -15,25 +15,6 @@
         </fieldset>
     <%- end %>
 
-    <% if @aircraft.specification_image.present? %>
-        <%= image_tag @aircraft.specification_image.url(:original), style: 'width:100%' %>
-        <fieldset>
-          <legend><small>Aircraft specification image</small></legend>
-        </fieldset>
-    <%- end %>
-
-    <fieldset>
-      <legend><small>Add specification image</small></legend>
-      <%= render partial: 'admin/aircraft_images/form', locals: { aircraft: @aircraft, aircraft_image: @aircraft.aircraft_images.new } %>
-    </fieldset>
-
-    <% if @aircraft.range_map_image.present? %>
-        <%= image_tag @aircraft.range_map_image.url(:original), style: 'width:100%' %>
-        <fieldset>
-          <legend><small>Aircraft range map image</small></legend>
-        </fieldset>
-    <%- end %>
-
     <div class="row">
       <% @aircraft.aircraft_images.each do |aircraft_image| %>
       <div class="col-sm-12">

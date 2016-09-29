@@ -4,6 +4,8 @@
         <%= f.error_notification %>
         <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
         <%= f.input :tail_number %>
+        <%= f.input :one_liner %>
+        <%= f.input :description %>
         <%= f.input :mtow %>
         <%= f.input :year_of_manufacture %>
         <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
@@ -22,6 +24,20 @@
                 <%= image_tag f.object.interior.url(:size_400x400), style: 'width:100%' %>
             <%- end %>
             <%= f.input :interior, :label => "Interior image"%>
+          </div>
+
+          <div class="col-sm-6">
+            <% if f.object.specification_image.present? %>
+                <%= image_tag f.object.specification_image.url(:original), style: 'width:100%' %>
+            <%- end %>
+            <%= f.input :specification_image, :label => "Specification image"%>
+          </div>
+
+          <div class="col-sm-6">
+            <% if f.object.range_map_image.present? %>
+                <%= image_tag f.object.range_map_image.url(:original), style: 'width:100%' %>
+            <%- end %>
+            <%= f.input :range_map_image, :label => "Range map  image"%>
           </div>
         </div>
 
