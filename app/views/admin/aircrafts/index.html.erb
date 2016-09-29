@@ -20,6 +20,7 @@
         <th></th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -31,6 +32,18 @@
             <td><%= aircraft.organisation.name if aircraft.organisation %></td>
             <td><%= aircraft.creator.full_name if aircraft.creator %></td>
             <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
+
+            <td>
+              <% if aircraft.is_jsg_fleet? %>
+                  <span class="text-success">JSG Fleet</span>
+                  <%= link_to('Operator Fleet?', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: false), method: :put, class: 'btn btn-danger btn-xs') %>
+              <%- else %>
+                  <span class="text-danger">Operator Fleet</span>
+                  <%= link_to('JSG Fleet', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: true), method: :put, class: 'btn btn-success btn-xs') %>
+              <%- end %>
+            </td>
+
+
             <td>
               <% if aircraft.admin_verified? %>
                   <span class="text-success">Verified by admin</span>
