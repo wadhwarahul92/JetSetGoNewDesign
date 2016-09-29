@@ -69,10 +69,10 @@ class Admin::AircraftsController < Admin::BaseController
   def jsg_fleet
     if @aircraft.update_attribute(:is_jsg_fleet, params[:is_jsg_fleet])
       if params[:is_jsg_fleet] == 'true'
-        AdminMailer.aircraft_approved_by_admin(current_user, @aircraft).deliver_later
+        # AdminMailer.aircraft_approved_by_admin(current_user, @aircraft).deliver_later
         # OrganisationMailer.aircraft_approved_by_super_admin(@aircraft).deliver_later
       else
-        AdminMailer.aircraft_disapproved_by_admin(current_user, @aircraft).deliver_later
+        # AdminMailer.aircraft_disapproved_by_admin(current_user, @aircraft).deliver_later
         # OrganisationMailer.aircraft_disapproved_by_super_admin(@aircraft).deliver_later
       end
       redirect_to action: :index
