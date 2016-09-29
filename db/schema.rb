@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929074039) do
+ActiveRecord::Schema.define(version: 20160929101353) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "aircraft_id",              limit: 4
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20160929074039) do
     t.string   "range_map_image_content_type",               limit: 255
     t.integer  "range_map_image_file_size",                  limit: 4
     t.datetime "range_map_image_updated_at"
+    t.boolean  "is_jsg_fleet",                                             default: false
   end
 
   create_table "airport_categories", force: :cascade do |t|

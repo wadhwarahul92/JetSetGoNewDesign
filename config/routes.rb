@@ -191,6 +191,7 @@ Rails.application.routes.draw do
     resources :aircrafts do
       member do
         put :admin_approve
+        put :jsg_fleet
       end
       collection do
         get 'edit_all'

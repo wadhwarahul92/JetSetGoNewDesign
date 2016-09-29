@@ -2,7 +2,7 @@ class Admin::AircraftsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_filter :set_aircraft, only: [:show, :edit, :update, :admin_approve]
+  before_filter :set_aircraft, only: [:show, :edit, :update, :admin_approve, :jsg_fleet]
 
   def index
     @aircrafts = Aircraft.includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
@@ -54,6 +54,21 @@ class Admin::AircraftsController < Admin::BaseController
   def admin_approve
     if @aircraft.update_attribute(:admin_verified, params[:admin_verified])
       if params[:admin_verified] == 'true'
+        AdminMailer.aircraft_approved_by_admin(current_user, @aircraft).deliver_later
+        # OrganisationMailer.aircraft_approved_by_super_admin(@aircraft).deliver_later
+      else
+        AdminMailer.aircraft_disapproved_by_admin(current_user, @aircraft).deliver_later
+        # OrganisationMailer.aircraft_disapproved_by_super_admin(@aircraft).deliver_later
+      end
+      redirect_to action: :index
+    else
+      redirect_to action: :index
+    end
+  end
+
+  def jsg_fleet
+    if @aircraft.update_attribute(:is_jsg_fleet, params[:is_jsg_fleet])
+      if params[:is_jsg_fleet] == 'true'
         AdminMailer.aircraft_approved_by_admin(current_user, @aircraft).deliver_later
         # OrganisationMailer.aircraft_approved_by_super_admin(@aircraft).deliver_later
       else
