@@ -1,0 +1,321 @@
+.fleet_main_con{
+  width: 100%;
+  .top_head{
+    background-color: #998776;
+    padding: 10px 0;
+  }
+  .fleet_result_main{
+    h2.heading{
+      font-size: 24px;
+      color: #920000;
+      font-weight: bold;
+    }
+    h3.main-heading{
+      font-size: 17px;
+      border-bottom: 5px solid #998776;
+      padding-bottom: 5px;
+      position: relative;
+      cursor: pointer;
+      color: #920000;
+      font-weight: bold;
+    }
+    h3.main-heading:before{
+      content: "";
+      position: absolute;
+      background-color: #d6cab9;
+      height: 5px;
+      width: 150px;
+      bottom: -5px;
+    }
+    width: 100%;
+    .fleet_result{
+      width: 100%;
+      margin: 20px 0;
+      border: 1px solid #998776;
+      .search_img{
+        padding: 0;
+        .img-hide{
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          img{
+            width: 100%;
+            height: 320px;
+          }
+        }
+      }
+      .search-ryt-con{
+        padding: 0;
+        .img-bg{
+          width: 100%;
+          background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350);
+          background-size: cover;
+          padding: 15px 0;
+          height: 320px;
+          position: relative;
+          h3.aircraft-type{
+            font-size: 22px;
+            color: #000000;
+            margin: 0;
+            padding: 0 15px;
+            font-weight: bold;
+          }
+          p.aircraft-content{
+            font-size: 15px;
+            color: #000000;
+            margin: 0;
+            padding: 5px 15px 0 15px;
+          }
+          .detail-link-con{
+            padding: 10px 15px;
+            bottom: 0;
+            width: 100%;
+            color: #ffffff;
+            margin-top: 50px;
+            position: absolute;
+            bottom: 0;
+            a{
+              background-color: #750005;
+              display: inline-block;
+              padding: 10px 30px;
+              text-align: center;
+              color: #ffffff;
+              text-decoration: none;
+              border-radius: 8px;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+    .fleet-toogle-main{
+      width: 100%;
+      border: 1px solid #998776;
+      position: relative;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+      margin-top: 11px;
+      padding: 20px 0;
+      margin-bottom: 20px;
+      .arrow-up{
+        width: 0;
+        height: 0;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 13px solid #998776;
+        position: absolute;
+        top: -13px;
+        right: 176px;
+      }
+      .white-arrow-up{
+        width: 0;
+        height: 0;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        border-bottom: 17px solid #ffffff;
+        position: absolute;
+        top: -12px;
+        right: 174px;
+      }
+      .cross-icon{
+        font-size: 20px;
+        color: #920000;
+        cursor: pointer;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      .cross-icon:hover{
+        moz-transform: scale(1.3) rotate(360deg);
+        -webkit-transform: scale(1.3) rotate(360deg);
+        -o-transform: scale(1.3) rotate(360deg);
+        -ms-transform: scale(1.3) rotate(360deg);
+        transform: scale(1.3) rotate(360deg);
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      .img-content-con{
+        width: 100%;
+        .aircraft-img{
+          width: 100%;
+          margin-bottom: 10px;
+          overflow: hidden;
+        }
+        .aircraft-text{
+          p{
+            font-size: 17px;
+            color: #000000;
+            margin: 0;
+          }
+        }
+      }
+      .interior_map_con{
+        margin-top: 30px;
+        h2{
+          font-size: 17px;
+          border-bottom: 5px solid #998776;
+          padding-bottom: 5px;
+          position: relative;
+          cursor: pointer;
+          color: #920000;
+          font-weight: bold;
+        }
+        h2:before{
+          content: "";
+          position: absolute;
+          background-color: #d6cab9;
+          height: 5px;
+          width: 150px;
+          bottom: -5px;
+        }
+        .interior_aircraft_con{
+          width: 100%;
+          .interior_aircraft{
+            img{
+              max-height: 400px;
+            }
+          }
+          .interior_specification{
+            margin-top: 30px;
+            .spec{
+              h3{
+                font-size: 15px;
+                font-weight: bold;
+                margin-bottom: 0;
+              }
+              p{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+        .range_map_con{
+          width: 100%;
+          img{
+            border: 1px solid #998776;
+          }
+          h3{
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 0;
+          }
+          p{
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .fleet_main_con {
+    .fleet_result_main {
+      .fleet-toogle-main {
+        .arrow-up{
+          right: 139px;
+        }
+        .white-arrow-up{
+          right: 137px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .fleet_main_con {
+    .fleet_result_main {
+      .fleet-toogle-main {
+        .arrow-up{
+          right: 104px;
+        }
+        .white-arrow-up{
+          right: 102px;
+        }
+        .interior_map_con {
+          h2{
+            font-size: 19px;
+          }
+          .interior_aircraft_con {
+            .interior_specification {
+              .spec {
+                h3{
+                  font-size: 14px;
+                }
+                p{
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          .range_map_con {
+            h3{
+              font-size: 14px;
+            }
+            p{
+              font-size: 12px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      .fleet_result {
+        .search-ryt-con {
+          .img-bg {
+            h3.aircraft-type{
+              font-size: 19px;
+            }
+            p.aircraft-content{
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      .fleet-toogle-main {
+        .img-content-con {
+          .aircraft-text {
+            p{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .fleet_main_con {
+    .fleet_result_main {
+      .fleet-toogle-main {
+        .arrow-up {
+          right: 23px;
+        }
+        .white-arrow-up {
+          right: 21px;
+        }
+      }
+      .fleet_result {
+        .search_img {
+          .img-hide {
+            img{
+              height: inherit;
+            }
+          }
+        }
+        .search-ryt-con {
+          .img-bg{
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -50,6 +50,7 @@
 //= require ./application/sell_empty_leg_controller
 //= require ./application/requested_add_passenger_controller
 //= require ./application/tmp_send_sms_controller
+//= require ./application/our_fleet_controller
 //= require ./vendors/date
 //= require ./vendors/filter_slider
 //= require ./services/base
