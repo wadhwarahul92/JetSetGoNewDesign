@@ -137,11 +137,6 @@ class WelcomeController < ApplicationController
     @passenger_details = @trip.passenger_details
   end
 
-  def get_fleets
-    aircraft_type_ids = AircraftType.where(aircraft_category_id: params[:id]).map(&:id)
-    @aircrafts = Aircraft.where(is_jsg_fleet: true,aircraft_type_id: aircraft_type_ids).includes(:aircraft_images, :aircraft_type, :base_airport )
-  end
-
   def our_fleet
     if request.format == 'text/html'
       render template: 'templates/our_fleet', layout: 'application'
