@@ -1,8 +1,10 @@
-jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', '$uibModal', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService, $uibModal)->
+jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService', '$scope', '$location', '$routeParams', 'CurrentUserService', '$uibModal', 'AircraftCategoriesService', ($http, notify, AirportsService, $scope, $location, $routeParams, CurrentUserService, $uibModal, AircraftCategoriesService)->
 
   @activities = [{}]
   @currentUser = null
   @loading = true
+
+  @aircraft_categories = []
   
 #  if $routeParams.search_id
 #    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
@@ -11,7 +13,13 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 #        for activity in @activities
 #          activity.start_at = Date.parse(activity.start_at)
 #    )
-    
+
+  AircraftCategoriesService.getAircraftCategories().then(
+    =>
+      @aircraft_categories = AircraftCategoriesService.aircraft_categories
+  )
+
+
   @signIn = ->
     CurrentUserService.openSignInModal('md')
 
@@ -232,6 +240,10 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       controllerAs: 'ctrl'
       backdrop: true
     )
+
+  @aircraftCategoryForId = (id)->
+    _.find(@aircraft_categories,{id: parseInt(id)})
+
 
   return undefined
 ]
