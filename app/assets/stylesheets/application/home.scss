@@ -799,6 +799,40 @@ span.heading:after{
   }
 }
 
+//jetsetgo Fleet section
+.fleet_main_con{
+  width: 100%;
+  .fleet_content {
+    border-left: 2px solid #920000;
+    margin-bottom: 30px;
+    padding: 5px 15px 5px 15px;
+    p.content {
+      font-size: 16px;
+      color: #ffffff;
+    }
+  }
+  .fleet-widget{
+    padding: 50px 0;
+    background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/788/original/fleet_bg.png?1474357672");
+    background-size: cover;
+    .widget{
+      margin: 15px 0;
+      .widget_heading_con{
+        h3{
+          font-size: 20px;
+          color: #000000;
+          font-weight: normal;
+          margin: 10px 0 0 0;
+        }
+        a{
+          color: #920000;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
 //media section
 .news-media-main-con{
   width: 100%;
@@ -1456,6 +1490,32 @@ span.heading:after{
       margin: 0;
     }
   }
+
+  //jetsetgo Fleet section
+  .fleet_main_con{
+    width: 100%;
+    .fleet_content {
+      margin-bottom: 10px;
+      padding: 5px 12px 5px 12px;
+      p.content {
+        font-size: 12px;
+      }
+    }
+    .fleet-widget{
+      padding: 20px 0;
+      .widget{
+        margin: 8px 0;
+        .widget_heading_con{
+          h3{
+            font-size: 17px;
+          }
+          a{
+          }
+        }
+      }
+    }
+  }
+
   //media section
   .media-main-con{
     .heading-con{
