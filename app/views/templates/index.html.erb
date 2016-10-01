@@ -495,9 +495,7 @@
             <div ng-if="aircraft_category.name != 'Twin Engine Turboprop'" class="col-md-4 col-sm-6 col-xs-12" ng-repeat="aircraft_category in ctrl.aircraft_categories">
               <div class="widget">
                 <div class="text-center">
-                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/799/original/trouboprop.png?1474363191" alt="" class="img-responsive">-->
-                  <!--<img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">-->
-                  <img ng-src="{{ctrl.aircraft_categories[0].image}}" alt="" class="img-responsive">
+                  <img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">
                 </div>
                 <div class="widget_heading_con text-center">
                   <h3>{{aircraft_category.name}}</h3>
