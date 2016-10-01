@@ -121,7 +121,7 @@
                     </div>
                     <div class="spec">
                       <h3>Lavatory</h3>
-                      <p>{{aircraft.number_of_toilets}}</p>
+                      <p>{{aircraft.number_of_toilets < 1 ? 'NA' : aircraft.number_of_toilets}}</p>
                     </div>
                   </div>
                 </div>
@@ -130,15 +130,19 @@
             <div class="col-md-7 col-sm-6 col-xs-12">
               <div class="range_map_con">
                 <h2>Range Map</h2>
-                <img ng-src="{{aircraft.range_map_image}}" alt="">
+                <img ng-src="{{aircraft.range_map_image}}" alt="" class="img-responsive">
                 <div class="row">
                   <div class="col-md-5 col-sm-6 col-xs-4">
                     <h3>Range in Distance</h3>
                     <p>{{aircraft.flying_range_in_nm}} nm</p>
                   </div>
+                  <!--<div class="col-md-5 col-sm-6 col-xs-4">-->
+                    <!--<h3>Range in Hours</h3>-->
+                    <!--<p>5.75hrs</p>-->
+                  <!--</div>-->
                   <div class="col-md-5 col-sm-6 col-xs-4">
-                    <h3>Range in Hours</h3>
-                    <p>5.75hrs</p>
+                    <h3>Crew</h3>
+                    <p>{{aircraft.crew}}</p>
                   </div>
                   <div class="col-md-2 col-sm-6 col-xs-4">
                     <h3>Speed</h3>
