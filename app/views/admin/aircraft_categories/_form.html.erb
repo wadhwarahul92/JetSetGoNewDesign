@@ -4,6 +4,10 @@
         <%= f.error_notification %>
         <%= f.input :name %>
         <%= f.input :mtow %>
+        <% if f.object.image.present? %>
+            <%= image_tag f.object.image.url(:original) %>
+        <%- end %>
+        <%= f.input :image %>
         <%= f.submit 'Save', class: 'btn btn-success ' %>
       </div>
       <div class="col-sm-6">
