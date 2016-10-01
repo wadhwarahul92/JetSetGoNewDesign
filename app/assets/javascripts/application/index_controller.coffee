@@ -5,7 +5,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @loading = true
 
   @aircraft_categories = []
-  
+
 #  if $routeParams.search_id
 #    $http.get("/searches/#{$routeParams.search_id}/get_for_index.json").success(
 #      (data)=>
