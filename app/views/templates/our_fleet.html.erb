@@ -21,9 +21,9 @@
             <div class="img-hide">
               <!--<img src="https://d3hdtzk3ohuh17.cloudfront.net/aircrafts/images/000/000/262/original/1_copy.jpg?1469012216" alt="">-->
               <img ng-src="{{aircraft.exterior_image}}" alt="">
-              <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(result)" ng-click="aircraft.more_detail_active =! aircraft.more_detail_active">More Detail</span>
+              <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(result)" ng-click="result.more_detail_active =! result.more_detail_active">More Detail</span>
             </div>
-            <div class="icon-con">
+            <div class="icon-con" ng-show="result.more_detail_active">
                 <span class="icons-main">
                   <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
                   <span class="icon-detail">{{aircraft.baggage_capacity_in_kg}} kgs</span>
