@@ -1,3 +1,12 @@
+
+<%= form_tag import_admin_watch_hours_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag 'import'%>
+<%end%>
+
+<br>
+<br>
+
 <div class="row">
   <div class="col-sm-12">
     <ul class="list-inline">
