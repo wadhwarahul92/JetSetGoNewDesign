@@ -52,6 +52,7 @@
 //= require ./application/tmp_send_sms_controller
 //= require ./application/our_fleet_controller
 //= require ./application/helicopter_fleet_controller
+//= require ./application/turboprop_controller
 //= require ./vendors/date
 //= require ./vendors/filter_slider
 //= require ./services/base

@@ -140,6 +140,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/helicopter_fleet'
     controller: 'HeliCopterFleetController'
     controllerAs: 'ctrl'
+  }).when('/turboprop', {
+    templateUrl: '/templates/turboprop'
+    controller: 'TurboPropController'
+    controllerAs: 'ctrl'
   })
 
 
