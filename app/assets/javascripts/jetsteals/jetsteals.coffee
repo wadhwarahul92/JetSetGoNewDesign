@@ -182,6 +182,7 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
   ).error(
     ->
       alert 'error fetching jetsteals, try again later'
+      @loading = false
   )
   ####################
 
