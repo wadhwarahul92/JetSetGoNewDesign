@@ -178,7 +178,11 @@ Rails.application.routes.draw do
 
     resources :organisations
 
-    resources :watch_hours
+    resources :watch_hours do
+      collection do
+        post :import
+      end
+    end
 
     resources :notams
 
