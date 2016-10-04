@@ -446,4 +446,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'x' => 'welcome#x'
+
 end
