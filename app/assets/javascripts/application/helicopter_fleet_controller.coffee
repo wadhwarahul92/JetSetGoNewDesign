@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'HeliCopterFleetController', ['$http', '$routeParams', ($http, $routeParams)->
+jetsetgo_app.controller 'HeliCopterFleetController', ['$http', ($http)->
 
 
   return undefined
