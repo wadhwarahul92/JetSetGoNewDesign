@@ -136,6 +136,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/our_fleet'
     controller: 'OurFleetController'
     controllerAs: 'ctrl'
+  }).when('/helicopter_fleet', {
+    templateUrl: '/templates/helicopter_fleet'
+    controller: 'HeliCopterFleetController'
+    controllerAs: 'ctrl'
   })
 
 

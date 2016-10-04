@@ -366,6 +366,7 @@ Rails.application.routes.draw do
       get 'requested_add_passenger'
       get 'tmp_send_sms'
       get 'our_fleet'
+      get 'helicopter_fleet'
     end
   end
 
@@ -426,6 +427,7 @@ Rails.application.routes.draw do
   get 'sell_empty_leg' => 'route_overrides#welcome_index'
   get 'requested_add_passenger' => 'route_overrides#welcome_index'
   get 'tmp_send_sms' => 'route_overrides#welcome_index'
+  get 'helicopter_fleet' => 'route_overrides#welcome_index'
   # get 'our_fleet' => 'route_overrides#welcome_index'
 
 
