@@ -32,11 +32,11 @@ jetsetgo_app.controller 'OurFleetController', ['$http', '$routeParams', 'Aircraf
   @aircraftCategoryForId = (id)->
     _.find(@aircraft_categories,{id: parseInt(id)})
 
-  @doMediaQuery = (result)->
-    result.more_detail_active = true
+  @doMediaQuery = (aircraft)->
+    aircraft.more_detail_active = true
     w = angular.element(window).width()
     if w < 768
-      result.more_detail_active = false
+      aircraft.more_detail_active = false
 
   return undefined
 ]
