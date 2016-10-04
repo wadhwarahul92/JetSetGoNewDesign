@@ -5,6 +5,18 @@ $main-gray-color-no-opaque: rgb(158, 167, 166);
 $main-red-color: rgb(228, 70, 71);
 $main-yellow-color: rgb(237, 202, 0);
 
+#spinner {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  //background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/765/original/loader.gif?1473231729) 50% 50% no-repeat;
+  background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/888/original/loader2.gif?1475563720) 50% 50% no-repeat;
+  background-color: rgba(241,234,220,1);
+}
+
 no-captcha:first-child{
   display: inline-block!important;
 }

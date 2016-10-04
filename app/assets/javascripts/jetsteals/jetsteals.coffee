@@ -76,6 +76,8 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
 
   @bookSeatJetsteal = {}
 
+  @loading = true
+
   @filtersDontMatch = ->
     if @date and _.filter(@jetsteals, (j)-> j.date == @date ).length == 0
       return false
@@ -176,6 +178,7 @@ list_app.controller 'ListController', ['$http', '$scope', '$window', ($http, $sc
       @jetsteals = data
       @setColorsForJetsteals()
       @initLightBox()
+      @loading = false
   ).error(
     ->
       alert 'error fetching jetsteals, try again later'
