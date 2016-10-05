@@ -5,7 +5,18 @@ class Admin::AirportsController < Admin::BaseController
   before_filter :set_airport, only: [:edit, :update]
 
   def index
-    @airports = Airport.with_deleted.includes(:city).all
+    if params[:city_id].present?
+      @airports = Airport.where(city_id: params[:city_id]).with_deleted.includes(:city).all
+    elsif params[:icao_code].present?
+      @airports = Airport.where('lower(icao_code) LIKE ? ', "%#{params[:icao_code].to_s.downcase}%").with_deleted.includes(:city).all
+    elsif params[:name].present?
+      @airports = Airport.where('lower(name) LIKE ? ', "%#{params[:name].to_s.downcase}%").with_deleted.includes(:city).all
+    elsif params[:code].present?
+      @airports = Airport.where('lower(code) LIKE ? ', "%#{params[:code].to_s.downcase}%").with_deleted.includes(:city).all
+    else
+      @airports = Airport.with_deleted.includes(:city).all
+    end
+
   end
 
   def new

@@ -1,6 +1,22 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-10">
     <ul class="list-inline">
+      <li>
+        <form action="/admin/airports" method="get">
+          <input type="search" name="name" value="<%= params[:name] %>" placeholder="Airport Name">
+          OR
+          <input type="search" name="icao_code" value="<%= params[:icao_code] %>" placeholder="ICAO Code">
+          OR
+          <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code">
+          OR
+          <%= select_tag('city_id', options_for_select(cities_for_collection, params[:city_id]), prompt: 'Choose city', type: "search") %>
+          <input type="submit" value="search">
+        </form>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2">
+    <ul class="list-inline pull-right">
       <li><%= link_to 'New Airport', new_admin_airport_path, class: 'btn btn-primary' %></li>
     </ul>
   </div>
@@ -12,6 +28,7 @@
       <tr class="info">
         <th>Id</th>
         <th>Code</th>
+        <th>ICAO code</th>
         <th>Name</th>
         <th>Status</th>
         <th>City</th>
@@ -38,6 +55,7 @@
           <tr>
             <td><%= airport.id %></td>
             <td><%= airport.code %></td>
+            <td><%= airport.icao_code %></td>
             <td><%= airport.name %></td>
             <td>
               <%= airport.deleted_at.present? ? 'UnActive' : 'Active' %>
