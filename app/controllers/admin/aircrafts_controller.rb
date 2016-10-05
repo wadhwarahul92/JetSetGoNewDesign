@@ -5,7 +5,13 @@ class Admin::AircraftsController < Admin::BaseController
   before_filter :set_aircraft, only: [:show, :edit, :update, :admin_approve, :jsg_fleet]
 
   def index
-    @aircrafts = Aircraft.includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
+    if params[:tail_number].present?
+      @aircrafts = Aircraft.where('lower(tail_number) LIKE ?', "%#{params[:tail_number].to_s.downcase}%").includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
+    elsif params[:aircraft_type_id].present?
+      @aircrafts = Aircraft.where(aircraft_type_id: params[:aircraft_type_id]).includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
+    else
+      @aircrafts = Aircraft.includes(:aircraft_type).all.paginate(page: params[:page], per_page: 25)
+    end
   end
 
   def new

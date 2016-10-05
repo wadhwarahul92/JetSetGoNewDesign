@@ -1,9 +1,21 @@
 <div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'Add Aircraft', new_admin_aircraft_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
+    <div class="col-sm-10">
+      <ul class="list-inline">
+        <li>
+          <%= form_tag admin_aircrafts_path, method: :get do %>
+              <%= text_field_tag 'tail_number', '', placeholder: 'Tail number', value: params[:tail_number], type: 'search' %>
+              OR
+              <%= select_tag('aircraft_type_id', options_for_select(aircraft_types_for_collection, params[:aircraft_type_id]), prompt: 'Choose aircraft type', type: 'search') %>
+              <%= submit_tag 'Search', class: 'btn btn-info'%>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-2">
+      <ul class="list-inline pull-right">
+        <li><%= link_to 'Add Aircraft', new_admin_aircraft_path, class: 'btn btn-primary' %></li>
+      </ul>
+    </div>
 </div>
 <div class="row">
   <div class="col-sm-12">
