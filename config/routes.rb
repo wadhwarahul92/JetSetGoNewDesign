@@ -188,6 +188,8 @@ Rails.application.routes.draw do
 
     resources :jsg_updates
 
+    resources :jetsteal_subscriptions
+
     resources :quotes
 
     resources :enquiries
