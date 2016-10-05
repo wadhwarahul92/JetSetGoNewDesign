@@ -16,6 +16,35 @@
           </tr>
         </head>
       </table>
+
+      <% @user = @enquiry.user %>
+      <div class="col-sm-12" style="margin-bottom: 20px;">
+        <table class="table table-striped">
+          <head>
+            <tr class="default">
+              <th>Customer Details </th>
+            </tr>
+          </head>
+        </table>
+        <div class="col-sm-6">
+          <dt>Name</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.full_name%></div>
+        </div>
+        <div class="col-sm-6">
+          <dt>Email</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.email%></div>
+        </div>
+        <div class="col-sm-6">
+          <dt>Contact</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.phone %></div>
+        </div>
+      </div>
       <div class="row">
         <% @enquiry.activities.each do |activity| %>
             <div class="col-sm-6">
@@ -43,19 +72,19 @@
                 <dt>Start at</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.start_at.strftime('%d-%b-%Y %H:%M') %></dd>
+                <dd><%= activity.start_at.strftime(time_format) %></dd>
               </div>
               <div class="col-sm-6">
                 <dt>End at</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.end_at.strftime('%d-%b-%Y %H:%M') %></dd>
+                <dd><%= activity.end_at.strftime(time_format) %></dd>
               </div>
               <div class="col-sm-6">
                 <dt>Empity Leg</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.empty_leg %></dd>
+                <dd><%= activity.empty_leg ? 'Yes' : 'No' %></dd>
               </div>
               <div class="col-sm-6">
                 <dt>Pax</dt>
