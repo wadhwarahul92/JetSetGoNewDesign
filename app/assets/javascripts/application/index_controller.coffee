@@ -16,7 +16,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   AircraftCategoriesService.getAircraftCategories().then(
     =>
-      @AircraftCategoriesService = AircraftCategoriesService.aircraft_categories
+      @aircraft_categories = AircraftCategoriesService.aircraft_categories
   )
 
 
