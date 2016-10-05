@@ -1810,6 +1810,9 @@ input[type=radio]:not(old):checked +  label > span > span{
       }
     }
   }
+  .search_heading{
+    margin-top: 0;
+  }
 }
 @media (max-width: 600px) {
   .search-result-box{
