@@ -112,6 +112,12 @@
               <div class="col-sm-6">
                 <dd><%= amount_with_commission(activity.landing_cost_at_arrival, @aircraft.handling_cost_commission_in_percentage) %></dd>
               </div>
+              <div class="col-sm-6">
+                <dt>Watch hour </dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.watch_hour_at_arrival? ? 'As per actual' : 'NA'%></dd>
+              </div>
               <% if activity.accommodation_plan.present? %>
                   <div class="col-sm-6">
                     <dt>Accommodation</dt>
