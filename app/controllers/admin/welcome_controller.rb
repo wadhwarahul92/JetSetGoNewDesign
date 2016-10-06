@@ -9,7 +9,7 @@ class Admin::WelcomeController < Admin::BaseController
   end
 
   def dashboard
-
+  1
   end
 
   def log_in

@@ -1,0 +1,43 @@
+.no-padding{
+  padding: 0;
+}
+.top-navbar{
+  margin-bottom: 0;
+}
+.sidebar_nav_click{
+  background-color: #222932;
+  height: 50px;
+  padding: 15px 15px;
+  float: left;
+  position: relative;
+  left: -15px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.sidebar_con{
+  background-color: #222932;
+  height: 100vh;
+  overflow-x: scroll;
+  ul{
+    li{
+      background-color: transparent;
+      padding: 0;
+      a{
+        color: #778e9c;
+        padding: 8px;
+        display: inline-block;
+        width: 100%;
+        text-decoration: none;
+        border-bottom: 1px solid #0e1115;
+      }
+      .active_link{
+        color: #eeeeee;
+        border-top: 1px solid #0e1115;
+        background-color: #526073;
+        background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/915/original/arrow.png?1475737743");
+        background-position: center right;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
