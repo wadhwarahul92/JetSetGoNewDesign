@@ -522,45 +522,44 @@
             <a href="javascript:void(0)" ng-click="catering_visible = true">Add/Edit Caterings</a>
           </div>
         </div>
-        <div class="customer-detail add-passenger">
-          <h3 ng-show="ctrl.catering.length > 0" ng-click="ctrl.category = !ctrl.category">
-            {{catering_visible ? 'Add Catering' : 'Catering'}}
-            <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
-            </a>
-          </h3>
-          <h3 ng-show="!ctrl.catering.length > 0 && catering_visible" ng-click="ctrl.category = !ctrl.category">
-            Add Catering
-            <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
-            </a>
-          </h3>
-          <div ng-show="catering_visible">
-            <div class="row" ng-show="!ctrl.category">
-              <div class="col-sm-12">
-                <h4>Catering:</h4>
-                <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
-                <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">Save</a>
-              </div>
-            </div>
-          </div>
-          <div ng-show="!ctrl.category">
-            <div class="add-passenger-record" ng-show="ctrl.catering.length > 0"> 
-              <table class="table table-striped">
-                <!--<thead>-->
-                  <!--<tr class="info">-->
-                    <!--<th>Catering</th>-->
-                  <!--</tr>-->
-                <!--</thead>-->
-                <tbody>
-                  <tr class="body-row" style="border-top: 1px solid #f9f3e6;">
-                    <td>{{ ctrl.catering }}</td>
-                  </tr>
-                </tbody>
-              </table>
+      </div>
+      <div class="customer-detail add-passenger">
+        <h3 ng-show="ctrl.catering.length > 0" ng-click="ctrl.category = !ctrl.category">
+          {{catering_visible ? 'Add Catering' : 'Catering'}}
+          <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
+          </a>
+        </h3>
+        <h3 ng-show="!ctrl.catering.length > 0 && catering_visible" ng-click="ctrl.category = !ctrl.category">
+          Add Catering
+          <a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>
+          </a>
+        </h3>
+        <div ng-show="catering_visible">
+          <div class="row" ng-show="!ctrl.category">
+            <div class="col-sm-12">
+              <h4>Catering:</h4>
+              <input type="text" class="txt-forward-email" ng-model="ctrl.catering">
+              <a class="btn-send" href="javascript:void(0)" ng-click="ctrl.create_catering()">Save</a>
             </div>
           </div>
         </div>
+        <div ng-show="!ctrl.category">
+          <div class="add-passenger-record" ng-show="ctrl.catering.length > 0">
+            <table class="table table-striped">
+              <!--<thead>-->
+              <!--<tr class="info">-->
+              <!--<th>Catering</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <tbody>
+              <tr class="body-row" style="border-top: 1px solid #f9f3e6;">
+                <td>{{ ctrl.catering }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
       <div class="customer-detail add-passenger">
         <h3 ng-show="ctrl.passenger_details.length > 0" ng-click="ctrl.pax_active = !ctrl.pax_active">
           {{bar_visible ? 'Add Passenger' : 'Passenger'}}
