@@ -5,12 +5,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="gap"></div>
-        <!--<p class="top_name_content"><span class="name">Rahul</span> has requested you to add passenger on his behalf.</p>-->
         <div class="trip-info">
           <h2 class="heading">Trip Info</h2>
           <div class="trip-main-con">
             <p class="user-name-text text-right"><b>User: </b>{{ctrl.trip.user}}</p>
-            <!--<p class="user-name-text text-right"><b>Email: </b>{{ctrl.trip.user_email}}</p>-->
             <div class="location-con" ng-repeat="activity in ctrl.trip.activities" ng-if="!activity.empty_leg" >
               <div class="row">
                 <div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
@@ -32,58 +30,16 @@
                   <p class="city-name"><b>{{activity.arrival_airport.city.name}}</b></p>
                   <p class="time-con">{{activity.end_at.split(',')[1]}}</p>
                   <p class="date-con">{{activity.end_at.split(',')[0]}}</p>
-
-                  <!--<p class="city-name">Aizawl Airport</p>-->
-                  <!--<p class="time-con">11:10 AM</p>-->
-                  <!--<p class="date-con">20th Aug 2016</p>-->
                 </div>
               </div>
             </div>
-            <!--<div class="location-con" >-->
-              <!--<div class="row">-->
-                <!--<div class="departure-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">-->
-                  <!--<p>-->
-                    <!--<img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680" alt="">-->
-                  <!--</p>-->
-                  <!--<p class="city-name"><b>Indira Gandhi International Airport</b></p>-->
-                  <!--<p class="time-con">08:09 AM</p>-->
-                  <!--<p class="date-con">8th September 2016</p>-->
-                <!--</div>-->
-                <!--<div class="col-md-3 text-center col-sm-4 hidden-xs">-->
-                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">-->
-                  <!--<p><b>4 hours 12 minutes</b></p>-->
-                <!--</div>-->
-                <!--<div class="arrival-con col-md-offset-1 col-md-3 col-sm-3 col-xs-6">-->
-                  <!--<p>-->
-                    <!--<img width="30" class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622" alt="">-->
-                  <!--</p>-->
-                  <!--<p class="city-name"><b>Amausi Airport</b></p>-->
-                  <!--<p class="time-con">10:09 AM</p>-->
-                  <!--<p class="date-con">8th September 2016</p>-->
-
-                  <!--&lt;!&ndash;<p class="city-name">Aizawl Airport</p>&ndash;&gt;-->
-                  <!--&lt;!&ndash;<p class="time-con">11:10 AM</p>&ndash;&gt;-->
-                  <!--&lt;!&ndash;<p class="date-con">20th Aug 2016</p>&ndash;&gt;-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
           </div>
         </div>
         <div>
           <div>
-            <!--<div class="row psng-cate-btns">-->
-              <!--<div class="col-xs-6 text-right">-->
-                <!--<a href="javascript:void(0)">Add Passenger Details</a>-->
-              <!--</div>-->
-              <!--<div class="col-xs-6">-->
-                <!--<a href="javascript:void(0)">Add/Edit Caterings</a>-->
-              <!--</div>-->
-            <!--</div>-->
             <div class="customer-detail add-passenger">
               <h3>
                 Add Catering
-                <!--<a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.category ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i>-->
-                <!--</a>-->
               </h3>
               <div>
                 <div class="row">
@@ -97,11 +53,6 @@
               <div ng-show="ctrl.trip.catering.length > 0">
                 <div class="add-passenger-record">
                   <table class="table table-striped">
-                    <!--<thead>-->
-                    <!--<tr class="info">-->
-                      <!--<th>Catering</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
                     <tbody>
                     <tr class="body-row" style="border-top: 1px solid #f9f3e6;">
                       <td>{{ctrl.trip.catering}}</td>
@@ -116,45 +67,23 @@
           <div class="customer-detail add-passenger">
             <h3>
               Add Passenger
-              <!--<a href="javascript:void(0)" class="pull-right toogle-btn"><i class="fa" ng-class="!ctrl.pax_active ? 'fa-arrow-circle-up' : 'fa-arrow-circle-down'"></i></a>-->
             </h3>
             <div>
               <div>
-                <!-- <div class="row">
-                  <div class="col-xs-12">
-                    <h4>Forwarding Email Id <span>(will provide passenger details on my behalf)</span></h4>
-                    <input type="text" class="txt-forward-email" />
-                    <input type="submit" class="btn-send" />
-                  </div>
-                </div> -->
-                <!-- <div class="seprator-con">
-                  <div class="col-sm-offset-2 col-sm-8">
-                    <h4><span>OR</span></h4>
-                  </div>
-                  <div class="clearfix"></div>
-                </div> -->
                 <div class="add-passenger-record">
                   <table class="table table-striped">
                     <thead>
                     <tr class="info">
                       <th>Title</th>
                       <th>Name</th>
-                      <!--<th>Age</th>-->
                       <th>Nationality</th>
-                      <!--<th>Gender</th>-->
-                      <!--<th>Email</th>-->
-                      <!--<th>Contact</th>-->
                     </tr>
                     </thead>
                     <tbody>
                     <tr class="body-row" ng-repeat="passenger in ctrl.trip.passengers">
                       <td>{{passenger.title}}</td>
                       <td>{{passenger.name}}</td>
-                      <!--<td>{{ passenger_detail.age }}</td>-->
                       <td>{{passenger.nationality}}</td>
-                      <!--<td>{{ passenger_detail.gender }}</td>-->
-                      <!--<td>{{ passenger_detail.email }}</td>-->
-                      <!--<td>{{ passenger_detail.contact }}</td>-->
                     </tr>
 
                     </tbody>
@@ -162,7 +91,6 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-12">
-                    <!--<p class="passenger-text">(your itinerary details will provide passenger details on my behalf)</p>-->
                   </div>
                   <div class="" ng-repeat="passenger_detail in ctrl.passenger_details_">
                     <div class="passenger-repeat">
@@ -176,37 +104,15 @@
                           <option>Dr.</option>
                           <option>Capt.</option>
                         </select>
-                        <!-- <input type="text" ng-model="passenger_detail.title" class="txt-textfield" /> -->
                       </div>
                       <div class="col-md-4 col-sm-3 col-xs-12">
                         <h4>Name</h4>
                         <input type="text" class="txt-textfield" ng-model="passenger_detail.name" />
                       </div>
-                      <!--<div class="col-md-2">-->
-                      <!--<h4>Last Name</h4>-->
-                      <!--<input type="text" class="txt-textfield" />-->
-                      <!--</div>-->
-                      <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
-                      <!--<h4>Gender</h4>-->
-                      <!--<select ng-model="passenger_detail.gender" class="txt-textfield">-->
-                      <!--<option>Male</option>-->
-                      <!--<option>Female</option>-->
-                      <!--</select>-->
-                      <!--&lt;!&ndash; <input type="text" ng-model="passenger_detail.gender" class="txt-textfield" /> &ndash;&gt;-->
-                      <!--</div>-->
                       <div class="col-md-2 col-sm-3 col-xs-12">
                         <h4>Nationality</h4>
                         <input type="text" class="txt-textfield" ng-model="passenger_detail.nationality"/>
                       </div>
-                      <!--<div class="col-md-2 col-sm-3 col-xs-12">-->
-                      <!--<h4>Age</h4>-->
-                      <!--<input type="text" ng-model="passenger_detail.age" class="txt-textfield" />-->
-                      <!--</div>-->
-                      <!-- <div class="col-md-3">
-                        <h4>Upload Passport</h4>
-                        <input type="file" name="pic" class="txt-upload" accept="image/*">
-                        <span class="mandatory-txt">Mandatory for Foreign Passengers</span>
-                      </div> -->
                       <a class="cross-btn" href="javascript:void(0)" ng-show="$index > 0" ng-click="ctrl.remove_passenger_detail($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
                       <div class="clearfix"></div>
                     </div>
@@ -217,8 +123,6 @@
                     <a href="javascript:void(0)" ng-click="ctrl.add_passenger_detail()" class="btn-detail">Add Traveller Details + </a>
                   </div>
                   <div class="col-xs-6">
-                    <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
-                    <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
                     <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>
                   </div>
                 </div>
