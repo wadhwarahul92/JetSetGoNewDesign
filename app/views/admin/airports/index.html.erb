@@ -10,7 +10,7 @@
           <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code">
           OR
           <%= select_tag('city_id', options_for_select(cities_for_collection, params[:city_id]), prompt: 'Choose city', type: "search") %>
-          <input type="submit" value="search">
+          <input type="submit" value="search" class="btn btn-info">
         </form>
       </li>
     </ul>
