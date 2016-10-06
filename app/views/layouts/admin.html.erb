@@ -14,10 +14,10 @@
 <div class="container-fluid">
   <% if user_signed_in? and current_user.admin? %>
       <div class="row">
-        <div class="col-sm-2 toggle_class no-padding">
+        <div class="col-xs-2 toggle_class no-padding" style="display: none">
           <%= render partial: 'admin/shared/sidebar' %>
         </div>
-        <div class="col-sm-10 right_content_con no-padding">
+        <div class="col-xs-12 right_content_con no-padding">
           <%= render partial: 'admin/shared/alerts' %>
           <%= yield %>
         </div>
