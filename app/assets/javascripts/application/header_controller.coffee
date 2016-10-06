@@ -1,10 +1,16 @@
-jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserService', '$scope', '$routeParams', '$location', ($http, notify, CurrentUserService, $scope, $routeParams, $location)->
+jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserService', '$scope', '$routeParams', '$location', 'AircraftCategoriesService', ($http, notify, CurrentUserService, $scope, $routeParams, $location, AircraftCategoriesService)->
 
   @currentUser = null
 
   @isFromMobile = false
 
   @activeNav = true
+
+  @active_menu = false
+
+  @active_submenu = false
+
+  @aircraft_categories = []
 
   path = $location.path()
   if path == '/requested_add_passenger'
@@ -15,6 +21,11 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
       (data)=>
         @activities = data
     )
+
+  AircraftCategoriesService.getAircraftCategories().then(
+    =>
+      @aircraft_categories = AircraftCategoriesService.aircraft_categories
+  )
 
   @signIn = ->
     CurrentUserService.openSignInModal('md')
@@ -43,6 +54,9 @@ jetsetgo_app.controller 'HeaderController', ['$http', 'notify', 'CurrentUserServ
 
   @openSignUpModal = ->
     CurrentUserService.openSignUpModal('md')
+
+  @aircraftCategoryForId = (id)->
+    _.find(@aircraft_categories,{id: parseInt(id)})
 
   return undefined
 ]

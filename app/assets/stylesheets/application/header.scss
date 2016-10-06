@@ -49,6 +49,7 @@ a:focus{
             float: none;
             min-width: 200px;
             padding: 0;
+            background: #fffcf5;
             a{
               font-size: 13px;
               color: #920000;
@@ -57,6 +58,19 @@ a:focus{
               border-bottom: 1px solid #ffefcb;
               width: 100%;
               background: #fffcf5;
+              .submenu-arrow-icon{
+                float: right;
+                margin-top: 3px;
+              }
+            }
+            ul.sub_navigation{
+              position: absolute;
+              padding: 0;
+              left: -200px;
+              top: 0;
+              li{
+
+              }
             }
             a.no-right-padding{
               padding-right: 0;
@@ -87,6 +101,9 @@ a:focus{
 @media (max-width: 767px){
   .header_row{
     margin: 0;
+  }
+  .fixed-header{
+    position: inherit;
   }
   #header{
     .logo-main-con{
