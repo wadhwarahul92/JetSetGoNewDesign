@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>ID</th>
+        <th>Organisation</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @confirmed_trips.each do |confirmed_trip| %>
+          <tr>
+            <td>Trip#<%= confirmed_trip.id %></td>
+            <td><%= confirmed_trip.organisation.name.capitalize %></td>
+            <td><%= confirmed_trip.status.capitalize %></td>
+            <td>
+              <%= link_to admin_confirmed_trip_path(confirmed_trip) do %>
+                  <i class="fa fa-eye"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= will_paginate @confirmed_trips %>

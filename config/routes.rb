@@ -190,9 +190,11 @@ Rails.application.routes.draw do
 
     resources :jetsteal_subscriptions
 
+    resources :enquiries
+
     resources :quotes
 
-    resources :enquiries
+    resources :confirmed_trips
 
     resources :aircrafts do
       member do
