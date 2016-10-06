@@ -3,6 +3,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>ID</th>
         <th>Full name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -11,6 +12,7 @@
       <tbody>
       <% @customers.each do |customer| %>
           <tr>
+            <td><%= "Customer##{customer.id}"%></td>
             <td><%= customer.full_name.capitalize%></td>
             <td><%= customer.email %></td>
             <td><%= customer.phone %></td>
