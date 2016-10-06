@@ -4,6 +4,8 @@
   </div>
 </div>
 
+<% @aircraft = @enquiry.activities.first.aircraft %>
+
 <div class="row">
   <div class="col-sm-12">
     <dl>
@@ -12,7 +14,7 @@
           <tr class="info">
             <th>Organisation: <%= @enquiry.organisation.name.capitalize %></th>
             <th>Status: <%= @enquiry.status.capitalize %> </th>
-            <th>Aircraft: <%= @enquiry.activities.first.aircraft.aircraft_type.name.capitalize %></th>
+            <th>Aircraft: <%= @aircraft.aircraft_type.name.capitalize %></th>
           </tr>
         </head>
       </table>
@@ -81,7 +83,7 @@
                 <dd><%= activity.end_at.strftime(time_format) %></dd>
               </div>
               <div class="col-sm-6">
-                <dt>Empity Leg</dt>
+                <dt>Empty Leg</dt>
               </div>
               <div class="col-sm-6">
                 <dd><%= activity.empty_leg ? 'Yes' : 'No' %></dd>
@@ -96,28 +98,62 @@
                 <dt>Flight Cost</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.flight_cost %></dd>
+                <dd><%= amount_with_commission(activity.flight_cost, @aircraft.flight_cost_commission_in_percentage) %></dd>
               </div>
               <div class="col-sm-6">
                 <dt>Handling cost at takeoff</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.handling_cost_at_takeoff %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Handling cost at takeoff</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.handling_cost_at_takeoff %></dd>
+                <dd><%= amount_with_commission(activity.handling_cost_at_takeoff, @aircraft.handling_cost_commission_in_percentage) %></dd>
               </div>
               <div class="col-sm-6">
                 <dt>Landing cost at arrival</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.landing_cost_at_arrival %></dd>
+                <dd><%= amount_with_commission(activity.landing_cost_at_arrival, @aircraft.handling_cost_commission_in_percentage) %></dd>
               </div>
+              <% if activity.accommodation_plan.present? %>
+                  <div class="col-sm-6">
+                    <dt>Accommodation</dt>
+                  </div>
+                  <div class="col-sm-6">
+                    <dd>Nights : <%= activity.accommodation_plan[:nights] %></dd>
+                    <dd>Cost: <%= amount_with_commission(activity.accommodation_plan[:cost], @aircraft.accomodation_cost_commission_in_percentage) %></dd>
+                  </div>
+              <% else %>
+                  <div class="col-sm-6">
+                    <dt>Accommodation</dt>
+                  </div>
+                  <div class="col-sm-6">
+                    <dd>Nights : NA</dd>
+                    <dd>Cost: NA </dd>
+                  </div>
+              <% end %>
+
             </div>
         <% end %>
+      </div>
+      <div class="row">
+        <table class="table table-striped">
+          <head>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Miscellaneous expenses </th>
+              <th><%= @enquiry.miscellaneous_expenses %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Sub total </th>
+              <th><%= customer_sub_total_amount(@aircraft, @enquiry) %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Service tax(15%) </th>
+              <th><%= customer_total_tax(customer_sub_total_amount(@enquiry.activities.first.aircraft, @enquiry)) %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Total price </th>
+              <th><%= customer_total_amount(@enquiry.activities.first.aircraft, @enquiry).to_i%></th>
+            </tr>
+          </head>
+        </table>
       </div>
     </dl>
   </div>
