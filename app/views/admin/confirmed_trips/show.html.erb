@@ -1,0 +1,219 @@
+<div class="row">
+  <div class="col-sm-12">
+    <p><%= link_to('Back', admin_confirmed_trips_path, class: 'btn btn-primary') %></p>
+  </div>
+</div>
+
+<% @aircraft = @confirmed_trip.activities.first.aircraft %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <dl>
+      <table class="table table-striped">
+        <head>
+          <tr class="info">
+            <th><%= "Trip##{ @confirmed_trip.id}" %> </th>
+            <th>Organisation: <%= @confirmed_trip.organisation.name.capitalize %></th>
+            <th>Aircraft: <%= @aircraft.aircraft_type.name.capitalize %></th>
+            <th>Status: <%= @confirmed_trip.status.capitalize %> </th>
+
+          </tr>
+        </head>
+      </table>
+
+      <% @user = @confirmed_trip.user %>
+      <div class="col-sm-12" style="margin-bottom: 20px;">
+        <table class="table table-striped">
+          <head>
+            <tr class="default">
+              <th>Customer Details </th>
+            </tr>
+          </head>
+        </table>
+        <div class="col-sm-6">
+          <dt>Name</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.full_name.titleize %></div>
+        </div>
+        <div class="col-sm-6">
+          <dt>Email</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.email%></div>
+        </div>
+        <div class="col-sm-6">
+          <dt>Contact</dt>
+        </div>
+        <div class="col-sm-6">
+          <div><%= @user.phone %></div>
+        </div>
+      </div>
+      <div class="row">
+        <% @confirmed_trip.activities.each do |activity| %>
+            <div class="col-sm-6">
+              <table class="table table-striped">
+                <head>
+                  <tr class="default">
+                    <th>Activity#<%= activity.id %> </th>
+                    <th>Date : <%= activity.start_at.strftime(time_format) %> </th>
+                  </tr>
+                </head>
+              </table>
+              <div class="col-sm-6">
+                <dt>Departure Airport</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.departure_airport.name %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Arrival Airport</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.arrival_airport.name %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Start at</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.start_at.strftime(time_format) %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>End at</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.end_at.strftime(time_format) %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Empty Leg</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.empty_leg ? 'Yes' : 'No' %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Pax</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.pax %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Flight Cost</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= amount_with_commission(activity.flight_cost, @aircraft.flight_cost_commission_in_percentage) %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Handling cost at takeoff</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= amount_with_commission(activity.handling_cost_at_takeoff, @aircraft.handling_cost_commission_in_percentage) %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Landing cost at arrival</dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= amount_with_commission(activity.landing_cost_at_arrival, @aircraft.handling_cost_commission_in_percentage) %></dd>
+              </div>
+              <div class="col-sm-6">
+                <dt>Watch hour </dt>
+              </div>
+              <div class="col-sm-6">
+                <dd><%= activity.watch_hour_at_arrival? ? 'As per actual' : 'NA'%></dd>
+              </div>
+              <% if activity.accommodation_plan.present? %>
+                  <div class="col-sm-6">
+                    <dt>Accommodation</dt>
+                  </div>
+                  <div class="col-sm-6">
+                    <dd>Nights : <%= activity.accommodation_plan[:nights] %></dd>
+                    <dd>Cost: <%= amount_with_commission(activity.accommodation_plan[:cost], @aircraft.accomodation_cost_commission_in_percentage) %></dd>
+                  </div>
+              <% else %>
+                  <div class="col-sm-6">
+                    <dt>Accommodation</dt>
+                  </div>
+                  <div class="col-sm-6">
+                    <dd>Nights : NA</dd>
+                    <dd>Cost: NA </dd>
+                  </div>
+              <% end %>
+
+            </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <table class="table table-striped">
+          <head>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Miscellaneous expenses </th>
+              <th><%= @confirmed_trip.miscellaneous_expenses %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Sub total </th>
+              <th><%= customer_sub_total_amount(@aircraft, @confirmed_trip) %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Service tax(15%) </th>
+              <th><%= customer_total_tax(customer_sub_total_amount(@confirmed_trip.activities.first.aircraft, @confirmed_trip)) %></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Total price </th>
+              <th><%= customer_total_amount(@confirmed_trip.activities.first.aircraft, @confirmed_trip).to_i%></th>
+            </tr>
+            <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+              <th>Deposited Amount </th>
+              <th><%= customer_total_amount(@confirmed_trip.activities.first.aircraft, @confirmed_trip).to_i*(10/100)%></th>
+            </tr>
+          </head>
+        </table>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<% if  @confirmed_trip.catering.present? %>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Catering</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= @confirmed_trip.catering %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>
+
+<% if @confirmed_trip.passenger_details.any? %>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Passenger Details</h4>
+      </div>
+      <div class="col-sm-12">
+        <table class="table table-striped">
+          <thead>
+          <tr class="info">
+            <th>Title</th>
+            <th>Name</th>
+            <th>Nationality</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @confirmed_trip.passenger_details.each do |passenger| %>
+              <tr>
+                <td><%= passenger.title.capitalize %></td>
+                <td><%= passenger.name.titleize %></td>
+                <td><%= passenger.nationality %></td>
+              </tr>
+          <%- end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>
