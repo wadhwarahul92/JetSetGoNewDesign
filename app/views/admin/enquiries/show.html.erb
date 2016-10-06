@@ -12,9 +12,11 @@
       <table class="table table-striped">
         <head>
           <tr class="info">
+            <th><%= "Enquiry##{ @enquiry.id}" %> </th>
             <th>Organisation: <%= @enquiry.organisation.name.capitalize %></th>
-            <th>Status: <%= @enquiry.status.capitalize %> </th>
             <th>Aircraft: <%= @aircraft.aircraft_type.name.capitalize %></th>
+            <th>Status: <%= @enquiry.status.capitalize %> </th>
+
           </tr>
         </head>
       </table>
