@@ -153,7 +153,7 @@ class WelcomeController < ApplicationController
     # workbook = RubyXL::Parser.parse(custom_path)
     # worksheet = workbook[0]
     # airports = Airport.all
-
+    #
     # worksheet.each_with_index { |row, index|
     #
     #   airport_id = nil
@@ -165,7 +165,10 @@ class WelcomeController < ApplicationController
     #   d = ''
     #
     #   row && row.cells.each_with_index { |cell, index|
+    #
+    #     break if index == 5
     #     val = cell && cell.value
+    #
     #
     #     # next if val = 'Airport ICAO Code' || 'Date' || 'Start time' || 'End Time'
     #
@@ -183,10 +186,12 @@ class WelcomeController < ApplicationController
     #     end
     #
     #     if index == 2
+    #       val = val - 5.hours - 30.minutes
     #       start_at = tmp_date + ' ' + val.strftime('%I:%M %p')
     #     end
     #
     #     if index == 3
+    #       val = val - 5.hours - 30.minutes
     #       end_at = tmp_date + ' ' + val.strftime('%I:%M %p')
     #     end
     #
