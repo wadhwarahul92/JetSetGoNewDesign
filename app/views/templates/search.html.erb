@@ -30,12 +30,14 @@
                 <div class="col-md-2 col-sm-3 col-xs-6">Night Parking: {{airport.night_parking ? 'Yes' : 'No'}}</div>
                 <div class="col-md-3 col-sm-6 col-xs-12" ng-show="airport.is_watch_hour">Watch Hour:
                  <span ng-repeat="watch_hour in airport.watch_hour">
+                   <span ng-if="$index > 0 && $index < airport.watch_hour.length">|</span>
                    {{ctrl.formatTime4(watch_hour.start_at)}} - {{ctrl.formatTime4(watch_hour.end_at)}}
                  </span>
 
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12" ng-show="airport.is_notam">Notam:
                  <span ng-repeat="notam in airport.notam">
+                   <span ng-if="$index > 0 && $index < airport.watch_hour.length">|</span>
                    {{ctrl.formatTime4(notam.start_at)}} - {{ctrl.formatTime4(notam.end_at)}}
                  </span>
 
