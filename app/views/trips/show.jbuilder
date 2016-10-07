@@ -127,4 +127,11 @@ json.aircraft{
 
   json.name aircraft.aircraft_type.name
   json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+
+  json.base_airport{
+    if aircraft.base_airport.present?
+      json.id aircraft.base_airport.id
+      json.name aircraft.base_airport.name
+    end
+  }
 }
