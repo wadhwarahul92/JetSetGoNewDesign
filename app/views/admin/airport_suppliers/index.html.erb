@@ -1,51 +1,57 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New Airport supplier', new_admin_airport_supplier_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <th>Halt type</th>
-        <th>Mininum MTOW</th>
-        <th>Maximum MTOW</th>
-        <th>Minimum amount</th>
-        <th>Offset amount</th>
-        <th>Rate per Tonne</th>
-        <th>Royalty</th>
-        <th>Additional rate</th>
-        <th>Max other service</th>
-        <th>Other service cost</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @airport_suppliers.each do |airport_supplier| %>
-          <tr>
-            <td><%= airport_supplier.id %></td>
-            <td><%= airport_supplier.halt_type %></td>
-            <td><%= airport_supplier.minimum_mtow %></td>
-            <td><%= airport_supplier.maximum_mtow %></td>
-            <td><%= airport_supplier.minimum_amount %></td>
-            <td><%= airport_supplier.offset_amount %></td>
-            <td><%= airport_supplier.rate_per_tonne %></td>
-            <td><%= airport_supplier.royalty %></td>
-            <td><%= airport_supplier.additional_rate %></td>
-            <td><%= airport_supplier.max_other_service %></td>
-            <td><%= airport_supplier.other_service_cost %></td>
-            <td>
-              <%= link_to edit_admin_airport_supplier_path(airport_supplier) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Airport Categories</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Airport supplier', new_admin_airport_supplier_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <th>Halt type</th>
+              <th>Mininum MTOW</th>
+              <th>Maximum MTOW</th>
+              <th>Minimum amount</th>
+              <th>Offset amount</th>
+              <th>Rate per Tonne</th>
+              <th>Royalty</th>
+              <th>Additional rate</th>
+              <th>Max other service</th>
+              <th>Other service cost</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @airport_suppliers.each do |airport_supplier| %>
+                <tr>
+                  <td><%= airport_supplier.id %></td>
+                  <td><%= airport_supplier.halt_type %></td>
+                  <td><%= airport_supplier.minimum_mtow %></td>
+                  <td><%= airport_supplier.maximum_mtow %></td>
+                  <td><%= airport_supplier.minimum_amount %></td>
+                  <td><%= airport_supplier.offset_amount %></td>
+                  <td><%= airport_supplier.rate_per_tonne %></td>
+                  <td><%= airport_supplier.royalty %></td>
+                  <td><%= airport_supplier.additional_rate %></td>
+                  <td><%= airport_supplier.max_other_service %></td>
+                  <td><%= airport_supplier.other_service_cost %></td>
+                  <td>
+                    <%= link_to edit_admin_airport_supplier_path(airport_supplier) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

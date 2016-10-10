@@ -1,124 +1,129 @@
-<div class="row">
-  <div class="col-sm-12">
-    <p><%= link_to('Back', admin_enquiries_path, class: 'btn btn-primary') %></p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <dl>
-      <table class="table table-striped">
-        <head>
-          <tr class="info">
-            <th>Organisation: <%= @enquiry.organisation.name.capitalize %></th>
-            <th>Status: <%= @enquiry.status.capitalize %> </th>
-            <th>Aircraft: <%= @enquiry.activities.first.aircraft.aircraft_type.name.capitalize %></th>
-          </tr>
-        </head>
-      </table>
-
-      <% @user = @enquiry.user %>
-      <div class="col-sm-12" style="margin-bottom: 20px;">
-        <table class="table table-striped">
-          <head>
-            <tr class="default">
-              <th>Customer Details </th>
-            </tr>
-          </head>
-        </table>
-        <div class="col-sm-6">
-          <dt>Name</dt>
-        </div>
-        <div class="col-sm-6">
-          <div><%= @user.full_name.titleize %></div>
-        </div>
-        <div class="col-sm-6">
-          <dt>Email</dt>
-        </div>
-        <div class="col-sm-6">
-          <div><%= @user.email%></div>
-        </div>
-        <div class="col-sm-6">
-          <dt>Contact</dt>
-        </div>
-        <div class="col-sm-6">
-          <div><%= @user.phone %></div>
-        </div>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Airport Categories</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <p class="text-right"><%= link_to('Back', admin_enquiries_path, class: 'btn btn-primary') %></p>
       </div>
+      <div class="clearfix"></div>
       <div class="row">
-        <% @enquiry.activities.each do |activity| %>
-            <div class="col-sm-6">
+        <div class="col-sm-12">
+          <dl>
+            <table class="table table-striped">
+              <head>
+                <tr class="info">
+                  <th>Organisation: <%= @enquiry.organisation.name.capitalize %></th>
+                  <th>Status: <%= @enquiry.status.capitalize %> </th>
+                  <th>Aircraft: <%= @enquiry.activities.first.aircraft.aircraft_type.name.capitalize %></th>
+                </tr>
+              </head>
+            </table>
+
+            <% @user = @enquiry.user %>
+            <div class="col-sm-12" style="margin-bottom: 20px;">
               <table class="table table-striped">
                 <head>
                   <tr class="default">
-                    <th>Activity#<%= activity.id %> </th>
-                    <th>Date : <%= activity.start_at.strftime('%d-%b-%Y %H:%M') %> </th>
+                    <th>Customer Details </th>
                   </tr>
                 </head>
               </table>
               <div class="col-sm-6">
-                <dt>Departure Airport</dt>
+                <dt>Name</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.departure_airport.name %></dd>
+                <div><%= @user.full_name.titleize %></div>
               </div>
               <div class="col-sm-6">
-                <dt>Arrival Airport</dt>
+                <dt>Email</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.arrival_airport.name %></dd>
+                <div><%= @user.email%></div>
               </div>
               <div class="col-sm-6">
-                <dt>Start at</dt>
+                <dt>Contact</dt>
               </div>
               <div class="col-sm-6">
-                <dd><%= activity.start_at.strftime(time_format) %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>End at</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.end_at.strftime(time_format) %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Empity Leg</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.empty_leg ? 'Yes' : 'No' %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Pax</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.pax %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Flight Cost</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.flight_cost %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Handling cost at takeoff</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.handling_cost_at_takeoff %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Handling cost at takeoff</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.handling_cost_at_takeoff %></dd>
-              </div>
-              <div class="col-sm-6">
-                <dt>Landing cost at arrival</dt>
-              </div>
-              <div class="col-sm-6">
-                <dd><%= activity.landing_cost_at_arrival %></dd>
+                <div><%= @user.phone %></div>
               </div>
             </div>
-        <% end %>
+            <div class="row">
+              <% @enquiry.activities.each do |activity| %>
+                  <div class="col-sm-6">
+                    <table class="table table-striped">
+                      <head>
+                        <tr class="default">
+                          <th>Activity#<%= activity.id %> </th>
+                          <th>Date : <%= activity.start_at.strftime('%d-%b-%Y %H:%M') %> </th>
+                        </tr>
+                      </head>
+                    </table>
+                    <div class="col-sm-6">
+                      <dt>Departure Airport</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.departure_airport.name %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Arrival Airport</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.arrival_airport.name %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Start at</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.start_at.strftime(time_format) %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>End at</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.end_at.strftime(time_format) %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Empity Leg</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.empty_leg ? 'Yes' : 'No' %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Pax</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.pax %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Flight Cost</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.flight_cost %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Handling cost at takeoff</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.handling_cost_at_takeoff %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Handling cost at takeoff</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.handling_cost_at_takeoff %></dd>
+                    </div>
+                    <div class="col-sm-6">
+                      <dt>Landing cost at arrival</dt>
+                    </div>
+                    <div class="col-sm-6">
+                      <dd><%= activity.landing_cost_at_arrival %></dd>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </dl>
+        </div>
       </div>
-    </dl>
+    </div>
   </div>
 </div>

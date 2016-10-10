@@ -1,92 +1,97 @@
-<div class="row">
-    <div class="col-sm-10">
-      <ul class="list-inline">
-        <li>
-          <%= form_tag admin_aircrafts_path, method: :get do %>
-              <%= text_field_tag 'tail_number', '', placeholder: 'Tail number', value: params[:tail_number], type: 'search' %>
-              OR
-              <%= select_tag('aircraft_type_id', options_for_select(aircraft_types_for_collection, params[:aircraft_type_id]), prompt: 'Choose aircraft type', type: 'search') %>
-              <%= submit_tag 'Search', class: 'btn btn-info'%>
-          <% end %>
-        </li>
-      </ul>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Aircrafts</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-10">
+        <ul class="list-inline">
+          <li>
+            <%= form_tag admin_aircrafts_path, method: :get do %>
+                <%= text_field_tag 'tail_number', '', placeholder: 'Tail number', value: params[:tail_number], type: 'search' %>
+                /
+                <%= select_tag('aircraft_type_id', options_for_select(aircraft_types_for_collection, params[:aircraft_type_id]), prompt: 'Choose aircraft type', type: 'search') %>
+                <%= submit_tag 'Search', class: 'btn btn-info'%>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-2">
+        <ul class="list-inline pull-right">
+          <li><%= link_to 'Add Aircraft', new_admin_aircraft_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>ID</th>
+              <th>Tail Number</th>
+              <th>Type</th>
+              <th>Organisation</th>
+              <th>Created By</th>
+              <th>Updated By</th>
+              <th>Action</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @aircrafts.each do |aircraft| %>
+                <tr>
+                  <td><%= aircraft.id %></td>
+                  <td><%= aircraft.tail_number %></td>
+                  <td><%= aircraft.aircraft_type.name %></td>
+                  <td><%= aircraft.organisation.name if aircraft.organisation %></td>
+                  <td><%= aircraft.creator.full_name if aircraft.creator %></td>
+                  <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
+
+                  <td>
+                    <% if aircraft.is_jsg_fleet? %>
+                        <span class="text-success">JSG Fleet</span>
+                        <%= link_to('Operator Fleet?', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: false), method: :put, class: 'btn btn-danger btn-xs') %>
+                    <%- else %>
+                        <span class="text-danger">Operator Fleet</span>
+                        <%= link_to('JSG Fleet', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: true), method: :put, class: 'btn btn-success btn-xs') %>
+                    <%- end %>
+                  </td>
+
+
+                  <td>
+                    <% if aircraft.admin_verified? %>
+                        <span class="text-success">Verified by admin</span>
+                        <%= link_to( 'Un-verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+                    <%- else %>
+                        <span class="text-danger">Not verified</span>
+                        <%= link_to( 'Verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <%= link_to admin_aircraft_path(aircraft) do %>
+                        <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_admin_aircraft_path(aircraft) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <% unless aircraft.aircraft_images.any? %>
+                        <p class="text-danger">
+                          <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
+                        </p>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <%= will_paginate @aircrafts %>
     </div>
-    <div class="col-sm-2">
-      <ul class="list-inline pull-right">
-        <li><%= link_to 'Add Aircraft', new_admin_aircraft_path, class: 'btn btn-primary' %></li>
-      </ul>
-    </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>ID</th>
-        <th>Tail Number</th>
-        <th>Type</th>
-        <th>Organisation</th>
-        <th>Created By</th>
-        <th>Updated By</th>
-        <th>Action</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @aircrafts.each do |aircraft| %>
-          <tr>
-            <td><%= aircraft.id %></td>
-            <td><%= aircraft.tail_number %></td>
-            <td><%= aircraft.aircraft_type.name %></td>
-            <td><%= aircraft.organisation.name if aircraft.organisation %></td>
-            <td><%= aircraft.creator.full_name if aircraft.creator %></td>
-            <td><%= aircraft.last_updater.full_name if aircraft.last_updater %></td>
-
-            <td>
-              <% if aircraft.is_jsg_fleet? %>
-                  <span class="text-success">JSG Fleet</span>
-                  <%= link_to('Operator Fleet?', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: false), method: :put, class: 'btn btn-danger btn-xs') %>
-              <%- else %>
-                  <span class="text-danger">Operator Fleet</span>
-                  <%= link_to('JSG Fleet', jsg_fleet_admin_aircraft_path(aircraft, is_jsg_fleet: true), method: :put, class: 'btn btn-success btn-xs') %>
-              <%- end %>
-            </td>
-
-
-            <td>
-              <% if aircraft.admin_verified? %>
-                  <span class="text-success">Verified by admin</span>
-                  <%= link_to( 'Un-verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
-              <%- else %>
-                  <span class="text-danger">Not verified</span>
-                  <%= link_to( 'Verify' , admin_approve_admin_aircraft_path(aircraft, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
-              <%- end %>
-            </td>
-            <td>
-              <%= link_to admin_aircraft_path(aircraft) do %>
-                  <i data-toggle="tooltip" title="Add images to aircraft" class="fa fa-eye"></i>
-              <%- end %>
-            </td>
-            <td>
-              <%= link_to edit_admin_aircraft_path(aircraft) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-            <td>
-              <% unless aircraft.aircraft_images.any? %>
-                  <p class="text-danger">
-                    <i title="This aircraft has no images" data-toggle="tooltip" class="fa fa-exclamation-triangle"></i>
-                  </p>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
   </div>
 </div>
-
-<%= will_paginate @aircrafts %>

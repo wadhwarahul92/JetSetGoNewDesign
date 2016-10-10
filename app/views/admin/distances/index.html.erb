@@ -1,40 +1,45 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New Distance', new_admin_distance_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <%= will_paginate @distances %>
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>From Airport Id</th>
-        <th>To Airport Id</th>
-        <th>Distance In NM</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @distances.each do |distance| %>
-          <tr>
-            <!--<td><%#= Airport.find(distance.from_airport_id).name if Airport.find(distance.from_airport_id).present? %></td>-->
-            <!--<td><%#= Airport.find(distance.to_airport_id).name if Airport.find(distance.to_airport_id).present? %></td>-->
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Distances</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Distance', new_admin_distance_path, class: 'btn btn-primary pull-right' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>From Airport Id</th>
+              <th>To Airport Id</th>
+              <th>Distance In NM</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @distances.each do |distance| %>
+                <tr>
+                  <!--<td><%#= Airport.find(distance.from_airport_id).name if Airport.find(distance.from_airport_id).present? %></td>-->
+                  <!--<td><%#= Airport.find(distance.to_airport_id).name if Airport.find(distance.to_airport_id).present? %></td>-->
 
-            <td><%= Airport.where(id: distance.from_airport_id).last.name if Airport.where(id: distance.from_airport_id).any? %></td>
-            <td><%= Airport.where(id: distance.to_airport_id).last.name if Airport.where(id: distance.to_airport_id).any? %></td>
-            <td><%= distance.distance_in_nm %></td>
-            <td>
-              <%= link_to edit_admin_distance_path(distance) do %>
-                  <i class="fa fa-edit"></i>
-              <%-end%>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
-    <%= will_paginate @distances %>
+                  <td><%= Airport.where(id: distance.from_airport_id).last.name if Airport.where(id: distance.from_airport_id).any? %></td>
+                  <td><%= Airport.where(id: distance.to_airport_id).last.name if Airport.where(id: distance.to_airport_id).any? %></td>
+                  <td><%= distance.distance_in_nm %></td>
+                  <td>
+                    <%= link_to edit_admin_distance_path(distance) do %>
+                        <i class="fa fa-edit"></i>
+                    <%-end%>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+          <%= will_paginate @distances %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
