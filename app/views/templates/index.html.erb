@@ -196,9 +196,10 @@
               </a>
             </span>
             <a class="search-btn" ng-click="ctrl.create()" href="">Search</a>
-            <a ng-if="ctrl.activities.length < 5" class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
             <a class="add-trip-btn" href="" ng-show="ctrl.activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip
-              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+              <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt="">
+            </a>
+            <a ng-if="ctrl.activities.length < 5" class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
           </div>
         </div>
         <!-- search con finish -->

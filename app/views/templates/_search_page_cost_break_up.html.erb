@@ -59,21 +59,21 @@
                 <!--</div>-->
               <!--</div>-->
             <!--</div>-->
+            <!--<div class="cost-con">-->
+              <!--<div class="row">-->
+                <!--<div class="col-xs-7">-->
+                  <!--<p>Flight Time</p>-->
+                <!--</div>-->
+                <!--<div class="col-xs-5 text-right">-->
+                  <!--&lt;!&ndash;<p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>&ndash;&gt;-->
+                  <!--<p>{{ctrl.total_customer_flight_plan_time(result)}}</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="cost-con">
               <div class="row">
                 <div class="col-xs-7">
-                  <p>Flight Time</p>
-                </div>
-                <div class="col-xs-5 text-right">
-                  <!--<p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>-->
-                  <p>{{ctrl.total_customer_flight_plan_time(result)}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="cost-con">
-              <div class="row">
-                <div class="col-xs-7">
-                  <p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>
+                  <p>Flight Cost @ (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour) for {{ctrl.total_customer_flight_plan_time(result)}}</p>
                   <!--<p>Flight Cost</p>-->
                 </div>
                 <div class="col-xs-5 text-right">
@@ -148,16 +148,16 @@
           <div class="cost-con" ng-if="result.set_accomodation">
             <div class="row">
               <div class="col-xs-12">
-                <p><b>Crew Accommodation</b></p>
+                <p>Crew Accommodation</p>
               </div>
+              <!--<div class="col-xs-7">-->
+                <!--<p>Night</p>-->
+              <!--</div>-->
+              <!--<div class="col-xs-5 text-right" >-->
+                <!--<p>{{result.total_accommodation_nights}}</p>-->
+              <!--</div>-->
               <div class="col-xs-7">
-                <p>Night</p>
-              </div>
-              <div class="col-xs-5 text-right" >
-                <p>{{result.total_accommodation_nights}}</p>
-              </div>
-              <div class="col-xs-7">
-                <p>Cost</p>
+                <p>&nbsp;  Cost</p>
               </div>
               <div class="col-xs-5 text-right" >
                 <p>₹ {{ result.total_accommodation_cost | currency:"":2 | indianCurrency }}</p>
