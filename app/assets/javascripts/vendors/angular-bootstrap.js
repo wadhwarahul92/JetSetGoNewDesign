@@ -6703,6 +6703,7 @@ angular.module("uib/template/carousel/carousel.html", []).run(["$templateCache",
         "  </a>\n" +
         "  <ol class=\"carousel-indicators\" ng-show=\"slides.length > 1\">\n" +
         "    <li ng-repeat=\"slide in slides | orderBy:indexOfSlide track by $index\" ng-class=\"{ active: isActive(slide) }\" ng-click=\"select(slide)\">\n" +
+        "      <span class=\"\">{{1 + $index}}</span>\n" +
         "      <span class=\"sr-only\">slide {{ $index + 1 }} of {{ slides.length }}<span ng-if=\"isActive(slide)\">, currently active</span></span>\n" +
         "    </li>\n" +
         "  </ol>\n" +

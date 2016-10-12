@@ -644,13 +644,16 @@ span.heading:after{
     z-index: 1;
   }
   .carousel-indicators li{
-    border: 1px solid #998776;
+    //border: 1px solid #998776;
     margin: 2px;
+    text-indent: inherit;
+    color: #999999;
   }
   .carousel-indicators .active{
-    background-color: #998776;
+    //background-color: #998776;
     width: 10px;
     height: 10px;
+    color: #947c64;
   }
   .fa-chevron-right:before{
     color: #920000;
