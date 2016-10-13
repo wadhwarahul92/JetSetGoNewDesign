@@ -1,68 +1,80 @@
-<%= simple_form_for [:admin, @aircraft] do |f| %>
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.error_notification %>
-        <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
-        <%= f.input :tail_number %>
-        <%= f.input :one_liner %>
-        <%= f.input :description %>
-        <%= f.input :mtow %>
-        <%= f.input :year_of_manufacture %>
-        <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
-        <%= f.input :base_airport_id, collection: airports_for_collection, prompt: 'Select Aircraft type' %>
-        <%= f.input :organisation_id, collection: organisations_for_collection, prompt: 'Select Organisation' %>
-        <div class="col-sm-12">
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Add Aircraft</h2>
+    <div class="admin_content_body">
+      <%= simple_form_for [:admin, @aircraft] do |f| %>
           <div class="col-sm-6">
-            <% if f.object.image.present? %>
-                <%= image_tag f.object.image.url(:original), style: 'width:100%' %>
-            <%- end %>
-            <%= f.input :image, :label => "Exterior image"%>
-          </div>
+            <%= f.error_notification %>
+            <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
+            <%= f.input :tail_number %>
+            <%= f.input :one_liner %>
+            <%= f.input :description %>
+            <%= f.input :mtow %>
+            <%= f.input :year_of_manufacture %>
+            <%= f.input :aircraft_type_id, collection: aircraft_types_for_collection, prompt: 'Select Aircraft type' %>
+            <%= f.input :base_airport_id, collection: airports_for_collection, prompt: 'Select Aircraft type' %>
+            <%= f.input :organisation_id, collection: organisations_for_collection, prompt: 'Select Organisation' %>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="col-sm-6">
+                  <% if f.object.image.present? %>
+                      <%= image_tag f.object.image.url(:original), style: 'width:100%' %>
+                  <%- end %>
+                  <%= f.input :image, :label => "Exterior image"%>
+                </div>
 
-          <div class="col-sm-6">
-            <% if f.object.interior.present? %>
-                <%= image_tag f.object.interior.url(:size_400x400), style: 'width:100%' %>
-            <%- end %>
-            <%= f.input :interior, :label => "Interior image"%>
-          </div>
+                <div class="col-sm-6">
+                  <% if f.object.interior.present? %>
+                      <%= image_tag f.object.interior.url(:size_400x400), style: 'width:100%' %>
+                  <%- end %>
+                  <%= f.input :interior, :label => "Interior image"%>
+                </div>
 
-          <div class="col-sm-6">
-            <% if f.object.specification_image.present? %>
-                <%= image_tag f.object.specification_image.url(:original), style: 'width:100%' %>
-            <%- end %>
-            <%= f.input :specification_image, :label => "Specification image"%>
-          </div>
+                <div class="col-sm-6">
+                  <% if f.object.specification_image.present? %>
+                      <%= image_tag f.object.specification_image.url(:original), style: 'width:100%' %>
+                  <%- end %>
+                  <%= f.input :specification_image, :label => "Specification image"%>
+                </div>
 
-          <div class="col-sm-6">
-            <% if f.object.range_map_image.present? %>
-                <%= image_tag f.object.range_map_image.url(:original), style: 'width:100%' %>
-            <%- end %>
-            <%= f.input :range_map_image, :label => "Range map  image"%>
-          </div>
-        </div>
-
-        <% [:wifi, :phone, :flight_attendant, :medical_evac].each do |attr| %>
-            <div class="col-sm-4">
-              <%= f.input(attr, :value => true) %>
+                <div class="col-sm-6">
+                  <% if f.object.range_map_image.present? %>
+                      <%= image_tag f.object.range_map_image.url(:original), style: 'width:100%' %>
+                  <%- end %>
+                  <%= f.input :range_map_image, :label => "Range map  image"%>
+                </div>
+              </div>
             </div>
-        <%- end %>
-        <%= f.submit 'Save', class: 'btn btn-success pull-right' %>
-      </div>
-      <div class="col-sm-6">
-        <% [:seating_capacity,
-            :baggage_capacity_in_kg,
-            :landing_field_length_in_feet,
-            :runway_field_length_in_feet,
-            :number_of_toilets,
-            :cabin_width_in_meters,
-            :cabin_height_in_meters,
-            :cabin_length_in_meters,
-            :crew,
-            :cruise_speed_in_nm_per_hour,
-            :flying_range_in_nm,
-            :per_hour_cost].each do |attr| %>
-            <%= f.input(attr) %>
-        <%- end %>
-      </div>
+
+            <div class="row">
+              <% [:wifi, :phone, :flight_attendant, :medical_evac].each do |attr| %>
+                  <div class="col-sm-3">
+                    <%= f.input(attr, :value => true) %>
+                  </div>
+              <%- end %>
+              <div class="col-sm-12">
+                <%= f.submit 'Save', class: 'btn btn-success' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <% [:seating_capacity,
+                :baggage_capacity_in_kg,
+                :landing_field_length_in_feet,
+                :runway_field_length_in_feet,
+                :number_of_toilets,
+                :cabin_width_in_meters,
+                :cabin_height_in_meters,
+                :cabin_length_in_meters,
+                :crew,
+                :cruise_speed_in_nm_per_hour,
+                :flying_range_in_nm,
+                :per_hour_cost].each do |attr| %>
+                <%= f.input(attr) %>
+            <%- end %>
+          </div>
+          <div class="clearfix"></div>
+      <%- end %>
     </div>
-<%- end %>
+  </div>
+</div>

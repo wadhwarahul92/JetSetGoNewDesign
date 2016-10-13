@@ -1,94 +1,100 @@
-<div class="row">
-  <div class="col-sm-10">
-    <ul class="list-inline">
-      <li>
-        <form action="/admin/airports" method="get">
-          <input type="search" name="name" value="<%= params[:name] %>" placeholder="Airport Name">
-          OR
-          <input type="search" name="icao_code" value="<%= params[:icao_code] %>" placeholder="ICAO Code">
-          OR
-          <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code">
-          OR
-          <%= select_tag('city_id', options_for_select(cities_for_collection, params[:city_id]), prompt: 'Choose city', type: "search") %>
-          <input type="submit" value="search" class="btn btn-info">
-        </form>
-      </li>
-    </ul>
-  </div>
-  <div class="col-sm-2">
-    <ul class="list-inline pull-right">
-      <li><%= link_to 'New Airport', new_admin_airport_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <th>Code</th>
-        <th>ICAO code</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>City</th>
-        <th>Airport category</th>
-        <th>IFR/VFR</th>
-        <th>Private landing</th>
-        <th>International</th>
-        <th>Night landing</th>
-        <th>Night parking</th>
-        <th>Fuel availability</th>
-        <th>Watch hour extension</th>
-        <th>Bais time in minutes</th>
-        <th>ATC</th>
-        <th>Landing minimum mtow</th>
-        <th>Landing maximum mtow</th>
-        <th>Landing rate per tonne</th>
-        <th>Created By</th>
-        <th>Updated By</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @airports.each do |airport| %>
-          <tr>
-            <td><%= airport.id %></td>
-            <td><%= airport.code %></td>
-            <td><%= airport.icao_code %></td>
-            <td><%= airport.name %></td>
-            <td>
-              <%= airport.deleted_at.present? ? 'UnActive' : 'Active' %>
-              | <%= link_to 'Toggle', admin_airport_path(airport), method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-            <td>
-              <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %>
-              <br/> 
-              <%= airport.city.name %>
-            </td>
-            <td><%= airport.airport_category.name if airport.airport_category.present? %></td>
-            <td><%= airport.ifr_or_vfr.upcase if airport.ifr_or_vfr.present? %></td>
-            <td><%= airport.private_landing %></td>
-            <td><%= airport.international %></td>
-            <td><%= airport.night_landing %></td>
-            <td><%= airport.night_parking %></td>
-            <td><%= airport.fuel_availability %></td>
-            <td><%= airport.watch_hour_extension %></td>
-            <td><%= airport.bais_time_in_minutes %></td>
-            <td><%= airport.atc %></td>
-            <td><%= airport.landing_minimum_mtow %></td>
-            <td><%= airport.landing_maximum_mtow %></td>
-            <td><%= airport.landing_rate_per_tonne %></td>
-            <td><%= airport.creator.full_name if airport.creator %></td>
-            <td><%= airport.last_updater.full_name if airport.last_updater %></td>
-            <td>
-              <%= link_to edit_admin_airport_path(airport) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Airports</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-10">
+        <ul class="list-inline">
+          <li>
+            <form action="/admin/airports" method="get">
+              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Airport Name">
+              /
+              <input type="search" name="icao_code" value="<%= params[:icao_code] %>" placeholder="ICAO Code">
+              /
+              <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code">
+              /
+              <%= select_tag('city_id', options_for_select(cities_for_collection, params[:city_id]), prompt: 'Choose city', type: "search") %>
+              <input type="submit" value="search">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-2">
+        <ul class="list-inline pull-right">
+          <li><%= link_to 'New Airport', new_admin_airport_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <th>Code</th>
+              <th>ICAO code</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>City</th>
+              <th>Airport category</th>
+              <th>IFR/VFR</th>
+              <th>Private landing</th>
+              <th>International</th>
+              <th>Night landing</th>
+              <th>Night parking</th>
+              <th>Fuel availability</th>
+              <th>Watch hour extension</th>
+              <th>Bais time in minutes</th>
+              <th>ATC</th>
+              <th>Landing minimum mtow</th>
+              <th>Landing maximum mtow</th>
+              <th>Landing rate per tonne</th>
+              <th>Created By</th>
+              <th>Updated By</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @airports.each do |airport| %>
+                <tr>
+                  <td><%= airport.id %></td>
+                  <td><%= airport.code %></td>
+                  <td><%= airport.icao_code %></td>
+                  <td><%= airport.name %></td>
+                  <td>
+                    <%= airport.deleted_at.present? ? 'UnActive' : 'Active' %>
+                    | <%= link_to 'Toggle', admin_airport_path(airport), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </td>
+                  <td>
+                    <%= image_tag airport.city.image.url(:original), style: 'width: 50px' %>
+                    <br/>
+                    <%= airport.city.name %>
+                  </td>
+                  <td><%= airport.airport_category.name if airport.airport_category.present? %></td>
+                  <td><%= airport.ifr_or_vfr.upcase if airport.ifr_or_vfr.present? %></td>
+                  <td><%= airport.private_landing %></td>
+                  <td><%= airport.international %></td>
+                  <td><%= airport.night_landing %></td>
+                  <td><%= airport.night_parking %></td>
+                  <td><%= airport.fuel_availability %></td>
+                  <td><%= airport.watch_hour_extension %></td>
+                  <td><%= airport.bais_time_in_minutes %></td>
+                  <td><%= airport.atc %></td>
+                  <td><%= airport.landing_minimum_mtow %></td>
+                  <td><%= airport.landing_maximum_mtow %></td>
+                  <td><%= airport.landing_rate_per_tonne %></td>
+                  <td><%= airport.creator.full_name if airport.creator %></td>
+                  <td><%= airport.last_updater.full_name if airport.last_updater %></td>
+                  <td>
+                    <%= link_to edit_admin_airport_path(airport) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

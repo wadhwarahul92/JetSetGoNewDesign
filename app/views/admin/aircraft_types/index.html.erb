@@ -1,41 +1,46 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'Add Aircraft type', new_admin_aircraft_type_path, class: 'btn btn-primary' %></li>
-    </ul>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Aircraft Type</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'Add Aircraft type', new_admin_aircraft_type_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Created By</th>
+              <th>Updated By</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @aircraft_types.each do |aircraft_type| %>
+                <tr>
+                  <td><%= aircraft_type.id %></td>
+                  <td><%= aircraft_type.name %></td>
+                  <td><%= aircraft_type.svg.try(:html_safe) %></td>
+                  <td><%= aircraft_type.creator.full_name if aircraft_type.creator %></td>
+                  <td><%= aircraft_type.last_updater.full_name if aircraft_type.last_updater %></td>
+                  <td>
+                    <%= link_to edit_admin_aircraft_type_path(aircraft_type) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <%= will_paginate @aircraft_types %>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Created By</th>
-        <th>Updated By</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @aircraft_types.each do |aircraft_type| %>
-      <tr>
-        <td><%= aircraft_type.id %></td>
-        <td><%= aircraft_type.name %></td>
-        <td><%= aircraft_type.svg.try(:html_safe) %></td>
-        <td><%= aircraft_type.creator.full_name if aircraft_type.creator %></td>
-        <td><%= aircraft_type.last_updater.full_name if aircraft_type.last_updater %></td>
-        <td>
-          <%= link_to edit_admin_aircraft_type_path(aircraft_type) do %>
-          <i class="fa fa-edit"></i>
-          <%- end %>
-        </td>
-      </tr>
-      <%- end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<%= will_paginate @aircraft_types %>

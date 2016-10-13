@@ -1,52 +1,60 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New City', new_admin_city_path, class: 'btn btn-primary' %></li>
-      <li>
-        <form action="/admin/cities" method="get">
-          <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name">
-          <input type="submit" value="search">
-        </form>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th></th>
-        <th>Name</th>
-        <th>State</th>
-        <th>Accommodation category</th>
-        <th>Creator</th>
-        <th>Updated By</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @cities.each do |city| %>
-          <tr>
-            <td>
-              <% if city.image.present? %>
-                  <%= image_tag city.image.url(:original) %>
-              <%- end %>
-            </td>
-            <td><%= city.name %></td>
-            <td><%= city.state %></td>
-            <td><%= city.accomodation_category.capitalize if city.accomodation_category.present?  %></td>
-            <td><%= city.creator.full_name if city.creator %></td>
-            <td><%= city.last_updater.full_name if city.last_updater.present? %></td>
-            <td>
-              <%= link_to edit_admin_city_path(city) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
-    <%= will_paginate @cities %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Airport Categories</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-10">
+        <ul class="list-inline">
+          <li>
+            <form action="/admin/cities" method="get">
+              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name">
+              <input type="submit" value="search">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'New City', new_admin_city_path, class: 'btn btn-primary pull-right' %>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th></th>
+              <th>Name</th>
+              <th>State</th>
+              <th>Accommodation category</th>
+              <th>Creator</th>
+              <th>Updated By</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @cities.each do |city| %>
+                <tr>
+                  <td>
+                    <% if city.image.present? %>
+                        <%= image_tag city.image.url(:original) %>
+                    <%- end %>
+                  </td>
+                  <td><%= city.name %></td>
+                  <td><%= city.state %></td>
+                  <td><%= city.accomodation_category.capitalize if city.accomodation_category.present?  %></td>
+                  <td><%= city.creator.full_name if city.creator %></td>
+                  <td><%= city.last_updater.full_name if city.last_updater.present? %></td>
+                  <td>
+                    <%= link_to edit_admin_city_path(city) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+          <%= will_paginate @cities %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

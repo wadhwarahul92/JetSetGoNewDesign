@@ -1,33 +1,39 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New Airport category', new_admin_airport_category_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @airport_categories.each do |airport_category| %>
-          <tr>
-            <td><%= airport_category.id %></td>
-            <td><%= airport_category.name %></td>
-            <td>
-              <%= link_to edit_admin_airport_category_path(airport_category) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Airport Categories</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Airport category', new_admin_airport_category_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @airport_categories.each do |airport_category| %>
+                <tr>
+                  <td><%= airport_category.id %></td>
+                  <td><%= airport_category.name %></td>
+                  <td>
+                    <%= link_to edit_admin_airport_category_path(airport_category) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

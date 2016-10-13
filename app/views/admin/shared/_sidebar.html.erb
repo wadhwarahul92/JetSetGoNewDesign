@@ -1,36 +1,38 @@
-<ul class="list-unstyled text-center">
-  <li class="list-group-item"><%= link_to 'Dashboard', admin_dashboard_path %></li>
-  <li class="list-group-item"><%= link_to 'Airports', admin_airports_path %></li>
-  <li class="list-group-item"><%= link_to 'Aircrafts', admin_aircrafts_path %></li>
-  <li class="list-group-item"><%= link_to 'Airport Categories', admin_airport_categories_path %></li>
-  <li class="list-group-item"><%= link_to 'Airport Suppliers', admin_airport_suppliers_path %></li>
-  <li class="list-group-item"><%= link_to 'Aircraft Types', admin_aircraft_types_path %></li>
-  <li class="list-group-item"><%= link_to 'Aircraft Categories', admin_aircraft_categories_path %></li>
-  <li class="list-group-item"><%= link_to 'Cities', admin_cities_path %></li>
-  <li class="list-group-item"><%= link_to 'Customers', admin_customers_path %></li>
-  <li class="list-group-item"><%= link_to 'Distance', admin_distances_path %></li>
-  <li class="list-group-item"><%= link_to 'Enquiries', admin_enquiries_path %></li>
-  <li class="list-group-item"><%= link_to 'Handling Cost Grids', admin_handling_cost_grids_path %></li>
-  <li class="list-group-item"><%= link_to 'Jetsteals', admin_jetsteals_path %></li>
-  <li class="list-group-item"><%= link_to 'Jetsteal Subscriptions', admin_jetsteal_subscriptions_path %></li>
-  <li class="list-group-item"><%= link_to 'Jetsteal - Send Emails', send_collection_emails_admin_jetsteals_path %></li>
-  <li class="list-group-item"><%= link_to 'Jsg Updates', admin_jsg_updates_path %></li>
-  <li class="list-group-item"><%= link_to 'Manufacturers', admin_manufacturers_path %></li>
-  <li class="list-group-item"><%= link_to 'Media', admin_media_contents_path %></li>
-  <li class="list-group-item"><%= link_to 'Notams', admin_notams_path %></li>
-  <li class="list-group-item"><%= link_to 'Organisations', admin_organisations_path %></li>
-  <li class="list-group-item"><%= link_to 'Offers', admin_offers_path %></li>
-  <li class="list-group-item"><%= link_to 'Quotes', admin_quotes_path %></li>
-  <li class="list-group-item"><%= link_to 'Service Enquiries', admin_service_enquiries_path %></li>
-  <li class="list-group-item"><%= link_to 'Contact Us Enquiries', admin_contact_us_enquiries_path %></li>
-  <li class="list-group-item"><%= link_to 'Sell Empty Legs', admin_sell_empty_legs_path %></li>
-  <li class="list-group-item"><%= link_to 'Suppliers', admin_suppliers_path %></li>
-  <li class="list-group-item"><%= link_to 'Taxes', admin_taxes_path %></li>
-  <li class="list-group-item"><%= link_to 'Testimonials', admin_testimonials_path %></li>
-  <li class="list-group-item"><%= link_to 'Watch Hours', admin_watch_hours_path %></li>
-  <li class="list-group-item"><%= link_to 'Models (Database)', admin_models_path %></li>
-  <li>Edit Helpers</li>
-  <li class="list-group-item"><%= link_to 'Edit Airports', edit_all_admin_airports_path %></li>
-  <li class="list-group-item"><%= link_to 'Edit Aircrafts', edit_all_admin_aircrafts_path %></li>
-  <li class="list-group-item"><%= link_to 'Edit Aircraft Types', edit_all_admin_aircraft_types_path %></li>
-</ul>
+<div class="sidebar_con">
+  <ul class="list-unstyled">
+    <li class="list-group-item"><%= link_to 'Dashboard', admin_dashboard_path(active_page: 'dashboard'), class: params[:active_page] == 'dashboard' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Airports', admin_airports_path(active_page: 'airports'), class: params[:active_page] == 'airports' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Aircrafts', admin_aircrafts_path(active_page: 'aircrafts'), class: params[:active_page] == 'aircrafts' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Airport Categories', admin_airport_categories_path(active_page: 'airport_categories'), class: params[:active_page] == 'airport_categories' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Airport Suppliers', admin_airport_suppliers_path(active_page: 'airport_suppliers'), class: params[:active_page] == 'airport_suppliers' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Aircraft Types', admin_aircraft_types_path(active_page: 'aircraft_types'), class: params[:active_page] == 'aircraft_types' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Aircraft Categories', admin_aircraft_categories_path(active_page: 'aircraft_categories'), class: params[:active_page] == 'aircraft_categories' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Cities', admin_cities_path(active_page: 'cities'), class: params[:active_page] == 'cities' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Customers', admin_customers_path(active_page: 'customers'), class: params[:active_page] == 'customers' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Distance', admin_distances_path(active_page: 'distance'), class: params[:active_page] == 'distance' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Enquiries', admin_enquiries_path(active_page: 'enquiries'), class: params[:active_page] == 'enquiries' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Handling Cost Grids', admin_handling_cost_grids_path(active_page: 'handling_cost_grids'), class: params[:active_page] == 'handling_cost_grids' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Jetsteals', admin_jetsteals_path(active_page: 'jetsteals'), class: params[:active_page] == 'jetsteals' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Jetsteal Subscriptions', admin_jetsteal_subscriptions_path(active_page: 'jetsteals_subscriptions'), class: params[:active_page] == 'jetsteals_subscriptions' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Jetsteal - Send Emails', send_collection_emails_admin_jetsteals_path(active_page: 'jetsteals_send_emails'), class: params[:active_page] == 'jetsteals_send_emails' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Jsg Updates', admin_jsg_updates_path(active_page: 'jsg_updates'), class: params[:active_page] == 'jsg_updates' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Manufacturers', admin_manufacturers_path(active_page: 'manufacturers'), class: params[:active_page] == 'manufacturers' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Media', admin_media_contents_path(active_page: 'media'), class: params[:active_page] == 'media' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Notams', admin_notams_path(active_page: 'notams'), class: params[:active_page] == 'notams' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Organisations', admin_organisations_path(active_page: 'organisations'), class: params[:active_page] == 'organisations' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Offers', admin_offers_path(active_page: 'offers'), class: params[:active_page] == 'offers' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Quotes', admin_quotes_path(active_page: 'quotes'), class: params[:active_page] == 'quotes' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Service Enquiries', admin_service_enquiries_path(active_page: 'service_enquiries'), class: params[:active_page] == 'service_enquiries' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Contact Us Enquiries', admin_contact_us_enquiries_path(active_page: 'contact_us_enquiries'), class: params[:active_page] == 'contact_us_enquiries' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Sell Empty Legs', admin_sell_empty_legs_path(active_page: 'sell_empty_legs'), class: params[:active_page] == 'sell_empty_legs' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Suppliers', admin_suppliers_path(active_page: 'suppliers'), class: params[:active_page] == 'suppliers' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Taxes', admin_taxes_path(active_page: 'taxes'), class: params[:active_page] == 'taxes' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Testimonials', admin_testimonials_path(active_page: 'testimonials'), class: params[:active_page] == 'testimonials' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Watch Hours', admin_watch_hours_path(active_page: 'watch_hours'), class: params[:active_page] == 'watch_hours' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Models (Database)', admin_models_path(active_page: 'models'), class: params[:active_page] == 'models' ? 'active_link' : '' %></li>
+    <li>Edit Helpers</li>
+    <li class="list-group-item"><%= link_to 'Edit Airports', edit_all_admin_airports_path(active_page: 'edit_airports'), class: params[:active_page] == 'edit_airports' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Edit Aircrafts', edit_all_admin_aircrafts_path(active_page: 'edit_aircrafts'), class: params[:active_page] == 'edit_aircrafts' ? 'active_link' : '' %></li>
+    <li class="list-group-item"><%= link_to 'Edit Aircraft Types', edit_all_admin_aircraft_types_path(active_page: 'edit_aircraft_types'), class: params[:active_page] == 'edit_aircraft_types' ? 'active_link' : '' %></li>
+  </ul>
+</div>
