@@ -4,11 +4,12 @@
   <div class="" ng-class="!result.enquired ? 'white-arrow-up' : 'white-arrow-up2'"></div>
   <div class="top-destination-con">
     <div class="col-xs-12 text-right">
-      <a href="javascript:void(0)" ng-click="custom3 =! custom3" class="empty-leg-btn" ng-show="ctrl.check_empty_leg(result)">Ferry Flights</a>
+      <!--<a href="javascript:void(0)" ng-click="custom3 =! custom3" class="empty-leg-btn" ng-show="ctrl.check_empty_leg(result)">Ferry Flights</a>-->
       <!--<img style="cursor: pointer" width="110" ng-click="custom3 =! custom3" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/405/original/emptylegs-on.png?1468581744" alt="">-->
       <i class="fa fa-times-circle-o cross-icon" ng-click="result.custom = !result.custom"></i>
     </div>
-    <div ng-repeat="flight_plan in result.flight_plan" ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3">
+    <!--ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3"-->
+    <div ng-repeat="flight_plan in result.flight_plan" class="destination-main-con" ng-class="flight_plan.flight_type == 'empty_leg' ? 'empty_leg_bg' : ''">
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
           <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">
@@ -58,21 +59,21 @@
                 <!--</div>-->
               <!--</div>-->
             <!--</div>-->
+            <!--<div class="cost-con">-->
+              <!--<div class="row">-->
+                <!--<div class="col-xs-7">-->
+                  <!--<p>Flight Time</p>-->
+                <!--</div>-->
+                <!--<div class="col-xs-5 text-right">-->
+                  <!--&lt;!&ndash;<p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>&ndash;&gt;-->
+                  <!--<p>{{ctrl.total_customer_flight_plan_time(result)}}</p>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="cost-con">
               <div class="row">
                 <div class="col-xs-7">
-                  <p>Flight Time</p>
-                </div>
-                <div class="col-xs-5 text-right">
-                  <!--<p>{{flight_plan.flight_time.split(':')[0]}} Hrs {{flight_plan.flight_time.split(':')[1]}} Mins</p>-->
-                  <p>{{ctrl.total_customer_flight_plan_time(result)}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="cost-con">
-              <div class="row">
-                <div class="col-xs-7">
-                  <p>Flight Cost (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour)</p>
+                  <p>Flight Cost @ (₹ {{ctrl.include_commission(result.aircraft.per_hour_cost) | currency:"":0 | indianCurrency}} per hour) for {{ctrl.total_customer_flight_plan_time(result)}}</p>
                   <!--<p>Flight Cost</p>-->
                 </div>
                 <div class="col-xs-5 text-right">
@@ -147,16 +148,16 @@
           <div class="cost-con" ng-if="result.set_accomodation">
             <div class="row">
               <div class="col-xs-12">
-                <p><b>Crew Accommodation</b></p>
+                <p>Crew Accommodation</p>
               </div>
+              <!--<div class="col-xs-7">-->
+                <!--<p>Night</p>-->
+              <!--</div>-->
+              <!--<div class="col-xs-5 text-right" >-->
+                <!--<p>{{result.total_accommodation_nights}}</p>-->
+              <!--</div>-->
               <div class="col-xs-7">
-                <p>Night</p>
-              </div>
-              <div class="col-xs-5 text-right" >
-                <p>{{result.total_accommodation_nights}}</p>
-              </div>
-              <div class="col-xs-7">
-                <p>Cost</p>
+                <p>&nbsp;  Cost</p>
               </div>
               <div class="col-xs-5 text-right" >
                 <p>₹ {{ result.total_accommodation_cost | currency:"":2 | indianCurrency }}</p>

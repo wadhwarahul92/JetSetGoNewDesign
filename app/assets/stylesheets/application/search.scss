@@ -918,7 +918,7 @@ h3.no-nyt-landing{
             h5{
               font-size: 16px;
               color: #000000;
-              margin: 0 0 10px 0;
+              margin: 3px 0 3px 0;
               padding: 0 15px;
             }
             h4{
@@ -932,6 +932,11 @@ h3.no-nyt-landing{
               span{
                 font-size: 14px;
               }
+            }
+            p.base_airport_text{
+              font-size: 14px;
+              padding: 0 15px;
+              margin: 0;
             }
           }
           .detail-link-con{
@@ -1046,8 +1051,14 @@ h3.no-nyt-landing{
             text-align: left;
           }
         }
+        .destination-main-con{
+          margin: 10px 0;
+          padding: 10px 0;
+        }
+        .empty_leg_bg{
+          background-color: #f9f3e6;
+        }
         .destination-con{
-          margin-bottom: 10px;
           p{
             margin-bottom: 2px;
             font-size: 11px;
@@ -1297,7 +1308,24 @@ input[type=radio]:not(old):checked +  label > span > span{
   background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
   background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
 }
-
+.scroll_top{
+  background-color: #920000;
+  padding: 1px 9px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  position: fixed;
+  z-index: 1100;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: #ffffff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+}
 @media (max-width: 1200px) and (min-width: 990px) {
   .search-result-box{
     h3{
@@ -1498,6 +1526,7 @@ input[type=radio]:not(old):checked +  label > span > span{
             }
             h5{
               font-size: 11px;
+              margin: 3px 0;
             }
             h4{
               margin-top: 30px;

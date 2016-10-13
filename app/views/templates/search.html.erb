@@ -5,6 +5,9 @@
 </script>
 
 <div id="spinner" ng-show="ctrl.loading"></div>
+<span class="scroll_top">
+  <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+</span>
 <div class="minimum_height" ng-show="ctrl.active_min_height"></div>
 
 <div class="bg-color" ng-hide="ctrl.loading">
@@ -161,16 +164,18 @@
         <div class="col-sm-10 col-xs-12" ng-repeat="search_activity in ctrl.search_activities_static">
           <h4 class="places-con"> 
             <div class="row">
-              <span class="col-md-4 col-sm-4 col-xs-6 data">
+              <span class="col-md-3 col-sm-4 col-xs-6 data">
                 <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/354/original/departure.png?1468494153">
                 {{ctrl.airportForId(search_activity.departure_airport_id).city.name}}
               </span>
-              <span class="col-md-4 col-sm-4 col-xs-6 data">
+              <span class="col-md-3 col-sm-4 col-xs-6 data">
                 <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/352/original/arrival.png?1468494122">
                 {{ctrl.airportForId(search_activity.arrival_airport_id).city.name}}
               </span>
-              <span class="col-md-3 col-sm-3 col-xs-6 data">
-                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135"> {{ctrl.formatTime(search_activity.start_at).split(',')[0]}}
+              <span class="col-md-5 col-sm-3 col-xs-6 data">
+                <img width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135">
+                <!--{{ctrl.formatTime(search_activity.start_at).split(',')[0]}}-->
+                {{ctrl.formatTime(search_activity.start_at)}}
               </span>
               <span class="col-md-1 col-sm-1 col-xs-6 data">
                 <img  width="30" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/609/original/pax50.png?1471342973"> {{search_activity.pax}}
@@ -463,6 +468,7 @@
                 <!--<h5>{{result.aircraft.aircraft_category.name}}</h5>-->
                 <!--<h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>-->
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
+                <p class="base_airport_text">Base :- {{result.aircraft.base_airport.city_name}}</p>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
                 <div class="detail-link-con text-center">
                   <a href="javascript:void(0)" ng-init="result.custom = false" ng-click="result.custom = !result.custom">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>

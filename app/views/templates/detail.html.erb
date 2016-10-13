@@ -221,26 +221,26 @@
         <div class="clearfix"></div>
       </h3>
       <div class="row" ng-show="ctrl.cost">
-        <div class="col-sm-6">
+        <div class="col-sm-7 col-xs-12">
+          <!--<div class="cost-con">-->
+            <!--<div class="row">-->
+              <!--<div class="col-sm-6 col-xs-7">-->
+                <!--<p>Flight Time</p>-->
+              <!--</div>-->
+              <!--<div class="col-sm-6 col-xs-5 text-right">-->
+                <!--<p>{{ctrl.trip.total_flight_time}}</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-sm-6 col-xs-7">
-                <p>Flight Time</p>
-              </div>
-              <div class="col-sm-6 col-xs-5 text-right">
-                <p>{{ctrl.trip.total_flight_time}}</p>
-              </div>
-            </div>
-          </div>
-          <div class="cost-con">
-            <div class="row">
-              <div class="col-sm-6 col-xs-7">
+              <div class="col-sm-7 col-xs-7">
                 <!--aircraft_handling_cost_commission_in_percentage-->
                 <!--aircraft_accomodation_cost_commission_in_percentage-->
                 <!--<p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.include_commission(ctrl.trip.activities[0].aircraft.per_hour_cost) | currency:"":0 | indianCurrency }} per hour)</p>-->
-                <p>Flight Cost( <i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.activities[0].aircraft.per_hour_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }} per hour)</p>
+                <p>Flight Cost @ ( <i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.activities[0].aircraft.per_hour_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }} per hour) {{ctrl.trip.total_flight_time}}</p>
               </div>
-              <div class="col-sm-6 col-xs-5 text-right">
+              <div class="col-sm-5 col-xs-5 text-right">
                 <!--<p><i class="fa fa-rupee"></i> {{ctrl.trip.total_flight_cost | currency:"":2 | indianCurrency}}</p>-->
                 <p><i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.total_flight_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":2 | indianCurrency }}</p>
               </div>
@@ -265,10 +265,10 @@
           <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-sm-6 col-xs-7">
+              <div class="col-sm-7 col-xs-7">
                 <p>Handling Charges</p>
               </div>
-              <div class="col-sm-6 col-xs-5 text-right">
+              <div class="col-sm-5 col-xs-5 text-right">
                 <!--<p><i class="fa fa-rupee"></i> {{ctrl.include_commission((ctrl.trip.total_ground_handling_cost)) | currency:"":2 | indianCurrency}}</p>-->
                 <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_handling_cost_commission_in_percentage((ctrl.trip.total_landing_cost + ctrl.trip.total_ground_handling_cost), ctrl.trip.activities[0].aircraft.aircraft_handling_cost_commission_in_percentage) | currency:"":2 | indianCurrency}}</p>
               </div>
@@ -292,34 +292,33 @@
           <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-xs-12">
-                <p><b>Crew Accommodation</b></p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <p>Night</p>
-              </div>
-              <div class="col-sm-6 col-xs-5 text-right">
-                <p>{{ctrl.trip.total_accommodation_nights}}</p>
-              </div>
-              <div class="col-sm-6 col-xs-7">
-                <p>Cost</p>
-              </div>
-              <div class="col-sm-6 col-xs-5 text-right">
-                <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage) | currency:"":2 | indianCurrency }}</p>
-              </div>
-              <!--Night-{{flight_plan.accommodation_leg.night}}-->
-                <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
-            </div>
-          </div>
-
-          <div class="cost-con">
-            <div class="row">
               <div class="col-sm-6 col-xs-7">
                 <p>Watch Hours</p>
               </div>
               <div class="col-sm-6 col-xs-5 text-right">
                 <p>{{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
               </div>
+            </div>
+          </div>
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-xs-12">
+                <p>Crew Accommodation</p>
+              </div>
+              <!--<div class="col-sm-6 col-xs-7">-->
+                <!--<p>Night</p>-->
+              <!--</div>-->
+              <!--<div class="col-sm-6 col-xs-5 text-right">-->
+                <!--<p>{{ctrl.trip.total_accommodation_nights}}</p>-->
+              <!--</div>-->
+              <div class="col-sm-6 col-xs-7">
+                <p>&nbsp; Cost</p>
+              </div>
+              <div class="col-sm-6 col-xs-5 text-right">
+                <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage) | currency:"":2 | indianCurrency }}</p>
+              </div>
+              <!--Night-{{flight_plan.accommodation_leg.night}}-->
+                <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
             </div>
           </div>
           <div class="cost-con" ng-show="ctrl.trip.is_miscellaneous_expenses">
@@ -379,7 +378,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5 col-xs-12">
           <div class="top-gap hidden-xs"></div>
           <div class="row">
             <div class="col-xs-6">
