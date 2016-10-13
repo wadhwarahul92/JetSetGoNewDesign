@@ -5,7 +5,7 @@
 </script>
 
 <div id="spinner" ng-show="ctrl.loading"></div>
-<!--<span class="scroll_top">-->
+<!--<span class="scrollup">-->
   <!--<i class="fa fa-angle-double-up" aria-hidden="true"></i>-->
 <!--</span>-->
 <div class="minimum_height" ng-show="ctrl.active_min_height"></div>
@@ -492,3 +492,20 @@
     <button ng-show="ctrl.isLoadMoreActive" type="button" class="load-more-btn">Loading...</button>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+      $(window).scroll(function(){
+        if($(this).scrollTop() > 100){
+            $('.scrollup').fadeIn();
+        }else{
+            $('.scrollup').fadeOut();
+        }
+      });
+      $('.scrollup').click(function(){
+         $('html,body').animate({
+            scrollTop: 0
+         }, 600);
+      });
+  });
+</script>
