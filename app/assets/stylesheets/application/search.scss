@@ -1572,7 +1572,11 @@ input[type=radio]:not(old):checked +  label > span > span{
       }
     }
   }
-
+}
+@media (max-width: 840px) {
+  .search_heading{
+    margin-top: 76px;
+  }
 }
 @media (max-width: 767px) {
   .icon-toogle{
