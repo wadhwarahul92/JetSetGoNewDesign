@@ -16,7 +16,24 @@ $main-yellow-color: rgb(237, 202, 0);
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/888/original/loader2.gif?1475563720) 50% 50% no-repeat;
   background-color: rgba(241,234,220,1);
 }
-
+.scrollup{
+  background-color: #920000;
+  padding: 1px 9px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  position: fixed;
+  z-index: 1100;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: #ffffff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+}
 no-captcha:first-child{
   display: inline-block!important;
 }
