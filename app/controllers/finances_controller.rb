@@ -165,14 +165,15 @@ class FinancesController < ApplicationController
 
 
     response = HTTParty.post("#{URL}/pro_forma_preview_2?format=pdf", body: {
-                                                                      client_address: '--',
-                                                                      itinerary_charges: itinerary_charges,
-                                                                      handling_charges: total_handling_charges,
-                                                                      accommodation_charges: accommodation_charges,
-                                                                      miscellaneous_charges: miscellaneous_charges,
-                                                                      token: TOKEN,
-                                                                      pass: PASSWORD
-                                                                  }.to_json,:headers => { 'Content-Type' => 'application/json' })
+                                                                        uniq_id:  params[:uniq_id],
+                                                                        client_address: '--',
+                                                                        itinerary_charges: itinerary_charges,
+                                                                        handling_charges: total_handling_charges,
+                                                                        accommodation_charges: accommodation_charges,
+                                                                        miscellaneous_charges: miscellaneous_charges,
+                                                                        token: TOKEN,
+                                                                        pass: PASSWORD
+                                                                    }.to_json,:headers => { 'Content-Type' => 'application/json' })
 
     if response.code == 200
       send_data response.body
