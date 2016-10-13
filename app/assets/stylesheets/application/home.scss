@@ -1211,6 +1211,11 @@ span.heading:after{
   .top-header-search-con{
     background-attachment: inherit;
   }
+  .top-header-search-con {
+    .search-main-con{
+      width: initial;
+    }
+  }
 }
 @media(max-width: 1023px){
   span.heading{
@@ -1326,11 +1331,6 @@ span.heading:after{
         width: 49.7%;
         margin-bottom: 5px;
       }
-    }
-  }
-  .top-header-search-con {
-    .search-main-con{
-      width: initial;
     }
   }
 }
