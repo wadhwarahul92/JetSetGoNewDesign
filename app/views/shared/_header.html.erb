@@ -8,6 +8,9 @@
         });
     });
 </script>
+<span class="scrollup">
+  <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+</span>
 <div ng-controller="HeaderController as ctrl">
   <nav ng-hide="ctrl.isFromMobile || ctrl.hideForPath()" id="header" class="navbar navbar-default fixed-header">
     <div class="container container-fluid header-container">
@@ -133,3 +136,20 @@
     </div>
   </nav>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 800){
+                $('.scrollup').fadeIn();
+            }else{
+                $('.scrollup').fadeOut();
+            }
+        });
+        $('.scrollup').click(function(){
+            $('html,body').animate({
+                scrollTop: 0
+            }, 600);
+        });
+    });
+</script>
