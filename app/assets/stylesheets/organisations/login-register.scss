@@ -47,6 +47,32 @@ $main-blue-color:rgb(5, 81, 139);
   background-color:rgba(0,0,0,0.3);
   margin-top:20px;
   border-radius:10px;
+  position: relative;
+  .cross-icon{
+    color: #920000;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 20px;
+    z-index: 1px;
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+  }
+  .cross-icon:hover{
+    -moz-transform: scale(1.3) rotate(360deg);
+    -webkit-transform: scale(1.3) rotate(360deg);
+    -o-transform: scale(1.3) rotate(360deg);
+    -ms-transform: scale(1.3) rotate(360deg);
+    transform: scale(1.3) rotate(360deg);
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+  }
 }
 .login-register-main{
 	background-color:rgba(256,256,256,1);
