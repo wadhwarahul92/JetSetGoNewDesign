@@ -246,7 +246,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       CurrentUserService.openSignInModal('md')
 
 
-  @previewProForma = (result)->
+  @previewProForma = (result, index)->
 #    if CurrentUserService.currentUser
 ##      $http.post('/finances/preview_pro_forma', {result: result})
 #      $http({
@@ -282,7 +282,7 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     $http({
       url: '/finances/preview_pro_forma'
       method: 'POST'
-      data: {result: result}
+      data: {result: result, uniq_id: "#{@searchId}-#{index}"}
       responseType: 'arraybuffer'
     }).success(
       (data)->
