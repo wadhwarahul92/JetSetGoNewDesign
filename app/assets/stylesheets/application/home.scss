@@ -369,6 +369,7 @@ span.heading:after{
   .search-main-con{
       position: absolute;
       bottom: 50px;
+      width: 100%;
     h2{
       font-size:120px;
       color:#ffffff;
@@ -418,10 +419,10 @@ span.heading:after{
         }
         .cross-icon{
           position: absolute;
-          top: -10px;
-          right: -3px;
+          top: 12px;
+          right: -50px;
           color: #cc0000;
-          font-size: 16px;
+          font-size: 13px;
           z-index: 2;
         }
         .search-btn{
@@ -435,6 +436,8 @@ span.heading:after{
           //font-weight: bold;
           text-decoration: none;
           border-radius: 7px;
+          position: absolute;
+          top: 0;
         }
         .add-trip-btn{
           color: #ffffff;
@@ -1159,6 +1162,7 @@ span.heading:after{
   //top header section
   .top-header-search-con{
     .search-main-con{
+
       h2{
         font-size:110px;
         span{
@@ -1184,10 +1188,21 @@ span.heading:after{
       .search-btn{
         width: 15%;
         margin-right: 10px;
+        position: inherit;
       }
       .add-trip-btn{
         color: #ffffff;
         display: inline-block;
+      }
+    }
+  }
+}
+@media(max-width: 1120px){
+  .top-header-search-con {
+    .search-main-con {
+      .cross-icon{
+        top: -15px;
+        right: 5px;
       }
     }
   }
@@ -1311,6 +1326,11 @@ span.heading:after{
         width: 49.7%;
         margin-bottom: 5px;
       }
+    }
+  }
+  .top-header-search-con {
+    .search-main-con{
+      width: initial;
     }
   }
 }
