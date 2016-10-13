@@ -24,18 +24,32 @@ class FinancesController < ApplicationController
 
     params[:result][:flight_plan].each do |plan|
 
+      trip_type = ''
+
       departure_airport = Airport.find(plan[:departure_airport_id])
 
       arrival_airport = Airport.find(plan[:arrival_airport_id])
+
+
+      if plan[:flight_type] == 'empty_leg' and departure_airport.id == params[:result][:aircraft][:base_airport][:id]
+        trip_type = 'Positioning'
+      elsif plan[:flight_type] == 'empty_leg' and arrival_airport.id == params[:result][:aircraft][:base_airport][:id]
+        trip_type = 'Re - Positioning'
+      else
+        trip_type = 'Your Search'
+      end
 
       itinerary_charges << {
           aircraft: aircraft_,
           jsg_adjusted: (params[:result][:aircraft][:per_hour_cost] + (params[:result][:aircraft][:per_hour_cost] * (params[:result][:aircraft][:flight_cost_commission_in_percentage]/100.to_f))),
           departure_airport: departure_airport.city.name,
           arrival_airport: arrival_airport.city.name,
+          start_at: plan[:start_at],
+          end_at: plan[:end_at],
           flight_time_hour: hour_diff(plan[:start_at], plan[:end_at]),
           flight_time_min: min_diff(plan[:start_at], plan[:end_at]),
           flight_time_sec: sec_diff(plan[:start_at], plan[:end_at]),
+          plan_trip_type: trip_type,
       }
 
       handling_charges << {
