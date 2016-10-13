@@ -9,7 +9,7 @@
       <i class="fa fa-times-circle-o cross-icon" ng-click="result.custom = !result.custom"></i>
     </div>
     <!--ng-hide="flight_plan.flight_type == 'empty_leg' && !custom3"-->
-    <div ng-repeat="flight_plan in result.flight_plan">
+    <div ng-repeat="flight_plan in result.flight_plan" class="destination-main-con" ng-class="flight_plan.flight_type == 'empty_leg' ? 'empty_leg_bg' : ''">
       <div class="destination-con col-sm-offset-2 col-sm-3 col-xs-6">
         <p>
           <img width="30" class="img-responsive" src="" ng-src="{{flight_plan.flight_type == 'empty_leg' ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654'}}" alt="">

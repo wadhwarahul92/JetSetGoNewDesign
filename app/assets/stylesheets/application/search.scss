@@ -918,7 +918,7 @@ h3.no-nyt-landing{
             h5{
               font-size: 16px;
               color: #000000;
-              margin: 0 0 10px 0;
+              margin: 3px 0 3px 0;
               padding: 0 15px;
             }
             h4{
@@ -932,6 +932,11 @@ h3.no-nyt-landing{
               span{
                 font-size: 14px;
               }
+            }
+            p.base_airport_text{
+              font-size: 14px;
+              padding: 0 15px;
+              margin: 0;
             }
           }
           .detail-link-con{
@@ -1046,8 +1051,14 @@ h3.no-nyt-landing{
             text-align: left;
           }
         }
+        .destination-main-con{
+          margin: 10px 0;
+          padding: 10px 0;
+        }
+        .empty_leg_bg{
+          background-color: #f9f3e6;
+        }
         .destination-con{
-          margin-bottom: 10px;
           p{
             margin-bottom: 2px;
             font-size: 11px;
@@ -1515,6 +1526,7 @@ input[type=radio]:not(old):checked +  label > span > span{
             }
             h5{
               font-size: 11px;
+              margin: 3px 0;
             }
             h4{
               margin-top: 30px;
