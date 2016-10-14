@@ -134,17 +134,6 @@
             <!--</div>-->
             <!--</div>-->
             <!--</div>-->
-
-            <div class="cost-con" ng-show="result.set_watch_hour">
-              <div class="row">
-                <div class="col-xs-7">
-                  <p>Watch Hours</p>
-                </div>
-                <div class="col-xs-5">
-                  <p class="text-right">As per actual</p>
-                </div>
-              </div>
-            </div>
           <div class="cost-con" ng-if="result.set_accomodation">
             <div class="row">
               <div class="col-xs-12">
@@ -161,6 +150,16 @@
               </div>
               <div class="col-xs-5 text-right" >
                 <p>₹ {{ result.total_accommodation_cost | currency:"":2 | indianCurrency }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="cost-con" ng-show="result.set_watch_hour">
+            <div class="row">
+              <div class="col-xs-7">
+                <p>Watch Hours</p>
+              </div>
+              <div class="col-xs-5">
+                <p class="text-right">As per actual</p>
               </div>
             </div>
           </div>
