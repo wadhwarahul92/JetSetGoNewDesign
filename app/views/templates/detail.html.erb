@@ -292,16 +292,6 @@
           <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-sm-6 col-xs-7">
-                <p>Watch Hours</p>
-              </div>
-              <div class="col-sm-6 col-xs-5 text-right">
-                <p>{{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="cost-con">
-            <div class="row">
               <div class="col-xs-12">
                 <p>Crew Accommodation</p>
               </div>
@@ -319,6 +309,16 @@
               </div>
               <!--Night-{{flight_plan.accommodation_leg.night}}-->
                 <!--<p>Cost - ₹ {{ flight_plan.accommodation_leg.cost | currency:"":0 | indianCurrency }}</p>-->
+            </div>
+          </div>
+          <div class="cost-con">
+            <div class="row">
+              <div class="col-sm-6 col-xs-7">
+                <p>Watch Hours</p>
+              </div>
+              <div class="col-sm-6 col-xs-5 text-right">
+                <p>{{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
+              </div>
             </div>
           </div>
           <div class="cost-con" ng-show="ctrl.trip.is_miscellaneous_expenses">
@@ -689,6 +689,11 @@
                 <!--<div class="btn btn-primary" ng-click="ctrl.create_passenger_detail()">save</div>-->
                 <!--<div class="btn btn-primary" ng-click="ctrl.add_passenger_detail()"><i class="fa fa-plus" aria-hidden="true"></i> Add</div>-->
                 <a href="javascipt:void(0)" ng-click="ctrl.create_passenger_detail()" class="btn-detail">Save & Continue Booking</a>
+                <script type="text/javascript" charset="utf-8">
+                    $('.btn-detail').click(function(){
+                        debugger
+                    })
+                </script>
               </div>
             </div>
           </div>
