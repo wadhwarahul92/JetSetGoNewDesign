@@ -1,44 +1,62 @@
-<form action="/admin/organisations">
-  <input type="text" name="name" value="<%= params[:name] %>" placeholder="Search by name">
-  <input type="submit">
-</form>
-<br>
-<table class="table table-striped">
-  <thead>
-  <tr class="info">
-    <th>Organisation</th>
-    <th>Operator</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @organisations.each do |organisation|%>
-      <tr>
-        <td><%= organisation.name %></td>
-        <td>
-          <table>
-            <% organisation.operators.each do |operator| %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Organisations</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li>
+            <form action="/admin/organisations">
+              <input type="text" name="name" value="<%= params[:name] %>" placeholder="Search by name">
+              <input type="submit">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Organisation</th>
+              <th>Operator</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @organisations.each do |organisation|%>
                 <tr>
+                  <td><%= organisation.name %></td>
                   <td>
-                    <%= operator.email %>
+                    <table>
+                      <% organisation.operators.each do |operator| %>
+                          <tr>
+                            <td>
+                              <%= operator.email %>
+                            </td>
+                          </tr>
+                      <%- end %>
+                    </table>
+                  </td>
+                  <td>
+
+                    <% if organisation.admin_verified? %>
+                        <span class="text-success">Verified by admin</span>
+                        <%= link_to 'Un-verify', admin_organisation_path(organisation, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs' %>
+                    <%- else %>
+                        <span class="text-danger">Not Verified</span>
+                        <%= link_to 'Verify', admin_organisation_path(organisation, admin_verified: true), method: :put, class: 'btn btn-success btn-xs' %>
+                    <%- end %>
+
+
                   </td>
                 </tr>
-            <%- end %>
+            <%end%>
+            </tbody>
           </table>
-        </td>
-        <td>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <% if organisation.admin_verified? %>
-              <span class="text-success">Verified by admin</span>
-              <%= link_to 'Un-verify', admin_organisation_path(organisation, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs' %>
-          <%- else %>
-              <span class="text-danger">Not Verified</span>
-              <%= link_to 'Verify', admin_organisation_path(organisation, admin_verified: true), method: :put, class: 'btn btn-success btn-xs' %>
-          <%- end %>
-
-
-        </td>
-      </tr>
-  <%end%>
-  </tbody>
-</table>
