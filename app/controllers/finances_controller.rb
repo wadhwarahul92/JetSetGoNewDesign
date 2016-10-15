@@ -22,6 +22,8 @@ class FinancesController < ApplicationController
 
     miscellaneous_charges = []
 
+    @is_watch_hour = false
+
     params[:result][:flight_plan].each do |plan|
 
       trip_type = ''
@@ -62,11 +64,15 @@ class FinancesController < ApplicationController
           jsg_adjusted: (plan['landing_cost_at_arrival'] + (plan['landing_cost_at_arrival'] * params[:result][:aircraft][:handling_cost_commission_in_percentage]/100.to_f))
       }
 
+      # if plan['watch_hour_at_arrival']
+      #   miscellaneous_charges << {
+      #       description: "Watch hour at #{arrival_airport.city.name}",
+      #       charge: plan['watch_hour_cost']
+      #   }
+      # end
+
       if plan['watch_hour_at_arrival']
-        miscellaneous_charges << {
-            description: "Watch hour at #{arrival_airport.city.name}",
-            charge: plan['watch_hour_cost']
-        }
+         @is_watch_hour = true
       end
 
       if plan['accommodation_leg']
@@ -171,6 +177,7 @@ class FinancesController < ApplicationController
                                                                         handling_charges: total_handling_charges,
                                                                         accommodation_charges: accommodation_charges,
                                                                         miscellaneous_charges: miscellaneous_charges,
+                                                                        is_watch_hour: @is_watch_hour,
                                                                         token: TOKEN,
                                                                         pass: PASSWORD
                                                                     }.to_json,:headers => { 'Content-Type' => 'application/json' })
