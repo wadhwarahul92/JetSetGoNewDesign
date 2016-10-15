@@ -1,3 +1,55 @@
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Purchased Seats on <%= Date.today.strftime('%d %b %Y') %></h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Airport category', new_admin_airport_category_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class='table table-striped'>
+            <thead>
+            <tr class='info'>
+              <th>Amount Paid</th>
+              <th>Transaction Id</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @payment_transactions.each do |payment_transaction| %>
+                <tr>
+                  <td><%= payment_transaction.amount.round(2) %></td>
+                  <td><%= payment_transaction.id %></td>
+                  <td><%= payment_transaction.contact.first_name %></td>
+                  <td><%= payment_transaction.contact.last_name %></td>
+                  <td><%= payment_transaction.contact.email %></td>
+                  <td><%= payment_transaction.contact.phone %></td>
+                </tr>
+                <% payment_transaction.jetsteal_seats.each do |jetsteal_seat| %>
+                    <tr>
+                      <td></td>
+                      <td><%= jetsteal_seat.ui_seat_id %></td>
+                      <td><%= jetsteal_seat.cost %></td>
+                      <td>Jetsteal id: <%= jetsteal_seat.jetsteal.id %></td>
+                      <td>Departure airport: <%= jetsteal_seat.jetsteal.departure_airport.name %></td>
+                      <td>Arrival airport: <%= jetsteal_seat.jetsteal.arrival_airport.name %></td>
+                    </tr>
+                <%- end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h2>Purchased Seats on <%= Date.today.strftime('%d %b %Y') %> </h2>
 <table class='table table-striped'>
 	<thead>
