@@ -292,9 +292,9 @@
           <!--</div>-->
           <div class="cost-con">
             <div class="row">
-              <div class="col-xs-12">
-                <p>Crew Accommodation</p>
-              </div>
+              <!-- <div class="col-xs-12">
+                <p></p>
+              </div> -->
               <!--<div class="col-sm-6 col-xs-7">-->
                 <!--<p>Night</p>-->
               <!--</div>-->
@@ -302,7 +302,7 @@
                 <!--<p>{{ctrl.trip.total_accommodation_nights}}</p>-->
               <!--</div>-->
               <div class="col-sm-6 col-xs-7">
-                <p>&nbsp; Cost</p>
+                <p>Crew Accommodation Cost</p>
               </div>
               <div class="col-sm-6 col-xs-5 text-right">
                 <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage) | currency:"":2 | indianCurrency }}</p>

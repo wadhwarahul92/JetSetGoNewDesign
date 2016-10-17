@@ -34,6 +34,11 @@
 }
 .custom-table{
   max-width: 400px;
+  tr.info{
+  	th{
+  		background-color: #f9f3e6 !important;
+  	}
+  }
 }
 .join-us-image{
 	margin-top:70px;
