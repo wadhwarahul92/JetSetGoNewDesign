@@ -264,8 +264,8 @@
                       </ul>
                     </div>
                   </span>
-                  <a href="javascript:void(0)" class="cross-icon" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))">
-                    <i class="fa fa-times-circle-o" aria-hidden="true" ng-click="ctrl.removeActivity($index)"></i>
+                  <a href="javascript:void(0)" class="remove-text" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))">
+                    <span ng-click="ctrl.removeActivity($index)">Remove</span>
                   </a>
                   <br/> <br/>
                 </span>
@@ -273,8 +273,8 @@
                 <div class="clearfix"></div>
               </div>
               <div>
-                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
                 <a class="modity-botm-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
                 <a href="javascript:void(0)" class="modity-botm-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
               </div>
 
