@@ -37,29 +37,33 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
   )
 
 #  location.reload();
+#
+#  setTimeout(
+#    ->
+#      $http.get('/current_user.json').success(
+#        (data)=>
+#          scope.currentUser = data
+#      ).error(
+#        ->
+#          notify(
+#            message: 'not logged in'
+#            classes: ['alert-danger']
+#          )
+#      )
+#  ,
+#    500
+#  )
 
-  setTimeout(
+  $http.get('/current_user.json').success(
+    (data)=>
+      scope.currentUser = data
+  ).error(
     ->
-      $http.get('/current_user.json').success(
-        (data)=>
-          debugger
-          @currentUser.number_of_enquiries = data.number_of_enquiries
-          @currentUser.number_of_confirmed = data.number_of_confirmed
-          @currentUser.number_of_quoted = data.number_of_quoted
-          @currentUser.number_of_empty_legs = data.number_of_empty_legs
-          debugger
-      ).error(
-        ->
-          notify(
-            message: 'not logged in'
-            classes: ['alert-danger']
-          )
+      notify(
+        message: 'not logged in'
+        classes: ['alert-danger']
       )
-  ,
-    500
   )
-
-
 #
 #  $http.get('customers/get_booked_jets.json').success(
 #    (data)=>
