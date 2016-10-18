@@ -1,35 +1,41 @@
-<div class="row">
-  <div class="col-sm-6">
-    <dl>
-      <% @aircraft.attributes.each_pair do |attr, value| %>
-          <dt><%= attr.to_s %></dt>
-          <dd><%= value %></dd>
-      <%- end %>
-    </dl>
-  </div>
-  <div class="col-sm-6">
-    <% if @aircraft.image.present? %>
-        <%= image_tag @aircraft.image.url(:original), style: 'width:100%' %>
-        <fieldset>
-          <legend><small>Aircraft image</small></legend>
-        </fieldset>
-    <%- end %>
-
-    <div class="row">
-      <% @aircraft.aircraft_images.each do |aircraft_image| %>
-      <div class="col-sm-12">
-        <%= image_tag aircraft_image.image.url(AircraftImage::DEFAULT_SIZE) %>
-        <% if aircraft_image.id.present? %>
-            <%= link_to admin_aircraft_aircraft_image_path(@aircraft, aircraft_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                <i class="fa fa-trash fa-3"></i>
-            <%- end %>
-        <%- end %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Aircrafts</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-6">
+        <dl>
+          <% @aircraft.attributes.each_pair do |attr, value| %>
+              <dt><%= attr.to_s %></dt>
+              <dd><%= value %></dd>
+          <%- end %>
+        </dl>
       </div>
-      <%- end %>
+      <div class="col-sm-6">
+        <% if @aircraft.image.present? %>
+            <%= image_tag @aircraft.image.url(:original), style: 'width:100%' %>
+            <fieldset>
+              <legend><small>Aircraft image</small></legend>
+            </fieldset>
+        <%- end %>
+
+        <div class="row">
+          <% @aircraft.aircraft_images.each do |aircraft_image| %>
+          <div class="col-sm-12">
+            <%= image_tag aircraft_image.image.url(AircraftImage::DEFAULT_SIZE) %>
+            <% if aircraft_image.id.present? %>
+                <%= link_to admin_aircraft_aircraft_image_path(@aircraft, aircraft_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+            <%- end %>
+          </div>
+          <%- end %>
+        </div>
+        <fieldset>
+          <legend><small>Add new images</small></legend>
+          <%= render partial: 'admin/aircraft_images/form', locals: { aircraft: @aircraft, aircraft_image: @aircraft.aircraft_images.new } %>
+        </fieldset>
+      </div>
+      <div class="clearfix"></div>
     </div>
-    <fieldset>
-      <legend><small>Add new images</small></legend>
-      <%= render partial: 'admin/aircraft_images/form', locals: { aircraft: @aircraft, aircraft_image: @aircraft.aircraft_images.new } %>
-    </fieldset>
   </div>
 </div>

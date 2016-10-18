@@ -1,8 +1,4 @@
-<div class="admin-main-con">
-  <div class='col-xs-12'>
-    <h2>Add Aircraft</h2>
-    <div class="admin_content_body">
-      <%= simple_form_for [:admin, @aircraft] do |f| %>
+<%= simple_form_for [:admin, @aircraft] do |f| %>
           <div class="col-sm-6">
             <%= f.error_notification %>
             <%= f.input :memorable_name, placeholder: 'Like: Flying Queen etc.' %>
@@ -75,6 +71,3 @@
           </div>
           <div class="clearfix"></div>
       <%- end %>
-    </div>
-  </div>
-</div>
