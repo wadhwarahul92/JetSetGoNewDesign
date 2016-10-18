@@ -53,6 +53,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
   @active_info = false
 
+  @PDF_ID = "#{@searchId}-"
+
   $scope.$watch(
     =>
       @search_activities
