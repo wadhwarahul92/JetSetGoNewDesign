@@ -1,45 +1,49 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li>
-        <%= link_to 'New Media', new_admin_media_content_path , class: 'btn btn-primary '%>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <th>heading</th>
-        <th>Description</th>
-        <th>Image URL</th>
-        <th>Redirect URL</th>
-        <th>Order No</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @media_contents.each do |media_content| %>
-          <tr>
-            <td><%= media_content.id %></td>
-            <td><%= media_content.one_liner %></td>
-            <td><%= media_content.description %></td>
-            <td><%= media_content.image_url %></td>
-            <td><%= media_content.redirect_url %></td>
-            <td><%= media_content.order_number %></td>
-            <td>
-              <%= link_to edit_admin_media_content_path(media_content) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-              <%= link_to 'Archive', admin_media_content_path(media_content), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
-    <%#= will_paginate @cities %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Media Content</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Media', new_admin_media_content_path , class: 'btn btn-primary '%></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <th>heading</th>
+              <th>Description</th>
+              <th>Image URL</th>
+              <th>Redirect URL</th>
+              <th>Order No</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @media_contents.each do |media_content| %>
+                <tr>
+                  <td><%= media_content.id %></td>
+                  <td><%= media_content.one_liner %></td>
+                  <td><%= media_content.description %></td>
+                  <td><%= media_content.image_url %></td>
+                  <td><%= media_content.redirect_url %></td>
+                  <td><%= media_content.order_number %></td>
+                  <td>
+                    <%= link_to edit_admin_media_content_path(media_content) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                    <%= link_to 'Archive', admin_media_content_path(media_content), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+          <%#= will_paginate @cities %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

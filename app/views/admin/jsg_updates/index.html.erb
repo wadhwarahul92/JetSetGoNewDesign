@@ -1,36 +1,42 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'Add Jsg Update', new_admin_jsg_update_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Image</th>
-        <th>Title</th>
-        <th>Source Url</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @jsg_updates.each do |jsg_update| %>
-          <tr>
-            <td><%= image_tag(jsg_update.image_url, width: '200px', height: '100px')%></td>
-            <td><%= jsg_update.title %></td>
-            <td><%= jsg_update.source_url %></td>
-            <td>
-              <%= link_to edit_admin_jsg_update_path(jsg_update) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-              <%= link_to 'Archive', admin_jsg_update_path(jsg_update), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>JSG Updates</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'Add Jsg Update', new_admin_jsg_update_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Image</th>
+              <th>Title</th>
+              <th>Source Url</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @jsg_updates.each do |jsg_update| %>
+                <tr>
+                  <td><%= image_tag(jsg_update.image_url, width: '200px', height: '100px')%></td>
+                  <td><%= jsg_update.title %></td>
+                  <td><%= jsg_update.source_url %></td>
+                  <td>
+                    <%= link_to edit_admin_jsg_update_path(jsg_update) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                    <%= link_to 'Archive', admin_jsg_update_path(jsg_update), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
