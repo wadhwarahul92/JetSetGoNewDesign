@@ -45,23 +45,33 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
       )
 
   serviceInstance.getCurrentUser = ->
-    if serviceInstance.currentUser
-      deffered = $q.defer()
-      deffered.resolve(serviceInstance.currentUser)
-      return deffered.promise
-    else
-      promise = $http.get('/current_user.json')
-      promise.success(
-        (data)=>
-          serviceInstance.setCurrentUser(data)
-      ).error(
-        ->
-#          notify
-#            message: 'You are not signed in.'
-#            classes: ['alert-danger']
-          serviceInstance.currentUser = null
-      )
-      return promise
+#    if serviceInstance.currentUser
+#      deffered = $q.defer()
+#      deffered.resolve(serviceInstance.currentUser)
+#      return deffered.promise
+#    else
+#      promise = $http.get('/current_user.json')
+#      promise.success(
+#        (data)=>
+#          serviceInstance.setCurrentUser(data)
+#      ).error(
+#        ->
+##          notify
+##            message: 'You are not signed in.'
+##            classes: ['alert-danger']
+#          serviceInstance.currentUser = null
+#      )
+#      return promise
+
+    promise = $http.get('/current_user.json')
+    promise.success(
+      (data)=>
+        serviceInstance.setCurrentUser(data)
+    ).error(
+      ->
+        serviceInstance.currentUser = null
+    )
+    return promise
 
   serviceInstance.setCurrentUser = (currentUser)->
 #    notify
