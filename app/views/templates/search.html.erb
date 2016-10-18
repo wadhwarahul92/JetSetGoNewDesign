@@ -394,7 +394,7 @@
                 <h3>Aircraft Type</h3>
                 <ul class="">
                   <li ng-repeat="aircraft_category in ctrl.aircraft_categories">
-                    <input type="checkbox" ng-model="aircraft_category.is_active" id="checkbox{{$index+1}}" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active)"> 
+                    <input type="checkbox" ng-model="aircraft_category.is_active" id="checkbox{{$index+1}}" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active); ctrl.active_result()"> 
                     <label for="checkbox{{$index+1}}"><span></span>{{aircraft_category.name}}</label>
                   </li>
                 </ul>
@@ -417,9 +417,10 @@
         <!--==========================-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.convertToInt(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.convertToInt(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.convertToInt(filterFlyingTime)[0] == result.totalCost || ctrl.convertToInt(filterFlyingTime)[1] == result.totalCost " >-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >-->
-
+        <h3 class="no_active_category" ng-if="ctrl.all_aircraft_categories_inactive == true">
+          No Results Found! Please select any one category from the top.
+        </h3>
         <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost'" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >
-
           <!--{{result.aircraft.aircraft_category.is_active}}-->
           <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
@@ -473,7 +474,9 @@
                 <!--<h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>-->
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
-                <p class="base_airport_text text-center">Base :- {{result.aircraft.base_airport.city_name}}</p>
+                <p class="base_airport_text text-center">
+                  Base - {{result.aircraft.base_airport.city_name}}
+                </p>
                 <div class="detail-link-con text-center">
                   <a href="javascript:void(0)" ng-init="result.custom = false" ng-click="result.custom = !result.custom">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                 </div>

@@ -40,6 +40,8 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
   @grandTotal = 0.0
   @taxBreakup = []
 
+  @all_aircraft_categories_inactive = false
+
   @enquireBeforeLogin = {}
 
   @current_user_present = false
@@ -609,6 +611,19 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
       for result in @results
         if result.aircraft.aircraft_category.id == aircraft_category.id
           result.aircraft.aircraft_category.is_active = false
+
+  @active_result = ->
+    all_inactive = true
+    for aircraft_category in @aircraft_categories
+      if aircraft_category.is_active
+        all_inactive = false
+
+    if all_inactive
+      @all_aircraft_categories_inactive = true
+    else
+      @all_aircraft_categories_inactive = false
+
+
 
   return undefined
 ]

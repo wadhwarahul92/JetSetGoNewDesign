@@ -879,6 +879,12 @@ h3.no-nyt-landing{
         left: 0;
         bottom: -5px;
       }
+      h3.no_active_category{
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        color: #920000;
+      }
       .result-search{
         width: 100%;
         margin: 15px 0;
@@ -937,6 +943,8 @@ h3.no-nyt-landing{
               font-size: 16px;
               padding: 10px 15px 0 15px;
               margin: 0;
+              color: #000000;
+              font-weight: bold;
             }
           }
           .detail-link-con{
