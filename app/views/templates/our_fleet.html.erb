@@ -6,7 +6,7 @@
 <div class="fleet_main_con">
   <div class="top_head">
     <div class="container">
-      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/818/original/subheader_fleet.png?1474619568" alt="">
+      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/918/original/subheader_fleet.png?1476776393" alt="">
     </div>
   </div>
   <div class="container">
@@ -63,6 +63,9 @@
               <p class="aircraft-content">
                 {{aircraft.one_liner}}
                 <!--The Cessna Citation/M2/CJ series are American turbofan-powered light corporate jets built by the Cessna Aircraft Company in Wichita, Kansas. The Citation brand of business jets encompasses seven distinct 'families' of aircraft.-->
+              </p>
+              <p class="base_airport_text text-center">
+                Base - {{aircraft.base_airport.city_name}}
               </p>
               <div class="detail-link-con text-center">
                 <a ng-init="aircraft.detail_active = false" href="javascript:void(0)" ng-click="aircraft.detail_active =! aircraft.detail_active">Details</a>

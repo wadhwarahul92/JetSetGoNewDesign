@@ -495,17 +495,6 @@
                 </p>
               </div>
             </div>
-            <div ng-if="aircraft_category.name != 'Twin Engine Turboprop' && aircraft_category.name != 'Single Engine Turbo'" class="col-md-4 col-sm-6 col-xs-12" ng-repeat="aircraft_category in ctrl.aircraft_categories">
-              <div class="widget">
-                <div class="text-center">
-                  <img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">
-                </div>
-                <div class="widget_heading_con text-center">
-                  <h3>{{aircraft_category.name}}</h3>
-                  <a ng-href="/our_fleet/{{aircraft_category.id}}">View Details</a>
-                </div>
-              </div>
-            </div>
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="widget">
                 <div class="text-center">
@@ -514,6 +503,17 @@
                 <div class="widget_heading_con text-center">
                   <h3>Turboprop</h3>
                   <a href="/turboprop">View Details</a>
+                </div>
+              </div>
+            </div>
+            <div ng-if="aircraft_category.name != 'Twin Engine Turboprop' && aircraft_category.name != 'Single Engine Turbo'" class="col-md-4 col-sm-6 col-xs-12" ng-repeat="aircraft_category in ctrl.aircraft_categories">
+              <div class="widget">
+                <div class="text-center">
+                  <img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">
+                </div>
+                <div class="widget_heading_con text-center">
+                  <h3>{{aircraft_category.name}}</h3>
+                  <a ng-href="/our_fleet/{{aircraft_category.id}}">View Details</a>
                 </div>
               </div>
             </div>
