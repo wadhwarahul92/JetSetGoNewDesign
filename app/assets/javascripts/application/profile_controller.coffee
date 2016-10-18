@@ -36,24 +36,6 @@ jetsetgo_app.controller "ProfileController", ['$http', 'notify', '$upload', 'Cur
     1500
   )
 
-#  location.reload();
-#
-#  setTimeout(
-#    ->
-#      $http.get('/current_user.json').success(
-#        (data)=>
-#          scope.currentUser = data
-#      ).error(
-#        ->
-#          notify(
-#            message: 'not logged in'
-#            classes: ['alert-danger']
-#          )
-#      )
-#  ,
-#    500
-#  )
-
   $http.get('/current_user.json').success(
     (data)=>
       scope.currentUser = data

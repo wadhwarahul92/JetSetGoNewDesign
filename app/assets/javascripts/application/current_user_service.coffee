@@ -63,16 +63,6 @@ jetsetgo_app.factory 'CurrentUserService', ['$http', '$q', 'notify', '$uibModal'
       )
       return promise
 
-#    promise = $http.get('/current_user.json')
-#    promise.success(
-#      (data)=>
-#        serviceInstance.setCurrentUser(data)
-#    ).error(
-#      ->
-#        serviceInstance.currentUser = null
-#    )
-#    return promise
-
   serviceInstance.setCurrentUser = (currentUser)->
 #    notify
 #      message: "Welcome, #{currentUser.full_name}"
