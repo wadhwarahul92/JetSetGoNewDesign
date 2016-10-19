@@ -181,6 +181,13 @@ $main-blue-color:rgb(5, 81, 139);
     }
     .field{
       position:relative;
+      .mendatory_text{
+        color: #920000;
+        position: absolute;
+        right: -12px;
+        top: -5px;
+        font-size: 14px;
+      }
       label{
         color:#555555;
         font-size:15px;
