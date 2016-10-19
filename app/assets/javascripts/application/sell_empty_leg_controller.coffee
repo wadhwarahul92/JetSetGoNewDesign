@@ -24,6 +24,17 @@ jetsetgo_app.controller 'SellEmptyLegController', ['$http', 'notify', 'CurrentUs
     1500
   )
 
+  $http.get('/current_user.json').success(
+    (data)=>
+      scope.currentUser = data
+  ).error(
+    ->
+      notify(
+        message: 'not logged in'
+        classes: ['alert-danger']
+      )
+  )
+
   $http.get('customers/get_booked_jets.json').success(
     (data)=>
       @confirmed_trips = data

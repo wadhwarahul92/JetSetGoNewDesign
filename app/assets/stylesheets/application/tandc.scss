@@ -18,19 +18,40 @@
 		padding:0 10px;
 	}
 	p{
-		font-size:16px;
+		font-size:14px;
 		padding:10px;
 		text-align:justify;
-		color:#444444;
+		color:#000000;
 	}
 	ul{
-		font-size:16px;
+		font-size:14px;
 		padding:0px 25px;
 		text-align:justify;
+	}
+	ol{
+		font-size: 15px;
+		padding-left: 35px;
+		li{
+			margin-bottom: 12px;
+		}
 	}
 	a{
 		color: #920000;
 	}
+}
+.small-gap{
+	height: 20px;
+}
+.large-gap{
+	height: 50px;
+}
+.custom-table{
+  max-width: 500px !important;
+  tr.info{
+  	th{
+  		background-color: #f9f3e6 !important;
+  	}
+  }
 }
 .join-us-image{
 	margin-top:70px;

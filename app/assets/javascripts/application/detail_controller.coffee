@@ -50,6 +50,17 @@ jetsetgo_app.controller 'DetailController', ['$http', 'notify', '$routeParams', 
     1500
   )
 
+  $http.get('/current_user.json').success(
+    (data)=>
+      scope.currentUser = data
+  ).error(
+    ->
+      notify(
+        message: 'not logged in'
+        classes: ['alert-danger']
+      )
+  )
+
   $http.get("get_passenger_datails/#{@trip_id}.json").success(
     (data)=>
       @passenger_details = data

@@ -32,6 +32,17 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
     1500
   )
 
+  $http.get('/current_user.json').success(
+    (data)=>
+      scope.currentUser = data
+  ).error(
+    ->
+      notify(
+        message: 'not logged in'
+        classes: ['alert-danger']
+      )
+  )
+
 #  $http.get('customers/get_enquired_jets.json').success(
 #    (data)=>
 #      @enquired_jets = data

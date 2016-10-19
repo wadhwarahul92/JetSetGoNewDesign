@@ -264,8 +264,8 @@
                       </ul>
                     </div>
                   </span>
-                  <a href="javascript:void(0)" class="cross-icon" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))">
-                    <i class="fa fa-times-circle-o" aria-hidden="true" ng-click="ctrl.removeActivity($index)"></i>
+                  <a href="javascript:void(0)" class="remove-text" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))">
+                    <span ng-click="ctrl.removeActivity($index)">Remove</span>
                   </a>
                   <br/> <br/>
                 </span>
@@ -273,8 +273,8 @@
                 <div class="clearfix"></div>
               </div>
               <div>
-                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
                 <a class="modity-botm-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
                 <a href="javascript:void(0)" class="modity-botm-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
               </div>
 
@@ -394,7 +394,7 @@
                 <h3>Aircraft Type</h3>
                 <ul class="">
                   <li ng-repeat="aircraft_category in ctrl.aircraft_categories">
-                    <input type="checkbox" ng-model="aircraft_category.is_active" id="checkbox{{$index+1}}" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active)"> 
+                    <input type="checkbox" ng-model="aircraft_category.is_active" id="checkbox{{$index+1}}" ng-change="ctrl.check(aircraft_category, aircraft_category.is_active); ctrl.active_result()"> 
                     <label for="checkbox{{$index+1}}"><span></span>{{aircraft_category.name}}</label>
                   </li>
                 </ul>
@@ -417,9 +417,10 @@
         <!--==========================-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.convertToInt(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.convertToInt(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.convertToInt(filterFlyingTime)[0] == result.totalCost || ctrl.convertToInt(filterFlyingTime)[1] == result.totalCost " >-->
         <!--<div class="" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter1 | filter: c_filter2 | filter:c_filter3 | filter:c_filter4 | filter: c_filter5 " ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >-->
-
+        <h3 class="no_active_category" ng-if="ctrl.all_aircraft_categories_inactive == true">
+          No Results Found! Please select any one category from the top.
+        </h3>
         <div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight);ctrl.checkNotam(result, $index)" ng-repeat="result in ctrl.results | orderBy : 'totalCost'" ng-if="(result.aircraft.seating_capacity > filterSeatingCapacity.split(',')[0] && result.aircraft.seating_capacity < filterSeatingCapacity.split(',')[1] && ctrl.customSplit(filterFlyingTime)[0] < result.totalCost && result.totalCost < ctrl.customSplit(filterFlyingTime)[1]) || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[0] || result.aircraft.seating_capacity == filterSeatingCapacity.split(',')[1] || ctrl.customSplit(filterFlyingTime)[0] == result.totalCost || ctrl.customSplit(filterFlyingTime)[1] == result.totalCost" >
-
           <!--{{result.aircraft.aircraft_category.is_active}}-->
           <!--<div class="" ng-init="ctrl.has_all_night_landing_airport(result.night_flight)" ng-repeat="result in ctrl.results | orderBy : 'totalCost' | filter:c_filter" >-->
           <!--{{ctrl.airportForId(flight_plan.departure_airport_id)}}-->
@@ -428,6 +429,7 @@
             <div class="col-md-8 col-sm-8 col-xs-12 search_img">
               <div class="img-hide">
                 <!--  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/412/original/steal_bg-1.png?1468906261" alt=""> -->
+                <!--<p class="base_airport_text" style="position: absolute; top:10px; left: 10px;">{{ctrl.PDF_ID}}{{$index+1}}</p>-->
                 <img ng-src="{{result.aircraft.image}}" alt="">
                 <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-init="ctrl.doMediaQuery(result)" ng-click="result.more_detail_active =! result.more_detail_active">More Detail</span>
               </div>
@@ -471,8 +473,10 @@
                 <!--<h5>{{result.aircraft.aircraft_category.name}}</h5>-->
                 <!--<h5>{{ctrl.aircraftCategoryForId(result.aircraft.aircraft_type.aircraft_category_id).name}}</h5>-->
                 <h5>{{result.aircraft.aircraft_category.name}}</h5>
-                <p class="base_airport_text">Base :- {{result.aircraft.base_airport.city_name}}</p>
                 <h4>₹ {{result.totalCost | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                <p class="base_airport_text text-center">
+                  Base - {{result.aircraft.base_airport.city_name}}
+                </p>
                 <div class="detail-link-con text-center">
                   <a href="javascript:void(0)" ng-init="result.custom = false" ng-click="result.custom = !result.custom">Details</a>  <a href="javascript:void(0)" ng-hide="result.enquired" ng-click="ctrl.enquire(result)">Book Now</a>
                 </div>

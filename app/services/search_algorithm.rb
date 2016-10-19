@@ -806,6 +806,7 @@ BEGIN
           notam: []
       }
       x[:name] = airport.city.name
+      x[:airport_id] = airport.id
       x[:night_landing] = airport.night_landing
       x[:night_parking] = airport.night_parking
 

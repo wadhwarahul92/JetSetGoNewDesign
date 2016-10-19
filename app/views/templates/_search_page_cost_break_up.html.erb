@@ -136,17 +136,8 @@
             <!--</div>-->
           <div class="cost-con" ng-if="result.set_accomodation">
             <div class="row">
-              <div class="col-xs-12">
-                <p>Crew Accommodation</p>
-              </div>
-              <!--<div class="col-xs-7">-->
-                <!--<p>Night</p>-->
-              <!--</div>-->
-              <!--<div class="col-xs-5 text-right" >-->
-                <!--<p>{{result.total_accommodation_nights}}</p>-->
-              <!--</div>-->
               <div class="col-xs-7">
-                <p>&nbsp;  Cost</p>
+                <p>Crew Accommodation Cost</p>
               </div>
               <div class="col-xs-5 text-right" >
                 <p>₹ {{ result.total_accommodation_cost | currency:"":2 | indianCurrency }}</p>

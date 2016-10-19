@@ -1,71 +1,77 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New Jetsteal', new_admin_jetsteal_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <th>Departure Airport</th>
-        <th>Arrival Airport</th>
-        <th>Aircraft</th>
-        <th>Sell by Seats?</th>
-        <th>Start At</th>
-        <th>End At</th>
-        <th>Cost</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @jetsteals.each do |jetsteal| %>
-          <tr>
-            <td><%= jetsteal.id %></td>
-            <td><%= jetsteal.departure_airport.name %></td>
-            <td><%= jetsteal.arrival_airport.name %></td>
-            <td><%= jetsteal.aircraft.tail_number %></td>
-            <td>
-              <% if jetsteal.sell_by_seats? %>
-                  <span class="label label-success">YES</span>
-              <%- else %>
-                  <span class="label label-default">NO</span>
-              <%- end %>
-            </td>
-            <td><%= jetsteal.start_at.strftime('%d-%b-%Y %H:%M') %></td>
-            <td><%= jetsteal.end_at.strftime('%d-%b-%Y %H:%M') %></td>
-            <td>
-              <% if jetsteal.sell_by_seats? %>
-                  <%= link_to 'Configure seat prices', edit_admin_jetsteal_path(jetsteal) %>
-              <%- else %>
-                  <%= rupees jetsteal.cost %>
-              <%- end %>
-            </td>
-            <td>
-              <% if jetsteal.launched? %>
-                  <%= link_to unlaunch__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'Are you sure, you want to un-launch this?'} do %>
-                      <span class="label label-success">Launched</span>
-                  <%- end %>
-              <%- else %>
-                  <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal), data: {confirm: 'Are you sure, you want to launch this?'} %>
-              <%- end %>
-            </td>
-            <td>
-              <% unless jetsteal.email_sent? %>
-              <%= link_to 'send emails', send_emails__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'This will send emails to all subscribers of this sector. OK to proceed?'} %>
-              <%- end %>
-            </td>
-            <td>
-              <%= link_to 'Archive', admin_jetsteal_path(jetsteal), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Jetsteals</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New Jetsteal', new_admin_jetsteal_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <th>Departure Airport</th>
+              <th>Arrival Airport</th>
+              <th>Aircraft</th>
+              <th>Sell by Seats?</th>
+              <th>Start At</th>
+              <th>End At</th>
+              <th>Cost</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @jetsteals.each do |jetsteal| %>
+                <tr>
+                  <td><%= jetsteal.id %></td>
+                  <td><%= jetsteal.departure_airport.name %></td>
+                  <td><%= jetsteal.arrival_airport.name %></td>
+                  <td><%= jetsteal.aircraft.tail_number %></td>
+                  <td>
+                    <% if jetsteal.sell_by_seats? %>
+                        <span class="label label-success">YES</span>
+                    <%- else %>
+                        <span class="label label-default">NO</span>
+                    <%- end %>
+                  </td>
+                  <td><%= jetsteal.start_at.strftime('%d-%b-%Y %H:%M') %></td>
+                  <td><%= jetsteal.end_at.strftime('%d-%b-%Y %H:%M') %></td>
+                  <td>
+                    <% if jetsteal.sell_by_seats? %>
+                        <%= link_to 'Configure seat prices', edit_admin_jetsteal_path(jetsteal) %>
+                    <%- else %>
+                        <%= rupees jetsteal.cost %>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <% if jetsteal.launched? %>
+                        <%= link_to unlaunch__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'Are you sure, you want to un-launch this?'} do %>
+                            <span class="label label-success">Launched</span>
+                        <%- end %>
+                    <%- else %>
+                        <%= link_to 'Launch', launch_admin_jetsteal_path(jetsteal), data: {confirm: 'Are you sure, you want to launch this?'} %>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <% unless jetsteal.email_sent? %>
+                        <%= link_to 'send emails', send_emails__admin_jetsteal_path(jetsteal), method: :put, data: {confirm: 'This will send emails to all subscribers of this sector. OK to proceed?'} %>
+                    <%- end %>
+                  </td>
+                  <td>
+                    <%= link_to 'Archive', admin_jetsteal_path(jetsteal), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

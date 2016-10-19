@@ -1,13 +1,3 @@
-<script type="application/javascript">
-    $(document).ready(function(){
-        $('.navbar-collapse a.page-link').click(function(){
-            $(".navbar-collapse").toggle();
-        });
-        $('.navbar-toggle').click(function(){
-            $(".navbar-collapse").toggle();
-        });
-    });
-</script>
 <span class="scrollup">
   <i class="fa fa-angle-double-up" aria-hidden="true"></i>
 </span>
@@ -46,14 +36,14 @@
                         <i class="fa submenu-arrow-icon hidden-lg hidden-md hidden-sm" ng-class="!ctrl.active_submenu ? 'fa-angle-down' : 'fa-angle-left'"></i>
                       </a>
                       <ul class="sub_navigation" ng-show="ctrl.active_submenu">
+                        <li>
+                          <a ng-click="ctrl.active_menu = false; ctrl.active_submenu = false" href="/turboprop">Turboprop</a>
+                        </li>
                         <li ng-if="aircraft_category.name != 'Twin Engine Turboprop' && aircraft_category.name != 'Single Engine Turbo'" ng-repeat="aircraft_category in ctrl.aircraft_categories">
                           <a ng-click="ctrl.active_menu = false; ctrl.active_submenu = false" href="/our_fleet/{{aircraft_category.id}}">{{aircraft_category.name}}</a>
                         </li>
                         <li>
                           <a ng-click="ctrl.active_menu = false; ctrl.active_submenu = false" href="/helicopter_fleet">Helicopter</a>
-                        </li>
-                        <li>
-                          <a ng-click="ctrl.active_menu = false; ctrl.active_submenu = false" href="/turboprop">Turboprop</a>
                         </li>
                       </ul>
                     </li>
@@ -138,18 +128,24 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-        $(window).scroll(function(){
-            if($(this).scrollTop() > 800){
-                $('.scrollup').fadeIn();
-            }else{
-                $('.scrollup').fadeOut();
-            }
-        });
-        $('.scrollup').click(function(){
-            $('html,body').animate({
-                scrollTop: 0
-            }, 600);
-        });
+  $(document).ready(function(){
+    $(window).scroll(function(){
+      if($(this).scrollTop() > 800){
+        $('.scrollup').fadeIn();
+      }else{
+        $('.scrollup').fadeOut();
+      }
     });
+    $('.scrollup').click(function(){
+      $('html,body').animate({
+        scrollTop: 0
+      }, 600);
+    });
+    $('.navbar-collapse a.page-link').click(function(){
+      $(".navbar-collapse").toggle();
+    });
+    $('.navbar-toggle').click(function(){
+      $(".navbar-collapse").toggle();
+    });
+  });
 </script>

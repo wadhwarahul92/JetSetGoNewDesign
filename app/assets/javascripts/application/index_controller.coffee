@@ -171,7 +171,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
         return false
       unless activity.start_at
         notify
-          message: 'Time cannot be blank.'
+          message: 'Date and Time cannot be blank.'
           classes: ['alert-danger']
         return false
       unless activity.pax

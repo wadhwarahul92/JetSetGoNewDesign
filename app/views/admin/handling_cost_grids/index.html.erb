@@ -1,43 +1,49 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="list-inline">
-      <li><%= link_to 'New handling cost grid', new_admin_handling_cost_grid_path, class: 'btn btn-primary' %></li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-      <tr class="info">
-        <th>Id</th>
-        <!--<th>Aircraft Name</th>-->
-        <!--<th>Aircraft Type</th>-->
-        <!--<th>Airport Name</th>-->
-        <th>City</th>
-        <th>Aircraft category</th>
-        <th>Cost</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @handling_cost_grids.each do |handling_cost_grid| %>
-          <tr>
-            <td><%= handling_cost_grid.id %></td>
-            <!--<td><%#= handling_cost_grid.aircraft.tail_number %></td>-->
-            <!--<td><%#= handling_cost_grid.aircraft.aircraft_type.name %></td>-->
-            <!--<td><%#= handling_cost_grid.airport.name %></td>-->
-            <td><%= handling_cost_grid.city.name %></td>
-            <td><%= handling_cost_grid.aircraft_category.name %></td>
-            <td><%= handling_cost_grid.cost %></td>
-            <td>
-              <%= link_to edit_admin_handling_cost_grid_path(handling_cost_grid) do %>
-                  <i class="fa fa-edit"></i>
-              <%- end %>
-            </td>
-          </tr>
-      <%- end %>
-      </tbody>
-    </table>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Handling COst Grids</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-12">
+        <ul class="list-inline">
+          <li><%= link_to 'New handling cost grid', new_admin_handling_cost_grid_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th>Id</th>
+              <!--<th>Aircraft Name</th>-->
+              <!--<th>Aircraft Type</th>-->
+              <!--<th>Airport Name</th>-->
+              <th>City</th>
+              <th>Aircraft category</th>
+              <th>Cost</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @handling_cost_grids.each do |handling_cost_grid| %>
+                <tr>
+                  <td><%= handling_cost_grid.id %></td>
+                  <!--<td><%#= handling_cost_grid.aircraft.tail_number %></td>-->
+                  <!--<td><%#= handling_cost_grid.aircraft.aircraft_type.name %></td>-->
+                  <!--<td><%#= handling_cost_grid.airport.name %></td>-->
+                  <td><%= handling_cost_grid.city.name %></td>
+                  <td><%= handling_cost_grid.aircraft_category.name %></td>
+                  <td><%= handling_cost_grid.cost %></td>
+                  <td>
+                    <%= link_to edit_admin_handling_cost_grid_path(handling_cost_grid) do %>
+                        <i class="fa fa-edit"></i>
+                    <%- end %>
+                  </td>
+                </tr>
+            <%- end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
