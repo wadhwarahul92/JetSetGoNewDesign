@@ -38,7 +38,7 @@ class FinancesController < ApplicationController
       elsif plan[:flight_type] == 'empty_leg' and arrival_airport.id == params[:result][:aircraft][:base_airport][:id]
         trip_type = 'Re - Positioning'
       else
-        trip_type = 'Your Search'
+        trip_type = 'With Pax'
       end
 
       itinerary_charges << {
