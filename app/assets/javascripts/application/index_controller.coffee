@@ -4,6 +4,8 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @currentUser = null
   @loading = true
 
+  @countriesCode = []
+
   @aircraft_categories = []
 
 #  if $routeParams.search_id
@@ -108,6 +110,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   # fetching jetsteals
   @load_jetsteals = ()->
     arr = []
+#    debugger
     $http.get('/jetsteals/get_list.json').success(
       (data)=>
         $.each(data, (i, v)=>
@@ -115,6 +118,21 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
           if arr.length < 4
             arr.push(v)
             @jetsteals = arr
+        )
+        @loading = false
+    ).error(
+      ->
+        alert 'error fetching jetsteals, try again later'
+    )
+
+  @load_countrycodes = ()->
+    debugger
+    arr = []
+    $http.get('/json/country.json').success(
+      (data)=>
+        $.each(data, (i, v)=>
+          arr.push(v)
+          @countriesCode = arr
         )
         @loading = false
     ).error(
@@ -243,10 +261,6 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
 
   @aircraftCategoryForId = (id)->
     _.find(@aircraft_categories,{id: parseInt(id)})
-
-
-
-
 
   return undefined
 ]
