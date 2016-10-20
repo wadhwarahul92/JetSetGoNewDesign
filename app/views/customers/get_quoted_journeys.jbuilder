@@ -4,6 +4,8 @@ json.array! @quotes do |quote|
   json.status quote.status
   json.payment_status quote.payment_status
   json.amount_paid quote.amount_paid
+  json.is_miscellaneous_expenses quote.is_miscellaneous_expenses
+  json.miscellaneous_expenses quote.miscellaneous_expenses
 
   json.activities{
     json.array! quote.activities do |activity|
