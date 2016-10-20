@@ -290,6 +290,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  json
   letter_opener
   mysql2
   newrelic_rpm
@@ -319,6 +320,9 @@ DEPENDENCIES
   wicked_pdf
   will_paginate
   wkhtmltopdf-binary
+
+RUBY VERSION
+   ruby 2.2.3p173
 
 BUNDLED WITH
    1.12.5

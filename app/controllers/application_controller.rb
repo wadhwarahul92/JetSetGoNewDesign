@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
     params[:from_mobile] == 'yes'
   end
 
+  require 'json'
+  def parse(val)
+    val = File.read('json/country.json')
+    @parsed_val = JSON.parse(val)
+  end
+
 end
