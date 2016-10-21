@@ -1,5 +1,15 @@
-<%= simple_form_for @tax, url: admin_taxes_path, method: :put do |f| %>
-    <%= f.input :service_tax %>
-    <%= f.input :swachh_bharat_cess %>
-    <%= f.submit 'Save', class: 'btn btn-success' %>
-<%- end %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Taxes</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-6">
+        <%= simple_form_for @tax, url: admin_taxes_path, method: :put do |f| %>
+            <%= f.input :service_tax %>
+            <%= f.input :swachh_bharat_cess %>
+            <%= f.submit 'Save', class: 'btn btn-success' %>
+        <%- end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

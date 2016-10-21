@@ -1,3 +1,8 @@
-ul.list-unstyled
-  - @models.each do |model|
-    li= link_to model, admin_model_model_attributes_path(model)
+div.admin-main-con
+  div.col-xs-12
+    h2= 'Models'
+    div.admin_content_body
+      div.col-xs-12
+        ul.list-unstyled
+          - @models.each do |model|
+            li= link_to model, admin_model_model_attributes_path(model)

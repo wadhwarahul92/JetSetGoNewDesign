@@ -147,26 +147,28 @@
               <% end %>
             </div>
             <div class="row">
-              <table class="table table-striped">
-                <head>
-                  <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
-                    <th>Miscellaneous expenses </th>
-                    <th><%= @quote.miscellaneous_expenses %></th>
-                  </tr>
-                  <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
-                    <th>Sub total </th>
-                    <th><%= customer_sub_total_amount(@aircraft, @quote) %></th>
-                  </tr>
-                  <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
-                    <th>Service tax(15%) </th>
-                    <th><%= customer_total_tax(customer_sub_total_amount(@quote.activities.first.aircraft, @quote)) %></th>
-                  </tr>
-                  <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
-                    <th>Total price </th>
-                    <th><%= customer_total_amount(@quote.activities.first.aircraft, @quote).to_i%></th>
-                  </tr>
-                </head>
-              </table>
+              <div class="col-xs-12">
+                <table class="table table-striped">
+                  <head>
+                    <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+                      <th>Miscellaneous expenses </th>
+                      <th><%= @quote.miscellaneous_expenses %></th>
+                    </tr>
+                    <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+                      <th>Sub total </th>
+                      <th><%= customer_sub_total_amount(@aircraft, @quote) %></th>
+                    </tr>
+                    <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+                      <th>Service tax(15%) </th>
+                      <th><%= customer_total_tax(customer_sub_total_amount(@quote.activities.first.aircraft, @quote)) %></th>
+                    </tr>
+                    <tr class="default" style="background-color: rgba(255, 82, 0, 0.21);">
+                      <th>Total price </th>
+                      <th><%= customer_total_amount(@quote.activities.first.aircraft, @quote).to_i%></th>
+                    </tr>
+                  </head>
+                </table>
+              </div>
             </div>
           </dl>
         </div>
