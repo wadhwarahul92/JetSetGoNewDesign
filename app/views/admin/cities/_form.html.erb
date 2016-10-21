@@ -1,20 +1,11 @@
-<div class="admin-main-con">
-  <div class='col-xs-12'>
-    <h2>Add City</h2>
-    <div class="admin_content_body">
-      <div class="col-sm-6">
-        <%= simple_form_for [:admin, @city] do |f| %>
-            <%= f.error_notification %>
-            <%= f.input :name %>
-            <%= f.input :state %>
-            <%= f.input :accomodation_category, collection: ['tier1','tier2','tier3'] %>
-            <% if f.object.image.present? %>
-                <%= image_tag f.object.image.url(:original) %>
-            <%- end %>
-            <%= f.input :image %>
-            <%= f.submit 'Save', class: 'btn btn-success' %>
-        <%- end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= simple_form_for [:admin, @city] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :state %>
+    <%= f.input :accomodation_category, collection: ['tier1','tier2','tier3'] %>
+    <% if f.object.image.present? %>
+        <%= image_tag f.object.image.url(:original) %>
+    <%- end %>
+    <%= f.input :image %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>
