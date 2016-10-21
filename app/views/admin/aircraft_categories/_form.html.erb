@@ -1,22 +1,15 @@
-<div class="admin-main-con">
-  <div class='col-xs-12'>
-    <h2>Add Aircraft Categories</h2>
-    <div class="admin_content_body">
-      <%= simple_form_for [:admin, @aircraft_category] do |f| %>
-          <div class="col-sm-6">
-            <%= f.error_notification %>
-            <%= f.input :name %>
-            <%= f.input :mtow %>
-            <% if f.object.image.present? %>
-                <%= image_tag f.object.image.url(:original) %>
-            <%- end %>
-            <%= f.input :image %>
-          </div>
-          <div class="col-xs-12">
-            <%= f.submit 'Save', class: 'btn btn-success ' %>
-          </div>
-          <div class="clearfix"></div>
+<%= simple_form_for [:admin, @aircraft_category] do |f| %>
+    <div class="col-sm-6">
+      <%= f.error_notification %>
+      <%= f.input :name %>
+      <%= f.input :mtow %>
+      <% if f.object.image.present? %>
+          <%= image_tag f.object.image.url(:original) %>
       <%- end %>
+      <%= f.input :image %>
     </div>
-  </div>
-</div>
+    <div class="col-xs-12">
+      <%= f.submit 'Save', class: 'btn btn-success ' %>
+    </div>
+    <div class="clearfix"></div>
+<%- end %>

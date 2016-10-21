@@ -1,16 +1,7 @@
-<div class="admin-main-con">
-  <div class='col-xs-12'>
-    <h2>Add distances</h2>
-    <div class="admin_content_body">
-      <div class="col-sm-6">
-        <%= simple_form_for [:admin, @distance] do |f| %>
-            <%= f.error_notification %>
-            <%= f.input :from_airport_id, collection: airports_for_collection, prompt: 'Select Start Airport'  %>
-            <%= f.input :to_airport_id, collection: airports_for_collection, prompt: 'Select End Airport' %>
-            <%= f.input :distance_in_nm, placeholder: 'Distance in Nautical Miles' %>
-            <%= f.submit 'Save', class: 'btn btn-success' %>
-        <%- end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= simple_form_for [:admin, @distance] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :from_airport_id, collection: airports_for_collection, prompt: 'Select Start Airport'  %>
+    <%= f.input :to_airport_id, collection: airports_for_collection, prompt: 'Select End Airport' %>
+    <%= f.input :distance_in_nm, placeholder: 'Distance in Nautical Miles' %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<%- end %>
