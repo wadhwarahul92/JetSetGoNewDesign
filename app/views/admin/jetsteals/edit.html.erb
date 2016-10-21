@@ -1,16 +1,22 @@
-<div class="row">
-  <div class="col-sm-6">
-    <%= @jetsteal.aircraft.aircraft_type.svg.html_safe %>
-  </div>
-  <div class="col-sm-6">
-    <fieldset>
-      <legend><small>Configure cost for each seat</small></legend>
-      <%= simple_form_for [:admin, @jetsteal] do |f| %>
-          <%= f.simple_fields_for :jetsteal_seats do |builder| %>
-              <%= render partial: 'admin/jetsteal_seats/fields', locals: { f: builder } %>
+<div class="admin-main-con">
+  <div class='col-xs-12'>
+    <h2>Edit Jetsteal</h2>
+    <div class="admin_content_body">
+      <div class="col-sm-6">
+        <%= @jetsteal.aircraft.aircraft_type.svg.html_safe %>
+      </div>
+      <div class="col-sm-6">
+        <fieldset>
+          <legend><small>Configure cost for each seat</small></legend>
+          <%= simple_form_for [:admin, @jetsteal] do |f| %>
+              <%= f.simple_fields_for :jetsteal_seats do |builder| %>
+                  <%= render partial: 'admin/jetsteal_seats/fields', locals: { f: builder } %>
+              <%- end %>
+              <%= f.submit 'Save', class: 'btn btn-success' %>
           <%- end %>
-          <%= f.submit 'Save', class: 'btn btn-success' %>
-      <%- end %>
-    </fieldset>
+        </fieldset>
+      </div>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </div>
