@@ -110,11 +110,9 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   # fetching jetsteals
   @load_jetsteals = ()->
     arr = []
-#    debugger
     $http.get('/jetsteals/get_list.json').success(
       (data)=>
         $.each(data, (i, v)=>
-#          if !v.sold_out && arr.length < 2
           if arr.length < 4
             arr.push(v)
             @jetsteals = arr
@@ -128,7 +126,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @load_countrycodes = ()->
     debugger
     arr = []
-    $http.get('/json/country.json').success(
+    $http.get('views/json/country.json').success(
       (data)=>
         $.each(data, (i, v)=>
           arr.push(v)
@@ -137,7 +135,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
         @loading = false
     ).error(
       ->
-        alert 'error fetching jetsteals, try again later'
+        alert 'error fetching Country Code, try again later'
     )
 
   @formatTime = (time)->

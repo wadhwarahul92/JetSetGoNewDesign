@@ -339,6 +339,12 @@ Rails.application.routes.draw do
 
   get 'our_fleet/:id' => 'welcome#our_fleet'
 
+  resources :json do
+    collection do
+      get 'country'
+    end
+  end
+
   resources :templates do
     collection do
       get 'sign_in_modal'
