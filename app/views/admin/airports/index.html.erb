@@ -6,14 +6,14 @@
         <ul class="list-inline">
           <li>
             <form action="/admin/airports" method="get">
-              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Airport Name">
-              /
-              <input type="search" name="icao_code" value="<%= params[:icao_code] %>" placeholder="ICAO Code">
-              /
-              <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code">
-              /
+              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Airport Name" class="search_textfield">
+              <span class="slash_devider">/</span>
+              <input type="search" name="icao_code" value="<%= params[:icao_code] %>" placeholder="ICAO Code" class="search_textfield">
+              <span class="slash_devider">/</span>
+              <input type="search" name="code" value="<%= params[:code] %>" placeholder="IATA Code" class="search_textfield">
+              <span class="slash_devider">/</span>
               <%= select_tag('city_id', options_for_select(cities_for_collection, params[:city_id]), prompt: 'Choose city', type: "search") %>
-              <input type="submit" value="search">
+              <input type="submit" value="Search" class="btn btn-info search_btn">
             </form>
           </li>
         </ul>
@@ -26,7 +26,7 @@
       <div class="clearfix"></div>
       <div class="row">
         <div class="col-sm-12">
-          <table class="table table-striped">
+          <table class="table table-striped table-data-con">
             <thead>
             <tr class="info">
               <th>Id</th>

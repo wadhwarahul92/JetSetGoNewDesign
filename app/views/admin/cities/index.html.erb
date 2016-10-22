@@ -6,8 +6,8 @@
         <ul class="list-inline">
           <li>
             <form action="/admin/cities" method="get">
-              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name">
-              <input type="submit" value="search">
+              <input type="search" name="name" value="<%= params[:name] %>" placeholder="Search by name" class="search_textfield">
+              <input type="submit" value="search" class="btn btn-info">
             </form>
           </li>
         </ul>
@@ -18,7 +18,7 @@
       <div class="clearfix"></div>
       <div class="row">
         <div class="col-sm-12">
-          <table class="table table-striped">
+          <table class="table table-striped table-data-con">
             <thead>
             <tr class="info">
               <th></th>
