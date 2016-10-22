@@ -1,6 +1,6 @@
 <div class="admin-main-con">
   <div class='col-xs-12'>
-    <h2>Edit all airports</h2>
+    <h2>Edit All Airports</h2>
     <div class="admin_content_body">
       <% if @airports.any? %>
           <div class="col-sm-12">
@@ -9,8 +9,8 @@
                 <% attrs = @airports.first.attributes.keys %>
                 <%= form_tag edit_all_admin_airports_path, method: :get do %>
                     <%= select_tag :field, options_for_select(attrs, params[:field]) %>
-                    <%= text_field_tag :value, params[:value] %>
-                    <%= submit_tag 'search' %>
+                    <%= text_field_tag :value, params[:value], class: 'search_textfield' %>
+                    <%= submit_tag 'search', class: 'btn btn-info' %>
                 <%- end %>
               </li>
             </ul>
@@ -18,31 +18,31 @@
           <div class="clearfix"></div>
           <div class="row">
             <div class="col-sm-12">
-              <table class="table table-stripped">
+              <table class="table table-striped table-data-con">
                 <thead>
-                <tr>
+                <tr class="info">
                   <% attrs.each do |attr| %>
                       <th><%= attr %></th>
                   <%- end %>
                 </tr>
                 </thead>
-                <% @airports.each do |airport| %>
-                    <tr>
-                      <% attrs.each do |attr| %>
-                          <td>
-                            <% case attr %>
-                            <% when 'city_id' %>
-                                <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: City.all.collect{ |c| [c.id, c.name] }, as: :select %>
-                            <% when 'airport_category_id' %>
-                                <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: AirportCategory.all.collect{ |c| [c.id, c.name] }, as: :select %>
-                            <%- else %>
-                                <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true %>
-                            <%- end %>
-                          </td>
-                      <%- end %>
-                    </tr>
-                <%- end %>
                 <tbody>
+                    <% @airports.each do |airport| %>
+                        <tr>
+                          <% attrs.each do |attr| %>
+                              <td>
+                                <% case attr %>
+                                <% when 'city_id' %>
+                                    <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: City.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                                <% when 'airport_category_id' %>
+                                    <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true, collection: AirportCategory.all.collect{ |c| [c.id, c.name] }, as: :select %>
+                                <%- else %>
+                                    <%= best_in_place airport, attr.to_sym, url: admin_airport_path(airport), confirm: true %>
+                                <%- end %>
+                              </td>
+                          <%- end %>
+                        </tr>
+                    <%- end %>
                 </tbody>
               </table>
             </div>

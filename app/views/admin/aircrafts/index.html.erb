@@ -6,9 +6,9 @@
         <ul class="list-inline">
           <li>
             <%= form_tag admin_aircrafts_path, method: :get do %>
-                <%= text_field_tag 'tail_number', '', placeholder: 'Tail number', value: params[:tail_number], type: 'search' %>
-                /
-                <%= select_tag('aircraft_type_id', options_for_select(aircraft_types_for_collection, params[:aircraft_type_id]), prompt: 'Choose aircraft type', type: 'search') %>
+                <%= text_field_tag 'tail_number', '', placeholder: 'Tail number', value: params[:tail_number], type: 'search', class: 'search_textfield' %>
+                <span class="slash_devider">/</span>
+                <%= select_tag('aircraft_type_id', options_for_select(aircraft_types_for_collection, params[:aircraft_type_id]), prompt: 'Choose aircraft type', type: 'search', class: 'search-dropdown') %>
                 <%= submit_tag 'Search', class: 'btn btn-info'%>
             <% end %>
           </li>
@@ -22,7 +22,7 @@
       <div class="clearfix"></div>
       <div class="row">
         <div class="col-sm-12">
-          <table class="table table-striped">
+          <table class="table table-striped table-data-con">
             <thead>
             <tr class="info">
               <th>ID</th>
