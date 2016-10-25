@@ -20,6 +20,7 @@ class Admin::EnquiriesController < Admin::BaseController
     totalFlightCostTemp = 0;
     totalCostTemp = 0;
     totalHandlingCostTemp = 0;
+    totalLandingCostTemp = 0;
     taxesTemp = 0;
     swachhBharatCessTemp = 0;
     krishiKalyanTemp = 0;
@@ -32,6 +33,7 @@ class Admin::EnquiriesController < Admin::BaseController
       totalCostTemp +=  activity.handling_cost_at_takeoff + (activity.handling_cost_at_takeoff * aircarft_Details.handling_cost_commission_in_percentage)/100;
 
       totalHandlingCostTemp += activity.handling_cost_at_takeoff + (activity.handling_cost_at_takeoff * aircarft_Details.handling_cost_commission_in_percentage)/100;
+      totalLandingCostTemp += activity.landing_cost_at_arrival + (activity.landing_cost_at_arrival * aircarft_Details.handling_cost_commission_in_percentage)/100;
 
       totalCostTemp +=  activity.watch_hour_cost
 
@@ -60,7 +62,7 @@ class Admin::EnquiriesController < Admin::BaseController
 
     @KrishiKalyan = krishiKalyanTemp
 
-    @tatalHandlingCost = totalHandlingCostTemp
+    @tatalHandlingCost = totalHandlingCostTemp + totalLandingCostTemp
 
   end
 

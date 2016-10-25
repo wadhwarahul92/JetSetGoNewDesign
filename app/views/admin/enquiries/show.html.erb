@@ -117,42 +117,45 @@
                   </div>
               <% end %>
             </div>
+            <br><br>
             <div class="row">
-              <div class="col-sm-6">
-                <dt>Total Flight Cost</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@totalFlightCost.round(0)}" %>
-              </div>
-              <div class="col-sm-6">
-                <dt>Total Handling Cost</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@tatalHandlingCost.round(0)}" %>
-              </div>
-              <div class="col-sm-6">
-                <dt>Taxes</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@taxes.round(0)}" %>
-              </div>
-              <div class="col-sm-6">
-                <dt>Swachh Bharat Cess</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@SwachhBharatCess.round(0)}" %>
-              </div>
-              <div class="col-sm-6">
-                <dt>Krishi Kalyan</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@KrishiKalyan.round(0)}" %>
-              </div>
-              <div class="col-sm-6">
-                <dt>Total Amount</dt>
-              </div>
-              <div class="col-sm-6">
-                <%= "#{@totalCost.round(0)}" %>
+              <div class="col-sm-12" style="background-color: #c2edf7; padding: 10px 15px">
+                <div class="col-sm-8">
+                  <dt>Total Flight Cost</dt>
+                </div>
+                <div class="col-sm-4">
+                  <%= "#{@totalFlightCost.round(0)}" %>
+                </div>
+                <div class="col-sm-8">
+                  <dt>Total Handling Cost</dt>
+                </div>
+                <div class="col-sm-4">
+                  <%= "#{@tatalHandlingCost.round(0)}" %>
+                </div>
+                <div class="col-sm-8">
+                  <dt>Taxes</dt>
+                </div>
+                <div class="col-sm-4">
+                  <%= "#{@taxes.round(0)}" %>
+                </div>
+                <div class="col-sm-8">
+                  <dt>Swachh Bharat Cess</dt>
+                </div>
+                <div class="col-sm-4">
+                  <%= "#{@SwachhBharatCess.round(0)}" %>
+                </div>
+                <div class="col-sm-8">
+                  <dt>Krishi Kalyan</dt>
+                </div>
+                <div class="col-sm-4">
+                  <%= "#{@KrishiKalyan.round(0)}" %>
+                </div>
+                <div class="col-sm-8">
+                  <dt style="font-size: 20px;">Total Amount</dt>
+                </div>
+                <div class="col-sm-4">
+                  <span style="font-size: 20px;"><%= "#{@totalCost.round(0)}" %></span>
+                </div>
               </div>
             </div>
           </dl>
