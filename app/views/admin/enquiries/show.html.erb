@@ -109,12 +109,6 @@
                       <dd><%= activity.handling_cost_at_takeoff %></dd>
                     </div>
                     <div class="col-sm-6">
-                      <dt>Handling cost at takeoff</dt>
-                    </div>
-                    <div class="col-sm-6">
-                      <dd><%= activity.handling_cost_at_takeoff %></dd>
-                    </div>
-                    <div class="col-sm-6">
                       <dt>Landing cost at arrival</dt>
                     </div>
                     <div class="col-sm-6">
@@ -122,6 +116,9 @@
                     </div>
                   </div>
               <% end %>
+
+              <%= "total amount: #{@totalCost.round(0)}"  %>
+
             </div>
           </dl>
         </div>
