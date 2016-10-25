@@ -7,6 +7,10 @@
       <p>
         <strong><%= @customer.email %></strong> has enquired for flight.
         <br><br>
+        Name : <%= @customer.first_name %> <br><br>
+
+        Mobile : <%= @customer.phone %> <br><br>
+
         Reference ID: Enquiry#<%= @trip.id %> <br><br>
 
         Enquiry date: <%= @trip.created_at.strftime(time_format) %>
