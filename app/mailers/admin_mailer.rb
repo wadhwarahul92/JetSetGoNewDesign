@@ -2,7 +2,7 @@ class AdminMailer < ApplicationMailer
 
   add_template_helper(ApplicationHelper)
 
-   default to: Admin.get_all_emails
+  # default to: Admin.get_all_emails
   default to: 'vasudev.kaushik@jetsetgo.in'
 
   DEFAULT_SUBJECT = 'JetSetGo Admins - '
