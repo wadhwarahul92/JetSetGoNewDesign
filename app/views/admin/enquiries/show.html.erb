@@ -116,9 +116,44 @@
                     </div>
                   </div>
               <% end %>
-
-              <%= "total amount: #{@totalCost.round(0)}"  %>
-
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <dt>Total Flight Cost</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@totalFlightCost.round(0)}" %>
+              </div>
+              <div class="col-sm-6">
+                <dt>Total Handling Cost</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@tatalHandlingCost.round(0)}" %>
+              </div>
+              <div class="col-sm-6">
+                <dt>Taxes</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@taxes.round(0)}" %>
+              </div>
+              <div class="col-sm-6">
+                <dt>Swachh Bharat Cess</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@SwachhBharatCess.round(0)}" %>
+              </div>
+              <div class="col-sm-6">
+                <dt>Krishi Kalyan</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@KrishiKalyan.round(0)}" %>
+              </div>
+              <div class="col-sm-6">
+                <dt>Total Amount</dt>
+              </div>
+              <div class="col-sm-6">
+                <%= "#{@totalCost.round(0)}" %>
+              </div>
             </div>
           </dl>
         </div>

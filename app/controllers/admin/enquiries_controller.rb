@@ -17,22 +17,22 @@ class Admin::EnquiriesController < Admin::BaseController
 
   def set_enquiry
     @enquiry = Trip.where(status: Trip::STATUS_ENQUIRY).find params[:id]
-
+    totalFlightCostTemp = 0;
     totalCostTemp = 0;
-
+    totalHandlingCostTemp = 0;
+    taxesTemp = 0;
+    swachhBharatCessTemp = 0;
+    krishiKalyanTemp = 0;
+    taxesTemp = 0;
     aircarft_Details = @enquiry.activities.first.aircraft
-
-
-    # count = @enquiry.activities.length
-
-
-
-
     @enquiry.activities.each do |activity|
-
+      totalFlightCostTemp +=  activity.flight_cost + (activity.flight_cost * aircarft_Details.flight_cost_commission_in_percentage)/100;
       totalCostTemp +=  activity.flight_cost + (activity.flight_cost * aircarft_Details.flight_cost_commission_in_percentage)/100;
       totalCostTemp +=  activity.landing_cost_at_arrival + (activity.landing_cost_at_arrival * aircarft_Details.handling_cost_commission_in_percentage)/100;
       totalCostTemp +=  activity.handling_cost_at_takeoff + (activity.handling_cost_at_takeoff * aircarft_Details.handling_cost_commission_in_percentage)/100;
+
+      totalHandlingCostTemp += activity.handling_cost_at_takeoff + (activity.handling_cost_at_takeoff * aircarft_Details.handling_cost_commission_in_percentage)/100;
+
       totalCostTemp +=  activity.watch_hour_cost
 
       accomodationPlan =  activity.accommodation_plan[0]
@@ -45,21 +45,22 @@ class Admin::EnquiriesController < Admin::BaseController
 
     totalCostTemp +=@enquiry.miscellaneous_expenses
     totalCostTemp +=( @enquiry.miscellaneous_expenses * aircarft_Details.flight_cost_commission_in_percentage)/100
+    taxesTemp = (totalCostTemp * 14)/100
+    swachhBharatCessTemp = (totalCostTemp * 0.5)/100
+    krishiKalyanTemp = (totalCostTemp * 0.5)/100
     totalCostTemp += (totalCostTemp *15)/100
 
-
-
-    # (0..count).each do |i|
-    #
-    #   myActivity =  @enquiries.activities[i];
-    #
-    # end
-
-
-
+    @totalFlightCost = totalFlightCostTemp
 
     @totalCost = totalCostTemp
 
+    @taxes = taxesTemp
+
+    @SwachhBharatCess = swachhBharatCessTemp
+
+    @KrishiKalyan = krishiKalyanTemp
+
+    @tatalHandlingCost = totalHandlingCostTemp
 
   end
 
