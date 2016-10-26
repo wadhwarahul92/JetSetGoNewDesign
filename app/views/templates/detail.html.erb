@@ -385,7 +385,7 @@
               <h5>Booking Deposit</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</h5>
+              <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.05 | currency:"":0 | indianCurrency }}</h5>
               <p class="inclusive" ng-hide="ctrl.trip.status == 'confirmed'">
                 (Pay 10% to book this flight)
               </p>
