@@ -387,7 +387,7 @@
             <div class="col-xs-6 text-right">
               <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.05 | currency:"":0 | indianCurrency }}</h5>
               <p class="inclusive" ng-hide="ctrl.trip.status == 'confirmed'">
-                (Pay 10% to book this flight)
+                (Pay 5% to book this flight)
               </p>
             </div>
           </div>
@@ -470,7 +470,7 @@
                 <p>You have paid</p>
               </td>
               <td>
-                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.10 | currency:"":0 | indianCurrency }}</p>
+                <p class="text-right"><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.05 | currency:"":0 | indianCurrency }}</p>
               </td>
             </tr>
             <tr>
@@ -478,7 +478,7 @@
                 <p><b>Balance Payable</b></p>
               </td>
               <td>
-                <p class="text-right"><b><i class="fa fa-rupee"></i> {{ctrl.balance_payable(ctrl.trip.totalCost, ctrl.trip.totalCost * 0.10) | currency:"":0 | indianCurrency}}</b></p>
+                <p class="text-right"><b><i class="fa fa-rupee"></i> {{ctrl.balance_payable(ctrl.trip.totalCost, ctrl.trip.totalCost * 0.05) | currency:"":0 | indianCurrency}}</b></p>
               </td>
             </tr>
           </table>
