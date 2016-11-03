@@ -93,4 +93,26 @@ $diamond-color: rgb(233, 236, 232);
     -moz-border-radius: 3px;
     border-radius: 3px;
   }
+  .membership_table{
+    tr.info{
+      th{
+        background-color: #856b58;
+        color: #ffffff;
+        padding: 12px 8px;
+        border-bottom: none;
+      }
+    }
+    tr{
+      td.first_column{
+        padding: 11px 8px;
+      }
+      td{
+        padding: 8px;
+        border-top: 1px solid #f1f1f1;
+      }
+    }
+  }
+  .table-striped.membership_table>tbody>tr:nth-of-type(odd){
+    background-color: #f9f9f9 !important;
+  }
 }
