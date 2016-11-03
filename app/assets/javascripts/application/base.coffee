@@ -144,6 +144,26 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/turboprop'
     controller: 'TurboPropController'
     controllerAs: 'ctrl'
+  }).when('/membership_code', {
+    templateUrl: '/templates/membership_code'
+    controller: 'MembershipCodeController'
+    controllerAs: 'ctrl'
+  }).when('/membership_plan', {
+    templateUrl: '/templates/membership_plan'
+    controller: 'MembershipPlanController'
+    controllerAs: 'ctrl'
+  }).when('/membership_gold', {
+    templateUrl: '/templates/membership_gold'
+    controller: 'MembershipGoldController'
+    controllerAs: 'ctrl'
+  }).when('/membership_platinum', {
+    templateUrl: '/templates/membership_platinum'
+    controller: 'MembershipPlatinumController'
+    controllerAs: 'ctrl'
+  }).when('/membership_diamond', {
+    templateUrl: '/templates/membership_diamond'
+    controller: 'MembershipDiamondController'
+    controllerAs: 'ctrl'
   })
 
 

@@ -27,6 +27,11 @@
 //= require ./application/contact_us_controller
 //= require ./application/quotes_controller
 //= require ./application/about_us_controller
+//= require ./application/membership_plan_controller
+//= require ./application/membership_code_controller
+//= require ./application/membership_gold_controller
+//= require ./application/membership_platinum_controller
+//= require ./application/membership_diamond_controller
 //= require ./application/search_detail_controller
 //= require ./application/jet_set_rescue_controller
 //= require ./application/forget_password_controller

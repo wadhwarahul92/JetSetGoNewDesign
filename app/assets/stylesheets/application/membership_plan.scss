@@ -1,0 +1,96 @@
+$gold-color: rgb(212, 175, 54);
+$platinum-color: rgb(192, 192, 192);
+$diamond-color: rgb(233, 236, 232);
+
+.membership_code_con{
+  width: 100%;
+  min-height: 70vh;
+  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/947/original/sharp_bg.png?1478000634");
+  -webkit-background-size: cover;
+  background-size: cover;
+  h2{
+    font-size: 25px;
+    margin-top: 100px;
+    color: #ffffff;
+  }
+  .code_form{
+    margin-top: 150px;
+    .txt_code{
+      min-width: 280px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      background-color: rgba(67, 50, 31, 0.5);;
+      text-align: center;
+      color: #ffffff;
+    }
+    ::-webkit-input-placeholder {
+      //color:#4a3e30;
+      color: #ffffff;
+    }
+    ::-moz-placeholder {
+      //color:#4a3e30;
+      color: #ffffff;
+    } /* firefox 19+ */
+    :-ms-input-placeholder {
+      //color:#4a3e30;
+      color: #ffffff;
+    } /* ie */
+    input:-moz-placeholder {
+      //color:#4a3e30;
+      color: #ffffff;
+    }
+    .btn_code_enter{
+      background-color: #920000;
+      padding: 8px;
+      min-width: 280px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #ffffff;
+    }
+  }
+}
+
+.membership_main_con{
+  width: 100%;
+  padding: 50px 0;
+  .membership_box{
+    width: 100%;
+    display: inline-block;
+    color: #920000;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 25px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+  .gold_color{
+    background-color: $gold-color;
+  }
+  .platinum_color{
+    background-color: $platinum-color;
+  }
+  .diamond_color{
+    background-color: $diamond-color;
+  }
+}
+.membership_table_con{
+  width: 100%;
+  .membership_btn{
+    width: 100%;
+    max-width: 280px;
+    color: #ffffff;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #920000;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+}

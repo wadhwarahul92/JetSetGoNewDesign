@@ -376,6 +376,11 @@ Rails.application.routes.draw do
       get 'our_fleet'
       get 'helicopter_fleet'
       get 'turboprop'
+      get 'membership_plan'
+      get 'membership_code'
+      get 'membership_gold'
+      get 'membership_platinum'
+      get 'membership_diamond'
     end
   end
 
@@ -439,6 +444,11 @@ Rails.application.routes.draw do
   get 'helicopter_fleet' => 'route_overrides#welcome_index'
   get 'turboprop' => 'route_overrides#welcome_index'
   # get 'our_fleet' => 'route_overrides#welcome_index'
+  get 'membership_plan' => 'route_overrides#welcome_index'
+  get 'membership_code' => 'route_overrides#welcome_index'
+  get 'membership_gold' => 'route_overrides#welcome_index'
+  get 'membership_platinum' => 'route_overrides#welcome_index'
+  get 'membership_diamond' => 'route_overrides#welcome_index'
 
 
   put 'update_device_token' => 'welcome#update_device_token'
