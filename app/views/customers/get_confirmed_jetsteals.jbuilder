@@ -186,6 +186,7 @@ json.trips{
     }
 
     json.aircraft{
+      if trip.activities
       aircraft = trip.activities.first.aircraft
 
       json.id aircraft.id
@@ -214,6 +215,7 @@ json.trips{
 
       json.name aircraft.aircraft_type.name
       json.images aircraft.aircraft_images.map{ |i| i.image.url(:size_250x250) }
+      end
     }
 
   end

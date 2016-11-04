@@ -129,7 +129,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = current_user.trips.find params[:id]
+    @trip = current_user.trips.last#.find params[:id]
   end
 
   private
