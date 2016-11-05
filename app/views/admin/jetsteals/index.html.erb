@@ -27,6 +27,7 @@
             </tr>
             </thead>
             <tbody>
+            <% if @jetsteals %>
             <% @jetsteals.each do |jetsteal| %>
                 <tr>
                   <td><%= jetsteal.id %></td>
@@ -67,6 +68,7 @@
                     <%= link_to 'Archive', admin_jetsteal_path(jetsteal), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
                   </td>
                 </tr>
+            <%- end %>
             <%- end %>
             </tbody>
           </table>
