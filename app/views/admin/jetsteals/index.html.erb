@@ -31,8 +31,8 @@
             <% @jetsteals.each do |jetsteal| %>
                 <tr>
                   <td><%= jetsteal.id %></td>
-                  <td><%= jetsteal.departure_airport.name %></td>
-                  <td><%= jetsteal.arrival_airport.name %></td>
+                  <td><%= jetsteal.departure_airport.name if jetsteal.departure_airport %></td>
+                  <td><%= jetsteal.arrival_airport.name if jetsteal.arrival_airport %></td>
                   <td><%= jetsteal.aircraft.tail_number %></td>
                   <td>
                     <% if jetsteal.sell_by_seats? %>
