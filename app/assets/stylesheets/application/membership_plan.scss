@@ -1,6 +1,6 @@
-$gold-color: rgb(212, 175, 54);
+$gold-color: rgb(255, 239, 208);
 $platinum-color: rgb(192, 192, 192);
-$diamond-color: rgb(233, 236, 232);
+$diamond-color: rgb(249, 249, 249);
 
 .membership_code_con{
   width: 100%;
@@ -54,19 +54,90 @@ $diamond-color: rgb(233, 236, 232);
   }
 }
 
+.membership_banner_con{
+  background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/990/original/interiorimage.jpg?1478496928");
+  background-size: cover;
+  min-height: 480px;
+  position: relative;
+  .banner_content{
+    width: 60%;
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    h5{
+      font-size: 18px;
+      color: #ffffff;
+      padding: 15px;
+      font-weight: normal;
+      border-left: 3px solid #920000;
+      line-height: 24px;
+    }
+  }
+}
+
 .membership_main_con{
   width: 100%;
   padding: 50px 0;
   .membership_box{
     width: 100%;
-    display: inline-block;
-    color: #920000;
-    text-align: center;
-    padding: 40px 0;
-    font-size: 25px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    .membership_box_img{
+      background-size: cover;
+      min-height: 200px;
+      position: relative;
+      h3{
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #000000;
+        span.engine_text{
+          font-size: 23px;
+        }
+      }
+    }
+    .gold_img{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/987/original/gold.jpg?1478496870");
+    }
+    .platinum_img{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/987/original/gold.jpg?1478496870");
+    }
+    .diamond_img{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/989/original/diamond.jpg?1478496909");
+    }
+    .membership_box_content{
+      padding: 15px;
+      min-height: 300px;
+      color: #000000;
+      font-size: 17px;
+      p{
+
+      }
+      .more_btn{
+        display: inline-block;
+        background-color: #920000;
+        text-align: center;
+        color: #ffffff;
+        padding: 5px;
+        min-width: 200px;
+        border-radius: 5px;
+        margin-top: 70px;
+      }
+    }
+    .gold_border{
+      border-top: 8px solid #cd9c59;
+      border-bottom: 18px solid #cd9c59;
+    }
+    .platinum_border{
+      border-top: 8px solid #616161;
+      border-bottom: 18px solid #616161;
+    }
+    .diamond_border{
+      border-top: 8px solid #f1f1f1;
+      border-bottom: 18px solid #f1f1f1;
+    }
   }
   .gold_color{
     background-color: $gold-color;
@@ -114,5 +185,42 @@ $diamond-color: rgb(233, 236, 232);
   }
   .table-striped.membership_table>tbody>tr:nth-of-type(odd){
     background-color: #f9f9f9 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .membership_banner_con {
+    min-height: 300px;
+    .banner_content{
+      width: 100%;
+      bottom: 0;
+      padding: 10px;
+      h5{
+        font-size: 14px;
+        padding: 10px;
+        margin: 0;
+      }
+    }
+  }
+  .membership_main_con {
+    .membership_box{
+      margin-bottom: 15px;
+      .membership_box_img{
+        min-height: 150px;
+        h3{
+          font-size: 24px;
+          span.engine_text{
+            font-size: 19px;
+          }
+        }
+      }
+      .membership_box_content {
+        min-height: 200px;
+        font-size: 15px;
+        .more_btn{
+          margin-top: 10px;
+        }
+      }
+    }
   }
 }
