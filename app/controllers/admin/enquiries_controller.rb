@@ -5,8 +5,10 @@ class Admin::EnquiriesController < Admin::BaseController
   before_action :set_enquiry, only: [:show]
 
   def index
-    if params[:id].present?
-      @enquiries = Trip.where(id: params[:id]).all.paginate(page: params[:page], per_page: 50)
+    if params[:user_full_name].present?
+      @enquiries = Trip.where('lower(first_name) LIKE ? OR lower(last_name) LIKE ? ', "%#{params[:user_full_name].to_s.downcase}%", "%#{params[:user_full_name].to_s.downcase}%").all.paginate(page: params[:page], per_page: 50)
+    elsif params[:user_email].present?
+      @enquiries = Trip.where('lower(user_email) LIKE ? ', "%#{params[:user_email].to_s.downcase}%").all.paginate(page: params[:page], per_page: 50)
     else
       @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY).order(id: :desc).all.paginate(page: params[:page], per_page: 50)
     end
