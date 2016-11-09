@@ -5,7 +5,11 @@ class Admin::EnquiriesController < Admin::BaseController
   before_action :set_enquiry, only: [:show]
 
   def index
-    @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY).order(id: :desc).all.paginate(page: params[:page], per_page: 50)
+    if params[:id].present?
+      @enquiries = Trip.where(id: params[:id]).all.paginate(page: params[:page], per_page: 50)
+    else
+      @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY).order(id: :desc).all.paginate(page: params[:page], per_page: 50)
+    end
 
   end
 

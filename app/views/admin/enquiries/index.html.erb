@@ -1,13 +1,25 @@
 <div class="admin-main-con">
   <div class='col-xs-12'>
     <h2>Enquiries</h2>
-    <div class="admin_content_body" style="padding: 0">
+    <div class="admin_content_body">
+      <!--<ul class="list-inline">-->
+        <!--<li>-->
+          <!--<form action="/admin/enquiries" method="get">-->
+            <!--<input type="search" name="id" value="<%#= params[:id] %>" placeholder="Enquiry Id" class="search_textfield">-->
+            <!--<span class="slash_devider">/</span>-->
+            <!--<input type="submit" value="Search" class="btn btn-info search_btn">-->
+          <!--</form>-->
+        <!--</li>-->
+      <!--</ul>-->
       <div class="row">
         <div class="col-sm-12">
           <table class="table table-striped table-data-con">
             <thead>
             <tr class="info">
               <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
               <th>Organisation</th>
               <th>Status</th>
               <th>Action</th>
@@ -17,6 +29,9 @@
             <% @enquiries.each do |enquiry| %>
                 <tr>
                   <td>Enquiry#<%= enquiry.id %></td>
+                  <td><%= user_full_name(enquiry.user_id) %></td>
+                  <td><%= user_email(enquiry.user_id) %></td>
+                  <td><%= user_phone(enquiry.user_id) %></td>
                   <td><%= enquiry.organisation.name.capitalize %></td>
                   <td><%= enquiry.status.capitalize %></td>
                   <td>

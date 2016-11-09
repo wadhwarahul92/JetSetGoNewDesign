@@ -3,7 +3,12 @@ class Admin::DistancesController < Admin::BaseController
   before_filter :set_distance ,only: [:edit, :update]
 
   def index
-    @distances = Distance.paginate(page: params[:page], per_page: 50)
+
+    if params[:from_airport_id].present?
+      @distances = Distance.where('lower(from_airport_id) LIKE ? ', "%#{params[:from_airport_id].to_s.downcase}%").paginate(page: params[:page], per_page: 50)
+    else
+      @distances = Distance.paginate(page: params[:page], per_page: 50)
+    end
   end
 
   def new
