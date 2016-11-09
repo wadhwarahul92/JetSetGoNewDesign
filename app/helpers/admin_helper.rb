@@ -4,6 +4,18 @@ module AdminHelper
     model.attributes.keys
   end
 
+  def user_full_name(user_id)
+    User.find(user_id).full_name
+  end
+
+  def user_email(user_id)
+    User.find(user_id).email
+  end
+
+  def user_phone(user_id)
+    User.find(user_id).phone
+  end
+
   def customer_sub_total_amount(aircraft, trip)
     amount = 0.00
     aircraft
