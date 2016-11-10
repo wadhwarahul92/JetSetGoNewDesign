@@ -9,7 +9,10 @@ class Admin::WelcomeController < Admin::BaseController
   end
 
   def dashboard
-
+    @jetsteals = Jetsteal.includes(:departure_airport).includes(:arrival_airport).includes(:aircraft).order('created_at DESC')
+    @enquiries = Trip.where(status: Trip::STATUS_ENQUIRY).order(id: :desc).all.paginate(page: params[:page], per_page: 50)
+    @service_enquiries = YatraEnquiry.all.order(created_at: :desc).paginate(page: params[:page], per_page: 50)
+    @contact_us_enquiries = ContactDetail.all.order(id: :desc).paginate(page: params[:page], per_page: 25)
   end
 
   def log_in
