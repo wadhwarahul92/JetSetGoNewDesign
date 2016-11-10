@@ -10,6 +10,116 @@
           </div>
           <div class="clearfix"></div>
       <%end%>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Enquiry</h3>
+            <div class="dashboard_box_con">
+              <% @enquiries[0..3].each do |enquiry| %>
+                  <div class="col-xs-12">
+                    <div class="row border_btm">
+                      <div class="col-sm-5">
+                        <p><%= user_full_name(enquiry.user_id) %></p>
+                        <p><%= user_email(enquiry.user_id) %></p>
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        <p style="margin-top: 12px;"> > </p>
+                      </div>
+                      <div class="col-sm-5 text-right">
+                        <p><%= user_phone(enquiry.user_id) %></p>
+                        <p><%= enquiry.organisation.name.capitalize %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+              <% end %>
+              <div class="view_more_con text-center">
+                <%= link_to 'View More', admin_enquiries_path, class: 'view-more-btn' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h3>Service Enquiry</h3>
+            <div class="dashboard_box_con">
+              <% @service_enquiries[0..3].each do |service_enquiry| %>
+                  <div class="col-xs-12">
+                    <div class="row border_btm">
+                      <div class="col-sm-5">
+                        <p><%= service_enquiry.name.titleize %></p>
+                        <p><%= service_enquiry.email %></p>
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        <p style="margin-top: 12px;"> > </p>
+                      </div>
+                      <div class="col-sm-5 text-right">
+                        <p><%= service_enquiry.mobile_number %></p>
+                        <p><%= service_enquiry.package %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+              <% end %>
+              <div class="view_more_con text-center">
+                <%= link_to 'View More', admin_service_enquiries_path, class: 'view-more-btn' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Contact us Enquiry</h3>
+            <div class="dashboard_box_con">
+              <% @contact_us_enquiries[0..3].each do |contact_us_enquiry| %>
+                  <div class="col-xs-12">
+                    <div class="row border_btm">
+                      <div class="col-sm-5">
+                        <p><%= contact_us_enquiry.name.titleize %></p>
+                        <p><%= contact_us_enquiry.email %></p>
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        <p style="margin-top: 12px;"> > </p>
+                      </div>
+                      <div class="col-sm-5 text-right">
+                        <p><%= contact_us_enquiry.phone %></p>
+                        <p><%= contact_us_enquiry.message %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+              <% end %>
+              <div class="view_more_con text-center">
+                <%= link_to 'View More', admin_contact_us_enquiries_path, class: 'view-more-btn' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h3>JetSteal</h3>
+            <div class="dashboard_box_con">
+              <% @jetsteals[0..3].each do |jetsteal| %>
+                  <div class="col-xs-12">
+                    <div class="row border_btm">
+                      <div class="col-sm-5">
+                        <p><%= jetsteal.aircraft.tail_number %></p>
+                        <p><%= jetsteal.departure_airport.name if jetsteal.departure_airport %></p>
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        <p style="margin-top: 12px;"> > </p>
+                      </div>
+                      <div class="col-sm-5 text-right">
+                        <p><%= jetsteal.start_at.strftime('%d-%b-%Y %H:%M') %></p>
+                        <p><%= jetsteal.arrival_airport.name if jetsteal.arrival_airport %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+              <% end %>
+              <div class="view_more_con text-center">
+                <%= link_to 'View More', admin_jetsteals_path, class: 'view-more-btn' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="clearfix"></div>
