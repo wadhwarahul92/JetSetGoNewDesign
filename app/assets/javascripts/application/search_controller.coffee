@@ -1,4 +1,4 @@
-jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService)->
+jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','AirportsService', 'AircraftsService', 'CurrentUserService', '$uibModal', 'CustomerCostBreakUpsService', '$location', '$scope', 'AircraftCategoriesService', '$timeout', ($http, notify, $routeParams, AirportsService, AircraftsService, CurrentUserService, $uibModal, CustomerCostBreakUpsService, $location, $scope, AircraftCategoriesService, $timeout, $dialog)->
 
   @active_min_height = true
   @loading = true
@@ -623,6 +623,12 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
     else
       @all_aircraft_categories_inactive = false
 
+  DialogDemoCtrl = ($scope, $timeout, $dialog) ->
+  $timeout (->
+    $dialog.dialog({}).open 'modalContent.html'
+    return
+  ), 3000
+  return
 
 
   return undefined

@@ -1334,6 +1334,9 @@ input[type=radio]:not(old):checked +  label > span > span{
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
 }
+.modal_custom_content{
+  background-color: #cccccc !important;
+}
 @media (max-width: 1200px) and (min-width: 990px) {
   .search-result-box{
     h3{

@@ -376,6 +376,7 @@ Rails.application.routes.draw do
       get 'our_fleet'
       get 'helicopter_fleet'
       get 'turboprop'
+      get 'expert_modal'
     end
   end
 
@@ -438,6 +439,7 @@ Rails.application.routes.draw do
   get 'tmp_send_sms' => 'route_overrides#welcome_index'
   get 'helicopter_fleet' => 'route_overrides#welcome_index'
   get 'turboprop' => 'route_overrides#welcome_index'
+  get 'expert_modal' => 'route_overrides#welcome_index'
   # get 'our_fleet' => 'route_overrides#welcome_index'
 
 

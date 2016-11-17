@@ -53,6 +53,7 @@
 //= require ./application/our_fleet_controller
 //= require ./application/helicopter_fleet_controller
 //= require ./application/turboprop_controller
+//= require ./application/expert_modal_controller
 //= require ./vendors/date
 //= require ./vendors/filter_slider
 //= require ./services/base

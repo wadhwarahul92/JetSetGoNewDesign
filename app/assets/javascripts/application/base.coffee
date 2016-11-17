@@ -144,6 +144,10 @@ jetsetgo_app.config ['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
     templateUrl: '/templates/turboprop'
     controller: 'TurboPropController'
     controllerAs: 'ctrl'
+  }).when('/expert_modal', {
+    templateUrl: '/templates/expert_modal'
+    controller: 'ExpertModalController'
+    controllerAs: 'ctrl'
   })
 
 
