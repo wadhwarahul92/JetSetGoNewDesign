@@ -21,8 +21,8 @@
               <ul class="top-login-nav">
                 <!-- ng-class="custom ? 'underline' : 'non-underline'" -->
                 <li class="menu-list-toogle hidden-xs">
-                  <a ng-click="ctrl.active_menu = !ctrl.active_menu; ctrl.active_submenu = false" href="javascript:void(0)">
-                    <i ng-click="ctrl.active_menu = !ctrl.active_menu; ctrl.active_submenu = false" class="fa fa-bars" style="width: 13px;" ng-class="!ctrl.active_menu ? 'fa-bars' : 'fa-times'"></i> Menu
+                  <a href="javascript:void(0)">
+                    <i ng-click="ctrl.active_menu = !ctrl.active_menu; ctrl.active_submenu = false" class="fa fa-bars" style="width: 13px;" ng-class="!ctrl.active_menu ? 'fa-bars' : 'fa-times'"></i> <span ng-click="ctrl.active_menu = !ctrl.active_menu; ctrl.active_submenu = false">Menu</span>
                   </a>
                   <ul class="dropdown main-nav" ng-show="ctrl.active_menu">
                     <li><a href="/about_us" ng-click="ctrl.active_menu = false; ctrl.active_submenu = false">About Us</a></li>
