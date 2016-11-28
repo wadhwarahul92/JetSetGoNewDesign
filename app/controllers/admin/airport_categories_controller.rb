@@ -38,7 +38,8 @@ class Admin::AirportCategoriesController < Admin::BaseController
   private
 
   def airport_category_params
-    params.require(:airport_category).permit(:name)
+    params.require(:airport_category).permit(:name,
+                                             :image)
   end
 
   def set_airport_category
