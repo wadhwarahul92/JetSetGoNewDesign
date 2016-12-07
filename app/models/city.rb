@@ -16,10 +16,12 @@ class City < ActiveRecord::Base
   # Description: Accomodation cost tier wise for cities (this remains constant)
   ######################################################################
   TIER_ACCOMMODATION_COST = {
-      tier1: 40000,
+      # tier1: 40000,
+      tier1: 45000,
       # tier2: 34000,
-      tier2: 45000,
-      tier3: 30000
+      tier2: 40000,
+      # tier3: 30000
+      tier3: 40000
   }
   ######################################################################
 
