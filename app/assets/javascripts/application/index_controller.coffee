@@ -244,6 +244,5 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @aircraftCategoryForId = (id)->
     _.find(@aircraft_categories,{id: parseInt(id)})
 
-
   return undefined
 ]

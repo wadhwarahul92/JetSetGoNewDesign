@@ -202,6 +202,7 @@
               <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt="">
             </a>
             <a ng-if="ctrl.activities.length < 5" class="add-trip-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Open me!</button>
           </div>
         </div>
         <!-- search con finish -->
@@ -209,6 +210,33 @@
   </div>
 </div>
 <!-- top header search con finish -->
+
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+</script>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- jetsteal con start -->
 <div class="jetsteel-main-con" ng-init="ctrl.load_jetsteals()" ng-show="ctrl.jetsteals.length > 0">
