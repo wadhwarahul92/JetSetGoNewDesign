@@ -1018,6 +1018,7 @@ BEGIN
               total_empty_leg_time_in_seconds += time_diff.split(':')[1].to_i*60
               total_empty_leg_time_in_seconds += time_diff.split(':')[2].to_i
               # if total_empty_leg_time_in_seconds < idle_days*2*60*60
+              total_empty_leg_time_in_seconds = total_empty_leg_time_in_seconds*2
               if total_empty_leg_time_in_seconds < (totalFlyingSeconds_Minimum - totalFlyingTime )
                 plan_internal = generate_empty_leg(aircraft, plan, flight_plan[index+1])
                 plans.last[:accommodation_leg] = nil
