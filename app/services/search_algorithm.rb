@@ -115,8 +115,12 @@ BEGIN
 
       # flight_plan_ = flight_plan(aircraft)
 
-      actual_flight_plan = empty_calculate_miscellaneous(flight_plan(aircraft),aircraft)
 
+      actual_flight_plan = returning_object_for_emptyLeg(flight_plan(aircraft),aircraft)
+
+      if(aircraft.tail_number == "VT-RAM")
+        hello  = 1
+      end
       @results << {
           # aircraft: aircraft,
           aircraft_id: aircraft.id,
@@ -129,7 +133,7 @@ BEGIN
           # aircraft_type_name: aircraft.aircraft_type.name,
           # aircraft_tail_number: aircraft.tail_number,
           # aircraft_image: aircraft.image.url(:original),
-          # aircraft_interior_image: aircraft.interior.url(:original),
+          # aircraft_interior_image: aircraft.interior.url(:original);
           flight_plan:  actual_flight_plan,
           miscellaneous_cost: cost_calculate_miscellaneous(actual_flight_plan, aircraft)
 
@@ -180,6 +184,11 @@ BEGIN
     ##########################################
     search_activities.each do |search_activity|
 
+
+      if(aircraft.tail_number == "VT-RAM")
+        hello  = 1
+      end
+
       if previous_leg.present?
 
         # if search_activity.departure_airport == airport_for_id(previous_leg.last[:arrival_airport_id])
@@ -203,7 +212,6 @@ BEGIN
                 nights:  nights,
                 cost: accommodation_cost_at_airport(airport_for_id(previous_leg.last[:arrival_airport_id]), nights)
             }
-
             
             plan.last.merge!(accommodation_leg: accommodation_plan)
 
@@ -989,7 +997,7 @@ BEGIN
 
   def empty_calculate_miscellaneous(flight_plan, aircraft)
     totalFlyingTime = 0
-    flight_plan_internal = []
+    flight_plan_internal = flight_plan
     for plan in  flight_plan
       totalFlyingTime += totalSecondINString(plan[:flight_time])
     end
@@ -1018,7 +1026,9 @@ BEGIN
               total_empty_leg_time_in_seconds += time_diff.split(':')[1].to_i*60
               total_empty_leg_time_in_seconds += time_diff.split(':')[2].to_i
               # if total_empty_leg_time_in_seconds < idle_days*2*60*60
+
               total_empty_leg_time_in_seconds = total_empty_leg_time_in_seconds*2
+
               if total_empty_leg_time_in_seconds < (totalFlyingSeconds_Minimum - totalFlyingTime )
                 plan_internal = generate_empty_leg(aircraft, plan, flight_plan[index+1])
                 plans.last[:accommodation_leg] = nil
@@ -1027,10 +1037,15 @@ BEGIN
                 newTimeIncrease += totalSecondINString(plan_internal[0][:flight_time])
                 newTimeIncrease += totalSecondINString(plan_internal[1][:flight_time])
 
+                if(aircraft.tail_number == "VT-RAM")
+                  hello  = 1
+                end
+
                 # if newTimeIncrease < (totalFlyingSeconds_Minimum - totalFlyingTime - 3600)
                   for plan_ in plan_internal
                     plans << plan_
                   end
+
                   isIncrement =  true
                 # end
 
@@ -1038,21 +1053,65 @@ BEGIN
                   next if index2 <= index
                   plans << plan
                 end
+
                 break
+
               end
             end
           end
         end
       end
-      flight_plan_internal = plans
-      if isIncrement
-        empty_calculate_miscellaneous(flight_plan_internal,aircraft)
-      end
-    else
-      flight_plan_internal  = flight_plan
+       flight_plan_internal = plans
+      # if isIncrement
+      #   if(aircraft.tail_number == "VT-RAM")
+      #     hello  = 1
+      #   end
+      #   empty_calculate_miscellaneous(flight_plan_internal,aircraft)
+      #
+      #
+      # end
+    # else
+    #   flight_plan_internal  = flight_plan
     end
+
+    if(aircraft.tail_number == "VT-RAM")
+      hello  = 1
+    end
+
     flight_plan_internal
+
+
   end
+
+  def returning_object_for_emptyLeg ( flight_plans_internal,aircraft)
+
+
+    if(aircraft.tail_number == "VT-RAM")
+      hello  = 1
+    end
+
+    flight_plans_mine = flight_plans_internal
+
+    more_for_check = flight_plans_mine
+
+
+    for i in 1..1000 do
+
+      flight_plans_mine =  empty_calculate_miscellaneous(more_for_check,aircraft)
+      if flight_plans_mine.count ==  more_for_check.count
+        break;
+      else
+        more_for_check =  flight_plans_mine
+      end
+
+    end
+
+
+
+    flight_plans_mine
+
+  end
+
 
   def cost_calculate_miscellaneous(flight_plan, aircraft)
     cost = 0
