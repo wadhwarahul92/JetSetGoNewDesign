@@ -1,15 +1,22 @@
 footer{
   width:100%;
-  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/399/original/footer-bg.png?1468581518);
+  background-image: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/143/original/footerbg.jpg?1484650802);
   background-size: cover;
   background-position: center;
-  border-top: 10px solid #301d0c;
-  padding: 15px 0;
+  padding: 30px 0 15px 0;
   h4{
     font-size: 15px;
-    color: #000000;
-    margin-bottom: 0;
+    color: #ffffff;
+    margin-bottom: 10px;
     font-weight: bold;
+  }
+  .about-con{
+    color: #ffffff;
+    font-size: 13px;
+    a{
+      color: #ffffff;
+      color: rgba(255,255,255,0.9);
+    }
   }
   .member-con{
     min-height: 150px;
@@ -44,23 +51,9 @@ footer{
         }
       }
     }
-  }
-  .logo-con{
-    text-align: center;
-    min-height: 150px;
-    .footer-logo-con{
-      margin: 30px 0 20px 0;
-      img{
-        height: 80px;
-      }
-    }
-    p{
-      color: #ffffff;
-    }
-  }
-  .followus-con{
-    ul{
+    ul.follow-us-icon{
       padding: 0;
+      margin-top: 30px;
       li{
         list-style: none;
         margin-right: 8px;
@@ -79,6 +72,19 @@ footer{
       }
     }
   }
+  .logo-con{
+    text-align: center;
+    min-height: 150px;
+    .footer-logo-con{
+      margin: 30px 0 20px 0;
+      img{
+        height: 80px;
+      }
+    }
+    p{
+      color: #ffffff;
+    }
+  }
   .services-con{
     margin-top: 20px;
     ul{
@@ -89,18 +95,18 @@ footer{
         float: left;
         margin-right: 10px;
         a{
-          color: #670606;
-          font-size: 14px;
+          color: #ffffff;
+          font-size: 12px;
         }
       }
     }
   }
   .copytext-con{
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 12px;
     color: #ffffff;
     a{
-      color:#670606;
+      color:#ffffff;
     }
   }
 }
