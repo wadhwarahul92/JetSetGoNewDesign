@@ -93,6 +93,11 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
           _date.selectable = false
 
 
+  @clear_text = (keyEvent) ->
+    if(keyEvent.which == 32 || keyEvent == 8)
+      for activity in @activities
+        activity.departure_airport = ""
+
   @formatActivities = ->
     previous = null
     for activity in @activities

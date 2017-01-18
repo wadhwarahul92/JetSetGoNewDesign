@@ -12,6 +12,39 @@ $main-blue-color:rgb(5, 81, 139);
   background: url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/888/original/loader2.gif?1475563720) 50% 50% no-repeat;
   background-color: rgba(241,234,220,1);
 }
+h2.section-main-heading{
+  font-size: 50px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  margin: 0;
+  color: #ffffff;
+  .scnd-text{
+    color: #a68b5e;
+  }
+}
+h4.section-sub-heading{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 21px;
+  text-transform: uppercase;
+  color: #a68b5e;
+  margin: 0;
+}
+p.section-content{
+  font-size: 14px;
+  color: #ffffff;
+}
+.click-btn{
+  background-color: #bb965d;
+  padding: 8px 10px;
+  color: #ffffff;
+  text-align: center;
+  min-width: 100px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.gap{
+  height: 50px;
+}
 .minimum_height{
   width: 100%;
   height: 60vh
@@ -301,6 +334,12 @@ span.heading:after{
 .no-padding-left{
   padding-left: 0;
 }
+.no-padding-right{
+  padding-right: 0;
+}
+.no-padding-both{
+  padding: 0;
+}
 //top header section
 .top-header-search-con{
   //background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/360/original/homepageplane.png?1468494836);
@@ -376,7 +415,7 @@ span.heading:after{
   .search-main-con{
       position: absolute;
       bottom: 50px;
-      width: 100%;
+      width: 99%;
     h2{
       font-size:120px;
       color:#ffffff;
@@ -386,81 +425,91 @@ span.heading:after{
         font-size:70px;
       }
     }
-        .search-main-form{
-          position: relative;
-          margin-bottom: 15px;
-          display: inline-block;
-          width: 85%;
+    .search_alpha{
+      background-color: rgba(186, 151, 83, 0.15);
+      padding: 10px;
+      border-radius: 10px;
+      .search-main-form{
+        position: relative;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 85%;
+        border: 1px dashed #cccccc;
+        padding: 3px 0 3px 3px;
+        margin-right: 5px;
+        border-radius: 5px;
+      }
+      .search-form{
+        position: relative;
+        width: 24.6%;
+        display: inline-block;
+      }
+      .search-textfield{
+        width: 100%;
+        background-color: rgba(67, 50, 31,0);
+        border: none;
+        padding:12px 5px 12px 50px;
+        a{
+          color: #dddddd;
         }
-        .search-form{
-          position: relative;
-          width: 24.6%;
-          display: inline-block;
-        }
-        .search-textfield{
-          width: 100%;
-          background-color: rgba(67, 50, 31,0.5);
-          border: 1px solid #ead9c4;
-          padding:12px 5px 12px 45px;
-          a{
-            color: #dddddd;
-          }
-          .white-color{
-            color: #ffffff;
-          }
-        }
-        .text-white{
+        .white-color{
           color: #ffffff;
         }
-        .search-icon {
-          background-color: rgba(165, 128, 91, 0.85);
-          position: absolute;
-          display: inline-block;
-          width: 40px;
-          height: 44px;
-          padding: 2px 0;
-          text-align: center;
-          top: 1px;
-          left: 1px;
-          z-index: 1;
-        }
-        .cross-icon{
-          position: absolute;
-          top: 12px;
-          right: -50px;
-          color: #cc0000;
-          font-size: 13px;
-          z-index: 2;
-          text-decoration: underline;
-        }
-        .search-btn{
-          width: 14.5%;
-          background-color: #920000;
-          display: inline-block;
-          padding:10px 0;
-          text-align: center;
-          color: #ffffff;
-          font-size: 15px;
-          //font-weight: bold;
-          text-decoration: none;
-          border-radius: 7px;
-          position: absolute;
-          top: 0;
-        }
-        .add-trip-btn{
-          color: #ffffff;
-          display: inline-block;
-          padding: 6px 15px;
-          background-color: #920000;
-          font-size: 15px;
-          min-width: 150px;
-          text-align: center;
-          border-radius: 7px;
-          //font-weight: bold;
-          //-webkit-border-radius: 10px;
-          //-moz-border-radius: 10px;
-          //border-radius: 10px;
-        }
+      }
+      .text-white{
+        color: #ffffff;
+      }
+      .search-icon {
+        background-color: rgba(185, 185, 185, 0.3);
+        position: absolute;
+        border: 1px solid #cccccc;
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        padding: 2px 0;
+        text-align: center;
+        top: 1px;
+        left: 1px;
+        z-index: 1;
+        border-radius: 5px;
+      }
+      .cross-icon{
+        position: absolute;
+        top: 12px;
+        right: -50px;
+        color: #cc0000;
+        font-size: 13px;
+        z-index: 2;
+        text-decoration: underline;
+      }
+      .search-btn{
+        width: 14.5%;
+        background-color: #920000;
+        display: inline-block;
+        padding:10px 0;
+        text-align: center;
+        color: #ffffff;
+        font-size: 15px;
+        //font-weight: bold;
+        text-decoration: none;
+        border-radius: 7px;
+        position: absolute;
+        top: 7px;
+      }
+      .add-trip-btn{
+        color: #ffffff;
+        display: inline-block;
+        padding: 6px 15px;
+        background-color: #920000;
+        font-size: 15px;
+        min-width: 150px;
+        text-align: center;
+        border-radius: 7px;
+        //font-weight: bold;
+        //-webkit-border-radius: 10px;
+        //-moz-border-radius: 10px;
+        //border-radius: 10px;
+      }
       ::-webkit-input-placeholder {
         //color:#4a3e30;
         color: #ffffff;
@@ -477,7 +526,7 @@ span.heading:after{
         //color:#4a3e30;
         color: #ffffff;
       }
-
+    }
   }
 }
 
@@ -490,21 +539,24 @@ span.heading:after{
 //jetsteel section
 .jetsteel-main-con{
   width: 100%;
+  min-height: 600px;
+  height: 100vh;
+  background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/136/original/jetstealsbg.jpg?1484292644") fixed center;
   .jetsteal-slider-con{
     width: 100%;
     background-attachment: fixed;
-    padding: 80px 0;
+    padding: 100px 0;
     #carousel_slider{
       .left{
         position: absolute;
-        left: -110px;
+        left: -50px;
         .glyphicon-chevron-left{
           font-size: 20px;
         }
       }
       .right{
         position: absolute;
-        right: -110px;
+        right: -50px;
         .glyphicon-chevron-right{
           font-size: 20px;
         }
@@ -519,39 +571,48 @@ span.heading:after{
       }
     }
     .border-con{
-      border: 1px solid #998776;
+
     }
     .emptyleg_image{
       padding: 0;
       overflow: hidden;
       height: 320px;
+      -webkit-border-top-left-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      -moz-border-radius-topleft: 10px;
+      -moz-border-radius-topright: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
     .emptyleg_detail{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
-      height: 320px;
+      background-color: rgba(0,0,0,0.6);
       background-size: cover;
-      padding: 0;
+      padding: 10px 0;
       position: relative;
+      -webkit-border-bottom-right-radius: 10px;
+      -webkit-border-bottom-left-radius: 10px;
+      -moz-border-radius-bottomright: 10px;
+      -moz-border-radius-bottomleft: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
       h2.aircraft_name{
-        font-size: 22px;
-        color: #000000;
+        font-size: 18px;
+        color: #ffffff;
         margin: 10px 0 0 0;
-        padding: 0 15px;
         font-weight: bold;
       }
       h5.engine_type{
-        font-size: 14px;
-        color: #000000;
+        font-size: 13px;
+        color: #ffffff;
         margin: 0 0 10px 0;
-        padding: 0 15px;
       }
       h4.estimated-price{
         margin: 0;
-        margin-top: 30px;
+        margin-top: 10px;
         padding: 8px 15px;
-        font-size: 25px;
+        font-size: 22px;
         color: #ffffff;
-        background-color: #856b58;
+        background-color: #313031;
         .text{
           font-size: 14px;
           margin-top: 10px;
@@ -566,9 +627,9 @@ span.heading:after{
         margin: 10px 0;
         .data{
           position: relative;
-          color: #000000;
+          color: #ffffff;
           h4{
-            font-size: 15px;
+            font-size: 13px;
             font-weight: bold;
             margin:0;
           }
@@ -577,7 +638,7 @@ span.heading:after{
             margin:0;
           }
           p.pax-txt{
-            font-size: 15px;
+            font-size: 12px;
           }
           .jet-img{
 
@@ -612,7 +673,6 @@ span.heading:after{
       }
     }
     .emptyleg_content{
-      border-left: 2px solid #920000;
       margin-top: 30px;
       padding: 5px 15px 5px 15px;
       p.content{
@@ -659,12 +719,16 @@ span.heading:after{
     margin: 2px;
     text-indent: inherit;
     color: #999999;
+    background: transparent;
+    border: none;
   }
   .carousel-indicators .active{
     //background-color: #998776;
     width: 10px;
     height: 10px;
     color: #947c64;
+    background: transparent;
+    border: none;
   }
   .fa-chevron-right:before{
     color: #920000;
@@ -675,31 +739,46 @@ span.heading:after{
 }
 
 //jetsetgo services section
-.searvices_main_con{
+.services_main_con{
   width: 100%;
   background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/431/original/services--bg2.png?1469445086");
   background-repeat: repeat;
   background-attachment: fixed;
+  position: relative;
+  .service-heading{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    z-index: 1;
+  }
   .services-widget{
     width: 100%;
-    padding: 50px 0;
+    .yatra-bg{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/140/original/yatra.jpg?1484310667");
+    }
+    .wedding-bg{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/139/original/wedding.jpg?1484310622");
+    }
+    .heli-bg{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/137/original/heliset.jpg?1484310580");
+    }
+    .rescue-bg{
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/138/original/heliresuce.jpg?1484310601");
+    }
     .widget{
-      width: 100%;
-      border: 1px solid #9d867a;
-      margin: 20px 0;
-      background-color: #ffffff;
-      min-height: 615px;
-      h2{
+      height: 100vh;
+      min-height: 600px;
+      background-position: center;
+      background-size: 100%;
+      color: #fff;
+      padding-top: 25%;
+      h3{
         text-align: center;
-        color: #920000;
-        font-size: 25px;
+        font-size: 18px;
         font-weight: bold;
       }
       p{
-        font-size: 15px;
-        color: #000;
         padding: 0 15px;
-        min-height: 85px;
       }
       a.enquire-btn{
         background-color: #920000;
@@ -851,7 +930,9 @@ span.heading:after{
 //media section
 .news-media-main-con{
   width: 100%;
-  margin-bottom: 60px;
+  height: 100vh;
+  min-height: 600px;
+  background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/142/original/mediabg.jpg?1484551182") center fixed;
   .view_more_btn{
     background-color: #920000;
     display: inline-block;
@@ -865,9 +946,20 @@ span.heading:after{
     font-size: 14px;
   }
   .media-slider-con{
-    margin-top: 60px;
     .media-con{
       text-align: left;
+      .media-text{
+        background-color: rgba(255,255,255,0.7);
+        padding: 5px;
+        border-radius: 10px;
+        min-height: 260px;
+        position: relative;
+        .share-media{
+          a{
+            color: #000;
+          }
+        }
+      }
       .media-widget{
         min-height: 240px;
       }
@@ -883,8 +975,11 @@ span.heading:after{
         font-size: 12px;
       }
       .media-readmore{
-        color: #920000;
+        color: #000;
         text-decoration: none;
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
       }
       .controller-arrow{
         margin-top: 100px;
@@ -918,13 +1013,20 @@ span.heading:after{
 //jetsteel app
 .jetsteel-app{
   width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/141/original/appbg.jpg?1484551160") center;
+  background-size: 100% 100%;
   .app-main{
     width: 100%;
-    background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/392/original/jetstealapp-bg.png?1468579421");
     background-size: cover;
     min-height: 320px;
     .app-content{
       padding: 50px 0;
+      color: #ffffff;
+      h4{
+        color: #ffffff;
+      }
       p{
         font-size: 16px;
       }

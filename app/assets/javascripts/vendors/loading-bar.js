@@ -156,7 +156,7 @@
             this.startSize = 0.02;
             this.parentSelector = 'body';
             this.spinnerTemplate = '<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>';
-            this.loadingBarTemplate = '<div id="loading-bar"><div class="bar"><div class="peg"></div></div></div>';
+            //this.loadingBarTemplate = '<div id="loading-bar"><div class="bar"><div class="peg"></div></div></div>';
 
             this.$get = ['$injector', '$document', '$timeout', '$rootScope', function ($injector, $document, $timeout, $rootScope) {
                 var $animate;
