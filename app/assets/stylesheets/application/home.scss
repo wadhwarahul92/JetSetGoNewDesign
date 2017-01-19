@@ -747,11 +747,14 @@ span.heading:after{
   position: relative;
   .service-heading{
     position: absolute;
-    top: 10%;
+    top: 15%;
     z-index: 1;
   }
   .services-widget{
     width: 100%;
+    .overflow-hidden{
+      overflow: hidden;
+    }
     .yatra-bg{
       background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/140/original/yatra.jpg?1484310667");
     }
@@ -770,7 +773,12 @@ span.heading:after{
       background-position: center;
       background-size: 100%;
       color: #fff;
-      padding-top: 25%;
+      padding-top: 70%;
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
       h3{
         text-align: center;
         font-size: 18px;
@@ -810,6 +818,19 @@ span.heading:after{
         transition: all 0.6s ease-in-out;
       }
       
+    }
+
+    .widget:hover{
+      -moz-transform: scale(1.04);
+      -webkit-transform: scale(1.04);
+      -o-transform: scale(1.04);
+      -ms-transform: scale(1.04);
+      transform: scale(1.04);
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
     }
     .helisetgo_detail{
       background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/408/original/heli-services.png?1468832356');
@@ -1271,37 +1292,38 @@ span.heading:after{
   //top header section
   .top-header-search-con{
     .search-main-con{
+      .search_alpha{
+        .search-main-form{
+          width: 100%;
+        }
+        .search-form{
+        }
+        .search-textfield{
 
+        }
+        .departure-icon{
+        }
+        .arrival-icon{
+        }
+        .pax-icon{
+        }
+        .cross-icon{
+        }
+        .search-btn{
+          width: 15%;
+          margin-right: 10px;
+          position: inherit;
+        }
+        .add-trip-btn{
+          color: #ffffff;
+          display: inline-block;
+        }
+      }
       h2{
         font-size:110px;
         span{
           font-size:70px;
         }
-      }
-      .search-main-form{
-        width: 100%;
-      }
-      .search-form{
-      }
-      .search-textfield{
-
-      }
-      .departure-icon{
-      }
-      .arrival-icon{
-      }
-      .pax-icon{
-      }
-      .cross-icon{
-      }
-      .search-btn{
-        width: 15%;
-        margin-right: 10px;
-        position: inherit;
-      }
-      .add-trip-btn{
-        color: #ffffff;
-        display: inline-block;
       }
     }
   }
@@ -1324,6 +1346,12 @@ span.heading:after{
     .search-main-con{
       width: initial;
     }
+  }
+  h2.section-main-heading{
+    font-size: 35px;
+  }
+  h4.section-sub-heading{
+    font-size:  18px;
   }
 }
 @media(max-width: 1023px){
@@ -1396,6 +1424,30 @@ span.heading:after{
 }
 
 @media(max-width: 990px){
+  p.section-content{
+    font-size: 12px;
+  }
+  .services_main_con{
+    .service-heading{
+      top: 5%;
+    }
+    .services-widget {
+      .widget{
+        height: 50vh;
+        min-height: 350px;
+        padding-top: 20%;
+      }
+    }
+  }
+  .news-media-main-con{
+    .media-slider-con{
+      .media-con{
+        .media-text{
+          background-color: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
   .jetsteel-main-con {
     .jetsteal-slider-con {
       .emptyleg_image{
@@ -1412,6 +1464,12 @@ span.heading:after{
         }
       }
     }
+  }
+  h2.section-main-heading{
+    font-size: 28px;
+  }
+  h4.section-sub-heading{
+    font-size:  15px;
   }
   .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev{
     top: 50%;
@@ -1436,9 +1494,11 @@ span.heading:after{
   }
   .top-header-search-con {
     .search-main-con {
-      .search-form{
-        width: 49.7%;
-        margin-bottom: 5px;
+      .search_alpha{
+        .search-form{
+          width: 49.7%;
+          margin-bottom: 5px;
+        }
       }
     }
   }
@@ -1451,6 +1511,25 @@ span.heading:after{
   .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
         margin-right: -50px;
   }
+  .inherit-gap{
+    height: inherit;
+  }
+  .services_main_con{
+    .responsive-bg{
+      background-color: #222222;
+      padding: 10px 15px;
+    }
+    .service-heading{
+      position: inherit;
+    }
+    .services-widget{
+      .widget{
+        height: inherit;
+        min-height: 200px;
+        padding: 20px 0;
+      }
+    }
+  }
   .jetsteel-app {
     .app-img-con{
       text-align:center;
@@ -1461,7 +1540,12 @@ span.heading:after{
       }
     }
   }
-
+  h2.section-main-heading{
+    font-size: 22px;
+  }
+  h4.section-sub-heading{
+    font-size:  14px;
+  }
   .searvices_main_con {
     padding-bottom: 10px;
     .services-widget {
@@ -1757,12 +1841,15 @@ span.heading:after{
           font-size:20px;
         }
       }
+      .search_alpha{
       .search-main-form{
         width: 100%;
+        .search-form{
+          width: 100%;
+          margin-bottom: 5px;
+        }
       }
-      .search-form{
-        width: 100%;
-        margin-bottom: 5px;
+
       }
       .search-textfield{
 
