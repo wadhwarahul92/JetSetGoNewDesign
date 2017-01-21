@@ -4,7 +4,7 @@ class FinancesController < ApplicationController
   PASSWORD = ENV['FINANCE_PASSWORD']
 
   if Rails.env.development?
-    URL = 'http://localhost:3001/api/v1'
+    URL = 'http://jet-set-go-finance.herokuapp.com/api/v1'
   else
     URL = 'http://jet-set-go-finance.herokuapp.com/api/v1'
   end

@@ -142,6 +142,12 @@
       }else{
         $('.scrollup').fadeOut();
       }
+      if($(this).scrollTop() > 100){
+        $('#header').addClass('sticky');
+      }
+      else{
+        $('#header').removeClass('sticky');
+      }
     });
     $('.scrollup').click(function(){
       $('html,body').animate({

@@ -3,7 +3,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
   @activities = [{}]
   @currentUser = null
   @loading = true
-
+    
   @aircraft_categories = []
 
 #  if $routeParams.search_id
@@ -19,7 +19,7 @@ jetsetgo_app.controller 'IndexController', ['$http', 'notify', 'AirportsService'
       @aircraft_categories = AircraftCategoriesService.aircraft_categories
   )
 
-
+  
   @signIn = ->
     CurrentUserService.openSignInModal('md')
 

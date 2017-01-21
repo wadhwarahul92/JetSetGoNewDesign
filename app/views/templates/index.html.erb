@@ -286,11 +286,6 @@
 
 <!-- jetsetgo fleet con start -->
 <div class="fleet_main_con">
-  <div class="section-heading">
-    <div class="container">
-      <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/116/original/jetsetgofleet.png?1482819493" alt="">
-    </div>
-  </div>
   <div class="fleet-widget">
     <div class="container">
       <div class="row">
@@ -617,6 +612,109 @@
   </div>
 </div>
 <!-- jetsetgo app con finish -->
+
+<div id="slide-numbers">
+  <ul style="transform: translateY(-50%); top: 50%; position: fixed;">
+    <% for i in 1..5 %>
+      <li class="nav-circle paginate<%= i %>">
+      </li>
+    <% end %>
+  </ul>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.paginate1').addClass('active');
+    $(window).scroll(function(){
+      var scroll = $(window).scrollTop();
+      if (scroll < 550){
+        $('.paginate1').addClass('active');
+        $('.paginate2').removeClass('active');
+        $('.paginate3').removeClass('active');
+        $('.paginate4').removeClass('active');
+        $('.paginate5').removeClass('active');
+      }
+      else if(scroll >= 550 && scroll < 1100){
+        $('.paginate1').removeClass('active');
+        $('.paginate2').addClass('active');
+        $('.paginate3').removeClass('active');
+        $('.paginate4').removeClass('active');
+        $('.paginate5').removeClass('active');
+      }
+      else if(scroll >= 1100 && scroll < 1650){
+        $('.paginate1').removeClass('active');
+        $('.paginate2').removeClass('active');
+        $('.paginate3').addClass('active');
+        $('.paginate4').removeClass('active');
+        $('.paginate5').removeClass('active');
+      }
+      else if(scroll >= 1650 && scroll < 2200){
+        $('.paginate1').removeClass('active');
+        $('.paginate2').removeClass('active');
+        $('.paginate3').removeClass('active');
+        $('.paginate4').addClass('active');
+        $('.paginate5').removeClass('active');
+      }
+      else if(scroll >= 2200){
+        $('.paginate1').removeClass('active');
+        $('.paginate2').removeClass('active');
+        $('.paginate3').removeClass('active');
+        $('.paginate4').removeClass('active');
+        $('.paginate5').addClass('active');
+      }
+    });
+    $('.paginate1').click(function(){
+      $('html, body').animate({
+        scrollTop: $('.top-header-search-con').offset().top
+      }, 1000);
+
+      $(this).addClass('active');
+      $('.paginate2').removeClass('active');
+      $('.paginate3').removeClass('active');
+      $('.paginate4').removeClass('active');
+      $('.paginate5').removeClass('active');
+    });
+    $('.paginate2').click(function(){
+      $('html,body').animate({
+        scrollTop: $('.services_main_con').offset().top
+      }, 1000);
+      $(this).addClass('active');
+      $('.paginate1').removeClass('active');
+      $('.paginate3').removeClass('active');
+      $('.paginate4').removeClass('active');
+      $('.paginate5').removeClass('active');
+    });
+    $('.paginate3').click(function(){
+      $('html, body').animate({
+        scrollTop: $('.fleet_main_con').offset().top
+      }, 1000);
+      $(this).addClass('active');
+      $('.paginate1').removeClass('active');
+      $('.paginate2').removeClass('active');
+      $('.paginate4').removeClass('active');
+      $('.paginate5').removeClass('active');
+    });
+    $('.paginate4').click(function(){
+      $('html, body').animate({
+        scrollTop: $('.news-media-main-con').offset().top
+      }, 1000);
+      $(this).addClass('active');
+      $('.paginate1').removeClass('active');
+      $('.paginate2').removeClass('active');
+      $('.paginate3').removeClass('active');
+      $('.paginate5').removeClass('active');
+    });
+    $('.paginate5').click(function(){
+      $('html, body').animate({
+        scrollTop: $('.jetsteel-app').offset().top
+      }, 1000);
+      $(this).addClass('active');
+      $('.paginate1').removeClass('active');
+      $('.paginate2').removeClass('active');
+      $('.paginate3').removeClass('active');
+      $('.paginate4').removeClass('active');
+    });
+  });
+</script>
 
 <%= javascript_include_tag 'vendors/bg-slider/bar' %>
 <%= javascript_include_tag 'vendors/bg-slider/vegas.min.js' %>
