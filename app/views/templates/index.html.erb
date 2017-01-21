@@ -713,6 +713,23 @@
       $('.paginate3').removeClass('active');
       $('.paginate4').removeClass('active');
     });
+    (function.animation(){
+      var options = {
+        duration: 800,
+        easing: 'linear'
+      };
+      $('..fleet_main_con').animate({
+        background-position: 20px 0;
+      }, options);
+    }).animate({
+      background-position: -20px 0;
+    }, 
+      $.extend(true, {}, options, {
+        complete: function(){
+          animation();
+        }
+      })
+    )
   });
 </script>
 
