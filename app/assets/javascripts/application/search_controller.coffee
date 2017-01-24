@@ -601,7 +601,6 @@ jetsetgo_app.controller 'SearchController', ['$http','notify','$routeParams','Ai
 
       )
 
-
   @check = (aircraft_category, checked)->
     if checked
       for result in @results

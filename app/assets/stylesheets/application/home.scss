@@ -42,6 +42,9 @@ p.section-content{
   border-radius: 5px;
   display: inline-block;
 }
+.click-btn:hover{
+  color: #ffffff;
+}
 .gap{
   height: 50px;
 }
@@ -554,9 +557,7 @@ span.heading:after{
 }
 
 .section-heading{
-  background-color: #d9c3a4;
   padding-bottom: 10px;
-  border-top: 10px solid #301d0c;
 }
 
 //jetsteel section
@@ -941,6 +942,8 @@ span.heading:after{
   width: 100%;
   background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/162/original/Fleet_bg.JPG?1484991296") center fixed;
   position: relative;
+  height: 100vh;
+  min-height: 600px;
   .fleet_content {
     border-left: 2px solid #920000;
     margin-bottom: 30px;
@@ -966,6 +969,59 @@ span.heading:after{
           color: #920000;
           font-size: 12px;
         }
+      }
+    }
+  }
+}
+#wrapper {
+  width: 100%;
+  height: 350px;
+  #carousel {
+    div {
+      text-align: center;
+      width: 100px;
+      height: 250px;
+      float: left;
+      position: relative;
+      img{
+        width: 100%;
+      }
+      h3{
+        font-size: 20px;
+        color: #a68b5e;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      a{
+        font-size: 12px;
+        color: #ffffff;
+        text-align: left;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+    }
+    div:nth-child(2n){
+      h3{
+        font-size: 36px;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+      }
+      a{
+        font-size: 16px;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
       }
     }
   }

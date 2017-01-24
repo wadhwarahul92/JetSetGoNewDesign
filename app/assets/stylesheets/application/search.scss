@@ -15,6 +15,7 @@ h3.no-nyt-landing{
 }
 .search_heading{
   margin-top: 82px;
+  padding: 20px 0;
 }
 .c_disable{
   pointer-events: none;
@@ -698,7 +699,7 @@ h3.no-nyt-landing{
 // changes Rahul 16-6-2016
 
   .top_filter_nav{
-    background-color: #998776;
+    background-color: rgba(40,40,40,0.6);
     padding: 10px 0;
     .breakups_main_con{
       font-size: 12px;
@@ -727,7 +728,7 @@ h3.no-nyt-landing{
   .icon-con{
     position: absolute;
     bottom: 0;
-    background-color: rgba(131,107,84, 0.6);
+    background-color: rgba(0,0,0, 0.3);
     padding: 2px 5px;
     width: 100%;
     .icons-main{
@@ -753,7 +754,7 @@ h3.no-nyt-landing{
     }
   }
   .filter-toggle-main{
-    background-color: #d6cab9;
+    background-color: rgba(40,40,40,0.6);
     padding: 10px 0;
     position: relative;
     .cross-icon{
@@ -859,6 +860,7 @@ h3.no-nyt-landing{
   }
   .search_result_main{
     width: 100%;
+    background-color: #191a1b;
     padding: 10px 0;
     .search_result{
       width: 100%;
@@ -888,7 +890,9 @@ h3.no-nyt-landing{
       .result-search{
         width: 100%;
         margin: 15px 0;
-        border: 1px solid #998776;
+        border: 1px solid #151515;
+        border-radius: 10px;
+        overflow: hidden;
         position: relative;
         .search_img{
           padding: 0;
@@ -908,43 +912,44 @@ h3.no-nyt-landing{
           position: relative;
           .img-bg{
             width: 100%;
-            *background-color: #fbdc99;
-            background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
+            background-color: #282828;
             background-size: cover;
             padding: 15px 0;
             height: 320px;
             position: relative;
             h3{
               font-size: 22px;
-              color: #000000;
+              color: #ffffff;
               margin: 0;
               padding: 0 15px;
               font-weight: bold;
             }
             h5{
               font-size: 16px;
-              color: #000000;
+              color: #bb965d;
               margin: 3px 0 3px 0;
               padding: 0 15px;
             }
             h4{
               margin: 0;
               margin-top: 80px;
-              padding: 5px 15px;
-              font-size: 30px;
+              padding: 0px 15px;
+              font-size: 24px;
               color: #ffffff;
-              background-color: #856b58;
-              text-align: center;
-              span{
-                font-size: 14px;
+              span.rupee-icon{
+                font-size: 34px;
               }
             }
+            span.estimate-price{
+              font-size: 12px;
+              color: #ffffff;
+              display: inline-block;
+              padding-left: 40px;
+            }
             p.base_airport_text{
-              font-size: 16px;
               padding: 10px 15px 0 15px;
               margin: 0;
-              color: #000000;
-              font-weight: bold;
+              color: #999999;
             }
           }
           .detail-link-con{
@@ -956,7 +961,6 @@ h3.no-nyt-landing{
             position: absolute;
             bottom: 0;
             a{
-              background-color: #750005;
               display: inline-block;
               padding: 10px 30px;
               text-align: center;
@@ -971,10 +975,14 @@ h3.no-nyt-landing{
     }
     .empty-leg-toogle-main{
       width: 100%;
-      border: 1px solid #998776;
+      background-color: #282828;
       position: relative;
       box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
       margin-top: 11px;
+      padding-bottom: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
       .empty-leg-btn{
         background-color: #856b58;
         display: inline-block;
@@ -1028,7 +1036,43 @@ h3.no-nyt-landing{
       }
       .top-destination-con{
         width: 100%;
-        padding: 10px 0;
+        padding-bottom: 10px;
+        .search-detail-tabs{
+          .nav-tabs{
+            border-bottom: none;
+            background-color: #000000;
+          }
+          .nav-tabs > li{
+            width: 50%;
+            text-align: center;
+            margin-bottom: 0px;
+          }
+          .nav-tabs > li > a{
+            background-color: #bb965d;
+            color: #ffffff;
+            font-size: 16px;
+            min-height: 44px;
+            width: 100%;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          }
+          .nav-tabs > li > a:hover{
+            background-color: #bb965d;
+            border: none;
+          }
+          .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+            color: #ffffff;
+            font-size: 16px;
+            cursor: default;
+            background-color: #282828;
+            border: none;
+            min-height: 44px;
+          }
+        }
         .cross-icon{
           font-size: 20px;
           color: #920000;
@@ -1064,11 +1108,16 @@ h3.no-nyt-landing{
           padding: 10px 0;
         }
         .empty_leg_bg{
-          background-color: #f9f3e6;
+          border: 1px dotted #fff;
         }
         .destination-con{
           p{
             margin-bottom: 2px;
+            font-size: 14px;
+            color: #ffffff;
+          }
+          p.empty-leg-option{
+            color: #ffa63a;
             font-size: 11px;
           }
         }
@@ -1108,6 +1157,7 @@ h3.no-nyt-landing{
             .cost-con{
               border-bottom: 1px solid #f9f3e6;
               padding: 10px 0;
+              color: #ffffff;
               p{
                 margin: 0;
               }
@@ -1127,19 +1177,18 @@ h3.no-nyt-landing{
                 margin: 0;
               }
             }
-            .detail-link-con{
-              text-align: right;
-              margin-top: 15px;
-              a{
-                background-color: #750005;
-                display: inline-block;
-                padding: 10px 30px;
-                text-align: center;
-                color: #ffffff;
-                text-decoration: none;
-                border-radius: 8px;
-              }
-            }
+          }
+        }
+        .detail-link-con{
+          text-align: right;
+          margin-top: 15px;
+          a{
+            display: inline-block;
+            padding: 10px 30px;
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
           }
         }
       }

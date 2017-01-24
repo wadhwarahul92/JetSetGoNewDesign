@@ -65,7 +65,7 @@
 <div id="spinner" ng-show="ctrl.loading" ></div>
 <div class="minimum_height" ng-show="ctrl.active_min_height"></div>
 <!-- top header search con start -->
-<div class="top-header-search-con">
+<div class="top-header-search-con" id="paginate-slide-1">
   <div class="homepage">
 
     <div class="homepage-header">
@@ -160,7 +160,7 @@
 <!-- top header search con finish -->
 
 <!-- jetsteal con start -->
-<div class="jetsteel-main-con" ng-init="ctrl.load_jetsteals()" ng-show="ctrl.jetsteals.length > 0">
+<div class="jetsteel-main-con" id="paginate-slide-2" ng-init="ctrl.load_jetsteals()" ng-show="ctrl.jetsteals.length > 0">
   <!--<div class="section-heading">-->
     <!--<div class="container">-->
       <!--<img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/118/original/jetsteals.png?1482819516" alt="">-->
@@ -247,7 +247,7 @@
 </div>
 
 <!-- jetsetgo services con start -->
-<div class="services_main_con">
+<div class="services_main_con" id="paginate-slide-3">
   <div class="container responsive-bg">
     <div class="service-heading">
       <h2 class="section-main-heading">JetSetGo<span class="scnd-text">Extras</span></h2>
@@ -285,53 +285,85 @@
 <!-- jetsetgo services con finish -->
 
 <!-- jetsetgo fleet con start -->
-<div class="fleet_main_con">
+<div class="fleet_main_con" id="paginate-slide-4">
   <div class="fleet-widget">
     <div class="container">
+      <h2 class="section-main-heading">JetSetGo<span class="scnd-text">Fleet</span></h2>
+      <h4 class="section-sub-heading">YOUR RIGHT-FLIGHT GUIDE</h4>
       <div class="row">
-        <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
-          <div class="row">
-            <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
-              <div class="fleet_content">
-                <p class="content">
-                  With maximum speeds of up to 900 kmph, and a flight range from 3,300 to 4,500 kilometers, these private planes are some of the most popular amongst travellers. They are easy on budget and offer jet comforts. light jets as well can typically accommodate 4 to 9 passengers and come in a wide range.
-                </p>
+        <div class="col-xs-12">
+          <div id="wrapper">
+            <div id="carousel">
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/175/original/Turbo_Prop.png?1485251014" alt="fruit1" />
+                <h3 class="text-right">Turboprop</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
               </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="widget">
-                <div class="text-center">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/088/original/trouboprop.png?1480312185" alt="" class="img-responsive">
-                </div>
-                <div class="widget_heading_con text-center">
-                  <h3>Turboprop</h3>
-                  <a href="/turboprop">View Details</a>
-                </div>
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/173/original/Light_Jet.png?1485250950" alt="fruit2" />
+                <h3 class="text-right">Light Jet</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
               </div>
-            </div>
-            <div ng-if="aircraft_category.name != 'Twin Engine Turboprop' && aircraft_category.name != 'Single Engine Turbo'" class="col-md-4 col-sm-6 col-xs-12" ng-repeat="aircraft_category in ctrl.aircraft_categories">
-              <div class="widget">
-                <div class="text-center">
-                  <img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">
-                </div>
-                <div class="widget_heading_con text-center">
-                  <h3>{{aircraft_category.name}}</h3>
-                  <a ng-href="/our_fleet/{{aircraft_category.id}}">View Details</a>
-                </div>
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/174/original/Midsize_Jet.png?1485250973" alt="fruit3" />
+                <h3 class="text-right">Midsize Jet</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
               </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="widget">
-                <div class="text-center">
-                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/084/original/helicopter.png?1480312076" alt="" class="img-responsive">
-                </div>
-                <div class="widget_heading_con text-center">
-                  <h3>Helicopter</h3>
-                  <a href="/helicopter_fleet">View Details</a>
-                </div>
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/172/original/Large_Jet.png?1485250934" alt="fruit4" />
+                <h3 class="text-right">Large Jet</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
+              </div>
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/171/original/airliner-2.png?1485250899" alt="fruit5" />
+                <h3 class="text-right">Airliner</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
+              </div>
+              <div>
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/166/original/Helicopter-PNG.png?1484991394" alt="fruit6" />
+                <h3 class="text-right">Helicopter</h3>
+                <p class="text-right"><a href="#">Read More</a></p>
               </div>
             </div>
           </div>
+          <!--<div class="row">-->
+            <!--<div class="col-xs-12">-->
+              <!-- -->
+            <!--</div>-->
+            <!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+              <!--<div class="widget">-->
+                <!--<div class="text-center">-->
+                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/088/original/trouboprop.png?1480312185" alt="" class="img-responsive">-->
+                <!--</div>-->
+                <!--<div class="widget_heading_con text-center">-->
+                  <!--<h3>Turboprop</h3>-->
+                  <!--<a href="/turboprop">View Details</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div ng-if="aircraft_category.name != 'Twin Engine Turboprop' && aircraft_category.name != 'Single Engine Turbo'" class="col-md-4 col-sm-6 col-xs-12" ng-repeat="aircraft_category in ctrl.aircraft_categories">-->
+              <!--<div class="widget">-->
+                <!--<div class="text-center">-->
+                  <!--<img ng-src="{{aircraft_category.image}}" alt="" class="img-responsive">-->
+                <!--</div>-->
+                <!--<div class="widget_heading_con text-center">-->
+                  <!--<h3>{{aircraft_category.name}}</h3>-->
+                  <!--<a ng-href="/our_fleet/{{aircraft_category.id}}">View Details</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+              <!--<div class="widget">-->
+                <!--<div class="text-center">-->
+                  <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/084/original/helicopter.png?1480312076" alt="" class="img-responsive">-->
+                <!--</div>-->
+                <!--<div class="widget_heading_con text-center">-->
+                  <!--<h3>Helicopter</h3>-->
+                  <!--<a href="/helicopter_fleet">View Details</a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
       </div>
     </div>
@@ -340,7 +372,7 @@
 <!-- jetsetgo fleet con finish -->
 
 <!-- jetsetgo media con start -->
-<div class="news-media-main-con">
+<div class="news-media-main-con" id="paginate-slide-5">
   <div class="media-slider-con">
     <div class="container">
       <div class="gap"></div>
@@ -583,7 +615,7 @@
 <!-- jetsetgo media con finish -->
 
 <!-- jetsetgo app con start -->
-<div class="jetsteel-app">
+<div class="jetsteel-app" id="paginate-slide-6">
   <div class="app-main">
     <div class="container">
       <div class="gap"></div>
@@ -615,121 +647,98 @@
 
 <div id="slide-numbers">
   <ul style="transform: translateY(-50%); top: 50%; position: fixed;">
-    <% for i in 1..5 %>
-      <li class="nav-circle paginate<%= i %>">
-      </li>
+    <% for i in 1..6 %>
+        <li class="nav-circle paginate" data-paginate="paginate-slide-<%= i %>">
+        </li>
     <% end %>
   </ul>
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
-    $('.paginate1').addClass('active');
+    $('.paginate').first().addClass('active');
+    $('.paginate').click(function(){
+      var attribute = $(this).attr("data-paginate");
+      $('html, body').animate({
+        scrollTop: $('#'+attribute).offset().top
+      }, 1000);
+      $('.paginate').removeClass('active');
+      $(this).addClass('active');
+    });
     $(window).scroll(function(){
       var scroll = $(window).scrollTop();
-      if (scroll < 550){
-        $('.paginate1').addClass('active');
-        $('.paginate2').removeClass('active');
-        $('.paginate3').removeClass('active');
-        $('.paginate4').removeClass('active');
-        $('.paginate5').removeClass('active');
+      if (scroll < 600){
+        $('.paginate').removeClass('active');
+        $(".paginate[data-paginate='paginate-slide-1']").addClass('active');
       }
-      else if(scroll >= 550 && scroll < 1100){
-        $('.paginate1').removeClass('active');
-        $('.paginate2').addClass('active');
-        $('.paginate3').removeClass('active');
-        $('.paginate4').removeClass('active');
-        $('.paginate5').removeClass('active');
+      else if(scroll >= 600 && scroll < 1200){
+        $('.paginate').removeClass('active');
+        $(".paginate[data-paginate='paginate-slide-2']").addClass('active');
       }
-      else if(scroll >= 1100 && scroll < 1650){
-        $('.paginate1').removeClass('active');
-        $('.paginate2').removeClass('active');
-        $('.paginate3').addClass('active');
-        $('.paginate4').removeClass('active');
-        $('.paginate5').removeClass('active');
+      else if(scroll >= 1200 && scroll < 1800){
+        $('.paginate').removeClass('active');
+        $(".paginate[data-paginate='paginate-slide-3']").addClass('active');
       }
-      else if(scroll >= 1650 && scroll < 2200){
-        $('.paginate1').removeClass('active');
-        $('.paginate2').removeClass('active');
-        $('.paginate3').removeClass('active');
-        $('.paginate4').addClass('active');
-        $('.paginate5').removeClass('active');
+      else if(scroll >= 1800 && scroll < 2400){
+        $('.paginate').removeClass('active');
+        $(".paginate[data-paginate='paginate-slide-4']").addClass('active');
       }
-      else if(scroll >= 2200){
-        $('.paginate1').removeClass('active');
-        $('.paginate2').removeClass('active');
-        $('.paginate3').removeClass('active');
-        $('.paginate4').removeClass('active');
-        $('.paginate5').addClass('active');
+      else if(scroll >= 2400 && scroll < 3000){
+        $('.paginate').removeClass('active');
+          $(".paginate[data-paginate='paginate-slide-5']").addClass('active');
+      }
+      else if(scroll > 3000){
+        $('.paginate').removeClass('active');
+          $(".paginate[data-paginate='paginate-slide-6']").addClass('active');
       }
     });
-    $('.paginate1').click(function(){
-      $('html, body').animate({
-        scrollTop: $('.top-header-search-con').offset().top
-      }, 1000);
 
-      $(this).addClass('active');
-      $('.paginate2').removeClass('active');
-      $('.paginate3').removeClass('active');
-      $('.paginate4').removeClass('active');
-      $('.paginate5').removeClass('active');
-    });
-    $('.paginate2').click(function(){
-      $('html,body').animate({
-        scrollTop: $('.services_main_con').offset().top
-      }, 1000);
-      $(this).addClass('active');
-      $('.paginate1').removeClass('active');
-      $('.paginate3').removeClass('active');
-      $('.paginate4').removeClass('active');
-      $('.paginate5').removeClass('active');
-    });
-    $('.paginate3').click(function(){
-      $('html, body').animate({
-        scrollTop: $('.fleet_main_con').offset().top
-      }, 1000);
-      $(this).addClass('active');
-      $('.paginate1').removeClass('active');
-      $('.paginate2').removeClass('active');
-      $('.paginate4').removeClass('active');
-      $('.paginate5').removeClass('active');
-    });
-    $('.paginate4').click(function(){
-      $('html, body').animate({
-        scrollTop: $('.news-media-main-con').offset().top
-      }, 1000);
-      $(this).addClass('active');
-      $('.paginate1').removeClass('active');
-      $('.paginate2').removeClass('active');
-      $('.paginate3').removeClass('active');
-      $('.paginate5').removeClass('active');
-    });
-    $('.paginate5').click(function(){
-      $('html, body').animate({
-        scrollTop: $('.jetsteel-app').offset().top
-      }, 1000);
-      $(this).addClass('active');
-      $('.paginate1').removeClass('active');
-      $('.paginate2').removeClass('active');
-      $('.paginate3').removeClass('active');
-      $('.paginate4').removeClass('active');
-    });
-    (function.animation(){
-      var options = {
-        duration: 800,
-        easing: 'linear'
+    $(function() {
+      var cssSmall = {
+        width: 250,
+        height: 150,
+        marginTop: 75,
       };
-      $('..fleet_main_con').animate({
-        background-position: 20px 0;
-      }, options);
-    }).animate({
-      background-position: -20px 0;
-    }, 
-      $.extend(true, {}, options, {
-        complete: function(){
-          animation();
+      var cssMedium = {
+        width: 450,
+        height: 400,
+        marginTop: 35
+      };
+      var cssLarge = {
+        width: 500,
+        height: 450,
+        marginTop: 0
+      };
+      var aniConf = {
+        queue: false,
+        duration: 1000
+      };
+      $('#carousel')
+        .children().css(cssSmall)
+        .eq(1).css(cssMedium)
+        .next().css(cssLarge)
+        .next().css(cssMedium);
+
+      $('#carousel').carouFredSel({
+        width: '100%',
+        height: 400,
+        items: 3,
+        scroll: {
+          items: 1,
+          duration: aniConf.duration,
+          onBefore: function( data ) {
+            //	0 [ 1 ] 2  3  4
+            data.items.old.eq(1).animate(cssSmall, aniConf);
+            //	0  1 [ 2 ] 3  4
+            data.items.old.eq(2).animate(cssMedium, aniConf);
+            // 0  1  2  [ 3 ] 4
+            data.items.old.eq(3).animate(cssLarge, aniConf);
+
+            //	0  1  2  3 [ 4 ]
+            data.items.old.eq(4).animate(cssMedium, aniConf);
+          }
         }
-      })
-    )
+      });
+    });
   });
 </script>
 
