@@ -5,6 +5,7 @@
  *= require ./vendors/hover-css
  *= require ./vendors/angular-datetime-picker
  *= require ./vendors/animate
+ *= require ./application/search
  *= require_tree ./application
  *= require_self
  *= require ./vendors/bg-slider/slider_vegas.min.css

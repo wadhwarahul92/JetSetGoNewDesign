@@ -127,7 +127,7 @@
     }
     .slider-selection {
         position: absolute;
-        background-color: #f9f3e6;
+        background-color: #bb965d;
         border-radius: 4px;
     }
     .slider-selection.tick-slider-selection {
@@ -150,7 +150,13 @@
         position: absolute;
         width: 20px;
         height: 20px;
-        background-color: #998776;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,ffffff+51,f9f9f9+100 */
+        background: #f9f9f9; /* Old browsers */
+        background: -moz-linear-gradient(top,  #f9f9f9 0%, #ffffff 51%, #f9f9f9 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #f9f9f9 0%,#ffffff 51%,#f9f9f9 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #f9f9f9 0%,#ffffff 51%,#f9f9f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+
         -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
         box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
         border: 0px solid transparent;

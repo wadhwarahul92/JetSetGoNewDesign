@@ -143,8 +143,8 @@
                       <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/353/original/clock.png?1468494135" alt="">
                     </span>
                     <div class="dropdown datetimepicker-holder search-textfield date-textfield">
-                      <a role="button" data-toggle="dropdown" ng-class="ctrl.formatTime(search_activity.start_at) != 'Click to choose time' ? 'black-color' : ''" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(search_activity.start_at)}}</a>
-                      <ul class="dropdown-menu dropdown-celender" role="menu">
+                      <a role="button" data-toggle="dropdown" data-target="#" href="Javascript:void(0)"> {{ctrl.formatTime(search_activity.start_at)}}</a>
+                      <ul class="dropdown-menu dropdown-celender black-color" role="menu">
                         <datetimepicker
                         data-on-set-time="ctrl.onSetTime(newDate, oldDate, $index)"
                         data-before-render="ctrl.beforeRenderDate($view, $dates, $leftDate, $upDate, $rightDate, $index)"
@@ -156,15 +156,14 @@
                   <a href="javascript:void(0)" class="remove-text" ng-show="(($index > 0) && ($index == ctrl.search_activities.length - 1))">
                     <span ng-click="ctrl.removeActivity($index)">Remove</span>
                   </a>
-                  <br/> <br/>
                 </span>
-                <a class="modify-btn" ng-click="ctrl.create()" href="">Search</a>
+                <a class="modify-btn click-btn" ng-click="ctrl.create()" href="">Search</a>
                 <div class="clearfix"></div>
               </div>
               <div>
-                <a class="modity-botm-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
-                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
-                <a href="javascript:void(0)" class="modity-botm-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
+                <a class="click-btn modity-botm-btn" href="" ng-show="ctrl.search_activities.length <= 1" ng-click="ctrl.addRoundTrip()">Round Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/437/original/roundtrip.png?1469620071" style="margin-left: 5px;" height="25" alt=""></a>
+                <a ng-if="ctrl.search_activities.length < 5" class="modity-botm-btn click-btn" href=""  ng-click="ctrl.addActivity()">Add Trip <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/351/original/addtrip.png?1468494102" height="25"></a>
+                <a href="javascript:void(0)" class="modity-botm-btn click-btn" ng-click="ctrl.disable_=!ctrl.disable_">Cancel</a>
               </div>
 
             </div>
@@ -230,10 +229,8 @@
                     </span>
                     <input type="text" class="search-textbox" ng-value="ctrl.formatTime(search_activity.start_at)" ng-disabled="ctrl.disable_">
                   </span>
-
-                  <br/> <br/>
                 </span>
-                  <a href="javascript:void(0)" class="modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
+                  <a href="javascript:void(0)" class="click-btn modify-btn" ng-click="ctrl.disable_=!ctrl.disable_">Modify</a>
                   <div class="clearfix"></div>
                 </div>
               </div>
