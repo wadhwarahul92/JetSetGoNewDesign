@@ -13,7 +13,7 @@ $main-blue-color:rgb(5, 81, 139);
   background-color: rgba(241,234,220,1);
 }
 h2.section-main-heading{
-  font-size: 50px;
+  font-size: 40px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: normal;
   margin: 0;
@@ -24,7 +24,7 @@ h2.section-main-heading{
 }
 h4.section-sub-heading{
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 21px;
+  font-size: 18px;
   text-transform: uppercase;
   color: #a68b5e;
   margin: 0;
@@ -452,7 +452,7 @@ span.heading:after{
       }
     }
     .search_alpha{
-      background-color: rgba(186, 151, 83, 0.15);
+      background-color: rgba(0, 0, 0, 0.15);
       padding: 10px;
       border-radius: 10px;
       .search-main-form{
@@ -565,10 +565,10 @@ span.heading:after{
   width: 100%;
   min-height: 600px;
   height: 100vh;
-  background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/136/original/jetstealsbg.jpg?1484292644") fixed center;
+  background: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/189/original/jetstealsbg.jpg?1485520445") fixed;
+  background-size: cover;
   .jetsteal-slider-con{
     width: 100%;
-    background-attachment: fixed;
     padding: 100px 0;
     #carousel_slider{
       .left{
@@ -609,7 +609,7 @@ span.heading:after{
       border-top-right-radius: 10px;
     }
     .emptyleg_detail{
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.2);
       background-size: cover;
       padding: 10px 0;
       position: relative;
@@ -780,16 +780,16 @@ span.heading:after{
       overflow: hidden;
     }
     .yatra-bg{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/140/original/yatra.jpg?1484310667");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/185/original/yatra.jpg?1485515338");
     }
     .wedding-bg{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/139/original/wedding.jpg?1484310622");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/183/original/wedding.jpg?1485511911");
     }
     .heli-bg{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/137/original/heliset.jpg?1484310580");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/182/original/heliset.jpg?1485511892");
     }
     .rescue-bg{
-      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/138/original/heliresuce.jpg?1484310601");
+      background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/001/181/original/heliresuce.jpg?1485511877");
     }
     .widget{
       height: 100vh;
@@ -797,7 +797,7 @@ span.heading:after{
       background-position: center;
       background-size: 100%;
       color: #fff;
-      padding-top: 70%;
+      padding: 70% 15px 0 15px;
       -webkit-transition: all 0.6s ease-in-out;
       -moz-transition: all 0.6s ease-in-out;
       -ms-transition: all 0.6s ease-in-out;

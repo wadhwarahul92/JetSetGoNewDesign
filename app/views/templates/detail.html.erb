@@ -1,63 +1,72 @@
 <div id="spinner" ng-show="ctrl.loading"></div>
-<div class="section-heading search_heading">
-  <div class="container">
-    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/614/original/Your_Cockpit.png?1471346420" alt="">
-  </div>
-</div>
 
 <div class="profile-detail-main">
+  <div class="profile-main">
+    <div class="user-info">
+      <div class="col-sm-offset-3 col-sm-3">
+        <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <div class="profile-main">
-      <div class="row">
-        <div class="col-md-3 col-sm-3">
-          <div class="profile-image">
-            <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
-          </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <h2 class="section-main-heading">Your<span class="scnd-text">Cockpit</span></h2>
+        <h4 class="section-sub-heading">The New Generation of Private Aviation</h4>
+        <div class="gap"></div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="profile-image">
+          <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
         </div>
-        <div class="col-md-9 col-sm-9">
-          <div class="user-info">
-            <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
-            <ul class="user-detail">
-              <!-- <li>
-                <i class="fa fa-bell
-                notication-icon" aria-hidden="true"></i>
-                <h4>2</h4>
-                <p>Notication</p>
-              </li> -->
-              <li>
-                <a ng-href="enquired_jets">
-                  <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
-                  <p>Enquired Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="booked_jets">
-                  <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
-                  <p>Confirmed Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="quotes">
-                  <!--<h4>{{ctrl.quotes.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
-                  <p>Quoted Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="sell_empty_leg">
-                  <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
-                  <p>EmptyLegs</p>
-                </a>
-              </li>
-              <div class="clearfix"></div>
-            </ul>
-            <!--<a class="edit-icon" href="javascript:void(0)">-->
-            <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
-            <!--</a>-->
-          </div>
+      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="user-info">
+          <ul class="user-detail">
+            <!-- <li>
+              <i class="fa fa-bell
+              notication-icon" aria-hidden="true"></i>
+              <h4>2</h4>
+              <p>Notication</p>
+            </li> -->
+            <li>
+              <a ng-href="enquired_jets">
+                <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
+                <p>Enquired Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="booked_jets">
+                <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
+                <p>Confirmed Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="quotes">
+                <!--<h4>{{ctrl.quotes.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
+                <p>Quoted Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="sell_empty_leg">
+                <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
+                <p>EmptyLegs</p>
+              </a>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+          <!--<a class="edit-icon" href="javascript:void(0)">-->
+          <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+          <!--</a>-->
         </div>
       </div>
     </div>
@@ -76,9 +85,11 @@
         <div class="col-md-3 col-sm-4 col-xs-6">
           <p>
             <b>Booking ID:</b>
-            {{ctrl.trip.status == 'enquiry' ? 'Enquiry#'+ctrl.trip.id:''}}
-            {{ctrl.trip.status == 'quoted' ? 'Quote#'+ctrl.trip.id:''}}
-            {{ctrl.trip.status == 'confirmed' ? 'Trip#'+ctrl.trip.id:''}}
+            <span>
+              {{ctrl.trip.status == 'enquiry' ? 'Enquiry#'+ctrl.trip.id:''}}
+              {{ctrl.trip.status == 'quoted' ? 'Quote#'+ctrl.trip.id:''}}
+              {{ctrl.trip.status == 'confirmed' ? 'Trip#'+ctrl.trip.id:''}}
+            </span>
           </p>
 
         </div>
@@ -92,6 +103,236 @@
         <div class="clearfix"></div>
       </div>
     </div>
+    <div class="gap"></div>
+    <uib-tabset class="details-tabs" active="active">
+      <uib-tab index="0" heading="Journey Details">
+        <div class="customer-detail journey-detail">
+          <div ng-repeat="activity in ctrl.trip.activities">
+            <div class="location-main row" ng-class="activity.empty_leg == true ? 'dotted-border' : ''">
+              <div class="col-sm-2 text-center">
+                <p>{{activity.start_at.split(',')[1]}}</p>
+                <p>{{activity.start_at.split(',')[0]}}</p>
+              </div>
+              <div class="col-sm-2 text-center">
+                <img width="28" src="" ng-src="{{activity.empty_leg ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/403/original/emptyleg-departure.png?1468581680' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/464/original/arrival.png?1470057654' }}">
+                <p><b>{{activity.departure_airport.city.name}}</b></p>
+                <p>{{activity.departure_airport.city.state}}</p>
+              </div>
+              <div class="col-sm-4 text-center hidden-xs">
+                <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/406/original/time.png?1468581764" alt="">
+                <p><b>{{activity.flight_time}}</b></p>
+                <p ng-if="activity.pax > 0">Pax: {{activity.pax}}</p>
+                <p>{{activity.empty_leg ? (activity.departure_airport.id == ctrl.trip.aircraft.base_airport.id ? 'Positioning' : (activity.arrival_airport.id == ctrl.trip.aircraft.base_airport.id ? 'Re - Positioning' : 'Empty Leg')) : ''}}</p>
+              </div>
+              <div class="col-sm-2 text-center">
+                <img width="28" src="" ng-src="{{activity.empty_leg ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/400/original/arrival.png?1468581622' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/465/original/destination.png?1470057672' }}">
+                <p><b>{{activity.arrival_airport.city.name}}</b></p>
+                <p>{{activity.arrival_airport.city.state}}</p>
+              </div>
+              <div class="col-sm-2 text-center">
+                <p>{{activity.end_at.split(',')[1]}}</p>
+                <p>{{activity.end_at.split(',')[0]}}</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="1" heading="Flight Detail">
+        <div class="customer-detail flight-detail">
+          <div class="gap"></div>
+          <div class="col-xs-12 jetdetail-col">
+            <div class="row">
+              <div class="col-md-8 col-sm-8 no-right-padding">
+                <div class="icon-img-main">
+                  <div class="img-con">
+                    <img src="" class="img-responsive aircraft-img" ng-src="{{ctrl.trip.activities[0].aircraft.exterior_image}}">
+                    <span class="icon-toogle hidden-lg hidden-md hidden-sm" ng-click="ctrl.trip.more_detail_active =! ctrl.trip.more_detail_active">More Detail</span>
+                  </div>
+                  <div ng-show="ctrl.trip.more_detail_active" class="icon-con">
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/677/original/with_baggage.png?1471853923" uib-tooltip="Baggage" alt="">
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kgs</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/617/original/with_crew.png?1471346833" uib-tooltip="Crew" alt=""> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.crew}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/679/original/with_pax.png?1471853991" uib-tooltip="Seats" alt="" /> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.seating_capacity}}</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.wifi ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/422/original/wifi-1.png?1468910930' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/763/original/without_wifi.png?1472815403'}}" uib-tooltip="Wifi: {{ctrl.trip.activities[0].aircraft.wifi ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/418/original/height-1.png?1468910855" uib-tooltip="Height"alt="" />
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.cabin_height_in_meters}} ft</span>
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.phone ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/419/original/phone-1.png?1468910872' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/762/original/without_phone.png?1472815384'}}" uib-tooltip="Phone: {{ctrl.trip.activities[0].aircraft.phone ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.flight_attendant ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/616/original/with_cabincrew.png?1471346808' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/761/original/without_cabincrew.png?1472815358'}}" uib-tooltip="Flight Attendant: {{ctrl.trip.activities[0].aircraft.flight_attendant ? 'Available' : 'Not-Available'}}" alt="">
+                </span>
+                <span class="icons-main">
+                  <img src="" ng-src="{{ctrl.trip.activities[0].aircraft.number_of_toilets ? 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/624/original/with_labotry.png?1471351181' : 'http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/764/original/witrhout_lav.png?1472815424'}}" uib-tooltip="Lavatory{{ctrl.trip.activities[0].aircraft.number_of_toilets ? '' : ': Not-Available'}}" alt="">
+                  <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.number_of_toilets < 1 ? '' : ctrl.trip.activities[0].aircraft.number_of_toilets}}</span>
+                </span>
+                <span class="icons-main no-border">
+                  <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/678/original/with_speed.png?1471853967" uib-tooltip="Speed" alt=""> <span class="icon-detail">{{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm/hr</span>
+                </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 no-left-padding">
+                <div class="jet-detail">
+                  <h2>{{ctrl.trip.activities[0].aircraft.aircraft_type.name}}</h2>
+                  <h4>{{ctrl.trip.activities[0].aircraft.aircraft_type.aircraft_category_name}}</h4>
+                  <!-- <ul class="jet-list">
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/615/original/crew.jpg?1471346779  " /> {{ctrl.trip.activities[0].aircraft.crew}}</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/498/original/wifi.JPG?1470137359" /> {{ctrl.trip.activities[0].aircraft.wifi ? 'Available' : 'Not-Available'}}</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/466/original/baggage.jpg?1470058187" /> {{ctrl.trip.activities[0].aircraft.baggage_capacity_in_kg}} kg</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/496/original/pax.jpg?1470137326" /> {{ctrl.trip.activities[0].aircraft.seating_capacity}}</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/497/original/speed.jpg?1470137344" /> {{ctrl.trip.activities[0].aircraft.cruise_speed_in_nm_per_hour}} nm</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/622/original/laboratory.jpg?1471351143" /> {{ctrl.trip.activities[0].aircraft.number_of_toilets ? 'Available' : 'Not-Available'}}</li>
+                    <li><img width="25" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/620/original/cabincrew.JPG?1471348407" /> {{ctrl.trip.activities[0].aircraft.flight_attendant ? 'Available' : 'Not-Available'}}</li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="gap"></div>
+        </div>
+      </uib-tab>
+      <uib-tab index="2" heading="Cost Detail">
+        <div class="col-xs-12 customer-detail cost-detail">
+          <div class="gap"></div>
+          <div class="row">
+            <div class="col-xs-12">
+              <!--<div class="cost-con">-->
+              <!--<div class="row">-->
+              <!--<div class="col-sm-6 col-xs-7">-->
+              <!--<p>Flight Time</p>-->
+              <!--</div>-->
+              <!--<div class="col-sm-6 col-xs-5 text-right">-->
+              <!--<p>{{ctrl.trip.total_flight_time}}</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+              <div class="cost-con">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>Flight Cost @ ( <i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.activities[0].aircraft.per_hour_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":0 | indianCurrency }} per hour) {{ctrl.trip.total_flight_time}}</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><i class="fa fa-rupee"></i> {{ ctrl.aircraft_flight_cost_commission_in_percentage(ctrl.trip.total_flight_cost, ctrl.trip.activities[0].aircraft.aircraft_flight_cost_commission_in_percentage ) | currency:"":2 | indianCurrency }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cost-con">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>Handling Charges</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_handling_cost_commission_in_percentage((ctrl.trip.total_landing_cost + ctrl.trip.total_ground_handling_cost), ctrl.trip.activities[0].aircraft.aircraft_handling_cost_commission_in_percentage) | currency:"":2 | indianCurrency}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cost-con">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>Crew Accommodation Cost</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><i class="fa fa-rupee"></i> {{ctrl.aircraft_accomodation_cost_commission_in_percentage(ctrl.trip.total_accommodation_cost, ctrl.trip.activities[0].aircraft.aircraft_accomodation_cost_commission_in_percentage) | currency:"":2 | indianCurrency }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cost-con">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>Watch Hours</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p>{{ ctrl.trip.set_watch_hour ? 'As per actuals' : 'NA' }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cost-con" ng-show="ctrl.trip.is_miscellaneous_expenses">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>Miscellaneous Expenses</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><i class="fa fa-rupee"></i> {{ctrl.trip.miscellaneous_expenses | currency:"":2 | indianCurrency}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cost-con">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p><b>Sub Total</b></p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><b><i class="fa fa-rupee"></i> {{ctrl.trip.subTotal | currency:"":2 | indianCurrency}}</b></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cost-con" ng-repeat="tax in ctrl.trip.taxBreakup">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                    <p>{{tax.name}}({{tax.value}}%)</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-5 text-right">
+                    <p><i class="fa fa-rupee"></i> {{tax.amount | currency:"":2 | indianCurrency}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-offset-1 col-sm-7 col-xs-7">
+                  <h5>Total</h5>
+                </div>
+                <div class="col-sm-3 col-xs-5 text-right">
+                  <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost | currency:"":0 | indianCurrency }}</h5>
+                  <p class="inclusive">(All Inclusive)</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 col-xs-12">
+                  <div class="amount-bg">
+                    <div class="col-sm-6">
+                      <h5>Booking Deposit</h5>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                      <h5><i class="fa fa-rupee"></i> {{ctrl.trip.totalCost * 0.05 | currency:"":0 | indianCurrency }}</h5>
+                      <p class="inclusive" ng-hide="ctrl.trip.status == 'confirmed'">
+                        (Pay 5% to book this flight)
+                      </p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="gap"></div>
+            </div>
+            <div class="col-sm-5 col-xs-12">
+
+              <div class="row">
+                <div class="col-xs-12 text-right">
+                  <a href="javascript:void(0)" ng-if="ctrl.trip.status == 'quoted'" ng-href="/payment_transactions/create/{{ctrl.trip.id}}/for_quote" target="_self" class="pay-cancel-btn">Pay Now</a>
+                  <!--<a ng-href="/payment_transactions/create/{{quote.id}}/for_quote" target="_self" href="" class="btn btn-primary"><i class="fa fa-credit-card"></i> Pay & Confirm</a></td>-->
+                  <!--<a class="pay-cancel-btn" href="javascript:void(0)">Cancel Booking</a>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </uib-tab>
+    </uib-tabset>
     <div class="customer-detail journey-detail">
       <h3 ng-click="ctrl.journey = !ctrl.journey">
         Journey Details

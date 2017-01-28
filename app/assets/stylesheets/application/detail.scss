@@ -1,16 +1,55 @@
 .detail-profile{
   .booking-detail{
-    background-color: rgba(214, 202, 185, 0.2);
     padding: 10px;
     p{
-      font-size: 15px;
+      font-size: 20px;
       margin: 0;
+      color: #7b7b7b;
       span{
-        color: #920000;
+        color: #ffffff;
       }
     }
   }
+  .details-tabs{
+    background-color: #282828;
+    .nav-tabs{
+      border-bottom: none;
+      background-color: #000000;
+    }
+    .nav-tabs > li{
+      width: 30%;
+      text-align: center;
+      margin-bottom: 0px;
+      margin-right: 2px;
+    }
+    .nav-tabs > li > a{
+      background-color: #bb965d;
+      color: #ffffff;
+      font-size: 16px;
+      min-height: 44px;
+      width: 100%;
+      -webkit-border-top-left-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      -moz-border-radius-topleft: 10px;
+      -moz-border-radius-topright: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .nav-tabs > li > a:hover{
+      background-color: #bb965d;
+      border: none;
+    }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+      color: #ffffff;
+      font-size: 16px;
+      cursor: default;
+      background-color: #282828;
+      border: none;
+      min-height: 44px;
+    }
+  }
   .customer-detail{
+    color: #ffffff;
     h3{
       font-size: 17px;
       font-weight: normal;
@@ -18,16 +57,7 @@
       padding-bottom: 5px;
       position: relative;
       cursor: pointer;
-      color: #920000;
       font-weight: bold;
-    }
-    h3:before{
-      content: "";
-      position: absolute;
-      background-color: #d6cab9;
-      height: 5px;
-      width: 150px;
-      bottom: -5px;
     }
     .toogle-btn{
       color: #820000;
@@ -39,12 +69,17 @@
     }
   }
   .journey-detail{
+    padding: 10px 15px;
     .location-main{
       padding: 20px 0 20px 0;
+      color: #ffffff;
       p{
         font-size: 14px;
         margin: 0;
       }
+    }
+    .dotted-border{
+      border: 1px dotted #ffffff;
     }
     .lb-detail{
       margin: 30px 0;
@@ -71,20 +106,20 @@
       }
       .img-con{
         width:100%;
-        background-color: #f0e5d6;
         height: 320px;
         overflow: hidden;
         position: relative;
+        background-color: #212121;
         img{
           min-height: 320px;
         }
       }
       .jet-detail{
         width: 100%;
-        background-image: url('http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350');
-        background-size: cover;
+        background-color: #282828;
         height: 320px;
         padding: 10px;
+        color: #ffffff;
         h2{
           font-size: 24px;
           font-weight: bold;
@@ -108,8 +143,10 @@
   }
   .cost-detail{
     .cost-con{
-      border-bottom: 1px solid #f9f3e6;
-      padding: 10px 0;
+      padding: 15px 0;
+    }
+    .amount-bg{
+      background-color: #6b6b6b;
     }
     p{
       font-size: 14px;
