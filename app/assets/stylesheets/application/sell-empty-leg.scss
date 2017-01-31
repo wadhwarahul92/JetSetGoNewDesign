@@ -1,9 +1,11 @@
 .sell_empty_main_con{
   width: 100%;
+  color: #ffffff;
   h2.heading{
-      font-size: 24px;
-      color: #920000;
-      font-weight: bold;
+    font-size: 24px;
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ffffff;
     }
     h2.subheading{
       font-size: 16px;
@@ -34,6 +36,8 @@
         width: 100%;
         margin: 15px 0;
         position: relative;
+        border-radius: 10px;
+        overflow: hidden;
         .search_img{
           padding: 0;
           position: relative;
@@ -52,7 +56,6 @@
           position: relative;
           h2{
             font-size: 24px;
-            color: #000000;
             margin: 0 0 5px 0;
             font-weight: bold;
           }
@@ -62,7 +65,7 @@
           }
           .img-bg{
             width: 100%;
-            background-image: url("http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/413/original/steal_bg-2.png?1468906350");
+            background-color: #282828;
             background-size: cover;
             padding: 15px 0;
             height: 320px;

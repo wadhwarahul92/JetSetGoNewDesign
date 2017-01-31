@@ -1,70 +1,75 @@
-<div class="section-heading search_heading">
-  <div class="container">
-    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/641/original/yourcockpit.png?1471511926" alt="">
-  </div>
-</div>
 <div class="profile-detail-main">
-  <div class="container">
-    <div class="profile-main">
-      <div class="row">
-        <div class="col-md-3 col-sm-3">
-          <div class="profile-image">
-            <!-- p_img  -->
-            <img src="" class="p_img img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
-            <a class="add-img-icon"  ng-show="ctrl.upd_profile" href="javascript:void(0)" ng-file-select accept=".jpg,.png" ng-file-change="ctrl.uploadUserImage($files, ctrl.currentUser)">
-                    <i class="fa fa-picture-o"></i> Add/Edit Image
-            </a>
+  <div class="profile-main">
+    <div class="container">
+      <div class="user-info">
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-3">
+            <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
+          </div>
+          <div class="col-sm-6 text-right">
+            <a class="click-btn" href="#">Upgrade Membership</a>
+            <a class="click-btn" href="#">Update Info</a>
           </div>
         </div>
-        <div class="col-md-9 col-sm-9">
-          <div class="user-info">
-            <h2 class="name-text ms-text-capitalize">
-              {{ctrl.currentUser.full_name}}
-              <!--<span class="pull-right total-booking-text">Total Booking: {{ctrl.booked_jets.length}}</span>-->
-              <div class="clearfix"></div>
-            </h2>
-            <ul class="user-detail">
-              <!-- <li>
-                <i class="fa fa-bell 
-                notication-icon" aria-hidden="true"></i>
-                <h4>2</h4>
-                <p>Notication</p>
-              </li> -->
-
-              <li>
-                <a ng-href="enquired_jets">
-                  <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
-                  <p>Enquired Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="booked_jets">
-                  <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
-                  <p>Confirmed Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="quotes">
-                  <!--<h4>{{ctrl.quotes.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
-                  <p>Quoted Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="sell_empty_leg">
-                  <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
-                  <p>EmptyLegs</p>
-                </a>
-              </li>
-              <div class="clearfix"></div>
-            </ul>
-            <a class="edit-icon" href="javascript:void(0)" ng-click="ctrl.upd_profile =! ctrl.upd_profile" ng-hide="ctrl.upd_profile" >
-              <img height="13" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> Edit
-            </a>
-          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <h2 class="section-main-heading">Your<span class="scnd-text">Cockpit</span></h2>
+        <h4 class="section-sub-heading">The New Generation of Private Aviation</h4>
+        <div class="gap"></div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="profile-image">
+          <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="user-info">
+          <ul class="user-detail">
+            <!-- <li>
+              <i class="fa fa-bell
+              notication-icon" aria-hidden="true"></i>
+              <h4>2</h4>
+              <p>Notication</p>
+            </li> -->
+            <li>
+              <a ng-href="enquired_jets">
+                <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
+                <p>Enquired Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="booked_jets">
+                <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
+                <p>Confirmed Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="quotes">
+                <!--<h4>{{ctrl.quotes.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
+                <p>Quoted Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="sell_empty_leg">
+                <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
+                <p>EmptyLegs</p>
+              </a>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+          <!--<a class="edit-icon" href="javascript:void(0)">-->
+          <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+          <!--</a>-->
         </div>
       </div>
     </div>

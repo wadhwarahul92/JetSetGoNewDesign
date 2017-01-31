@@ -107,6 +107,49 @@
     <uib-tabset class="details-tabs" active="active">
       <uib-tab index="0" heading="Journey Details">
         <div class="customer-detail journey-detail">
+          <div class="flight_city_details_main">
+            <div class="row">
+              <div class="col-sm-5 col-xs-12 text-center">
+                <div class="row border-right">
+                  <div class="col-xs-12 gap hidden-xs"></div>
+                  <div class="col-xs-6">
+                    <p><img class="img-responsive" src="" ng-src="{{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].departure_airport.city.image : ctrl.trip.activities[1].departure_airport.city.image}}" alt=""></p>
+                    <p>{{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].departure_airport.city.name : ctrl.trip.activities[1].departure_airport.city.name}}</p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><img class="img-responsive" src="" ng-src="{{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].arrival_airport.city.image : ctrl.trip.activities[1].arrival_airport.city.image}}" alt=""></p>
+                    <p>{{ctrl.trip.activities[ctrl.trip.activities.length - 1].empty_leg == false ? ctrl.trip.activities[ctrl.trip.activities.length - 1].arrival_airport.city.name : ctrl.trip.activities[ctrl.trip.activities.length - 2].arrival_airport.city.name}}</p>
+                  </div>
+                  <div class="col-xs-12 gap hidden-xs"></div>
+                </div>
+              </div>
+              <div class="col-sm-7 col-xs-12">
+                <div class="row">
+                  <div class="hidden-xs" style="height: 20px"></div>
+                  <div class="col-xs-6">
+                    <span class="label-text">Departure Airport</span>
+                    <p>
+                      {{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].departure_airport.name : ctrl.trip.activities[1].departure_airport.name}}
+                    </p>
+                    <span class="label-text">Departure Date</span>
+                    <p>
+                      {{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].start_at.split(',')[0] : ctrl.trip.activities[1].start_at.split(',')[0]}}
+                    </p>
+                  </div>
+                  <div class="col-xs-6">
+                    <span class="label-text">Arrival Airport</span>
+                    <p>
+                      {{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].arrival_airport.name : ctrl.trip.activities[1].arrival_airport.name}}
+                    </p>
+                    <span class="label-text">Arrival Date</span>
+                    <p>
+                      {{ctrl.trip.activities[0].empty_leg == false ? ctrl.trip.activities[0].end_at.split(',')[0] : ctrl.trip.activities[1].end_at.split(',')[0]}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div ng-repeat="activity in ctrl.trip.activities">
             <div class="location-main row" ng-class="activity.empty_leg == true ? 'dotted-border' : ''">
               <div class="col-sm-2 text-center">

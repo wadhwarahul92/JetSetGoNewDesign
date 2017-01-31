@@ -10,6 +10,21 @@
       }
     }
   }
+  .flight_city_details_main{
+    background-color: #6b6b6b;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin: 10px 0;
+    border: 1px dotted #000000;
+    .border-right{
+      border-right: 1px dotted #ffffff;
+    }
+    span.label-text{
+      color: #000000;
+      font-size: 12px;
+      margin: 0;
+    }
+  }
   .details-tabs{
     background-color: #282828;
     .nav-tabs{

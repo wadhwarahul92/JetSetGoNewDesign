@@ -1,62 +1,107 @@
+<script type="text/javascript" charset="utf-8">
+    $('#myCarousel2').carousel({
+        interval: false
+    });
+    $(document).ready(function(){
+        setTimeout(function(){
+            $( '#carousel_slider span.glyphicon-chevron-left' ).addClass( 'fa fa-chevron-left fa-4' );
+            $( '#carousel_slider span.glyphicon-chevron-right' ).addClass( 'fa fa-chevron-right fa-4');
+            $('span.fa').css('display', 'inline-block')
+        },3000);
+        //    $('span.glyphicon span.glyphicon-chevron-left').replaceWith('.fa .fa-chevron-left .fa-4');
+        $(".owl-carousel").owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:2,
+                    nav:true
+                },
+                990:{
+                    items:3,
+                    nav:true
+                },
+                1100:{
+                    items:5,
+                    nav:true,
+                }
+            }
+        });
+    });
+</script>
 <div id="spinner" ng-show="ctrl.loading"></div>
-<div class="section-heading search_heading">
-  <div class="container">
-    <img class="img-responsive" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/641/original/yourcockpit.png?1471511926" alt="">
-  </div>
-</div>
 <div class="profile-detail-main">
+  <div class="profile-main">
+    <div class="user-info">
+      <div class="col-sm-offset-3 col-sm-3">
+        <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <div class="profile-main">
-      <div class="row">
-        <div class="col-md-3 col-sm-3">
-          <div class="profile-image">
-            <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
-          </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <h2 class="section-main-heading">Your<span class="scnd-text">Cockpit</span></h2>
+        <h4 class="section-sub-heading">The New Generation of Private Aviation</h4>
+        <div class="gap"></div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="profile-image">
+          <img src="" class="img-responsive" ng-src="{{ctrl.currentUser.image}}" alt="" />
         </div>
-        <div class="col-md-9 col-sm-9">
-          <div class="user-info">
-            <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
-            <ul class="user-detail">
-              <!-- <li>
-                <i class="fa fa-bell
-                notication-icon" aria-hidden="true"></i>
-                <h4>2</h4>
-                <p>Notication</p>
-              </li> -->
-              <li>
-                <a ng-href="enquired_jets">
-                  <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
-                  <p>Enquired Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="booked_jets">
-                  <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
-                  <p>Confirmed Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="quotes">
-                  <!--<h4>{{ctrl.quotes.length}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
-                  <p>Quoted Bookings</p>
-                </a>
-              </li>
-              <li>
-                <a ng-href="sell_empty_leg">
-                  <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
-                  <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
-                  <p>EmptyLegs</p>
-                </a>
-              </li>
-              <div class="clearfix"></div>
-            </ul>
-            <!--<a class="edit-icon" href="javascript:void(0)">-->
-              <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
-            <!--</a>-->
-          </div>
+      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="user-info">
+          <ul class="user-detail">
+            <!-- <li>
+              <i class="fa fa-bell
+              notication-icon" aria-hidden="true"></i>
+              <h4>2</h4>
+              <p>Notication</p>
+            </li> -->
+            <li>
+              <a ng-href="enquired_jets">
+                <!--<h4>{{ctrl.enquired_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_enquiries}}</h4>
+                <p>Enquired Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="booked_jets">
+                <!--<h4>{{ctrl.booked_jets.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_confirmed}}</h4>
+                <p>Confirmed Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="quotes">
+                <!--<h4>{{ctrl.quotes.length}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_quoted}}</h4>
+                <p>Quoted Bookings</p>
+              </a>
+            </li>
+            <li>
+              <a ng-href="sell_empty_leg">
+                <!--<h4>{{ctrl.count_empty_legs(ctrl.trips)}}</h4>-->
+                <h4>{{ctrl.currentUser.number_of_empty_legs}}</h4>
+                <p>EmptyLegs</p>
+              </a>
+            </li>
+            <div class="clearfix"></div>
+          </ul>
+          <!--<a class="edit-icon" href="javascript:void(0)">-->
+          <!--<img height="15" src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/444/original/edit_icon.png?1470035299"> EDIT-->
+          <!--</a>-->
         </div>
       </div>
     </div>
@@ -67,19 +112,26 @@
   <h2 class="no-result-heading" ng-if="ctrl.enquiries.length < 1">You have not Enquired for any Flight</h2>
   <div class="container" ng-if="ctrl.enquiries.length > 0">
     <h2 class="heading">Enquired Booking</h2>
+    <data-owl-carousel class="owl-carousel" data-options="{navigation: false, pagination: true, rewindNav : false}">
+      <div owl-carousel-item="" ng-repeat="enquiry in ctrl.enquiries" class="item">
+        <a href="#" ng-click="ctrl.get_departure_date(enquiry) = !ctrl.get_departure_date(enquiry)">{{ctrl.get_departure_date(enquiry).split(',')[0]}}</a>
+      </div>
+    </data-owl-carousel>
+    <!--<div class="owl-carousel">-->
+      <!--<div class="date-toogle">-->
+        <!--<ul>-->
+          <!--<li ng-repeat="enquiry in ctrl.enquiries">-->
+            <!--<a href="#">{{ctrl.get_departure_date(enquiry).split(',')[0]}}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
     <table border="0" width="100%">
-      <tr ng-repeat="enquiry in ctrl.enquiries">
+      <tr ng-repeat="enquiry in ctrl.enquiries" ng-show="ctrl.get_departure_date(enquiry)">
         <td>
           <table class="table" width="100%">
-            <tr class="info">
-              <th class="first-coloum">Booking No</th>
-              <th class="scnd-coloum">Aircraft Name</th>
-              <th class="thrd-coloum">Departure Date</th>
-            </tr>
             <tr>
-              <td class="info-detail">Enquiry#{{enquiry.id}}</td>
-              <td class="info-detail">{{enquiry.activities[0].aircraft.name}}</td>
-              <td class="info-detail">{{ctrl.get_departure_date(enquiry)}}</td>
+              <td colspan="3" class="info-detail"><b>Booking No: </b>Enquiry#{{enquiry.id}}</td>
             </tr>
             <tr>
               <td colspan="3" style="padding: 0">
@@ -129,9 +181,10 @@
                         <div class="col-sm-4 col-xs-12 no-padding-left">
                           <div class="img-bg">
                             <div class="gap"></div>
-                            <h4>₹ {{enquiry.grandTotal | currency:"":0 | indianCurrency}} <span>Estimated Price</span></h4>
+                            <h4><span class="rupee-icon">₹</span> {{enquiry.grandTotal | currency:"":0 | indianCurrency}}</h4>
+                            <span class="estimate-price">Estimated Price</span>
                             <div class="detail-link-con">
-                              <a href="/detail/{{enquiry.id}}">Details</a>
+                              <a class="click-btn" href="/detail/{{enquiry.id}}">Details</a>
                             </div>
                           </div>
                         </div>

@@ -7,7 +7,7 @@
   position: relative;
   .profile-main{
     width: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.2);
     position: absolute;
     min-height: 70px;
     bottom: 0;
@@ -58,9 +58,8 @@
       width: 100%;
       li{
         float: left;
-        width: 15%;
+        width: 18%;
         list-style: none;
-        border-right: 2px solid #D9C3A4;
         text-align: right;
         padding: 0 15px;
         min-height: 80px;

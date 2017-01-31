@@ -63,6 +63,7 @@ json.activities{
       json.city{
         json.name activity.departure_airport.city.name
         json.state activity.departure_airport.city.state
+        json.image activity.departure_airport.city.image
       }
     }
 
@@ -74,6 +75,7 @@ json.activities{
       json.city{
         json.name activity.arrival_airport.city.name
         json.state activity.arrival_airport.city.state
+        json.image activity.arrival_airport.city.image
       }
     }
 
