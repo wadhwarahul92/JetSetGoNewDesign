@@ -7,8 +7,10 @@
             <h2 class="name-text ms-text-capitalize">{{ctrl.currentUser.full_name}}</h2>
           </div>
           <div class="col-sm-6 text-right">
-            <a class="click-btn" href="#">Upgrade Membership</a>
-            <a class="click-btn" href="#">Update Info</a>
+            <p style="margin-top: 17px">
+              <a class="click-btn" href="#">Upgrade Membership</a>
+              <a class="click-btn" href="#" ng-click="ctrl.upd_profile =! ctrl.upd_profile" ng-hide="ctrl.upd_profile">Update Info</a>
+            </p>
           </div>
         </div>
       </div>
@@ -79,27 +81,35 @@
 <div class="profile-info-main">
   <div class="transparent-bg" ng-show="!ctrl.upd_profile"></div>
   <div class="container">
-    <h2 class="heading">{{ctrl.upd_profile ? 'Edit Profile' : 'Profile'}}</h2>
+    <!--<h2 class="heading">{{ctrl.upd_profile ? 'Edit Profile' : 'Profile'}}</h2>-->
+    <h2 class="heading">{{ctrl.upd_profile ? 'Edit Contact and Basic Information' : 'Contact and Basic Information'}}</h2>
     <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>Mobile Phone</h3>
+      </div>
       <div class="col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/699/original/cphoneicon.png?1472035938" class="icons">
           <input type="text" ng-model="ctrl.currentUser.phone" class="" ng-class="ctrl.upd_profile ? 'edit_text_field' : 'text-field'" />
         </div>
       </div>
-      <div class="col-md-offset-2 col-md-5 col-sm-6 col-xs-12">
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>E-mail</h3>
+      </div>
+      <div class="col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/704/original/mail.gif?1472037701" class="icons">
-          <!--<input type="text" value="wadhwarahul92@gmail.com" class="text-field" />-->
           <label class="text-field"> {{ctrl.currentUser.email}}</label>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>DOB</h3>
+      </div>
       <div class="col-md-5 col-sm-6 col-xs-12">
-        <!--<div class="data-coloum">-->
-          <!--<img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/454/original/calender.png?1470047234" class="icons">  -->
-          <!--<input type="text" ng-modal="ctrl.currentUser.dob" class="text-field" />-->
-        <!--</div>-->
-
         <div class="data-coloum">
         <img src="http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/729/original/calendar.png?1472552302" class="icons">
         <span class="search-form">
@@ -120,19 +130,56 @@
         </span>
         </div>
       </div>
-      <div class="col-md-offset-2 col-md-5 col-sm-6 col-xs-12">
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>Notification <span style="font-size: 13px;">via</span> SMS</h3>
+      </div>
+      <div class="col-md-5 col-sm-6 col-xs-12">
         <div class="data-coloum">
           <div class="notify-btn-con">
             <span ng-model="ctrl.currentUser.sms_active" ng-class="ctrl.currentUser.sms_active ? 'true' : 'false'" ng-click="ctrl.currentUser.sms_active = !ctrl.currentUser.sms_active">
               <span class="option"></span>
             </span>
           </div>
-          <label> Notification <span style="font-size: 13px;">via</span> SMS</label>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>Membership</h3>
+      </div>
+      <div class="col-md-5 col-sm-6 col-xs-12">
+        <div class="data-coloum">
+          <label class="text-field">Gold Membership</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>Membership (<span style="font-size: 13px;">valid till</span>)</h3>
+      </div>
+      <div class="col-md-5 col-sm-6 col-xs-12">
+        <div class="data-coloum">
+          <label class="text-field">29th Oct 2019 Membership</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+        <h3>Nationality</h3>
+      </div>
+      <div class="col-md-5 col-sm-6 col-xs-12">
+        <div class="data-coloum">
+          <label class="text-field">Indian</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-xs-12" ng-model="ctrl.upd_profile" ng-show="ctrl.upd_profile">
         <div class="submit-con text-center">
-          <a href="javascript:void(0)" ng-click="ctrl.upd_profile =! ctrl.upd_profile; ctrl.update_profile()" class="save-btn">Save</a>
+          <a href="javascript:void(0)" ng-click="ctrl.upd_profile =! ctrl.upd_profile; ctrl.update_profile()" class="save-btn click-btn">Save</a>
         </div>
       </div>
     </div>

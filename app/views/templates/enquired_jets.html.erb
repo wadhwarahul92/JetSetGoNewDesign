@@ -114,7 +114,7 @@
     <h2 class="heading">Enquired Booking</h2>
     <data-owl-carousel class="owl-carousel" data-options="{navigation: false, pagination: true, rewindNav : false}">
       <div owl-carousel-item="" ng-repeat="enquiry in ctrl.enquiries" class="item">
-        <a href="#" ng-click="ctrl.get_departure_date(enquiry) = !ctrl.get_departure_date(enquiry)">{{ctrl.get_departure_date(enquiry).split(',')[0]}}</a>
+        <a href="#" ng-click="ctrl.get_current_date($event)" data-value="{{enquiry.activities[0].start_at}}">{{ctrl.get_departure_date(enquiry).split(',')[0]}}</a>
       </div>
     </data-owl-carousel>
     <!--<div class="owl-carousel">-->
@@ -127,11 +127,11 @@
       <!--</div>-->
     <!--</div>-->
     <table border="0" width="100%">
-      <tr ng-repeat="enquiry in ctrl.enquiries" ng-show="ctrl.get_departure_date(enquiry)">
+      <tr ng-repeat="enquiry in ctrl.enquiries">
         <td>
           <table class="table" width="100%">
             <tr>
-              <td colspan="3" class="info-detail"><b>Booking No: </b>Enquiry#{{enquiry.id}}</td>
+              <td colspan="3" class="info-detail"><b>Booking No: </b>Enquiry#{{enquiry.id}}{{enquiry.activities[0].start_at}}</td>
             </tr>
             <tr>
               <td colspan="3" style="padding: 0">

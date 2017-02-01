@@ -48,7 +48,25 @@ class CustomersController < ApplicationController
   end
 
   def get_enquired_jets
-    @enquiries = @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).order(id: :desc)
+    @enquiries = []
+    @enquiries1 = @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).order(id: :desc)
+    @enquiries1.each do |enquiry|
+      enquiry.activities.each do |activity|
+        @dates = activity.start_at
+      end
+    end
+    if params[:enq_date].present?
+      date = params[:enq_date].to_date
+      @enquiries1.each do |enquiry|
+        if enquiry.activities.first.start_at.to_date == date
+          @enquiries << enquiry
+        end
+      end
+      #@enquiries =  @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).where(activities: {start_at: date})
+      puts "===========#{@enquiries.inspect}==============="
+    else
+      @enquiries = @enquiries1
+    end
   end
 
   def get_quoted_journeys

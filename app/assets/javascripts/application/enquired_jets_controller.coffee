@@ -101,10 +101,30 @@ jetsetgo_app.controller 'EnquiredJetsController', ['$http', 'notify', 'CurrentUs
       )
   )
 
+
   @get_departure_date = (trip)->
     for activity in trip.activities
       if !activity.empty_leg
         return activity.start_at
+
+  @get_current_date = (trip)->
+    enq_date = trip.currentTarget.innerHTML
+    $http.get('customers/get_enquired_jets.json', params:
+      enq_date: enq_date).success(
+      (data)=>
+#          @enquired_jets = data
+        @enquiries = data
+        for enquiry in @enquiries
+           enquiry.grandTotal = CustomerCostBreakUpsService.totalTripCost(enquiry)
+        @loading = false
+    ).error(
+      ->
+         notify(
+          message: 'Error fetching enquired jets'
+          classes: ['alert-danger']
+      )
+    )
+
 
   @include_commission = (cost)->
     cost + @jsg_commision/100 * cost
