@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get 'get_upcoming_journeys'
       get 'get_past_journeys'
       get 'get_enquired_jets'
+      get 'get_dates'
       get 'get_quoted_journeys'
       get 'get_offers'
       post 'create_passengers'

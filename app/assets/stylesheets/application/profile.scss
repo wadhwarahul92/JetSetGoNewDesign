@@ -280,14 +280,20 @@
 @media(max-width: 767px){
   .profile-detail-main{
     .profile-main{
-      .user-info{
-        padding: 15px;
-      }
-      .profile-image{
-        text-align: center;
-        .p_img{
-          width: initial;
+      position: inherit;
+    }
+    .user-info{
+      padding: 15px;
+      ul.user-detail {
+        li{
+          width: 45%;
         }
+      }
+    }
+    .profile-image{
+      text-align: center;
+      .p_img{
+        width: initial;
       }
     }
   }

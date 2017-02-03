@@ -89,6 +89,23 @@ jetsetgo_app.controller 'QuotesController', ['$http', 'notify', '$scope', '$loca
         classes: ['alert-danger']
   )
 
+  @get_quote_date = (trip)->
+    quote_date = trip.currentTarget.innerHTML
+    $http.get('trips/get_quotes.json', params:
+      quote_date: quote_date).success(
+      (data)=>
+        @quotes = data
+        for quote in @quotes
+          quote.grandTotal = CustomerCostBreakUpsService.totalTripCost(quote)
+      @loading = false
+    ).error(
+      ->
+        notify(
+          message: 'Error fetching enquired jets'
+          classes: ['alert-danger']
+        )
+    )
+
   @count_empty_legs = (trips)->
     count = 0
     for trip in trips

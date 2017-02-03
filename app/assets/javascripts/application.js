@@ -59,7 +59,7 @@
 //= require ./services/cost_break_ups_service
 //= require ./services/customer_cost_break_ups_service
 //= require ./vendors/owl-carousel/owl_carousel
-//= require ./vendors/owl-carousel/owl.carousel.min
+//= require ./vendors/owl-carousel/lightslider
 //= require ./vendors/fisheye-carousel/fisheye-slider
 
 $(document).on('ready page:load', function(){

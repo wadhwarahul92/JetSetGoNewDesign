@@ -70,6 +70,7 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
 
   $http.get('customers/get_confirmed_jetsteals.json').success(
     (data)=>
+
       @booked_jets = data
       for confirmed_jets in @booked_jets.trips
         confirmed_jets.grandTotal = CustomerCostBreakUpsService.totalTripCost(confirmed_jets)
@@ -82,7 +83,27 @@ jetsetgo_app.controller 'BookedJetsController', ['$http', 'notify', 'CurrentUser
       )
   )
 
-#  $http.get('customers/get_user_trips.json').success(
+
+  @get_confirmed_trip_date = (trip)->
+    con_date = trip.currentTarget.innerHTML
+    $http.get('customers/get_confirmed_jetsteals.json', params:
+      con_date: con_date).success(
+      (data)=>
+
+        @booked_jets = data
+        for confirmed_jets in @booked_jets.trips
+          confirmed_jets.grandTotal = CustomerCostBreakUpsService.totalTripCost(confirmed_jets)
+        @loading = false
+    ).error(
+      ->
+        notify(
+          message: 'Error fetching booked jets'
+          classes: ['alert-danger']
+        )
+    )
+
+
+  #  $http.get('customers/get_user_trips.json').success(
 #    (data)=>
 #      @trips = data
 #  ).error(

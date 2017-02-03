@@ -122,10 +122,24 @@ class TripsController < ApplicationController
   end
 
   def get_quotes
-    @quotes = Trip.where(
+    @quotes1 = Trip.where(
         status: Trip::STATUS_QUOTED,
         user_id: current_user.id
     ).order('updated_at DESC').includes(:activities)
+
+    @quotes = []
+    #@quotes1 = @customer.trips.where(status: Trip::STATUS_QUOTED).includes(:activities)
+    if params[:quote_date].present?
+      date = params[:quote_date].to_date
+      @quotes1.each do |quote|
+        if quote.activities.first.start_at.to_date == date
+          @quotes << quote
+        end
+      end
+      #@enquiries =  @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).where(activities: {start_at: date})
+    else
+      @quotes = @quotes1
+    end
   end
 
   def show

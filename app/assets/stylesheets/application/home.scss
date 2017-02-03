@@ -58,7 +58,7 @@ p.section-content{
   top: 0px; 
   right: 0px; 
   bottom: 0px; 
-  width: 86px; 
+  width: 50px;
   z-index: 999;
   .nav-circle{
     list-style: none;
@@ -1586,6 +1586,9 @@ span.heading:after{
 }
 
 @media(max-width: 767px){
+  .gap{
+    height: 10px;
+  }
   .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
     margin-left: -50px;
   }

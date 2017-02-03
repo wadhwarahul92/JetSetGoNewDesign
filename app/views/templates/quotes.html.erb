@@ -78,6 +78,38 @@
     <h2 class="heading">
       Quoted Booking
     </h2>
+    <% @dates = [] %>
+    <%  @enquiries1 = current_user.trips.where(status: Trip::STATUS_QUOTED).includes(:activities).order(id: :desc) %>
+    <% @enquiries1.each do |enquiry|
+      enquiry.activities.each do |activity|
+        @dates << activity.start_at.to_date
+      end
+    end
+    %>
+    <% @dates = @dates.uniq! %>
+    <div class="carousel-slide-space">
+      <div class="carousel slide" ng-init="ctrl.get_dates()" id="myCarousel">
+        <div class="carousel-inner" style="color: #fff">
+          <!--<div class="item" ng-class="ctrl.dates ? 'active : ''" ng-repeat="date in ctrl.dates">-->
+          <!--<div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">-->
+          <!--<a href="javascript:void(0)" ng-click="ctrl.get_current_date($event)" data-value="{{date.date}}">{{date.date}}</a>-->
+          <!--</div>-->
+          <!--</div>-->
+
+          <% @dates.in_groups_of(3, false).each_with_index do |grp, idx| %>
+              <% grp.each_with_index do |item, indx| %>
+                  <div class="slide-date-item item <%= 'active' if idx == 0 && indx == 0%>">
+                    <div class="col-xs-4 text-center">
+                      <a href="javascript:void(0)" ng-click="ctrl.get_quote_date($event)" data-value="<%= item %>"><%= item %></a>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="javascript:void(0)" data-target="#myCarousel" data-slide="prev"> < </a>
+        <a class="right carousel-control" href="javascript:void(0)" data-target="#myCarousel" data-slide="next"> > </a>
+      </div>
+    </div>
     <table border="0" width="100%">
       <tr ng-repeat="quote in ctrl.quotes">
         <td>

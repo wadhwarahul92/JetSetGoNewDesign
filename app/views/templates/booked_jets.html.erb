@@ -109,14 +109,50 @@
   <h2 class="no-result-heading" ng-if="ctrl.booked_jets.trips.length < 1">You have not Confirmed any booking for Now</h2>
   <div class="container" ng-if="ctrl.booked_jets.trips.length > 0">
     <div class="clearfix"></div>
-    <!-- <h2 class="heading">Confirmed Booking</h2> -->
+     <h2 class="heading">Confirmed Booking</h2>
+
+    <% @dates = [] %>
+    <%  @trips1 = current_user.trips.where(status: Trip::STATUS_CONFIRMED).includes(:activities).order(id: :desc) %>
+    <% @trips1.each do |trip|c
+
+      trip.activities.each do |activity|
+        @dates << activity.start_at.to_date
+      end
+    end
+    %>
+    <% @dates = @dates.uniq! %>
+
+    <div class="carousel-slide-space">
+      <div class="carousel slide" ng-init="ctrl.get_dates()" id="myCarousel">
+        <div class="carousel-inner" style="color: #fff">
+          <!--<div class="item" ng-class="ctrl.dates ? 'active : ''" ng-repeat="date in ctrl.dates">-->
+          <!--<div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">-->
+          <!--<a href="javascript:void(0)" ng-click="ctrl.get_current_date($event)" data-value="{{date.date}}">{{date.date}}</a>-->
+          <!--</div>-->
+          <!--</div>-->
+
+
+          <% @dates.in_groups_of(3, false).each_with_index do |grp, idx| %>
+            <div class="slide-date-item item <%= 'active' if idx == 0 %>">
+              <% grp.each_with_index do |item| %>
+                  <div class="col-xs-4 text-center">
+                      <a href="javascript:void(0)" ng-click="ctrl.get_confirmed_trip_date($event)" data-value="<%= item %>"><%= item %></a>
+                    </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="javascript:void(0)" data-target="#myCarousel" data-slide="prev"> < </a>
+        <a class="right carousel-control" href="javascript:void(0)" data-target="#myCarousel" data-slide="next"> > </a>
+      </div>
+    </div>
 
     <table border="0" width="100%">
       <tr ng-repeat="trip in ctrl.booked_jets.trips">
         <td>
           <table class="table" width="100%">
             <tr>
-              <td colspan="3" class="info-detail"><b>Booking No: </b>Trip#{{trip.id}}</td>
+              <td colspan="3" class="info-detail"><b>Booking No: </b>Trip#{{trip.id}}//{{trip.activities[0].start_at}}</td>
             </tr>
             <tr>
               <td colspan="3" style="padding: 0">

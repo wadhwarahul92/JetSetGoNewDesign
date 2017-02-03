@@ -14,6 +14,7 @@ class CustomersController < ApplicationController
                                       :get_user_trips,
                                       :get_confirmed_jetsteals,
                                       :change_password_,
+                                      :get_dates,
                                       :activity_sell_empty_leg]
 
   def update_image
@@ -33,7 +34,9 @@ class CustomersController < ApplicationController
   end
 
   def get_booked_jets
+
     @trips = @customer.trips.where(status: Trip::STATUS_CONFIRMED).includes(:activities).order(id: :desc)
+
   end
 
   def get_upcoming_journeys
@@ -47,14 +50,20 @@ class CustomersController < ApplicationController
     @trips = get_past_trips(@customer.trips.where(status: Trip::STATUS_CONFIRMED)).includes(:activities)
   end
 
-  def get_enquired_jets
-    @enquiries = []
+  def get_dates
+    @dates = []
     @enquiries1 = @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).order(id: :desc)
     @enquiries1.each do |enquiry|
       enquiry.activities.each do |activity|
-        @dates = activity.start_at
+        @dates << activity.start_at.to_date
       end
     end
+    @dates = @dates.uniq!
+  end
+
+  def get_enquired_jets
+    @enquiries = []
+    @enquiries1 = @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).order(id: :desc)
     if params[:enq_date].present?
       date = params[:enq_date].to_date
       @enquiries1.each do |enquiry|
@@ -63,7 +72,6 @@ class CustomersController < ApplicationController
         end
       end
       #@enquiries =  @customer.trips.where(status: Trip::STATUS_ENQUIRY).includes(:activities).where(activities: {start_at: date})
-      puts "===========#{@enquiries.inspect}==============="
     else
       @enquiries = @enquiries1
     end
@@ -136,7 +144,18 @@ class CustomersController < ApplicationController
   end
 
   def get_confirmed_jetsteals
-    @jetsteals = get_jet_steals
+    @jetsteals1 = get_jet_steals
+    @jetsteals = []
+    if params[:con_date].present?
+      date = params[:con_date].to_date
+      @jetsteals1[:trips].each do |trip|
+        if trip.activities.first.start_at.to_date == date
+          @jetsteals << trip
+        end
+      end
+    else
+      @jetsteals = @jetsteals1
+    end
   end
 
   def activity_sell_empty_leg

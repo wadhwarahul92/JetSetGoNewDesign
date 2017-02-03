@@ -12,6 +12,5 @@
  *= require ./vendors/bg-slider/vegas.min.css
  *= require ./vendors/filter_slider
  *= require ./vendors/owl-carousel/owl_carousel
- *= require ./vendors/owl-carousel/owl.carousel.min
- *= require ./vendors/owl-carousel/owl.theme.min
+ *= require ./vendors/owl-carousel/lightslider
  */
